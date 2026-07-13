@@ -5,7 +5,7 @@
 ## Onde estamos
 
 Levantamento inicial da literatura concluído (ver `literature/00-index.md`).
-**Trinta e uma hipóteses testadas (H-001 a H-031)**, mais um PDF externo e
+**Trinta e três hipóteses testadas (H-001 a H-033)**, mais um PDF externo e
 quatro listas de ideias de outras IAs revisadas criticamente (a maioria dos
 itens especulativos — sem ponte concreta — descartada conscientemente; ver
 `literature/external-ideas-review.md`). **H-024**: prova computacional de
@@ -60,7 +60,18 @@ completa nos moduli pequenos. **Conexão real e verificada** entre H-027 e
 Reyes Jiménez (2026, arXiv:2606.02621): o grafo de transição mod6 dele
 (resíduo 4→{2,5}) é exatamente o mecanismo algébrico da nossa prova —
 duas investigações independentes convergindo na mesma estrutura,
-documentado em H-027.md.
+documentado em H-027.md. Diretor científico perguntou sobre conexões
+geométricas/dimensionais — investigado a fundo (Kionke, Alvarado, Siegel,
+Honarvar Shakibaei Asli): generalizar para dimensão maior (Z^n, inteiros
+de Gauss) **piora** o comportamento em vez de ajudar, com explicação
+aritmética limpa derivada (3<2² dá contração no caso clássico; 5>2² dá
+expansão no análogo de Gauss). **H-032**: testada e refutada a conexão
+entre frações contínuas de log₂(3) (a ferramenta clássica de limites de
+ciclo) e a anomalia de H-013 — sem correlação. **H-033**: estendida a
+verificação empírica do problema aberto de Chang (H-030) usando os 8
+maiores recordistas reais (3× mais observações por órbita que o testado
+no paper original) — desvio persiste (~0,55-0,64), consistente com
+H-021/H-030, sem resolver nem contradizer o problema aberto original.
 ## Avaliação estratégica (2026-07-13, importante)
 
 Depois de consolidar a família de exclusão (H-028) e investigar sua
