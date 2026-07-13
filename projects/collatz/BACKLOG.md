@@ -131,17 +131,27 @@ correlação bit-a-bit observada se reduz ao valor exato de a, já conhecido,
 e ao bias clássico de carry em adição binária). Ver
 `hypotheses/H-025-linear-bit-correlations.md`.
 
+- **Taxa de divergência de aproximações de memória 3-ádica finita —
+  CONCLUÍDA COM RESSALVA (H-026)**: testei se K maior (mais dígitos
+  3-ádicos conhecidos) atrasa a divergência de D(v) em relação à
+  aproximação de resíduo. Resultado: comparando na mesma magnitude de v
+  (não no mesmo multiplicador), a divergência fica na mesma ordem de
+  grandeza para K=4,6,8 — sem evidência de que resíduo mais profundo ajude.
+  Sinal real mas baseado em medição única por ponto (quantidade já
+  conhecida como muito errática); promediar sobre múltiplos resíduos é o
+  próximo passo se retomado. Ver
+  `hypotheses/H-026-divergence-rate-independent-of-K.md`.
+
 Candidatos ainda não implementados, por ordem de prioridade sugerida:
-1. Extensão de H-024 medindo a *taxa* de divergência de aproximações de
-   memória 3-ádica finita crescente (diferente de H-024, que só refutou a
-   existência de uma aproximação exata).
-2. Ângulo de estratégia adversarial de máxima subida, conectando com a
+1. Ângulo de estratégia adversarial de máxima subida, conectando com a
    literatura de limites inferiores em ciclos (Simons & de Weger, Eliahou)
    — potencial nova via para H-008/H-009.
-3. Koopman operator/DMD vetorial (extensão de H-017) — mantido em espera
+2. Koopman operator/DMD vetorial (extensão de H-017) — mantido em espera
    até formular a afirmação falsificável específica que o resultado
    confirmaria ou refutaria, para não repetir o risco de "matemática de
    aparência" já identificado na terceira lista.
+3. Metade par de H-008 (N≡4 mod18) — ainda sem prova, precisa de ideia
+   estruturalmente diferente da relação multiplicativa usada em H-022.
 
 ## 4. Verificação de alegações de prova externas
 
