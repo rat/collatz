@@ -42,14 +42,16 @@ ou um contra-exemplo.
 - 2-ádico → coberto extensivamente (H-005, H-007, H-014, H-015, H-022,
   `literature/approaches-2adic-ergodic.md`).
 - **Tensor / Koopman operator ("Project PHI")** → o item mais concreto e
-  acionável das três listas inteiras. Insight chave: **H-017 já é**, sem
-  usarmos o nome, um cálculo de autovalor de Koopman para um observável
-  escalar (E[3/2^a]=1 é exatamente a equação de autovalor 1 do operador de
-  Koopman aplicado ao observável log n). Isso sugere uma extensão natural e
-  ainda não tentada: um vetor pequeno de observáveis simultâneos (n^θ,
-  resíduos mod 2^k, mod 3^k, valuação corrente) e uma aproximação DMD
-  (Dynamic Mode Decomposition) da dinâmica linearizada nesse espaço. Ver
-  proposta de H-025 no BACKLOG.
+  acionável das três primeiras listas. Correção registrada após revisão
+  (o enquadramento inicial era solto demais): E[3/2^a]=1 é uma afirmação
+  de martingale/drift sobre o **modelo estocástico**, não literalmente uma
+  equação de autofunção de Koopman para o mapa determinístico — a conexão
+  com Koopman/Perron-Frobenius é uma **analogia a testar**, não uma
+  identidade já estabelecida. Mantido como candidato de extensão (vetor de
+  observáveis + DMD), mas **retido** até formular, antes de implementar, a
+  afirmação falsificável específica que o resultado do DMD confirmaria ou
+  refutaria — do contrário corre-se o mesmo risco de "matemática de
+  aparência" já identificado na Lista 3.
 
 ## Lista 3 (15 ideias especulativas de matemática avançada)
 
@@ -83,11 +85,58 @@ Exceções tratadas com mais cuidado:
   dimensão finita. Testado e descartado com evidência direta, não por
   intuição.
 
+## Lista 4 (15 ideias "corrigidas" após crítica à Lista 3)
+
+Reação da mesma fonte externa à nossa crítica da Lista 3, com o objetivo
+declarado de garantir pontes concretas com v₂, a árvore reversa, o drift
+log(3/2) e o martingale. Avaliação item a item:
+
+**Já feito / sobreposição forte com trabalho existente:**
+- #4 (branching process com ramificação dependente do tipo de v₂) →
+  essencialmente H-018 (árvore de Galton-Watson já construída e analisada).
+- #10 (passeio aleatório com correlações de longo alcance / grandes
+  desvios explícitos) → coberto por H-011/H-017 (Cramér, θ*=1).
+- #2 (transfer operator em partições (v₂, mod 3^k)) → sobrepõe H-024:
+  já demonstramos que a densidade não é função de resíduo 3-ádico
+  limitado, então qualquer truncamento finito desse operador não pode ser
+  exato.
+
+**Testado nesta sessão:**
+- **#9 (busca de invariantes lineares sobre GF(2)/Z)** → escolhido como
+  abertura por ser barato, rápido e ter resultado interpretável em
+  qualquer desfecho. Testado e **refutado com mecanismo identificado** —
+  ver `hypotheses/H-025-linear-bit-correlations.md`. Toda correlação
+  bit-a-bit encontrada se reduz ao valor exato de a (já conhecido) e ao
+  bias clássico e de curto alcance de carry em adição binária — nenhuma
+  informação nova sobre a estrutura do Collatz.
+
+**Vago ou de alto risco de "matemática de aparência", não priorizado:**
+#11 (cobordismo combinatório — não é mais que indução renomeada, sem
+técnica nova), #12 (persistent homology — sem mecanismo demonstrado
+ligando topologia da nuvem de pontos a teoria de números, exigiria
+bibliotecas novas), #3, #6, #7, #13 (vagos: pedem "construa", "derive",
+"mostre decréscimo" sem especificar o passo concreto que fecharia o
+argumento).
+
+**Candidatos remanescentes de interesse real, não implementados ainda:**
+- #15 (operador de transferência com memória 3-ádica finita crescente,
+  medindo a *taxa* na qual a aproximação diverge conforme a magnitude
+  cresce) — diferente de #2: H-024 refutou a existência de uma
+  aproximação *exata* de dimensão finita, mas não caracterizou a taxa de
+  divergência da aproximação em função da profundidade de memória K. É
+  uma extensão legítima e ainda em aberto de H-024.
+- #14 (programação dinâmica / estratégia adversarial de máxima subida) —
+  conecta com a literatura já catalogada de limites inferiores em ciclos
+  (Simons & de Weger, Eliahou), potencial ângulo novo para H-008/H-009.
+- #1 (Koopman/DMD vetorial) — mantido em espera até que a afirmação
+  falsificável específica seja formulada antes da implementação (ver
+  nota acima).
+
 ## Conclusão e próximo passo proposto
 
-Das três listas, a única direção nova, concreta e ainda não testada é a
-extensão de H-017 para uma análise Koopman/DMD vetorial (Lista 2). Proposta
-registrada no BACKLOG como candidata a H-025 — pendente de confirmação do
-diretor científico, já que representa mudança de metodologia (álgebra
-linear/autovalores aplicada a observáveis, em vez de teoria de números
-pura).
+A extensão fechada e mais promissora agora é **#15**, por continuar
+diretamente H-024 com uma pergunta nova e bem definida (taxa de
+divergência, não apenas existência). #14 é a segunda candidata mais
+concreta. Koopman/DMD (#1) fica reservado até ter uma afirmação
+falsificável explícita — não descartado, apenas não priorizado sem essa
+condição.

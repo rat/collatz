@@ -114,21 +114,34 @@ total a partir de uma única consulta ao modelo).
   com evidência direta, não apenas por falta de tentativa. Ver
   `hypotheses/H-024-density-needs-unbounded-precision.md`.
 
-## 6. Revisão crítica de três listas de ideias externas (outras IAs) — CONCLUÍDA
+## 6. Revisão crítica de quatro listas de ideias externas (outras IAs) — CONCLUÍDA
 
-Três listas trazidas pelo diretor científico em 2026-07-13 (10+1 ideias
+Quatro listas trazidas pelo diretor científico em 2026-07-13 (10+1 ideias
 "gerais", ideias sobre "outras dimensões"/Koopman, 15 ideias especulativas de
-matemática avançada). Avaliação completa registrada em
-`literature/external-ideas-review.md`: a maioria dos itens já corresponde a
-algo que já fizemos (rotulado com nomenclatura diferente) ou é vaga demais
-para virar hipótese testável sem uma ponte concreta com a estrutura
-combinatória real do Collatz. Um item se destacou como acionável e ainda não
-testado: análise estilo Koopman operator/DMD com múltiplos observáveis
-simultâneos (generalização vetorial de H-017, que já é, sem o nome, um
-cálculo de autovalor de Koopman escalar). Proposto como candidato a H-025,
-pendente de confirmação do diretor científico antes de investir tempo (é uma
-mudança de metodologia — álgebra linear/autovalores em vez de teoria de
-números pura).
+matemática avançada, e uma quarta lista "corrigida" após crítica à terceira).
+Avaliação completa registrada em `literature/external-ideas-review.md`: a
+maioria dos itens já corresponde a algo que já fizemos (rotulado com
+nomenclatura diferente) ou é vaga demais para virar hipótese testável sem
+uma ponte concreta com a estrutura combinatória real do Collatz.
+
+Da quarta lista, testei a ideia mais barata e imediatamente acionável
+(busca de invariantes lineares em bits, estilo criptoanálise linear) como
+**H-025** (refutada, com mecanismo totalmente identificado — toda
+correlação bit-a-bit observada se reduz ao valor exato de a, já conhecido,
+e ao bias clássico de carry em adição binária). Ver
+`hypotheses/H-025-linear-bit-correlations.md`.
+
+Candidatos ainda não implementados, por ordem de prioridade sugerida:
+1. Extensão de H-024 medindo a *taxa* de divergência de aproximações de
+   memória 3-ádica finita crescente (diferente de H-024, que só refutou a
+   existência de uma aproximação exata).
+2. Ângulo de estratégia adversarial de máxima subida, conectando com a
+   literatura de limites inferiores em ciclos (Simons & de Weger, Eliahou)
+   — potencial nova via para H-008/H-009.
+3. Koopman operator/DMD vetorial (extensão de H-017) — mantido em espera
+   até formular a afirmação falsificável específica que o resultado
+   confirmaria ou refutaria, para não repetir o risco de "matemática de
+   aparência" já identificado na terceira lista.
 
 ## 4. Verificação de alegações de prova externas
 
