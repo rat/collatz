@@ -64,3 +64,40 @@ estado finito nesse sentido.
   (H-024) já mostra que a obstrução é sobre a PRECISÃO NECESSÁRIA (3-ádica
   infinita), não sobre o tipo de operador usado — vestir a mesma
   construção de física quântica não resolveria essa obstrução real.
+- 2026-07-13: **checagem de novidade do fenômeno geral (importante)**.
+  Ao tentar escrever uma síntese consolidando este achado com H-013,
+  H-025/Koopman, H-026, H-032 e a "Rota A" de Chang (H-030) como "uma
+  obstrução, múltiplas confirmações independentes", li o paper completo
+  de Chang (2026, arXiv:2603.11066, "Exploring Collatz Dynamics with
+  Human-LLM Collaboration" — PDF de 216 páginas, lido diretamente, não
+  via resumo automático) e descobri que ele é o survey-pai da companion
+  paper já usada em H-030 (a própria lista de referências de 2603.11066
+  cita "[4] E. Y. Chang, *The one-bit reduction: sharpening the Collatz
+  obstruction*, Companion paper, 2026" — quase certamente nosso
+  arXiv:2603.25753). Esse survey já formaliza, como resultado central
+  (Teorema 13.1 "Paradigm Exhaustion", Teorema 13.2 "Barrier
+  Characterization"), que **29 paradigmas matemáticos diferentes** (incluindo
+  compacidade em Z₂/conjuntos aninhados não-vazios em todo nível finito,
+  item 15 — a forma mais próxima da nossa) falham exatamente da mesma
+  maneira geral: nenhum converte convergência distribucional
+  ("quase todas as órbitas") em convergência pontual ("toda órbita").
+  **A narrativa geral (métodos de precisão finita não fecham o problema)
+  já é conhecida e documentada extensivamente — não é mais nossa para
+  reivindicar como síntese nova.** Ver H-036 para a nota curta sobre essa
+  recalibração e `literature/resources-and-tools.md` para o catálogo do
+  paper.
+
+  **O que sobrevive desta hipótese, com escopo correto**: D(v) — a
+  densidade da subárvore de PREDECESSORES de um nó FIXO v — não é um dos
+  29 paradigmas listados por Chang (todos tratam de convergência de
+  órbitas para frente; nenhum trata de densidade de subárvore reversa
+  de um nó específico). Nosso resultado continua sendo uma instância
+  genuína e derivada de forma independente do mesmo fenômeno geral
+  (aparentado ao item 15 dele e à sua Teorema 9.169/tabela f_K, que
+  mostra resíduos "resolvidos" cobrindo 90-91% em K=13 mas nunca 100% em
+  K finito), só que via uma construção diferente (não estava na lista
+  dele). É confirmação, não descoberta — e mesmo essa confirmação vale
+  só para o K=6 testado diretamente mais o argumento mecanicista de que
+  a recursão D(v)=D(2v)+D(ramo) nunca fecha em nenhum K (evidência forte
+  + mecanismo plausível, **não** "provado para todo K" no sentido formal
+  que Chang tenta manter com seu rótulo "Proved" vs "Numerical").

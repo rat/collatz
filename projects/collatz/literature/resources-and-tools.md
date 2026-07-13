@@ -189,11 +189,63 @@ reais — resultado consistente com o que o próprio paper já documenta
 (desvio de órbita individual, não achado novo), com cuidado explícito para
 não cair em pseudo-replicação (órbitas de recordistas colidem entre si).
 
+## Chang (2026) — "Exploring Collatz Dynamics with Human-LLM Collaboration" (survey-pai do paper acima)
+
+[arXiv:2603.11066](https://arxiv.org/pdf/2603.11066) — PDF de 216 páginas
+baixado e lido diretamente (seções-chave: introdução, sumário do
+"attack surface" §9.11, e §13 "The architecture of the Syracuse
+obstruction"), **não** via resumo automático — lição de H-030/Pratiher
+aplicada de novo. Achado durante uma tentativa nossa de escrever uma
+síntese ("uma obstrução, múltiplas confirmações independentes") a partir
+de H-013/H-018/H-024/H-025/H-026/H-030/H-032 — a checagem de novidade
+(mesma disciplina de H-028) revelou que esse survey já é o trabalho-pai
+da companion paper usada em H-030: a própria lista de referências cita
+"[4] E. Y. Chang, *The one-bit reduction: sharpening the Collatz
+obstruction*, Companion paper, 2026", quase certamente nosso
+arXiv:2603.25753.
+
+**Conteúdo**: ~1014 scripts, 630 resultados, 29 "paradigmas" matemáticos
+testados (operadores de transferência, séries de Mahler 2-ádicas,
+rigidez de medida, teoria de renovação, martingales, Baker/medida de
+irracionalidade, redução de reticulado LLL, etc.). Resultado central
+(Teorema 13.1, "Paradigm Exhaustion"): todos os 29 produzem convergência
+"quase todas as órbitas" mas nenhum fecha para "toda órbita" — a mesma
+barreira distribucional-para-pontual em toda tentativa. Teorema 13.2
+("Barrier Characterization") argumenta que essa barreira é equivalente à
+componente de divergência da própria conjectura — não é um obstáculo
+secundário, é (segundo o autor) o núcleo do problema.
+
+**Avaliação e ressalvas importantes**: (1) o próprio paper se declara
+explicitamente **não** uma prova ("This paper does not prove the Collatz
+conjecture"), com hipóteses nomeadas que permanecem abertas (Weak Mixing
+Hypothesis, Carry Independence Conjecture, D∤Q para L>116); (2) é
+produzido por colaboração humano-LLM (Claude Opus 4.6 + GPT-5.4
+Thinking, um humano moderador) e documenta seus próprios erros com
+honestidade (§12.6 "Case study: the false Gap Lemma", §12.7 "the CIC
+circularity", §12.8 "Error-correction log") — metodologia próxima da
+nossa; (3) "Paradigm Exhaustion" é uma afirmação de survey (levantamento
+do que foi tentado), não um teorema de impossibilidade formal — não deve
+ser tratada como a última palavra rigorosa, só como evidência extensa de
+que a via já foi muito explorada.
+
+**Impacto direto em nosso projeto**: a narrativa geral que estávamos
+prestes a escrever como síntese própria ("métodos de precisão/dimensão
+finita não fecham o problema, uma obstrução, N confirmações") já é
+exatamente o resultado central deste survey, documentado com muito mais
+profundidade (29 paradigmas vs nossos ~6). **Não é mais nova para
+reivindicar.** Nosso H-024 (densidade de subárvore reversa D(v) exige
+precisão 3-ádica ilimitada) continua válido como resultado independente
+— seu objeto específico (predecessores de um nó fixo) não está entre os
+29 listados — mas deve ser entendido como **uma instância adicional,
+modesta, de um fenômeno já bem documentado**, não uma descoberta. Ver
+recalibração em `hypotheses/H-024-density-needs-unbounded-precision.md`
+e nota curta em `hypotheses/H-036-literature-collision-precision-narrative.md`.
+
 ## Pratiher (2026) — "Recurrence Structures, Finite State Decomposition, and Statistical Bias in Collatz Path Sequences"
 
 [arXiv:1608.03600](https://arxiv.org/pdf/1608.03600) — lido por completo.
-**Nota de integridade**: um resumo inicial via WebFetch alegou que este
-paper discutia "delay records" e exclusões de classe residual para
+**Nota de integridade (1)**: um resumo inicial via WebFetch alegou que
+este paper discutia "delay records" e exclusões de classe residual para
 recordistas — ao ler o PDF diretamente, isso é **falso** (alucinação do
 resumo automático); o paper não menciona recordistas em nenhum lugar. É
 sobre um tópico diferente: redução da conjectura à classe n≡3 mod4,
@@ -201,6 +253,23 @@ seis "formas recorrentes" mod9 que classificam para qual potência de 2
 cada inteiro converge, e viés estatístico na frequência de terminação
 (forma 'a' domina ~97,6%). Catalogado como lembrete de sempre verificar
 a fonte primária antes de confiar em resumos de ferramenta.
+
+**Nota de integridade (2), mais séria** (H-035/H-037): ao investigar se
+a Conjectura 10.4 dele (α≈0,9762 para a forma dominante 'a') seria
+derivável por equidistribuição, um argumento de paridade (idêntico ao
+mecanismo do nosso H-012) mostrou que a forma dominante relatada ('a',
+expoente M≡3 mod6, ímpar) é **impossível** como classe de massa
+positiva — só expoentes pares podem dominar. Verificação computacional
+direta (`experiments/E-037-pratiher-ensemble-check/`) encontrou
+correspondência **exata** (não aproximada, inclusive nas caudas raras)
+entre os números relatados por Pratiher e os números corretos, só que
+sob rótulos deslocados em exatamente 1 posição no ciclo de 6 formas
+('a'↔'f', 'c'↔'b', etc.). Avaliação: os **números** de Pratiher
+(~0,9762 e ~0,0238) parecem corretos; a **atribuição de forma** parece
+ter um erro sistemático de off-by-one. Ver
+`hypotheses/H-037-pratiher-form-off-by-one.md` para a verificação
+completa, incluindo validação cruzada contra nossos próprios dados de
+H-013 (medidos independentemente, antes de conhecermos este paper).
 
 ## Winkler (2026) — "Deterministic Structures in the Stopping Time Dynamics of the 3x+1 Problem"
 

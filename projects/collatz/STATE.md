@@ -4,8 +4,32 @@
 
 ## Onde estamos
 
+**Trinta e sete hipóteses testadas (H-001 a H-037)**. As três últimas
+(2026-07-13, depois de H-034): **H-035** checou se a obstrução de H-024
+(densidade por-nó D(v) exige precisão 3-ádica ilimitada) se aplica à
+Conjectura 10.4 de Pratiher (α≈0,9762) — resposta: não, são objetos
+categoricamente diferentes (D(v) é por-nó; Freq_r(N) de Pratiher é média
+de conjunto). **H-036**: ao tentar escrever uma síntese própria ("uma
+obstrução, N confirmações independentes") a partir de H-013/H-024/H-025/
+H-026/H-030/H-032, a checagem de novidade revelou que essa narrativa
+geral já é o resultado central de um survey de 216 páginas do mesmo
+autor do paper usado em H-030 (Chang 2026, arXiv:2603.11066, "Paradigm
+Exhaustion Theorem", 29 paradigmas testados) — recalibrado com
+honestidade em vez de reivindicado como nosso. **H-037** (importante):
+ao investigar se α de Pratiher seria derivável por equidistribuição,
+um argumento de paridade (mecanismo idêntico a H-012) revelou que a
+forma dominante que ele relata ('a', expoente ímpar) é matematicamente
+impossível como classe de massa positiva — só expoentes pares podem
+dominar. Verificação computacional encontrou correspondência **exata**
+entre os números relatados por Pratiher e os corretos, sob um
+deslocamento de rótulo de exatamente 1 posição no ciclo de 6 formas:
+os números do paper (~0,9762/~0,0238) parecem certos, a atribuição de
+qual forma carrega cada número parece ter um erro off-by-one.
+Validado cruzado contra nossos próprios dados de H-013 (medidos
+independentemente, antes de conhecer este paper) — bate.
+
 Levantamento inicial da literatura concluído (ver `literature/00-index.md`).
-**Trinta e quatro hipóteses testadas (H-001 a H-034)**, mais um PDF externo e
+Mais um PDF externo e
 quatro listas de ideias de outras IAs revisadas criticamente (a maioria dos
 itens especulativos — sem ponte concreta — descartada conscientemente; ver
 `literature/external-ideas-review.md`). **H-024**: prova computacional de
@@ -487,7 +511,7 @@ pediu para lembrá-lo de avisar quando isso for feito).
 
 ## Próximos passos
 
-**Trinta hipóteses testadas (H-001 a H-030)**. O achado central do
+**Trinta e sete hipóteses testadas (H-001 a H-037)**. O achado central do
 projeto — por que recordistas evitam resíduo 2 mod 3 — está **completamente
 resolvido** (H-007), com uma técnica irmã generalizada em larga escala
 (H-014→H-015), e consolidado via CRT em H-028 (45/72 resíduos mod72
@@ -505,21 +529,42 @@ novidade de H-028/H-022 revelou que boa parte da família de exclusão já é
 folclore conhecido pela comunidade prática de busca de recordistas
 (cuda-collatz) — a linha de "excluir recordistas por classe residual"
 está substancialmente esgotada como fonte de resultado genuinamente novo.
-Questão genuinamente em aberto que resta:
+
+**Segunda avaliação estratégica (2026-07-13, depois de H-036/H-037)**:
+a OUTRA linha mais desenvolvida do projeto — a "obstrução de precisão
+3-ádica ilimitada" (H-013/H-018/H-024/H-025/H-026/H-030/H-032) — também
+não é mais nova no nível geral: é o resultado central de um survey de
+216 páginas contemporâneo (Chang 2026, arXiv:2603.11066, ver H-036).
+**As duas linhas mais desenvolvidas do projeto estão, portanto, ambas
+sabidamente esgotadas como fonte de resultado geral novo** — continuar
+gerando H-0XX dentro de qualquer uma das duas tem valor de verificação/
+aprendizado, mas não deve ser confundido com progresso rumo a algo
+publicável. Isso não invalida nenhum resultado nosso (H-024 continua
+válido como instância específica; a família CRT de H-028 continua válida
+como consolidação), só recalibra a expectativa. Questões genuinamente em
+aberto que restam:
 
 1. **Fórmula fechada para a anomalia de H-013** — valores de convergência
    bem medidos numericamente ((10,11)≈0.065, (13,14)≈0.27-0.28), mas sem
    teoria que os derive a partir de primeiros princípios. H-024 explica
    por que a recursão exata D(v)=D(2v)+D(ramo) não fecha (exige precisão
    3-ádica ilimitada) — provavelmente um problema genuinamente difícil,
-   não um branco de tentativa.
+   não um branco de tentativa. H-037 mostrou que α de Pratiher (uma vez
+   corrigido o rótulo) é essa MESMA quantidade agrupada por t mod3 —
+   dominada por poucos termos pequenos (p_2=D(5) sozinho é 93,77%), o que
+   dá uma razão estrutural para mais tratabilidade que o D(v) genérico,
+   mas ainda não fechada.
+2. **H-037 em aberto**: reportamos ao diretor científico um provável erro
+   de rotulagem no paper de Pratiher (números corretos, forma errada) —
+   decidir se/como isso deveria ser comunicado externamente é uma decisão
+   do diretor científico, não algo para agir sozinho.
 
-Instrução permanente do diretor científico (2026-07-13): continuar em
-loop autônomo, tentando ângulos genuinamente novos mesmo sem garantia de
-achar algo — ver `literature/resources-and-tools.md` para papers recentes
-ainda por explorar (Two-Operator Calculus, mod 2^p+2^q, Fibonacci theorem
-via modular graph structure — lidos apenas parcialmente via resumo
-automático, não verificados a fundo ainda).
+**Sobre o loop autônomo**: o diretor científico pediu (2026-07-13) para
+operar em loop contínuo (backlog → brainstorm → repete), e mais tarde na
+MESMA sessão pediu explicitamente para **cancelar** esse loop. A partir
+de agora, não retomar o modo autônomo por conta própria — ver memória
+`feedback_autonomous_research_loop.md` (CANCELLED). Trabalhar sessão a
+sessão, a partir do que for pedido.
 
 Tarefa pendente (**só fazer quando o diretor científico pedir
 explicitamente**, por último — lembrar de avisar quando for feito): paper

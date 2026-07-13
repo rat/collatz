@@ -190,6 +190,41 @@ previsível — exatamente o tipo de atividade que o loop deveria evitar
 fabricar. Descartado como redundante, não como "não testável" (distinção
 importante: não é vago, é previsível).
 
+- **Frações contínuas de log₂3 vs anomalia de H-013 — CONCLUÍDA COM
+  REFUTAÇÃO (H-032)**: testado e descartado, sem correlação. Ver
+  `hypotheses/H-032-continued-fraction-h013-check.md`.
+
+- **Extensão do problema aberto de Chang (bit-4) com recordistas maiores
+  — CONCLUÍDA (H-033)**: desvio persiste, consistente com H-021/H-030,
+  não resolve nem contradiz o problema aberto original. Ver
+  `hypotheses/H-033-chang-bit4-longorbit-extension.md`.
+
+- **Categoria de H-024 vs Conjectura 10.4 de Pratiher — CONCLUÍDA
+  COM REFUTAÇÃO, mas esclarecedora (H-035)**: D(v) (por-nó) e Freq_r(N)
+  de Pratiher (média de conjunto) são objetos categoricamente diferentes;
+  H-024 não se aplica diretamente. Ver
+  `hypotheses/H-035-pratiher-q3-vs-h024-category-check.md`.
+
+- **Colisão de literatura: a "obstrução de precisão" já é o resultado
+  central de um survey de 216 páginas (H-036)**: ao tentar sintetizar
+  H-013/H-018/H-024/H-025/H-026/H-030/H-032 como um achado próprio,
+  descobri que a narrativa geral já é o Teorema 13.1 ("Paradigm
+  Exhaustion") de Chang (2026, arXiv:2603.11066) — survey-pai do paper
+  usado em H-030. Recalibrado com honestidade. Ver
+  `hypotheses/H-036-literature-collision-precision-narrative.md`.
+
+- **Provável erro de rotulagem off-by-one na Conjectura 10.4 de Pratiher
+  — ACHADO IMPORTANTE (H-037)**: ao investigar se α≈0,9762 seria
+  derivável por equidistribuição, um argumento de paridade (mecanismo de
+  H-012) mostrou que a forma dominante relatada por Pratiher (expoente
+  ímpar) é matematicamente impossível como classe de massa positiva.
+  Verificação computacional: correspondência EXATA entre os números
+  relatados e os corretos, sob rótulos deslocados em 1 posição no ciclo
+  de 6 formas. Validado cruzado contra nossos próprios dados de H-013.
+  Números do paper parecem certos; atribuição de forma parece errada.
+  Decisão sobre comunicar isso ao autor é do diretor científico. Ver
+  `hypotheses/H-037-pratiher-form-off-by-one.md`.
+
 ## 4. Verificação de alegações de prova externas
 
 Processo contínuo — toda alegação de prova recebida (ex: PDFs, links) deve
