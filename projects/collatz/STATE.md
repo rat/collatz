@@ -5,14 +5,13 @@
 ## Onde estamos
 
 Levantamento inicial da literatura concluído (ver `literature/00-index.md`).
-Dez hipóteses testadas (H-001 a H-010), mais um PDF externo revisado e
+Onze hipóteses testadas (H-001 a H-011), mais um PDF externo revisado e
 catalogado. **Resultado central do projeto**: recordistas reais de stopping
 time nunca são ≡2 mod 3 (exceto o caso trivial n=2) — confirmado
 empiricamente (H-004, n=148, p<10^-13) e **provado algebricamente** (H-007).
 Backlog de linhas de investigação em `BACKLOG.md` (padrões binários, e uma
 tarefa pendente: escrever um paper curto apontando os erros do PDF de Santos
-2018) — mantido conforme pedido do diretor científico de atacar o problema
-por vários ângulos.
+2018 — a ser feito por último, conforme pedido do diretor científico).
 
 ## O que o levantamento estabeleceu
 
@@ -73,8 +72,13 @@ por vários ângulos.
   (total_stopping_time(n) ≈ K·log₂n) a partir de fatos já estabelecidos por
   nós (E[a]=2, H-001), e confirmamos empiricamente: K empírico=7.1833
   (diferença 0.62%). R²=0.03 — log₂(n) sozinho explica pouco da variância
-  individual, a maior parte vem de estrutura fina. Ver
-  `hypotheses/H-010-stopping-time-asymptotic-constant.md`.
+  individual. Ver `hypotheses/H-010-stopping-time-asymptotic-constant.md`.
+- `H-011` — a variância residual de H-010 é ruído previsto, não estrutura
+  escondida. Derivamos que Var(total_stopping_time) deveria crescer linear
+  em log₂n (coeficiente teórico 186.93, via aproximação de tempo de primeira
+  passagem). Confirmado empiricamente em 8 ordens de magnitude (log₂n de 10.5
+  a 45.5): coeficiente empírico 181.53, diferença de 2.9%. Resolve a pergunta
+  em aberto de H-010. Ver `hypotheses/H-011-variance-scaling.md`.
 
 ## Hipóteses refutadas / parcialmente refutadas
 
@@ -179,27 +183,33 @@ por vários ângulos.
   constante assintótica do stopping time (K≈7.23·log₂n, diferença de 0.62%
   entre teoria e dados). R²=0.03 é o achado lateral interessante: pouquíssimo
   da variância individual vem do tamanho de n.
+- 2026-07-13: diretor científico pediu para deixar o paper sobre o PDF por
+  último e continuar as análises.
+- 2026-07-13: H-011 testada — resolvida a pergunta em aberto de H-010:
+  derivamos que a variância de total_stopping_time deveria crescer linear em
+  log₂n (não quadraticamente), coeficiente teórico 186.93. Confirmado
+  empiricamente em 8 ordens de magnitude (log₂n de 10.5 a 45.5): coeficiente
+  empírico 181.53, diferença de 2.9%. O R² baixo de H-010 é ruído previsto
+  pela própria heurística, não estrutura escondida.
 
 ## Próximos passos
 
-Dez hipóteses testadas (H-001 a H-010). O achado central do projeto — por
+Onze hipóteses testadas (H-001 a H-011). O achado central do projeto — por
 que recordistas evitam resíduo 2 mod 3 — está **completamente resolvido**
-(H-007). H-008 (classe 4 mod 9) segue em aberto. Tarefa pendente: paper sobre
-os erros do PDF de Santos (`BACKLOG.md` item 5). Candidatas para a próxima
-sessão (escolher com o diretor científico):
+(H-007). A pergunta da variância de H-010 também está **resolvida** (H-011).
+H-008 (classe 4 mod 9) segue em aberto. Tarefa pendente (por último, a
+pedido do diretor científico): paper sobre os erros do PDF de Santos
+(`BACKLOG.md` item 5). Candidatas para a próxima sessão:
 
-1. Escrever o paper curto sobre os erros do PDF (tarefa registrada, ainda não
-   iniciada).
-2. Uma versão mais rigorosa da análise de padrões binários (ver `BACKLOG.md`
+1. Uma versão mais rigorosa da análise de padrões binários (ver `BACKLOG.md`
    item 3) — ainda precisa de um ângulo concreto antes de virar hipótese.
-3. Investigar a variância residual encontrada em H-010 (R²=0.03) — o que
-   explica por que log₂(n) sozinho diz tão pouco sobre o stopping time
-   individual? Pode conectar com H-004/H-007.
-4. Tentar uma técnica diferente para a classe 4 mod 9 (H-008) — ou aceitar
+2. Tentar uma técnica diferente para a classe 4 mod 9 (H-008) — ou aceitar
    que pode não ser um fato permanente, só válido no intervalo já calculado.
-5. Considerar formalizar H-005, H-007, H-009 e H-010 (teoremas/verificações
-   já feitos) em Lean/SageMath se o projeto crescer nessa direção (fora de
-   escopo por enquanto, ver `ROADMAP.md`).
-6. Continuar revisando qualquer nova alegação de prova externa que o diretor
+3. Considerar formalizar H-005, H-007, H-009, H-010 e H-011 (teoremas/
+   verificações já feitos) em Lean/SageMath se o projeto crescer nessa
+   direção (fora de escopo por enquanto, ver `ROADMAP.md`).
+4. Continuar revisando qualquer nova alegação de prova externa que o diretor
    científico receber, seguindo o padrão já estabelecido em
    `literature/unverified-proof-claims.md`.
+5. Por último: escrever o paper curto sobre os erros do PDF de Santos
+   (`BACKLOG.md` item 5).

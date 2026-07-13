@@ -16,7 +16,7 @@ comprimento). Testada em H-009/E-009: busca própria por força bruta (a até
 14) não encontrou nada além do trivial, consistente com a literatura. Ver
 `hypotheses/H-009-nontrivial-cycles.md`.
 
-## 2. Distribuição de stopping times — CONCLUÍDA (primeira parte)
+## 2. Distribuição de stopping times — CONCLUÍDA
 
 Já exaustivamente estudada na literatura clássica (heurística de passeio
 aleatório, Kontorovich-Lagarias — ver `literature/approaches-stochastic-heuristic.md`),
@@ -24,9 +24,11 @@ mas o diretor científico ainda considera um ponto de interesse. Testada em
 H-010/E-010: derivamos K≈7.2283 (constante que multiplica log₂(n) no
 stopping time médio) a partir de fatos já estabelecidos por nós (H-001,
 E[a]=2), e confirmamos empiricamente (K empírico=7.1833, diferença 0.62%).
-R² baixo (0.03) mostra que a maior parte da variância individual não vem do
-tamanho de n — ponto interessante para investigação futura (o que explica
-essa variância residual, além da estrutura já achada em H-004/H-007?).
+R² baixo (0.03) levantou a pergunta: estrutura escondida ou ruído previsto?
+**Resolvido em H-011/E-011**: a variância cresce linearmente em log₂n (não
+quadraticamente), coeficiente teórico 186.93 vs. empírico 181.53 (diferença
+2.9%, testado em 8 ordens de magnitude) — é ruído previsto pela própria
+heurística, não estrutura nova escondida.
 
 ## 3. Análise de padrões em representação binária
 
