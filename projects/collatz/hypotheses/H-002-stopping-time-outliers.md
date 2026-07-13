@@ -1,6 +1,6 @@
 # H-002 — Estrutura residual em outliers de stopping time
 
-Status: aberta (planejada — depende do resultado de H-001)
+Status: parcialmente refutada (ver experimento E-002 — sinal real é tautológico, sem estrutura mod-3 nova)
 Criada em: 2026-07-13
 
 ## Enunciado
@@ -34,3 +34,15 @@ diferenciam da população típica de números do mesmo tamanho.
 
 - 2026-07-13: hipótese registrada, execução adiada até termos o resultado de H-001
   (ver `protocols/new-hypothesis.md` — não pular etapas).
+- 2026-07-13: testada em `experiments/E-002-stopping-time-outliers/` (n até
+  2.000.000, top 0.5% como outliers, 2 seeds). Resíduo mod potências de 2 mostrou
+  diferença fortíssima (p < 10^-40), mas identificamos que isso é **tautológico**
+  — residuo mod 2^k é quase determinístico em função da sequência de valuações
+  iniciais, que por sua vez é a própria definição de "descida lenta" que torna
+  um número outlier. Controle condicionando em run-length fixo confirmou que a
+  tautologia persiste além do óbvio (mod 16/32/64 continuam significativos mesmo
+  após remover o confounder mais simples). **Resíduo mod potências de 3 não
+  mostrou nenhum sinal em nenhuma configuração** — resultado negativo genuíno:
+  outliers não têm assinatura 3-ádica distinguível da população típica.
+  Hipótese considerada parcialmente refutada: não há estrutura "nova" além do
+  que a definição de stopping time via valuações já implica.
