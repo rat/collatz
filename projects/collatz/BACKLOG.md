@@ -16,6 +16,14 @@ comprimento). Testada em H-009/E-009: busca própria por força bruta (a até
 14) não encontrou nada além do trivial, consistente com a literatura. Ver
 `hypotheses/H-009-nontrivial-cycles.md`.
 
+**Retomada em H-034** (motivada por vídeo informal que redescobriu a mesma
+técnica): achado específico do vídeo refutado tecnicamente; H-009
+estendido de a=14 para a=16 (janela mais estreita); parede combinatória
+das composições quantificada com precisão (bilhões a partir de a≈20),
+explicando por que força bruta pura não alcança o a=68 profissional sem
+as técnicas de fração contínua deles. Ver
+`hypotheses/H-034-video-cycle-equation-followup.md`.
+
 ## 2. Distribuição de stopping times — CONCLUÍDA
 
 Já exaustivamente estudada na literatura clássica (heurística de passeio

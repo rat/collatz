@@ -5,7 +5,7 @@
 ## Onde estamos
 
 Levantamento inicial da literatura concluído (ver `literature/00-index.md`).
-**Trinta e três hipóteses testadas (H-001 a H-033)**, mais um PDF externo e
+**Trinta e quatro hipóteses testadas (H-001 a H-034)**, mais um PDF externo e
 quatro listas de ideias de outras IAs revisadas criticamente (a maioria dos
 itens especulativos — sem ponte concreta — descartada conscientemente; ver
 `literature/external-ideas-review.md`). **H-024**: prova computacional de
@@ -72,6 +72,15 @@ verificação empírica do problema aberto de Chang (H-030) usando os 8
 maiores recordistas reais (3× mais observações por órbita que o testado
 no paper original) — desvio persiste (~0,55-0,64), consistente com
 H-021/H-030, sem resolver nem contradizer o problema aberto original.
+**H-034**: diretor científico trouxe transcrição de vídeo informal que
+redescobriu a técnica clássica de equação de ciclo (Steiner/Simons/de
+Weger). Achado específico do vídeo (n=13 quase fecha ciclo com 3 mult+5
+div) **refutado tecnicamente** com a fórmula correta (nenhum candidato
+inteiro existe para essa configuração). H-009 **estendido de a=14 para
+a=16** (janela mais estreita, S=S_min). Parede combinatória quantificada
+com precisão (bilhões de composições por par a partir de a≈20) — explica
+por que Simons & de Weger precisaram de frações contínuas de log₂(3),
+não só mais poder computacional, para chegar a a=68.
 ## Avaliação estratégica (2026-07-13, importante)
 
 Depois de consolidar a família de exclusão (H-028) e investigar sua

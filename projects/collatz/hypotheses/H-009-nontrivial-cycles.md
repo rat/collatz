@@ -46,3 +46,9 @@ trivial. Nenhum outro deveria aparecer.
   a=68 — resultado muito mais forte que o nosso, usando frações contínuas em
   vez de força bruta). Não é uma descoberta nova, é uma verificação própria
   e independente de um resultado já estabelecido.
+- 2026-07-13: **estendida em H-034/E-034** (motivada por um vídeo que
+  redescobriu esta mesma técnica informalmente). Com janela de S mais
+  estreita (S=S_min exatamente), verificação limpa até a=16. Além disso,
+  a combinatória de composições explode (bilhões por par a=20+),
+  quantificando precisamente por que força bruta pura não alcança o a=68
+  de Simons & de Weger sem as técnicas de fração contínua deles.
