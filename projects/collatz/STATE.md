@@ -47,6 +47,14 @@ e H-002 testadas — ver resultados abaixo.
   em nenhum lag (500k amostras cada, todos p > 0.2). Reforça a suposição i.i.d.
   padrão para além do lag 1. Hipótese refutada. Ver
   `hypotheses/H-003-long-range-dependency.md`.
+- `H-004` — recordistas reais de stopping time (não outliers locais). Testada em
+  `experiments/E-004-true-record-holders/` (recordistas reais até 20-50M,
+  validados contra a literatura). Autocorrelação interna: sinal inicial não
+  sobreviveu ao controle de confounder de comprimento de órbita — não suportada.
+  **Achado promissor** (não tautológico, diferente de H-002): recordistas mostram
+  forte sub-representação da classe residual 2 mod 3 (2 de 57, esperado ~19),
+  robusto a duas seeds (p~10^-6 a 10^-8) — amostra ainda pequena, candidato para
+  investigação futura. Ver `hypotheses/H-004-true-record-holders.md`.
 
 ## Descobertas recentes
 
@@ -68,14 +76,14 @@ e H-002 testadas — ver resultados abaixo.
 
 ## Próximos passos
 
-Três hipóteses testadas (H-001, H-002, H-003), todas com resultado
-negativo/tautológico para a pergunta original — nenhuma estrutura genuinamente
-nova encontrada ainda. Diretor científico pediu para testar todas as candidatas
-restantes, ordem livre:
+Quatro hipóteses testadas (H-001 a H-004). Três com resultado
+negativo/tautológico. H-004 rendeu o primeiro achado genuinamente promissor do
+projeto: recordistas reais raramente são ≡2 mod 3 (ver acima). Diretor
+científico pediu para testar todas as candidatas, ordem livre:
 
-1. **Em andamento**: repetir E-002 usando recordistas reais catalogados na
-   literatura (Roosendaal) em vez de outliers definidos localmente na nossa
-   amostra, testando características que não sejam redutíveis a resíduo mod 2^k.
-2. **Pendente**: explorar a família 2-ádica/ergódica da literatura
+1. **Pendente**: explorar a família 2-ádica/ergódica da literatura
    (`literature/approaches-2adic-ergodic.md`) como ângulo diferente, já que os
    ataques via estatística simples (H-001/002/003) se esgotaram sem achado novo.
+2. Extensão possível (não iniciada): tentar confirmar o sinal mod-3 de H-004 com
+   mais recordistas — precisaria de fonte externa tipo tabela Roosendaal, já que
+   escanear muito além de 50M em Python puro fica caro computacionalmente.
