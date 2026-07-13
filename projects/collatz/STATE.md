@@ -4,8 +4,10 @@
 
 ## Onde estamos
 
-Levantamento inicial da literatura concluído (ver `literature/00-index.md`). H-001
-e H-002 testadas — ver resultados abaixo.
+Levantamento inicial da literatura concluído (ver `literature/00-index.md`).
+Cinco hipóteses testadas (H-001 a H-005) — ver resultados abaixo. As três
+candidatas de próximo passo pedidas pelo diretor científico foram todas
+executadas nesta rodada.
 
 ## O que o levantamento estabeleceu
 
@@ -26,6 +28,19 @@ e H-002 testadas — ver resultados abaixo.
 ## Hipóteses abertas
 
 (nenhuma no momento — ver "Próximos passos" para candidatas)
+
+## Hipóteses confirmadas
+
+- `H-005` — lema: T(n) mod 3 é determinado inteiramente pela paridade de a(n)
+  (a valuação 2-ádica do passo), nunca pelo resíduo de n mod 3. Prova algébrica
+  curta + verificação computacional sem exceção em 777.748 passos (ver
+  `experiments/E-005-mod3-valuation-parity/`). Consequência derivada e também
+  confirmada: entre termos subsequentes de qualquer órbita, resíduo mod 3 nunca
+  é 0, e a proporção 1 vs 2 é 1:2 (não 1:1) — confirmado com 33.47% vs 33.33%
+  previsto. Primeira peça de estrutura **exata** (não estatística) do projeto.
+  Não explica o achado de H-004 (esse é sobre o número inicial da órbita, não
+  sobre termos subsequentes) — continua em aberto. Ver
+  `hypotheses/H-005-mod3-valuation-parity-lemma.md`.
 
 ## Hipóteses refutadas / parcialmente refutadas
 
@@ -76,14 +91,19 @@ e H-002 testadas — ver resultados abaixo.
 
 ## Próximos passos
 
-Quatro hipóteses testadas (H-001 a H-004). Três com resultado
-negativo/tautológico. H-004 rendeu o primeiro achado genuinamente promissor do
-projeto: recordistas reais raramente são ≡2 mod 3 (ver acima). Diretor
-científico pediu para testar todas as candidatas, ordem livre:
+Cinco hipóteses testadas (H-001 a H-005). As três candidatas pedidas pelo
+diretor científico foram todas executadas: extensão de H-001 (H-003, refutada),
+recordistas reais (H-004, achado promissor + autocorrelação descartada), e
+ângulo 2-ádico/ergódico (H-005, lema confirmado). Nenhuma pendência aberta no
+momento — candidatas para a próxima sessão (escolher com o diretor científico):
 
-1. **Pendente**: explorar a família 2-ádica/ergódica da literatura
-   (`literature/approaches-2adic-ergodic.md`) como ângulo diferente, já que os
-   ataques via estatística simples (H-001/002/003) se esgotaram sem achado novo.
-2. Extensão possível (não iniciada): tentar confirmar o sinal mod-3 de H-004 com
-   mais recordistas — precisaria de fonte externa tipo tabela Roosendaal, já que
-   escanear muito além de 50M em Python puro fica caro computacionalmente.
+1. Investigar por que os números **iniciais** de recordistas evitam resíduo 2
+   mod 3 (achado de H-004) — H-005 explica termos subsequentes de uma órbita,
+   mas não o número inicial. Precisaria de mais recordistas reais (fonte
+   externa tipo Roosendaal, já que escanear além de 50M em Python puro é caro)
+   ou uma ideia teórica diferente.
+2. Generalizar o lema de H-005 para outros módulos além de 3 (ex: mod 9, mod
+   27) — pode revelar mais estrutura exata reutilizável.
+3. Considerar formalizar alguma dessas descobertas em Lean/SageMath se o
+   projeto crescer nessa direção (fora de escopo por enquanto, ver
+   `ROADMAP.md`).
