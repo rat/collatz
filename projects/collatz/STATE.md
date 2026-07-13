@@ -42,6 +42,11 @@ e H-002 testadas — ver resultados abaixo.
   estrutura nova). Resíduo mod 3^k **não mostrou nenhum sinal** — resultado
   negativo genuíno. Hipótese parcialmente refutada: nenhuma estrutura "nova"
   encontrada. Ver `hypotheses/H-002-stopping-time-outliers.md`.
+- `H-003` — dependência de longo alcance entre valuações (lags 1-6). Testada em
+  `experiments/E-003-long-range-dependency/`: nenhuma dependência significativa
+  em nenhum lag (500k amostras cada, todos p > 0.2). Reforça a suposição i.i.d.
+  padrão para além do lag 1. Hipótese refutada. Ver
+  `hypotheses/H-003-long-range-dependency.md`.
 
 ## Descobertas recentes
 
@@ -63,17 +68,14 @@ e H-002 testadas — ver resultados abaixo.
 
 ## Próximos passos
 
-Duas hipóteses testadas, ambas com resultado negativo/tautológico para a pergunta
-original. Ainda não encontramos estrutura genuinamente nova. Candidatas para a
-próxima hipótese (nenhuma aberta ainda — escolher com o diretor científico):
+Três hipóteses testadas (H-001, H-002, H-003), todas com resultado
+negativo/tautológico para a pergunta original — nenhuma estrutura genuinamente
+nova encontrada ainda. Diretor científico pediu para testar todas as candidatas
+restantes, ordem livre:
 
-1. Estender H-001 para dependência de longo alcance (a_i vs a_{i+k}, k>2) ou
-   dependência condicionada a alguma variável estrutural — já com o cuidado de
-   amostragem independente validado.
-2. Repetir E-002 usando recordistas reais catalogados na literatura (Roosendaal)
-   em vez de outliers definidos localmente na nossa amostra, e testar
-   características que não sejam redutíveis a resíduo mod 2^k (ex: comparar com a
-   distribuição completa normalizada da sequência de valuações).
-3. Considerar sair do par estocástico/residual e explorar a família 2-ádica/
-   ergódica da literatura (`literature/approaches-2adic-ergodic.md`) como próximo
-   ângulo, já que os dois primeiros ataques via estatística simples se esgotaram.
+1. **Em andamento**: repetir E-002 usando recordistas reais catalogados na
+   literatura (Roosendaal) em vez de outliers definidos localmente na nossa
+   amostra, testando características que não sejam redutíveis a resíduo mod 2^k.
+2. **Pendente**: explorar a família 2-ádica/ergódica da literatura
+   (`literature/approaches-2adic-ergodic.md`) como ângulo diferente, já que os
+   ataques via estatística simples (H-001/002/003) se esgotaram sem achado novo.
