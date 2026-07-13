@@ -25,6 +25,24 @@ estrutural" (ver `overview-and-known-results.md`) apareceria.
   periódico de escopo genérico (não especializado em matemática pura), 2025.
 - Site pessoal "Phil Seawolf — Unified Fields Theory 1" alegando solução — sinal
   claro de trabalho fora do padrão acadêmico, sem revisão alguma.
+- **"Proving the Collatz Conjecture with Binaries Numbers"** — Olinto de Oliveira
+  Santos, *Pure and Applied Mathematics Journal* 7(5), 2018 (Science Publishing
+  Group — editora de baixíssimo rigor de revisão, sem reputação em matemática
+  pura). Recebida do usuário em 2026-07-13 (arquivo local
+  `/home/rat/Downloads/pamj.20180705.12.pdf`), lida e analisada integralmente.
+  **Falha identificada com precisão**: o artigo introduz uma notação binária
+  ("movimentos", "reduções fortes") equivalente à nossa própria noção de
+  sequência de valuações 2-ádicas (H-001/H-003), sem nada estruturalmente novo.
+  O núcleo da "prova" (Seção 2.6) pega um K>30 hipotético, **assume uma
+  sequência fixa e específica de passos** (2 movimentos crescentes + 3
+  decrescentes com divisores escolhidos à mão) e mostra algebricamente que,
+  *para essa sequência particular*, K diminui — depois generaliza
+  ilegitimamente essa conclusão para todo K>30. Nunca prova que sequências
+  "adversárias" de passos crescentes não podem ser arbitrariamente longas —
+  exatamente o obstáculo estrutural que nenhum método conhecido resolve (ver
+  acima). Na Seção 2.9 o próprio autor mostra a órbita "fantástica" de n=129
+  sem provar rigorosamente que termina, apenas afirma isso por gesto na
+  Conclusão. **Veredito: não é uma prova válida.**
 
 ## Como usar isso no laboratório
 

@@ -5,12 +5,13 @@
 ## Onde estamos
 
 Levantamento inicial da literatura concluído (ver `literature/00-index.md`).
-Sete hipóteses testadas (H-001 a H-007). **Resultado central do projeto**:
-recordistas reais de stopping time nunca são ≡2 mod 3 (exceto o caso trivial
-n=2) — confirmado empiricamente com dados oficiais (H-004, n=148,
-p<10^-13) e depois **provado algebricamente** (H-007): existe sempre um número
-menor que domina qualquer candidato ≡2 mod 3, exceto quando esse número menor
-colapsaria em 1.
+Nove hipóteses testadas (H-001 a H-009), mais um PDF externo revisado e
+catalogado. **Resultado central do projeto**: recordistas reais de stopping
+time nunca são ≡2 mod 3 (exceto o caso trivial n=2) — confirmado
+empiricamente (H-004, n=148, p<10^-13) e **provado algebricamente** (H-007).
+Backlog de linhas de investigação em `BACKLOG.md` (ciclos não-triviais,
+distribuição, padrões binários) — mantido conforme pedido do diretor
+científico de atacar o problema por vários ângulos.
 
 ## O que o levantamento estabeleceu
 
@@ -97,6 +98,20 @@ colapsaria em 1.
   bruto), mas o diagnóstico foi valioso: top-K bruto e recordista estrito são
   populações diferentes, e isso ajudou a descobrir o erro de transcrição
   corrigido em H-004. Ver `hypotheses/H-006-top-k-stopping-time-mod3.md`.
+- `H-009` — busca por ciclo não-trivial em inteiros positivos (pergunta do
+  diretor científico, por analogia aos 3 ciclos conhecidos em negativos).
+  Busca própria por força bruta (a=1 até 14) não encontrou nada além do ciclo
+  trivial — consistente com Steiner (1977), Simons (2005) e Simons & de Weger
+  (2005, que já provaram rigorosamente até a=68, muito além do nosso
+  alcance). Não é descoberta nova, é verificação própria de resultado já
+  estabelecido. Ver `hypotheses/H-009-nontrivial-cycles.md`.
+
+## Questões em aberto (sem prova nem refutação)
+
+- `H-008` — por que a classe 4 mod 9 nunca aparece em recordistas (mesmo não
+  sendo excluída pela prova de H-007). Tentei generalizar a técnica de H-007
+  e não encontrei uma relação algébrica curta. Ver
+  `hypotheses/H-008-mod9-class4-open-question.md`.
 
 ## Descobertas recentes
 
@@ -136,28 +151,38 @@ colapsaria em 1.
   scans principais (sempre iteravam só sobre ímpares), mas pegou uma
   verificação ad-hoc de surpresa. Lição documentada em
   `protocols/new-experiment.md`.
+- 2026-07-13: diretor científico pediu para atacar o problema por múltiplos
+  ângulos simultaneamente (não só provar, também tentar desprovar/refutar).
+  Registrado backlog em `BACKLOG.md`: ciclos não-triviais em positivos,
+  distribuição de stopping times, análise de padrões binários. Escolhi
+  ciclos não-triviais como próximo passo (H-009) — mais tratável e com
+  literatura séria para comparar.
+- 2026-07-13: revisado e catalogado um PDF externo enviado pelo usuário
+  ("Proving the Collatz Conjecture with Binaries Numbers", Santos 2018,
+  periódico de baixo rigor) — não é uma prova válida; falha identificada com
+  precisão (Seção 2.6 assume uma sequência fixa de passos e generaliza
+  ilegitimamente). Catalogado em `literature/unverified-proof-claims.md`.
+- 2026-07-13: H-009 testada — busca própria por ciclo não-trivial (a até 14)
+  não encontrou nada além do trivial, consistente com Steiner/Simons/de
+  Weger.
 
 ## Próximos passos
 
-Oito hipóteses testadas (H-001 a H-008). O achado central do projeto — por que
-recordistas evitam resíduo 2 mod 3 — está **completamente resolvido** (H-007:
-prova + verificação). Tentei generalizar a técnica para explicar a ausência da
-classe 4 mod 9 (H-008) e **não consegui** — busquei o menor M dominante para
-vários N≡4 mod9 e não há relação algébrica curta e fixa (M varia sem padrão,
-frequentemente é só um recordista genérico como 27). Deixado como questão
-aberta, não forcei uma explicação sem sustentação. Candidatas para a próxima
-sessão (escolher com o diretor científico):
+Nove hipóteses testadas (H-001 a H-009). O achado central do projeto — por
+que recordistas evitam resíduo 2 mod 3 — está **completamente resolvido**
+(H-007). H-008 (classe 4 mod 9) e as demais linhas do `BACKLOG.md` seguem
+abertas. Candidatas para a próxima sessão (escolher com o diretor
+científico):
 
-1. Tentar uma técnica diferente (cadeia de mais de 2 passos, ou argumento
-   não-construtivo) para a classe 4 mod 9 — ou aceitar que pode não ser um
-   fato permanente, só válido no intervalo já calculado (~1.47×10^19).
-2. Considerar formalizar H-005 e H-007 (teoremas curtos, já provados e
-   verificados) em Lean/SageMath se o projeto crescer nessa direção (fora de
+1. Continuar o backlog: distribuição de stopping times comparada
+   quantitativamente com a heurística teórica, ou uma versão mais rigorosa
+   da análise de padrões binários (ver `BACKLOG.md`).
+2. Tentar uma técnica diferente (cadeia de mais de 2 passos, ou argumento
+   não-construtivo) para a classe 4 mod 9 (H-008) — ou aceitar que pode não
+   ser um fato permanente, só válido no intervalo já calculado.
+3. Considerar formalizar H-005, H-007 e H-009 (teoremas/verificações já
+   feitos) em Lean/SageMath se o projeto crescer nessa direção (fora de
    escopo por enquanto, ver `ROADMAP.md`).
-3. Voltar à literatura mais ampla (`literature/approaches-2adic-ergodic.md`)
-   com a técnica de H-007 em mãos — pode haver outras "exclusões fáceis"
-   similares ainda não catalogadas, sem precisar generalizar especificamente
-   para mod 9.
-4. Deixar a linha mod-3/9 descansar e escolher um ângulo totalmente diferente
-   da literatura (ex: verificar a aditividade de ciclos, ou revisitar as
-   abordagens 2-ádicas de forma mais profunda).
+4. Continuar revisando qualquer nova alegação de prova externa que o diretor
+   científico receber, seguindo o padrão já estabelecido em
+   `literature/unverified-proof-claims.md`.
