@@ -48,14 +48,16 @@ e confirmadas:
 
 Ideias do Fable ainda não testadas, candidatas para sessões futuras:
 
-- **Busca sistemática de coalescências** (a ideia mais ambiciosa): H-007 e
-  H-014 são os dois casos mais simples de uma família enumerável de pares de
-  progressões aritméticas cujas órbitas colidem em poucos passos. Busca
-  sistemática (BFS sobre sequências de valuação simbólicas até profundidade
-  ~8-10) poderia enumerar TODAS as classes residuais mod 2^α3^β excluídas de
-  recordes — e resolver H-008 (classe 4 mod 9) como corolário, ou provar que
-  nenhuma exclusão de profundidade limitada a explica. Maior potencial de
-  impacto, mas mais trabalho de implementação.
+- **Busca sistemática de coalescências — CONCLUÍDA (escopo mod 2^d)**: testada
+  em H-015/E-015. Generalizei H-014 (mod 2^d, N vs. N−k) e encontrei 2374
+  classes residuais novas, excluindo cumulativamente 69.3% dos resíduos mod
+  2^16. Confirmado válido (com ressalva de N grande o suficiente dentro de
+  cada classe). **Não resolve H-008**: por construção, mod 2^d e mod 9 são
+  coprimos, então essa técnica nunca poderia dizer nada sobre mod 9 — H-008
+  precisaria de uma técnica mod-3^b separada (ex: generalizar H-005 para mod
+  9), ainda não tentada com sucesso. A versão de profundidade 8-10 tratando
+  mod 2 e mod 3 conjuntamente (ideia original do Fable) segue como
+  possibilidade mais ambiciosa para o futuro, se alguém quiser retomar.
 - Investigar a anomalia p₅>p₄ de H-013 (talvez ligada ao resíduo mod 3 de
   cada J_t afetando a estrutura da árvore reversa).
 - Cauda geométrica do pico da órbita (martingale, E[3/2^a]=1 exatamente) —

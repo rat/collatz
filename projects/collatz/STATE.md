@@ -5,15 +5,16 @@
 ## Onde estamos
 
 Levantamento inicial da literatura concluído (ver `literature/00-index.md`).
-Catorze hipóteses testadas (H-001 a H-014), mais um PDF externo revisado e
+Quinze hipóteses testadas (H-001 a H-015), mais um PDF externo revisado e
 catalogado. **Resultado central do projeto**: recordistas reais de stopping
 time nunca são ≡2 mod 3 (exceto o caso trivial n=2) — confirmado
 empiricamente (H-004, n=148, p<10^-13) e **provado algebricamente** (H-007).
-Segunda técnica de exclusão de classe residual descoberta (H-014, via empate
-exato). Backlog de linhas de investigação em `BACKLOG.md`. **Tarefa
-pendente**: escrever um paper curto apontando os erros do PDF de Santos
-2018 — só fazer quando o diretor científico pedir explicitamente, por
-último.
+Generalizamos a técnica de exclusão por empate (H-014→H-015): 2374 classes
+residuais mod 2^d excluídas, 69.3% de mod 2^16 — mas **não resolve H-008**
+(limitação estrutural: mod 2^d e mod 9 são coprimos). Backlog de linhas de
+investigação em `BACKLOG.md`. **Tarefa pendente**: escrever um paper curto
+apontando os erros do PDF de Santos 2018 — só fazer quando o diretor
+científico pedir explicitamente, por último.
 
 ## O que o levantamento estabeleceu
 
@@ -97,6 +98,13 @@ pendente**: escrever um paper curto apontando os erros do PDF de Santos
   menor, ao de N−1, via coalescência de trajetórias — diferente do domínio
   estrito de H-007). Confirmado em 200k casos + nenhum dos 148 recordistas
   oficiais é ≡5 mod 8. Ver `hypotheses/H-014-tie-exclusion-mod8.md`.
+- `H-015` — busca sistemática de coalescências mod 2^d (generalização de
+  H-014). Encontrou 2374 classes residuais novas, excluindo cumulativamente
+  69.3% dos resíduos mod 2^16. Verificado válido para K grande o suficiente
+  (efeito de borda em K pequeno, análogo ao N=2 de H-007 — só 6 dos 148
+  recordistas, todos muito pequenos, "violam" alguma exclusão). **Não
+  resolve H-008** por limitação estrutural (mod 2^d e mod 9 são coprimos).
+  Ver `hypotheses/H-015-systematic-coalescence-search.md`.
 
 - `H-001` — independência entre valuações 2-ádicas consecutivas (a_1, a_2) na
   órbita acelerada. Testada em `experiments/E-001-parity-independence/`: com
@@ -230,28 +238,32 @@ pendente**: escrever um paper curto apontando os erros do PDF de Santos
   - Ideias mais ambiciosas do Fable (busca sistemática de coalescências que
     poderia resolver H-008; cauda do pico da órbita; mistura de densidade de
     bits) registradas em `BACKLOG.md` item 3 para sessões futuras.
+- 2026-07-13: H-015 testada (busca sistemática de coalescências mod 2^d,
+  generalizando H-014) — 2374 classes novas, 69.3% de mod 2^16 excluído.
+  Confirmado válido para N grande o suficiente. **Não resolve H-008** —
+  limitação estrutural clara (mod 2^d e mod 9 são coprimos), documentada
+  para não repetir a tentativa nessa forma no futuro.
 
 ## Próximos passos
 
-Catorze hipóteses testadas (H-001 a H-014). O achado central do projeto —
+Quinze hipóteses testadas (H-001 a H-015). O achado central do projeto —
 por que recordistas evitam resíduo 2 mod 3 — está **completamente resolvido**
-(H-007), e agora temos uma **segunda** técnica de exclusão de classe residual
-(H-014). A pergunta da variância de H-010 também está **resolvida** (H-011).
-H-008 (classe 4 mod 9) segue em aberto. Tarefa pendente (**só fazer quando o
-diretor científico pedir explicitamente**, por último): paper sobre os erros
-do PDF de Santos (`BACKLOG.md` item 5). Candidatas para a próxima sessão:
+(H-007), com uma técnica irmã generalizada em larga escala (H-014→H-015). A
+pergunta da variância de H-010 também está **resolvida** (H-011). H-008
+(classe 4 mod 9) segue em aberto — agora sabemos que a técnica de
+coalescência mod-2^d não pode resolvê-la, precisaria de algo mod-3^b. Tarefa
+pendente (**só fazer quando o diretor científico pedir explicitamente**, por
+último): paper sobre os erros do PDF de Santos (`BACKLOG.md` item 5).
+Candidatas para a próxima sessão:
 
-1. **Busca sistemática de coalescências** (ideia do Fable, `BACKLOG.md` item
-   3) — generalizar H-007/H-014 via busca em árvore de sequências de
-   valuação simbólicas; maior potencial de resolver H-008.
+1. Tentar uma técnica de coalescência mod-3^b (análoga a H-015 mas usando a
+   estrutura de H-005 em vez de bits) para atacar H-008 diretamente.
 2. Investigar a anomalia p₅>p₄ de H-013.
-3. Tentar uma técnica diferente para a classe 4 mod 9 (H-008) — ou aceitar
-   que pode não ser um fato permanente, só válido no intervalo já calculado.
-4. Considerar formalizar H-005, H-007, H-009 a H-014 (teoremas/verificações
+3. Considerar formalizar H-005, H-007, H-009 a H-015 (teoremas/verificações
    já feitos) em Lean/SageMath se o projeto crescer nessa direção (fora de
    escopo por enquanto, ver `ROADMAP.md`).
-5. Continuar revisando qualquer nova alegação de prova externa que o diretor
+4. Continuar revisando qualquer nova alegação de prova externa que o diretor
    científico receber, seguindo o padrão já estabelecido em
    `literature/unverified-proof-claims.md`.
-6. **Só quando pedido explicitamente**: escrever o paper curto sobre os
+5. **Só quando pedido explicitamente**: escrever o paper curto sobre os
    erros do PDF de Santos (`BACKLOG.md` item 5).
