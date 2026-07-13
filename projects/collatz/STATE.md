@@ -5,7 +5,7 @@
 ## Onde estamos
 
 Levantamento inicial da literatura concluído (ver `literature/00-index.md`).
-**Vinte e sete hipóteses testadas (H-001 a H-027)**, mais um PDF externo e
+**Vinte e oito hipóteses testadas (H-001 a H-028)**, mais um PDF externo e
 quatro listas de ideias de outras IAs revisadas criticamente (a maioria dos
 itens especulativos — sem ponte concreta — descartada conscientemente; ver
 `literature/external-ideas-review.md`). **H-024**: prova computacional de
@@ -19,7 +19,12 @@ K (sinal real mas não estatisticamente robusto). **H-008 agora RESOLVIDA
 POR COMPLETO** (H-022 + H-027 novo): a classe 4 mod9 está totalmente
 excluída de recordistas, com prova — H-027 fechou a metade par como
 corolário direto de H-007 (na verdade válido para toda a classe mais
-ampla N≡4 mod6), verificado sem exceção em 500.000 casos. **Resultado
+ampla N≡4 mod6), verificado sem exceção em 500.000 casos. **H-028**:
+consolidação via CRT de H-007+H-014+H-022+H-027 mod 72 — **45 de 72
+resíduos (62,5%) provavelmente excluídos**, zero violações contra os 148
+recordistas reais. Candidato mais forte do projeto a nota/paper curto se
+o diretor científico decidir formalizar (distinto do paper sobre o PDF do
+Santos, que continua pendente até pedido explícito). **Resultado
 central do projeto**: recordistas reais
 de stopping time nunca são ≡2 mod 3 (exceto o caso trivial n=2) — confirmado
 empiricamente (H-004, n=148, p<10^-13) e **provado algebricamente** (H-007).

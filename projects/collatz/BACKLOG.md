@@ -147,11 +147,20 @@ e ao bias clássico de carry em adição binária). Ver
   próximo passo se retomado. Ver
   `hypotheses/H-026-divergence-rate-independent-of-K.md`.
 
+- **Consolidação via CRT da família de exclusão — CONCLUÍDA (H-028)**:
+  combinei H-007+H-014+H-022+H-027 mod 72 (=lcm(8,9)). Resultado: 45 de 72
+  resíduos (62,5%) provavelmente excluídos de conter recordistas, zero
+  violações contra os 148 recordistas reais conhecidos. Candidato mais
+  forte do projeto a nota/paper curto, se decidido formalizar. Ver
+  `hypotheses/H-028-crt-exclusion-family-consolidated.md`.
+
 Candidatos ainda não implementados, por ordem de prioridade sugerida:
 1. Ângulo de estratégia adversarial de máxima subida, conectando com a
    literatura de limites inferiores em ciclos (Simons & de Weger, Eliahou)
    — potencial nova via para H-009 (ciclos não-triviais).
-2. Koopman operator/DMD vetorial (extensão de H-017) — mantido em espera
+2. Incorporar H-015 (mod 2^d sistemático, 2374 classes) à consolidação de
+   H-028 — deixado de fora por ser lista grande, não fórmula fechada.
+3. Koopman operator/DMD vetorial (extensão de H-017) — mantido em espera
    até formular a afirmação falsificável específica que o resultado
    confirmaria ou refutaria, para não repetir o risco de "matemática de
    aparência" já identificado na terceira lista.
