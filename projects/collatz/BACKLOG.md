@@ -68,9 +68,11 @@ Ideias do Fable ainda não testadas, candidatas para sessões futuras:
   pena, mas exige uma técnica nova, não apenas estender o que já tentamos.
 - Investigar a anomalia p₅>p₄ de H-013 (talvez ligada ao resíduo mod 3 de
   cada J_t afetando a estrutura da árvore reversa).
-- Cauda geométrica do pico da órbita (martingale, E[3/2^a]=1 exatamente) —
-  previsão sem parâmetro livre, no estilo H-010/H-011 mas para o máximo em
-  vez da média/variância do tempo.
+- **Cauda geométrica do pico da órbita — CONCLUÍDA**: testada em H-017/E-017.
+  Martingale exato (E[3/2^a]=1) implica expoente de Cramér θ*=1 sem
+  parâmetro livre. Confirmado empiricamente: inclinação da cauda distante
+  −1.0045 vs. teórico −1.0 (diferença 0.45%, 2M amostras). Terceira
+  confirmação teórica precisa do projeto no estilo H-010/H-011.
 - Tempo de mistura da densidade de bits (popcount) partindo de extremos —
   primeira estatística global de bits do projeto, não redutível a mod 2^k.
 - Controle metodológico: confirmar que bits ALTOS de n não carregam

@@ -5,7 +5,7 @@
 ## Onde estamos
 
 Levantamento inicial da literatura concluído (ver `literature/00-index.md`).
-Dezesseis hipóteses testadas (H-001 a H-016), mais um PDF externo revisado e
+Dezessete hipóteses testadas (H-001 a H-017), mais um PDF externo revisado e
 catalogado. **Resultado central do projeto**: recordistas reais de stopping
 time nunca são ≡2 mod 3 (exceto o caso trivial n=2) — confirmado
 empiricamente (H-004, n=148, p<10^-13) e **provado algebricamente** (H-007).
@@ -13,10 +13,11 @@ Generalizamos a técnica de exclusão por empate (H-014→H-015): 2374 classes
 residuais mod 2^d excluídas, 69.3% de mod 2^16 — mas **não resolve H-008**
 (limitação estrutural: mod 2^d e mod 9 são coprimos). Tentativa mod-9
 conjunta (H-016) também não resolveu — resultado negativo instrutivo, com
-explicação teórica clara do porquê. Backlog de linhas de investigação em
-`BACKLOG.md`. **Tarefa pendente**: escrever um paper curto apontando os
-erros do PDF de Santos 2018 — só fazer quando o diretor
-científico pedir explicitamente, por último.
+explicação teórica clara do porquê. Terceira confirmação teórica precisa no
+estilo H-010/H-011 (H-017: cauda do pico da órbita, expoente exato θ*=1).
+Backlog de linhas de investigação em `BACKLOG.md`. **Tarefa pendente**:
+escrever um paper curto apontando os erros do PDF de Santos 2018 — só fazer
+quando o diretor científico pedir explicitamente, por último.
 
 ## O que o levantamento estabeleceu
 
@@ -84,6 +85,13 @@ científico pedir explicitamente, por último.
   passagem). Confirmado empiricamente em 8 ordens de magnitude (log₂n de 10.5
   a 45.5): coeficiente empírico 181.53, diferença de 2.9%. Resolve a pergunta
   em aberto de H-010. Ver `hypotheses/H-011-variance-scaling.md`.
+- `H-017` — cauda do pico da órbita. A sequência de valores ímpares é um
+  martingale multiplicativo exato (E[3/2^a]=1, verificado analiticamente),
+  o que implica via equação de Cramér um expoente de decaimento exato
+  θ*=1 (sem parâmetro livre) para a cauda do pico: P(pico≥n·2^Δ)~C·2^(−Δ).
+  Confirmado empiricamente: inclinação da cauda distante −1.0045 vs. teórico
+  −1.0 (diferença 0.45%, 2M amostras, duas seeds). Ver
+  `hypotheses/H-017-peak-excursion-tail.md`.
 - `H-012` — estrutura de predecessores de potências de 2 (a partir de
   observação do diretor científico sobre 32/64 na árvore reversa). Provado:
   2^k tem predecessor ímpar genuíno sse k é par, e nesse caso o predecessor é
@@ -264,28 +272,37 @@ científico pedir explicitamente, por último.
   explicitamente a exclusividade — resultado negativo, mas com explicação
   teórica clara (T(n) mod 9 depende só de n mod 3, não do valor completo mod
   9). H-008 continua sem solução.
+- 2026-07-13: escolhi H-017 (cauda do pico da órbita) como próximo passo —
+  ideia do Fable com previsão sem parâmetro livre. Verifiquei a equação de
+  Cramér antes de implementar (θ*=1 exato). Confirmado empiricamente com
+  grande precisão (0.45% de diferença na cauda distante). Terceira vitória
+  no estilo "derivar teoria → confirmar nos dados" (depois de H-010/H-011).
 
 ## Próximos passos
 
-Dezesseis hipóteses testadas (H-001 a H-016). O achado central do projeto —
+Dezessete hipóteses testadas (H-001 a H-017). O achado central do projeto —
 por que recordistas evitam resíduo 2 mod 3 — está **completamente resolvido**
 (H-007), com uma técnica irmã generalizada em larga escala (H-014→H-015). A
-pergunta da variância de H-010 também está **resolvida** (H-011). H-008
-(classe 4 mod 9) segue em aberto — duas tentativas de coalescência (H-015
-mod-2^d, H-016 mod-9 conjunto) não resolveram; precisaria de uma ideia
-estruturalmente diferente (ex: relação multiplicativa em vez de aditiva).
-Tarefa pendente (**só fazer quando o diretor científico pedir
-explicitamente**, por último): paper sobre os erros do PDF de Santos
-(`BACKLOG.md` item 5). Candidatas para a próxima sessão:
+pergunta da variância de H-010 também está **resolvida** (H-011), assim como
+a cauda do pico da órbita (H-017). H-008 (classe 4 mod 9) segue em aberto —
+duas tentativas de coalescência (H-015 mod-2^d, H-016 mod-9 conjunto) não
+resolveram; precisaria de uma ideia estruturalmente diferente (ex: relação
+multiplicativa em vez de aditiva). Tarefa pendente (**só fazer quando o
+diretor científico pedir explicitamente**, por último): paper sobre os
+erros do PDF de Santos (`BACKLOG.md` item 5). Candidatas para a próxima
+sessão:
 
 1. Repensar H-008 com uma abordagem genuinamente diferente (não coalescência
    por deslocamento pequeno) — ou aceitar como questão em aberto por ora.
 2. Investigar a anomalia p₅>p₄ de H-013.
-3. Considerar formalizar H-005, H-007, H-009 a H-015 (teoremas/verificações
-   já feitos) em Lean/SageMath se o projeto crescer nessa direção (fora de
-   escopo por enquanto, ver `ROADMAP.md`).
-4. Continuar revisando qualquer nova alegação de prova externa que o diretor
+3. Restantes ideias do Fable ainda não testadas: tempo de mistura da
+   densidade de bits (popcount); controle de bits altos vs. baixos; runs de
+   1s terminais (ver `BACKLOG.md` item 3).
+4. Considerar formalizar H-005, H-007, H-009 a H-015, H-017 (teoremas/
+   verificações já feitos) em Lean/SageMath se o projeto crescer nessa
+   direção (fora de escopo por enquanto, ver `ROADMAP.md`).
+5. Continuar revisando qualquer nova alegação de prova externa que o diretor
    científico receber, seguindo o padrão já estabelecido em
    `literature/unverified-proof-claims.md`.
-5. **Só quando pedido explicitamente**: escrever o paper curto sobre os
+6. **Só quando pedido explicitamente**: escrever o paper curto sobre os
    erros do PDF de Santos (`BACKLOG.md` item 5).
