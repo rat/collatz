@@ -16,14 +16,17 @@ comprimento). Testada em H-009/E-009: busca própria por força bruta (a até
 14) não encontrou nada além do trivial, consistente com a literatura. Ver
 `hypotheses/H-009-nontrivial-cycles.md`.
 
-## 2. Distribuição de stopping times
+## 2. Distribuição de stopping times — CONCLUÍDA (primeira parte)
 
 Já exaustivamente estudada na literatura clássica (heurística de passeio
 aleatório, Kontorovich-Lagarias — ver `literature/approaches-stochastic-heuristic.md`),
-mas o diretor científico ainda considera um ponto de interesse. Candidato
-para uma sessão futura: comparar nossa própria distribuição empírica de
-stopping times (já temos o código de E-002/E-004) contra a previsão teórica
-precisa da heurística, não só qualitativamente.
+mas o diretor científico ainda considera um ponto de interesse. Testada em
+H-010/E-010: derivamos K≈7.2283 (constante que multiplica log₂(n) no
+stopping time médio) a partir de fatos já estabelecidos por nós (H-001,
+E[a]=2), e confirmamos empiricamente (K empírico=7.1833, diferença 0.62%).
+R² baixo (0.03) mostra que a maior parte da variância individual não vem do
+tamanho de n — ponto interessante para investigação futura (o que explica
+essa variância residual, além da estrutura já achada em H-004/H-007?).
 
 ## 3. Análise de padrões em representação binária
 
@@ -39,3 +42,20 @@ uma ideia específica antes de virar hipótese formal.
 Processo contínuo — toda alegação de prova recebida (ex: PDFs, links) deve
 ser lida e catalogada em `literature/unverified-proof-claims.md`, seguindo o
 padrão já estabelecido.
+
+## 5. Escrever um paper curto apontando os erros do PDF de Santos (2018) — PENDENTE
+
+Pedido do diretor científico em 2026-07-13. Transformar a análise já feita em
+`literature/unverified-proof-claims.md` (o furo lógico na Seção 2.6: assume
+uma sequência fixa de passos para K>30 e generaliza ilegitimamente) num
+manuscrito curto e formal — algo publicável como nota/comentário crítico, não
+apenas uma entrada de catálogo interna. Estrutura sugerida:
+1. Resumo da alegação do artigo original.
+2. Reconstrução formal do argumento da Seção 2.6.
+3. Contra-exemplo ou demonstração explícita do gap lógico (por que a
+   generalização de "um K específico" para "todo K" não se sustenta — falta
+   de limite sobre sequências adversárias de movimentos crescentes).
+4. Conexão com o "obstáculo estrutural" que nenhuma tentativa de prova
+   conhecida resolve (`literature/overview-and-known-results.md`).
+Ainda não iniciado — próxima sessão pode começar por aqui se o diretor
+científico priorizar.

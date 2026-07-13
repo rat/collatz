@@ -5,13 +5,14 @@
 ## Onde estamos
 
 Levantamento inicial da literatura concluído (ver `literature/00-index.md`).
-Nove hipóteses testadas (H-001 a H-009), mais um PDF externo revisado e
+Dez hipóteses testadas (H-001 a H-010), mais um PDF externo revisado e
 catalogado. **Resultado central do projeto**: recordistas reais de stopping
 time nunca são ≡2 mod 3 (exceto o caso trivial n=2) — confirmado
 empiricamente (H-004, n=148, p<10^-13) e **provado algebricamente** (H-007).
-Backlog de linhas de investigação em `BACKLOG.md` (ciclos não-triviais,
-distribuição, padrões binários) — mantido conforme pedido do diretor
-científico de atacar o problema por vários ângulos.
+Backlog de linhas de investigação em `BACKLOG.md` (padrões binários, e uma
+tarefa pendente: escrever um paper curto apontando os erros do PDF de Santos
+2018) — mantido conforme pedido do diretor científico de atacar o problema
+por vários ângulos.
 
 ## O que o levantamento estabeleceu
 
@@ -68,6 +69,12 @@ científico de atacar o problema por vários ângulos.
   Não explica o achado de H-004 (esse é sobre o número inicial da órbita, não
   sobre termos subsequentes) — continua em aberto. Ver
   `hypotheses/H-005-mod3-valuation-parity-lemma.md`.
+- `H-010` — constante assintótica do stopping time. Derivamos K≈7.2283
+  (total_stopping_time(n) ≈ K·log₂n) a partir de fatos já estabelecidos por
+  nós (E[a]=2, H-001), e confirmamos empiricamente: K empírico=7.1833
+  (diferença 0.62%). R²=0.03 — log₂(n) sozinho explica pouco da variância
+  individual, a maior parte vem de estrutura fina. Ver
+  `hypotheses/H-010-stopping-time-asymptotic-constant.md`.
 
 ## Hipóteses refutadas / parcialmente refutadas
 
@@ -165,24 +172,34 @@ científico de atacar o problema por vários ângulos.
 - 2026-07-13: H-009 testada — busca própria por ciclo não-trivial (a até 14)
   não encontrou nada além do trivial, consistente com Steiner/Simons/de
   Weger.
+- 2026-07-13: diretor científico pediu para registrar uma tarefa pendente:
+  escrever um paper curto apontando os erros do PDF de Santos (2018) —
+  registrado em `BACKLOG.md`, ainda não iniciado.
+- 2026-07-13: H-010 testada — derivamos e confirmamos empiricamente a
+  constante assintótica do stopping time (K≈7.23·log₂n, diferença de 0.62%
+  entre teoria e dados). R²=0.03 é o achado lateral interessante: pouquíssimo
+  da variância individual vem do tamanho de n.
 
 ## Próximos passos
 
-Nove hipóteses testadas (H-001 a H-009). O achado central do projeto — por
+Dez hipóteses testadas (H-001 a H-010). O achado central do projeto — por
 que recordistas evitam resíduo 2 mod 3 — está **completamente resolvido**
-(H-007). H-008 (classe 4 mod 9) e as demais linhas do `BACKLOG.md` seguem
-abertas. Candidatas para a próxima sessão (escolher com o diretor
-científico):
+(H-007). H-008 (classe 4 mod 9) segue em aberto. Tarefa pendente: paper sobre
+os erros do PDF de Santos (`BACKLOG.md` item 5). Candidatas para a próxima
+sessão (escolher com o diretor científico):
 
-1. Continuar o backlog: distribuição de stopping times comparada
-   quantitativamente com a heurística teórica, ou uma versão mais rigorosa
-   da análise de padrões binários (ver `BACKLOG.md`).
-2. Tentar uma técnica diferente (cadeia de mais de 2 passos, ou argumento
-   não-construtivo) para a classe 4 mod 9 (H-008) — ou aceitar que pode não
-   ser um fato permanente, só válido no intervalo já calculado.
-3. Considerar formalizar H-005, H-007 e H-009 (teoremas/verificações já
-   feitos) em Lean/SageMath se o projeto crescer nessa direção (fora de
+1. Escrever o paper curto sobre os erros do PDF (tarefa registrada, ainda não
+   iniciada).
+2. Uma versão mais rigorosa da análise de padrões binários (ver `BACKLOG.md`
+   item 3) — ainda precisa de um ângulo concreto antes de virar hipótese.
+3. Investigar a variância residual encontrada em H-010 (R²=0.03) — o que
+   explica por que log₂(n) sozinho diz tão pouco sobre o stopping time
+   individual? Pode conectar com H-004/H-007.
+4. Tentar uma técnica diferente para a classe 4 mod 9 (H-008) — ou aceitar
+   que pode não ser um fato permanente, só válido no intervalo já calculado.
+5. Considerar formalizar H-005, H-007, H-009 e H-010 (teoremas/verificações
+   já feitos) em Lean/SageMath se o projeto crescer nessa direção (fora de
    escopo por enquanto, ver `ROADMAP.md`).
-4. Continuar revisando qualquer nova alegação de prova externa que o diretor
+6. Continuar revisando qualquer nova alegação de prova externa que o diretor
    científico receber, seguindo o padrão já estabelecido em
    `literature/unverified-proof-claims.md`.
