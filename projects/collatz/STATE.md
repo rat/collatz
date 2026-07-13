@@ -5,19 +5,22 @@
 ## Onde estamos
 
 Levantamento inicial da literatura concluído (ver `literature/00-index.md`).
-Dezessete hipóteses testadas (H-001 a H-017), mais um PDF externo revisado e
-catalogado. **Resultado central do projeto**: recordistas reais de stopping
-time nunca são ≡2 mod 3 (exceto o caso trivial n=2) — confirmado
+**Vinte e uma hipóteses testadas (H-001 a H-021)**, mais um PDF externo
+revisado e catalogado. **Resultado central do projeto**: recordistas reais
+de stopping time nunca são ≡2 mod 3 (exceto o caso trivial n=2) — confirmado
 empiricamente (H-004, n=148, p<10^-13) e **provado algebricamente** (H-007).
 Generalizamos a técnica de exclusão por empate (H-014→H-015): 2374 classes
 residuais mod 2^d excluídas, 69.3% de mod 2^16 — mas **não resolve H-008**
-(limitação estrutural: mod 2^d e mod 9 são coprimos). Tentativa mod-9
-conjunta (H-016) também não resolveu — resultado negativo instrutivo, com
-explicação teórica clara do porquê. Terceira confirmação teórica precisa no
-estilo H-010/H-011 (H-017: cauda do pico da órbita, expoente exato θ*=1).
-Backlog de linhas de investigação em `BACKLOG.md`. **Tarefa pendente**:
+(limitação estrutural: mod 2^d e mod 9 são coprimos; tentativa mod-9
+conjunta em H-016 também não resolveu). A lista completa de brainstorm do
+modelo Fable sobre padrões binários (H-012 a H-021) foi **totalmente
+testada** nesta sessão, incluindo um mecanismo qualitativo (Galton-Watson)
+para a anomalia de H-013 e três confirmações teóricas precisas no estilo
+"derivar → confirmar" (H-010, H-011, H-017). H-008 continua sendo a única
+questão central em aberto. Backlog em `BACKLOG.md`. **Tarefa pendente**:
 escrever um paper curto apontando os erros do PDF de Santos 2018 — só fazer
-quando o diretor científico pedir explicitamente, por último.
+quando o diretor científico pedir explicitamente, por último (o diretor
+pediu para lembrá-lo de avisar quando isso for feito).
 
 ## O que o levantamento estabeleceu
 
@@ -119,6 +122,31 @@ quando o diretor científico pedir explicitamente, por último.
   recordistas, todos muito pequenos, "violam" alguma exclusão). **Não
   resolve H-008** por limitação estrutural (mod 2^d e mod 9 são coprimos).
   Ver `hypotheses/H-015-systematic-coalescence-search.md`.
+- `H-018` — mecanismo qualitativo (Galton-Watson) por trás da anomalia de
+  H-013. Construção explícita da árvore reversa (após corrigir um bug de
+  poda por magnitude) revela: geração do primeiro checkpoint é constante
+  (1 para t≡2mod3, 2 para t≡1mod3, insuficiente sozinho); o "orçamento"
+  log₂(n_max/J_t) encolhe 2 bits por unidade de t — explica por que a
+  vantagem geracional domina para t pequeno mas é dominada por flutuações
+  de árvore finita para t grande. Sem fórmula fechada. Ver
+  `hypotheses/H-018-reverse-tree-branching.md`.
+- `H-019` — tempo de mistura da densidade de bits. Razão passos/k estabiliza
+  em ~1.3-1.5 (denso) e ~1.0-1.23 (esparso) de k=8 a 1024 — confirma
+  crescimento linear, consistente com 3n+1 ser operação local. Ver
+  `hypotheses/H-019-bit-density-mixing.md`.
+- `H-021` — erosão de runs de 1s terminais. Regra confirmada sem exceção
+  (50k testes). Recordistas têm runs de subida mais longos (2.512 vs 2.035
+  típico, que bate com previsão teórica de H-001) — registrado como
+  parcialmente tautológico. Ver `hypotheses/H-021-terminal-run-erosion.md`.
+
+## Hipóteses parcialmente confirmadas (com ressalva)
+
+- `H-020` — controle bits altos vs. baixos. F-estatística: baixos=50.7,
+  altos=1.80, controle aleatório=0.94. Assimetria forte confirmada, mas
+  "zero informação" nos bits altos não confirmada com exatidão — resíduo
+  provavelmente explicado por H-010/H-011 (média/variância dependem de
+  log₂n), não por informação nova. Ver
+  `hypotheses/H-020-high-bits-no-information.md`.
 
 ## Hipóteses refutadas relacionadas a H-008 (tentativas negativas registradas)
 
@@ -294,35 +322,51 @@ quando o diretor científico pedir explicitamente, por último.
   adjacentes cresce em (4,5) e (7,8) mas inverte em (10,11) e (13,14). A
   anomalia é real (confirmada em duas escalas) mas não segue um padrão
   simples de mod 3 — continua genuinamente em aberto.
+- 2026-07-13: diretor científico pediu para testar tudo em sequência,
+  começando pela análise de ramificação (Galton-Watson) da árvore reversa.
+  H-018: construí a árvore reversa explicitamente, corrigi um bug real de
+  poda por magnitude no caminho, e encontrei um mecanismo qualitativo
+  (competição entre vantagem geracional constante e orçamento de bits que
+  encolhe 2 bits por t) que explica coerentemente a não-monotonicidade,
+  sem fórmula fechada.
+- 2026-07-13: completei toda a lista restante do brainstorm Fable em
+  sequência: H-019 (mistura de densidade de bits, confirmada — crescimento
+  linear), H-020 (controle bits altos, parcialmente confirmada — assimetria
+  forte mas resíduo não-nulo explicado por H-010/H-011), H-021 (erosão de
+  runs terminais, confirmada + achado tautológico sobre recordistas). Lista
+  do Fable totalmente esgotada — 10 hipóteses (H-012 a H-021) a partir de
+  uma única consulta ao modelo.
 
 ## Próximos passos
 
-Dezessete hipóteses testadas (H-001 a H-017). O achado central do projeto —
-por que recordistas evitam resíduo 2 mod 3 — está **completamente resolvido**
-(H-007), com uma técnica irmã generalizada em larga escala (H-014→H-015). A
-pergunta da variância de H-010 também está **resolvida** (H-011), assim como
-a cauda do pico da órbita (H-017). H-008 (classe 4 mod 9) segue em aberto —
-duas tentativas de coalescência (H-015 mod-2^d, H-016 mod-9 conjunto) não
-resolveram; precisaria de uma ideia estruturalmente diferente (ex: relação
-multiplicativa em vez de aditiva). A anomalia de H-013 (razão não-monotônica
-entre classes J_t adjacentes) também segue sem explicação, mais complexa do
-que a hipótese mod-3 inicial (refutada). Tarefa pendente (**só fazer quando
-o diretor científico pedir explicitamente**, por último): paper sobre os
-erros do PDF de Santos (`BACKLOG.md` item 5). Candidatas para a próxima
-sessão:
+**Vinte e uma hipóteses testadas (H-001 a H-021)**. O achado central do
+projeto — por que recordistas evitam resíduo 2 mod 3 — está **completamente
+resolvido** (H-007), com uma técnica irmã generalizada em larga escala
+(H-014→H-015). A pergunta da variância de H-010 também está **resolvida**
+(H-011), assim como a cauda do pico da órbita (H-017). A lista de brainstorm
+do Fable está **totalmente esgotada**. Restam duas questões genuinamente
+em aberto:
 
-1. Repensar H-008 com uma abordagem genuinamente diferente (não coalescência
-   por deslocamento pequeno) — ou aceitar como questão em aberto por ora.
-2. Repensar a anomalia de H-013 — talvez precise de teoria de processos de
-   ramificação (Galton-Watson) para a árvore reversa, não só resíduos.
-3. Restantes ideias do Fable ainda não testadas: tempo de mistura da
-   densidade de bits (popcount); controle de bits altos vs. baixos; runs de
-   1s terminais (ver `BACKLOG.md` item 3).
-4. Considerar formalizar H-005, H-007, H-009 a H-015, H-017 (teoremas/
-   verificações já feitos) em Lean/SageMath se o projeto crescer nessa
-   direção (fora de escopo por enquanto, ver `ROADMAP.md`).
-5. Continuar revisando qualquer nova alegação de prova externa que o diretor
+1. **H-008** (classe 4 mod 9 nunca aparece em recordistas) — duas
+   tentativas de coalescência (H-015 mod-2^d, H-016 mod-9 conjunto) não
+   resolveram; precisaria de uma ideia estruturalmente diferente (ex:
+   relação multiplicativa em vez de aditiva).
+2. **Anomalia de H-013** (razão não-monotônica entre classes J_t adjacentes)
+   — H-018 deu um mecanismo qualitativo (competição orçamento vs. vantagem
+   geracional), mas não uma fórmula fechada.
+
+Tarefa pendente (**só fazer quando o diretor científico pedir
+explicitamente**, por último — lembrar de avisar quando for feito): paper
+sobre os erros do PDF de Santos (`BACKLOG.md` item 5). Outras candidatas:
+
+1. Repensar H-008 com uma abordagem genuinamente diferente.
+2. Tentar uma teoria quantitativa fechada para a anomalia de H-013 (função
+   geradora para o processo de ramificação da árvore reversa).
+3. Considerar formalizar os teoremas já provados (H-005, H-007, H-009,
+   H-012, H-014, H-015, H-017, H-019, H-021) em Lean/SageMath se o projeto
+   crescer nessa direção (fora de escopo por enquanto, ver `ROADMAP.md`).
+4. Continuar revisando qualquer nova alegação de prova externa que o diretor
    científico receber, seguindo o padrão já estabelecido em
    `literature/unverified-proof-claims.md`.
-6. **Só quando pedido explicitamente**: escrever o paper curto sobre os
+5. **Só quando pedido explicitamente**: escrever o paper curto sobre os
    erros do PDF de Santos (`BACKLOG.md` item 5).

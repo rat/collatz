@@ -30,7 +30,7 @@ quadraticamente), coeficiente teórico 186.93 vs. empírico 181.53 (diferença
 2.9%, testado em 8 ordens de magnitude) — é ruído previsto pela própria
 heurística, não estrutura nova escondida.
 
-## 3. Análise de padrões em representação binária — EM ANDAMENTO
+## 3. Análise de padrões em representação binária — CONCLUÍDA (lista do Fable esgotada)
 
 O PDF revisado (`literature/unverified-proof-claims.md`) tentou isso sem
 rigor suficiente. Ganhou um ângulo concreto em 2026-07-13: observação do
@@ -76,13 +76,26 @@ Ideias do Fable ainda não testadas, candidatas para sessões futuras:
   parâmetro livre. Confirmado empiricamente: inclinação da cauda distante
   −1.0045 vs. teórico −1.0 (diferença 0.45%, 2M amostras). Terceira
   confirmação teórica precisa do projeto no estilo H-010/H-011.
-- Tempo de mistura da densidade de bits (popcount) partindo de extremos —
-  primeira estatística global de bits do projeto, não redutível a mod 2^k.
-- Controle metodológico: confirmar que bits ALTOS de n não carregam
-  informação sobre stopping time (só os baixos, via Terras) — protege contra
-  a armadilha tautológica de H-002.
-- Runs de 1s terminais e erosão determinística — mecanismo binário por trás
-  das "subidas", risco tautológico a declarar explicitamente se testado.
+- **Tempo de mistura da densidade de bits — CONCLUÍDA**: testada em
+  H-019/E-019. Razão passos-para-misturar/k estabiliza em ~1.3-1.5 (denso) e
+  ~1.0-1.23 (esparso) de k=8 a 1024 — confirma crescimento linear (não
+  constante), consistente com 3n+1 ser operação local. Constante exata não
+  derivada teoricamente (achado qualitativo).
+- **Controle bits altos vs. baixos — CONCLUÍDA, com nuance**: testada em
+  H-020/E-020. F-estatística: baixos=50.7, altos=1.80, controle
+  aleatório=0.94. Assimetria forte confirmada, mas "zero informação" nos
+  bits altos NÃO confirmada com exatidão — resíduo provavelmente explicado
+  por H-010/H-011 (média e variância dependem de log₂n), não por informação
+  nova. Reportado com essa ressalva honesta em vez de superclaim.
+- **Runs de 1s terminais e erosão — CONCLUÍDA**: testada em H-021/E-021.
+  Regra de erosão (run encolhe 1 por passo, a=1) confirmada sem exceção
+  (50k testes). Recordistas têm runs de subida mais longos (média 2.512)
+  que típico (2.035, bate com previsão teórica de H-001) — mas registrado
+  como parcialmente tautológico, não descoberta nova.
+
+**Lista de brainstorm do Fable esgotada** (2026-07-13) — todas as ideias
+(H-A a H-G) foram testadas, produzindo H-012 a H-021 (dez hipóteses no
+total a partir de uma única consulta ao modelo).
 
 ## 4. Verificação de alegações de prova externas
 
