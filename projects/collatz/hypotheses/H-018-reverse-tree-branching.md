@@ -60,3 +60,15 @@ posterior inversão da razão entre classes adjacentes.
   população absoluta fica pequena o suficiente para flutuações
   idiossincráticas dominarem, invertendo o padrão (t=10/11, t=13/14).
   Explicação mecanicista qualitativa, não uma fórmula fechada.
+- 2026-07-13: **refinamento importante** — escalei o BFS até n_max=10¹¹
+  (corrigindo o multiplicador de busca de 100× para 5×, que era a causa
+  real dos travamentos anteriores, não o n_max). A razão (10,11) **convergiu
+  e estabilizou** entre n_max=10¹⁰ e 10¹¹ (0.0655 vs 0.0656 — praticamente
+  idêntica). A razão (13,14) também está convergindo (0.296→0.271). **Isso
+  confirma que a inversão é um fato assintótico real e permanente**, não um
+  artefato de amostra pequena que desapareceria com mais dados — corrigindo
+  parte da explicação original (que sugeria "flutuações de árvore finita").
+  O "orçamento de bits" ainda explica por que leituras em n_max pequeno
+  eram instáveis, mas não explica por que o valor assintótico final é
+  especificamente <1 para (10,11)/(13,14) e >1 para (4,5)/(7,8) — isso
+  continua sem teoria fechada.

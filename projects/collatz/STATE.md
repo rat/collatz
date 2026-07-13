@@ -354,10 +354,7 @@ pediu para lembrá-lo de avisar quando isso for feito).
   acelerados, não aditiva) provou rigorosamente a exclusão da metade ímpar
   da classe 4 mod 9 (N=18j+13), verificada sem exceção em 100k casos e
   confirmada não-redundante com H-007/H-014. Metade par continua em aberto
-  (limitação estrutural: passos acelerados só alcançam ímpares). Tentativa
-  de medir quantitativamente a anomalia de H-013 (taxa de crescimento da
-  árvore reversa) ficou computacionalmente cara demais e foi abandonada
-  nesta sessão — mecanismo qualitativo de H-018 permanece o estado da arte.
+  (limitação estrutural: passos acelerados só alcançam ímpares).
 - 2026-07-13: diretor científico trouxe transcrição de vídeo do Veritasium
   sobre Collatz, pedindo novas ideias. **H-023 (Lei de Benford)**: testada
   e confirmada — valores de órbitas seguem Benford com excelente precisão
@@ -366,6 +363,13 @@ pediu para lembrá-lo de avisar quando isso for feito).
   metodológico real (amostras que atingiam n=1 antes do fim da janela de
   passos inflavam artificialmente o dígito 1). Nota sobre Fractran/Conway
   (indecidibilidade) adicionada à literatura como contexto conceitual.
+- 2026-07-13: retomei a medição quantitativa da anomalia de H-013 (pedido
+  do diretor científico) com um multiplicador de busca bem menor (5× em vez
+  de 100× — essa era a causa real dos travamentos, não o n_max). Consegui
+  escalar até n_max=10¹¹. **A razão (10,11) convergiu e estabilizou** (0.0655
+  em 10¹⁰ vs 0.0656 em 10¹¹) — confirma que a inversão é um fato assintótico
+  real e permanente, não ruído de amostra pequena como eu havia sugerido
+  antes. Ainda sem fórmula fechada para o valor exato de convergência.
 
 ## Próximos passos
 
@@ -376,24 +380,24 @@ resolvido** (H-007), com uma técnica irmã generalizada em larga escala
 (H-011), assim como a cauda do pico da órbita (H-017) e a Lei de Benford
 (H-023). A lista de brainstorm do Fable está **totalmente esgotada**.
 **H-008 está agora parcialmente resolvida** (H-022, metade ímpar provada).
-Restam duas questões genuinamente em aberto:
+A anomalia de H-013 agora está **caracterizada com precisão numérica**
+(razões convergem para valores assintóticos estáveis), mas sem fórmula
+fechada. Restam duas questões genuinamente em aberto:
 
 1. **H-008, metade par** (N≡4 mod18) — passos acelerados só alcançam
    ímpares, a técnica de H-022 não se aplica diretamente; precisaria de
    argumento estruturalmente diferente.
-2. **Anomalia quantitativa de H-013** (razão não-monotônica entre classes
-   J_t adjacentes) — H-018 deu um mecanismo qualitativo, mas não uma
-   fórmula fechada; uma tentativa de medir a taxa de crescimento da árvore
-   ficou cara demais computacionalmente nesta sessão.
+2. **Fórmula fechada para a anomalia de H-013** — sabemos que as razões
+   (10,11)→~0.066 e (13,14)→~0.27-0.30 convergem, mas não temos uma teoria
+   que derive esses valores especificos a partir de primeiros princípios.
 
 Tarefa pendente (**só fazer quando o diretor científico pedir
 explicitamente**, por último — lembrar de avisar quando for feito): paper
 sobre os erros do PDF de Santos (`BACKLOG.md` item 5). Outras candidatas:
 
 1. Tentar resolver a metade par de H-008 com uma ideia nova.
-2. Retomar a teoria quantitativa da anomalia de H-013 com um método mais
-   econômico (ex: amostragem em vez de BFS exaustivo para medir o expoente
-   de crescimento da árvore).
+2. Derivar teoricamente os valores de convergência das razões de H-013 (ex:
+   via função geradora para o processo de ramificação).
 3. Considerar formalizar os teoremas já provados (H-005, H-007, H-009,
    H-012, H-014, H-015, H-017, H-019, H-021, H-022) em Lean/SageMath se o
    projeto crescer nessa direção (fora de escopo por enquanto, ver

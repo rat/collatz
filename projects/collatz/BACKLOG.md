@@ -67,11 +67,15 @@ Ideias do Fable ainda não testadas, candidatas para sessões futuras:
   casos. A metade par (N≡4 mod18) continua sem prova — passos acelerados só
   alcançam ímpares, a mesma técnica não se aplica diretamente. Ver
   `hypotheses/H-022-mod9-multiplicative-exclusion.md`.
-- **Anomalia p₅>p₄ de H-013 — mecanismo qualitativo encontrado (H-018)**:
-  construção explícita da árvore reversa (Galton-Watson) revelou competição
-  entre vantagem geracional (constante) e orçamento de bits log₂(n_max/J_t)
-  (encolhe 2 bits por unidade de t). Explica qualitativamente a inversão,
-  sem fórmula fechada. Ver `hypotheses/H-018-reverse-tree-branching.md`.
+- **Anomalia p₅>p₄ de H-013 — mecanismo qualitativo + convergência numérica
+  confirmada (H-018)**: construção explícita da árvore reversa
+  (Galton-Watson) revelou competição entre vantagem geracional (constante) e
+  orçamento de bits log₂(n_max/J_t) (encolhe 2 bits por unidade de t).
+  Escalado depois até n_max=10¹¹ (corrigindo o multiplicador de busca de
+  100× para 5×): a razão (10,11) convergiu e estabilizou (0.0655→0.0656),
+  confirmando que a inversão é assintótica real, não ruído. Ainda sem
+  fórmula fechada para os valores exatos de convergência. Ver
+  `hypotheses/H-018-reverse-tree-branching.md`.
 - **Cauda geométrica do pico da órbita — CONCLUÍDA**: testada em H-017/E-017.
   Martingale exato (E[3/2^a]=1) implica expoente de Cramér θ*=1 sem
   parâmetro livre. Confirmado empiricamente: inclinação da cauda distante

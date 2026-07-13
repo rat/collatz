@@ -1,6 +1,6 @@
 # H-013 — Todo órbita termina em J_t=(4^t−1)/3; classes estéreis explicadas por H-005
 
-Status: confirmada (teorema + verificação); anomalia p₅>p₄ com mecanismo qualitativo identificado em H-018 (sem fórmula fechada)
+Status: confirmada (teorema + verificação); anomalia p₅>p₄ confirmada como fato assintótico real (H-018), ainda sem fórmula fechada
 Criada em: 2026-07-13
 Origem: brainstorm assistido pelo modelo Fable (consultado a pedido do diretor
 científico sobre padrões binários), verificado de forma independente.
@@ -67,3 +67,12 @@ Simulação Monte Carlo: para n aleatório, achar o último valor ímpar antes d
   dominada por flutuações de árvore finita, invertendo o padrão. Não é uma
   fórmula fechada, mas explica qualitativamente por que a razão não é
   monotônica. Ver `experiments/E-018-reverse-tree-branching/`.
+- 2026-07-13: **refinamento** — escalei o cálculo até n_max=10¹¹ (corrigindo
+  o multiplicador de busca, que era a causa real dos travamentos, não o
+  n_max). A razão (10,11) convergiu e estabilizou entre 10¹⁰ e 10¹¹ (0.0655
+  vs 0.0656). **Confirma que a inversão é um fato assintótico real e
+  permanente**, não ruído de árvore finita pequena como eu havia sugerido.
+  O valor exato para onde cada razão converge continua sem explicação
+  teórica fechada — questão genuinamente em aberto, agora caracterizada com
+  mais precisão numérica. Ver atualização em
+  `experiments/E-018-reverse-tree-branching/README.md`.

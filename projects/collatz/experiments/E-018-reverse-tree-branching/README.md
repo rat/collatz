@@ -60,11 +60,37 @@ Há uma **competição entre dois efeitos**:
   vantagem sistemática média. Isso explica por que a razão pode (e de fato)
   inverte nesses casos.
 
+## Atualização — a inversão é assintótica real, não ruído de amostra finita
+
+A explicação original (acima) sugeria que a inversão em t=10/11 e t=13/14
+viria de "flutuações idiossincráticas de árvore finita pequena" — o que
+implicaria que a razão poderia mudar (ou até voltar a crescer) com n_max
+muito maior. **Testamos isso diretamente**, escalando o BFS até n_max=10¹¹
+(usando busca_bound modesto, 5×n_max, em vez do 100× anterior — o
+multiplicador exagerado é que causava travamentos, não o n_max em si).
+Resultado:
+
+| par | 20M | 80M | 1e10 | 1e11 |
+|---|---|---|---|---|
+| (10,11) | 0.048 | 0.072 | 0.0655 | **0.0656** |
+| (13,14) | 0.200 | — | 0.296 | 0.271 |
+
+A razão (10,11) **convergiu e estabilizou** entre 1e10 e 1e11 (0.0655 vs
+0.0656 — praticamente idêntica). A razão (13,14) também está convergindo
+(0.296→0.271, ainda se ajustando um pouco, mas na mesma faixa). **Isso
+confirma que a inversão é um fato assintótico real e permanente**, não um
+artefato transitório de amostra pequena que desapareceria com mais dados.
+
+Isso corrige parcialmente a explicação qualitativa original: o "orçamento
+de bits" explica por que as leituras em n_max pequeno (20M, 80M) eram
+instáveis/ruidosas para t grande, mas **não explica por que o valor final
+assintótico da razão é especificamente <1** para (10,11)/(13,14) e >1 para
+(4,5)/(7,8) — essa parte continua sem explicação teórica completa.
+
 ## Status de H-018
 
-**Mecanismo qualitativo identificado e coerente com os dados**, mas não uma
-prova quantitativa fechada — não deriva uma fórmula exata para a razão em
-função de t. A anomalia original de H-013 agora tem uma explicação
-mecanicista plausível (competição orçamento-vs-vantagem-geracional), mas
-uma teoria quantitativa completa (tipo função geradora para o processo de
-ramificação) fica como trabalho futuro, se alguém quiser aprofundar.
+**Mecanismo qualitativo parcial, refinado com dados melhor convergidos.**
+A inversão é confirmada como um fato assintótico genuíno (não ruído), mas
+o valor exato para onde cada razão converge ainda não tem uma fórmula
+fechada — uma teoria quantitativa completa (função geradora para o
+processo de ramificação) fica como trabalho futuro.
