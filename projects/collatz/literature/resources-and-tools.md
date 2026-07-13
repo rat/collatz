@@ -59,6 +59,35 @@ experimento precisam ser reprodutíveis, não apenas "a IA disse que funciona".
 - Nenhuma das duas fontes menciona uma exclusão mod9 (nosso H-022) — não temos
   confirmação de que seja novo, só ausência de evidência do contrário.
 
+## Chang (2026) — "A Structural Reduction of the Collatz Conjecture to One-Bit Orbit Mixing"
+
+[arXiv:2603.25753](https://arxiv.org/abs/2603.25753) — lido por completo e
+**verificado independentemente** (ver `hypotheses/H-030-chang-onebit-mixing-verification.md`).
+Reduz a conjectura, no mapa de Syracuse comprimido, a uma pergunta muito
+específica: o bit 4 do valor de fim-de-burst determina o comprimento do
+próximo gap (para a classe dominante n≡1 mod8); a conjectura equivale a
+mostrar equilíbrio dessa subsequência esparsa entre as classes 9 e 25
+(mod 32). **Conexão real com H-024**: a "Rota A" do paper (contração via
+sistema de transferência 5×5) trava na mesma obstrução que encontramos —
+resolução mais fina não fecha uniformemente. Verificamos os três lemas
+centrais (0 falhas) e tentamos uma extensão com nossos 148 recordistas
+reais — resultado consistente com o que o próprio paper já documenta
+(desvio de órbita individual, não achado novo), com cuidado explícito para
+não cair em pseudo-replicação (órbitas de recordistas colidem entre si).
+
+## Pratiher (2026) — "Recurrence Structures, Finite State Decomposition, and Statistical Bias in Collatz Path Sequences"
+
+[arXiv:1608.03600](https://arxiv.org/pdf/1608.03600) — lido por completo.
+**Nota de integridade**: um resumo inicial via WebFetch alegou que este
+paper discutia "delay records" e exclusões de classe residual para
+recordistas — ao ler o PDF diretamente, isso é **falso** (alucinação do
+resumo automático); o paper não menciona recordistas em nenhum lugar. É
+sobre um tópico diferente: redução da conjectura à classe n≡3 mod4,
+seis "formas recorrentes" mod9 que classificam para qual potência de 2
+cada inteiro converge, e viés estatístico na frequência de terminação
+(forma 'a' domina ~97,6%). Catalogado como lembrete de sempre verificar
+a fonte primária antes de confiar em resumos de ferramenta.
+
 ## Winkler (2026) — "Deterministic Structures in the Stopping Time Dynamics of the 3x+1 Problem"
 
 [arXiv:1709.03385](https://arxiv.org/abs/1709.03385) — lido por completo (PDF salvo

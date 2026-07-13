@@ -5,7 +5,7 @@
 ## Onde estamos
 
 Levantamento inicial da literatura concluído (ver `literature/00-index.md`).
-**Vinte e nove hipóteses testadas (H-001 a H-029)**, mais um PDF externo e
+**Trinta hipóteses testadas (H-001 a H-030)**, mais um PDF externo e
 quatro listas de ideias de outras IAs revisadas criticamente (a maioria dos
 itens especulativos — sem ponte concreta — descartada conscientemente; ver
 `literature/external-ideas-review.md`). **H-024**: prova computacional de
@@ -34,7 +34,19 @@ Também lido e catalogado o paper de Winkler (2026, arXiv:1709.03385) sobre
 "coefficient stopping time" — tópico diferente, não resolve a dúvida de
 H-022. **H-029**: checagem rápida (não profunda) mostra que a classe
 1 mod6 (única sem exclusão) não tem sub-estrutura óbvia até mod48 — sem
-motivo para insistir aí sem ideia algébrica nova.
+motivo para insistir aí sem ideia algébrica nova. **H-030**: lido e
+verificado independentemente o paper de Chang (2026, arXiv:2603.25753,
+"one-bit orbit mixing") — três lemas centrais confirmados sem exceção
+(pegos 2 bugs próprios no processo, corrigidos antes de reportar).
+Conexão real com H-024: a "Rota A" do paper trava na mesma obstrução de
+resolução finita insuficiente. Extensão com nossos 148 recordistas reais
+mostrou desvio ~0,61 vs 0,5 esperado, mas identificamos e neutralizamos
+corretamente uma armadilha de pseudo-replicação (órbitas de recordistas
+colidem, confirmado 8/45 pares) — resultado consistente com o que o
+próprio paper já documenta, não achado novo. Também lido (e descartado
+por hallucinação do resumo automático, não por conteúdo real) o paper de
+Pratiher (2026) sobre finite state decomposition — tópico diferente do
+nosso, catalogado como lição de sempre checar a fonte primária.
 ## Avaliação estratégica (2026-07-13, importante)
 
 Depois de consolidar a família de exclusão (H-028) e investigar sua
