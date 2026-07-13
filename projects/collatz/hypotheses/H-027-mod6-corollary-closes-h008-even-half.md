@@ -71,6 +71,22 @@ H-022, H-027) para uma caracterização íntegra de quais classes residuais
 nunca contêm recordistas — não em ser, por si só, um avanço matemático de
 peso.
 
+## Conexão com literatura externa (2026-07-13)
+
+Ao ler [Reyes Jiménez (2026), "A Fibonacci theorem for Collatz
+trajectories via modular graph structure"](https://arxiv.org/abs/2606.02621)
+(sobre uma questão diferente — quantas órbitas *evitam* visitar o resíduo
+4 mod6 ao longo do caminho), notei que o grafo de transição mod6 que eles
+constroem (Proposition 2.8: resíduo 4 transiciona para {2,5}) é
+**exatamente** o mecanismo algébrico usado nesta prova: N≡4 mod6 é par,
+e N/2 cai sempre em resíduo {2,5} mod6 (a classe que H-007 exclui) —
+verifiquei isso de forma independente antes de anotar (N=6k+4, N/2=3k+2;
+k par dá 3k+2≡2 mod6, k ímpar dá 3k+2≡5 mod6, batendo exatamente com as
+transições 4→2 e 4→5 do grafo deles). Duas investigações independentes
+(a deles sobre "quais órbitas evitam o resíduo 4", a nossa sobre "por que
+resíduo 4 nunca é recordista") convergem na mesma estrutura de grafo mod6
+— uma coincidência estrutural agradável, não uma nova prova ou resultado.
+
 ## Atualizações
 
 - 2026-07-13: derivado, corrigido (generalização de mod9/18 para mod6

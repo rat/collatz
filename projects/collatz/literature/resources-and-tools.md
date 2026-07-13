@@ -59,6 +59,41 @@ experimento precisam ser reprodutíveis, não apenas "a IA disse que funciona".
 - Nenhuma das duas fontes menciona uma exclusão mod9 (nosso H-022) — não temos
   confirmação de que seja novo, só ausência de evidência do contrário.
 
+## Reyes Jiménez (2026) — "A Fibonacci theorem for Collatz trajectories via modular graph structure"
+
+[arXiv:2606.02621](https://arxiv.org/abs/2606.02621) — lido por completo.
+Prova que exatamente F(m+1) inteiros ímpares em {1,...,2^m} têm órbita que
+*evita* visitar o resíduo 4 (mod 6) nos passos 2..m (contagem via análise
+espectral do grafo de transição mod6, gap espectral φ vs 2). **Conexão
+real e verificada com H-027**: o grafo de transição deles (resíduo 4 → {2,5})
+é exatamente o mecanismo algébrico da nossa prova (N≡4mod6 par, N/2 cai
+em {2,5} mod6, a classe excluída por H-007) — anotado em H-027.md como
+coincidência estrutural interessante, não uma nova prova.
+
+## Carelli (2026) — "Loop Termination and Generalized Collatz Sequences"
+
+[arXiv:2605.15094](https://arxiv.org/pdf/2605.15094) — conecta a
+decidibilidade de terminação de loops de uma variável com restrições
+lineares à conjectura de Collatz generalizada (mapas lineares por classe
+residual). Resultado: terminação é decidível em tempo polinomial *se* uma
+conjectura de longa data sobre sequências de Collatz generalizadas for
+verdadeira (e vice-versa). Tópico de ciência da computação teórica
+(decidibilidade), não se conecta às nossas questões residuais/de
+recordistas. Catalogado como contexto — não perseguido further.
+
+## Yolcu, Aaronson & Heule (2021-2022) — "An Automated Approach to the Collatz Conjecture"
+
+[arXiv:2105.14697](https://arxiv.org/abs/2105.14697) — paper respeitado
+(Scott Aaronson é autor bem conhecido; publicado em CADE-28 e Journal of
+Automated Reasoning). Constrói um sistema de reescrita de strings
+(representação binária-ternária mista) cuja terminação é EQUIVALENTE à
+conjectura de Collatz, e usa provadores automáticos de terminação
+(interpretações de matriz/árticas). Não prova a conjectura, mas mostra que
+abordagens ingênuas de reescrita unária não admitem prova de terminação
+por esse método. Área especializada (SAT/prova automatizada de teoremas)
+distante do nosso toolkit atual — catalogado como referência séria, não
+perseguido nesta sessão.
+
 ## Outras duas leituras rápidas (2026-07-13) — sem conexão nova encontrada
 
 - **Angermund (2025)**, ["A Two-Operator Calculus for Arithmetic-Progression

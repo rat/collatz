@@ -161,6 +161,14 @@ Candidatos ainda não implementados, por ordem de prioridade sugerida:
 2. Incorporar H-015 (mod 2^d sistemático, 2374 classes) à consolidação de
    H-028 — deixado de fora por ser lista grande, não fórmula fechada.
 
+- **Varredura sistemática de primos não testados — CONCLUÍDA (H-031)**:
+  testei mod 5,7,11,13,17,19,23 e potências maiores de 3 (27,81) contra
+  os 148 recordistas reais, buscando exclusão nova além de 2 e 3. Nenhuma
+  encontrada — os poucos candidatos em mod81 são consistentes com ruído
+  estatístico (calculado via Poisson antes de descartar). Reforça que a
+  família de exclusão conhecida está completa nos moduli pequenos. Ver
+  `hypotheses/H-031-prime-modulus-scan.md`.
+
 **Koopman operator/DMD vetorial — DESCARTADO (não apenas "em espera")**:
 ao finalmente formular a afirmação falsificável específica pedida (prever
 resíduos/bits de m a partir de resíduos/bits de n via um mapa linear

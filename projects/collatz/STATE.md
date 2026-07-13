@@ -5,7 +5,7 @@
 ## Onde estamos
 
 Levantamento inicial da literatura concluído (ver `literature/00-index.md`).
-**Trinta hipóteses testadas (H-001 a H-030)**, mais um PDF externo e
+**Trinta e uma hipóteses testadas (H-001 a H-031)**, mais um PDF externo e
 quatro listas de ideias de outras IAs revisadas criticamente (a maioria dos
 itens especulativos — sem ponte concreta — descartada conscientemente; ver
 `literature/external-ideas-review.md`). **H-024**: prova computacional de
@@ -46,7 +46,21 @@ colidem, confirmado 8/45 pares) — resultado consistente com o que o
 próprio paper já documenta, não achado novo. Também lido (e descartado
 por hallucinação do resumo automático, não por conteúdo real) o paper de
 Pratiher (2026) sobre finite state decomposition — tópico diferente do
-nosso, catalogado como lição de sempre checar a fonte primária.
+nosso, catalogado como lição de sempre checar a fonte primária. Também
+lidos e catalogados (sem conexão nova): Angermund (2025, cálculo de dois
+operadores), Bouhamidi (2026, família modulo 2^p+2^q), Carelli (2026,
+decidibilidade de terminação de loops), Yolcu/Aaronson/Heule (2021-2022,
+reescrita de strings — paper respeitado, área distante do nosso toolkit).
+**H-031**: varredura sistemática de primos nunca testados (5,7,11,13,17,
+19,23) e potências maiores de 3 (27,81) contra os 148 recordistas reais —
+nenhuma exclusão nova encontrada (poucos candidatos em mod81 confirmados
+como ruído estatístico via cálculo de Poisson antes de descartar).
+Reforça que a família de exclusão conhecida (só primos 2 e 3) está
+completa nos moduli pequenos. **Conexão real e verificada** entre H-027 e
+Reyes Jiménez (2026, arXiv:2606.02621): o grafo de transição mod6 dele
+(resíduo 4→{2,5}) é exatamente o mecanismo algébrico da nossa prova —
+duas investigações independentes convergindo na mesma estrutura,
+documentado em H-027.md.
 ## Avaliação estratégica (2026-07-13, importante)
 
 Depois de consolidar a família de exclusão (H-028) e investigar sua
