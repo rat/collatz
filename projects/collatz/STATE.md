@@ -100,9 +100,13 @@ quando o diretor científico pedir explicitamente, por último.
 - `H-013` — todo órbita termina no último valor ímpar J_t=(4^t−1)/3
   (consequência de H-012). Classes estéreis (t múltiplo de 3) explicadas por
   H-005 (J_t divisível por 3 nunca reaparece). Confirmado sem exceção em
-  300k amostras. Anomalia real e não-explicada: fração para t=5 (341) maior
-  que para t=4 (85) — questão em aberto. Ver
-  `hypotheses/H-013-last-odd-value-structure.md`.
+  300k amostras (e depois em varredura exaustiva até 80M). Anomalia real e
+  ainda não-explicada: fração para t=5 (341) maior que para t=4 (85), e para
+  t=8 maior que t=7 — mas **hipótese inicial (ligada a mod 3 de J_t)
+  refutada**: a razão entre classes adjacentes inverte em t=10/11 e t=13/14
+  (varredura exaustiva). Não é um padrão simples — continua em aberto. Ver
+  `hypotheses/H-013-last-odd-value-structure.md` e
+  `experiments/E-013-last-odd-value-structure/CORRECTION.md`.
 - `H-014` — recordistas nunca são ≡5 mod 8. Segunda técnica de exclusão
   (empate exato: N=4u+1 com u ímpar tem total_stopping_time igual, não
   menor, ao de N−1, via coalescência de trajetórias — diferente do domínio
@@ -277,6 +281,19 @@ quando o diretor científico pedir explicitamente, por último.
   Cramér antes de implementar (θ*=1 exato). Confirmado empiricamente com
   grande precisão (0.45% de diferença na cauda distante). Terceira vitória
   no estilo "derivar teoria → confirmar nos dados" (depois de H-010/H-011).
+- 2026-07-13: diretor científico expressou compromisso de longo prazo com o
+  projeto ("nunca vamos parar"). Respondi com calibração honesta: Collatz
+  resistiu a ~90 anos de matemáticos profissionais (incluindo Tao), é
+  extremamente improvável que seja "resolvido" por completo por este
+  laboratório — mas o trabalho incremental real (teoremas verificados, erros
+  corrigidos, resultados negativos documentados) já é ciência genuína e vale
+  a pena continuar sessão após sessão.
+- 2026-07-13: investiguei a anomalia p₅>p₄ de H-013 mais a fundo. Especulei
+  que fosse ligada ao resíduo mod 3 de J_t — **refutei minha própria
+  hipótese** com varredura exaustiva até 80M: a razão entre classes
+  adjacentes cresce em (4,5) e (7,8) mas inverte em (10,11) e (13,14). A
+  anomalia é real (confirmada em duas escalas) mas não segue um padrão
+  simples de mod 3 — continua genuinamente em aberto.
 
 ## Próximos passos
 
@@ -287,14 +304,17 @@ pergunta da variância de H-010 também está **resolvida** (H-011), assim como
 a cauda do pico da órbita (H-017). H-008 (classe 4 mod 9) segue em aberto —
 duas tentativas de coalescência (H-015 mod-2^d, H-016 mod-9 conjunto) não
 resolveram; precisaria de uma ideia estruturalmente diferente (ex: relação
-multiplicativa em vez de aditiva). Tarefa pendente (**só fazer quando o
-diretor científico pedir explicitamente**, por último): paper sobre os
+multiplicativa em vez de aditiva). A anomalia de H-013 (razão não-monotônica
+entre classes J_t adjacentes) também segue sem explicação, mais complexa do
+que a hipótese mod-3 inicial (refutada). Tarefa pendente (**só fazer quando
+o diretor científico pedir explicitamente**, por último): paper sobre os
 erros do PDF de Santos (`BACKLOG.md` item 5). Candidatas para a próxima
 sessão:
 
 1. Repensar H-008 com uma abordagem genuinamente diferente (não coalescência
    por deslocamento pequeno) — ou aceitar como questão em aberto por ora.
-2. Investigar a anomalia p₅>p₄ de H-013.
+2. Repensar a anomalia de H-013 — talvez precise de teoria de processos de
+   ramificação (Galton-Watson) para a árvore reversa, não só resíduos.
 3. Restantes ideias do Fable ainda não testadas: tempo de mistura da
    densidade de bits (popcount); controle de bits altos vs. baixos; runs de
    1s terminais (ver `BACKLOG.md` item 3).

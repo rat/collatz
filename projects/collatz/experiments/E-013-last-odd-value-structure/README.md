@@ -31,7 +31,17 @@ questão em aberto em H-013.
 
 Reproduzir: `python3 experiment.py 300000 2`
 
+## Atualização — varredura exaustiva e correção (ver `CORRECTION.md`)
+
+Uma segunda tentativa de explicar a anomalia via resíduo mod 3 de J_t foi
+**refutada** por uma varredura exaustiva (não amostrada) até 80 milhões:
+a razão entre classes adjacentes cresce para os pares (t=4,5) e (t=7,8) mas
+**inverte** para (t=10,11) e (t=13,14). A anomalia é real, mas não segue o
+padrão simples de mod 3 que eu havia especulado. Detalhes completos e dados
+em `experiment_exhaustive.py` e `CORRECTION.md`.
+
 ## Status
 
 **Confirmada** (estrutura + explicação das classes estéreis). Anomalia p₅>p₄
-deixada como questão em aberto.
+(e o padrão mais amplo, não-monotônico, entre classes adjacentes) continua
+genuinamente em aberto — mais complexa do que a hipótese inicial mod-3.

@@ -24,15 +24,21 @@ de uma órbita genérica** (só apareceriam se a própria órbita começasse
 exatamente nesse valor). Isso explica completamente por que as classes
 t=3,6,9,... têm densidade zero — não é um mistério novo, é H-005 aplicado.
 
-## Anomalia observada (questão em aberto)
+## Anomalia observada (questão em aberto — hipótese inicial refutada)
 
 A fração de órbitas que termina em cada J_t **não decai monotonicamente**:
-em 300.000 amostras aleatórias (n até 10^9), a fração para t=5 (J_5=341) foi
-**maior** que para t=4 (J_4=85) — 3.78% vs 2.37% — contrariando a expectativa
-ingênua de decaimento ~1/4 por passo. Isso não tem explicação ainda. Fica
-registrado para investigação futura (possivelmente ligado ao resíduo mod 3
-de cada J_t — J_4≡1 mod3, J_5≡2 mod3 — afetando a estrutura dos pontos de
-ramificação da árvore reversa que alimenta cada um).
+a fração para t=5 (J_5=341) é **maior** que para t=4 (J_4=85) — contrariando
+a expectativa ingênua de decaimento ~1/4 por passo.
+
+Especulei inicialmente que isso estivesse ligado ao resíduo mod 3 de J_t
+(J_4≡1, J_5≡2 mod3). **Essa hipótese foi refutada** por uma varredura
+exaustiva até 80 milhões (ver `experiments/E-013-last-odd-value-structure/CORRECTION.md`):
+a razão entre classes adjacentes CRESCE para os pares (t=4,5)→1.59 e
+(t=7,8)→5.97, mas **inverte** para (t=10,11)→0.072 e (t=13,14)→0.200. Não é
+um efeito simples de mod 3 — o comportamento é não-monotônico de forma mais
+complexa. Continua genuinamente em aberto; provavelmente requer análise da
+estrutura de ramificação da árvore reversa (processos tipo Galton-Watson),
+não tentada ainda.
 
 ## Como testar
 
@@ -46,3 +52,9 @@ Simulação Monte Carlo: para n aleatório, achar o último valor ímpar antes d
   (3.78%), t=7 (0.01%), t=8 (0.06%), t=10/11 (~0%). Classes t=3,6,9 com zero
   ocorrências, explicadas por H-005. Anomalia p₅>p₄ registrada como questão
   em aberto.
+- 2026-07-13: tentei explicar a anomalia via resíduo mod 3 de J_t — **refutei
+  minha própria hipótese** com varredura exaustiva (não amostrada) até 80
+  milhões: a razão entre classes adjacentes cresce em (4,5) e (7,8) mas
+  inverte em (10,11) e (13,14). Não é um padrão simples de mod 3. Anomalia
+  confirmada como real (não é ruído — verificada em duas escalas, 20M e
+  80M) mas continua sem explicação. Ver `experiments/E-013-last-odd-value-structure/CORRECTION.md`.
