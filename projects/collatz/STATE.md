@@ -139,22 +139,25 @@ colapsaria em 1.
 
 ## Próximos passos
 
-Sete hipóteses testadas (H-001 a H-007). O achado central do projeto — por que
-recordistas evitam resíduo 2 mod 3 — está agora **completamente resolvido**
-(prova + verificação). Não há mais pendência aberta sobre essa linha.
-Candidatas para a próxima sessão (escolher com o diretor científico):
+Oito hipóteses testadas (H-001 a H-008). O achado central do projeto — por que
+recordistas evitam resíduo 2 mod 3 — está **completamente resolvido** (H-007:
+prova + verificação). Tentei generalizar a técnica para explicar a ausência da
+classe 4 mod 9 (H-008) e **não consegui** — busquei o menor M dominante para
+vários N≡4 mod9 e não há relação algébrica curta e fixa (M varia sem padrão,
+frequentemente é só um recordista genérico como 27). Deixado como questão
+aberta, não forcei uma explicação sem sustentação. Candidatas para a próxima
+sessão (escolher com o diretor científico):
 
-1. A prova de H-007 é específica para mod 3. Investigar se existe uma
-   generalização (por que as classes mod 9/27 vistas em H-004 seguem o padrão
-   específico que seguem, além do que mod-3 já explica) usando a mesma técnica
-   de construir um M dominante.
-2. Considerar se a técnica de H-007 (encontrar M menor que domina N) pode ser
-   generalizada para eliminar OUTRAS classes residuais como candidatas a
-   recordista, reduzindo ainda mais o espaço de busca.
-3. Considerar formalizar essas descobertas (H-005, H-007) em Lean/SageMath se
-   o projeto crescer nessa direção (fora de escopo por enquanto, ver
-   `ROADMAP.md`) — são teoremas curtos, bons candidatos a uma primeira
-   formalização.
-4. Voltar à literatura mais ampla (`literature/approaches-2adic-ergodic.md`)
-   agora com essa técnica de prova em mãos — pode haver outras "exclusões
-   fáceis" similares ainda não catalogadas.
+1. Tentar uma técnica diferente (cadeia de mais de 2 passos, ou argumento
+   não-construtivo) para a classe 4 mod 9 — ou aceitar que pode não ser um
+   fato permanente, só válido no intervalo já calculado (~1.47×10^19).
+2. Considerar formalizar H-005 e H-007 (teoremas curtos, já provados e
+   verificados) em Lean/SageMath se o projeto crescer nessa direção (fora de
+   escopo por enquanto, ver `ROADMAP.md`).
+3. Voltar à literatura mais ampla (`literature/approaches-2adic-ergodic.md`)
+   com a técnica de H-007 em mãos — pode haver outras "exclusões fáceis"
+   similares ainda não catalogadas, sem precisar generalizar especificamente
+   para mod 9.
+4. Deixar a linha mod-3/9 descansar e escolher um ângulo totalmente diferente
+   da literatura (ex: verificar a aditividade de ciclos, ou revisitar as
+   abordagens 2-ádicas de forma mais profunda).
