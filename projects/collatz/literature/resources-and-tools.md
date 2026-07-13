@@ -59,6 +59,24 @@ experimento precisam ser reprodutíveis, não apenas "a IA disse que funciona".
 - Nenhuma das duas fontes menciona uma exclusão mod9 (nosso H-022) — não temos
   confirmação de que seja novo, só ausência de evidência do contrário.
 
+## Outras duas leituras rápidas (2026-07-13) — sem conexão nova encontrada
+
+- **Angermund (2025)**, ["A Two-Operator Calculus for Arithmetic-Progression
+  Paths in the Collatz Graph"](https://arxiv.org/pdf/2506.19115) — reformulação
+  elementar via dois operadores (T₁,T₂) em progressões aritméticas S(a,b).
+  Contribuição real: prova simples (invariante afim b=a−1) de que nenhuma
+  órbita pode consistir de infinitos passos ímpares consecutivos — um fato já
+  conhecido, mas com um argumento mais curto que o clássico (comparação de
+  taxas 3/2 vs 1/2). Não discute recordistas, exclusões residuais, nem bit-4.
+  Sem conexão com nossas questões abertas.
+- **Bouhamidi (2026)**, ["An Extension of the Collatz Conjecture modulo
+  2^p+2^q"](https://arxiv.org/pdf/2601.06208) — generaliza para uma família de
+  mapas "tipo-Collatz" (parâmetros d,α,β) e estuda quais membros da família
+  têm dinâmica bem-comportada (ciclos finitos, sem divergência). Tópico
+  genuinamente diferente (família de mapas generalizados, não o 3n+1
+  clássico) — confirmado que não discute recordistas/stopping-time records.
+  Sem conexão com nossas questões abertas.
+
 ## Chang (2026) — "A Structural Reduction of the Collatz Conjecture to One-Bit Orbit Mixing"
 
 [arXiv:2603.25753](https://arxiv.org/abs/2603.25753) — lido por completo e
