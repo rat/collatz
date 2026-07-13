@@ -5,8 +5,13 @@
 ## Onde estamos
 
 Levantamento inicial da literatura concluído (ver `literature/00-index.md`).
-**Vinte e três hipóteses testadas (H-001 a H-023)**, mais um PDF externo
-revisado e catalogado. **Resultado central do projeto**: recordistas reais
+**Vinte e quatro hipóteses testadas (H-001 a H-024)**, mais um PDF externo e
+três listas de ideias de outras IAs revisadas criticamente (a maioria dos
+itens especulativos — sem ponte concreta — descartada conscientemente; ver
+`literature/external-ideas-review.md`). **H-024**: prova computacional de
+que a densidade do subárvore reverso exige precisão 3-ádica infinita,
+fechando com clareza a via "operador de transferência de dimensão finita"
+para H-013. **Resultado central do projeto**: recordistas reais
 de stopping time nunca são ≡2 mod 3 (exceto o caso trivial n=2) — confirmado
 empiricamente (H-004, n=148, p<10^-13) e **provado algebricamente** (H-007).
 Generalizamos a técnica de exclusão por empate (H-014→H-015): 2374 classes

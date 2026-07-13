@@ -102,6 +102,34 @@ Ideias do Fable ainda não testadas, candidatas para sessões futuras:
 (H-A a H-G) foram testadas, produzindo H-012 a H-021 (dez hipóteses no
 total a partir de uma única consulta ao modelo).
 
+- **Densidade do subárvore reverso exige precisão 3-ádica ilimitada —
+  CONCLUÍDA (H-024)**: motivada por uma de três listas de ideias externas
+  revisadas em 2026-07-13 (ver `literature/external-ideas-review.md`), que
+  sugeriu abordagem espectral/operador de transferência para H-013. Testei
+  computacionalmente antes de investir na construção: D(v) varia >300× entre
+  números com o mesmo resíduo mod 3^6, mesmo com orçamento de magnitude
+  proporcional. Fecha com clareza por que a derivação fechada de H-013 não
+  fechou, e descarta a via de "operador de dimensão finita" (incluindo a
+  variante "operador de transferência quântico" sugerida na terceira lista)
+  com evidência direta, não apenas por falta de tentativa. Ver
+  `hypotheses/H-024-density-needs-unbounded-precision.md`.
+
+## 6. Revisão crítica de três listas de ideias externas (outras IAs) — CONCLUÍDA
+
+Três listas trazidas pelo diretor científico em 2026-07-13 (10+1 ideias
+"gerais", ideias sobre "outras dimensões"/Koopman, 15 ideias especulativas de
+matemática avançada). Avaliação completa registrada em
+`literature/external-ideas-review.md`: a maioria dos itens já corresponde a
+algo que já fizemos (rotulado com nomenclatura diferente) ou é vaga demais
+para virar hipótese testável sem uma ponte concreta com a estrutura
+combinatória real do Collatz. Um item se destacou como acionável e ainda não
+testado: análise estilo Koopman operator/DMD com múltiplos observáveis
+simultâneos (generalização vetorial de H-017, que já é, sem o nome, um
+cálculo de autovalor de Koopman escalar). Proposto como candidato a H-025,
+pendente de confirmação do diretor científico antes de investir tempo (é uma
+mudança de metodologia — álgebra linear/autovalores em vez de teoria de
+números pura).
+
 ## 4. Verificação de alegações de prova externas
 
 Processo contínuo — toda alegação de prova recebida (ex: PDFs, links) deve
