@@ -1,6 +1,8 @@
 # H-008 — Classe 4 mod 9 nunca aparece em recordistas: tentativa de generalizar H-007
 
-Status: parcialmente resolvida — metade ímpar (N≡13 mod18) provada em H-022; metade par (N≡4 mod18) em aberto
+Status: RESOLVIDA COMPLETAMENTE — metade ímpar (N≡13 mod18) provada em
+H-022 (técnica nova); metade par (N≡4 mod18) fechada em H-027 (corolário
+direto de H-007 via N≡4 mod6, mais amplo que mod9)
 Criada em: 2026-07-13
 
 ## Contexto
@@ -51,3 +53,14 @@ explicação sem sustentação.
   A metade **par** (N≡4 mod18) continua sem prova — passos acelerados só
   alcançam ímpares, então a mesma técnica não se aplica diretamente. Ver
   `hypotheses/H-022-mod9-multiplicative-exclusion.md`.
+- 2026-07-13: **H-008 FECHADA POR COMPLETO.** A metade par não era, na
+  verdade, estruturalmente difícil — um único passo de halving (N par →
+  N/2) já cai direto em M≡2 mod3, ao qual H-007 se aplica imediatamente.
+  Isso mostra que a condição correta é N≡4 mod6 (mais ampla que mod9/18;
+  o caso mod18 é só o subcaso k=3j), e fecha a metade par como corolário
+  de H-007 em uma linha de álgebra — não uma técnica nova. Verificado sem
+  exceção em 500.000 casos. Ver
+  `hypotheses/H-027-mod6-corollary-closes-h008-even-half.md`. Com H-022
+  (metade ímpar, técnica genuinamente nova) + H-027 (metade par,
+  corolário), a classe 4 mod9 está agora completamente excluída de
+  recordistas, com prova.

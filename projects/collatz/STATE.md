@@ -5,7 +5,7 @@
 ## Onde estamos
 
 Levantamento inicial da literatura concluído (ver `literature/00-index.md`).
-**Vinte e seis hipóteses testadas (H-001 a H-026)**, mais um PDF externo e
+**Vinte e sete hipóteses testadas (H-001 a H-027)**, mais um PDF externo e
 quatro listas de ideias de outras IAs revisadas criticamente (a maioria dos
 itens especulativos — sem ponte concreta — descartada conscientemente; ver
 `literature/external-ideas-review.md`). **H-024**: prova computacional de
@@ -15,7 +15,11 @@ para H-013. **H-025**: busca de invariantes lineares em bits refutada com
 mecanismo identificado (toda correlação se reduz ao valor de a, já
 conhecido, e ao bias clássico de carry em adição binária). **H-026**:
 taxa de divergência da aproximação de memória finita parece independer de
-K (sinal real mas não estatisticamente robusto). **Resultado
+K (sinal real mas não estatisticamente robusto). **H-008 agora RESOLVIDA
+POR COMPLETO** (H-022 + H-027 novo): a classe 4 mod9 está totalmente
+excluída de recordistas, com prova — H-027 fechou a metade par como
+corolário direto de H-007 (na verdade válido para toda a classe mais
+ampla N≡4 mod6), verificado sem exceção em 500.000 casos. **Resultado
 central do projeto**: recordistas reais
 de stopping time nunca são ≡2 mod 3 (exceto o caso trivial n=2) — confirmado
 empiricamente (H-004, n=148, p<10^-13) e **provado algebricamente** (H-007).

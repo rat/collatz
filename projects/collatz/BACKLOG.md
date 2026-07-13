@@ -61,12 +61,17 @@ Ideias do Fable ainda não testadas, candidatas para sessões futuras:
   descobertas mod-9 genuínas. Explicação teórica: T(n) mod 9 depende só de n
   mod 3, não do valor completo mod 9, então fixar mod 9 não adiciona
   restrição real.
-- **H-008 PARCIALMENTE RESOLVIDA (H-022)**: relação multiplicativa via 2
-  passos acelerados (não aditiva como H-015/H-016) provou a exclusão da
-  metade ímpar de N≡4 mod9 (N=18j+13), verificada sem exceção em 100.000
-  casos. A metade par (N≡4 mod18) continua sem prova — passos acelerados só
-  alcançam ímpares, a mesma técnica não se aplica diretamente. Ver
-  `hypotheses/H-022-mod9-multiplicative-exclusion.md`.
+- **H-008 RESOLVIDA COMPLETAMENTE (H-022 + H-027)**: relação multiplicativa
+  via 2 passos acelerados (H-022) provou a exclusão da metade ímpar de
+  N≡4 mod9 (N=18j+13), verificada sem exceção em 100.000 casos — técnica
+  genuinamente nova. A metade par (N≡4 mod18) foi fechada depois (H-027):
+  acabou sendo um corolário direto de H-007 (um único passo de halving já
+  cai em M≡2 mod3), válido na verdade para toda a classe mais ampla
+  N≡4 mod6, verificado sem exceção em 500.000 casos — não uma técnica
+  nova, só uma linha de álgebra que tinha passado despercebida. Com as
+  duas partes, a classe 4 mod9 está completamente excluída de recordistas,
+  com prova. Ver `hypotheses/H-022-mod9-multiplicative-exclusion.md` e
+  `hypotheses/H-027-mod6-corollary-closes-h008-even-half.md`.
 - **Anomalia p₅>p₄ de H-013 — mecanismo qualitativo + convergência numérica
   confirmada (H-018)**: construção explícita da árvore reversa
   (Galton-Watson) revelou competição entre vantagem geracional (constante) e
@@ -145,13 +150,11 @@ e ao bias clássico de carry em adição binária). Ver
 Candidatos ainda não implementados, por ordem de prioridade sugerida:
 1. Ângulo de estratégia adversarial de máxima subida, conectando com a
    literatura de limites inferiores em ciclos (Simons & de Weger, Eliahou)
-   — potencial nova via para H-008/H-009.
+   — potencial nova via para H-009 (ciclos não-triviais).
 2. Koopman operator/DMD vetorial (extensão de H-017) — mantido em espera
    até formular a afirmação falsificável específica que o resultado
    confirmaria ou refutaria, para não repetir o risco de "matemática de
    aparência" já identificado na terceira lista.
-3. Metade par de H-008 (N≡4 mod18) — ainda sem prova, precisa de ideia
-   estruturalmente diferente da relação multiplicativa usada em H-022.
 
 ## 4. Verificação de alegações de prova externas
 
