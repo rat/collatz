@@ -53,11 +53,19 @@ Ideias do Fable ainda não testadas, candidatas para sessões futuras:
   classes residuais novas, excluindo cumulativamente 69.3% dos resíduos mod
   2^16. Confirmado válido (com ressalva de N grande o suficiente dentro de
   cada classe). **Não resolve H-008**: por construção, mod 2^d e mod 9 são
-  coprimos, então essa técnica nunca poderia dizer nada sobre mod 9 — H-008
-  precisaria de uma técnica mod-3^b separada (ex: generalizar H-005 para mod
-  9), ainda não tentada com sucesso. A versão de profundidade 8-10 tratando
-  mod 2 e mod 3 conjuntamente (ideia original do Fable) segue como
-  possibilidade mais ambiciosa para o futuro, se alguém quiser retomar.
+  coprimos, então essa técnica nunca poderia dizer nada sobre mod 9.
+- **Tentativa mod-9 (módulo conjunto 9·2^d) — CONCLUÍDA, negativa**: testada
+  em H-016/E-016. Encontrou candidatos aparentes para excluir a classe 4 mod
+  9, mas todos se mostraram genéricos (funcionam para os 9 resíduos mod 9
+  igualmente, não só o 4) — são fenômenos mod-2^d disfarçados, não
+  descobertas mod-9 genuínas. Explicação teórica: T(n) mod 9 depende só de n
+  mod 3, não do valor completo mod 9, então fixar mod 9 não adiciona
+  restrição real. **H-008 continua sem solução** — precisaria de uma ideia
+  estruturalmente diferente da coalescência por deslocamento pequeno (talvez
+  uma relação multiplicativa, não aditiva, entre N e M). A versão de
+  profundidade 8-10 tratando mod 2 e mod 3 conjuntamente (ideia original do
+  Fable) ainda não foi tentada da forma mais ambiciosa — pode ainda valer a
+  pena, mas exige uma técnica nova, não apenas estender o que já tentamos.
 - Investigar a anomalia p₅>p₄ de H-013 (talvez ligada ao resíduo mod 3 de
   cada J_t afetando a estrutura da árvore reversa).
 - Cauda geométrica do pico da órbita (martingale, E[3/2^a]=1 exatamente) —
