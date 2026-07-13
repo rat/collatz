@@ -59,6 +59,67 @@ experimento precisam ser reprodutíveis, não apenas "a IA disse que funciona".
 - Nenhuma das duas fontes menciona uma exclusão mod9 (nosso H-022) — não temos
   confirmação de que seja novo, só ausência de evidência do contrário.
 
+## Generalizações dimensionais/geométricas (2026-07-13) — investigação a pedido do diretor científico
+
+O diretor científico perguntou se há conexão entre a conjectura e "espaço
+tridimensional", e pediu para aprofundar tudo que fosse encontrado. Lidos
+por completo quatro trabalhos:
+
+- **Kionke (2015)**, ["A geometric approach to divergent points of higher
+  dimensional Collatz mappings"](https://arxiv.org/pdf/1511.05893) —
+  generaliza rigorosamente para Z^n (reticulados de posto n). Resultado
+  central: a conjectura generalizada **não vale** para posto ≥2 — o autor
+  constrói exemplos explícitos onde um "cone selvagem" inteiro (região
+  geométrica, via hiperplanos separadores) contém só pontos com órbita
+  provadamente divergente, coexistindo com densidade 1 de pontos com
+  "tempo de parada finito" (definição mais fraca que convergência).
+- **Alvarado (2025)**, [palestra sobre Collatz nos inteiros de
+  Gauss](https://fefoaranda.com/wp-content/uploads/2025/04/colima-alvarado-2025.pdf)
+  — extensão natural para Z[i] (reticulado 2D), usando 1+i e 2+i como
+  análogos de 2 e 3. Empiricamente, só ~5,6% dos inteiros de Gauss testados
+  (numa caixa 200×200) convergem em 10.000 passos — bem diferente de ~100%
+  no caso clássico.
+- **Siegel (2022/2024)**, [dissertação de doutorado, USC, "(p,q)-adic
+  Analysis and the Collatz Conjecture"](https://arxiv.org/abs/2412.02902)
+  — 447 páginas de análise de Fourier (p,q)-ádica muito avançada,
+  incluindo um Capítulo 5-6 dedicado ao "caso multi-dimensional" (Z^d e
+  anéis de números). O próprio autor admite no prefácio que não está
+  claro se/como a parte central do argumento se estende de fato ao caso
+  multi-dimensional — trabalho genuíno mas inconcluso nessa direção.
+- **Honarvar Shakibaei Asli (2026)**, ["An Explicit Near-Conjugacy
+  Between the Collatz Map and a Circle Rotation"](https://arxiv.org/pdf/2601.04289)
+  — não é sobre dimensão espacial, mas usa geometria (rotação no círculo
+  S¹, base log₆) para mostrar que a dinâmica de Collatz é uma rotação
+  irracional perturbada por erro limitado. Os próprios autores dizem
+  explicitamente: "não constitui prova... requereria argumentos
+  aritméticos adicionais além deste framework".
+
+### Explicação concreta de por que "mais dimensões" tende a quebrar a conjectura
+
+Derivei isto comparando o caso clássico com o de Gauss: no caso clássico,
+o passo ímpar multiplica por 3 e a divisão por 2 (repetida, E[a]=2 pela
+distribuição geométrica de H-001) reduz por 2²=4 em média — como 3<4, há
+contração líquida (é exatamente por isso que a heurística prevê
+convergência). No análogo de Gauss (multiplicar por 2+i, dividir por
+1+i), a mesma conta dá norma(2+i)=5 vs norma(1+i)²=4 — como **5>4**, há
+**expansão** líquida, exatamente o oposto! Não é um efeito misterioso de
+"dimensão" — é uma desigualdade aritmética específica (3<4) que dá certo
+por acaso no caso clássico e não há razão a priori para persistir em
+outros anéis/reticulados. Isso explica de forma unificada por que Kionke
+e Alvarado encontram divergência genuína ao subir de dimensão.
+
+### Conclusão honesta
+
+Depois de ler os quatro trabalhos por completo: **nada aqui oferece uma
+ferramenta nova e acionável para nossas questões específicas** (fórmula
+fechada de H-013, ou qualquer coisa sobre recordistas). O padrão é
+consistente: aumentar dimensões geralmente **piora** o comportamento
+(mais espaço para contra-exemplos), não revela estrutura escondida que
+ajude a resolver o caso clássico — e isso agora tem uma explicação
+aritmética limpa, não é só um padrão empírico. A pergunta valia a pena
+perguntar e valia a pena investigar a fundo; a resposta é um "não" bem
+fundamentado, não uma suposição.
+
 ## Reyes Jiménez (2026) — "A Fibonacci theorem for Collatz trajectories via modular graph structure"
 
 [arXiv:2606.02621](https://arxiv.org/abs/2606.02621) — lido por completo.
