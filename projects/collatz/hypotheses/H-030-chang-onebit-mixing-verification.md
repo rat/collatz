@@ -91,6 +91,19 @@ seria esperado ser grande — não é evidência contra a conjectura de
 equilíbrio do paper, é uma reconfirmação (com ressalva de pseudo-replicação)
 de um padrão que eles já documentaram e já esperavam.
 
+## Fechamento definitivo (não é só pseudo-replicação — é tautológico com H-021)
+
+Além da pseudo-replicação, há uma explicação mais direta e definitiva para
+o desvio de 0,61: no framework de Chang, um "gap" (mod8=7, bit4=0, 9mod32)
+é exatamente um passo de CRESCIMENTO (×1.5, sem a contração extra de um
+burst) — gaps mais longos (G≥2) correspondem a runs de subida mais longos.
+**H-021 já mediu isso diretamente**: recordistas têm runs de subida médios
+de 2,512 passos vs. 2,035 típico (consequência de serem selecionados por
+altura excepcional). Logo, recordistas mostrarem viés em direção a
+9mod32 (G≥2, gaps mais longos) não é uma medição nova — é **H-021
+reformulado na linguagem do paper de Chang**. Isso fecha o assunto com uma
+explicação específica, não apenas uma ressalva metodológica genérica.
+
 ## Conclusão
 
 Contribuição modesta e honesta: (1) verificamos independentemente que os

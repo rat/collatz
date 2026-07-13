@@ -453,26 +453,39 @@ pediu para lembrá-lo de avisar quando isso for feito).
 
 ## Próximos passos
 
-**Vinte e três hipóteses testadas (H-001 a H-023)**. O achado central do
+**Trinta hipóteses testadas (H-001 a H-030)**. O achado central do
 projeto — por que recordistas evitam resíduo 2 mod 3 — está **completamente
 resolvido** (H-007), com uma técnica irmã generalizada em larga escala
-(H-014→H-015). A pergunta da variância de H-010 também está **resolvida**
-(H-011), assim como a cauda do pico da órbita (H-017) e a Lei de Benford
-(H-023). A lista de brainstorm do Fable está **totalmente esgotada**.
-**H-008 está agora parcialmente resolvida** (H-022, metade ímpar provada).
-A anomalia de H-013 agora está **caracterizada com alta precisão numérica**
-((10,11)≈0.065, (13,14)≈0.27-0.28), mas **a derivação teórica fechada não
-foi encontrada** (tentei via a recursão exata D(v)=D(2v)+D(ramo) e não
-fechou — possivelmente um problema genuinamente difícil). Restam duas
-questões genuinamente em aberto:
+(H-014→H-015), e consolidado via CRT em H-028 (45/72 resíduos mod72
+excluídos — mas ver ressalva de novidade abaixo). **H-008 (classe 4 mod9)
+está agora RESOLVIDA POR COMPLETO** (H-022 metade ímpar + H-027 metade
+par). A pergunta da variância de H-010 está **resolvida** (H-011), assim
+como a cauda do pico da órbita (H-017) e a Lei de Benford (H-023). A
+fórmula fechada para a anomalia de H-013 **não foi encontrada, mas H-024
+explica rigorosamente por quê** (densidade exige precisão 3-ádica
+ilimitada — não é falta de tentativa, é uma obstrução real, com paralelo
+independente na "Rota A" do paper de Chang 2026, ver H-030).
 
-1. **H-008, metade par** (N≡4 mod18) — passos acelerados só alcançam
-   ímpares, a técnica de H-022 não se aplica diretamente; precisaria de
-   argumento estruturalmente diferente.
-2. **Fórmula fechada para a anomalia de H-013** — valores de convergência
-   agora bem medidos numericamente ((10,11)≈0.065, (13,14)≈0.27-0.28), mas
-   sem teoria que os derive a partir de primeiros princípios. A recursão
-   exata D(J_t)=Σ D(w_i) foi tentada e não fechou.
+**Avaliação estratégica importante (ver seção acima)**: a checagem de
+novidade de H-028/H-022 revelou que boa parte da família de exclusão já é
+folclore conhecido pela comunidade prática de busca de recordistas
+(cuda-collatz) — a linha de "excluir recordistas por classe residual"
+está substancialmente esgotada como fonte de resultado genuinamente novo.
+Questão genuinamente em aberto que resta:
+
+1. **Fórmula fechada para a anomalia de H-013** — valores de convergência
+   bem medidos numericamente ((10,11)≈0.065, (13,14)≈0.27-0.28), mas sem
+   teoria que os derive a partir de primeiros princípios. H-024 explica
+   por que a recursão exata D(v)=D(2v)+D(ramo) não fecha (exige precisão
+   3-ádica ilimitada) — provavelmente um problema genuinamente difícil,
+   não um branco de tentativa.
+
+Instrução permanente do diretor científico (2026-07-13): continuar em
+loop autônomo, tentando ângulos genuinamente novos mesmo sem garantia de
+achar algo — ver `literature/resources-and-tools.md` para papers recentes
+ainda por explorar (Two-Operator Calculus, mod 2^p+2^q, Fibonacci theorem
+via modular graph structure — lidos apenas parcialmente via resumo
+automático, não verificados a fundo ainda).
 
 Tarefa pendente (**só fazer quando o diretor científico pedir
 explicitamente**, por último — lembrar de avisar quando for feito): paper
