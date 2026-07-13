@@ -5,21 +5,22 @@
 ## Onde estamos
 
 Levantamento inicial da literatura concluído (ver `literature/00-index.md`).
-**Vinte e uma hipóteses testadas (H-001 a H-021)**, mais um PDF externo
+**Vinte e três hipóteses testadas (H-001 a H-023)**, mais um PDF externo
 revisado e catalogado. **Resultado central do projeto**: recordistas reais
 de stopping time nunca são ≡2 mod 3 (exceto o caso trivial n=2) — confirmado
 empiricamente (H-004, n=148, p<10^-13) e **provado algebricamente** (H-007).
 Generalizamos a técnica de exclusão por empate (H-014→H-015): 2374 classes
-residuais mod 2^d excluídas, 69.3% de mod 2^16 — mas **não resolve H-008**
-(limitação estrutural: mod 2^d e mod 9 são coprimos; tentativa mod-9
-conjunta em H-016 também não resolveu). A lista completa de brainstorm do
-modelo Fable sobre padrões binários (H-012 a H-021) foi **totalmente
-testada** nesta sessão, incluindo um mecanismo qualitativo (Galton-Watson)
-para a anomalia de H-013 e três confirmações teóricas precisas no estilo
-"derivar → confirmar" (H-010, H-011, H-017). H-008 continua sendo a única
-questão central em aberto. Backlog em `BACKLOG.md`. **Tarefa pendente**:
-escrever um paper curto apontando os erros do PDF de Santos 2018 — só fazer
-quando o diretor científico pedir explicitamente, por último (o diretor
+residuais mod 2^d excluídas, 69.3% de mod 2^16. **H-008 (mod 9) agora
+parcialmente resolvida**: H-022 provou a metade ímpar da classe 4 mod 9 via
+uma técnica multiplicativa nova; metade par segue aberta. A lista completa
+de brainstorm do modelo Fable sobre padrões binários (H-012 a H-021) foi
+**totalmente testada**, incluindo um mecanismo qualitativo (Galton-Watson)
+para a anomalia de H-013 (ainda sem fórmula fechada) e quatro confirmações
+teóricas precisas no estilo "derivar → confirmar" (H-010, H-011, H-017,
+H-023 — Lei de Benford, inspirada por um vídeo trazido pelo diretor
+científico). Backlog em `BACKLOG.md`. **Tarefa pendente**: escrever um
+paper curto apontando os erros do PDF de Santos 2018 — só fazer quando o
+diretor científico pedir explicitamente, por último (o diretor
 pediu para lembrá-lo de avisar quando isso for feito).
 
 ## O que o levantamento estabeleceu
@@ -348,35 +349,55 @@ pediu para lembrá-lo de avisar quando isso for feito).
   runs terminais, confirmada + achado tautológico sobre recordistas). Lista
   do Fable totalmente esgotada — 10 hipóteses (H-012 a H-021) a partir de
   uma única consulta ao modelo.
+- 2026-07-13: diretor científico pediu para continuar com H-008 e H-013.
+  **H-022 — avanço real em H-008**: abordagem multiplicativa (2 passos
+  acelerados, não aditiva) provou rigorosamente a exclusão da metade ímpar
+  da classe 4 mod 9 (N=18j+13), verificada sem exceção em 100k casos e
+  confirmada não-redundante com H-007/H-014. Metade par continua em aberto
+  (limitação estrutural: passos acelerados só alcançam ímpares). Tentativa
+  de medir quantitativamente a anomalia de H-013 (taxa de crescimento da
+  árvore reversa) ficou computacionalmente cara demais e foi abandonada
+  nesta sessão — mecanismo qualitativo de H-018 permanece o estado da arte.
+- 2026-07-13: diretor científico trouxe transcrição de vídeo do Veritasium
+  sobre Collatz, pedindo novas ideias. **H-023 (Lei de Benford)**: testada
+  e confirmada — valores de órbitas seguem Benford com excelente precisão
+  prática, consequência do passeio aleatório multiplicativo já estabelecido
+  (H-001/H-010/H-011/H-017). No caminho, achei e corrigi um viés
+  metodológico real (amostras que atingiam n=1 antes do fim da janela de
+  passos inflavam artificialmente o dígito 1). Nota sobre Fractran/Conway
+  (indecidibilidade) adicionada à literatura como contexto conceitual.
 
 ## Próximos passos
 
-**Vinte e uma hipóteses testadas (H-001 a H-021)**. O achado central do
+**Vinte e três hipóteses testadas (H-001 a H-023)**. O achado central do
 projeto — por que recordistas evitam resíduo 2 mod 3 — está **completamente
 resolvido** (H-007), com uma técnica irmã generalizada em larga escala
 (H-014→H-015). A pergunta da variância de H-010 também está **resolvida**
-(H-011), assim como a cauda do pico da órbita (H-017). A lista de brainstorm
-do Fable está **totalmente esgotada**. Restam duas questões genuinamente
-em aberto:
+(H-011), assim como a cauda do pico da órbita (H-017) e a Lei de Benford
+(H-023). A lista de brainstorm do Fable está **totalmente esgotada**.
+**H-008 está agora parcialmente resolvida** (H-022, metade ímpar provada).
+Restam duas questões genuinamente em aberto:
 
-1. **H-008** (classe 4 mod 9 nunca aparece em recordistas) — duas
-   tentativas de coalescência (H-015 mod-2^d, H-016 mod-9 conjunto) não
-   resolveram; precisaria de uma ideia estruturalmente diferente (ex:
-   relação multiplicativa em vez de aditiva).
-2. **Anomalia de H-013** (razão não-monotônica entre classes J_t adjacentes)
-   — H-018 deu um mecanismo qualitativo (competição orçamento vs. vantagem
-   geracional), mas não uma fórmula fechada.
+1. **H-008, metade par** (N≡4 mod18) — passos acelerados só alcançam
+   ímpares, a técnica de H-022 não se aplica diretamente; precisaria de
+   argumento estruturalmente diferente.
+2. **Anomalia quantitativa de H-013** (razão não-monotônica entre classes
+   J_t adjacentes) — H-018 deu um mecanismo qualitativo, mas não uma
+   fórmula fechada; uma tentativa de medir a taxa de crescimento da árvore
+   ficou cara demais computacionalmente nesta sessão.
 
 Tarefa pendente (**só fazer quando o diretor científico pedir
 explicitamente**, por último — lembrar de avisar quando for feito): paper
 sobre os erros do PDF de Santos (`BACKLOG.md` item 5). Outras candidatas:
 
-1. Repensar H-008 com uma abordagem genuinamente diferente.
-2. Tentar uma teoria quantitativa fechada para a anomalia de H-013 (função
-   geradora para o processo de ramificação da árvore reversa).
+1. Tentar resolver a metade par de H-008 com uma ideia nova.
+2. Retomar a teoria quantitativa da anomalia de H-013 com um método mais
+   econômico (ex: amostragem em vez de BFS exaustivo para medir o expoente
+   de crescimento da árvore).
 3. Considerar formalizar os teoremas já provados (H-005, H-007, H-009,
-   H-012, H-014, H-015, H-017, H-019, H-021) em Lean/SageMath se o projeto
-   crescer nessa direção (fora de escopo por enquanto, ver `ROADMAP.md`).
+   H-012, H-014, H-015, H-017, H-019, H-021, H-022) em Lean/SageMath se o
+   projeto crescer nessa direção (fora de escopo por enquanto, ver
+   `ROADMAP.md`).
 4. Continuar revisando qualquer nova alegação de prova externa que o diretor
    científico receber, seguindo o padrão já estabelecido em
    `literature/unverified-proof-claims.md`.

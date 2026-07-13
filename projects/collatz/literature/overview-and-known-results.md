@@ -35,6 +35,18 @@ fecham o argumento, mas não conseguem eliminar esse resíduo.
 
 Fonte geral: [Wikipedia — Collatz conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture)
 
+## Nota sobre indecidibilidade (Fractran, Conway)
+
+John Conway criou o Fractran, uma generalização do estilo de dinâmica do
+3n+1 que é Turing-completa. Isso levanta a possibilidade teórica de que
+problemas desse tipo (incluindo, possivelmente, variantes do Collatz) sejam
+formalmente indecidíveis — não no sentido de "não sabemos a resposta", mas
+"não existe prova dentro do sistema formal usual". Não implica que a
+Conjectura de Collatz especificamente seja indecidível, mas é um contexto
+relevante para calibrar expectativas sobre a dificuldade do problema.
+(Fonte: vídeo do Veritasium "The Simplest Math Problem No One Can Solve",
+trazido pelo diretor científico em 2026-07-13.)
+
 ## Implicação prática para este laboratório
 
 Qualquer hipótese que formularmos deveria, idealmente, dizer explicitamente **como
