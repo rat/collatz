@@ -87,10 +87,67 @@ instáveis/ruidosas para t grande, mas **não explica por que o valor final
 assintótico da razão é especificamente <1** para (10,11)/(13,14) e >1 para
 (4,5)/(7,8) — essa parte continua sem explicação teórica completa.
 
+## Tentativa de derivação teórica fechada (pedido do diretor científico)
+
+Tentei derivar uma fórmula fechada usando a relação recursiva **exata**
+D(v) = D(2v) + D(w) [quando v≡4 mod6, w=(v−1)/3], válida para a densidade
+D(v) do subárvore reverso de qualquer nó v. Aplicando repetidamente ao longo
+da cadeia de duplicações de J_t, obtém-se:
+
+D(J_t) = Σ_{i=1}^∞ D(w_i)
+
+onde w_1, w_2, w_3, ... são os sucessivos "filhos de ramo" encontrados subindo
+pela cadeia de duplicações a partir de J_t (uma soma infinita e exata, não
+uma aproximação). O problema é que cada D(w_i) não se reduz a nenhum f(t')
+já conhecido — w_i é um inteiro ímpar genérico sem relação simples com a
+família J_t, e sua própria densidade depende recursivamente da mesma
+estrutura, exigindo conhecer o resíduo de cada w_i módulo 3^k para k
+arbitrariamente grande. **Não consegui fechar essa recursão numa fórmula
+finita** — parece exigir entender a estrutura autossimilar completa da
+árvore reversa (equivalente, possivelmente, a um problema em aberto na
+literatura sobre a densidade do grafo de Collatz). Reportando isso com
+honestidade em vez de forçar uma fórmula sem sustentação.
+
+## Precisão numérica melhorada (usando múltiplos núcleos)
+
+Diante da dificuldade teórica, usei os 16 núcleos e ~55GB de RAM disponíveis
+para aumentar a precisão numérica das razões, paralelizando a construção da
+árvore para diferentes t simultaneamente.
+
+**Armadilha encontrada**: numa primeira tentativa, comparei t=10 (n_max=1e12)
+com t=11 (n_max=1e13) — escalas DIFERENTES — e obtive uma razão claramente
+errada (0.651, inflada por ~10× exatamente o fator entre os dois n_max).
+Corrigido usando sempre o **mesmo n_max** para os dois membros de cada par.
+
+**Limite de infraestrutura encontrado**: uma tentativa de empurrar ainda mais
+(n_max=1e13 para o par 10/11, 1e15 para o par 13/14) foi **morta pelo OOM
+killer do sistema** duas vezes (processos usando 33GB e 61GB) — o ambiente
+tem um limite de memória efetivo menor que os ~62GB nominais (provavelmente
+um cgroup), útil registrar para futuras tentativas de computação pesada
+nesta sessão.
+
+### Tabela final consolidada
+
+| par | 20M | 80M | 1e10 | 1e11 | 1e12 | 1e14 |
+|---|---|---|---|---|---|---|
+| (10,11) | 0.048 | 0.072 | 0.0655 | 0.0656 | **0.0649** | — |
+| (13,14) | 0.200 | — | 0.296 | 0.271 | — | **0.281** |
+
 ## Status de H-018
 
-**Mecanismo qualitativo parcial, refinado com dados melhor convergidos.**
-A inversão é confirmada como um fato assintótico genuíno (não ruído), mas
-o valor exato para onde cada razão converge ainda não tem uma fórmula
-fechada — uma teoria quantitativa completa (função geradora para o
-processo de ramificação) fica como trabalho futuro.
+**Mecanismo qualitativo confirmado; convergência numérica bem estabelecida;
+fórmula fechada não encontrada (provavelmente um problema genuinamente
+difícil).**
+
+- **(10,11)**: alta confiança — a razão fica entre 0.0649 e 0.0656 em três
+  escalas diferentes cobrindo duas ordens de magnitude (1e10, 1e11, 1e12),
+  variação de <1.5%. Convergência muito bem estabelecida em torno de **~0.065**.
+- **(13,14)**: confiança moderada — valores em 1e10, 1e11, 1e14 (0.296,
+  0.271, 0.281) oscilam num intervalo de ~9%, consistente com convergência
+  a algo em torno de **~0.27-0.28**, mas sem a mesma precisão do par (10,11)
+  (faltam pontos intermediários em 1e12/1e13, que causaram OOM ao tentar).
+
+A inversão do padrão é confirmada como fato assintótico genuíno (não ruído
+de árvore finita). O valor exato para onde cada razão converge, e uma
+derivação teórica fechada, continuam como questão em aberto — tentei via a
+recursão exata D(v)=ΣD(w_i) e não consegui reduzi-la a uma forma finita.

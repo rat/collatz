@@ -76,3 +76,16 @@ Simulação Monte Carlo: para n aleatório, achar o último valor ímpar antes d
   teórica fechada — questão genuinamente em aberto, agora caracterizada com
   mais precisão numérica. Ver atualização em
   `experiments/E-018-reverse-tree-branching/README.md`.
+- 2026-07-13: **tentativa de derivação teórica fechada** (pedido do diretor
+  científico). A relação recursiva exata D(v)=D(2v)+D(ramo) leva a
+  D(J_t)=Σ D(w_i) (soma infinita sobre os filhos de ramo) que não fecha
+  numa fórmula finita — cada w_i exigiria conhecer resíduos mod 3^k para k
+  arbitrário, recursivamente. Não consegui resolver isso — provavelmente um
+  problema genuinamente difícil. Usei os 16 núcleos/55GB disponíveis para
+  melhorar a precisão numérica em vez disso: **(10,11) confirmado em ~0.065
+  com alta confiança** (variação <1.5% em três escalas, 1e10 a 1e12);
+  **(13,14) em ~0.27-0.28 com confiança moderada** (oscila ~9% entre
+  1e10/1e11/1e14). Uma tentativa de escalar ainda mais (1e13/1e15) foi
+  morta pelo OOM killer do sistema — o ambiente tem um limite de memória
+  prático menor que os 62GB nominais (provavelmente um cgroup), registrado
+  para futuras tentativas de computação pesada.

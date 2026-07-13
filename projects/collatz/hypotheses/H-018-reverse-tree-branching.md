@@ -72,3 +72,17 @@ posterior inversão da razão entre classes adjacentes.
   eram instáveis, mas não explica por que o valor assintótico final é
   especificamente <1 para (10,11)/(13,14) e >1 para (4,5)/(7,8) — isso
   continua sem teoria fechada.
+- 2026-07-13: **tentativa de derivação teórica fechada** (pedido do diretor
+  científico). Usando a relação recursiva exata D(v)=D(2v)+D(w) [ramo],
+  obtive D(J_t)=Σ D(w_i) (soma infinita exata sobre os filhos de ramo da
+  cadeia de duplicações) — mas cada w_i não se reduz a nenhum f(t') já
+  conhecido, exigindo entender recursivamente resíduos módulo 3^k para k
+  arbitrário. **Não consegui fechar numa fórmula finita** — parece um
+  problema genuinamente difícil (talvez conectado a questões em aberto
+  sobre a densidade do grafo de Collatz). Usei os 16 núcleos/55GB
+  disponíveis para melhorar a precisão numérica em vez disso: (10,11)
+  confirmado em ~0.065 com alta confiança (3 escalas, 1e10-1e12, variação
+  <1.5%); (13,14) em ~0.27-0.28 com confiança moderada (oscila ~9% entre
+  1e10/1e11/1e14). Uma tentativa de escalar ainda mais (1e13/1e15) foi
+  morta pelo OOM killer do sistema (limite de memória menor que os 62GB
+  nominais) — registrado como limite prático de infraestrutura.

@@ -370,6 +370,20 @@ pediu para lembrá-lo de avisar quando isso for feito).
   em 10¹⁰ vs 0.0656 em 10¹¹) — confirma que a inversão é um fato assintótico
   real e permanente, não ruído de amostra pequena como eu havia sugerido
   antes. Ainda sem fórmula fechada para o valor exato de convergência.
+- 2026-07-13: diretor científico pediu uma derivação teórica fechada,
+  lembrando que há 16 núcleos e ~55GB de RAM disponíveis. Tentei via a
+  relação recursiva exata D(v)=D(2v)+D(ramo), que leva a uma soma infinita
+  D(J_t)=Σ D(w_i) — **não consegui fechar numa fórmula finita** (exigiria
+  resíduos mod 3^k para k arbitrário, recursivamente; possivelmente um
+  problema genuinamente difícil/em aberto). Reportei essa limitação com
+  honestidade em vez de forçar uma fórmula frágil. Usei o paralelismo
+  oferecido para melhorar a precisão numérica: no caminho, cometi (e
+  corrigi) um erro de comparar t=10 e t=11 em n_max DIFERENTES (razão
+  inflada 10×); depois disso, uma tentativa de escalar ainda mais foi morta
+  pelo OOM killer do sistema (limite de memória prático menor que os 62GB
+  nominais — registrado para o futuro). Resultado final: **(10,11)
+  confirmado em ~0.065 com alta confiança** (três escalas, 1e10-1e12,
+  variação <1.5%); **(13,14) em ~0.27-0.28 com confiança moderada**.
 
 ## Próximos passos
 
@@ -380,24 +394,28 @@ resolvido** (H-007), com uma técnica irmã generalizada em larga escala
 (H-011), assim como a cauda do pico da órbita (H-017) e a Lei de Benford
 (H-023). A lista de brainstorm do Fable está **totalmente esgotada**.
 **H-008 está agora parcialmente resolvida** (H-022, metade ímpar provada).
-A anomalia de H-013 agora está **caracterizada com precisão numérica**
-(razões convergem para valores assintóticos estáveis), mas sem fórmula
-fechada. Restam duas questões genuinamente em aberto:
+A anomalia de H-013 agora está **caracterizada com alta precisão numérica**
+((10,11)≈0.065, (13,14)≈0.27-0.28), mas **a derivação teórica fechada não
+foi encontrada** (tentei via a recursão exata D(v)=D(2v)+D(ramo) e não
+fechou — possivelmente um problema genuinamente difícil). Restam duas
+questões genuinamente em aberto:
 
 1. **H-008, metade par** (N≡4 mod18) — passos acelerados só alcançam
    ímpares, a técnica de H-022 não se aplica diretamente; precisaria de
    argumento estruturalmente diferente.
-2. **Fórmula fechada para a anomalia de H-013** — sabemos que as razões
-   (10,11)→~0.066 e (13,14)→~0.27-0.30 convergem, mas não temos uma teoria
-   que derive esses valores especificos a partir de primeiros princípios.
+2. **Fórmula fechada para a anomalia de H-013** — valores de convergência
+   agora bem medidos numericamente ((10,11)≈0.065, (13,14)≈0.27-0.28), mas
+   sem teoria que os derive a partir de primeiros princípios. A recursão
+   exata D(J_t)=Σ D(w_i) foi tentada e não fechou.
 
 Tarefa pendente (**só fazer quando o diretor científico pedir
 explicitamente**, por último — lembrar de avisar quando for feito): paper
 sobre os erros do PDF de Santos (`BACKLOG.md` item 5). Outras candidatas:
 
 1. Tentar resolver a metade par de H-008 com uma ideia nova.
-2. Derivar teoricamente os valores de convergência das razões de H-013 (ex:
-   via função geradora para o processo de ramificação).
+2. Se alguém quiser retomar a fórmula fechada de H-013: a recursão
+   D(v)=D(2v)+D(ramo) é exata e correta, só não fecha sem mais alguma ideia
+   (talvez truncamento controlado, ou uma transformação diferente).
 3. Considerar formalizar os teoremas já provados (H-005, H-007, H-009,
    H-012, H-014, H-015, H-017, H-019, H-021, H-022) em Lean/SageMath se o
    projeto crescer nessa direção (fora de escopo por enquanto, ver
