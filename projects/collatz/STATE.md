@@ -5,7 +5,7 @@
 ## Onde estamos
 
 Levantamento inicial da literatura concluído (ver `literature/00-index.md`).
-**Vinte e oito hipóteses testadas (H-001 a H-028)**, mais um PDF externo e
+**Vinte e nove hipóteses testadas (H-001 a H-029)**, mais um PDF externo e
 quatro listas de ideias de outras IAs revisadas criticamente (a maioria dos
 itens especulativos — sem ponte concreta — descartada conscientemente; ver
 `literature/external-ideas-review.md`). **H-024**: prova computacional de
@@ -30,6 +30,11 @@ supera nossos 62,5% de exclusão computacionalmente. H-028 reclassificado
 de "candidato forte a paper" para consolidação majoritariamente já
 conhecida — só H-022 (mod9) permanece como possível peça nova, não
 confirmada como inédita. Ver seção "Checagem de novidade" em H-028.md.
+Também lido e catalogado o paper de Winkler (2026, arXiv:1709.03385) sobre
+"coefficient stopping time" — tópico diferente, não resolve a dúvida de
+H-022. **H-029**: checagem rápida (não profunda) mostra que a classe
+1 mod6 (única sem exclusão) não tem sub-estrutura óbvia até mod48 — sem
+motivo para insistir aí sem ideia algébrica nova.
 **Resultado central do projeto**: recordistas reais
 de stopping time nunca são ≡2 mod 3 (exceto o caso trivial n=2) — confirmado
 empiricamente (H-004, n=148, p<10^-13) e **provado algebricamente** (H-007).

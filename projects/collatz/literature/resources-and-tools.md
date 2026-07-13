@@ -43,3 +43,32 @@ Lições reportadas:
 Isso reforça o desenho do `protocols/new-hypothesis.md` e `new-experiment.md` —
 toda hipótese gerada precisa de um caminho claro de verificação, e resultados de
 experimento precisam ser reprodutíveis, não apenas "a IA disse que funciona".
+
+## Ferramentas práticas de busca de "delay records" (checagem de novidade de H-028)
+
+- [`rogerdahl/cuda-collatz`](https://github.com/rogerdahl/cuda-collatz) — calculadora
+  de "Delay Records" via GPU. README documenta explicitamente as otimizações usadas:
+  pular N par (trivial), pular N≡2 mod3 (= nosso H-007, já conhecido), e **pular
+  N≡5 mod8 exceto o próprio 5** (= nosso H-014, quase palavra por palavra, incluindo
+  a mesma exceção). Usa também uma técnica geral de "sieve" (checar se dois caminhos
+  se juntam) que exclui ~80% dos N restantes — mais do que nossos 62,5% (H-028),
+  mas de forma computacional/empírica, não como fórmulas fechadas.
+- [`AlexMorson/Collatz-Delay-Records`](https://github.com/AlexMorson/Collatz-Delay-Records)
+  — outro buscador de delay records. Não menciona mod8/mod9 explicitamente, só uma
+  técnica de "skip" via potências de 2 e 3.
+- Nenhuma das duas fontes menciona uma exclusão mod9 (nosso H-022) — não temos
+  confirmação de que seja novo, só ausência de evidência do contrário.
+
+## Winkler (2026) — "Deterministic Structures in the Stopping Time Dynamics of the 3x+1 Problem"
+
+[arXiv:1709.03385](https://arxiv.org/abs/1709.03385) — lido por completo (PDF salvo
+localmente durante a sessão de 2026-07-13). **Tópico diferente do nosso**: estuda o
+*coefficient stopping time* de Terras (σ*, uma variante algébrica do stopping time
+clássico, conjecturalmente igual a ele) e constrói uma árvore recursiva de classes de
+congruência mod 2^σₙ que caracteriza TODOS os inteiros com um dado valor de σ*— não
+trata de recordistas (delay records) nem de exclusões mod3/mod8/mod9. Reformula a
+conjectura como um "problema de cobertura Diofantina" (união das classes cobre todos
+os inteiros?). Não resolve nem contradiz nada do nosso H-007/H-014/H-022/H-028;
+não usado para a checagem de novidade, mas relevante para catalogar caso a via de
+"árvore de classes de congruência" seja retomada no futuro (conecta com nosso H-013/
+H-018 em espírito, embora com maquinário diferente).
