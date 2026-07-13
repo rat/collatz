@@ -35,6 +35,31 @@ Também lido e catalogado o paper de Winkler (2026, arXiv:1709.03385) sobre
 H-022. **H-029**: checagem rápida (não profunda) mostra que a classe
 1 mod6 (única sem exclusão) não tem sub-estrutura óbvia até mod48 — sem
 motivo para insistir aí sem ideia algébrica nova.
+## Avaliação estratégica (2026-07-13, importante)
+
+Depois de consolidar a família de exclusão (H-028) e investigar sua
+novidade a fundo, cheguei a uma conclusão honesta que muda a expectativa
+sobre "encontrar algo importante para publicar" nesta linha específica:
+**H-022 (mod9, nossa peça mais nova) é, na prática, uma instância de
+"colisão de caminhos"** — M's órbita passa por N depois de exatamente 5
+passos. Isso é *precisamente* o que a técnica genérica de sieve já usada
+por caçadores de recordistas (`cuda-collatz`: "checks whether paths come
+together...") já detecta e explora computacionalmente, mesmo sem a fórmula
+fechada escrita em lugar nenhum. Ou seja: mesmo nossa melhor peça é, na
+melhor das hipóteses, uma instância elegante e provada de um fenômeno já
+conhecido — não uma descoberta de algo novo na prática. Ver nota em
+`H-022-mod9-multiplicative-exclusion.md`.
+
+Combinado com H-029 (a única classe sem exclusão, 1 mod6, não mostra
+sub-estrutura óbvia até mod48), a conclusão honesta é: **a linha de
+"exclusão de recordistas por classe residual" está substancialmente
+esgotada** — não há mais um caminho óbvio daqui para um resultado
+genuinamente novo sobre Collatz por essa via específica. Isso não
+significa parar o loop de pesquisa (instrução permanente do diretor
+científico), mas sim que a próxima iteração produtiva provavelmente
+precisa de um ângulo diferente (não mais "achar mais uma classe mod k
+excluída").
+
 **Resultado central do projeto**: recordistas reais
 de stopping time nunca são ≡2 mod 3 (exceto o caso trivial n=2) — confirmado
 empiricamente (H-004, n=148, p<10^-13) e **provado algebricamente** (H-007).

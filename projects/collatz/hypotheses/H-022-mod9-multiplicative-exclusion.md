@@ -62,3 +62,28 @@ Confirmado sem exceção para j=0 a 100.000 (N até ~1.8 milhões).
 
 - 2026-07-13: teorema formulado, provado e verificado. Resolve a metade
   ímpar de H-008. Metade par permanece em aberto.
+- 2026-07-13: **metade par resolvida em H-027** (corolário de H-007, na
+  verdade mais amplo: N≡4 mod6). H-008 agora completamente fechada.
+- 2026-07-13: **reavaliação crítica de novidade (importante)**. Ao
+  consolidar a família de exclusão em H-028 e checar se já era conhecida,
+  percebi (com o advisor) algo que deveria ter sido óbvio antes: **este
+  teorema é exatamente uma instância de "colisão de caminhos"** — M's
+  orbit passa por N depois de exatamente 5 passos (2 passos acelerados,
+  a=1 então b=2). Isso é *precisamente* o mecanismo que a técnica genérica
+  de "sieve" usada por caçadores de recordistas na prática (`cuda-collatz`:
+  *"checks whether paths come together. If two paths join then the upper
+  one can never yield a Delay Record"*) já detecta e explora
+  computacionalmente — sem precisar conhecer a fórmula algébrica fechada
+  (M=16j+11 em termos de j). Colisões de 5 passos estão bem dentro da
+  profundidade que qualquer sieve razoável varre (a fonte reporta ~80% de
+  exclusão via essa técnica, mais que nossos 62,5%).
+
+  **Conclusão honesta**: o EFEITO PRÁTICO deste teorema (quais N são
+  excluídos) quase certamente já é alcançado computacionalmente pela
+  comunidade de busca de recordistas, mesmo que a FÓRMULA FECHADA
+  específica (M=16j+11) talvez não esteja escrita em lugar nenhum como
+  teorema nomeado. Isso rebaixa a expectativa de "novidade publicável"
+  deste resultado — é, na melhor das hipóteses, uma instância elegante e
+  provada de um fenômeno já conhecido/explorado genericamente, não uma
+  descoberta de algo que a comunidade não sabia. Ver `H-028.md` (seção
+  "Checagem de novidade") para o contexto completo.
