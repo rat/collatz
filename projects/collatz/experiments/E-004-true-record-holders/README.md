@@ -2,88 +2,85 @@
 
 Hipótese relacionada: [`H-004-true-record-holders.md`](../../hypotheses/H-004-true-record-holders.md)
 
+> **⚠️ Correção (2026-07-13)**: a versão original deste experimento usou uma
+> lista de recordistas parcialmente incorreta (digitada de memória em vez de
+> vinda da saída real do script — ver [`CORRECTION.md`](CORRECTION.md)). O
+> código de busca de recordistas (`experiment.py`) estava correto; o erro foi
+> só na lista usada na caracterização mod-3/mod-9 depois. A análise abaixo usa
+> a sequência oficial e completa (OEIS A006877, 148 termos, fonte Roosendaal) e
+> **substitui** a conclusão anterior — o achado ficou mais forte, não mais
+> fraco, com dados corretos.
+
 ## O que foi testado
 
-Recordistas reais (n tal que total_stopping_time(n) supera todo m < n — mesma
-definição usada nas tabelas de Roosendaal) até o limite de 20-50 milhões,
-calculados diretamente (não copiados de tabela externa). Os primeiros valores
-batem com os recordistas conhecidos na literatura (ex: 27, 703, 871, 6171,
-77031, 837799, 8400511 — este último é um recordista famoso e bem documentado),
-o que valida nossa implementação.
+Recordistas reais (n tal que total_stopping_time(n) supera todo m < n) e sua
+estrutura residual mod 3 / mod 9 / mod 27, usando a sequência oficial e
+completa de Roosendaal/OEIS A006877 (148 termos, de n=1 até
+~1.47×10^19 — muito além do que dá para escanear em Python puro neste
+ambiente). Arquivo de dados: `oeis_A006877_record_holders.txt`. Reproduzir:
+`python3 experiment_v2_oeis_verified.py`.
 
-Três testes:
-(a) resíduo mod 2^k / 3^k / primos não relacionados (5,7,11,13), como em E-002;
-(b) autocorrelação lag-1 **interna** da própria órbita de cada recordista
-(não redutível a resíduo mod 2^k), comparada a uma amostra típica de órbita
-igualmente longa.
+Também testamos, separadamente, (b) autocorrelação lag-1 interna da órbita de
+cada recordista (ver seção própria abaixo) — essa parte não foi afetada pelo
+erro de transcrição, pois usava o scan real (até 20-50M) diretamente.
 
-## Resultado (a) — resíduo
+## Resultado (a) — resíduo, com dados corretos e completos
 
-Com apenas ~40-57 recordistas reais, a maioria das tabelas mod 2^k, mod 27, mod
-11, mod 13 tem células com contagem esperada abaixo de 5 — **estatisticamente
-inválidas**, e o script agora detecta e reporta isso em vez de imprimir um
-p-valor enganoso.
+| módulo | classes com 0 ocorrências | chi2 | dof | p |
+|---|---|---|---|---|
+| 3  | nenhuma | 76.39  | 2  | 5.2×10⁻¹⁴ |
+| 9  | {4, 5, 8} | 118.11 | 8  | 3.2×10⁻¹⁹ |
+| 27 | {4,5,8,11,13,14,17,20,22,23,26} | 174.54 | 26 | 1.8×10⁻²² |
 
-O que sobrou válido e testável:
+Distribuição mod 3: **85 recordistas ≡0, 62 ≡1, apenas 1 ≡2** (esperado
+uniforme: ~49.3 cada). O único caso ≡2 mod 3 é **n=2** — um recordista trivial
+(órbita de 1 passo). **Excluindo esse caso de borda, 0 dos 147 recordistas
+restantes são ≡2 mod 3.**
 
-- **mod 3 e mod 9: sinal forte e robusto** (chi2=26-29, p ~ 10^-6 a 10^-8,
-  confirmado com duas seeds diferentes de amostra típica). Composição real dos
-  57 recordistas até 20M: **30 são ≡0 mod 3, 25 são ≡1 mod 3, e só 2 são ≡2 mod
-  3** — uma sub-representação forte da classe residual 2 mod 3 (esperado seria
-  ~19 em cada classe sob distribuição uniforme).
-- mod 5, mod 7 (primos não relacionados à aritmética 3n+1): nenhum sinal — bom
-  controle negativo, como esperado.
+Em mod 9, as classes 4, 5 e 8 (todas ≡2 mod 3) nunca ocorrem — consistente com
+o achado mod-3. Em mod 27, 11 das 27 classes nunca ocorrem.
 
-### Por que isso NÃO é tautológico (diferente do achado mod-2^k de E-002)
+### Por que isso não é tautológico
 
-3n+1 mod 3 é sempre ≡ 1 mod 3, **independente do valor de n mod 3** — não existe
-o mesmo vínculo mecânico direto que liga resíduo mod 2^k à sequência de
-valuações. Então esse sinal, se real, não é uma reformulação da definição de
-stopping time — seria uma regularidade genuinamente nova sobre QUE números se
-tornam recordistas.
+Como discutido em H-005 (`experiments/E-005-mod3-valuation-parity/`), existe um
+lema provado que liga resíduo mod 3 de **termos subsequentes** de uma órbita à
+paridade da valuação daquele passo — mas esse lema não se aplica ao número
+**inicial** de uma órbita (não há "passo anterior" para ele). O viés
+encontrado aqui é sobre o número inicial (o próprio recordista), então H-005
+não o explica automaticamente. Continua sendo um padrão empírico genuíno e
+muito bem verificado, mas sem explicação mecanicista completa ainda.
 
-### Ressalva importante
+### O que descartamos ao longo do caminho (importante para não repetir)
 
-Amostra de 57 recordistas é **pequena** para uma alegação forte — recordistas de
-stopping time são raríssimos (crescem de forma extremamente lenta/logarítmica
-com o range: só 57 num intervalo de 20 milhões). O sinal é estatisticamente
-válido dentro dessa amostra e replicou com duas seeds, mas isso ainda é um
-candidato promissor, não uma conclusão estabelecida. Precisaria de mais
-recordistas (limite muito maior, o que é caro computacionalmente em Python
-puro) ou de uma tabela publicada mais extensa (Roosendaal) para confirmar em
-escala maior.
+Tentamos replicar esse achado usando "top-K por valor bruto de stopping time"
+em vez de recordistas estritos (`experiments/E-006-topk-stopping-time-mod3/`)
+e não vimos o mesmo viés. Investigando por quê, descobrimos que essas são
+**populações diferentes**: muitos números do "top-K bruto" nunca bateram
+recorde algum (só têm valor coincidentemente alto). Isso não refuta o achado —
+só mostra que "recordista estrito" é uma noção mais restritiva e especial do
+que "está entre os valores mais altos", e o viés mod-3 parece ser específico
+de recordistas estritos.
 
 ## Resultado (b) — autocorrelação interna, com controle de confounder
+
+(Esta parte não foi afetada pelo erro de transcrição.)
 
 Primeira rodada (sem controle): recordistas com autocorrelação lag-1 média
 0.076-0.106, típico 0.038-0.046, diferença "significativa" (p ~0.001-0.0001).
 
-**Mas identificamos um confounder real antes de aceitar isso**: recordistas têm
-órbitas sistematicamente mais longas (média 149 passos vs 73 do grupo típico
-filtrado), e a estimativa de autocorrelação amostral tem viés conhecido
-dependente do comprimento da série (~-1/(L-1) para séries i.i.d. curtas — séries
-mais curtas têm viés mais negativo). Isso por si só poderia gerar toda a
-diferença observada, sem nenhum fenômeno real.
-
-**Controle**: ajustamos um modelo `autocorr ~ a + b/(L-1)` usando só o grupo
-típico (que sabemos, por H-001/H-003, ser consistente com i.i.d.), e testamos se
-o resíduo dos recordistas (autocorr observado menos o previsto pelo próprio
-comprimento) é diferente de zero.
-
-Resultado: resíduo médio = 0.023, p = 0.053 — **não significativo** ao nível de
-corte de 0.01 usado no resto do projeto. Conclusão: a diferença "ingênua" era
-majoritariamente (não necessariamente totalmente) explicada pelo viés de
-comprimento de amostra curta, não por uma dinâmica realmente diferente dentro
-das órbitas de recordistas.
+Identificamos um confounder: recordistas têm órbitas sistematicamente mais
+longas (média 149 passos vs 73 do grupo típico filtrado), e a estimativa de
+autocorrelação amostral tem viés conhecido dependente do comprimento da série
+(~-1/(L-1) para séries i.i.d. curtas). Controlando via regressão ajustada no
+grupo típico, o resíduo médio dos recordistas caiu para 0.023 (p=0.053) — **não
+significativo** no corte de 0.01 usado no projeto. A diferença "ingênua" era
+majoritariamente explicada pelo viés de comprimento de amostra curta.
 
 ## Status de H-004
 
-**Resultado misto**:
-- Parte da hipótese (estrutura mod-2^k) não pôde ser testada de forma válida
-  (amostra insuficiente).
-- Autocorrelação interna: sinal inicial não sobrevive ao controle de
-  confounder — **não suportada**.
-- **Achado genuíno e não-tautológico**: recordistas reais mostram sub-
-  representação forte da classe residual 2 mod 3, robusta a duas seeds
-  diferentes. Candidato promissor para investigação futura, mas com amostra
-  pequena (57) — registrar como pista, não como conclusão fechada.
+- Autocorrelação interna: **não suportada** (não sobrevive ao controle de
+  confounder).
+- **Estrutura residual mod-3/9/27 dos recordistas: achado forte e robusto**,
+  agora verificado com dados oficiais completos (n=148, p < 10⁻¹³ em todos os
+  módulos testados). Sem explicação mecanicista completa ainda — candidato
+  genuíno para investigação teórica futura.

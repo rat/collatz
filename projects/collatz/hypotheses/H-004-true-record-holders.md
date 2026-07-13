@@ -1,6 +1,6 @@
 # H-004 — Recordistas reais de stopping time: estrutura além do tautológico
 
-Status: resultado misto (ver experimento E-004 — achado promissor mod-3, resto não suportado)
+Status: suportada (estrutura mod-3/9/27 confirmada com dados oficiais completos, n=148, p<10^-13); autocorrelação não suportada
 Criada em: 2026-07-13
 
 ## Enunciado
@@ -47,9 +47,21 @@ duas coisas:
   2. Autocorrelação interna lag-1: sinal aparente inicial (p~0.001) não
      sobreviveu ao controle de confounder de comprimento de órbita (p=0.053
      após controle) — não suportada.
-  3. **Achado novo e não-tautológico**: recordistas mostram forte
-     sub-representação da classe residual 2 mod 3 (2 de 57, esperado ~19),
-     robusto a duas seeds de amostra típica (p~10^-6 a 10^-8). Como 3n+1 mod 3
-     é sempre ≡1 independente de n mod 3, isso não decorre mecanicamente da
-     aritmética como o sinal mod-2^k de H-002. Candidato promissor para
-     investigação futura — amostra de 57 ainda é pequena para conclusão forte.
+  3. **Achado inicial mod-3** (amostra de 57 recordistas calculados
+     localmente). **Correção (mesmo dia)**: a caracterização dessa amostra
+     usou uma lista digitada de memória, com 4 valores incorretos (ver
+     `experiments/E-004-true-record-holders/CORRECTION.md`) — o código de
+     busca de recordistas estava correto (validado termo a termo contra OEIS
+     A006877 até 4M), só a lista usada depois para o `Counter` estava errada.
+     Refeito com a sequência oficial completa (OEIS A006877/Roosendaal, 148
+     termos, até ~1.47×10^19): o achado se confirma e fica **mais forte**, não
+     mais fraco — mod 3: 85≡0, 62≡1, apenas 1≡2 (o único caso é n=2, trivial;
+     excluindo-o, 0 de 147 recordistas restantes são ≡2 mod 3). p=5.2×10^-14
+     (mod 3), 3.2×10^-19 (mod 9), 1.8×10^-22 (mod 27) — todos com amostra
+     estatisticamente válida. Tentativa de replicar com "top-K por valor bruto"
+     em vez de recordistas estritos (E-006) não mostrou o mesmo viés — mas
+     isso reflete que são populações diferentes (top-K bruto inclui números
+     que nunca bateram recorde), não uma refutação. Hipótese agora
+     **suportada** com evidência forte e dados verificados — ainda sem
+     explicação mecanicista completa (H-005 explica termos subsequentes de uma
+     órbita, não o número inicial).

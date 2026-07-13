@@ -5,9 +5,11 @@
 ## Onde estamos
 
 Levantamento inicial da literatura concluído (ver `literature/00-index.md`).
-Cinco hipóteses testadas (H-001 a H-005) — ver resultados abaixo. As três
-candidatas de próximo passo pedidas pelo diretor científico foram todas
-executadas nesta rodada.
+Seis hipóteses testadas (H-001 a H-006). Achado mais importante do projeto até
+agora: **recordistas reais de stopping time quase nunca são ≡2 mod 3** (H-004),
+confirmado com dados oficiais completos (OEIS A006877, n=148, p<10^-13) após
+corrigir um erro de transcrição na análise original (ver
+`experiments/E-004-true-record-holders/CORRECTION.md`).
 
 ## O que o levantamento estabeleceu
 
@@ -31,6 +33,20 @@ executadas nesta rodada.
 
 ## Hipóteses confirmadas
 
+- `H-004` — recordistas reais de stopping time (não outliers locais). **Achado
+  principal do projeto até agora**: entre os 148 recordistas reais oficiais
+  (OEIS A006877/Roosendaal, de n=1 até ~1.47×10^19), 85 são ≡0 mod 3, 62 são
+  ≡1 mod 3, e **apenas 1 é ≡2 mod 3** (esperado uniforme: ~49 cada). O único
+  caso ≡2 é n=2 (trivial/borda) — excluindo-o, **0 de 147** recordistas
+  restantes são ≡2 mod 3. p=5.2×10^-14 (mod 3), 3.2×10^-19 (mod 9), 1.8×10^-22
+  (mod 27), todos com amostra válida. Ainda sem explicação mecanicista
+  completa. Ver `hypotheses/H-004-true-record-holders.md` e
+  `experiments/E-004-true-record-holders/README.md`.
+  **Nota de integridade**: a análise original usava uma lista de 57
+  recordistas reconstruída de memória, com 4 valores incorretos — corrigido
+  usando a sequência oficial completa (ver `CORRECTION.md` no experimento).
+  O código de busca de recordistas em si sempre esteve correto (validado
+  termo a termo contra a fonte oficial).
 - `H-005` — lema: T(n) mod 3 é determinado inteiramente pela paridade de a(n)
   (a valuação 2-ádica do passo), nunca pelo resíduo de n mod 3. Prova algébrica
   curta + verificação computacional sem exceção em 777.748 passos (ver
@@ -62,14 +78,15 @@ executadas nesta rodada.
   em nenhum lag (500k amostras cada, todos p > 0.2). Reforça a suposição i.i.d.
   padrão para além do lag 1. Hipótese refutada. Ver
   `hypotheses/H-003-long-range-dependency.md`.
-- `H-004` — recordistas reais de stopping time (não outliers locais). Testada em
-  `experiments/E-004-true-record-holders/` (recordistas reais até 20-50M,
-  validados contra a literatura). Autocorrelação interna: sinal inicial não
-  sobreviveu ao controle de confounder de comprimento de órbita — não suportada.
-  **Achado promissor** (não tautológico, diferente de H-002): recordistas mostram
-  forte sub-representação da classe residual 2 mod 3 (2 de 57, esperado ~19),
-  robusto a duas seeds (p~10^-6 a 10^-8) — amostra ainda pequena, candidato para
-  investigação futura. Ver `hypotheses/H-004-true-record-holders.md`.
+- `H-004` (autocorrelação interna, parte da hipótese) — sinal inicial não
+  sobreviveu ao controle de confounder de comprimento de órbita — não
+  suportada. (A parte mod-3 de H-004 é o principal achado confirmado do
+  projeto, ver "Hipóteses confirmadas" acima.)
+- `H-006` — viés mod-3 replicado via "top-K por valor bruto" em vez de
+  recordistas estritos. Não suportada como formulada (nenhum viés no top-K
+  bruto), mas o diagnóstico foi valioso: top-K bruto e recordista estrito são
+  populações diferentes, e isso ajudou a descobrir o erro de transcrição
+  corrigido em H-004. Ver `hypotheses/H-006-top-k-stopping-time-mod3.md`.
 
 ## Descobertas recentes
 
@@ -88,22 +105,35 @@ executadas nesta rodada.
   residuo mod 2^k é quase-determinístico em função da sequência de valuações, que
   é a própria definição de outlier. Sempre verificar se um sinal "óbvio" não é só
   a definição reformulada antes de comemorar.
+- 2026-07-13: **lição de integridade importante** — uma lista de recordistas
+  usada para caracterizar H-004 foi digitada de memória em vez de vinda da
+  saída real do script, e continha 4 valores incorretos que distorceram a
+  conclusão inicial. Corrigido usando a sequência oficial (OEIS A006877). O
+  código em si estava correto o tempo todo. Lição documentada em
+  `protocols/new-experiment.md`: nunca reconstruir dados de memória — sempre
+  usar a saída real ou uma fonte externa salva no repositório.
+- 2026-07-13: com dados corrigidos, o achado mod-3 de H-004 ficou **mais
+  forte**, não mais fraco (n=148 em vez de 57, p<10^-13 em três módulos).
+  Maior achado do projeto até agora.
 
 ## Próximos passos
 
-Cinco hipóteses testadas (H-001 a H-005). As três candidatas pedidas pelo
-diretor científico foram todas executadas: extensão de H-001 (H-003, refutada),
-recordistas reais (H-004, achado promissor + autocorrelação descartada), e
-ângulo 2-ádico/ergódico (H-005, lema confirmado). Nenhuma pendência aberta no
-momento — candidatas para a próxima sessão (escolher com o diretor científico):
+Seis hipóteses testadas (H-001 a H-006). Achado central do projeto:
+recordistas reais quase nunca são ≡2 mod 3 (H-004, agora com dados oficiais
+robustos). Candidatas para a próxima sessão (escolher com o diretor
+científico):
 
 1. Investigar por que os números **iniciais** de recordistas evitam resíduo 2
    mod 3 (achado de H-004) — H-005 explica termos subsequentes de uma órbita,
-   mas não o número inicial. Precisaria de mais recordistas reais (fonte
-   externa tipo Roosendaal, já que escanear além de 50M em Python puro é caro)
-   ou uma ideia teórica diferente.
+   mas não o número inicial. Agora temos 148 recordistas reais (arquivo
+   `experiments/E-004-true-record-holders/oeis_A006877_record_holders.txt`)
+   para investigar mais a fundo — ex: olhar a estrutura da PRIMEIRA valuação
+   a_1 de cada recordista e ver se ela se relaciona com o resíduo mod 3 do
+   próprio n (o lema de H-005 é sobre o passo seguinte, mas pode haver uma
+   relação análoga para o próprio n via sua fatoração).
 2. Generalizar o lema de H-005 para outros módulos além de 3 (ex: mod 9, mod
-   27) — pode revelar mais estrutura exata reutilizável.
+   27) — pode revelar mais estrutura exata reutilizável, e possivelmente
+   conectar com os padrões mod-9/27 já observados em H-004.
 3. Considerar formalizar alguma dessas descobertas em Lean/SageMath se o
    projeto crescer nessa direção (fora de escopo por enquanto, ver
    `ROADMAP.md`).
