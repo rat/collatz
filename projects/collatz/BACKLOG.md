@@ -160,10 +160,19 @@ Candidatos ainda não implementados, por ordem de prioridade sugerida:
    — potencial nova via para H-009 (ciclos não-triviais).
 2. Incorporar H-015 (mod 2^d sistemático, 2374 classes) à consolidação de
    H-028 — deixado de fora por ser lista grande, não fórmula fechada.
-3. Koopman operator/DMD vetorial (extensão de H-017) — mantido em espera
-   até formular a afirmação falsificável específica que o resultado
-   confirmaria ou refutaria, para não repetir o risco de "matemática de
-   aparência" já identificado na terceira lista.
+
+**Koopman operator/DMD vetorial — DESCARTADO (não apenas "em espera")**:
+ao finalmente formular a afirmação falsificável específica pedida (prever
+resíduos/bits de m a partir de resíduos/bits de n via um mapa linear
+ajustado por regressão/DMD), percebi que essa é exatamente a mesma
+pergunta que H-025 já respondeu por outro método (busca direta de
+correlação linear): a resposta esperada é "nenhuma estrutura linear além
+da trivial (explicada pela valuação a)", já confirmada por H-025 e
+consistente com a independência confirmada em H-001/H-003. Implementar o
+DMD só para redescobrir isso seria trabalho caro por confirmação
+previsível — exatamente o tipo de atividade que o loop deveria evitar
+fabricar. Descartado como redundante, não como "não testável" (distinção
+importante: não é vago, é previsível).
 
 ## 4. Verificação de alegações de prova externas
 
