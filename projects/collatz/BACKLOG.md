@@ -66,8 +66,11 @@ Ideias do Fable ainda não testadas, candidatas para sessões futuras:
   profundidade 8-10 tratando mod 2 e mod 3 conjuntamente (ideia original do
   Fable) ainda não foi tentada da forma mais ambiciosa — pode ainda valer a
   pena, mas exige uma técnica nova, não apenas estender o que já tentamos.
-- Investigar a anomalia p₅>p₄ de H-013 (talvez ligada ao resíduo mod 3 de
-  cada J_t afetando a estrutura da árvore reversa).
+- **Anomalia p₅>p₄ de H-013 — mecanismo qualitativo encontrado (H-018)**:
+  construção explícita da árvore reversa (Galton-Watson) revelou competição
+  entre vantagem geracional (constante) e orçamento de bits log₂(n_max/J_t)
+  (encolhe 2 bits por unidade de t). Explica qualitativamente a inversão,
+  sem fórmula fechada. Ver `hypotheses/H-018-reverse-tree-branching.md`.
 - **Cauda geométrica do pico da órbita — CONCLUÍDA**: testada em H-017/E-017.
   Martingale exato (E[3/2^a]=1) implica expoente de Cramér θ*=1 sem
   parâmetro livre. Confirmado empiricamente: inclinação da cauda distante

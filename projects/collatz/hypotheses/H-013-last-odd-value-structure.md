@@ -1,6 +1,6 @@
 # H-013 — Todo órbita termina em J_t=(4^t−1)/3; classes estéreis explicadas por H-005
 
-Status: confirmada (teorema + verificação); anomalia p₅>p₄ deixada como questão em aberto
+Status: confirmada (teorema + verificação); anomalia p₅>p₄ com mecanismo qualitativo identificado em H-018 (sem fórmula fechada)
 Criada em: 2026-07-13
 Origem: brainstorm assistido pelo modelo Fable (consultado a pedido do diretor
 científico sobre padrões binários), verificado de forma independente.
@@ -58,3 +58,12 @@ Simulação Monte Carlo: para n aleatório, achar o último valor ímpar antes d
   inverte em (10,11) e (13,14). Não é um padrão simples de mod 3. Anomalia
   confirmada como real (não é ruído — verificada em duas escalas, 20M e
   80M) mas continua sem explicação. Ver `experiments/E-013-last-odd-value-structure/CORRECTION.md`.
+- 2026-07-13: mecanismo qualitativo encontrado em H-018 (construção
+  explícita da árvore reversa via Galton-Watson): competição entre
+  "ramificar uma geração mais cedo" (vantagem constante de t≡2mod3) e o
+  "orçamento" log₂(n_max/J_t), que encolhe 2 bits por unidade de t. Para t
+  pequeno a vantagem geracional domina (explica p₅>p₄, p₈>p₇); para t maior
+  o orçamento fica tão pequeno que a população absoluta (dezenas de nós) é
+  dominada por flutuações de árvore finita, invertendo o padrão. Não é uma
+  fórmula fechada, mas explica qualitativamente por que a razão não é
+  monotônica. Ver `experiments/E-018-reverse-tree-branching/`.
