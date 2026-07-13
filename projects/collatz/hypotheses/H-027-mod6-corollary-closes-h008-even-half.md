@@ -77,3 +77,15 @@ peso.
   após revisão), e verificado exaustivamente sem exceção em 500.000 casos.
   Fecha H-008 completamente. Framing honesto registrado: corolário, não
   breakthrough.
+- 2026-07-13: **cross-check contra os 148 recordistas reais (OEIS
+  A006877, dado já baixado em E-004)**: zero violações de H-007 (nenhum
+  ≡2 mod3 exceto n=2) e zero violações de H-027 (nenhum ≡4 mod6). Mais
+  interessante: isso revela uma caracterização limpa e completa mod 6 —
+  distribuição real é {mod6=0: 15, mod6=1: 62, mod6=2: 1 (só n=2),
+  mod6=3: 70, mod6=4: 0, mod6=5: 0}. Ou seja: **recordistas só existem em
+  {0, 1, 3} mod 6, nunca em {2, 4, 5} mod 6 (exceto o caso trivial n=2 em
+  mod6=2)** — as três classes excluídas têm prova completa (H-007 cobre
+  2 e 5 mod6 diretamente; H-027 cobre 4 mod6). É uma afirmação curta,
+  completa, com prova, e validada contra 100% dos dados reais conhecidos
+  sem exceção — o tipo de resultado limpo que vale destacar mesmo não
+  sendo, por si só, um avanço sobre a conjectura completa.
