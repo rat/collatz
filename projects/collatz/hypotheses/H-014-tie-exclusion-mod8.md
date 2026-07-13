@@ -5,6 +5,20 @@ Criada em: 2026-07-13
 Origem: brainstorm assistido pelo modelo Fable (consultado a pedido do diretor
 científico sobre padrões binários), verificado de forma independente.
 
+**Nota de novidade (2026-07-13, adicionada ao consolidar H-028)**: busca
+na literatura/comunidade prática revelou que este fato **já é conhecido**
+— o README do projeto `rogerdahl/cuda-collatz` (calculadora de "Delay
+Records" via GPU) declara quase literalmente o mesmo enunciado: *"Any N
+of the form 8k+4 will reach 6k+4 after 3 steps, and so will any N of the
+form 8k+5. Therefore no N of the form 8k+5 can be a Class Record (5
+itself being the only exception)."* — inclusive com a mesma exceção (n=5)
+que nossa prova encontra. Nossa derivação (via empate exato, não via essa
+identidade de 3 passos) chega de forma independente ao mesmo resultado,
+o que é um bom sinal de correção, mas **isto não é um resultado novo**,
+é folclore já usado por quem caça recordistas há anos. Ver
+`literature/external-ideas-review.md` ou `H-028` para o contexto completo
+da checagem de novidade.
+
 ## Enunciado
 
 Nenhum recordista de total stopping time N>2 satisfaz N≡5 (mod 8) (ou seja,

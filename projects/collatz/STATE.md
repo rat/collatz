@@ -20,12 +20,17 @@ POR COMPLETO** (H-022 + H-027 novo): a classe 4 mod9 está totalmente
 excluída de recordistas, com prova — H-027 fechou a metade par como
 corolário direto de H-007 (na verdade válido para toda a classe mais
 ampla N≡4 mod6), verificado sem exceção em 500.000 casos. **H-028**:
-consolidação via CRT de H-007+H-014+H-022+H-027 mod 72 — **45 de 72
-resíduos (62,5%) provavelmente excluídos**, zero violações contra os 148
-recordistas reais. Candidato mais forte do projeto a nota/paper curto se
-o diretor científico decidir formalizar (distinto do paper sobre o PDF do
-Santos, que continua pendente até pedido explícito). **Resultado
-central do projeto**: recordistas reais
+consolidação via CRT de H-007+H-014+H-022+H-027 mod 72 — 45 de 72
+resíduos (62,5%) provavelmente excluídos, zero violações contra os 148
+recordistas reais. **Checagem de novidade feita (importante, honesta)**:
+2 dos 4 ingredientes (mod3, mod8) já são folclore conhecido e usado pela
+comunidade prática de busca de recordistas (`cuda-collatz` documenta
+ambos quase literalmente), cuja técnica genérica de sieve provavelmente já
+supera nossos 62,5% de exclusão computacionalmente. H-028 reclassificado
+de "candidato forte a paper" para consolidação majoritariamente já
+conhecida — só H-022 (mod9) permanece como possível peça nova, não
+confirmada como inédita. Ver seção "Checagem de novidade" em H-028.md.
+**Resultado central do projeto**: recordistas reais
 de stopping time nunca são ≡2 mod 3 (exceto o caso trivial n=2) — confirmado
 empiricamente (H-004, n=148, p<10^-13) e **provado algebricamente** (H-007).
 Generalizamos a técnica de exclusão por empate (H-014→H-015): 2374 classes
