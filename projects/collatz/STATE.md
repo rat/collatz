@@ -148,6 +148,18 @@ pediu para lembrá-lo de avisar quando isso for feito).
   log₂n), não por informação nova. Ver
   `hypotheses/H-020-high-bits-no-information.md`.
 
+## H-008 — RESOLVIDA PARCIALMENTE (avanço real)
+
+- `H-022` — **prova parcial de H-008** via relação multiplicativa (2 passos
+  acelerados, não deslocamento aditivo como H-015/H-016). Provado: todo
+  N=18j+13 (metade ímpar de N≡4 mod9) tem M=16j+11<N com
+  total_stopping_time(M)=total_stopping_time(N)+5 — exclusão rigorosa,
+  verificada sem exceção em 100.000 casos, confirmada não-redundante com
+  H-007/H-014 (75% dos casos não eram já cobertos). A metade **par**
+  (N≡4 mod18) continua sem prova — passos acelerados só alcançam ímpares,
+  a mesma técnica não se aplica diretamente. Ver
+  `hypotheses/H-022-mod9-multiplicative-exclusion.md`.
+
 ## Hipóteses refutadas relacionadas a H-008 (tentativas negativas registradas)
 
 - `H-016` — tentativa de estender a coalescência para módulo conjunto
@@ -156,8 +168,8 @@ pediu para lembrá-lo de avisar quando isso for feito).
   para os 9 resíduos mod 9 igualmente — testado até d=7, k=100) — são
   fenômenos mod-2^d disfarçados, não achados mod-9 genuínos. Explicação
   teórica: T(n) mod 9 depende só de n mod 3, não do valor completo mod 9,
-  então fixar mod 9 não adiciona restrição real. H-008 continua sem solução;
-  precisaria de uma técnica estruturalmente diferente. Ver
+  então fixar mod 9 não adiciona restrição real. Resolvido parcialmente
+  depois em H-022 com uma técnica diferente (multiplicativa). Ver
   `hypotheses/H-016-mod9-coalescence-search.md`.
 
 - `H-001` — independência entre valuações 2-ádicas consecutivas (a_1, a_2) na

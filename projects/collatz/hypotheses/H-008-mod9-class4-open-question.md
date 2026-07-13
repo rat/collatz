@@ -1,6 +1,6 @@
 # H-008 — Classe 4 mod 9 nunca aparece em recordistas: tentativa de generalizar H-007
 
-Status: inconclusiva (investigada, sem prova nem refutação — registrada como questão em aberto)
+Status: parcialmente resolvida — metade ímpar (N≡13 mod18) provada em H-022; metade par (N≡4 mod18) em aberto
 Criada em: 2026-07-13
 
 ## Contexto
@@ -42,3 +42,12 @@ explicação sem sustentação.
 ## Atualizações
 
 - 2026-07-13: investigado, sem conclusão. Marcado como aberto/inconclusivo.
+- 2026-07-13: **avanço real em H-022** — abordagem genuinamente diferente
+  (relação multiplicativa via 2 passos acelerados, não deslocamento aditivo
+  como H-015/H-016). Provado: todo N=18j+13 (a metade ímpar de N≡4 mod9)
+  tem M=16j+11<N com total_stopping_time(M)=total_stopping_time(N)+5 —
+  exclusão rigorosa, verificada sem exceção em 100.000 casos, e confirmada
+  como não-redundante com H-007/H-014 (75% dos casos não eram já cobertos).
+  A metade **par** (N≡4 mod18) continua sem prova — passos acelerados só
+  alcançam ímpares, então a mesma técnica não se aplica diretamente. Ver
+  `hypotheses/H-022-mod9-multiplicative-exclusion.md`.

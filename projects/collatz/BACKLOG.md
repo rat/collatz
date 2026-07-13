@@ -60,12 +60,13 @@ Ideias do Fable ainda não testadas, candidatas para sessões futuras:
   igualmente, não só o 4) — são fenômenos mod-2^d disfarçados, não
   descobertas mod-9 genuínas. Explicação teórica: T(n) mod 9 depende só de n
   mod 3, não do valor completo mod 9, então fixar mod 9 não adiciona
-  restrição real. **H-008 continua sem solução** — precisaria de uma ideia
-  estruturalmente diferente da coalescência por deslocamento pequeno (talvez
-  uma relação multiplicativa, não aditiva, entre N e M). A versão de
-  profundidade 8-10 tratando mod 2 e mod 3 conjuntamente (ideia original do
-  Fable) ainda não foi tentada da forma mais ambiciosa — pode ainda valer a
-  pena, mas exige uma técnica nova, não apenas estender o que já tentamos.
+  restrição real.
+- **H-008 PARCIALMENTE RESOLVIDA (H-022)**: relação multiplicativa via 2
+  passos acelerados (não aditiva como H-015/H-016) provou a exclusão da
+  metade ímpar de N≡4 mod9 (N=18j+13), verificada sem exceção em 100.000
+  casos. A metade par (N≡4 mod18) continua sem prova — passos acelerados só
+  alcançam ímpares, a mesma técnica não se aplica diretamente. Ver
+  `hypotheses/H-022-mod9-multiplicative-exclusion.md`.
 - **Anomalia p₅>p₄ de H-013 — mecanismo qualitativo encontrado (H-018)**:
   construção explícita da árvore reversa (Galton-Watson) revelou competição
   entre vantagem geracional (constante) e orçamento de bits log₂(n_max/J_t)
