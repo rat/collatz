@@ -62,6 +62,12 @@ duas coisas:
      em vez de recordistas estritos (E-006) não mostrou o mesmo viés — mas
      isso reflete que são populações diferentes (top-K bruto inclui números
      que nunca bateram recorde), não uma refutação. Hipótese agora
-     **suportada** com evidência forte e dados verificados — ainda sem
-     explicação mecanicista completa (H-005 explica termos subsequentes de uma
-     órbita, não o número inicial).
+     **suportada** com evidência forte e dados verificados.
+- 2026-07-13: **explicação mecanicista completa encontrada** em H-007 — prova
+  algébrica de que todo N≡2 mod 3 (N>2) tem um M=(2N−1)/3 < N com
+  total_stopping_time(M) = total_stopping_time(N)+2, provando que N nunca pode
+  ser recordista. A exceção N=2 corresponde exatamente ao único caso onde
+  M colapsaria em 1 (estado terminal). Verificado sem exceção em 333.332 casos
+  até 1M. O achado de H-004 deixa de ser um padrão empírico sem explicação e
+  passa a ser um teorema provado. Ver
+  `hypotheses/H-007-why-record-holders-avoid-2-mod-3.md`.

@@ -5,11 +5,12 @@
 ## Onde estamos
 
 Levantamento inicial da literatura concluído (ver `literature/00-index.md`).
-Seis hipóteses testadas (H-001 a H-006). Achado mais importante do projeto até
-agora: **recordistas reais de stopping time quase nunca são ≡2 mod 3** (H-004),
-confirmado com dados oficiais completos (OEIS A006877, n=148, p<10^-13) após
-corrigir um erro de transcrição na análise original (ver
-`experiments/E-004-true-record-holders/CORRECTION.md`).
+Sete hipóteses testadas (H-001 a H-007). **Resultado central do projeto**:
+recordistas reais de stopping time nunca são ≡2 mod 3 (exceto o caso trivial
+n=2) — confirmado empiricamente com dados oficiais (H-004, n=148,
+p<10^-13) e depois **provado algebricamente** (H-007): existe sempre um número
+menor que domina qualquer candidato ≡2 mod 3, exceto quando esse número menor
+colapsaria em 1.
 
 ## O que o levantamento estabeleceu
 
@@ -39,14 +40,23 @@ corrigir um erro de transcrição na análise original (ver
   ≡1 mod 3, e **apenas 1 é ≡2 mod 3** (esperado uniforme: ~49 cada). O único
   caso ≡2 é n=2 (trivial/borda) — excluindo-o, **0 de 147** recordistas
   restantes são ≡2 mod 3. p=5.2×10^-14 (mod 3), 3.2×10^-19 (mod 9), 1.8×10^-22
-  (mod 27), todos com amostra válida. Ainda sem explicação mecanicista
-  completa. Ver `hypotheses/H-004-true-record-holders.md` e
+  (mod 27), todos com amostra válida. **Explicação mecanicista completa em
+  H-007** (ver abaixo). Ver `hypotheses/H-004-true-record-holders.md` e
   `experiments/E-004-true-record-holders/README.md`.
   **Nota de integridade**: a análise original usava uma lista de 57
   recordistas reconstruída de memória, com 4 valores incorretos — corrigido
   usando a sequência oficial completa (ver `CORRECTION.md` no experimento).
   O código de busca de recordistas em si sempre esteve correto (validado
   termo a termo contra a fonte oficial).
+- `H-007` — **prova** de por que recordistas nunca são ≡2 mod 3 (exceto n=2).
+  Teorema: para todo N≡2 mod 3 com N>2, M=(2N−1)/3 é inteiro ímpar menor que N
+  cuja órbita passa por N exatamente 2 passos depois (M→2N→N), logo
+  total_stopping_time(M) = total_stopping_time(N)+2 — N nunca pode ser
+  recordista. N=2 é a única exceção porque M colapsaria em 1 (estado
+  terminal, fora da recursão normal). Verificado sem exceção em 333.332 casos
+  até 1M. Fecha completamente o achado de H-004 — deixa de ser um padrão
+  empírico sem explicação e passa a ser teorema provado. Ver
+  `hypotheses/H-007-why-record-holders-avoid-2-mod-3.md`.
 - `H-005` — lema: T(n) mod 3 é determinado inteiramente pela paridade de a(n)
   (a valuação 2-ádica do passo), nunca pelo resíduo de n mod 3. Prova algébrica
   curta + verificação computacional sem exceção em 777.748 passos (ver
@@ -114,26 +124,37 @@ corrigir um erro de transcrição na análise original (ver
   usar a saída real ou uma fonte externa salva no repositório.
 - 2026-07-13: com dados corrigidos, o achado mod-3 de H-004 ficou **mais
   forte**, não mais fraco (n=148 em vez de 57, p<10^-13 em três módulos).
-  Maior achado do projeto até agora.
+- 2026-07-13: **achado de H-004 completamente explicado** — H-007 prova
+  algebricamente (não só estatisticamente) por que recordistas nunca são ≡2
+  mod 3. Descoberto ao pesquisar a literatura: essa exclusão já era usada como
+  otimização conhecida em buscadores de "delay records" (repositório
+  cuda-collatz), mas sem prova publicada facilmente acessível — derivamos a
+  prova nós mesmos.
+- 2026-07-13: **outro bug pego a tempo** — uma função "acelerada"
+  (`total_steps_only`) assume implicitamente que a entrada é sempre ímpar;
+  chamá-la com um número par dá resultado errado sem avisar. Nunca afetou os
+  scans principais (sempre iteravam só sobre ímpares), mas pegou uma
+  verificação ad-hoc de surpresa. Lição documentada em
+  `protocols/new-experiment.md`.
 
 ## Próximos passos
 
-Seis hipóteses testadas (H-001 a H-006). Achado central do projeto:
-recordistas reais quase nunca são ≡2 mod 3 (H-004, agora com dados oficiais
-robustos). Candidatas para a próxima sessão (escolher com o diretor
-científico):
+Sete hipóteses testadas (H-001 a H-007). O achado central do projeto — por que
+recordistas evitam resíduo 2 mod 3 — está agora **completamente resolvido**
+(prova + verificação). Não há mais pendência aberta sobre essa linha.
+Candidatas para a próxima sessão (escolher com o diretor científico):
 
-1. Investigar por que os números **iniciais** de recordistas evitam resíduo 2
-   mod 3 (achado de H-004) — H-005 explica termos subsequentes de uma órbita,
-   mas não o número inicial. Agora temos 148 recordistas reais (arquivo
-   `experiments/E-004-true-record-holders/oeis_A006877_record_holders.txt`)
-   para investigar mais a fundo — ex: olhar a estrutura da PRIMEIRA valuação
-   a_1 de cada recordista e ver se ela se relaciona com o resíduo mod 3 do
-   próprio n (o lema de H-005 é sobre o passo seguinte, mas pode haver uma
-   relação análoga para o próprio n via sua fatoração).
-2. Generalizar o lema de H-005 para outros módulos além de 3 (ex: mod 9, mod
-   27) — pode revelar mais estrutura exata reutilizável, e possivelmente
-   conectar com os padrões mod-9/27 já observados em H-004.
-3. Considerar formalizar alguma dessas descobertas em Lean/SageMath se o
-   projeto crescer nessa direção (fora de escopo por enquanto, ver
-   `ROADMAP.md`).
+1. A prova de H-007 é específica para mod 3. Investigar se existe uma
+   generalização (por que as classes mod 9/27 vistas em H-004 seguem o padrão
+   específico que seguem, além do que mod-3 já explica) usando a mesma técnica
+   de construir um M dominante.
+2. Considerar se a técnica de H-007 (encontrar M menor que domina N) pode ser
+   generalizada para eliminar OUTRAS classes residuais como candidatas a
+   recordista, reduzindo ainda mais o espaço de busca.
+3. Considerar formalizar essas descobertas (H-005, H-007) em Lean/SageMath se
+   o projeto crescer nessa direção (fora de escopo por enquanto, ver
+   `ROADMAP.md`) — são teoremas curtos, bons candidatos a uma primeira
+   formalização.
+4. Voltar à literatura mais ampla (`literature/approaches-2adic-ergodic.md`)
+   agora com essa técnica de prova em mãos — pode haver outras "exclusões
+   fáceis" similares ainda não catalogadas.

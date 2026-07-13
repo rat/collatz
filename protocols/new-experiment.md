@@ -27,6 +27,19 @@ distintos e espalhados (idealmente grandes o suficiente para tornar colisão
 improvável no trecho analisado) e verifique explicitamente a ausência de
 colisões, em vez de agregar posições de dentro da mesma árvore de trajetórias.
 
+## Armadilha conhecida — funções "aceleradas" que assumem paridade da entrada
+
+Funções que implementam o passo acelerado de Collatz (`m=3n+1` seguido de
+dividir todos os fatores de 2) só fazem sentido se `n` for ímpar — se chamadas
+com `n` par, aplicam "3n+1" indevidamente e retornam um resultado errado **sem
+lançar erro** (ver `experiments/E-007-why-record-holders-avoid-2-mod-3/README.md`
+para um caso real: `total_steps_only(2)` retornou 17 em vez do correto 1).
+Isso nunca afetou os scans principais (que sempre iteram só sobre ímpares),
+mas pegou uma verificação ad-hoc de desprevenida. Ao escrever uma função nova
+que assume paridade da entrada, deixe isso explícito (nome, docstring, ou um
+`assert n % 2 == 1`) — ou, melhor, use sempre uma versão genérica (mapa padrão,
+sem assumir paridade) ao testar algo com números arbitrários.
+
 ## Armadilha conhecida — nunca reconstruir dados de memória
 
 Ao caracterizar o resultado de um experimento (ex: contar resíduos de uma lista
