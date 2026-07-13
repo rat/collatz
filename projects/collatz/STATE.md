@@ -5,13 +5,13 @@
 ## Onde estamos
 
 Levantamento inicial da literatura concluído (ver `literature/00-index.md`).
-Onze hipóteses testadas (H-001 a H-011), mais um PDF externo revisado e
+Doze hipóteses testadas (H-001 a H-012), mais um PDF externo revisado e
 catalogado. **Resultado central do projeto**: recordistas reais de stopping
 time nunca são ≡2 mod 3 (exceto o caso trivial n=2) — confirmado
 empiricamente (H-004, n=148, p<10^-13) e **provado algebricamente** (H-007).
-Backlog de linhas de investigação em `BACKLOG.md` (padrões binários, e uma
-tarefa pendente: escrever um paper curto apontando os erros do PDF de Santos
-2018 — a ser feito por último, conforme pedido do diretor científico).
+Backlog de linhas de investigação em `BACKLOG.md`. **Tarefa pendente**:
+escrever um paper curto apontando os erros do PDF de Santos 2018 — só fazer
+quando o diretor científico pedir explicitamente, por último.
 
 ## O que o levantamento estabeleceu
 
@@ -79,8 +79,11 @@ tarefa pendente: escrever um paper curto apontando os erros do PDF de Santos
   passagem). Confirmado empiricamente em 8 ordens de magnitude (log₂n de 10.5
   a 45.5): coeficiente empírico 181.53, diferença de 2.9%. Resolve a pergunta
   em aberto de H-010. Ver `hypotheses/H-011-variance-scaling.md`.
-
-## Hipóteses refutadas / parcialmente refutadas
+- `H-012` — estrutura de predecessores de potências de 2 (a partir de
+  observação do diretor científico sobre 32/64 na árvore reversa). Provado:
+  2^k tem predecessor ímpar genuíno sse k é par, e nesse caso o predecessor é
+  Σ4^i (sempre ímpar). Conecta diretamente com o lema de H-005. Verificado
+  para k=1..60. Ver `hypotheses/H-012-powers-of-2-predecessor-structure.md`.
 
 - `H-001` — independência entre valuações 2-ádicas consecutivas (a_1, a_2) na
   órbita acelerada. Testada em `experiments/E-001-parity-independence/`: com
@@ -191,25 +194,36 @@ tarefa pendente: escrever um paper curto apontando os erros do PDF de Santos
   empiricamente em 8 ordens de magnitude (log₂n de 10.5 a 45.5): coeficiente
   empírico 181.53, diferença de 2.9%. O R² baixo de H-010 é ruído previsto
   pela própria heurística, não estrutura escondida.
+- 2026-07-13: diretor científico trouxe uma observação da árvore reversa de
+  Collatz (potências de 2 como 32/64 se comportam diferente) e pediu para
+  explorar padrões binários, sugerindo consultar um modelo de IA (Fable) para
+  brainstorm de hipóteses novas. H-012 testada — a observação virou um
+  teorema curto e provado (conecta com H-005): 2^k tem predecessor ímpar na
+  árvore reversa sse k é par. Um agente rodando o modelo Fable foi consultado
+  em paralelo para gerar mais hipóteses de padrão binário (resultado a
+  incorporar quando o agente terminar).
+- **Lembrete permanente**: só escrever o paper sobre os erros do PDF de
+  Santos quando o diretor científico pedir explicitamente — não fazer por
+  iniciativa própria, mesmo que pareça um bom momento.
 
 ## Próximos passos
 
-Onze hipóteses testadas (H-001 a H-011). O achado central do projeto — por
+Doze hipóteses testadas (H-001 a H-012). O achado central do projeto — por
 que recordistas evitam resíduo 2 mod 3 — está **completamente resolvido**
 (H-007). A pergunta da variância de H-010 também está **resolvida** (H-011).
-H-008 (classe 4 mod 9) segue em aberto. Tarefa pendente (por último, a
-pedido do diretor científico): paper sobre os erros do PDF de Santos
-(`BACKLOG.md` item 5). Candidatas para a próxima sessão:
+H-008 (classe 4 mod 9) segue em aberto. Tarefa pendente (**só fazer quando o
+diretor científico pedir explicitamente**, por último): paper sobre os erros
+do PDF de Santos (`BACKLOG.md` item 5). Candidatas para a próxima sessão:
 
-1. Uma versão mais rigorosa da análise de padrões binários (ver `BACKLOG.md`
-   item 3) — ainda precisa de um ângulo concreto antes de virar hipótese.
+1. Incorporar as hipóteses de padrão binário geradas pelo agente Fable
+   (rodando em paralelo nesta sessão) — avaliar e testar as mais promissoras.
 2. Tentar uma técnica diferente para a classe 4 mod 9 (H-008) — ou aceitar
    que pode não ser um fato permanente, só válido no intervalo já calculado.
-3. Considerar formalizar H-005, H-007, H-009, H-010 e H-011 (teoremas/
-   verificações já feitos) em Lean/SageMath se o projeto crescer nessa
-   direção (fora de escopo por enquanto, ver `ROADMAP.md`).
+3. Considerar formalizar H-005, H-007, H-009, H-010, H-011 e H-012
+   (teoremas/verificações já feitos) em Lean/SageMath se o projeto crescer
+   nessa direção (fora de escopo por enquanto, ver `ROADMAP.md`).
 4. Continuar revisando qualquer nova alegação de prova externa que o diretor
    científico receber, seguindo o padrão já estabelecido em
    `literature/unverified-proof-claims.md`.
-5. Por último: escrever o paper curto sobre os erros do PDF de Santos
-   (`BACKLOG.md` item 5).
+5. **Só quando pedido explicitamente**: escrever o paper curto sobre os
+   erros do PDF de Santos (`BACKLOG.md` item 5).
