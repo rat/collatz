@@ -30,14 +30,44 @@ quadraticamente), coeficiente teórico 186.93 vs. empírico 181.53 (diferença
 2.9%, testado em 8 ordens de magnitude) — é ruído previsto pela própria
 heurística, não estrutura nova escondida.
 
-## 3. Análise de padrões em representação binária
+## 3. Análise de padrões em representação binária — EM ANDAMENTO
 
 O PDF revisado (`literature/unverified-proof-claims.md`) tentou isso sem
-rigor suficiente. Ainda pode haver valor em uma versão mais cuidadosa: olhar
-os bits de n (não só resíduos mod 2^k, que já cobrimos em H-002/H-005) à
-procura de invariantes ou padrões estruturais ainda não testados por nós.
-Não descartada, mas sem um ângulo concreto definido ainda — precisa de mais
-uma ideia específica antes de virar hipótese formal.
+rigor suficiente. Ganhou um ângulo concreto em 2026-07-13: observação do
+diretor científico sobre potências de 2 na árvore reversa virou H-012
+(provada), e um brainstorm com o modelo Fable (ver prompt e resposta na
+sessão de 2026-07-13) gerou mais ideias, das quais duas já foram verificadas
+e confirmadas:
+
+- **H-013** (confirmada): todo órbita termina em J_t=(4^t−1)/3 — consequência
+  direta de H-012. Classes estéreis (t múltiplo de 3) explicadas por H-005.
+  Anomalia real e não-explicada: fração para t=5 é maior que para t=4.
+- **H-014** (confirmada): recordistas nunca são ≡5 mod 8 — segunda técnica de
+  exclusão (empate exato por coalescência de trajetórias, diferente do
+  domínio estrito de H-007).
+
+Ideias do Fable ainda não testadas, candidatas para sessões futuras:
+
+- **Busca sistemática de coalescências** (a ideia mais ambiciosa): H-007 e
+  H-014 são os dois casos mais simples de uma família enumerável de pares de
+  progressões aritméticas cujas órbitas colidem em poucos passos. Busca
+  sistemática (BFS sobre sequências de valuação simbólicas até profundidade
+  ~8-10) poderia enumerar TODAS as classes residuais mod 2^α3^β excluídas de
+  recordes — e resolver H-008 (classe 4 mod 9) como corolário, ou provar que
+  nenhuma exclusão de profundidade limitada a explica. Maior potencial de
+  impacto, mas mais trabalho de implementação.
+- Investigar a anomalia p₅>p₄ de H-013 (talvez ligada ao resíduo mod 3 de
+  cada J_t afetando a estrutura da árvore reversa).
+- Cauda geométrica do pico da órbita (martingale, E[3/2^a]=1 exatamente) —
+  previsão sem parâmetro livre, no estilo H-010/H-011 mas para o máximo em
+  vez da média/variância do tempo.
+- Tempo de mistura da densidade de bits (popcount) partindo de extremos —
+  primeira estatística global de bits do projeto, não redutível a mod 2^k.
+- Controle metodológico: confirmar que bits ALTOS de n não carregam
+  informação sobre stopping time (só os baixos, via Terras) — protege contra
+  a armadilha tautológica de H-002.
+- Runs de 1s terminais e erosão determinística — mecanismo binário por trás
+  das "subidas", risco tautológico a declarar explicitamente se testado.
 
 ## 4. Verificação de alegações de prova externas
 

@@ -1,0 +1,48 @@
+# H-013 — Todo órbita termina em J_t=(4^t−1)/3; classes estéreis explicadas por H-005
+
+Status: confirmada (teorema + verificação); anomalia p₅>p₄ deixada como questão em aberto
+Criada em: 2026-07-13
+Origem: brainstorm assistido pelo modelo Fable (consultado a pedido do diretor
+científico sobre padrões binários), verificado de forma independente.
+
+## Enunciado
+
+O último valor ímpar (>1) de qualquer órbita de Collatz é sempre da forma
+J_t = (4^t−1)/3, para algum t≥2 — o mesmo conjunto de números caracterizado
+em H-012 (predecessores ímpares de potências de 2: 3·J_t+1 = 4^t = 2^(2t)).
+Isto é consequência direta de H-012: toda órbita termina numa cadeia pura de
+divisões por 2 (...→4→2→1), e o ponto de entrada nessa cadeia (o último
+valor ímpar) precisa satisfazer 3m+1=2^k para algum k — e por H-012, isso só
+tem solução ímpar quando k é par (k=2t), dando m=J_t.
+
+## Consequência: classes "estéreis"
+
+J_t é divisível por 3 sempre que t≡0 (mod 3) — ex: J_3=21, J_6=1365. Pelo
+lema de H-005 (um valor divisível por 3 nunca reaparece depois do primeiro
+passo ímpar de uma órbita), esses J_t **nunca podem ser o último valor ímpar
+de uma órbita genérica** (só apareceriam se a própria órbita começasse
+exatamente nesse valor). Isso explica completamente por que as classes
+t=3,6,9,... têm densidade zero — não é um mistério novo, é H-005 aplicado.
+
+## Anomalia observada (questão em aberto)
+
+A fração de órbitas que termina em cada J_t **não decai monotonicamente**:
+em 300.000 amostras aleatórias (n até 10^9), a fração para t=5 (J_5=341) foi
+**maior** que para t=4 (J_4=85) — 3.78% vs 2.37% — contrariando a expectativa
+ingênua de decaimento ~1/4 por passo. Isso não tem explicação ainda. Fica
+registrado para investigação futura (possivelmente ligado ao resíduo mod 3
+de cada J_t — J_4≡1 mod3, J_5≡2 mod3 — afetando a estrutura dos pontos de
+ramificação da árvore reversa que alimenta cada um).
+
+## Como testar
+
+Simulação Monte Carlo: para n aleatório, achar o último valor ímpar antes de
+1, verificar se bate com a fórmula J_t, e tabular a distribuição de t.
+
+## Atualizações
+
+- 2026-07-13: hipótese confirmada. 300.000 amostras, 0 incompatibilidades
+  com a fórmula. Distribuição observada: t=2 (93.77%), t=4 (2.37%), t=5
+  (3.78%), t=7 (0.01%), t=8 (0.06%), t=10/11 (~0%). Classes t=3,6,9 com zero
+  ocorrências, explicadas por H-005. Anomalia p₅>p₄ registrada como questão
+  em aberto.

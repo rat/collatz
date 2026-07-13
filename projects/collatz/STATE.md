@@ -5,13 +5,15 @@
 ## Onde estamos
 
 Levantamento inicial da literatura concluído (ver `literature/00-index.md`).
-Doze hipóteses testadas (H-001 a H-012), mais um PDF externo revisado e
+Catorze hipóteses testadas (H-001 a H-014), mais um PDF externo revisado e
 catalogado. **Resultado central do projeto**: recordistas reais de stopping
 time nunca são ≡2 mod 3 (exceto o caso trivial n=2) — confirmado
 empiricamente (H-004, n=148, p<10^-13) e **provado algebricamente** (H-007).
-Backlog de linhas de investigação em `BACKLOG.md`. **Tarefa pendente**:
-escrever um paper curto apontando os erros do PDF de Santos 2018 — só fazer
-quando o diretor científico pedir explicitamente, por último.
+Segunda técnica de exclusão de classe residual descoberta (H-014, via empate
+exato). Backlog de linhas de investigação em `BACKLOG.md`. **Tarefa
+pendente**: escrever um paper curto apontando os erros do PDF de Santos
+2018 — só fazer quando o diretor científico pedir explicitamente, por
+último.
 
 ## O que o levantamento estabeleceu
 
@@ -84,6 +86,17 @@ quando o diretor científico pedir explicitamente, por último.
   2^k tem predecessor ímpar genuíno sse k é par, e nesse caso o predecessor é
   Σ4^i (sempre ímpar). Conecta diretamente com o lema de H-005. Verificado
   para k=1..60. Ver `hypotheses/H-012-powers-of-2-predecessor-structure.md`.
+- `H-013` — todo órbita termina no último valor ímpar J_t=(4^t−1)/3
+  (consequência de H-012). Classes estéreis (t múltiplo de 3) explicadas por
+  H-005 (J_t divisível por 3 nunca reaparece). Confirmado sem exceção em
+  300k amostras. Anomalia real e não-explicada: fração para t=5 (341) maior
+  que para t=4 (85) — questão em aberto. Ver
+  `hypotheses/H-013-last-odd-value-structure.md`.
+- `H-014` — recordistas nunca são ≡5 mod 8. Segunda técnica de exclusão
+  (empate exato: N=4u+1 com u ímpar tem total_stopping_time igual, não
+  menor, ao de N−1, via coalescência de trajetórias — diferente do domínio
+  estrito de H-007). Confirmado em 200k casos + nenhum dos 148 recordistas
+  oficiais é ≡5 mod 8. Ver `hypotheses/H-014-tie-exclusion-mod8.md`.
 
 - `H-001` — independência entre valuações 2-ádicas consecutivas (a_1, a_2) na
   órbita acelerada. Testada em `experiments/E-001-parity-independence/`: com
@@ -205,25 +218,40 @@ quando o diretor científico pedir explicitamente, por último.
 - **Lembrete permanente**: só escrever o paper sobre os erros do PDF de
   Santos quando o diretor científico pedir explicitamente — não fazer por
   iniciativa própria, mesmo que pareça um bom momento.
+- 2026-07-13: agente Fable retornou brainstorm de padrões binários. Relatório
+  bem calibrado (já avisou da armadilha tautológica de H-002 antes de propor
+  ideias). Verifiquei de forma independente as duas hipóteses mais fortes
+  (nunca aceitar afirmação de agente sem checar):
+  - **H-013** (confirmada): toda órbita termina em J_t=(4^t−1)/3
+    (consequência de H-012). Classes estéreis explicadas por H-005. Achou
+    uma anomalia real (t=5 mais frequente que t=4) — deixada em aberto.
+  - **H-014** (confirmada): recordistas nunca ≡5 mod 8 — segunda técnica de
+    exclusão (empate exato por coalescência, diferente do domínio de H-007).
+  - Ideias mais ambiciosas do Fable (busca sistemática de coalescências que
+    poderia resolver H-008; cauda do pico da órbita; mistura de densidade de
+    bits) registradas em `BACKLOG.md` item 3 para sessões futuras.
 
 ## Próximos passos
 
-Doze hipóteses testadas (H-001 a H-012). O achado central do projeto — por
-que recordistas evitam resíduo 2 mod 3 — está **completamente resolvido**
-(H-007). A pergunta da variância de H-010 também está **resolvida** (H-011).
+Catorze hipóteses testadas (H-001 a H-014). O achado central do projeto —
+por que recordistas evitam resíduo 2 mod 3 — está **completamente resolvido**
+(H-007), e agora temos uma **segunda** técnica de exclusão de classe residual
+(H-014). A pergunta da variância de H-010 também está **resolvida** (H-011).
 H-008 (classe 4 mod 9) segue em aberto. Tarefa pendente (**só fazer quando o
 diretor científico pedir explicitamente**, por último): paper sobre os erros
 do PDF de Santos (`BACKLOG.md` item 5). Candidatas para a próxima sessão:
 
-1. Incorporar as hipóteses de padrão binário geradas pelo agente Fable
-   (rodando em paralelo nesta sessão) — avaliar e testar as mais promissoras.
-2. Tentar uma técnica diferente para a classe 4 mod 9 (H-008) — ou aceitar
+1. **Busca sistemática de coalescências** (ideia do Fable, `BACKLOG.md` item
+   3) — generalizar H-007/H-014 via busca em árvore de sequências de
+   valuação simbólicas; maior potencial de resolver H-008.
+2. Investigar a anomalia p₅>p₄ de H-013.
+3. Tentar uma técnica diferente para a classe 4 mod 9 (H-008) — ou aceitar
    que pode não ser um fato permanente, só válido no intervalo já calculado.
-3. Considerar formalizar H-005, H-007, H-009, H-010, H-011 e H-012
-   (teoremas/verificações já feitos) em Lean/SageMath se o projeto crescer
-   nessa direção (fora de escopo por enquanto, ver `ROADMAP.md`).
-4. Continuar revisando qualquer nova alegação de prova externa que o diretor
+4. Considerar formalizar H-005, H-007, H-009 a H-014 (teoremas/verificações
+   já feitos) em Lean/SageMath se o projeto crescer nessa direção (fora de
+   escopo por enquanto, ver `ROADMAP.md`).
+5. Continuar revisando qualquer nova alegação de prova externa que o diretor
    científico receber, seguindo o padrão já estabelecido em
    `literature/unverified-proof-claims.md`.
-5. **Só quando pedido explicitamente**: escrever o paper curto sobre os
+6. **Só quando pedido explicitamente**: escrever o paper curto sobre os
    erros do PDF de Santos (`BACKLOG.md` item 5).
