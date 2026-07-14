@@ -1,6 +1,15 @@
 # Estado atual — Collatz
 
-Última atualização: 2026-07-13
+Última atualização: 2026-07-14
+
+## Coleção de papers (nova, 2026-07-14)
+
+`literature/papers/INDEX.md` — 100 resultados do Google Scholar
+(busca "Collatz", ordenado por data), 15 PDFs baixados, tabela com
+flags Lido/Corrigido/Implementado para o diretor científico preencher
+manualmente conforme formos processando um por um. **Não iniciar a
+leitura/incorporação sem pedido explícito** — ver nota no
+`BACKLOG.md` item 0.
 
 ## Onde estamos
 

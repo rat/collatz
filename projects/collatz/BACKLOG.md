@@ -4,6 +4,19 @@ Ideias registradas para atacar o problema por múltiplos ângulos, conforme
 discutido com o diretor científico em 2026-07-13. Nem toda ideia vira
 hipótese formal imediatamente — isso aqui é a lista de candidatas.
 
+## 0. Coleção de papers do Google Scholar — AGUARDANDO LEITURA MANUAL
+
+Coletados 100 resultados de `scholar.google.com` (busca "Collatz",
+ordenado por data) em `literature/papers/INDEX.md` — 15 PDFs baixados
+com sucesso, resto sem PDF livre (majoritariamente ResearchGate,
+bloqueado por limitação técnica de automação, não necessariamente
+pago — ver notas no próprio INDEX.md). Vários papers alegam prova ou
+refutação completa da conjectura, candidatos a
+`literature/unverified-proof-claims.md`. O diretor científico vai pedir
+para ler um por um manualmente, marcando as flags Lido/Corrigido/
+Implementado na tabela — **não iniciar a leitura nem criar hipóteses a
+partir daí sem pedido explícito**.
+
 ## 1. Ciclos não-triviais em inteiros positivos — CONCLUÍDA
 
 Para inteiros **negativos**, o mapa de Collatz estendido tem 3 ciclos
