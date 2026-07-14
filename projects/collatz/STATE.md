@@ -11,6 +11,22 @@ manualmente conforme formos processando um por um. **Não iniciar a
 leitura/incorporação sem pedido explícito** — ver nota no
 `BACKLOG.md` item 0.
 
+**Item 001 processado (H-039)**: paper de Ruiz Castillo ("Geometría
+Residual..."), sem PDF local, lido inteiramente via navegador (39
+páginas). Matemática de base correta (formalismo termodinâmico
+clássico, Ruelle/Ellis, aplicado honestamente ao observável de
+dissipação 2-ádica), mas com problemas reais: mesmo fato trivial
+("convexa ⟹ f''≥0") repetido 4x como resultado maior; identidade
+central apresentada como derivada no corpo mas admitida como
+conjectura só na conclusão; zero conteúdo numérico (única figura é
+explicitamente "conceptual"); 100% autocitação nas 13 referências
+(zero literatura de Collatz ou de formalismo termodinâmico clássico).
+Fizemos o cálculo explícito que o paper nunca faz (P_RC(t), g_RC(t),
+K_RC(t) em forma fechada para o modelo i.i.d. padrão, verificado
+contra E[a]=2/Var[a]=2 já estabelecidos) — achado limpo: singularidade
+real em t=log(2). Nenhuma hipótese nova sobre a conjectura em si
+emergiu — ver H-039 para avaliação honesta completa.
+
 ## Onde estamos
 
 **Trinta e oito hipóteses testadas (H-001 a H-038)**. **H-038**: uma

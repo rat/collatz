@@ -4,7 +4,7 @@ Ideias registradas para atacar o problema por múltiplos ângulos, conforme
 discutido com o diretor científico em 2026-07-13. Nem toda ideia vira
 hipótese formal imediatamente — isso aqui é a lista de candidatas.
 
-## 0. Coleção de papers do Google Scholar — AGUARDANDO LEITURA MANUAL
+## 0. Coleção de papers do Google Scholar — LEITURA EM ANDAMENTO (item 001 feito)
 
 Coletados 100 resultados de `scholar.google.com` (busca "Collatz",
 ordenado por data) em `literature/papers/INDEX.md` — 15 PDFs baixados
@@ -12,10 +12,22 @@ com sucesso, resto sem PDF livre (majoritariamente ResearchGate,
 bloqueado por limitação técnica de automação, não necessariamente
 pago — ver notas no próprio INDEX.md). Vários papers alegam prova ou
 refutação completa da conjectura, candidatos a
-`literature/unverified-proof-claims.md`. O diretor científico vai pedir
-para ler um por um manualmente, marcando as flags Lido/Corrigido/
-Implementado na tabela — **não iniciar a leitura nem criar hipóteses a
-partir daí sem pedido explícito**.
+`literature/unverified-proof-claims.md`. O diretor científico pede para
+ler um por um manualmente, marcando as flags Lido/Corrigido/
+Implementado na tabela — **só ler o próximo quando pedido
+explicitamente**.
+
+**Item 001 concluído (H-039)**: "Geometría Residual de Ruiz Castillo" —
+matemática de base correta mas com fatos triviais repetidos como
+resultados maiores, identidade central apresentada inconsistentemente
+(derivada no corpo, conjectural só na conclusão), zero conteúdo
+numérico, 100% autocitação. Cálculo explícito próprio feito
+(P_RC(t)/g_RC(t)/K_RC(t) em forma fechada, singularidade em t=log(2)
+encontrada). Nenhuma hipótese nova sobre a conjectura em si. Ver
+`hypotheses/H-039-ruiz-castillo-geometria-residual-review.md`. O autor
+(Juan Carlos Ruiz Castillo, USAC Guatemala) tem ~19 outros papers na
+mesma série na coleção — provavelmente mesma lacuna (sem cálculo
+numérico), útil comparar quando lermos os próximos.
 
 ## 1. Ciclos não-triviais em inteiros positivos — CONCLUÍDA
 
