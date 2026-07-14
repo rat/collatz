@@ -520,6 +520,20 @@ que lemos e corrigimos um por um. Material já acumulado:
   restrito em Σ_C) depende dele. Quebra o padrão "elementar mas
   correto" dos três Ruiz Castillo anteriores (H-039, H-050, H-052).
 
+- **Item 017 (H-054) — sem erros, volta ao padrão elementar mas correto**:
+  Ruiz Castillo, "Medidas de Gibbs Residuales" — quinto paper deste
+  autor na coleção. Todas as identidades concretas verificadas
+  (interpretação logarítmica, identidade fundamental S_kφ=−L,
+  semiconjugação, partição por cilindros, equivalência Gibbs-residual)
+  são reescritas algébricas triviais corretas da mesma quantidade de
+  sempre. Todo resultado em aberto (cuasi-Bernoulli, Gibbs-implica-
+  equilíbrio, dualidade grandes desvios, fórmula de dimensão)
+  honestamente rotulado "Conjetura", não "Teorema"/"Proposición" —
+  contraste direto com o erro do item 013 (H-053). Sem consequência
+  empírica diretamente testável (as conjecturas tratam da existência
+  de uma medida μ_t nunca construída explicitamente, diferente do
+  operador de transferência do item 013 ou do TCL do item 010).
+
 Continuar adicionando aqui (ou num arquivo dedicado, se a lista crescer
 muito) conforme processarmos os próximos itens da coleção. Ver memória
 `feedback_santos_pdf_paper_timing.md`.
