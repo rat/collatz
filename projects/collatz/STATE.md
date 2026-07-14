@@ -83,9 +83,25 @@ que é padrão algébrico geral, não acidente do exemplo do paper.
 Catalogado em `literature/unverified-proof-claims.md` junto ao Santos
 (2018). Verificado com `advisor()` antes de finalizar a análise.
 
+**Item 019 processado (H-044), sem erros — contraste didático com
+H-043**: Fu, Liu & Wang ("Emergence of Gamma-Type Upward-Phase
+Statistics", arXiv:2606.26811) — qualidade acadêmica alta (afiliação
+real, financiamento chinês legítimo). Propõe mecanismo de Poisson para
+a distribuição Gamma de N↑; usa a mesma condição de fechamento de
+ciclos do CTUHSK, mas aqui os autores afirmam **corretamente** que isso
+não prova ausência de ciclos não-triviais. Verificado: E[h]=2/Var(h)=2
+(H-001/H-011), Eq.6 exata em 100% dos casos testados (incl. órbita
+longa de 27), média de N↑ a ~2% da previsão. θ empírico ~8,5% abaixo do
+teórico em nossa escala menor — consistente com o próprio paper, não é
+erro. Verificado com `advisor()`.
+
 ## Onde estamos
 
-**Quarenta e três hipóteses testadas (H-001 a H-043)**. **H-039 a H-043**
+**Quarenta e quatro hipóteses testadas (H-001 a H-044)**. **H-044**:
+paper de Fu/Liu/Wang sobre estatística Gamma de N↑ — sem erros, ver
+seção "Coleção de papers" acima.
+
+Anteriormente, **quarenta e três hipóteses testadas (H-001 a H-043)**. **H-039 a H-043**
 são revisões da coleção de papers do Google Scholar (ver seção "Coleção
 de papers" acima para o detalhe de cada uma) — destaque para **H-043**
 (achado importante): o paper #016 (Halemane, "CTUHSK Theorem") alega uma

@@ -369,6 +369,24 @@ que lemos e corrigimos um por um. Material já acumulado:
   exemplo numérico do paper. Também catalogado em
   `literature/unverified-proof-claims.md` junto com o Santos (2018).
 
+- **Item 019 (H-044) — sem erros, contraste didático com H-043**: Fu,
+  Liu & Wang, "Emergence of Gamma-Type Upward-Phase Statistics..."
+  (arXiv:2606.26811). Qualidade acadêmica alta (afiliação real,
+  financiamento chinês legítimo, literatura genuína). Propõe mecanismo
+  de Poisson para explicar a distribuição Gamma de N↑ (passos até
+  atingir 1); deriva a mesma condição de fechamento de ciclos usada
+  (incorretamente generalizada) no CTUHSK, mas aqui os autores afirmam
+  **explicitamente e corretamente** que essa obstrução assintótica não
+  prova a inexistência de ciclos não-triviais. Todas as reivindicações
+  testadas bateram: E[h]=2/Var(h)=2 (nosso H-001/H-011), fórmula Eq.6
+  (100% exata até X0=200001, inclusive a órbita longa de 27), média de
+  N↑ a ~2% da previsão corrigida do paper. θ empírico ficou ~8,5% abaixo
+  do teórico em nossa escala menor (10⁴-10⁵ vs 10⁵-10¹⁵ do paper) — não
+  é erro, é o mesmo viés que o próprio paper documenta e que só
+  desaparece lentamente com L. O contraste com H-043 (mesma família de
+  argumento, um paper honesto sobre seus limites e outro que
+  overclaima) é o ponto mais útil desta entrada para a crítica final.
+
 Continuar adicionando aqui (ou num arquivo dedicado, se a lista crescer
 muito) conforme processarmos os próximos itens da coleção. Ver memória
 `feedback_santos_pdf_paper_timing.md`.
