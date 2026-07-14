@@ -97,7 +97,15 @@ erro. Verificado com `advisor()`.
 
 ## Onde estamos
 
-**Quarenta e nove hipóteses testadas (H-001 a H-049)**. **H-049**: paper
+**Cinquenta hipóteses testadas (H-001 a H-050)**. **H-050**: segundo
+paper de Ruiz Castillo (item 008) — matemática elementar correta
+(mesma "equação de ciclo" já vista em H-044/H-045, dressed em
+terminologia própria), mas zero verificação numérica real (mesmo
+padrão do primeiro, H-039). 75% autocitação, revelando ~12 outros
+papers quase idênticos do mesmo autor ainda não processados. Provável
+que os próximos Ruiz Castillo (010, 013, 017, 020) sigam o mesmo padrão.
+
+Anteriormente, **quarenta e nove hipóteses testadas (H-001 a H-049)**. **H-049**: paper
 de Hikawa (item 007) — sem erros, puramente combinatório sobre vetores
 de paridade finitos, explicitamente independente da verdade/falsidade
 do Collatz. Teoremas centrais e tabelas numéricas confirmados

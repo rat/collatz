@@ -455,6 +455,22 @@ que lemos e corrigimos um por um. Material já acumulado:
   também confirmado; Tabelas 1-2 reproduzidas exatamente via
   reimplementação independente do algoritmo de contagem.
 
+- **Item 008 (H-050) — correto mas elementar, sem verificação numérica**:
+  Ruiz Castillo, "Dissipative Bounds and Residual Decomposition" —
+  segundo paper deste autor na coleção (o primeiro foi item 001,
+  H-039). Mesmo padrão: matemática elementar correta (a "identidade
+  afim exata" é o mesmo "desenrolar" do mapa acelerado já visto em
+  Fu-Liu-Wang/H-044 e Mohammed/H-045, com notação diferente; "cotas
+  dissipativas" são séries geométricas simples), mas ZERO verificação
+  numérica real — ambas as figuras rotuladas "does not represent real
+  computational data". 75% autocitação (12 de 16 referências), com a
+  lista revelando ~12 outros papers quase idênticos do mesmo autor
+  sobre a mesma "decomposição residual". Nota de integridade: um falso
+  positivo de ponto flutuante no nosso próprio código de verificação
+  foi identificado e corrigido antes de reportar (não era erro do
+  paper). Provável que os demais papers Ruiz Castillo na fila (010,
+  013, 017, 020) sigam o mesmo padrão.
+
 Continuar adicionando aqui (ou num arquivo dedicado, se a lista crescer
 muito) conforme processarmos os próximos itens da coleção. Ver memória
 `feedback_santos_pdf_paper_timing.md`.
