@@ -328,6 +328,18 @@ que lemos e corrigimos um por um. Material já acumulado:
   acesso ao código Lean para confirmar onde a formalização diverge da
   definição em prosa.
 
+- **Item 005 (H-041)**: Seymour, "A Regular Expression Language for the
+  Collatz Graph" — mesmo autor do item 004, mas de boa prática
+  epistêmica: explicitamente rotulado "working paper", separa
+  claramente provado de conjecturado. Dois resultados centrais
+  confirmados corretos (Proposição 3.1, Teorema 3.6). Um erro pequeno
+  e sistemático encontrado no Corolário 2.2 (afirma alternância
+  11/23 mod24 conforme paridade de t; na verdade é sempre 11) — mas
+  esse corolário nem consta na lista "What is proved" da própria
+  conclusão do paper, calibrando a gravidade como baixa. A conjectura
+  central (caracterização via regex) é tratada honestamente como
+  conjectura, não como prova.
+
 Continuar adicionando aqui (ou num arquivo dedicado, se a lista crescer
 muito) conforme processarmos os próximos itens da coleção. Ver memória
 `feedback_santos_pdf_paper_timing.md`.

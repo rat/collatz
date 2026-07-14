@@ -44,6 +44,16 @@ formalização diverge da prosa. **Ordem de leitura da coleção**:
 priorizar os 15 papers já baixados localmente antes dos que exigem
 navegador (preferência do diretor científico, 2026-07-14).
 
+**Item 005 processado (H-041)**: segundo paper de Seymour ("A Regular
+Expression Language for the Collatz Graph"), mesmo autor do item 004
+mas de boa prática epistêmica — explicitamente "working paper",
+separa provado de conjecturado. Proposição 3.1 e Teorema 3.6
+confirmados corretos (20k e 50k casos). Corolário 2.2 (exit ping-pong
+mod24) tem erro pequeno e sistemático (afirma 11/23 conforme
+paridade de t; na verdade é sempre 11) — mas não consta na lista
+"what is proved" do próprio paper, gravidade baixa. Conjectura central
+(caracterização via regex) tratada honestamente como conjectura.
+
 ## Onde estamos
 
 **Trinta e oito hipóteses testadas (H-001 a H-038)**. **H-038**: uma
