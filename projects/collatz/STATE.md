@@ -27,6 +27,23 @@ contra E[a]=2/Var[a]=2 já estabelecidos) — achado limpo: singularidade
 real em t=log(2). Nenhuma hipótese nova sobre a conjectura em si
 emergiu — ver H-039 para avaliação honesta completa.
 
+**Item 004 processado (H-040), achado importante**: paper de Seymour
+("Steiner Sentence Length Distribution"), PDF local, muito melhor
+qualidade que o 001 (cita Steiner 1977/Terras 1976/Lagarias, valida
+empiricamente, alega verificação formal Lean 4/Mathlib sem `sorry`).
+Teorema 2.1 (matriz de transição mod8) confirmado independentemente.
+Mas **o teorema principal (P(comprimento)=3^(k-1)/4^k) parece
+incorreto**: reimplementação própria + contraexemplo de aritmética
+exata (n=68567: resíduos 7→3→5, uma só palavra Steiner, sentença de
+comprimento 1 com b₀≡7, não b₀≡5 como a prova do paper assume) +
+simulação em larga escala (300k amostras) batem com (1/2)^k — o
+modelo "ingênuo" que o paper argumenta estar errado. Mecanismo do erro
+identificado: conflação entre matriz de 1-passo e transição
+palavra-a-palavra. Não temos o código Lean para confirmar onde a
+formalização diverge da prosa. **Ordem de leitura da coleção**:
+priorizar os 15 papers já baixados localmente antes dos que exigem
+navegador (preferência do diretor científico, 2026-07-14).
+
 ## Onde estamos
 
 **Trinta e oito hipóteses testadas (H-001 a H-038)**. **H-038**: uma

@@ -298,3 +298,36 @@ código-fonte dele para apontar a causa exata. Ainda não iniciado. Só
 escrever quando o diretor científico pedir explicitamente, por último
 — junto com o item 5 (ver memória `feedback_santos_pdf_paper_timing.md`
 no sistema de memória do Claude).
+
+## 8. Escrever um paper cumulativo de críticas aos papers da coleção do Google Scholar — PENDENTE, ABERTO (cresce a cada item lido)
+
+Pedido do diretor científico em 2026-07-14 ("salve como mencionei para
+nosso paper futuro de críticas aos papers atuais"), mesmo padrão de
+timing dos itens 5 e 7 (só escrever quando pedido explicitamente, por
+último), mas **diferente em natureza**: não é um único achado fechado —
+é cumulativo, crescendo a cada paper da coleção (`literature/papers/INDEX.md`)
+que lemos e corrigimos um por um. Material já acumulado:
+
+- **Item 001 (H-039)**: Ruiz Castillo, "Geometría Residual..." — mesmo
+  fato trivial repetido 4x como resultado maior; identidade central
+  apresentada como derivada no corpo mas conjectural só na conclusão;
+  zero conteúdo numérico (única figura explicitamente "conceptual");
+  100% autocitação nas 13 referências (zero literatura de Collatz ou
+  de formalismo termodinâmico clássico).
+
+- **Item 004 (H-040) — achado importante**: Seymour, "Steiner Sentence
+  Length Distribution" — paper bem melhor (cita literatura real,
+  valida empiricamente, alega verificação formal em Lean 4/Mathlib sem
+  `sorry`), mas o **teorema principal parece incorreto**: reimplementação
+  independente + contraexemplo de aritmética exata (n=68567) mostram que
+  a distribuição real é (1/2)^k — exatamente o modelo "ingênuo" que o
+  paper argumenta estar errado — não 3^(k-1)/4^k como afirmado. Erro
+  provável: conflação entre a matriz de transição de UM passo de
+  Syracuse (correta) e a transição entrada-a-entrada entre PALAVRAS
+  consecutivas (que exige 2+ passos para as classes 3 e 7). Não temos
+  acesso ao código Lean para confirmar onde a formalização diverge da
+  definição em prosa.
+
+Continuar adicionando aqui (ou num arquivo dedicado, se a lista crescer
+muito) conforme processarmos os próximos itens da coleção. Ver memória
+`feedback_santos_pdf_paper_timing.md`.
