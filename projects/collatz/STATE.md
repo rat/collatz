@@ -4,7 +4,21 @@
 
 ## Onde estamos
 
-**Trinta e sete hipóteses testadas (H-001 a H-037)**. As três últimas
+**Trinta e oito hipóteses testadas (H-001 a H-038)**. **H-038**: uma
+segunda resposta da mesma IA externa (mesmo "Project PHI"/H-036)
+propôs um "campo vetorial" Δ(n)=Φ(T(n))-Φ(n) em embedding rico — a
+generalização não-linear da ideia já descartada. Testei com mutual
+information (não só correlação linear como H-025): achei dependência
+real (peso de Hamming, janelas de bits vs segunda valuação, z-score até
+~2448). Mas um experimento de controle (substituir 3n+1 por 5n+1, 7n+3,
+9n+5 — nada a ver com Collatz) mostrou que a MESMA classe de
+dependência aparece nessas transformações sintéticas — é um fenômeno
+genérico de propagação de carry em aritmética binária (popcount(m) =
+popcount(3n+1) sempre, verificado exato), não estrutura nova do
+Collatz. Estende H-025 por um método diferente, mesma conclusão de
+fundo.
+
+Anteriormente, **trinta e sete hipóteses testadas (H-001 a H-037)**. As três últimas
 (2026-07-13, depois de H-034): **H-035** checou se a obstrução de H-024
 (densidade por-nó D(v) exige precisão 3-ádica ilimitada) se aplica à
 Conjectura 10.4 de Pratiher (α≈0,9762) — resposta: não, são objetos

@@ -225,6 +225,16 @@ importante: não é vago, é previsível).
   Decisão sobre comunicar isso ao autor é do diretor científico. Ver
   `hypotheses/H-037-pratiher-form-off-by-one.md`.
 
+- **Busca de estrutura não-linear (MI) além de H-025 — CONCLUÍDA COM
+  REFUTAÇÃO, mecanismo confirmado (H-038)**: testando a generalização
+  não-linear de "Project PHI"/campo vetorial Δ(n) (outra resposta da
+  mesma IA externa), achei dependência real (peso de Hamming, janelas
+  de bits vs segunda valuação) que H-025 (só linear) não capturaria.
+  Experimento de controle (substituir 3n+1 por 5n+1, 7n+3, 9n+5)
+  confirma que é genérico de aritmética de carry, não específico do
+  Collatz — estende H-025, não o contradiz. Ver
+  `hypotheses/H-038-nonlinear-mi-embedding-search.md`.
+
 ## 4. Verificação de alegações de prova externas
 
 Processo contínuo — toda alegação de prova recebida (ex: PDFs, links) deve
