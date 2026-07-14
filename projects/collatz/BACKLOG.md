@@ -427,6 +427,23 @@ que lemos e corrigimos um por um. Material já acumulado:
   epistêmica de H-042/H-044 — distingue
   teorema provado de conjectura mais fraca de analogia heurística.
 
+- **Item 006 (H-048) — sem erros, honestidade epistêmica exemplar**:
+  Michael Mark Anthony, "A Two-Field Propagation Model for the Collatz
+  Map" — paper longo (17 páginas) com muito aparato sofisticado
+  (equação P de Riemann, monodromia, PGL(2,C), digamma, hipergeometria,
+  24 soluções de Kummer), mas honesto em toda parte: distingue teorema
+  provado (Teorema 8.1 — regime m=1 não persiste, prova 2-ádica
+  correta) de analogia estrutural não-literal ("this is an analogy of
+  form, not of kind") de condicional explícito (o "Collapse Theorem"
+  14.1 diz textualmente "conditional...consistent with, but not a
+  proof of, the conjecture") de onde não estende resultados conhecidos
+  (Seção 12 sobre Tao). O próprio autor corrige, dentro do texto, uma
+  reivindicação anterior equivocada (δ_m=1/m). Muito do aparato mais
+  vistoso é melhor entendido como analogia decorativa — o próprio
+  paper concorda (Seção 16). Todas as reivindicações testadas
+  (reformulação Möbius, Teorema 8.1, identidades digamma/hipergeométrica)
+  confirmadas corretas.
+
 Continuar adicionando aqui (ou num arquivo dedicado, se a lista crescer
 muito) conforme processarmos os próximos itens da coleção. Ver memória
 `feedback_santos_pdf_paper_timing.md`.

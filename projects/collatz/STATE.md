@@ -97,7 +97,15 @@ erro. Verificado com `advisor()`.
 
 ## Onde estamos
 
-**Quarenta e sete hipóteses testadas (H-001 a H-047)**. **H-047**: paper
+**Quarenta e oito hipóteses testadas (H-001 a H-048)**. **H-048**: paper
+de Anthony (item 006) — sem erros, honestidade epistêmica exemplar.
+Muito aparato sofisticado (equação P de Riemann, monodromia, digamma,
+hipergeometria) que o próprio paper trata como analogia decorativa; o
+"Collapse Theorem" (14.1) é explicitamente rotulado condicional, não
+prova. Autor corrige a própria reivindicação equivocada dentro do
+texto. Todas as reivindicações testadas confirmadas corretas.
+
+Anteriormente, **quarenta e sete hipóteses testadas (H-001 a H-047)**. **H-047**: paper
 de Gilbert (item 003) — sem erros, alta qualidade. Conjugação explícita
 entre o grafo de Collatz podado e todos os inteiros não-nulos (sinal
 codifica classe residual mod 3). Todos os teoremas testados corretos,
