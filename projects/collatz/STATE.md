@@ -97,21 +97,34 @@ erro. Verificado com `advisor()`.
 
 ## Onde estamos
 
-**Cinquenta e duas hipóteses testadas (H-001 a H-052)**. **H-052**:
-terceiro paper de Ruiz Castillo (item 010, "Teorema Central del Límite
-Residual") — resultado central honestamente rotulado "Conjetura 4.2"
-no corpo apesar do título dizer "Teorema"; identidades algébricas
-corretas mas triviais. Testamos a consequência empírica (normalidade
-assintótica de Z_k) em trajetórias reais de Collatz até k=300:
-variância estabiliza perto de 2, assimetria→0, curtose→3 — previsão
-empiricamente plausível, mesmo sem as hipóteses técnicas (medida de
-Gibbs residual, brecha espectral) construídas no paper. Nota de
-integridade: bug de amostragem no nosso código (processo ficou preso
-17 min por contaminação de trajetórias curtas) corrigido antes de
-reportar. Estamos processando os ~16 papers de Ruiz Castillo em lote
-sequencial (a pedido do diretor científico, para entender o padrão de
-publicação do autor); próximo é item 013 (Operador de Transferencia
-Residual, 47 páginas, 20/47 já lidas).
+**Cinquenta e três hipóteses testadas (H-001 a H-053)**. **H-053**:
+quarto paper de Ruiz Castillo (item 013, "Operador de Transferencia
+Residual") — **primeiro erro real** encontrado nesta série de 4
+papers do autor. Proposición 5.3 afirma lim_{t→∞}L_t(1)=0, mas sua
+própria demonstração deriva L_t(1)=e^{(log₂3−1)t}/(1−e^{-t}) e observa
+corretamente que isso "crece exponencialmente" — o oposto exato do
+enunciado (verificado numericamente: L_t(1) vai de 2,84 a 6,4×10⁵⁰
+entre t=1 e t=200). `advisor()` consultado: é uma inconsistência
+enunciado-vs-demonstração (mesma categoria do erro de rotulagem
+Pratiher/H-037), não erro de cálculo — o autor deriva a assintótica
+certa, só não atualizou o enunciado formal. Erro contido (pertence a
+um cálculo preliminar da Seção 5, nada posterior depende dele). Resto
+do paper (fórmula de Gelfand, conjecturas 6.6/7.1/8.4 honestamente
+rotuladas) correto. Processando os ~16 papers de Ruiz Castillo em lote
+sequencial; próximo é item 017 (Medidas de Gibbs Residuales).
+
+Anteriormente, **cinquenta e duas hipóteses testadas (H-001 a H-052)**.
+**H-052**: terceiro paper de Ruiz Castillo (item 010, "Teorema Central
+del Límite Residual") — resultado central honestamente rotulado
+"Conjetura 4.2" no corpo apesar do título dizer "Teorema"; identidades
+algébricas corretas mas triviais. Testamos a consequência empírica
+(normalidade assintótica de Z_k) em trajetórias reais de Collatz até
+k=300: variância estabiliza perto de 2, assimetria→0, curtose→3 —
+previsão empiricamente plausível, mesmo sem as hipóteses técnicas
+(medida de Gibbs residual, brecha espectral) construídas no paper.
+Nota de integridade: bug de amostragem no nosso código (processo
+ficou preso 17 min por contaminação de trajetórias curtas) corrigido
+antes de reportar.
 
 Anteriormente, **cinquenta e uma hipóteses testadas (H-001 a H-051)**.
 **H-051**: nota curta de Olgac (item 009) — sem conteúdo específico de

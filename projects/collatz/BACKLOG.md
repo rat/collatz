@@ -503,6 +503,23 @@ que lemos e corrigimos um por um. Material já acumulado:
   confirmando o padrão de um conceito clássico por paper aplicado à
   mesma quantidade L_k(n).
 
+- **Item 013 (H-053) — primeiro erro real na série Ruiz Castillo: Proposición 5.3 é falsa, contradita pela própria demonstração**:
+  "Operador de Transferencia Residual" — quarto paper deste autor na
+  coleção. Proposición 5.3 afirma lim_{t→∞} L_t(1)=0, mas sua própria
+  "Demostración" deriva L_t(1)=e^{(log₂3−1)t}/(1−e^{-t}) e observa
+  CORRETAMENTE que isso "crece exponencialmente cuando t→∞" — o oposto
+  exato do enunciado. O símbolo de fim de demonstração aparece logo
+  depois, sem correção do "=0". Verificado numericamente: L_t(1) vai
+  de 2,84 (t=1) a 6,4×10⁵⁰ (t=200), estritamente crescente.
+  `advisor()` consultado: confirma que é uma inconsistência
+  enunciado-vs-demonstração (mesma categoria do erro de rotulagem
+  Pratiher/H-037), não um erro de cálculo — a demonstração do próprio
+  autor deriva a assintótica correta. Erro contido: pertence a um
+  cálculo preliminar da Seção 5 (espaço simbólico irrestrito); nenhum
+  resultado posterior (Seções 6-8, conjecturais, sobre o operador
+  restrito em Σ_C) depende dele. Quebra o padrão "elementar mas
+  correto" dos três Ruiz Castillo anteriores (H-039, H-050, H-052).
+
 Continuar adicionando aqui (ou num arquivo dedicado, se a lista crescer
 muito) conforme processarmos os próximos itens da coleção. Ver memória
 `feedback_santos_pdf_paper_timing.md`.
