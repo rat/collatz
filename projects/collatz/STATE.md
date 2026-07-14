@@ -97,11 +97,27 @@ erro. Verificado com `advisor()`.
 
 ## Onde estamos
 
-**Cinquenta e uma hipóteses testadas (H-001 a H-051)**. **H-051**: nota
-curta de Olgac (item 009) — sem conteúdo específico de Collatz
-verificável (a única afirmação sobre Collatz é tautológica); o resto
-é sobre a Conjectura de Goldbach, fora do escopo, e não rigoroso o
-suficiente para avaliar.
+**Cinquenta e duas hipóteses testadas (H-001 a H-052)**. **H-052**:
+terceiro paper de Ruiz Castillo (item 010, "Teorema Central del Límite
+Residual") — resultado central honestamente rotulado "Conjetura 4.2"
+no corpo apesar do título dizer "Teorema"; identidades algébricas
+corretas mas triviais. Testamos a consequência empírica (normalidade
+assintótica de Z_k) em trajetórias reais de Collatz até k=300:
+variância estabiliza perto de 2, assimetria→0, curtose→3 — previsão
+empiricamente plausível, mesmo sem as hipóteses técnicas (medida de
+Gibbs residual, brecha espectral) construídas no paper. Nota de
+integridade: bug de amostragem no nosso código (processo ficou preso
+17 min por contaminação de trajetórias curtas) corrigido antes de
+reportar. Estamos processando os ~16 papers de Ruiz Castillo em lote
+sequencial (a pedido do diretor científico, para entender o padrão de
+publicação do autor); próximo é item 013 (Operador de Transferencia
+Residual, 47 páginas, 20/47 já lidas).
+
+Anteriormente, **cinquenta e uma hipóteses testadas (H-001 a H-051)**.
+**H-051**: nota curta de Olgac (item 009) — sem conteúdo específico de
+Collatz verificável (a única afirmação sobre Collatz é tautológica); o
+resto é sobre a Conjectura de Goldbach, fora do escopo, e não rigoroso
+o suficiente para avaliar.
 
 Anteriormente, **cinquenta hipóteses testadas (H-001 a H-050)**. **H-050**: segundo
 paper de Ruiz Castillo (item 008) — matemática elementar correta

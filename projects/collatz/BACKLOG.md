@@ -483,6 +483,26 @@ que lemos e corrigimos um por um. Material já acumulado:
   deste projeto) e não rigoroso o suficiente para avaliar (linguagem
   descritiva não-matemática, "physical collision", "retaining wall").
 
+- **Item 010 (H-052) — resultado central rotulado "Conjetura", não "Teorema", apesar do título**:
+  Ruiz Castillo, "Teorema Central del Límite Residual" — terceiro paper
+  deste autor na coleção (após item 001/H-039, item 008/H-050). Propõe
+  TCL para as flutuações de L_k(n); identidades algébricas corretas mas
+  triviais (Parte 1). O resultado central é honestamente rotulado
+  "Conjetura 4.2" no corpo do texto (autor lista 5 hipóteses técnicas
+  não provadas: medida de Gibbs residual, ergodicidade, espaço
+  funcional, brecha espectral, variância positiva) apesar do título
+  dizer "Teorema" — conclusão do próprio paper: "Este marco no
+  demuestra la Conjetura de Collatz." Testamos a consequência empírica
+  (normalidade assintótica) em trajetórias reais de Collatz: variância
+  de Z_k estabiliza perto de 2, assimetria→0, curtose→3 conforme k
+  cresce (k até 300) — previsão empiricamente plausível, mesmo sem as
+  hipóteses técnicas construídas no paper. Nota de integridade: bug de
+  amostragem no nosso próprio código (contaminação por trajetórias
+  curtas demais, processo ficou preso 17 minutos) identificado e
+  corrigido antes de reportar qualquer resultado. ~20 autocitações,
+  confirmando o padrão de um conceito clássico por paper aplicado à
+  mesma quantidade L_k(n).
+
 Continuar adicionando aqui (ou num arquivo dedicado, se a lista crescer
 muito) conforme processarmos os próximos itens da coleção. Ver memória
 `feedback_santos_pdf_paper_timing.md`.

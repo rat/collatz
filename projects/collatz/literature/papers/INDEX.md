@@ -96,7 +96,7 @@ formos processando um por um.
 | 007 | Finite-Dimensional Combinatorial and Arithmetic Structures of Parity Vectors for the Accelerated Collatz Map | K Hikawa - researchgate.net | BAIXADO | `007_Parity-Vector-Structures-Accelerated-Collatz.pdf` | Sim | Sim | Sim |
 | 008 | Dissipative Bounds and Ruiz Castillo Residual Decomposition in the Accelerated Dynamics of the Collatz Conjecture | SDJCR Castillo - researchgate.net | BAIXADO | `008_Dissipative-Bounds-Ruiz-Castillo.pdf` | Sim | Sim | Sim |
 | 009 | Structural Dualism in Integer Architectures | E Olgac - researchgate.net | BAIXADO | `009_Structural-Dualism-Integer-Architectures.pdf` | Sim | Sim | Sim |
-| 010 | Teorema Central del Límite Residual de Ruiz Castillo para la dinámica acelerada de la Conjetura de Collatz | SDJCR Castillo - researchgate.net | BAIXADO | `010_Teorema-Central-Limite-Ruiz-Castillo.pdf` |  |  |  |
+| 010 | Teorema Central del Límite Residual de Ruiz Castillo para la dinámica acelerada de la Conjetura de Collatz | SDJCR Castillo - researchgate.net | BAIXADO | `010_Teorema-Central-Limite-Ruiz-Castillo.pdf` | Sim | Sim | Sim |
 | 011 | Structural Analysis, Dynamic Density Sieve, and Logarithmic Contraction of Collatz Sequences | A Mohammed - 2026 - researchgate.net | BAIXADO | `011_Structural-Analysis-Density-Sieve-Logarithmic-Contraction.pdf` | Sim | Sim | Sim |
 | 012 | Proposed framework on Collatz conjecture | P Danesh - 2026 - cambridge.org | (sem link PDF detectado pelo Scholar) | sem PDF livre (nenhum link PDF listado) |  |  |  |
 | 013 | Operador de Transferencia Residual de Ruiz Castillo y estructura espectral en la dinamica acelerada de la Conjetura de Collatz | SDJCR Castillo - researchgate.net | BAIXADO | `013_Operador-Transferencia-Ruiz-Castillo.pdf` |  |  |  |
