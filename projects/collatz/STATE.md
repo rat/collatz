@@ -97,7 +97,18 @@ erro. Verificado com `advisor()`.
 
 ## Onde estamos
 
-**Quarenta e quatro hipóteses testadas (H-001 a H-044)**. **H-044**:
+**Quarenta e cinco hipóteses testadas (H-001 a H-045)**. **H-045**
+(achado importante): paper de Abdullah Mohammed (item 011, baixado
+manualmente pelo diretor científico) alega prova completa da
+Conjectura de Collatz via sieve geométrico + Teorema de Baker. Furo:
+a equação de ciclo do próprio paper força M/P→log₂(3)≈1,585 para um
+ciclo real, mas a Eq.48 usa M≈2P (expectativa ERGÓDICA/média de número
+genérico, não a restrição de um ciclo) — checagem vazia. Mesma
+categoria de erro do CTUHSK (H-043): confundir "em média"/"quase todo"
+com afirmação universal sobre o objeto hipotético específico.
+Catalogado em `literature/unverified-proof-claims.md`.
+
+Anteriormente, **quarenta e quatro hipóteses testadas (H-001 a H-044)**. **H-044**:
 paper de Fu/Liu/Wang sobre estatística Gamma de N↑ — sem erros, ver
 seção "Coleção de papers" acima.
 

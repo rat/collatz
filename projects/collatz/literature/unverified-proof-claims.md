@@ -69,6 +69,26 @@ estrutural" (ver `overview-and-known-results.md`) apareceria.
   (k=2, BEL(7)/BEL(11)) pelo próprio paper. **Veredito: não é uma prova
   válida.**
 
+- **"Structural Analysis, Dynamic Density Sieve, and Logarithmic
+  Contraction of Collatz Sequences"** — Abdullah Mohammed, Kafr
+  El-Sheikh University, Egito. Item 011 da coleção do Google Scholar,
+  lido e analisado integralmente em 2026-07-14 (arquivo local
+  `literature/papers/011_Structural-Analysis-Density-Sieve-Logarithmic-Contraction.pdf`).
+  **Falha identificada com precisão** (ver
+  `hypotheses/H-045-mohammed-density-sieve-baker-flaw.md` e
+  `experiments/E-045-mohammed-density-sieve-baker-check/`): sieve de
+  densidade geométrica e exclusão de 1-ciclos corretos (mas não-novos —
+  E[M]=2 já é nosso H-001/H-011). O furo está na tentativa de usar o
+  Teorema de Baker (formas lineares em logaritmos) para excluir ciclos
+  não-triviais: a equação de ciclo do próprio paper força M/P→log₂(3)≈1,585
+  para um ciclo real (elementos grandes), mas o paper substitui M≈2P — a
+  expectativa ERGÓDICA/MÉDIA de um número ímpar genérico, não a restrição
+  de um ciclo autoconsistente — produzindo uma checagem vazia que não
+  restringe nada. Mesmo método usado de verdade por Simons & de Weger
+  (2005) com constantes de Baker explícitas, mas que não fecha para todo
+  P com as constantes efetivas conhecidas. **Veredito: não é uma prova
+  válida.**
+
 ## Como usar isso no laboratório
 
 - Ao encontrar uma nova alegação de "prova completa", adicione uma linha aqui com

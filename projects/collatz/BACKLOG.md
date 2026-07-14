@@ -387,6 +387,19 @@ que lemos e corrigimos um por um. Material já acumulado:
   argumento, um paper honesto sobre seus limites e outro que
   overclaima) é o ponto mais útil desta entrada para a crítica final.
 
+- **Item 011 (H-045) — achado importante, prova completa inválida**:
+  Abdullah Mohammed, "Structural Analysis, Dynamic Density Sieve, and
+  Logarithmic Contraction of Collatz Sequences" — alega prova completa
+  (mesma categoria do Santos e do CTUHSK/H-043). Sieve geométrico e
+  exclusão de 1-ciclos corretos mas não-novos (E[M]=2 já é nosso
+  H-001/H-011). Furo na tentativa de usar o Teorema de Baker: a própria
+  equação de ciclo do paper força M/P→log₂(3)≈1,585 para um ciclo real,
+  mas a Eq.48 substitui M≈2P (expectativa ERGÓDICA/média de número
+  ímpar genérico, não a restrição de um ciclo autoconsistente) —
+  checagem vazia, não restringe nada. Mesmo método de Simons & de Weger
+  (2005, constantes de Baker explícitas), mas que não fecha para todo P.
+  Também catalogado em `literature/unverified-proof-claims.md`.
+
 Continuar adicionando aqui (ou num arquivo dedicado, se a lista crescer
 muito) conforme processarmos os próximos itens da coleção. Ver memória
 `feedback_santos_pdf_paper_timing.md`.
