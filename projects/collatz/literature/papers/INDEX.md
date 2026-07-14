@@ -93,7 +93,7 @@ formos processando um por um.
 | 004 | First-Principles Derivation of the Steiner Sentence Length Distribution | J Seymour - 2026 - wildducktheories.github.io | BAIXADO | `004_First-Principles-Derivation-Steiner-Sentence-Length-Distribution.pdf` | Sim | Sim | Sim |
 | 005 | A Regular Expression Language for the Collatz Graph | J Seymour - 2026 - wildducktheories.github.io | BAIXADO | `005_A-Regular-Expression-Language-for-the-Collatz-Graph.pdf` | Sim | Sim | Sim |
 | 006 | A Two-Field Propagation Model for the Collatz Map | MM Anthony - 2026 - researchgate.net | BAIXADO | `006_Two-Field-Propagation-Model.pdf` | Sim | Sim | Sim |
-| 007 | Finite-Dimensional Combinatorial and Arithmetic Structures of Parity Vectors for the Accelerated Collatz Map | K Hikawa - researchgate.net | BAIXADO | `007_Parity-Vector-Structures-Accelerated-Collatz.pdf` |  |  |  |
+| 007 | Finite-Dimensional Combinatorial and Arithmetic Structures of Parity Vectors for the Accelerated Collatz Map | K Hikawa - researchgate.net | BAIXADO | `007_Parity-Vector-Structures-Accelerated-Collatz.pdf` | Sim | Sim | Sim |
 | 008 | Dissipative Bounds and Ruiz Castillo Residual Decomposition in the Accelerated Dynamics of the Collatz Conjecture | SDJCR Castillo - researchgate.net | BAIXADO | `008_Dissipative-Bounds-Ruiz-Castillo.pdf` |  |  |  |
 | 009 | Structural Dualism in Integer Architectures | E Olgac - researchgate.net | BAIXADO | `009_Structural-Dualism-Integer-Architectures.pdf` |  |  |  |
 | 010 | Teorema Central del Límite Residual de Ruiz Castillo para la dinámica acelerada de la Conjetura de Collatz | SDJCR Castillo - researchgate.net | BAIXADO | `010_Teorema-Central-Limite-Ruiz-Castillo.pdf` |  |  |  |

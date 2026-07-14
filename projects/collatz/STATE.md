@@ -97,7 +97,13 @@ erro. Verificado com `advisor()`.
 
 ## Onde estamos
 
-**Quarenta e oito hipóteses testadas (H-001 a H-048)**. **H-048**: paper
+**Quarenta e nove hipóteses testadas (H-001 a H-049)**. **H-049**: paper
+de Hikawa (item 007) — sem erros, puramente combinatório sobre vetores
+de paridade finitos, explicitamente independente da verdade/falsidade
+do Collatz. Teoremas centrais e tabelas numéricas confirmados
+exatamente.
+
+Anteriormente, **quarenta e oito hipóteses testadas (H-001 a H-048)**. **H-048**: paper
 de Anthony (item 006) — sem erros, honestidade epistêmica exemplar.
 Muito aparato sofisticado (equação P de Riemann, monodromia, digamma,
 hipergeometria) que o próprio paper trata como analogia decorativa; o

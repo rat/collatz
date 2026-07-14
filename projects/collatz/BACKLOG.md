@@ -444,6 +444,17 @@ que lemos e corrigimos um por um. Material já acumulado:
   (reformulação Möbius, Teorema 8.1, identidades digamma/hipergeométrica)
   confirmadas corretas.
 
+- **Item 007 (H-049) — sem erros, alta qualidade combinatória**:
+  Kazunobu Hikawa, "Finite-Dimensional Combinatorial and Arithmetic
+  Structures of Parity Vectors..." — terceiro estágio de uma série
+  (após Hikawa–Nakanishi e Nakanishi, citados). Puramente combinatório
+  sobre vetores de paridade finitos, independente da verdade/falsidade
+  do Collatz — repete essa ressalva em quase toda seção. Teorema 3.2
+  (bijeção Φ:U(d)→J(d+1)) e Teorema 5.2 (rigidez 2-ádica) confirmados
+  por força bruta; contraexemplo do próprio paper (pesos desiguais)
+  também confirmado; Tabelas 1-2 reproduzidas exatamente via
+  reimplementação independente do algoritmo de contagem.
+
 Continuar adicionando aqui (ou num arquivo dedicado, se a lista crescer
 muito) conforme processarmos os próximos itens da coleção. Ver memória
 `feedback_santos_pdf_paper_timing.md`.
