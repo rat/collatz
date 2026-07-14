@@ -413,6 +413,19 @@ que lemos e corrigimos um por um. Material já acumulado:
   Categoria diferente das alegações de prova completa — não vai para
   `unverified-proof-claims.md`.
 
+- **Item 003 (H-047) — sem erros, alta qualidade**: Jonathan S. Gilbert,
+  "A Collatz-Equivalent Map on the Nonzero Integers" — não alega provar
+  nada ("no proof of the conjecture is claimed"). Constrói conjugação
+  explícita entre a parte relevante do grafo de Collatz e todos os
+  inteiros não-nulos, codificando a classe residual mod 3 via sinal.
+  Todos os teoremas testados (conjugação, pruning de múltiplos de 3,
+  conjectura equivalente, mapa acelerado K̂, fórmula dos pais)
+  confirmados corretos. Uma identificação externa (OEIS A254046) ficou
+  não verificada — oeis.org bloqueou acesso automatizado (403); não
+  fabricamos dado de referência para reportar como erro sem evidência.
+  Mesmo padrão de honestidade epistêmica de H-042/H-044 — distingue
+  teorema provado de conjectura mais fraca de analogia heurística.
+
 Continuar adicionando aqui (ou num arquivo dedicado, se a lista crescer
 muito) conforme processarmos os próximos itens da coleção. Ver memória
 `feedback_santos_pdf_paper_timing.md`.

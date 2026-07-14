@@ -97,7 +97,14 @@ erro. Verificado com `advisor()`.
 
 ## Onde estamos
 
-**Quarenta e seis hipóteses testadas (H-001 a H-046)**. **H-046**: paper
+**Quarenta e sete hipóteses testadas (H-001 a H-047)**. **H-047**: paper
+de Gilbert (item 003) — sem erros, alta qualidade. Conjugação explícita
+entre o grafo de Collatz podado e todos os inteiros não-nulos (sinal
+codifica classe residual mod 3). Todos os teoremas testados corretos.
+Uma identificação OEIS ficou não verificada (site bloqueou acesso) —
+não reportada como erro sem evidência real.
+
+Anteriormente, **quarenta e seis hipóteses testadas (H-001 a H-046)**. **H-046**: paper
 de Adnan & Dar (item 002) — não alega provar nada, propõe extensão ad
 hoc do Collatz a decimais via "paridade do último dígito". Aritmética
 correta, mas a regra não é definida fora de um subconjunto contável de
