@@ -65,9 +65,41 @@ da publicação. Teorema 3.6 (dinâmica diagonal, 20k casos) e Teorema
 confirmados corretos, sem exceção. Ponto de calibração importante para
 a crítica cumulativa: nem todo paper da coleção tem problemas.
 
+**Item 016 processado (H-043), achado importante — prova completa
+inválida**: Halemane ("CTUHSK Theorem", engrxiv.org, 35 páginas) —
+diferente dos itens anteriores, alega uma **prova completa** da
+Conjectura de Collatz. Reformulação notacional (Binary-Exponential-
+Ladders) da árvore reversa de Collatz padrão, nada estruturalmente
+novo. "Condição necessária" da prova é tautológica (o conjunto definido
+como quem alcança o ciclo trivial, por definição, alcança o ciclo
+trivial). "Condição suficiente" (que excluiria ciclos extras/cadeias
+divergentes — todo o conteúdo real) tem furo decisivo: assume que o
+predecessor de um elemento mínimo de ciclo hipotético usa o expoente
+v=1 especificamente, entre infinitas soluções válidas da própria
+fórmula do paper (uma por expoente ímpar v=1,3,5,7,...); só v=1 dá a
+contradição alegada, todo v≥3 dá um valor maior (sem contradição
+nenhuma). Confirmado computacionalmente (`experiments/E-043-ctuhsk-cycle-proof-check/`)
+que é padrão algébrico geral, não acidente do exemplo do paper.
+Catalogado em `literature/unverified-proof-claims.md` junto ao Santos
+(2018). Verificado com `advisor()` antes de finalizar a análise.
+
 ## Onde estamos
 
-**Trinta e oito hipóteses testadas (H-001 a H-038)**. **H-038**: uma
+**Quarenta e três hipóteses testadas (H-001 a H-043)**. **H-039 a H-043**
+são revisões da coleção de papers do Google Scholar (ver seção "Coleção
+de papers" acima para o detalhe de cada uma) — destaque para **H-043**
+(achado importante): o paper #016 (Halemane, "CTUHSK Theorem") alega uma
+**prova completa** da Conjectura de Collatz, mesma categoria do PDF do
+Santos já catalogado. Furo lógico encontrado na condição suficiente da
+prova: o argumento de redução ao absurdo fixa arbitrariamente um
+expoente (v=1) entre infinitas escolhas válidas ao calcular o
+predecessor de um elemento mínimo de um ciclo hipotético — só essa
+escolha específica gera a contradição alegada; qualquer outro expoente
+ímpar (v≥3) não gera contradição nenhuma. Confirmado computacionalmente
+que isso é um padrão algébrico geral, não um acidente do exemplo do
+paper. Catalogado também em `literature/unverified-proof-claims.md`.
+
+Anteriormente, **trinta e oito hipóteses testadas (H-001 a H-038)**. **H-038**: uma
 segunda resposta da mesma IA externa (mesmo "Project PHI"/H-036)
 propôs um "campo vetorial" Δ(n)=Φ(T(n))-Φ(n) em embedding rico — a
 generalização não-linear da ideia já descartada. Testei com mutual

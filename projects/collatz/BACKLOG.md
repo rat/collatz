@@ -351,6 +351,24 @@ que lemos e corrigimos um por um. Material já acumulado:
   exceção. Útil para a crítica cumulativa como contraponto: nem todo
   paper da coleção tem problemas.
 
+- **Item 016 (H-043) — achado importante, prova completa inválida**:
+  Halemane, "Collatz-Thwaites-Ulam-Hasse-Syracuse-Kakutani (CTUHSK)
+  Theorem" — diferente dos itens anteriores, este alega uma **prova
+  completa** da Conjectura de Collatz (mesma categoria do PDF do
+  Santos). Reformulação notacional da árvore reversa de Collatz padrão
+  (Binary-Exponential-Ladders), nada de estruturalmente novo. A
+  "condição necessária" da prova é tautológica (o conjunto definido
+  como quem alcança o ciclo trivial, por definição, alcança o ciclo
+  trivial). A "condição suficiente" (que excluiria ciclos extras e
+  cadeias divergentes — todo o conteúdo real da prova) tem furo lógico
+  decisivo: assume que o predecessor de um elemento mínimo de um ciclo
+  hipotético usa o expoente v=1 especificamente, mas a fórmula do
+  próprio paper tem infinitas soluções válidas (uma por expoente ímpar);
+  só v=1 dá contradição, todo v≥3 não dá nenhuma. Confirmado
+  computacionalmente que é um padrão algébrico geral, não um acidente do
+  exemplo numérico do paper. Também catalogado em
+  `literature/unverified-proof-claims.md` junto com o Santos (2018).
+
 Continuar adicionando aqui (ou num arquivo dedicado, se a lista crescer
 muito) conforme processarmos os próximos itens da coleção. Ver memória
 `feedback_santos_pdf_paper_timing.md`.

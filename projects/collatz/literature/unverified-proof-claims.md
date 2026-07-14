@@ -43,6 +43,31 @@ estrutural" (ver `overview-and-known-results.md`) apareceria.
   acima). Na Seção 2.9 o próprio autor mostra a órbita "fantástica" de n=129
   sem provar rigorosamente que termina, apenas afirma isso por gesto na
   Conclusão. **Veredito: não é uma prova válida.**
+- **"Collatz-Thwaites-Ulam-Hasse-Syracuse-Kakutani (CTUHSK) Theorem:
+  Convergence of Collatz (3n+1) Sequence to the Trivial Cycle Proved"** —
+  Dr.(Prof.) Keshava Prasad Halemane, professor aposentado (NITK Surathkal),
+  pesquisador independente, preprint em engrxiv.org, 35 páginas. Item 016 da
+  coleção do Google Scholar, lido e analisado integralmente em 2026-07-14
+  (arquivo local `literature/papers/016_CTUHSK-Theorem.pdf`). **Falha
+  identificada com precisão** (ver `hypotheses/H-043-ctuhsk-halemane-proof-flaw.md`
+  e `experiments/E-043-ctuhsk-cycle-proof-check/`): o paper constrói uma
+  reformulação notacional da árvore reversa de Collatz padrão (Binary-
+  Exponential-Ladders, operadores D#/U#), nada estruturalmente novo. A
+  "condição necessária" da prova é tautológica (mostra que o conjunto
+  *definido* como quem alcança o ciclo trivial de fato alcança o ciclo
+  trivial). A "condição suficiente" — que excluiria ciclos extras e cadeias
+  divergentes, carregando todo o peso real da prova — tem um furo decisivo:
+  o argumento de redução ao absurdo (Seção 10.2.1) assume que o predecessor
+  de um elemento mínimo de um ciclo hipotético é dado pela fórmula do paper
+  com o expoente v=1 especificamente, quando na verdade essa fórmula tem
+  infinitas soluções válidas (uma por expoente ímpar v=1,3,5,7,...) — e
+  apenas v=1 dá um valor menor (violando a minimalidade assumida); todo
+  v≥3 dá um valor maior, sem gerar contradição alguma. O paper nunca
+  justifica por que o predecessor real dentro do ciclo hipotético teria que
+  ser exatamente o de v=1. Confirmado computacionalmente que isso é um
+  padrão algébrico geral, não um acidente do exemplo numérico escolhido
+  (k=2, BEL(7)/BEL(11)) pelo próprio paper. **Veredito: não é uma prova
+  válida.**
 
 ## Como usar isso no laboratório
 
