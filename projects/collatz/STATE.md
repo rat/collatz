@@ -142,10 +142,13 @@ de brainstorm do modelo Fable sobre padrões binários (H-012 a H-021) foi
 para a anomalia de H-013 (ainda sem fórmula fechada) e quatro confirmações
 teóricas precisas no estilo "derivar → confirmar" (H-010, H-011, H-017,
 H-023 — Lei de Benford, inspirada por um vídeo trazido pelo diretor
-científico). Backlog em `BACKLOG.md`. **Tarefa pendente**: escrever um
-paper curto apontando os erros do PDF de Santos 2018 — só fazer quando o
-diretor científico pedir explicitamente, por último (o diretor
-pediu para lembrá-lo de avisar quando isso for feito).
+científico). Backlog em `BACKLOG.md`. **Duas tarefas pendentes** (mesma
+regra para as duas — só fazer quando o diretor científico pedir
+explicitamente, por último; ele pediu para ser lembrado): (1) escrever
+um paper curto apontando os erros do PDF de Santos 2018
+(`BACKLOG.md` item 5); (2) escrever um paper curto apontando o erro de
+rotulagem off-by-one encontrado na Conjectura 10.4 de Pratiher 2026
+(`BACKLOG.md` item 7, análise pronta em H-037/E-037).
 
 ## O que o levantamento estabeleceu
 
@@ -566,9 +569,11 @@ de agora, não retomar o modo autônomo por conta própria — ver memória
 `feedback_autonomous_research_loop.md` (CANCELLED). Trabalhar sessão a
 sessão, a partir do que for pedido.
 
-Tarefa pendente (**só fazer quando o diretor científico pedir
-explicitamente**, por último — lembrar de avisar quando for feito): paper
-sobre os erros do PDF de Santos (`BACKLOG.md` item 5). Outras candidatas:
+Tarefas pendentes (**só fazer quando o diretor científico pedir
+explicitamente**, por último — lembrar de avisar quando for feito):
+paper sobre os erros do PDF de Santos (`BACKLOG.md` item 5) e paper
+sobre o erro de rotulagem de Pratiher (`BACKLOG.md` item 7, pedido
+2026-07-13 "assim como o outro"). Outras candidatas:
 
 1. Tentar resolver a metade par de H-008 com uma ideia nova.
 2. Se alguém quiser retomar a fórmula fechada de H-013: a recursão
@@ -583,3 +588,5 @@ sobre os erros do PDF de Santos (`BACKLOG.md` item 5). Outras candidatas:
    `literature/unverified-proof-claims.md`.
 5. **Só quando pedido explicitamente**: escrever o paper curto sobre os
    erros do PDF de Santos (`BACKLOG.md` item 5).
+6. **Só quando pedido explicitamente**: escrever o paper curto sobre o
+   erro de rotulagem de Pratiher (`BACKLOG.md` item 7).

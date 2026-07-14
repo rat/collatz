@@ -247,3 +247,19 @@ apenas uma entrada de catálogo interna. Estrutura sugerida:
    conhecida resolve (`literature/overview-and-known-results.md`).
 Ainda não iniciado — próxima sessão pode começar por aqui se o diretor
 científico priorizar.
+
+## 7. Escrever um paper curto apontando o erro de rotulagem de Pratiher (2026) — PENDENTE
+
+Pedido do diretor científico em 2026-07-13, mesmo padrão do item 5
+("anote para quando terminar, assim como o outro, fazer um paper
+mostrando o erro"). Transformar a análise já feita em H-037/E-037 num
+manuscrito curto: (1) resumo da Conjectura 10.4 de Pratiher (α≈0,9762
+para a forma dominante 'a'); (2) argumento de paridade mostrando que a
+forma relatada é impossível como classe de massa positiva (mesmo
+mecanismo do nosso H-012); (3) verificação computacional com
+correspondência exata sob deslocamento de rótulo de 1 posição; (4)
+avaliação cuidadosa — números corretos, rótulo errado, sem acesso ao
+código-fonte dele para apontar a causa exata. Ainda não iniciado. Só
+escrever quando o diretor científico pedir explicitamente, por último
+— junto com o item 5 (ver memória `feedback_santos_pdf_paper_timing.md`
+no sistema de memória do Claude).
