@@ -471,6 +471,18 @@ que lemos e corrigimos um por um. Material já acumulado:
   paper). Provável que os demais papers Ruiz Castillo na fila (010,
   013, 017, 020) sigam o mesmo padrão.
 
+- **Item 009 (H-051) — sem conteúdo específico de Collatz verificável**:
+  Enis Olgac, "Structural Dualism in Integer Architectures" — nota
+  curta de 3 páginas conectando duas alegações anteriores do mesmo
+  autor (não nesta coleção): uma sobre Collatz ("Canonical Triple-
+  Graph") e outra alegando **provar a Conjectura de Goldbach inteira**
+  ("The Proof Beyond Goldbach", também preprint Zenodo auto-publicado).
+  O único conteúdo específico de Collatz é uma tautologia (ramos da
+  árvore reversa por raiz ímpar são disjuntos — consequência trivial
+  de fatoração única de 2). O resto é sobre Goldbach (fora do escopo
+  deste projeto) e não rigoroso o suficiente para avaliar (linguagem
+  descritiva não-matemática, "physical collision", "retaining wall").
+
 Continuar adicionando aqui (ou num arquivo dedicado, se a lista crescer
 muito) conforme processarmos os próximos itens da coleção. Ver memória
 `feedback_santos_pdf_paper_timing.md`.

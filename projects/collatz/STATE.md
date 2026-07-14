@@ -97,7 +97,13 @@ erro. Verificado com `advisor()`.
 
 ## Onde estamos
 
-**Cinquenta hipóteses testadas (H-001 a H-050)**. **H-050**: segundo
+**Cinquenta e uma hipóteses testadas (H-001 a H-051)**. **H-051**: nota
+curta de Olgac (item 009) — sem conteúdo específico de Collatz
+verificável (a única afirmação sobre Collatz é tautológica); o resto
+é sobre a Conjectura de Goldbach, fora do escopo, e não rigoroso o
+suficiente para avaliar.
+
+Anteriormente, **cinquenta hipóteses testadas (H-001 a H-050)**. **H-050**: segundo
 paper de Ruiz Castillo (item 008) — matemática elementar correta
 (mesma "equação de ciclo" já vista em H-044/H-045, dressed em
 terminologia própria), mas zero verificação numérica real (mesmo
