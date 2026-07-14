@@ -97,19 +97,30 @@ erro. Verificado com `advisor()`.
 
 ## Onde estamos
 
-**Cinquenta e quatro hipóteses testadas (H-001 a H-054)**. **H-054**:
-quinto paper de Ruiz Castillo (item 017, "Medidas de Gibbs
-Residuales") — sem erros, volta ao padrão elementar mas correto após
-o erro do item anterior. Todas as identidades concretas (interpretação
-logarítmica, identidade fundamental S_kφ=−L, semiconjugação, partição
-por cilindros, equivalência Gibbs-residual) confirmadas — reescritas
-algébricas triviais corretas. Todo resultado em aberto (cuasi-Bernoulli,
+**Cinquenta e cinco hipóteses testadas (H-001 a H-055)**. **H-055**:
+sexto paper de Ruiz Castillo (item 020, "Principio Variacional
+Residual") — sem erros. Unifica deuda residual, drift, presión,
+entropía, grandes desviaciones e dimensión sob um único princípio
+variacional. Identidades Collatz-específicas concretas confirmadas
+(mesma quantidade de sempre); aparato de análise convexa abstrata
+(sup de afins é convexo, Legendre-Fenchel) é matemática padrão
+corretamente aplicada, confirmado via verificação toy não-Collatz-
+específica. Onde a derivação é só formal, o texto admite isso
+explicitamente. Todo resultado aberto rotulado "Conjetura". Sexto
+paper consecutivo sem erro real (única exceção: item 013/H-053).
+Processando os ~16 papers de Ruiz Castillo em lote sequencial; próximo
+é item 055 (leitura contextual do paper de filosofia/platonismo).
+
+Anteriormente, **cinquenta e quatro hipóteses testadas (H-001 a
+H-054)**. **H-054**: quinto paper de Ruiz Castillo (item 017, "Medidas
+de Gibbs Residuales") — sem erros, volta ao padrão elementar mas
+correto após o erro do item anterior. Todas as identidades concretas
+(interpretação logarítmica, identidade fundamental S_kφ=−L,
+semiconjugação, partição por cilindros, equivalência Gibbs-residual)
+confirmadas. Todo resultado em aberto (cuasi-Bernoulli,
 Gibbs-implica-equilíbrio, dualidade grandes desvios, fórmula de
 dimensão) honestamente rotulado "Conjetura". Sem consequência empírica
-diretamente testável (conjecturas tratam da existência de uma medida
-μ_t nunca construída explicitamente). Processando os ~16 papers de
-Ruiz Castillo em lote sequencial; próximo é item 020 (Principio
-Variacional Residual).
+diretamente testável.
 
 Anteriormente, **cinquenta e três hipóteses testadas (H-001 a H-053)**.
 **H-053**: quarto paper de Ruiz Castillo (item 013, "Operador de

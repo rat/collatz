@@ -534,6 +534,21 @@ que lemos e corrigimos um por um. Material já acumulado:
   de uma medida μ_t nunca construída explicitamente, diferente do
   operador de transferência do item 013 ou do TCL do item 010).
 
+- **Item 020 (H-055) — sem erros, análise convexa abstrata corretamente aplicada**:
+  Ruiz Castillo, "Principio Variacional Residual" — sexto paper deste
+  autor na coleção. Unifica deuda residual, drift, presión, entropía,
+  grandes desviaciones e dimensión sob P_RC(t)=sup{H_RC(μ)−tD_RC(μ)}.
+  Identidades Collatz-específicas concretas (interpretação
+  multiplicativa, semiconjugação, classificação local, soma ergódica,
+  identidade fundamental) confirmadas — reescritas triviais da mesma
+  quantidade de sempre. Aparato de análise convexa abstrata (sup de
+  afins é convexo, subgradientes, Legendre-Fenchel) é matemática padrão
+  corretamente aplicada, confirmado via verificação toy. Onde a
+  derivação é apenas formal (dualidade presión-tasa), o texto admite
+  isso explicitamente. Todo resultado aberto honestamente rotulado
+  "Conjetura". Sexto paper consecutivo do autor sem erro real
+  encontrado (exceção: item 013/H-053).
+
 Continuar adicionando aqui (ou num arquivo dedicado, se a lista crescer
 muito) conforme processarmos os próximos itens da coleção. Ver memória
 `feedback_santos_pdf_paper_timing.md`.
