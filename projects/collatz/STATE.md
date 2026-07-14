@@ -54,6 +54,17 @@ paridade de t; na verdade é sempre 11) — mas não consta na lista
 "what is proved" do próprio paper, gravidade baixa. Conjectura central
 (caracterização via regex) tratada honestamente como conjectura.
 
+**Item 014 processado (H-042), sem erros**: Williams ("A Coordinate
+System for Collatz Dynamics", Univ. of Southampton, arXiv:2607.01718)
+— qualidade acadêmica claramente superior aos itens anteriores:
+literatura extensa e genuína, código público no GitHub, declaração
+honesta de uso de IA (Claude Opus 4.8, verificação humana integral
+declarada), agradecimento a colega que já pegou um erro menor antes
+da publicação. Teorema 3.6 (dinâmica diagonal, 20k casos) e Teorema
+4.1 (linhas k≡2mod4 k≥6 sem primos, 14 linhas até 58 elementos) ambos
+confirmados corretos, sem exceção. Ponto de calibração importante para
+a crítica cumulativa: nem todo paper da coleção tem problemas.
+
 ## Onde estamos
 
 **Trinta e oito hipóteses testadas (H-001 a H-038)**. **H-038**: uma

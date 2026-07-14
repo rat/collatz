@@ -340,6 +340,17 @@ que lemos e corrigimos um por um. Material já acumulado:
   central (caracterização via regex) é tratada honestamente como
   conjectura, não como prova.
 
+- **Item 014 (H-042) — sem erros, ponto de calibração positivo**:
+  Williams, "A Coordinate System for Collatz Dynamics" (Univ. of
+  Southampton, arXiv:2607.01718). Qualidade acadêmica claramente
+  superior: literatura extensa e genuína, código público, declaração
+  honesta de uso de IA (Claude Opus 4.8, com verificação humana
+  integral), agradecimento a um colega por revisão que já pegou um
+  erro menor antes da publicação. Os dois teoremas centrais (dinâmica
+  diagonal, linhas livres de primos) foram confirmados corretos, sem
+  exceção. Útil para a crítica cumulativa como contraponto: nem todo
+  paper da coleção tem problemas.
+
 Continuar adicionando aqui (ou num arquivo dedicado, se a lista crescer
 muito) conforme processarmos os próximos itens da coleção. Ver memória
 `feedback_santos_pdf_paper_timing.md`.
