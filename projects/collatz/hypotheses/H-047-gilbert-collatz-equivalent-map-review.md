@@ -1,8 +1,8 @@
 # H-047 — Revisão do paper #003 (Gilbert, "A Collatz-Equivalent Map on the Nonzero Integers") — sem erros encontrados
 
-Status: revisão externa concluída — paper de alta qualidade, teoremas
-centrais confirmados corretos, uma identificação externa (OEIS) fica
-não verificada por bloqueio de acesso (não é erro do paper)
+Status: revisão externa concluída — paper de alta qualidade, todos os
+teoremas testados confirmados corretos, incluindo a conexão com OEIS
+A254046 (confirmada via `curl`, ver atualização abaixo)
 Criada em: 2026-07-14
 Origem: paper baixado manualmente pelo diretor científico (item 003 da
 coleção, `literature/papers/003_Collatz-Equivalent-Map-Nonzero-Integers.pdf`,
@@ -39,21 +39,25 @@ contrai as "corridas" por inteiros negativos pares.
 - **Identidade algébrica interna da Proposição 4**: as duas expressões
   que o paper afirma serem iguais (1+ν₃(2y-1) e ν₃(2^(2y-1)+1)) de fato
   coincidem entre si e com a contagem direta de pais — confirmado.
+- **Conexão com OEIS A254046** (Proposição 4): confirmada com a
+  sequência real (ver nota abaixo) — os primeiros 15 termos batem
+  exatamente.
 
 **Nenhum erro encontrado** em nenhuma reivindicação testável.
 
-## Limitação honesta na verificação
+## Nota sobre acesso ao OEIS (correção)
 
-A Proposição 4 também identifica a sequência resultante com OEIS
-A254046. Tentamos confirmar isso via `WebFetch` em `oeis.org/A254046`
-e `/b254046.txt` — o site **bloqueou o acesso automatizado (403)**,
-mesmo padrão de bloqueio de outros hosts já catalogado neste projeto
-(ResearchGate, SSRN, preprints.org, IEEE). Não fabricamos um valor de
-referência para comparar — essa identificação específica com a
-sequência externa fica **não verificada** (nem confirmada nem
-refutada), diferente da matemática interna da proposição (que
-verificamos ser correta de forma independente). Isso não é reportado
-como erro do paper — é uma limitação da nossa verificação.
+A primeira tentativa de confirmar a sequência OEIS A254046 usou
+`WebFetch` em `oeis.org/A254046` e `/b254046.txt` — o site bloqueou o
+acesso automatizado (403), mesmo padrão de outros hosts já catalogado
+neste projeto (ResearchGate, SSRN, preprints.org, IEEE). O diretor
+científico apontou que `curl` com um User-Agent de navegador funciona
+nesse site sem bloqueio — refeito com sucesso
+(`curl -s -A "Mozilla/5.0 ..." https://oeis.org/A254046/b254046.txt`),
+confirmando que a sequência real A254046 (1,2,1,1,3,1,1,2,1,1,2,1,1,4,1,...)
+bate exatamente com a fórmula da Proposição 4. Registrado em
+`feedback_oeis_access_method.md` para não repetir o erro de desistir
+no primeiro bloqueio sem tentar `curl`.
 
 ## Por que este paper se destaca
 
@@ -87,3 +91,5 @@ identificamos.
   (`experiments/E-047-gilbert-collatz-equivalent-map-check/`), nenhum
   erro encontrado. Flags atualizadas em `literature/papers/INDEX.md`
   (item 003: Lido=Sim, Corrigido=Sim [nada a corrigir], Implementado=Sim).
+- 2026-07-14 (correção): conexão com OEIS A254046 confirmada via `curl`
+  após `WebFetch` ser bloqueado por oeis.org — ver nota acima.

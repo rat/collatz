@@ -419,11 +419,12 @@ que lemos e corrigimos um por um. Material já acumulado:
   explícita entre a parte relevante do grafo de Collatz e todos os
   inteiros não-nulos, codificando a classe residual mod 3 via sinal.
   Todos os teoremas testados (conjugação, pruning de múltiplos de 3,
-  conjectura equivalente, mapa acelerado K̂, fórmula dos pais)
-  confirmados corretos. Uma identificação externa (OEIS A254046) ficou
-  não verificada — oeis.org bloqueou acesso automatizado (403); não
-  fabricamos dado de referência para reportar como erro sem evidência.
-  Mesmo padrão de honestidade epistêmica de H-042/H-044 — distingue
+  conjectura equivalente, mapa acelerado K̂, fórmula dos pais, e conexão
+  com a sequência OEIS A254046) confirmados corretos — a checagem OEIS
+  exigiu usar `curl` em vez de `WebFetch` (oeis.org bloqueia WebFetch
+  com 403, mas aceita curl com User-Agent de navegador; ver memória
+  `feedback_oeis_access_method.md`). Mesmo padrão de honestidade
+  epistêmica de H-042/H-044 — distingue
   teorema provado de conjectura mais fraca de analogia heurística.
 
 Continuar adicionando aqui (ou num arquivo dedicado, se a lista crescer

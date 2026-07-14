@@ -100,9 +100,10 @@ erro. Verificado com `advisor()`.
 **Quarenta e sete hipóteses testadas (H-001 a H-047)**. **H-047**: paper
 de Gilbert (item 003) — sem erros, alta qualidade. Conjugação explícita
 entre o grafo de Collatz podado e todos os inteiros não-nulos (sinal
-codifica classe residual mod 3). Todos os teoremas testados corretos.
-Uma identificação OEIS ficou não verificada (site bloqueou acesso) —
-não reportada como erro sem evidência real.
+codifica classe residual mod 3). Todos os teoremas testados corretos,
+incluindo a conexão com OEIS A254046 (WebFetch bloqueia oeis.org, mas
+`curl` com User-Agent de navegador funciona — ver
+`feedback_oeis_access_method.md`).
 
 Anteriormente, **quarenta e seis hipóteses testadas (H-001 a H-046)**. **H-046**: paper
 de Adnan & Dar (item 002) — não alega provar nada, propõe extensão ad

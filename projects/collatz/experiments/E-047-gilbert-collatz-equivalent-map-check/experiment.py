@@ -234,17 +234,15 @@ def check_A254046(y_max=15):
     excluindo o pai impar -(2k-1) sempre presente; entao a contagem
     correta e len(parents_of(k))-1, nao len(parents_of(k)).
 
-    IMPORTANTE: tentamos confirmar contra a sequencia real OEIS A254046
-    via WebFetch (oeis.org/A254046 e /b254046.txt), mas o site bloqueou
-    o acesso automatizado (403), mesmo padrao de bloqueio ja visto com
-    outros hosts neste projeto. NAO fabricamos um valor de referencia
-    para comparar -- isso seria inventar dado, nao verificar. Portanto
-    esta funcao so confirma a CONSISTENCIA INTERNA do paper: que as
-    duas expressoes algebricas que a Proposicao 4 afirma serem iguais
-    (1+v3(2y-1) e v3(2^(2y-1)+1)) de fato coincidem entre si E com a
-    contagem direta de pais pares via busca por forca bruta no grafo.
-    A identificacao especifica com a sequencia OEIS A254046 fica
-    NAO VERIFICADA (nem confirmada nem refutada) por falta de acesso."""
+    CORRECAO (2026-07-14): a primeira tentativa de confirmar isso usou
+    WebFetch em oeis.org, que bloqueia com 403 (mesmo padrao de outros
+    hosts do projeto). O usuario apontou que `curl` com um User-Agent
+    de navegador funciona nesse site (ver memoria
+    feedback_oeis_access_method.md) -- refeito via
+    `curl -s -A "Mozilla/5.0 ..." https://oeis.org/A254046/b254046.txt`,
+    que retornou os termos reais da sequencia sem bloqueio. Os primeiros
+    15 termos reais de A254046 (obtidos assim) sao usados abaixo."""
+    a254046_real_first_15 = [1, 2, 1, 1, 3, 1, 1, 2, 1, 1, 2, 1, 1, 4, 1]
     results = []
     for y in range(1, y_max + 1):
         k_y = 3 * y - 1
@@ -252,8 +250,9 @@ def check_A254046(y_max=15):
         formula_val_a = 1 + v3(2 * y - 1)
         formula_val_b = v3(2 ** (2 * y - 1) + 1)
         results.append((y, k_y, n_even_parents, formula_val_a, formula_val_b))
+    matches_oeis = [n for (_, _, n, _, _) in results] == a254046_real_first_15
     internally_consistent = all(n == fa == fb for (_, _, n, fa, fb) in results)
-    return results, internally_consistent
+    return results, internally_consistent, matches_oeis, a254046_real_first_15
 
 
 if __name__ == "__main__":
@@ -308,22 +307,18 @@ if __name__ == "__main__":
         ok, true_p, pred_p = check_parents_via_brute_force(k, search_bound=5000)
         print(f"k={k:>4}: pais reais (forca bruta)={true_p}, formula={pred_p}, bate={ok}")
 
-    results5, internally_consistent = check_A254046(15)
+    results5, internally_consistent, matches_oeis, a254046_real = check_A254046(15)
     print(f"\n|pi(k_y)| via contagem direta (pais pares, forca bruta): "
           f"{[n for (_,_,n,_,_) in results5]}")
     print(f"formula (a) 1+v3(2y-1):                                  "
           f"{[fa for (_,_,_,fa,_) in results5]}")
     print(f"formula (b) v3(2^(2y-1)+1):                              "
           f"{[fb for (_,_,_,_,fb) in results5]}")
-    print(f"\nAs tres colunas acima coincidem entre si: {internally_consistent}")
-    print("(Tentamos checar contra a sequencia real OEIS A254046 via WebFetch --")
-    print(" oeis.org bloqueou o acesso automatizado, 403, mesmo padrao de outros")
-    print(" hosts deste projeto. NAO inventamos um valor de referencia para")
-    print(" comparar -- a identificacao especifica com A254046 fica NAO VERIFICADA,")
-    print(" nem confirmada nem refutada. O que confirmamos e a matematica interna:")
-    print(" as duas formulas da Prop.4 realmente coincidem, e ambas batem com a")
-    print(" contagem direta de pais no grafo via forca bruta.)")
-    matches = internally_consistent
+    print(f"OEIS A254046 real (via curl, 2026-07-14):                {a254046_real}")
+    print(f"\nAs tres formulas coincidem entre si: {internally_consistent}")
+    print(f"E batem com a sequencia OEIS A254046 REAL (confirmado via curl "
+          f"apos WebFetch ser bloqueado, 403): {matches_oeis}")
+    matches = internally_consistent and matches_oeis
 
     print()
     print("=" * 80)
@@ -340,9 +335,9 @@ Todas as reivindicacoes VERIFICAVEIS foram CONFIRMADAS: {all_ok}
 - Formula dos pais (Proposicao 3): confirmada via forca bruta no grafo.
 - Identidade algebrica interna da Proposicao 4 (as duas formulas coincidem
   entre si e com a contagem direta): confirmada.
-- Identificacao especifica com a sequencia OEIS A254046: NAO VERIFICADA
-  (oeis.org bloqueou acesso automatizado, 403; nao fabricamos dado de
-  referencia para comparar -- fica em aberto, nem confirmada nem refutada).
+- Identificacao especifica com a sequencia OEIS A254046: CONFIRMADA (via
+  curl com User-Agent de navegador -- WebFetch bloqueia oeis.org com 403,
+  mas curl funciona; ver memoria feedback_oeis_access_method.md).
 
 O paper e explicito e correto ao NAO alegar nenhum progresso sobre a
 verdade da conjectura -- e uma reformulacao/mudanca de coordenadas

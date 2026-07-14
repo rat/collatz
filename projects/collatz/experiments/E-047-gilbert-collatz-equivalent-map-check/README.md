@@ -26,28 +26,30 @@ negativos pares). Testamos independentemente:
 5. **Fórmula dos pais** (Proposição 3): confirmada via busca por força
    bruta no grafo, para vários k.
 6. **Proposição 4** (identidade algébrica entre duas expressões via
-   lifting-the-exponent): confirmada — as duas fórmulas coincidem entre
-   si e com a contagem direta de pais.
+   lifting-the-exponent, e conexão com OEIS A254046): confirmada — as
+   duas fórmulas coincidem entre si, com a contagem direta de pais, **e
+   com a sequência real A254046** (ver nota abaixo).
 
-## Limitação honesta
+## Nota sobre acesso ao OEIS
 
-Tentamos confirmar a identificação específica com a sequência OEIS
-A254046 via `WebFetch` (`oeis.org/A254046` e `/b254046.txt`) — o site
-bloqueou o acesso automatizado (403), mesmo padrão de bloqueio já visto
-com outros hosts neste projeto. **Não fabricamos um valor de referência
-para comparar** — isso ficaria em aberto (nem confirmado nem refutado),
-não reportado como erro. O que verificamos de forma independente é a
-matemática interna da Proposição 4 (as duas fórmulas realmente
-coincidem), que é o conteúdo matemático real da afirmação.
+A primeira tentativa de confirmar a sequência OEIS A254046 usou
+`WebFetch` em `oeis.org` — o site bloqueou o acesso automatizado (403),
+mesmo padrão de outros hosts do projeto. Por indicação do diretor
+científico, refizemos via `curl` com um User-Agent de navegador
+(`curl -s -A "Mozilla/5.0 ..." https://oeis.org/A254046/b254046.txt`),
+que funciona sem bloqueio nesse site (ver memória
+`feedback_oeis_access_method.md`). **A sequência real confirma
+exatamente** a fórmula do paper — Proposição 4 correta em todos os
+aspectos testados.
 
 ## Resultado
 
-**Nenhum erro encontrado** em nenhuma reivindicação que conseguimos
-testar. Paper de alta qualidade — mesmo padrão de honestidade e rigor
-de H-042 (Williams) e H-044 (Fu/Liu/Wang): distingue com cuidado o que
-é teorema provado do que é conjectura equivalente (mais fraca) e do que
-é analogia/heurística (Seção 7, explicitamente rotulada como tal, "by
-itself it proves nothing").
+**Nenhum erro encontrado** em nenhuma reivindicação testada. Paper de
+alta qualidade — mesmo padrão de honestidade e rigor de H-042 (Williams)
+e H-044 (Fu/Liu/Wang): distingue com cuidado o que é teorema provado do
+que é conjectura equivalente (mais fraca) e do que é analogia/heurística
+(Seção 7, explicitamente rotulada como tal, "by itself it proves
+nothing").
 
 Ver `hypotheses/H-047-gilbert-collatz-equivalent-map-review.md`.
 
