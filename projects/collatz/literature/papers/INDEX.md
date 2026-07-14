@@ -88,7 +88,7 @@ formos processando um por um.
 | # | Título | Autores/Ano | Link | Arquivo local | Lido | Corrigido | Implementado |
 |---|---|---|---|---|---|---|---|
 | 001 | Geometría Residual de Ruiz Castillo para la dinámica acelerada de la Conjetura de Collatz | SDJCR Castillo - researchgate.net | [link](https://www.researchgate.net/profile/Juan-Carlos-Ruiz-3/publication/408622365_Geometria_Residual_de_Ruiz_Castillo_para_la_dinamica_acelerada_de_la_Conjetura_de_Collatz) | sem PDF livre (lido via navegador, ver `hypotheses/H-039...md`) | Sim | Sim | Sim |
-| 002 | Behavior of a Decimal-Parity-Based 3n+1 Mapping | J Adnan, SA Dar - Global Journal of Pure and Applied, 2026 | BAIXADO | `002_Decimal-Parity-Based-3n1-Mapping.pdf` |  |  |  |
+| 002 | Behavior of a Decimal-Parity-Based 3n+1 Mapping | J Adnan, SA Dar - Global Journal of Pure and Applied, 2026 | BAIXADO | `002_Decimal-Parity-Based-3n1-Mapping.pdf` | Sim | Sim | Sim |
 | 003 | A Collatz-Equivalent Map on the Nonzero Integers | JS Gilbert - 2026 - preprints.org | BAIXADO | `003_Collatz-Equivalent-Map-Nonzero-Integers.pdf` |  |  |  |
 | 004 | First-Principles Derivation of the Steiner Sentence Length Distribution | J Seymour - 2026 - wildducktheories.github.io | BAIXADO | `004_First-Principles-Derivation-Steiner-Sentence-Length-Distribution.pdf` | Sim | Sim | Sim |
 | 005 | A Regular Expression Language for the Collatz Graph | J Seymour - 2026 - wildducktheories.github.io | BAIXADO | `005_A-Regular-Expression-Language-for-the-Collatz-Graph.pdf` | Sim | Sim | Sim |

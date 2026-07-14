@@ -400,6 +400,19 @@ que lemos e corrigimos um por um. Material já acumulado:
   (2005, constantes de Baker explícitas), mas que não fecha para todo P.
   Também catalogado em `literature/unverified-proof-claims.md`.
 
+- **Item 002 (H-046) — não é alegação de prova, mas conceitualmente mal
+  definido**: Adnan & Dar, "Behavior of a Decimal-Parity-Based 3n+1
+  Mapping" — propõe extensão ad hoc do Collatz a decimais em (0,1) via
+  "paridade" do último dígito significativo, concluindo divergência
+  universal. Aritmética do paper 100% correta, mas a regra de paridade
+  só é definida para decimais com expansão finita (subconjunto contável,
+  medida zero, de (0,1) — não cobre 1/3, 1/7, irracionais), e mesmo
+  restrita a esses casos a divergência é artefato trivial (200/200
+  decimais aleatórios divergem) sem mecanismo estrutural análogo ao
+  Collatz real (onde 3n+1 é sempre par para n ímpar por construção).
+  Categoria diferente das alegações de prova completa — não vai para
+  `unverified-proof-claims.md`.
+
 Continuar adicionando aqui (ou num arquivo dedicado, se a lista crescer
 muito) conforme processarmos os próximos itens da coleção. Ver memória
 `feedback_santos_pdf_paper_timing.md`.

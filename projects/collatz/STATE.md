@@ -97,7 +97,14 @@ erro. Verificado com `advisor()`.
 
 ## Onde estamos
 
-**Quarenta e cinco hipóteses testadas (H-001 a H-045)**. **H-045**
+**Quarenta e seis hipóteses testadas (H-001 a H-046)**. **H-046**: paper
+de Adnan & Dar (item 002) — não alega provar nada, propõe extensão ad
+hoc do Collatz a decimais via "paridade do último dígito". Aritmética
+correta, mas a regra não é definida fora de um subconjunto contável de
+(0,1), e a divergência observada é artefato trivial sem mecanismo
+estrutural análogo ao Collatz real.
+
+Anteriormente, **quarenta e cinco hipóteses testadas (H-001 a H-045)**. **H-045**
 (achado importante): paper de Abdullah Mohammed (item 011, baixado
 manualmente pelo diretor científico) alega prova completa da
 Conjectura de Collatz via sieve geométrico + Teorema de Baker. Furo:
