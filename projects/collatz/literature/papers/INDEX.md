@@ -85,6 +85,12 @@ adição mais recente).
 Preencha **Lido**, **Corrigido**, **Implementado** manualmente conforme
 formos processando um por um.
 
+`*` no item 055: paper de filosofia da matemática (não é sobre
+Collatz especificamente, sem alegação matemática verificável) — lido
+por completo para contexto sobre o programa de pesquisa Ruiz Castillo
+(ver `STATE.md`), sem H-0XX/E-0XX próprio pois não há nada
+computacional para verificar.
+
 | # | Título | Autores/Ano | Link | Arquivo local | Lido | Corrigido | Implementado |
 |---|---|---|---|---|---|---|---|
 | 001 | Geometría Residual de Ruiz Castillo para la dinámica acelerada de la Conjetura de Collatz | SDJCR Castillo - researchgate.net | [link](https://www.researchgate.net/profile/Juan-Carlos-Ruiz-3/publication/408622365_Geometria_Residual_de_Ruiz_Castillo_para_la_dinamica_acelerada_de_la_Conjetura_de_Collatz) | sem PDF livre (lido via navegador, ver `hypotheses/H-039...md`) | Sim | Sim | Sim |
@@ -141,7 +147,7 @@ formos processando um por um.
 | 052 | Sufes Conjecture: a parameterized generalization of the Syracuse/Collatz conjecture | A Khachnaoui - 2026 - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
 | 053 | Onion, Apple, and Gate: A Theory of Recursive Stability and Recursive Failure | MD McPhetridge - philarchive.org | [link](https://philarchive.org/archive/MCPOAA-3) | sem PDF livre (philarchive.org bloqueou download, 403) |  |  |  |
 | 054 | Drift residual y presion disipativa en la dinamica acelerada de la Conjetura de Collatz | SDJCR Castillo - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
-| 055 | Platonismo y realismo en matematicas y fisica: un estudio ontologico y epistemologico | JCR Castillo, AFM Sanabria - Diotima, 2026 - usac.edu.gt | BAIXADO | `055_Platonismo-realismo-matematicas-fisica.pdf` |  |  |  |
+| 055 | Platonismo y realismo en matematicas y fisica: un estudio ontologico y epistemologico | JCR Castillo, AFM Sanabria - Diotima, 2026 - usac.edu.gt | BAIXADO | `055_Platonismo-realismo-matematicas-fisica.pdf` | Sim | Sim* | Sim* |
 | 056 | (Não relacionado - ruído do Scholar: não-transporte de pacientes pré-hospitalares na Dinamarca) | S Kondrup et al - 2026 - sdu.dk | -- | excluído (não é sobre Collatz, falso positivo do Scholar - "Collatz" é sobrenome de coautora) |  |  |  |
 | 057 | A Fibonacci theorem for Collatz trajectories via modular graph structure | MAR Jimenez - arXiv:2606.02621, 2026 | BAIXADO | `056_Fibonacci-theorem-Collatz-modular-graph.pdf` |  |  |  |
 | 058 | Generalization of Collatz-Type Conjectures | AS Bharti - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |

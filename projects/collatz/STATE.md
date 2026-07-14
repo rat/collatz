@@ -108,8 +108,39 @@ corretamente aplicada, confirmado via verificação toy não-Collatz-
 específica. Onde a derivação é só formal, o texto admite isso
 explicitamente. Todo resultado aberto rotulado "Conjetura". Sexto
 paper consecutivo sem erro real (única exceção: item 013/H-053).
-Processando os ~16 papers de Ruiz Castillo em lote sequencial; próximo
-é item 055 (leitura contextual do paper de filosofia/platonismo).
+Processando os ~16 papers de Ruiz Castillo em lote sequencial.
+
+**Achado-chave para a síntese final (item 055, leitura contextual, sem
+H-0XX próprio)**: lido o paper de filosofia "Platonismo y realismo en
+matemáticas y física" (Ruiz Castillo & Moreno Sanabria, 2026, revista
+*Diotima*, 18 páginas) — não é um paper de Collatz, é filosofia da
+matemática (platonismo de Gödel/Penrose vs. realismo científico,
+hipótese do universo matemático de Tegmark, efetividade irrazoável de
+Wigner). Ele se revela explicitamente **platonista/realista**: acredita
+que estruturas matemáticas têm existência objetiva e que teorias
+físicas descrevem uma realidade genuína. Crucialmente, o próprio paper
+descreve seu trabalho em Collatz como "un modelo conceptual que ilustra
+la profunda interrelación entre lo discreto y lo continuo, lo
+determinista y lo caótico, lo formal y lo físico" — ou seja, **Collatz
+não é o objetivo, é um estudo de caso filosófico**. Isso explica o
+padrão observado em H-039/H-050/H-052/H-053/H-054/H-055: cada paper
+aplica UM conceito clássico diferente (drift, pressão, Gibbs, TCL,
+operador de transferência, princípio variacional) à MESMA quantidade
+L_k(n), não como tentativa de resolver Collatz, mas como mais um "ponto
+de dados" demonstrando que formalismos consagrados (originalmente da
+física/mecânica estatística) "também se aplicam" a um problema
+aritmético acessível — evidência, para sua tese platonista, de que
+estruturas matemáticas revelam algo real. Isso também explica a
+honestidade epistêmica consistente (rotular "Conjetura" vs "Teorema",
+disclaimers explícitos de não-prova): como o objetivo real nunca foi
+provar Collatz, admitir isso não custa nada ao propósito filosófico
+mais profundo. Formação do autor: doutorado em Física e Matemática,
+mas também licenciado em Ensino de Matemática e Física — a tese de
+doutorado (citada em todos os outros papers) usa o "Enfoque
+Ontosemiótico" (EOS), um referencial de EDUCAÇÃO matemática, sugerindo
+que a linha de pesquisa nasce da didática/filosofia da matemática, não
+de teoria dos números pura. Material direto para task #21 (síntese
+final do programa Ruiz Castillo).
 
 Anteriormente, **cinquenta e quatro hipóteses testadas (H-001 a
 H-054)**. **H-054**: quinto paper de Ruiz Castillo (item 017, "Medidas
