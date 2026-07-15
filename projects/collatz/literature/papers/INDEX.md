@@ -244,8 +244,8 @@ coleção foi baixado dessa forma.
 | 095 | (Não relacionado - ruído do Scholar: hospital domiciliar na Dinamarca) | MB Hagi-Pedersen et al - 2026 - regsj.dk | -- | excluído (não é sobre Collatz, falso positivo do Scholar) |  |  |  |
 | 098 | Teaching Theory of Computation in STEM K-12 Curricula Through Impossibility and Undecidability Problems (Collatz mencionado como exemplo) | R del Vado Virseda - ACM, 2026 | (sem link PDF detectado pelo Scholar) | sem PDF livre (ACM Digital Library, pago) |  |  |  |
 | 099 | Selection Rules and Channel Structure in a Base Octave Model of Collatz Dynamics | K Lodders - arXiv:2604.20181, 2026 | BAIXADO | `098_Selection-Rules-Channel-Structure-Base-Octave.pdf` | Sim | Não | Sim |
-| 101 | About the Collatz conjecture | Ş Andrei, C Masalagiu - Acta Informatica 35, 167-179, 1998 | BAIXADO | `101_About-the-Collatz-Conjecture.pdf` |  |  |  |
-| 102 | Tag systems and Collatz-like functions | L De Mol - Theoretical Computer Science 390, 92-101, 2008 | BAIXADO | `102_Tag-Systems-and-Collatz-Like-Functions.pdf` |  |  |  |
+| 101 | About the Collatz conjecture | Ş Andrei, C Masalagiu - Acta Informatica 35, 167-179, 1998 | BAIXADO | `101_About-the-Collatz-Conjecture.pdf` | Sim | Sim | Sim |
+| 102 | Tag systems and Collatz-like functions | L De Mol - Theoretical Computer Science 390, 92-101, 2008 | BAIXADO | `102_Tag-Systems-and-Collatz-Like-Functions.pdf` | Sim | Sim | Sim |
 | 103 | An Artificial Life View of the Collatz Problem | H Sayama - Artificial Life 17, 137-140, 2011 | BAIXADO | `103_Artificial-Life-View-Collatz-Problem.pdf` |  |  |  |
 | 104 | A Novel Image Encryption Scheme Based on Collatz Conjecture | DM Ballesteros, J Peña, D Renza - Entropy 20(901), 2018 | BAIXADO | `104_Image-Encryption-Scheme-Based-Collatz.pdf` |  |  |  |
 | 105 | Convergence verification of the Collatz problem (verificado até 10^20) | D Barina - Journal of Supercomputing 77, 2681-2688, 2021 | BAIXADO | `105_Convergence-Verification-Collatz-Problem.pdf` |  |  |  |
