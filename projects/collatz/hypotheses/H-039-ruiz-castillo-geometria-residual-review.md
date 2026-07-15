@@ -1,7 +1,8 @@
 # H-039 — Revisão crítica do paper #001 ("Geometría Residual de Ruiz Castillo") + cálculo explícito que o paper nunca faz
 
-Status: revisão externa concluída (correções documentadas); extensão
-computacional própria confirmada e verificada
+Status: revisão externa concluída (correções documentadas e depois
+confirmadas/refinadas contra o PDF completo, não só a leitura via
+navegador); extensão computacional própria confirmada e verificada
 Criada em: 2026-07-14
 Origem: primeiro paper da coleção `literature/papers/INDEX.md`
 (item 001), pedido explícito do diretor científico: "vamos ler e
@@ -39,31 +40,60 @@ padrão. Isso é bom rigor.
 
 ## Correções e problemas encontrados
 
-1. **Repetição excessiva do mesmo fato trivial como resultado maior**:
-   "convexa ⟹ segunda derivada ≥ 0" (um fato de cálculo de primeiro
-   semestre) é apresentado formalmente **quatro vezes** como resultado
-   independente, com nomes cada vez mais grandiosos: Proposição 1.3
-   ("Não negatividade formal da métrica residual"), um quadro-resumo,
-   Teorema 3.2 ("Positividade da métrica residual"), e de novo na
-   Seção 4.4 ("Consequência imediata"). Cada vez com uma "demonstração"
-   que é literalmente a definição de convexidade restated.
+1. **Repetição excessiva do mesmo fato trivial como resultado maior**
+   (confirmado e ampliado após leitura direta do PDF completo, que
+   permitiu contagem exata): "convexa ⟹ segunda derivada ≥ 0" (fato de
+   cálculo de primeiro semestre) é apresentado formalmente **pelo menos
+   cinco vezes** como resultado nomeado independente: Proposição 1.3
+   ("Não negatividade formal da métrica residual", p.4), Corolário 2.6
+   ("Não negatividade da segunda derivada", p.10 — decorre trivialmente
+   da Proposição 2.5 já provada duas páginas antes), Teorema 3.2
+   ("Positividade da métrica residual", p.14, que apenas acrescenta a
+   cláusula de estrita positividade), e a Seção 4.4 ("Consequência
+   imediata", p.19, que re-deriva `g_RC≥0` — já estabelecido *sem*
+   condições pelo Teorema 3.2 — de forma *condicional* à Conjetura 4.1,
+   tornando essa derivação estritamente redundante). Cada instância tem
+   uma "demonstração" que é, literalmente, a definição de convexidade
+   reescrita. Além disso, o paper contém **dez quadros coloridos**
+   ("Idea central del artículo" p.5, "Idea fundamental" p.8, "Conclusión
+   estructural" p.11, "Interpretación geométrica" pp.16,25,34, "Lectura
+   probabilística" p.20, "Lectura dinámica" p.29, "Aporte central del
+   trabajo" p.37, entre outros) que redesenham repetidamente a mesma
+   cadeia conceitual (Presión→Métrica→Curvatura→...→Rigidez), cada um
+   acrescentando apenas um elo à cadeia do quadro anterior — um padrão
+   de apresentação fortemente repetitivo/padded ao longo de 39 páginas.
 
-2. **A "identidade" central é apresentada de forma inconsistente**: na
-   Seção 4, `g_RC(t) = σ²_RC(t)` é escrita como se fosse derivada
-   ("Entonces... se obtiene..."). Só na **Conclusão** (Seção 10) o
-   autor admite que essa é, na verdade, uma **conjectura não
-   demonstrada** ("Si esta identidad llega a demostrarse
-   rigurosamente..."). O corpo do texto deveria deixar isso claro no
-   momento em que a identidade é introduzida, não só no final.
+2. **Tensão de tom retórico entre o texto formal e os quadros
+   ilustrativos** (ponto corrigido/refinado após leitura direta — a
+   caracterização original, feita via navegador, estava imprecisa
+   quanto à localização exata do problema): a identidade central
+   `g_RC(t) = σ²_RC(t)` **é**, na verdade, rotulada corretamente como
+   `Conjetura 4.1` já na sua primeira introdução formal (Seção 4.3,
+   p.19, com quatro hipóteses explícitas listadas) — não apenas
+   admitida tardiamente na Conclusão, como uma leitura anterior menos
+   cuidadosa sugeriu. O padrão real é mais sutil: toda vez que a
+   identidade aparece dentro de um **quadro colorido** de "leitura"/
+   "interpretação" (ex: p.19-20 "Lectura probabilística", que afirma
+   secamente "Por ello, métrica residual = varianza residual =
+   intensidad de las fluctuaciones", sem qualificação), o tom é mais
+   assertivo e categórico do que nos enunciados formais correspondentes
+   (`Conjetura`, `Si además se verifica...`), que são consistentemente
+   bem qualificados. Ou seja: o aparato formal (Definição/Conjetura/
+   Proposição) é epistemicamente honesto do início ao fim; é a prosa
+   decorativa ao redor dele que soa mais categórica do que o formalismo
+   que resume — uma inconsistência estilística menor, não uma alegação
+   de prova disfarçada.
 
-3. **Nenhum conteúdo numérico ou empírico**: a única figura do paper
-   (Seção 7) é explicitamente rotulada pelo próprio autor como
-   "**conceptual**" — uma função ilustrativa arbitrária, não P_RC(t)
-   calculada para o problema real. Em nenhum lugar dos 39 páginas o
-   autor calcula qualquer quantidade numericamente para a dinâmica real
-   do Collatz. Tudo fica em nível de "SE P_RC tiver a propriedade X,
-   ENTÃO g_RC tem a propriedade Y" — nunca "P_RC(t) É [fórmula
-   explícita]".
+3. **Nenhum conteúdo numérico ou empírico**: as duas únicas figuras do
+   paper (Figura 1, Seção 7, p.30; Figura 2, Seção 8, p.31) são
+   explicitamente rotuladas pelo próprio autor como "**conceptual**"/
+   "**Visualización conceptual**" nas legendas — funções ilustrativas
+   arbitrárias (confirmado: os eixos dizem "Valor conceptual"), não
+   P_RC(t) calculada para o problema real. Em nenhum lugar das 39
+   páginas o autor calcula qualquer quantidade numericamente para a
+   dinâmica real do Collatz. Tudo fica em nível de "SE P_RC tiver a
+   propriedade X, ENTÃO g_RC tem a propriedade Y" — nunca "P_RC(t) É
+   [fórmula explícita]".
 
 4. **Referências: 100% autocitação**. As 13 referências são **todas**
    "Ruiz Castillo, J.C." (2025-2026), majoritariamente depósitos Zenodo
@@ -154,3 +184,19 @@ prováveis de ter a mesma lacuna) do que como fonte de hipótese nova.
 - 2026-07-15: PDF baixado manualmente pelo diretor científico e
   arquivado em `literature/papers/001_Geometria-Residual-Ruiz-Castillo.pdf`.
   `INDEX.md` atualizado (Arquivo local e Link).
+- 2026-07-15: revisão finalizada — reli o PDF completo (39 páginas)
+  diretamente (em vez da leitura via navegador da sessão anterior) para
+  confirmar cada correção contra a fonte primária real. Resultado: dois
+  ajustes de precisão, nenhuma mudança de veredito. (1) O item "fato
+  trivial repetido" estava subcontado — é pelo menos **cinco** vezes
+  (faltava o Corolário 2.6, p.10), não quatro, mais **dez** quadros
+  coloridos redesenhando a mesma cadeia conceitual ao longo do texto.
+  (2) O item "identidade central apresentada de forma inconsistente"
+  estava impreciso — a Conjetura 4.1 já é rotulada corretamente desde a
+  primeira introdução (Seção 4.3, p.19), não só na Conclusão; o problema
+  real é mais sutil (tom retórico mais assertivo nos quadros
+  ilustrativos do que no aparato formal, que é honesto do início ao
+  fim) — corrigido no texto acima. Os itens 3 (figuras conceituais — na
+  verdade duas, não uma) e 4 (100% autocitação, 13/13 referências)
+  foram confirmados exatamente como antes. Nenhuma mudança nas flags de
+  `INDEX.md` (Lido/Corrigido/Implementado já corretas).

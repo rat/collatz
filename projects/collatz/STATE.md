@@ -12,20 +12,27 @@ leitura/incorporação sem pedido explícito** — ver nota no
 `BACKLOG.md` item 0.
 
 **Item 001 processado (H-039)**: paper de Ruiz Castillo ("Geometría
-Residual..."), sem PDF local, lido inteiramente via navegador (39
-páginas). Matemática de base correta (formalismo termodinâmico
-clássico, Ruelle/Ellis, aplicado honestamente ao observável de
-dissipação 2-ádica), mas com problemas reais: mesmo fato trivial
-("convexa ⟹ f''≥0") repetido 4x como resultado maior; identidade
-central apresentada como derivada no corpo mas admitida como
-conjectura só na conclusão; zero conteúdo numérico (única figura é
-explicitamente "conceptual"); 100% autocitação nas 13 referências
-(zero literatura de Collatz ou de formalismo termodinâmico clássico).
-Fizemos o cálculo explícito que o paper nunca faz (P_RC(t), g_RC(t),
-K_RC(t) em forma fechada para o modelo i.i.d. padrão, verificado
-contra E[a]=2/Var[a]=2 já estabelecidos) — achado limpo: singularidade
-real em t=log(2). Nenhuma hipótese nova sobre a conjectura em si
-emergiu — ver H-039 para avaliação honesta completa.
+Residual..."), lido inteiramente via navegador (39 páginas) e depois
+re-confirmado/refinado contra o PDF completo (baixado pelo diretor
+científico em 2026-07-15, arquivado em
+`literature/papers/001_Geometria-Residual-Ruiz-Castillo.pdf`). Matemática
+de base correta (formalismo termodinâmico clássico, Ruelle/Ellis,
+aplicado honestamente ao observável de dissipação 2-ádica), mas com
+problemas reais: mesmo fato trivial ("convexa ⟹ f''≥0") repetido pelo
+menos 5x como resultado nomeado independente, mais 10 quadros coloridos
+redesenhando repetidamente a mesma cadeia conceitual; a identidade
+central (`g_RC=σ²_RC`) é corretamente rotulada "Conjetura" já na sua
+primeira introdução (não só na conclusão, correção feita após leitura
+direta) — mas os quadros ilustrativos ao redor dela usam tom mais
+assertivo que o aparato formal, uma inconsistência retórica menor; zero
+conteúdo numérico (as duas figuras são explicitamente "conceptual");
+100% autocitação nas 13 referências (zero literatura de Collatz ou de
+formalismo termodinâmico clássico). Fizemos o cálculo explícito que o
+paper nunca faz (P_RC(t), g_RC(t), K_RC(t) em forma fechada para o
+modelo i.i.d. padrão, verificado contra E[a]=2/Var[a]=2 já
+estabelecidos) — achado limpo: singularidade real em t=log(2). Nenhuma
+hipótese nova sobre a conjectura em si emergiu — ver H-039 para
+avaliação honesta completa.
 
 **Item 004 processado (H-040), achado importante**: paper de Seymour
 ("Steiner Sentence Length Distribution"), PDF local, muito melhor

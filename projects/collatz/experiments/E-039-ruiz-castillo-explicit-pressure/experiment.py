@@ -2,8 +2,9 @@
 E-039 - Calculo explicito da "pressao residual" de Ruiz Castillo (paper #001
 da colecao Google Scholar) para o observavel de dissipacao real do Collatz.
 
-O paper (item 001, literature/papers/INDEX.md, sem PDF local - lido via
-navegador em ResearchGate/Zenodo) define phi(a) = a - log2(3) como o
+O paper (item 001, literature/papers/INDEX.md, PDF em
+literature/papers/001_Geometria-Residual-Ruiz-Castillo.pdf) define
+phi(a) = a - log2(3) como o
 "potencial disipativo" e P_RC(t) = sup_mu {H_RC(mu) - t*D_RC(mu)} como a
 "pressao residual", mas NUNCA calcula isso explicitamente - toda a analise
 fica em nivel de "SE P_RC for convexa, ENTAO...". Este script faz o calculo
