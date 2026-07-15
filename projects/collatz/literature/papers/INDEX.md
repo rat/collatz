@@ -246,8 +246,8 @@ coleção foi baixado dessa forma.
 | 099 | Selection Rules and Channel Structure in a Base Octave Model of Collatz Dynamics | K Lodders - arXiv:2604.20181, 2026 | BAIXADO | `098_Selection-Rules-Channel-Structure-Base-Octave.pdf` | Sim | Não | Sim |
 | 101 | About the Collatz conjecture | Ş Andrei, C Masalagiu - Acta Informatica 35, 167-179, 1998 | BAIXADO | `101_About-the-Collatz-Conjecture.pdf` | Sim | Sim | Sim |
 | 102 | Tag systems and Collatz-like functions | L De Mol - Theoretical Computer Science 390, 92-101, 2008 | BAIXADO | `102_Tag-Systems-and-Collatz-Like-Functions.pdf` | Sim | Sim | Sim |
-| 103 | An Artificial Life View of the Collatz Problem | H Sayama - Artificial Life 17, 137-140, 2011 | BAIXADO | `103_Artificial-Life-View-Collatz-Problem.pdf` |  |  |  |
-| 104 | A Novel Image Encryption Scheme Based on Collatz Conjecture | DM Ballesteros, J Peña, D Renza - Entropy 20(901), 2018 | BAIXADO | `104_Image-Encryption-Scheme-Based-Collatz.pdf` |  |  |  |
+| 103 | An Artificial Life View of the Collatz Problem | H Sayama - Artificial Life 17, 137-140, 2011 | BAIXADO | `103_Artificial-Life-View-Collatz-Problem.pdf` | Sim | Sim | Sim |
+| 104 | A Novel Image Encryption Scheme Based on Collatz Conjecture | DM Ballesteros, J Peña, D Renza - Entropy 20(901), 2018 | BAIXADO | `104_Image-Encryption-Scheme-Based-Collatz.pdf` | Sim | Sim | Sim |
 | 105 | Convergence verification of the Collatz problem (verificado até 10^20) | D Barina - Journal of Supercomputing 77, 2681-2688, 2021 | BAIXADO | `105_Convergence-Verification-Collatz-Problem.pdf` |  |  |  |
 | 106 | Almost all orbits of the Collatz map attain almost bounded values [resultado mais forte já estabelecido, já citado em `literature/00-index.md`] | T Tao - Forum of Mathematics, Pi 10:e12, 2022 | BAIXADO | `106_Almost-All-Orbits-Almost-Bounded-Values-Tao.pdf` |  |  |  |
 | 107 | The Long Search for Collatz Counterexamples | OK Clay - Journal of Humanistic Mathematics 13(2), 2023 | BAIXADO | `107_Long-Search-Collatz-Counterexamples.pdf` |  |  |  |
