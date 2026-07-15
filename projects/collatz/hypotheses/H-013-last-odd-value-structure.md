@@ -105,3 +105,16 @@ Simulação Monte Carlo: para n aleatório, achar o último valor ímpar antes d
   primeiros 6 pontos, mas os 3 novos derrubaram essa hipótese (não é
   monótona dentro das classes). Ver
   `experiments/E-018-reverse-tree-branching/README.md` para os detalhes.
+- 2026-07-15: **avanço no "por quê" (não só no "que")** — provei que um nó
+  ímpar w tem subárvore reversa trivial (contribui exatamente 1 nó ímpar
+  para sempre) sse w≡0 mod3 (generaliza H-005 a qualquer nó da árvore, não
+  só à família J_t), e que os galhos sucessivos de primeiro nível têm
+  resíduo mod3 exatamente periódico com período 3 (ord₉(4)=3) — 1 em cada
+  3 é estéril, em posição fixa determinada por t mod9. Isso explica por
+  que a soma D(J_t)=ΣD(w_i) converge rápido (2-3 termos capturam >97%).
+  Mas confirmei que essa fase (função só de t mod9) não explica a
+  magnitude da razão (dispersão dentro de cada classe mod9 é comparável ao
+  espaçamento entre classes) — a parte que falta é a taxa de decaimento
+  entre galhos férteis, que exige resíduos mais profundos (mod27, 81, ...).
+  Redução real da pergunta, não resolução — ver H-018 e
+  `experiments/E-018-reverse-tree-branching/README.md`.

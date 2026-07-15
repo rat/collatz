@@ -1,6 +1,6 @@
 # H-018 — Estrutura de ramificação da árvore reversa (Galton-Watson) para explicar a anomalia de H-013
 
-Status: parcialmente resolvida (mecanismo qualitativo identificado, sem fórmula quantitativa fechada); pergunta "a razão converge quando t→∞?" agora respondida — não, oscila por ~2 ordens de magnitude
+Status: parcialmente resolvida. Pergunta "converge quando t→∞?" respondida (não, oscila ~2 ordens de magnitude). Dois teoremas provados sobre a estrutura dos galhos (esterilidade generalizada; periodicidade mod3 com período 3) explicam a convergência rápida da soma e reduzem — mas não fecham — o "por quê" da oscilação, à magnitude relativa de galhos férteis (obstrução de H-024, agora localizada).
 Criada em: 2026-07-13
 Origem: pedido do diretor científico para atacar a anomalia p₅>p₄ (H-013)
 com uma análise de processo de ramificação, em vez de só resíduos.
@@ -116,3 +116,28 @@ posterior inversão da razão entre classes adjacentes.
   isto como a resposta atual, não como um beco sem saída a perseguir mais.
   Ver `experiments/E-018-reverse-tree-branching/README.md` para a tabela
   completa e a validação passo a passo.
+- 2026-07-15: **dois teoremas provados sobre a estrutura dos galhos**
+  (pedido do diretor científico para avançar no "por quê", não só no
+  "que"). A recursão exata D(J_t)=Σ D(w_i) nunca fechou (H-024) porque
+  cada w_i exige resíduos mod 3^k arbitrários — mas em vez de tentar
+  fechar a soma inteira, testei se ela **converge rápido na prática**.
+  **Teorema 1** (generaliza H-005 a qualquer nó, não só à família J_t): um
+  nó ímpar w tem subárvore reversa trivial (só a própria cadeia de
+  duplicação, contribuindo exatamente 1 nó ímpar para sempre) sse w≡0
+  mod3 — prova direta de que duplicação preserva "≡0 mod3" e ramificação
+  exige ≡1 mod3. **Teorema 2**: a sequência de galhos de primeiro nível
+  w_1,w_2,... ao longo de uma cadeia de duplicação tem w_i mod3
+  EXATAMENTE periódico em i com período 3 (consequência de ord₉(4)=3) —
+  exatamente 1 em cada 3 galhos consecutivos é estéril, numa posição fixa
+  determinada por t mod9. Isso explica por que a soma converge rápido
+  (2-3 galhos férteis já capturam >97%) e por que medir só o galho 1
+  engana (para t=11 o galho 1 é estéril, contribuindo 1 nó, enquanto
+  galhos 2+3 carregam 98%). **Mas checei explicitamente que essa fase
+  (função só de t mod9) NÃO explica a magnitude da razão** — agrupando as
+  9 razões já medidas por J_t mod9, a dispersão dentro de cada grupo (até
+  ~10×) é comparável ao espaçamento entre grupos. A parte que falta (taxa
+  de decaimento entre galhos férteis da mesma fase, que varia de 73× a
+  680× entre os casos checados) depende de resíduos mais profundos (mod
+  27, 81, ...) — é a obstrução de H-024, agora localizada num objeto
+  concreto em vez de uma dificuldade abstrata. Redução real obtida, não
+  resolução. Ver `experiments/E-018-reverse-tree-branching/README.md`.

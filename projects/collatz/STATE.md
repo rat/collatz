@@ -125,6 +125,21 @@ explica por que: exige precisão 3-ádica ilimitada). Ver
 `hypotheses/H-018-reverse-tree-branching.md` e o README de E-018 para a
 tabela completa.
 
+**Avanço adicional no "por quê" (mesmo dia)**: provei dois teoremas sobre
+a estrutura dos galhos da árvore reversa — (1) um nó ímpar w tem subárvore
+trivial (contribui exatamente 1 nó ímpar para sempre) sse w≡0 mod3
+(generaliza H-005 a qualquer nó, não só à família J_t); (2) os galhos
+sucessivos de primeiro nível têm resíduo mod3 exatamente periódico com
+período 3 (consequência de ord₉(4)=3) — 1 em cada 3 é estéril, em posição
+fixa determinada por t mod9. Isso explica por que a soma exata
+D(J_t)=ΣD(w_i) converge rápido na prática (2-3 termos capturam >97%) e por
+que medir só o primeiro termo engana. Mas confirmei explicitamente que
+essa fase NÃO explica a magnitude da razão (dispersão dentro de cada
+classe t mod9 é comparável ao espaçamento entre classes) — a parte que
+falta (taxa de decaimento entre galhos férteis) exige resíduos mais
+profundos (mod27, 81, ...), a mesma obstrução de H-024, agora localizada
+num objeto concreto. Redução real, não resolução.
+
 **Síntese do programa Ruiz Castillo concluída**
 (`literature/ruiz-castillo-research-program.md`): consolida as sete
 revisões técnicas (H-039, H-050, H-052 a H-056) mais a leitura

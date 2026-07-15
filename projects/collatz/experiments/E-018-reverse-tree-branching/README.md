@@ -267,3 +267,105 @@ para t>14.
 
 Reproduzir: `python3 experiment_dfs.py [N_MAX] [SEARCH_MULT] [T_LIST]` (ver
 docstring do arquivo para a justificativa completa de remover o `visited`).
+
+## Decomposição D(J_t) = raiz + Σ D(w_i): dois teoremas provados (2026-07-15)
+
+Pedido do diretor científico para tentar avançar em *por que* a razão
+oscila desse jeito (não só *que* oscila). A recursão exata de H-018,
+D(v)=D(2v)+D(w) quando v≡4mod6, aplicada repetidamente ao longo da cadeia
+de duplicações de J_t, dá D(J_t) = 1 (a própria raiz, sempre ímpar) +
+Σ_{i=1}^∞ D(w_i), onde w_1,w_2,... são os filhos de galho sucessivos
+encontrados subindo a cadeia. Isso nunca fechou (H-024) porque cada D(w_i)
+exige resíduos mod 3^k arbitrários. Em vez de tentar fechar a soma inteira,
+instrumentamos um único DFS (`experiment_decompose.py`) que marca cada nó
+com o índice do galho a que pertence e soma por bucket — testando se a
+soma **converge rápido na prática**, mesmo sem fórmula fechada.
+
+**Checagem de corretude embutida**: `1 (raiz) + Σ buckets == D(J_t)` total
+(já que J_t é o único nó ímpar da espinha — todo 2^g·J_t com g≥1 é par).
+Bateu exatamente em todos os testes.
+
+### Dois teoremas provados
+
+**Teorema 1 (esterilidade generalizada — generaliza H-005 a todo nó da
+árvore reversa, não só à família J_t)**: um nó ímpar w tem toda sua
+subárvore reversa reduzida à própria cadeia de duplicação — contribuindo
+**exatamente 1 nó ímpar, para sempre, qualquer que seja o limite de
+magnitude** — se e somente se w≡0 (mod 3).
+
+*Prova*: duplicação preserva a classe "≡0 mod3" (2·0≡0), e ramificar num nó
+v exige v≡4 mod6 (i.e. v par e v≡1 mod3). Se w≡0mod3, nenhum 2^k·w jamais
+é ≡1mod3, logo a cadeia nunca ramifica. Se w≢0mod3, a sequência 2^k·w mod3
+alterna entre os dois resíduos não-nulos (ord₃(2)=2), atingindo ≡1mod3 a
+cada 2 passos — logo ramifica cedo ou tarde. ∎
+
+**Teorema 2 (periodicidade mod 3 dos galhos, período 3)**: para uma raiz
+ímpar não-estéril m, com A=2^{g₁}·m (g₁∈{1,2} a geração do primeiro
+galho), a sequência de galhos de primeiro nível w_i=(A·4^{i-1}−1)/3 tem
+**w_i mod 3 exatamente periódico em i com período 3**, percorrendo
+{0,1,2} numa rotação fixa determinada por A mod 9.
+
+*Prova*: ord₉(4)=3 (4¹=4, 4²=7, 4³=1 mod9), logo 4^{i-1} mod9 é periódico
+em i com período 3; como A mod9 é fixo, (A·4^{i-1}−1)/3 mod3 herda essa
+periodicidade. Calculando para os três resíduos possíveis de A mod9 que
+são ≡1mod3 (1, 4, 7): a=1 dá ciclo (0,1,2); a=4 dá (1,2,0); a=7 dá
+(2,0,1). ∎
+
+**Corolário**: exatamente 1 em cada 3 galhos consecutivos é estéril
+(contribui exatamente 1, para sempre) — não aleatoriamente, mas numa
+posição fixa determinada por A mod9 (equivalentemente, para a família
+J_t, por **t mod 9**, já que g₁ depende de t mod3 e J_t mod27 depende de
+t mod9 via ord₂₇(4)=9). Verificado por aritmética direta — não pelo DFS
+completo, que só rodamos para t=10,11,13 — nos 18 valores de t usados
+neste experimento: t≡1,8 (mod9) dá rotação (1,2,0); t≡2,7 dá (0,1,2);
+t≡4,5 dá (2,0,1) (t≡0,3,6 são as classes estéreis de H-013, fora de
+consideração aqui). Isso confirma t=10/19/28 (t≡1) na rotação (1,2,0);
+t=13/22 (t≡4) e t=5/14/23 (t≡5) na rotação (2,0,1); t=7/16/25 (t≡7) e
+t=11/20/29 (t≡2) na rotação (0,1,2).
+
+### Por que isso importa: explica a convergência rápida, não a magnitude
+
+Validado nos três pares (10,11)/(13,14) — mais um decomposto à parte
+(t=13): em todos os casos, os primeiros 2-3 galhos **férteis** (não os
+primeiros 2-3 galhos em ordem bruta — um deles pode ser estéril, como o
+galho 1 de t=11) já capturam >97% do total. Isso explica *por que* a soma
+infinita converge rápido na prática, e por que uma medida ingênua "só o
+galho 1" (R₁) pode enganar feio: para t=11, w_1=932067 é estéril (932067=
+3×310689), contribuindo só 1 nó, enquanto os galhos 2+3 carregam 98% do
+total — se o galho estéril cai na 1ª posição (o "slot" potencialmente
+maior, antes de qualquer decaimento), o total sofre mais do que se cair na
+3ª posição (t=10) ou na 2ª (t=13).
+
+**Mas checamos explicitamente se essa posição explica a magnitude da razão
+— e não explica.** Como a fase (posição do galho estéril) é função só de
+t mod9, se ela explicasse a razão, agrupar as 9 razões já medidas por
+J_t mod9 deveria dar grupos consistentes. Não dá:
+
+| J_t mod 9 | pares (t,t+1) | razões medidas |
+|---|---|---|
+| 4 | (4,5), (13,14), (22,23) | 1.594, 0.2825, 0.1592 |
+| 7 | (7,8), (16,17), (25,26) | 5.972, 0.7745, 3.610 |
+| 1 | (10,11), (19,20), (28,29) | 0.0648, 0.0459, 0.1473 |
+
+Há uma tendência grosseira (mod9=7 tende a valores maiores, mod9=1 tende a
+menores), mas a dispersão **dentro** de cada grupo (até ~10× no grupo
+mod9=4) é comparável ou maior que o espaçamento **entre** grupos (o máximo
+do grupo mod9=4, 1.594, já ultrapassa o mínimo do grupo mod9=7, 0.7745) —
+ou seja, a fase é uma tendência fraca, não um preditor. Isso é exatamente
+consistente com outra observação: a taxa de decaimento entre galhos
+férteis consecutivos da MESMA fase varia por t de forma não explicada por
+esta teoria (680× entre galho1 e galho4 para t=10, mas só 73× para t=13,
+ambos "mesma fase, 3 posições de distância") — essa taxa de decaimento é
+que carrega a informação que falta, e ela depende de resíduos mais
+profundos (mod 27, mod 81, ... recursivamente).
+
+**Conclusão honesta**: os dois teoremas são reais e explicam mecanicamente
+*por que* a soma converge rápido e *por que* medir só o primeiro termo
+engana. Mas eles **reduzem** a pergunta ("por que a razão oscila") a uma
+pergunta mais precisa e ainda em aberto ("por que a magnitude relativa de
+galhos férteis consecutivos varia como varia") — não a **resolvem**. Essa
+pergunta mais precisa é exatamente a obstrução de H-024 (precisão 3-ádica
+ilimitada), agora localizada num objeto concreto e específico em vez de
+uma dificuldade abstrata geral. Não vale a pena caçar mais pares ou
+decompor mais t's atrás de uma estrutura mais fina — o mesmo tipo de caça
+já matou a hipótese mod9 duas vezes nesta sessão.
