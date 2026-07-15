@@ -97,7 +97,26 @@ erro. Verificado com `advisor()`.
 
 ## Onde estamos
 
-**Sessenta e seis hipóteses testadas (H-001 a H-066)**. **H-066**:
+**Sessenta e sete hipóteses testadas (H-001 a H-067)**. **H-067**:
+item 074 (Carelli, "Loop Termination and Generalized Collatz
+Sequences", arXiv:2605.15094, CISPA Helmholtz Center, financiamento
+ERC). Paper de ciência da computação teórica (STACS/LICS/CAV/ICALP)
+— conecta decidibilidade de terminação de loops lineares de uma
+variável a "sequências de Collatz generalizadas" (framework
+Matthews/Watts/Möller). Não tenta resolver a conjectura clássica.
+Resultado condicional honesto: termination é decidível SE a
+"Reachability Conjecture" vale — provada apenas para d=2, com d>2
+explicitamente em aberto (Exemplo 19 dá uma instância concreta não
+resolvida). Mecanismo algébrico central (ponto fixo único por classe
+residual) verificado algebricamente e empiricamente (~20.000
+trajetórias, 0 exceções). Exemplo 19 testado até n=2.000.000 sem
+contraexemplo (não resolve a questão aberta, só não a refuta na faixa
+testada). Revisão escopada ao conteúdo Collatz-relevante (a maquinaria
+geral de SLCs fica fora do escopo, como em H-060). Nenhum erro
+encontrado. Ver
+`hypotheses/H-067-carelli-loop-termination-review.md`.
+
+Anteriormente, **sessenta e seis hipóteses testadas (H-001 a H-066)**. **H-066**:
 item 057/089 (Reyes Jiménez, "A Fibonacci theorem for Collatz
 trajectories via modular graph structure", arXiv:2606.02621).
 Diferente da maioria dos papers desta fila, é **pesquisa matemática

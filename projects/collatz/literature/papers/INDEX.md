@@ -194,7 +194,7 @@ coleção foi baixado dessa forma.
 | 071 | Parity-Based Level-Set Approach to the Collatz Conjecture | S Koyuncu et al - Mathematics (MDPI), 2026 | [link](https://www.mdpi.com/2227-7390/14/10/1763) | sem PDF livre (mdpi.com bloqueou download automatizado, 403) |  |  |  |
 | 072 | Polar recurrence plots on Collatz sequences devoid of exact recurrences | CL Webber Jr - EPJ Special Topics, 2026 - Springer | (sem link PDF detectado pelo Scholar) | sem PDF livre (Springer, pago) |  |  |  |
 | 073 | Expansions on Boundary Algebra | A Roif - academia.edu | [link](https://www.academia.edu/) | sem PDF livre (academia.edu bloqueia download automatizado) |  |  |  |
-| 074 | Loop Termination and Generalized Collatz Sequences | M Carelli - arXiv:2605.15094, 2026 | BAIXADO | `073_Loop-Termination-Generalized-Collatz.pdf` |  |  |  |
+| 074 | Loop Termination and Generalized Collatz Sequences | M Carelli - arXiv:2605.15094, 2026 | BAIXADO | `073_Loop-Termination-Generalized-Collatz.pdf` | Sim | Sim | Sim |
 | 075 | (Não relacionado - ruído do Scholar: afogamento na Dinamarca) | N Breindahl et al - Clinical.., 2026 - tandfonline | -- | excluído (não é sobre Collatz, falso positivo do Scholar) |  |  |  |
 | 076 | A Structural Proof of the Collatz Conjecture via non-repeating trajectory and Recursive Decay [ALEGAÇÃO DE PROVA] | YH Yun - osf.io | BAIXADO | `075_Structural-Proof-Collatz-nonrepeating.pdf` |  |  |  |
 | 077 | Restoring Causal Structure through Natural Mathematics: A Case Study on the Collatz Conjecture | S Hamaji - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
