@@ -36,7 +36,8 @@ conhecidos. Pergunta do diretor: existe um análogo — um ciclo não-trivial
 (diferente de 1→4→2→1) para inteiros **positivos**? Esta é, na verdade, a
 segunda metade clássica e ainda aberta da conjectura ("nenhum ciclo
 não-trivial"), com literatura séria: Steiner (1977), Simons (2005), Simons &
-de Weger (2005, sem ciclo até 68 subidas), Eliahou (1993, limite inferior de
+de Weger (2005, sem ciclo até 68 subidas — **desatualizado, ver H-057: bound
+atual é Hercher 2023, a≤91**), Eliahou (1993, limite inferior de
 comprimento). Testada em H-009/E-009: busca própria por força bruta (a até
 14) não encontrou nada além do trivial, consistente com a literatura. Ver
 `hypotheses/H-009-nontrivial-cycles.md`.
@@ -48,6 +49,17 @@ das composições quantificada com precisão (bilhões a partir de a≈20),
 explicando por que força bruta pura não alcança o a=68 profissional sem
 as técnicas de fração contínua deles. Ver
 `hypotheses/H-034-video-cycle-equation-followup.md`.
+
+**Retomada de novo em H-057** (implementa a conexão de fração contínua que
+H-034 apenas apontava): conectamos explicitamente nosso muro combinatório
+com a técnica real de Simons & de Weger/Hercher via convergentes e
+semiconvergentes de log₂(3). Nenhum ciclo novo (esperado); para a=3,5,17
+resultado mais forte que H-034 já dava — nenhuma composição sequer produz
+um n₀ inteiro no S ótimo (não só "nenhum autoconsistente"). Corrigimos
+nossa própria citação desatualizada (68→91, Hercher 2023) e uma inversão de
+interpretação (menor excesso NÃO implica n₀ menor — implica maior, e mais
+difícil de excluir analiticamente) pega pelo `advisor()` antes de fechar.
+Ver `hypotheses/H-057-continued-fraction-cycle-exclusion.md`.
 
 ## 2. Distribuição de stopping times — CONCLUÍDA
 
@@ -188,9 +200,12 @@ e ao bias clássico de carry em adição binária). Ver
   `hypotheses/H-028-crt-exclusion-family-consolidated.md`.
 
 Candidatos ainda não implementados, por ordem de prioridade sugerida:
-1. Ângulo de estratégia adversarial de máxima subida, conectando com a
+1. ~~Ângulo de estratégia adversarial de máxima subida, conectando com a
    literatura de limites inferiores em ciclos (Simons & de Weger, Eliahou)
-   — potencial nova via para H-009 (ciclos não-triviais).
+   — potencial nova via para H-009 (ciclos não-triviais).~~ **TESTADA
+   (H-057)**: conexão via frações contínuas de log₂(3) implementada;
+   nenhum ciclo novo; conecta nosso muro (H-034) à técnica real da
+   literatura; corrige citação 68→91 (Hercher 2023).
 2. Incorporar H-015 (mod 2^d sistemático, 2374 classes) à consolidação de
    H-028 — deixado de fora por ser lista grande, não fórmula fechada.
 

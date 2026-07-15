@@ -97,7 +97,33 @@ erro. Verificado com `advisor()`.
 
 ## Onde estamos
 
-**Cinquenta e seis hipóteses testadas (H-001 a H-056)**. **H-056**:
+**Cinquenta e sete hipóteses testadas (H-001 a H-057)**. **H-057**:
+testamos o candidato #1 do backlog (seção 6) — conectar nosso muro
+combinatório de ciclos (H-009/H-034) com a técnica clássica de exclusão
+via frações contínuas de log₂(3) (Steiner/Simons/de Weger/Hercher).
+Reaproveitando `compositions`/`candidate_n0`/`check_self_consistency` de
+E-034: convergentes + semiconvergentes de log₂(3) (necessários porque é
+aproximação unilateral) dão 12 candidatos `(a,S)` até a≤2000. Nenhum
+ciclo novo — para a=3,5,17 (nosso alcance), resultado mais forte que
+H-034: nenhuma composição sequer produz um n₀ inteiro no S ótimo (não só
+"nenhum autoconsistente"). Corrigimos nossa própria citação desatualizada
+"Simons & de Weger, a≤68" para o bound atual — **Hercher (2023,
+arXiv:2201.00406): a≤91** — verificado via WebSearch/WebFetch antes de
+escrever qualquer código, não de memória. **Autocorreção via `advisor()`**
+antes de fechar: a primeira versão do experimento afirmava "menor excesso
+L(a,S) ⟹ menor n₀ possível" — invertido. Para a composição que minimiza
+n₀ (forma fechada, confirmada por enumeração exaustiva): n0_min≈1/(L·ln2),
+ou seja, menor excesso ⟹ n0_min MAIOR (cresce de 3,8 em a=3 até ~1069 em
+a=1636). Mas isso é só o mínimo sobre composições — uma composição
+"ruim" no mesmo par (a=306,S=485) dá n₀~10²⁵ em vez de ~978. L(a,S)
+pequeno mede dificuldade ANALÍTICA de exclusão (cotas de Baker), não
+tamanho de ciclo. Conexão de projeto (não matemática nova): L(a,S) é
+exatamente a mesma "deuda residual" L_k(n) de todos os papers de Ruiz
+Castillo revisados (H-052 a H-056), aplicada a um par abstrato em vez de
+uma trajetória real. Ver `hypotheses/H-057-continued-fraction-cycle-exclusion.md`
+e `BACKLOG.md` seção 1/seção 6 item 1.
+
+Anteriormente, **cinquenta e seis hipóteses testadas (H-001 a H-056)**. **H-056**:
 sétimo paper de Ruiz Castillo (item 026, "Grandes Desviaciones
 Residuales", localizado via Zenodo DOI 10.5281/zenodo.20767811 —
 ResearchGate bloqueava) — **segundo erro real** encontrado na série
