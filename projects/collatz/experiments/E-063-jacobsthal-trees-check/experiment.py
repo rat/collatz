@@ -24,7 +24,7 @@ O paper #084 (mesmos autores -- referencia [8] deste paper: "Modelling
 the Collatz problem from a Jacobsthal viewpoint", CDS 8(1) 2026, 49-55)
 e a versao PEDAGOGICA, restrita ao caso classico kappa=3, deste mesmo
 framework. A PARTE 8 abaixo verifica especificamente os exemplos
-numericos daquele paper (sera referenciada por H-065 em vez de duplicar
+numericos daquele paper (sera referenciada por H-069 em vez de duplicar
 todo o trabalho).
 
 Partes:
@@ -36,7 +36,7 @@ Partes:
     de 2 mod kappa; m_{kappa,1,T_kappa} = (2^T_kappa - 1)/kappa.
     Verificado para todo kappa impar de 1 a 199, e contra os valores
     especificos da Tabela 2.2 (kappa=1,...,33,181 -- incluindo o numero
-    de 55 digitos para kappa=181).
+    de 52 digitos m_{181,1,180} para kappa=181).
   PARTE 3: Tabela 2.4 (formacao periodica dos nos m_{kappa,1,n) --
     13 celulas legiveis da tabela, reproduzidas exatamente.
   PARTE 4: Tabela 2.6 / Remark 1.7 -- pontos-atratores (PA) para
@@ -579,7 +579,7 @@ exatamente aos numeros de Jacobsthal classicos (OEIS A001045) no caso
 kappa=3 (Parte 1); o "Teorema da Periodicidade" (Teorema 2.1) e
 EXATAMENTE o fato padrao de teoria dos numeros de que T_kappa e a ordem
 multiplicativa de 2 modulo kappa (Parte 2, verificado para 100 valores de
-kappa e confirmado byte-a-byte contra o numero de 55 digitos da Tabela
+kappa e confirmado byte-a-byte contra o numero de 52 digitos da Tabela
 2.2 para kappa=181); a Tabela 2.4 (formacao periodica dos nos) reproduz
 exatamente via uma formula de duas linhas (Parte 3); os pontos-atratores
 citados no Remark 1.7 para kappa=3 (C+/C-) e kappa=5, 181 (C+) foram

@@ -10,7 +10,7 @@ Mathematical Sciences, 9(2), 77-91, peer-reviewed. PDF local:
 `literature/papers/032_Jacobsthal-Trees-Generalized-Transformations.pdf`.
 
 Também cobre os exemplos numéricos do paper #084 (mesmos autores, versão
-pedagógica restrita a κ=3) — ver [`H-065`](../../hypotheses/H-065-mailland-kosobutskyy-jacobsthal-viewpoint-review.md).
+pedagógica restrita a κ=3) — ver [`H-069`](../../hypotheses/H-069-mailland-kosobutskyy-jacobsthal-viewpoint-review.md).
 
 ## O que foi testado
 

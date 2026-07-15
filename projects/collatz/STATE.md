@@ -97,7 +97,21 @@ erro. Verificado com `advisor()`.
 
 ## Onde estamos
 
-**Sessenta e oito hipóteses testadas (H-001 a H-068)**. **H-068**:
+**Sessenta e nove hipóteses testadas (H-001 a H-069)**. **H-069**: item
+084 (Mailland & Kosobutskyy, "Modelling the Collatz Problem from a
+Jacobsthal Viewpoint", CDS 8(1) 2026, peer-reviewed). Versão pedagógica,
+restrita a κ=3, do mesmo framework do item 032 (mesmos autores, ordem
+reversa — ver H-063). O framework geral já havia sido verificado
+exaustivamente em E-063; este item cobre apenas o conteúdo numérico
+específico do paper 084 ainda não testado (árvore geradora completa da
+Fig. 1 e as 10 colunas da Fig. 2), em `E-069`, 4 partes, 0 falhas.
+Nenhum erro matemático — nota de metodologia própria: uma leitura visual
+inicial da Fig. 1 sugeriu incorretamente que os nós 57/229 estariam
+ligados a 85 (na verdade vêm de θ=43), provável erro de transcrição da
+figura, não do paper. Ver
+`hypotheses/H-069-mailland-kosobutskyy-jacobsthal-viewpoint-review.md`.
+
+Anteriormente, **sessenta e oito hipóteses testadas (H-001 a H-068)**. **H-068**:
 item 076 (Yun, "A Structural Proof of the Collatz Conjecture via
 non-repeating trajectory and Recursive Decay" — **ALEGAÇÃO DE PROVA
 COMPLETA**, osf.io, não peer-reviewed). Veredito: **não é uma prova
@@ -217,7 +231,7 @@ PA={1,27,35} para κ=181, mas a própria Tabela 2.6 (dados) já mostra que
 `q0=1` diverge sob κ=181 — inconsistência textual entre seções do
 mesmo paper, não erro matemático. Relacionado ao item 084 (mesmos
 autores, versão pedagógica restrita a κ=3, revisão cross-referenciada
-em H-064 em vez de duplicada). Ver
+em H-069 em vez de duplicada). Ver
 `hypotheses/H-063-jacobsthal-trees-review.md`.
 
 Anteriormente, **sessenta e duas hipóteses testadas (H-001 a H-062)**. **H-062**:

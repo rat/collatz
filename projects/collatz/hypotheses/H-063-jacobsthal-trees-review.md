@@ -28,9 +28,9 @@ neste paper. O item 084 é a
 versão **pedagógica**, restrita ao caso clássico `κ=3`, deste mesmo
 framework — publicado antes (recebido em fevereiro/2026 vs. março/2026
 deste paper) e citado aqui como o "primeiro passo" do modelo. Revisão
-do item 084 em [[H-065-mailland-kosobutskyy-jacobsthal-viewpoint-review]]
-(número definido pela ordem de processamento da fila — item 038 ficou
-com H-064, ver `literature/papers/INDEX.md`)
+do item 084 em [[H-069-mailland-kosobutskyy-jacobsthal-viewpoint-review]]
+(número definido pela ordem de processamento da fila, ver
+`literature/papers/INDEX.md`)
 (mais curta, faz referência a este script em vez de duplicar).
 
 ## Definições exatas do paper
