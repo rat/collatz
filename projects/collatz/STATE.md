@@ -97,7 +97,20 @@ erro. Verificado com `advisor()`.
 
 ## Onde estamos
 
-**Cinquenta e oito hipóteses testadas (H-001 a H-058)**. Retomamos a
+**Cinquenta e nove hipóteses testadas (H-001 a H-059)**. **H-059**:
+item 021 (Amirian & Amirian, "A Generalization of 3x+1 Problem to
+3x+4y+1", SSRN 6993335). Paper curto (3 páginas, sem provas), propõe
+`x_{i+1}=3x_i+4y+1` (ímpar) / `x_i/2-y` (par) como "generalização" de
+Collatz. Achado: a mudança de variável `z=x+2y` transforma o mapa
+proposto EXATAMENTE no Collatz padrão em `z` (mesma fórmula, símbolo a
+símbolo) — não é uma generalização, é o mesmo problema reparametrizado.
+Consequência quantificada: a varredura numérica alegada ("~640 bilhões
+de pontos") cobre, na melhor das hipóteses, ~2,4 milhões de instâncias
+distintas de Collatz padrão, já coberto por verificações exaustivas
+publicadas (`2^68`-`2^71`). Ver
+`hypotheses/H-059-amirian-3x4y1-review.md`.
+
+Anteriormente, **cinquenta e oito hipóteses testadas (H-001 a H-058)**. Retomamos a
 tarefa de revisar todos os papers já baixados (não só a série Ruiz
 Castillo) até esgotar a fila — 15 itens identificados como baixados
 mas não processados (item 014 acabou sendo um já revisado por engano
