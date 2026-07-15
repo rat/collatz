@@ -40,6 +40,23 @@ estrutural" (ver `overview-and-known-results.md`) apareceria.
   ramificação real — confirmado computacionalmente que essa identidade não
   usa g(n) em nenhum lugar. Ver `hypotheses/H-079-getachew-2025-review.md`
   para a análise completa.
+- "Finite Block Exhaustion and Rooted Occupancy in the Inverse Collatz
+  System: A No-Alternative Proof via Ternary Counters, Primitive Carry, and
+  Forced Thread Displacement" — Michael E. Spencer, academia.edu, 2025, sem
+  revisão por pares. **PDF arquivado em 2026-07-15** (`literature/papers/INDEX.md`
+  item 022), **lido e revisado por completo em 2026-07-15 (H-081/E-081)**.
+  Constrói a mesma árvore reversa de H-018/item 109 deste projeto, com aparato
+  combinatório mais sofisticado (contador ternário de classes residuais mod
+  2·3^J, com formalização parcial em Lean). **Veredito: não é uma prova
+  válida — mesma anatomia de erro do item 109 (petição de princípio), por
+  um caminho diferente.** O paper prova corretamente que toda *classe
+  residual* primitiva está "ocupada" em cada escala finita J, mas conclui
+  (Teorema 15.3) que todo *inteiro específico* tem endereço reverso finito —
+  um salto lógico nunca justificado ("resíduo ocupado" ⇏ "valor exato
+  atingido"). Confirmado computacionalmente com um exemplo concreto: a
+  classe residual de n=27 está ocupada na árvore real construída até
+  profundidade 6 e 8, mas por representantes muito maiores (ordem de
+  10⁶-10⁸), nunca 27 em si. Ver `hypotheses/H-081-spencer-2025-review.md`.
 - Site pessoal "Phil Seawolf — Unified Fields Theory 1" alegando solução — sinal
   claro de trabalho fora do padrão acadêmico, sem revisão alguma.
 - **"Proving the Collatz Conjecture with Binaries Numbers"** — Olinto de Oliveira
