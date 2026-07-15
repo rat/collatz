@@ -97,7 +97,21 @@ erro. Verificado com `advisor()`.
 
 ## Onde estamos
 
-**Sessenta e uma hipóteses testadas (H-001 a H-061)**. **H-061**: item
+**Sessenta e duas hipóteses testadas (H-001 a H-062)**. **H-062**:
+item 031 (Melas & Poulios, "Predicting Extreme Stopping Time Behavior
+in the Collatz System", Journal of Dynamics and Games/AIMS,
+peer-reviewed, Univ. de Atenas). Paper estatístico (logit + árvore de
+decisão) para prever tempo de parada extremo, não para provar Collatz
+(explícito: "does not solve the Collatz conjecture"). Identidade
+logarítmica fundamental confirmada exatamente (via `Fraction`); as 6
+contagens de densidade citadas (janelas de 10.000 inteiros em
+potências de 10 e de 3, até 10¹⁵) reproduzidas de forma EXATA e
+determinística — todas batem. Modelos logit/árvore não reproduzidos
+byte-a-byte (dependem de amostragem aleatória sem semente/biblioteca
+totalmente especificada — limitação de reprodutibilidade, não erro).
+Ver `hypotheses/H-062-melas-poulios-stopping-time-review.md`.
+
+Anteriormente, **sessenta e uma hipóteses testadas (H-001 a H-061)**. **H-061**: item
 029 (Alic, "Collatz Progressions Reframed", IEEE Access,
 peer-reviewed). Paper de algoritmos/engenharia (Diretor do Photonics
 Lab, Qualcomm Institute/UCSD) — não faz alegação matemática sobre
