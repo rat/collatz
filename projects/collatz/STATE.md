@@ -97,6 +97,15 @@ erro. Verificado com `advisor()`.
 
 ## Onde estamos
 
+Item 036 (Damnjanovic, Ha & Stevanovic, "Upper Bounds for the Laplacian
+Spectral Radius", arXiv:2606.14550) processado e descartado: **falso-
+positivo puro de busca por sobrenome** — as 5 menções a "Collatz" no
+texto são todas "Collatz–Wielandt comparison" (ferramenta de teoria de
+Perron-Frobenius, sem relação com a conjectura 3x+1; Lothar Collatz
+contribuiu para ambas, mas são resultados distintos). Sem H-0XX/E-0XX
+próprio — nada do escopo deste projeto para verificar. Ver anotação
+`*****` em `literature/papers/INDEX.md`.
+
 **Sessenta e três hipóteses testadas (H-001 a H-063)**. **H-063**: item
 032 (Kosobutskyy & Mailland, "Jacobsthal Trees and Generalized κx±1
 Transformations", Communications in Advanced Mathematical Sciences

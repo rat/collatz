@@ -97,6 +97,18 @@ exemplo ilustrativo de meia página (Seção 5.2) entre vários. Revisão
 (H-060) cobriu apenas esse conteúdo Collatz-específico, não o
 framework geral de teoria de grafos (fora do escopo deste projeto).
 
+`*****` no item 036: **falso-positivo puro de busca por sobrenome**.
+Paper de teoria espectral de grafos (raio espectral Laplaciano,
+arXiv:2606.14550, math.CO) que menciona "Collatz" cinco vezes no
+texto — todas como parte do termo **"Collatz–Wielandt comparison"**
+(uma ferramenta clássica e completamente distinta, da teoria de
+Perron-Frobenius para autovalores de matrizes não-negativas). Lothar
+Collatz contribuiu tanto para a conjectura 3x+1 quanto para essa
+fórmula, mas são resultados matemáticos sem relação alguma entre si.
+O paper não contém nenhuma menção à conjectura de Collatz (3x+1) nem a
+qualquer conceito relacionado. Sem H-0XX/E-0XX próprio — não há nada
+do escopo deste projeto para verificar.
+
 `**` no item 026: o PDF (`026_Grandes-Desviaciones-Residuales-Ruiz-Castillo.pdf`)
 foi baixado por um subagente lançado para revisar este item (2026-07-14),
 via navegador, antes de o diretor científico estabelecer a regra de que
@@ -144,7 +156,7 @@ coleção foi baixado dessa forma.
 | 033 | Dimension Disipativa de Ruiz Castillo y subcilindros fractales en la dinamica acelerada de la Conjetura de Collatz | SDJCR Castillo - researchgate.net | [link](https://www.researchgate.net/profile/Juan-Carlos-Ruiz-3/publication/407029463) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
 | 034 | The meme that has been amusing mathematicians for a century | J Aron - New Scientist, 2026 - Elsevier | (sem link PDF detectado pelo Scholar) | sem PDF livre (revista de divulgacao, paga) |  |  |  |
 | 035 | Disipacion Promedio de Ruiz Castillo y medidas de equilibrio en la dinamica acelerada de la Conjetura de Collatz | JCR Castillo - researchgate.net | [link](https://www.researchgate.net/profile/Juan-Carlos-Ruiz-3/publication/406908855) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
-| 036 | Upper bounds for the Laplacian spectral radius: Proofs and counterexamples | I Damnjanovic, T Ha, D Stevanovic - arXiv:2606.14550, 2026 | BAIXADO | `036_Upper-bounds-Laplacian-spectral-radius.pdf` |  |  |  |
+| 036 | Upper bounds for the Laplacian spectral radius: Proofs and counterexamples | I Damnjanovic, T Ha, D Stevanovic - arXiv:2606.14550, 2026 | BAIXADO | `036_Upper-bounds-Laplacian-spectral-radius.pdf`***** | Sim | N/A | N/A |
 | 037 | ROOTED SURJECTIVITY FROM THE INVARIANT E/O REFINEMENT SYSTEM | ME Spencer - academia.edu | [link](https://www.academia.edu/download/133063629/collatz_conjecture_44_.pdf) | sem PDF livre (academia.edu bloqueou download, 403) |  |  |  |
 | 038 | A modular classification of pre-descent resistance in accelerated odd Collatz dynamics | SY Kayadibi - SSRN 6918258, 2026 | BAIXADO | `038_Modular-Classification-Pre-Descent-Resistance.pdf` |  |  |  |
 | 039 | Teoria espectral de las palabras de valuacion en la dinamica acelerada de la Conjetura de Collatz | SDJCR Castillo - researchgate.net | [link](https://www.researchgate.net/profile/Juan-Carlos-Ruiz-3/publication/406439765) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
