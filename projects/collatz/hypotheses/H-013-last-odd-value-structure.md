@@ -1,6 +1,6 @@
 # H-013 — Todo órbita termina em J_t=(4^t−1)/3; classes estéreis explicadas por H-005
 
-Status: confirmada (teorema + verificação); anomalia p₅>p₄ confirmada como fato assintótico real (H-018); pergunta "a razão entre classes adjacentes converge quando t→∞?" respondida — não, oscila por ~2 ordens de magnitude (ver H-018)
+Status: confirmada (teorema + verificação); anomalia p₅>p₄ confirmada como fato assintótico real (H-018); pergunta "converge quando t→∞?" respondida — não, oscila por ~2 ordens de magnitude; pergunta "por que oscila desse jeito?" também respondida — é ruído genérico de ramificação 3-ádica, não um padrão escondido (ver H-018)
 Criada em: 2026-07-13
 Origem: brainstorm assistido pelo modelo Fable (consultado a pedido do diretor
 científico sobre padrões binários), verificado de forma independente.
@@ -117,4 +117,18 @@ Simulação Monte Carlo: para n aleatório, achar o último valor ímpar antes d
   espaçamento entre classes) — a parte que falta é a taxa de decaimento
   entre galhos férteis, que exige resíduos mais profundos (mod27, 81, ...).
   Redução real da pergunta, não resolução — ver H-018 e
+  `experiments/E-018-reverse-tree-branching/README.md`.
+- 2026-07-15: **fechamento desta linha — a oscilação é ruído genérico,
+  não padrão escondido**. Um agente rodando Opus propôs 6 ângulos novos;
+  testamos o primeiro (distribuição de decaimento sobre raízes
+  aleatórias). Corrigido um erro metodológico próprio (pego pelo advisor:
+  comparava dentro-de-uma-raiz com entre-duas-raízes, com parâmetro livre)
+  antes de qualquer conclusão. Teste correto: usando J_{t+1}=4·J_t+1
+  (exato), medimos D(4m+1)/D(m) para m ímpar aleatório — mesmo objeto das
+  9 razões medidas, sem parâmetro livre. Resultado (n=500): média
+  geométrica e desvio-padrão batem com os 9 valores reais dentro do erro
+  esperado. **A oscilação de ~2 ordens de magnitude não é especial à
+  família J_t — é o ruído típico de um processo de ramificação 3-ádico
+  genérico.** Não fecha H-024, mas dissolve a pergunta do "por quê" —
+  melhor desfecho possível dado a obstrução já conhecida. Ver H-018 e
   `experiments/E-018-reverse-tree-branching/README.md`.

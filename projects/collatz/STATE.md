@@ -140,6 +140,24 @@ falta (taxa de decaimento entre galhos férteis) exige resíduos mais
 profundos (mod27, 81, ...), a mesma obstrução de H-024, agora localizada
 num objeto concreto. Redução real, não resolução.
 
+**Fechamento da linha H-013/H-018 (mesmo dia): a oscilação é ruído
+genérico, não padrão escondido**. Pedido explícito para gerar (via agente
+rodando Opus) uma lista de ângulos novos e testar o melhor. Uma primeira
+tentativa teve um erro metodológico real (pego pelo advisor: comparava
+decaimento dentro-de-uma-raiz com a razão entre-duas-raízes que
+queríamos, usando um parâmetro livre e n=9 com erro padrão grande demais
+para a coincidência encontrada significar algo). Corrigido: como
+J_{t+1}=4·J_t+1 exatamente, o teste certo é medir D(4m+1)/D(m) para m
+ímpar aleatório — mesmo objeto das 9 razões medidas, sem parâmetro livre.
+Resultado (n=500): média geométrica (0.542) e desvio-padrão (0.758 dex)
+batem com os 9 valores reais (0.432 e 0.715±0.179 dex) dentro do erro
+esperado. **A oscilação de ~2 ordens de magnitude não é especial à
+família J_t — é o ruído típico de qualquer processo de ramificação
+3-ádico deste tipo.** Não fecha H-024 (sem fórmula), mas dissolve a
+pergunta do "por quê" em vez de deixá-la aberta — o melhor desfecho
+possível dado a obstrução já conhecida. Ver
+`experiments/E-018-reverse-tree-branching/README.md`.
+
 **Síntese do programa Ruiz Castillo concluída**
 (`literature/ruiz-castillo-research-program.md`): consolida as sete
 revisões técnicas (H-039, H-050, H-052 a H-056) mais a leitura

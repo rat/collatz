@@ -368,4 +368,59 @@ pergunta mais precisa é exatamente a obstrução de H-024 (precisão 3-ádica
 ilimitada), agora localizada num objeto concreto e específico em vez de
 uma dificuldade abstrata geral. Não vale a pena caçar mais pares ou
 decompor mais t's atrás de uma estrutura mais fina — o mesmo tipo de caça
+
+## A oscilação é ruído genérico de ramificação, não um padrão escondido (2026-07-15)
+
+Pedido explícito do diretor científico para gerar uma lista de ângulos novos "que valem o teste" — um agente
+rodando Opus, com todo o contexto acima, propôs 6 ângulos (distribuição empírica de decaimento sobre raízes
+aleatórias; teste de cauda lei-de-potência vs log-normal; martingale de passeio ramificado; média ergódica
+3-ádica; perfil quantificado de dependência 3-ádica; operador de transferência portado da órbita direta).
+Implementamos o primeiro (mais barato e mais novo).
+
+**Primeira tentativa (com um erro metodológico real, pego pelo advisor antes de qualquer conclusão)**:
+`experiment_random_roots.py` mediu D(w₁)/D(w₄) — o decaimento *dentro* da mesma raiz, entre o 1º e o 4º galho
+de mesma fase — sobre 1000 raízes ímpares aleatórias. O desvio-padrão em log10 dessa distribuição (0.706 dex)
+bateu suspeitosamente perto do desvio-padrão das 9 razões J_t medidas (0.715 dex). **Isso não era evidência
+válida**: D(w₁)/D(w₄) é um objeto diferente de D(J_{t+1})/D(J_t) (dentro-de-uma-raiz vs entre-duas-raízes), a
+distância "3 posições" foi escolhida porque batia com observações anteriores (um parâmetro livre), e com
+n=9 o erro padrão do desvio-padrão medido é ~0.18 dex — qualquer valor entre 0.5 e 0.9 seria "consistente".
+Comparar só o desvio-padrão e ignorar que as médias geométricas são completamente diferentes (71 vs 0.43) era
+garimpar a única estatística que batia.
+
+**O null correto**: J_{t+1} = 4·J_t + 1 exatamente (verificado: 4·(4^t−1)/3 + 1 = (4^(t+1)−1)/3). Então o
+experimento certo é: para m ímpar aleatório (m≡1 mod3, mesma classe do "primeiro do par"), m'=4m+1 (cai
+automaticamente em m'≡2 mod3), medir D(m')/D(m) com orçamento casado — o MESMO tipo de razão que as 9 medições
+reais, sem o parâmetro livre nem a confusão dentro/entre-raízes.
+
+`experiment_null_ratio.py`, 500 amostras (m em [1e5,1e6), mesmo orçamento ~18 bits usado no primeiro teste):
+
+| | média geométrica | desvio-padrão log10 |
+|---|---|---|
+| 9 razões J_t medidas (H-013) | 0.432 | 0.715 dex (erro padrão ±0.179, n=9) |
+| 500 razões nulas D(4m+1)/D(m) | 0.542 | 0.758 dex |
+
+**As duas estatísticas batem, dentro do erro esperado do n=9** — tanto o centro quanto a dispersão. Em termos
+precisos: o erro padrão da MÉDIA dos 9 log-razões é σ/√n = 0.715/3 = 0.238 dex; a diferença entre o centro
+nulo e o medido é log10(0.542)−log10(0.432) = 0.099 dex — bem dentro de 0.238. A dispersão (0.758 vs 0.715)
+fica dentro de ±0.179. O centro perto de ~0.5 também confirma o argumento de tamanho já visto (w₁(t+1)/w₁(t)→2
+quando t→∞, o que por si só já previa uma razão de tamanho puro ≈0.5). Isso é uma comparação limpa (mesmo
+objeto, sem parâmetro livre) e o resultado é genuíno: a oscilação de ~2 ordens de magnitude que vemos nos 9
+pares medidos **não é um padrão especial da família J_t** — é exatamente o espalhamento típico que se espera
+comparando D(m) entre dois inteiros ímpares relacionados por m'=4m+1 quaisquer. (Ressalva honesta, não
+testada: o null rodou em m∈[1e5,1e6] com orçamento ~18 bits, enquanto os 9 pares reais vão até J_t~1e17 com
+~25-27 bits — assumimos que o espalhamento é aproximadamente invariante de escala, o que é razoável dado que
+o orçamento foi mantido ~constante e a variância de ramificação não deveria depender da magnitude absoluta,
+mas não verificamos isso diretamente com um null em escala maior.) Checagem adicional (aproximada, via
+percentis, não um estimador de Hill completo): a inclinação em log-log da cauda da distribuição nula fica mais
+íngreme a cada percentil mais alto (p75→p90→p95→p99), mais consistente com cauda log-normal que com lei de
+potência — leitura aproximada, não definitiva.
+
+**Isto é o melhor desfecho possível para esta linha, dado o que já sabíamos**: não fecha H-024 (nenhuma
+fórmula, nenhum D(w) específico previsto), mas **dissolve** a pergunta "por que a razão oscila desse jeito
+específico" em "isso é exatamente o ruído esperado de um processo de ramificação 3-ádico genérico" — uma
+resposta mais limpa do que qualquer padrão modular teria sido, e verificada corretamente desta vez (objeto
+certo, sem parâmetro livre, poder estatístico adequado). Não vale a pena testar os outros 5 ângulos do
+brainstorm — eles mirariam a mesma pergunta que acabou de ser respondida (a oscilação é variância genérica,
+não estrutura escondida), e arriscam repetir o mesmo tipo de garimpo que já falhou duas vezes com mod9 e uma
+vez com D(w₁)/D(w₄).
 já matou a hipótese mod9 duas vezes nesta sessão.

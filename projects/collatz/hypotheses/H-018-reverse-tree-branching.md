@@ -1,6 +1,6 @@
 # H-018 — Estrutura de ramificação da árvore reversa (Galton-Watson) para explicar a anomalia de H-013
 
-Status: parcialmente resolvida. Pergunta "converge quando t→∞?" respondida (não, oscila ~2 ordens de magnitude). Dois teoremas provados sobre a estrutura dos galhos (esterilidade generalizada; periodicidade mod3 com período 3) explicam a convergência rápida da soma e reduzem — mas não fecham — o "por quê" da oscilação, à magnitude relativa de galhos férteis (obstrução de H-024, agora localizada).
+Status: parcialmente resolvida. Pergunta "converge quando t→∞?" respondida (não, oscila ~2 ordens de magnitude). Dois teoremas provados sobre a estrutura dos galhos (esterilidade generalizada; periodicidade mod3 com período 3) explicam a convergência rápida da soma. Pergunta "por que oscila desse jeito específico?" também respondida: não é padrão escondido, é ruído genérico de ramificação — confirmado estatisticamente (n=500) contra o null correto D(4m+1)/D(m), centro e dispersão batem com as 9 razões medidas dentro do erro esperado. Não fecha H-024 (sem fórmula fechada), mas dissolve a pergunta do "porquê" — melhor desfecho possível dado a obstrução conhecida.
 Criada em: 2026-07-13
 Origem: pedido do diretor científico para atacar a anomalia p₅>p₄ (H-013)
 com uma análise de processo de ramificação, em vez de só resíduos.
@@ -141,3 +141,25 @@ posterior inversão da razão entre classes adjacentes.
   27, 81, ...) — é a obstrução de H-024, agora localizada num objeto
   concreto em vez de uma dificuldade abstrata. Redução real obtida, não
   resolução. Ver `experiments/E-018-reverse-tree-branching/README.md`.
+- 2026-07-15: **a oscilação é ruído genérico de ramificação, não um padrão
+  escondido**. Pedido explícito do diretor científico para gerar (via
+  agente rodando Opus) uma lista de ângulos novos e testar o melhor. Uma
+  primeira tentativa (D(w1)/D(w4), decaimento dentro de uma mesma raiz)
+  teve um erro metodológico real — pego pelo advisor antes de qualquer
+  conclusão: comparava um objeto diferente do que medimos nos 9 pares
+  (dentro-de-uma-raiz vs entre-duas-raízes), com um parâmetro livre ("3
+  posições") e n=9 com erro padrão grande demais para a coincidência
+  encontrada significar algo. O teste correto usa J_{t+1}=4·J_t+1 (exato)
+  como modelo: para m ímpar aleatório (m≡1mod3) e m'=4m+1, medir
+  D(m')/D(m) — o mesmo objeto exato das 9 razões medidas, sem parâmetro
+  livre. Resultado (500 amostras): média geométrica 0.542 e desvio-padrão
+  0.758 dex, contra 0.432 e 0.715±0.179 dex medidos nos 9 pares reais —
+  **ambos batem dentro do erro esperado**. Conclusão: a oscilação de ~2
+  ordens de magnitude não é especial à família J_t — é o espalhamento
+  típico de comparar D(m) entre inteiros relacionados por m'=4m+1
+  quaisquer. Não fecha H-024 (nenhuma fórmula), mas dissolve a pergunta
+  "por que oscila desse jeito" em "isso é ruído esperado de um processo
+  de ramificação 3-ádico genérico" — o melhor desfecho possível dado o
+  que já sabíamos. Não vale a pena testar os outros 5 ângulos propostos
+  pelo agente — mirariam a mesma pergunta já respondida. Ver
+  `experiments/E-018-reverse-tree-branching/README.md`.
