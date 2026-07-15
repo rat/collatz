@@ -29,10 +29,12 @@ por data recente do Scholar nunca teria capturado (ex: Tao 2022, Barina
   (identidade de cada arquivo confirmada contra o conteúdo real, e contra
   hash MD5 para descartar duplicatas exatas, antes de renomear — já que
   vários nomes de download não batiam com o título do paper).
-- **~53 sem PDF livre**, majoritariamente porque o host bloqueia download
-  automatizado (ver "Limitações técnicas" abaixo) — **não** porque o
-  conteúdo é necessariamente pago; a tabela mantém o link original nessas
-  linhas para o diretor científico baixar manualmente.
+- **10 sem PDF livre restantes** (2026-07-15: reduzido de ~51 — ver
+  "Limpeza de itens não revisados por pares" abaixo), majoritariamente
+  porque o host bloqueia download automatizado (ver "Limitações
+  técnicas" abaixo) — **não** porque o conteúdo é necessariamente pago;
+  a tabela mantém o link original nessas linhas para o diretor
+  científico baixar manualmente.
 - **12 excluídos** por serem falsos-positivos (nada a ver com a
   conjectura — em geral "Collatz" é sobrenome de um coautor, ou parte de
   outro conceito matemático do mesmo Lothar Collatz, num contexto sem
@@ -44,6 +46,48 @@ por data recente do Scholar nunca teria capturado (ex: Tao 2022, Barina
   psicologia).
 - **1 duplicado** (item 089 = mesmo paper do item 057, indexado duas vezes
   pelo Scholar via fontes diferentes).
+
+## Limpeza de itens não revisados por pares (2026-07-15)
+
+Pedido do diretor científico: dos itens "sem PDF livre" (nunca baixados,
+portanto nunca revisados), remover os que não são de fontes revisadas
+por pares e que ainda não foram analisados de nenhuma forma — mantendo
+tudo que já foi baixado/lido, independente da fonte.
+
+**Removidos: 38 itens** hospedados só em plataformas de auto-arquivamento
+sem journal/conferência citado (researchgate.net, academia.edu,
+philarchive.org, philpapers.org, Cambridge Open Engage — confirmado por
+busca que é um servidor de preprints sem revisão por pares própria, não
+a Cambridge University Press), mais 1 revista de divulgação científica
+(New Scientist, não é publicação acadêmica) e 1 capítulo de livro técnico
+(sobre SIMD/Java, revisão editorial não é revisão por pares acadêmica).
+Nenhum desses tinha sido lido, corrigido ou implementado — colunas
+Lido/Corrigido/Implementado vazias em todos, já que não havia PDF para
+revisar. Os números originais desses itens **não foram reaproveitados**
+(mantidos como lacunas na numeração), para não invalidar referências a
+números específicos em outros arquivos do projeto (hipóteses, STATE.md).
+
+**Mantidos por decisão explícita do diretor científico, apesar de não
+serem revisados por pares**: as 6 alegações de prova/refutação (itens
+050, 086, 087, 092, 093, 094) — candidatas a revisão futura, seguindo o
+padrão já estabelecido neste projeto de encontrar erros reais em
+alegações não revisadas por pares (Boyle/H-065, Yun/H-068, Lodders/H-070,
+todos preprints).
+
+**Mantidos por incerteza genuína sobre o status de revisão por pares**
+(não removidos por precaução, não por confirmação positiva): item 027
+("Arya Bhatta Journal of Mathematics and Informatics" — o próprio journal
+alega processo de revisão por pares duplo-cego, mas tem sinais de
+qualidade duvidosa, ex. fator de impacto de 5,856 não verificável em
+bases como Web of Science/Clarivate, típico de journals de baixa
+qualidade ou predatórios — mantido porque a alegação de revisão por
+pares em si não foi refutada, só sua confiabilidade está em dúvida).
+
+**Confirmados como revisados por pares (mantidos com confiança)**: item
+071 (Mathematics, MDPI — revisão por pares formal), item 072 (EPJ
+Special Topics, Springer/EDP Sciences — journal de física estabelecido),
+item 098 (ACM Digital Library — revisão por pares de conferência/journal
+formal).
 
 ## Limitações técnicas encontradas (importante ler antes de usar a tabela)
 
@@ -152,13 +196,11 @@ coleção foi baixado dessa forma.
 | 009 | Structural Dualism in Integer Architectures | E Olgac - researchgate.net | BAIXADO | `009_Structural-Dualism-Integer-Architectures.pdf` | Sim | Sim | Sim |
 | 010 | Teorema Central del Límite Residual de Ruiz Castillo para la dinámica acelerada de la Conjetura de Collatz | SDJCR Castillo - researchgate.net | BAIXADO | `010_Teorema-Central-Limite-Ruiz-Castillo.pdf` | Sim | Sim | Sim |
 | 011 | Structural Analysis, Dynamic Density Sieve, and Logarithmic Contraction of Collatz Sequences | A Mohammed - 2026 - researchgate.net | BAIXADO | `011_Structural-Analysis-Density-Sieve-Logarithmic-Contraction.pdf` | Sim | Sim | Sim |
-| 012 | Proposed framework on Collatz conjecture | P Danesh - 2026 - cambridge.org | (sem link PDF detectado pelo Scholar) | sem PDF livre (nenhum link PDF listado) |  |  |  |
 | 013 | Operador de Transferencia Residual de Ruiz Castillo y estructura espectral en la dinamica acelerada de la Conjetura de Collatz | SDJCR Castillo - researchgate.net | BAIXADO | `013_Operador-Transferencia-Ruiz-Castillo.pdf` | Sim | Sim | Sim |
 | 014 | A Coordinate System for Collatz Dynamics | J Williams - arXiv:2607.01718, 2026 | BAIXADO | `014_A-Coordinate-System-for-Collatz-Dynamics.pdf` | Sim | Sim | Sim |
 | 015 | Canonical Shells and Residue-Cover Trees in a Conditional First-Descent Approach to the Collatz Problem | SY Kayadibi - researchgate.net | BAIXADO | `015_Canonical-Shells-Residue-Cover-Trees.pdf` | Sim | Sim | Sim |
 | 016 | Collatz-Thwaites-Ulam-Hasse-Syracuse-Kakutani (CTUHSK) Theorem | KP Bikarnakatte - engrxiv.org | BAIXADO | `016_CTUHSK-Theorem.pdf` | Sim | Sim | Sim |
 | 017 | Medidas de Gibbs Residuales de Ruiz Castillo y estados de equilibrio en la dinamica acelerada de la Conjetura de Collatz | SDJCR Castillo - researchgate.net | BAIXADO | `017_Medidas-Gibbs-Residuales-Ruiz-Castillo.pdf` | Sim | Sim | Sim |
-| 018 | The Collatz Conjecture (book chapter) | R Snytsar - Mastering SIMD with Java Vector API, 2026 - Springer | (sem link PDF detectado pelo Scholar) | sem PDF livre (capitulo de livro Springer, pago) |  |  |  |
 | 019 | Emergence of Gamma-Type Upward-Phase Statistics in the Collatz Map: An Effective Poisson Process Mechanism | W Fu, X Liu, Y Wang - arXiv:2606.26811, 2026 | BAIXADO | `018_Emergence-of-Gamma-Type-Upward-Phase-Statistics.pdf` | Sim | Sim | Sim |
 | 020 | Principio Variacional Residual de Ruiz Castillo y formalismo termodinamico para la dinamica acelerada de la Conjetura de Collatz | SDJCR Castillo - 2026 - researchgate.net | BAIXADO | `020_Principio-Variacional-Ruiz-Castillo.pdf` | Sim | Sim | Sim |
 | 021 | A GENERALIZATION OF 3x+1 PROBLEM TO 3x+4y+1 | R Amirian, A Amirian - SSRN 6993335 | BAIXADO | `021_Generalization-3x1-to-3x4y1.pdf` | Sim | Sim | Sim |
@@ -173,74 +215,35 @@ coleção foi baixado dessa forma.
 | 030 | NON-EXISTENCE OF COLLATZ m-CYCLES FOR m<=95 | X Wang - INTEGERS, 2026 - researchgate.net | BAIXADO | `030_Non-Existence-Collatz-m-Cycles-m-leq-95.pdf` |  |  |  |
 | 031 | Predicting extreme stopping time behavior in the Collatz system | E Melas, NC Poulios - Journal of Dynamics and Games, 2026 - aimsciences.org | BAIXADO | `031_Predicting-Extreme-Stopping-Time.pdf` | Sim | Sim | Sim |
 | 032 | Jacobsthal Trees and Generalized Transformations | P Kosobutskyy, D Mailland - dergipark.org.tr | BAIXADO | `032_Jacobsthal-Trees-Generalized-Transformations.pdf` | Sim | Sim | Sim |
-| 033 | Dimension Disipativa de Ruiz Castillo y subcilindros fractales en la dinamica acelerada de la Conjetura de Collatz | SDJCR Castillo - researchgate.net | [link](https://www.researchgate.net/profile/Juan-Carlos-Ruiz-3/publication/407029463) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
-| 034 | The meme that has been amusing mathematicians for a century | J Aron - New Scientist, 2026 - Elsevier | (sem link PDF detectado pelo Scholar) | sem PDF livre (revista de divulgacao, paga) |  |  |  |
 | 035 | Disipacion Promedio de Ruiz Castillo y medidas de equilibrio en la dinamica acelerada de la Conjetura de Collatz | JCR Castillo - researchgate.net | BAIXADO (DOI 10.5281/zenodo.20636301) | `035_Disipacion-Promedio-Ruiz-Castillo.pdf` |  |  |  |
 | 036 | Upper bounds for the Laplacian spectral radius: Proofs and counterexamples | I Damnjanovic, T Ha, D Stevanovic - arXiv:2606.14550, 2026 | BAIXADO | `036_Upper-bounds-Laplacian-spectral-radius.pdf`***** | Sim | N/A | N/A |
 | 037 | ROOTED SURJECTIVITY FROM THE INVARIANT E/O REFINEMENT SYSTEM | ME Spencer - academia.edu | BAIXADO | `037_Rooted-Surjectivity-Invariant-EO-Refinement-System.pdf` |  |  |  |
 | 038 | A modular classification of pre-descent resistance in accelerated odd Collatz dynamics | SY Kayadibi - SSRN 6918258, 2026 | BAIXADO | `038_Modular-Classification-Pre-Descent-Resistance.pdf` | Sim | Sim | Sim |
-| 039 | Teoria espectral de las palabras de valuacion en la dinamica acelerada de la Conjetura de Collatz | SDJCR Castillo - researchgate.net | [link](https://www.researchgate.net/profile/Juan-Carlos-Ruiz-3/publication/406439765) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
 | 040 | (Não relacionado - ruído do Scholar: ECG/troponina cardíaca) | A Knudsen et al - Journal of.., 2026 - Elsevier | -- | excluído (não é sobre Collatz, falso positivo do Scholar) |  |  |  |
 | 041 | (Não relacionado - ruído do Scholar: detecção de afogamento por IA) | CK Ostenfeldt et al - Scandinavian J, 2026 - Springer | -- | excluído (não é sobre Collatz, falso positivo do Scholar) |  |  |  |
-| 042 | Dinamica Topologica de la Conjetura de Collatz: Un Enfoque Lagrangiano y de Integrales de Camino | BR Beltran - researchgate.net | [link](https://www.researchgate.net/publication) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
-| 043 | A Corrected Suffix-Balanced Global-Minimum Certificate for Excluding Collatz m-Cycles for m<=94 | X Wang - 2026 - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
-| 044 | HARES ALWAYS RETURN | A Fedotkin - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
-| 045 | A REPRODUCIBLE CERTIFICATE EXCLUDING COLLATZ (m-cycles m<=93) | X Wang - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
-| 046 | Analisis algebraico de ciclos en la funcion de Collatz | RM Rojas - academia.edu | [link](https://www.academia.edu/) | sem PDF livre (academia.edu bloqueia download automatizado) |  |  |  |
-| 047 | NOT ALL COLLATZ SEQUENCES TEND TO | TQ Cong - 2026 - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
-| 048 | Cotas disipativas y descomposicion residual de Ruiz Castillo en la dinamica acelerada de la Conjetura de Collatz | SDJCR Castillo - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
 | 049 | The Collatz Conjecture is True [ALEGAÇÃO DE PROVA - ver nota] | DG Boyle - 2026 - rxiverse.org | BAIXADO | `049_The-Collatz-Conjecture-is-True.pdf` | Sim | Não | Sim |
 | 050 | On the Convergence of the Collatz Function [ALEGAÇÃO DE PROVA - ver nota] | A Roif - academia.edu | [link](https://www.academia.edu/) | sem PDF livre (academia.edu bloqueia download automatizado) |  |  |  |
-| 051 | A Machine-Verified Conditional Theory of the Collatz Conjecture [checado por Lean 4] | J Park - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
-| 052 | Sufes Conjecture: a parameterized generalization of the Syracuse/Collatz conjecture | A Khachnaoui - 2026 - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
-| 053 | Onion, Apple, and Gate: A Theory of Recursive Stability and Recursive Failure | MD McPhetridge - philarchive.org | [link](https://philarchive.org/archive/MCPOAA-3) | sem PDF livre (philarchive.org bloqueou download, 403) |  |  |  |
-| 054 | Drift residual y presion disipativa en la dinamica acelerada de la Conjetura de Collatz | SDJCR Castillo - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
 | 055 | Platonismo y realismo en matematicas y fisica: un estudio ontologico y epistemologico | JCR Castillo, AFM Sanabria - Diotima, 2026 - usac.edu.gt | BAIXADO | `055_Platonismo-realismo-matematicas-fisica.pdf` | Sim | Sim* | Sim* |
 | 056 | (Não relacionado - ruído do Scholar: não-transporte de pacientes pré-hospitalares na Dinamarca) | S Kondrup et al - 2026 - sdu.dk | -- | excluído (não é sobre Collatz, falso positivo do Scholar - "Collatz" é sobrenome de coautora) |  |  |  |
 | 057 | A Fibonacci theorem for Collatz trajectories via modular graph structure | MAR Jimenez - arXiv:2606.02621, 2026 | BAIXADO | `056_Fibonacci-theorem-Collatz-modular-graph.pdf` | Sim | Sim | Sim |
-| 058 | Generalization of Collatz-Type Conjectures | AS Bharti - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
-| 059 | Residual Debt, Dissipative Compensation, and Descending Subcylinders in the Accelerated Dynamics of the Collatz Conjecture | JCR Castillo - 2026 - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
-| 060 | Normalization of Natural Numbers: The Collatz Conjecture as a Case Study | S Hamaji - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
-| 061 | A Component-wise Well-Founded Descent for the Collatz Problem via Dyadic Certificates | J Redero - academia.edu | [link](https://www.academia.edu/) | sem PDF livre (academia.edu bloqueia download automatizado) |  |  |  |
-| 062 | SINGULAR DUALITY AND THE MODAL DISCIPLINE OF OBJECTIVITY | V Cabannas, D Silva - academia.edu | [link](https://www.academia.edu/) | sem PDF livre (academia.edu bloqueia download automatizado) |  |  |  |
-| 063 | Deuda residual, compensacion disipativa y subcilindros descendentes en la dinamica acelerada de la Conjetura de Collatz | JCR Castillo - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
-| 064 | Collatz Sequence Proof Easy Way | T Muhammad - 2026 - cambridge.org | (sem link PDF detectado pelo Scholar) | sem PDF livre (nenhum link PDF listado) |  |  |  |
-| 065 | Valuation cylinders, residual dissipation, and dynamic contraction in the Collatz conjecture | JCR Castillo - 2026 - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
-| 066 | Cilindros de valuacion, disipacion residual y contraccion dinamica en la Conjetura de Collatz | JCR Castillo - 2026 - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
-| 067 | A class of numbers in the Collatz conjecture | A Petojevic - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
-| 068 | 2-Adic Finite-Certificate Descent Closure for the 3x+1 Collatz Problem | D Bhattacharjee - 2026 - philpapers.org | [link](https://philpapers.org/archive/BHAAFD-2) | sem PDF livre (philpapers.org bloqueou download, 403) |  |  |  |
-| 069 | SNSFL-Formally Verified Geometric Axiomatic Module-GAMCollider... [parece não ser sobre Collatz de fato, possível ruído/spam] | R Trent - philpapers.org | [link](https://philpapers.org/archive/TRESVG) | sem PDF livre (philpapers.org bloqueou download, 403) - conteúdo suspeito de não ser paper acadêmico real |  |  |  |
-| 070 | The Gate of Collatz: Parity-Gated Expansion, Episodic Reduction, and Recursive Recomposition | MD McPhetridge - philarchive.org | [link](https://philarchive.org/) | sem PDF livre (philarchive.org bloqueia download automatizado) |  |  |  |
 | 071 | Parity-Based Level-Set Approach to the Collatz Conjecture | S Koyuncu et al - Mathematics (MDPI), 2026 | [link](https://www.mdpi.com/2227-7390/14/10/1763) | sem PDF livre (mdpi.com bloqueou download automatizado, 403) |  |  |  |
 | 072 | Polar recurrence plots on Collatz sequences devoid of exact recurrences | CL Webber Jr - EPJ Special Topics, 2026 - Springer | (sem link PDF detectado pelo Scholar) | sem PDF livre (Springer, pago) |  |  |  |
-| 073 | Expansions on Boundary Algebra | A Roif - academia.edu | [link](https://www.academia.edu/) | sem PDF livre (academia.edu bloqueia download automatizado) |  |  |  |
 | 074 | Loop Termination and Generalized Collatz Sequences | M Carelli - arXiv:2605.15094, 2026 | BAIXADO | `073_Loop-Termination-Generalized-Collatz.pdf` | Sim | Sim | Sim |
 | 075 | (Não relacionado - ruído do Scholar: afogamento na Dinamarca) | N Breindahl et al - Clinical.., 2026 - tandfonline | -- | excluído (não é sobre Collatz, falso positivo do Scholar) |  |  |  |
 | 076 | A Structural Proof of the Collatz Conjecture via non-repeating trajectory and Recursive Decay [ALEGAÇÃO DE PROVA] | YH Yun - osf.io | BAIXADO | `075_Structural-Proof-Collatz-nonrepeating.pdf` | Sim | Não | Sim |
-| 077 | Restoring Causal Structure through Natural Mathematics: A Case Study on the Collatz Conjecture | S Hamaji - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
-| 078 | Parity vectors and paradoxical sequences in the accelerated Collatz map [RETIRADO PELO AUTOR] | T Niu - arXiv:2605.13886, 2026 | [link](https://arxiv.org/abs/2605.13886) | sem PDF (paper retirado pelo autor no arXiv - só resta o abstract) |  |  |  |
 | 079 | (Não relacionado - ruído do Scholar: emergências oftalmológicas na Dinamarca) | N Jensen et al - Scandinavian J, 2026 - Springer | -- | excluído (não é sobre Collatz, falso positivo do Scholar) |  |  |  |
-| 080 | Beyond the A Priori Omission: Natural Mathematics and the Collatz Conjecture | S Hamaji - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
 | 081 | (Não relacionado - ruído do Scholar: doença de Ménière na Dinamarca) | C Gronlund et al - European Archives, 2026 - Springer | -- | excluído (não é sobre Collatz, falso positivo do Scholar) |  |  |  |
-| 082 | On a relation between Collatz-type operators and Euler's pentagonal number generating function | A Mugnai - 2026 - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
-| 083 | Wave (Cause)-Particle (Effect) Causality: The Collatz Conjecture as a Case Study | S Hamaji - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
 | 084 | MODELLING THE COLLATZ PROBLEM FROM A JACOBSTHAL VIEWPOINT | D Mailland, P Kosobutskyy - 2026 - lpnu.ua | BAIXADO | `084_Modelling-Collatz-Jacobsthal-Viewpoint.pdf` | Sim | Sim | Sim |
-| 085 | Deterministic Decay: A Formally Specified Computational Model for Collatz-Guided Operation Minimisation | MSB Masud - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
 | 086 | The Axiom of Bijective Causality: Natural Numbers via Wave Processes and the Resolution of the Collatz Conjecture | S Hamaji - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
 | 087 | A Common Proof of the Riemann Hypothesis and the Collatz Conjecture [ALEGAÇÃO DE PROVA] | K Tynski - 2026 - academia.edu | [link](https://www.academia.edu/) | sem PDF livre (academia.edu bloqueia download automatizado) |  |  |  |
-| 088 | The Prime Lattice Coherence Framework [título sugere possível pseudociência - menciona constante cosmológica, QED e Collatz juntos] | G Gurwell - Spine, 2026 - ctftheory.com | [link](https://ctftheory.com/) | sem PDF livre (não testado - conteúdo suspeito de não ser matemática acadêmica real) |  |  |  |
 | 089 | A Fibonacci theorem for Collatz trajectories via modular graph structure [DUPLICADO - já temos, ver item 057] | MA Reyes Jimenez - arXiv e-prints, 2026 - adsabs | [link](https://arxiv.org/abs/2606.02621) | `056_Fibonacci-theorem-Collatz-modular-graph.pdf` (duplicado do item 057) | Sim | Sim | Sim |
-| 090 | The Cycle Exclusion Theorem for Generalised Collatz Maps | RA Satnoianu - 2026 - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
 | 091 | (Não relacionado - ruído do Scholar: bioinformática, "M Collatz" é sobrenome de coautor) | T Eulenfeld, M Collatz et al - bioRxiv, 2026 | -- | excluído (não é sobre a conjectura, falso positivo do Scholar) |  |  |  |
 | 092 | Continued Disproof Sentence towards Collatz Conjecture [ALEGAÇÃO DE REFUTAÇÃO] | M Syzdykov - 2026 - cambridge.org | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
 | 093 | A Note on a Claimed Disproof of the Collatz Conjecture [RESPOSTA CRÍTICA a outra alegação] | M Lafontaine, G Cheong - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
 | 094 | RESOLUTION OF THE COLLATZ CONJECTURE VIA THE AXIOM OF BIJECTIVE CAUSALITY [ALEGAÇÃO DE PROVA] | S Hamaji - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
 | 095 | (Não relacionado - ruído do Scholar: hospital domiciliar na Dinamarca) | MB Hagi-Pedersen et al - 2026 - regsj.dk | -- | excluído (não é sobre Collatz, falso positivo do Scholar) |  |  |  |
-| 096 | Structural Discoveries in the Collatz Conjecture: Modulo 64 Survivors, Confluence Points, and Energy Deviation | Y Zhang - 2026 - philarchive.org | [link](https://philarchive.org/) | sem PDF livre (philarchive.org bloqueia download automatizado) |  |  |  |
-| 097 | The Axiom of Absolute Boundary: Boundaries and Metabolic Failure in Self-Referential Systems [não parece ser sobre Collatz especificamente] | Y Zhang - 2026 - philarchive.org | [link](https://philarchive.org/) | sem PDF livre (philarchive.org bloqueia download automatizado) |  |  |  |
 | 098 | Teaching Theory of Computation in STEM K-12 Curricula Through Impossibility and Undecidability Problems (Collatz mencionado como exemplo) | R del Vado Virseda - ACM, 2026 | (sem link PDF detectado pelo Scholar) | sem PDF livre (ACM Digital Library, pago) |  |  |  |
 | 099 | Selection Rules and Channel Structure in a Base Octave Model of Collatz Dynamics | K Lodders - arXiv:2604.20181, 2026 | BAIXADO | `098_Selection-Rules-Channel-Structure-Base-Octave.pdf` | Sim | Não | Sim |
-| 100 | A Binary Tree Interpretation of Shared Key Generation Using Modular Ananta-Graph Paths (não parece ser sobre Collatz - criptografia) | HR Vidyashree et al - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado; também parece não ser sobre Collatz) |  |  |  |
 | 101 | About the Collatz conjecture | Ş Andrei, C Masalagiu - Acta Informatica 35, 167-179, 1998 | BAIXADO | `101_About-the-Collatz-Conjecture.pdf` |  |  |  |
 | 102 | Tag systems and Collatz-like functions | L De Mol - Theoretical Computer Science 390, 92-101, 2008 | BAIXADO | `102_Tag-Systems-and-Collatz-Like-Functions.pdf` |  |  |  |
 | 103 | An Artificial Life View of the Collatz Problem | H Sayama - Artificial Life 17, 137-140, 2011 | BAIXADO | `103_Artificial-Life-View-Collatz-Problem.pdf` |  |  |  |
