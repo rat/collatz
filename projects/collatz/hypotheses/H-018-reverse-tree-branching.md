@@ -1,6 +1,6 @@
 # H-018 — Estrutura de ramificação da árvore reversa (Galton-Watson) para explicar a anomalia de H-013
 
-Status: parcialmente resolvida (mecanismo qualitativo identificado, sem fórmula quantitativa fechada)
+Status: parcialmente resolvida (mecanismo qualitativo identificado, sem fórmula quantitativa fechada); pergunta "a razão converge quando t→∞?" agora respondida — não, oscila por ~2 ordens de magnitude
 Criada em: 2026-07-13
 Origem: pedido do diretor científico para atacar a anomalia p₅>p₄ (H-013)
 com uma análise de processo de ramificação, em vez de só resíduos.
@@ -86,3 +86,33 @@ posterior inversão da razão entre classes adjacentes.
   1e10/1e11/1e14). Uma tentativa de escalar ainda mais (1e13/1e15) foi
   morta pelo OOM killer do sistema (limite de memória menor que os 62GB
   nominais) — registrado como limite prático de infraestrutura.
+- 2026-07-15: **quebra do limite de memória e resposta à pergunta central
+  ("a razão converge?")**. O gargalo do OOM era o `visited` set do BFS
+  original — O(nós explorados), não O(profundidade). Prova: o mapa de
+  Collatz é uma função, então na árvore reversa cada nó tem no máximo um
+  pai (=f(nó)); para raízes J_t com t≥4 (J_t≥85) a busca nunca reentra no
+  ciclo trivial {1,2,4}, logo nenhum nó é redescoberto e o `visited` é
+  desnecessário. Reescrevi como DFS com pilha explícita
+  (`experiment_dfs.py`), memória O(profundidade): t=10 com n_max=1e13 (266M
+  nós) usou 9,8MB de RAM, contra OOM em 33-61GB antes. Validado em 3 frentes
+  antes de confiar em qualquer resultado novo: (a) idêntico ao BFS original
+  nó a nó em mult=5; (b) reproduz exatamente o forward-scan de H-013 em
+  mult=200; (c) a razão fica estável a <0.1% entre mult=5/25 e entre n_max/
+  10×n_max em 3 pares representativos, mesmo com as contagens absolutas
+  subindo ~26% — ou seja, o que falta capturar afeta os dois membros do par
+  proporcionalmente e cancela na razão.
+
+  Com o gargalo resolvido, computei mais 5 pares novos, nunca antes
+  alcançados: (16,17)=0.7745, (19,20)=0.0459, (22,23)=0.1592, (25,26)=3.610,
+  (28,29)=0.1473 (mais os já conhecidos, agora com dupla verificação:
+  (10,11)=0.0648, (13,14)=0.2825). **Resposta honesta**: a razão NÃO
+  converge a um limite único — oscila por ~2 ordens de magnitude (0.046 a
+  5.97) ao longo dos 9 pontos medidos. Cheguei a suspeitar de um padrão
+  ligado a t mod 9 com os primeiros 6 pontos (decaimento monótono dentro de
+  cada classe), mas os 3 pontos novos **derrubaram essa hipótese** —
+  mod9=7 vai 5.97→0.77→3.61 (não monótona) e mod9=1 vai 0.065→0.046→0.147
+  (idem). Com só 9 pontos entre 0.046 e 5.97, não vale a pena caçar um
+  módulo mais fino sem mais dados/uma reformulação da pergunta — registro
+  isto como a resposta atual, não como um beco sem saída a perseguir mais.
+  Ver `experiments/E-018-reverse-tree-branching/README.md` para a tabela
+  completa e a validação passo a passo.

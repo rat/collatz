@@ -1,6 +1,6 @@
 # H-013 — Todo órbita termina em J_t=(4^t−1)/3; classes estéreis explicadas por H-005
 
-Status: confirmada (teorema + verificação); anomalia p₅>p₄ confirmada como fato assintótico real (H-018), ainda sem fórmula fechada
+Status: confirmada (teorema + verificação); anomalia p₅>p₄ confirmada como fato assintótico real (H-018); pergunta "a razão entre classes adjacentes converge quando t→∞?" respondida — não, oscila por ~2 ordens de magnitude (ver H-018)
 Criada em: 2026-07-13
 Origem: brainstorm assistido pelo modelo Fable (consultado a pedido do diretor
 científico sobre padrões binários), verificado de forma independente.
@@ -89,3 +89,19 @@ Simulação Monte Carlo: para n aleatório, achar o último valor ímpar antes d
   morta pelo OOM killer do sistema — o ambiente tem um limite de memória
   prático menor que os 62GB nominais (provavelmente um cgroup), registrado
   para futuras tentativas de computação pesada.
+- 2026-07-15: **quebrei o limite de memória e respondi a pergunta de
+  convergência**. O OOM anterior vinha do BFS guardar todo nó visitado em
+  memória — desnecessário aqui, pois o mapa de Collatz é uma função e a
+  árvore reversa a partir de J_t (t≥4) nunca reentra no ciclo trivial
+  {1,2,4}, então nenhum nó tem dois pais. Reescrevi como DFS com pilha
+  explícita (memória O(profundidade) em vez de O(nós)): t=10 com n_max=1e13
+  (266M nós) agora usa 9,8MB de RAM, não mais dezenas de GB. Validei a
+  reescrita (idêntica ao BFS original, bate com forward-scan em mult=200,
+  razão estável a <0.1% variando mult e n_max) antes de confiar nela.
+  Com o gargalo resolvido, medi 5 pares novos além dos 4 já conhecidos:
+  (16,17)=0.7745, (19,20)=0.0459, (22,23)=0.1592, (25,26)=3.610,
+  (28,29)=0.1473. **A razão NÃO converge a um limite único** — oscila por
+  ~2 ordens de magnitude (0.046 a 5.97). Suspeitei de um padrão mod9 com os
+  primeiros 6 pontos, mas os 3 novos derrubaram essa hipótese (não é
+  monótona dentro das classes). Ver
+  `experiments/E-018-reverse-tree-branching/README.md` para os detalhes.

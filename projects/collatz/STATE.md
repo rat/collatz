@@ -1,6 +1,6 @@
 # Estado atual — Collatz
 
-Última atualização: 2026-07-14
+Última atualização: 2026-07-15
 
 ## Coleção de papers (nova, 2026-07-14)
 
@@ -103,6 +103,27 @@ teórico em nossa escala menor — consistente com o próprio paper, não é
 erro. Verificado com `advisor()`.
 
 ## Onde estamos
+
+**H-013/H-018: gargalo de memória quebrado, pergunta de convergência
+respondida (2026-07-15)**. O BFS original de E-018 guardava todo nó
+visitado em memória (O(nós), não O(profundidade)) — daí o OOM em 33-61GB
+registrado antes. Prova de que isso é desnecessário: Collatz é uma função,
+então na árvore reversa cada nó tem no máximo um pai; para raízes J_t com
+t≥4 a busca nunca reentra no ciclo trivial {1,2,4}, logo nenhum nó é
+redescoberto. Reescrito como DFS com pilha explícita
+(`experiments/E-018-reverse-tree-branching/experiment_dfs.py`): t=10 com
+n_max=1e13 (266M nós) agora usa 9,8MB de RAM. Validado em 3 frentes (bate
+com o BFS antigo nó a nó; bate com o forward-scan exato de H-013; razão
+estável a <0.1% variando o multiplicador de busca e o n_max) antes de
+confiar em qualquer resultado novo — um teste sugerido pelo advisor que
+valeu a pena: a primeira leitura (6 pontos) sugeria falsamente um padrão
+mod9, que os 3 pontos seguintes derrubaram. Com o gargalo resolvido, medi
+9 pares (t=4 a 29): a razão entre classes adjacentes **não converge a um
+limite único** — oscila por ~2 ordens de magnitude (0.046 a 5.97), sem
+padrão periódico simples. Fórmula fechada continua em aberto (H-024 já
+explica por que: exige precisão 3-ádica ilimitada). Ver
+`hypotheses/H-018-reverse-tree-branching.md` e o README de E-018 para a
+tabela completa.
 
 **Síntese do programa Ruiz Castillo concluída**
 (`literature/ruiz-castillo-research-program.md`): consolida as sete
@@ -808,9 +829,13 @@ rotulagem off-by-one encontrado na Conjectura 10.4 de Pratiher 2026
   ainda não-explicada: fração para t=5 (341) maior que para t=4 (85), e para
   t=8 maior que t=7 — mas **hipótese inicial (ligada a mod 3 de J_t)
   refutada**: a razão entre classes adjacentes inverte em t=10/11 e t=13/14
-  (varredura exaustiva). Não é um padrão simples — continua em aberto. Ver
-  `hypotheses/H-013-last-odd-value-structure.md` e
-  `experiments/E-013-last-odd-value-structure/CORRECTION.md`.
+  (varredura exaustiva). Não é um padrão simples. **Atualização
+  2026-07-15**: com o gargalo de memória de E-018 resolvido (BFS→DFS),
+  medimos 9 pares (t=4 a 29) — a razão **não converge a um limite único**,
+  oscila por ~2 ordens de magnitude (0.046 a 5.97). Fórmula fechada
+  continua em aberto. Ver `hypotheses/H-013-last-odd-value-structure.md`,
+  `experiments/E-013-last-odd-value-structure/CORRECTION.md` e
+  `experiments/E-018-reverse-tree-branching/README.md`.
 - `H-014` — recordistas nunca são ≡5 mod 8. Segunda técnica de exclusão
   (empate exato: N=4u+1 com u ímpar tem total_stopping_time igual, não
   menor, ao de N−1, via coalescência de trajetórias — diferente do domínio
@@ -829,8 +854,19 @@ rotulagem off-by-one encontrado na Conjectura 10.4 de Pratiher 2026
   (1 para t≡2mod3, 2 para t≡1mod3, insuficiente sozinho); o "orçamento"
   log₂(n_max/J_t) encolhe 2 bits por unidade de t — explica por que a
   vantagem geracional domina para t pequeno mas é dominada por flutuações
-  de árvore finita para t grande. Sem fórmula fechada. Ver
-  `hypotheses/H-018-reverse-tree-branching.md`.
+  de árvore finita para t grande. Sem fórmula fechada. **Atualização
+  2026-07-15**: o BFS original guardava todo nó visitado (O(nós) memória,
+  causa do OOM registrado antes); reescrito como DFS sem esse set — provado
+  seguro porque Collatz é função (cada nó tem no máximo um pai) e as
+  raízes J_t usadas (t≥4) nunca reentram no ciclo trivial {1,2,4} — memória
+  cai para O(profundidade) (9,8MB para 266M nós, vs. OOM em dezenas de GB
+  antes). Validado (idêntico ao BFS antigo; bate com forward-scan exato;
+  razão estável a <0.1% variando busca e n_max) e usado para medir 5 pares
+  novos: a razão entre classes adjacentes **não converge**, oscila por ~2
+  ordens de magnitude (0.046 a 5.97) sem padrão periódico simples (uma
+  suspeita de padrão mod9 foi levantada e depois derrubada pelos próprios
+  dados). Ver `hypotheses/H-018-reverse-tree-branching.md` e
+  `experiments/E-018-reverse-tree-branching/README.md`.
 - `H-019` — tempo de mistura da densidade de bits. Razão passos/k estabiliza
   em ~1.3-1.5 (denso) e ~1.0-1.23 (esparso) de k=8 a 1024 — confirma
   crescimento linear, consistente com 3n+1 ser operação local. Ver
@@ -1120,16 +1156,21 @@ válido como instância específica; a família CRT de H-028 continua válida
 como consolidação), só recalibra a expectativa. Questões genuinamente em
 aberto que restam:
 
-1. **Fórmula fechada para a anomalia de H-013** — valores de convergência
-   bem medidos numericamente ((10,11)≈0.065, (13,14)≈0.27-0.28), mas sem
-   teoria que os derive a partir de primeiros princípios. H-024 explica
-   por que a recursão exata D(v)=D(2v)+D(ramo) não fecha (exige precisão
-   3-ádica ilimitada) — provavelmente um problema genuinamente difícil,
-   não um branco de tentativa. H-037 mostrou que α de Pratiher (uma vez
-   corrigido o rótulo) é essa MESMA quantidade agrupada por t mod3 —
-   dominada por poucos termos pequenos (p_2=D(5) sozinho é 93,77%), o que
-   dá uma razão estrutural para mais tratabilidade que o D(v) genérico,
-   mas ainda não fechada.
+1. **Fórmula fechada para a anomalia de H-013** — o gargalo de memória que
+   limitava a medição numérica foi quebrado em 2026-07-15 (BFS→DFS, ver
+   `experiments/E-018-reverse-tree-branching/`), permitindo medir 9 pares
+   (t=4 a 29) em vez de só 4. Resposta à pergunta de convergência: **não
+   converge a um limite único**, oscila por ~2 ordens de magnitude (0.046
+   a 5.97) sem padrão periódico simples (uma suspeita de padrão mod9 com
+   os primeiros 6 pontos foi derrubada pelos 3 pontos seguintes). Ainda
+   sem teoria que derive os valores a partir de primeiros princípios — H-024
+   explica por que a recursão exata D(v)=D(2v)+D(ramo) não fecha (exige
+   precisão 3-ádica ilimitada) — provavelmente um problema genuinamente
+   difícil, não um branco de tentativa. H-037 mostrou que α de Pratiher
+   (uma vez corrigido o rótulo) é essa MESMA quantidade agrupada por t
+   mod3 — dominada por poucos termos pequenos (p_2=D(5) sozinho é
+   93,77%), o que dá uma razão estrutural para mais tratabilidade que o
+   D(v) genérico, mas ainda não fechada.
 2. **H-037 em aberto**: reportamos ao diretor científico um provável erro
    de rotulagem no paper de Pratiher (números corretos, forma errada) —
    decidir se/como isso deveria ser comunicado externamente é uma decisão
