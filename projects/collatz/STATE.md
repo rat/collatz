@@ -97,7 +97,28 @@ erro. Verificado com `advisor()`.
 
 ## Onde estamos
 
-**Sessenta e nove hipóteses testadas (H-001 a H-069)**. **H-069**: item
+**Setenta hipóteses testadas (H-001 a H-070)**. **H-070**: item 099
+(Lodders, "Selection Rules and Channel Structure in a Base–Octave Model
+of Collatz Dynamics", arXiv:2604.20181, 60 páginas, não peer-reviewed —
+**ALEGAÇÃO DE PROVA COMPLETA**, a mais sofisticada tecnicamente das três
+já revisadas). O paper reformula Collatz num modelo "base-octava"
+(h=B+8(A-1)), deriva 16 regras de transição entre 8 classes de base e
+identifica B=7 (A par) como único canal de crescimento persistente —
+tudo isso verificado e CORRETO (16 regras: 31.992 pares testados, 0
+falhas; Proposition 8.4 [comprimento do episódio ≤ v2(A_entrada)]:
+515.342 episódios, 0 falhas). Mas o Theorem 9.6.8 (confinamento de toda
+trajetória à bacia {1,2}) depende do Corollary 9.6.7 (v2(A) deve
+decrescer estritamente entre episódios sucessivos de persistência
+base-7), apoiado numa enumeração de "22 caminhos de retorno" num sistema
+de 128 estados. **Corollary 9.6.7 é falso** — o próprio exemplo citado
+pelo paper na Introdução (n=27, "requer substancialmente mais passos que
+vizinhos") já o viola (v2 vai de 1 para 3 entre episódios, quando
+deveria decrescer); em escala (N até 500.000), 56,7% dos pares de
+episódios sucessivos violam a alegação. Ironia notável: o monovariante
+proposto falha exatamente no número que o paper usa para motivar a
+análise. Ver `hypotheses/H-070-lodders-base-octave-review.md`.
+
+Anteriormente, **sessenta e nove hipóteses testadas (H-001 a H-069)**. **H-069**: item
 084 (Mailland & Kosobutskyy, "Modelling the Collatz Problem from a
 Jacobsthal Viewpoint", CDS 8(1) 2026, peer-reviewed). Versão pedagógica,
 restrita a κ=3, do mesmo framework do item 032 (mesmos autores, ordem
