@@ -12,10 +12,11 @@ corrigir o primeiro e procurar novas hipóteses nele".
 "Geometría Residual de Ruiz Castillo para la dinámica acelerada de la
 Conjetura de Collatz" — Juan Carlos Ruiz Castillo (ScD., Universidad de
 San Carlos de Guatemala), 2026, DOI 10.5281/zenodo.21271452, 39
-páginas. Sem PDF baixável localmente (ResearchGate bloqueia
-automação — ver `literature/papers/INDEX.md`); lido inteiramente via
-navegador (Chrome, visualizador de PDF do ResearchGate — a verificação
-Cloudflare passa sozinha, sem intervenção). É a "segunda etapa" de uma
+páginas. Lido originalmente inteiramente via navegador (ResearchGate
+bloqueava download automatizado); PDF baixado manualmente pelo diretor
+científico em 2026-07-15 e arquivado em
+`literature/papers/001_Geometria-Residual-Ruiz-Castillo.pdf`. É a
+"segunda etapa" de uma
 série de ~20 papers do mesmo autor (todos catalogados na coleção),
 propondo construir uma "geometria" (métrica, curvatura, comprimento)
 sobre o formalismo termodinâmico residual das etapas anteriores.
@@ -150,3 +151,6 @@ prováveis de ter a mesma lacuna) do que como fonte de hipótese nova.
   Flags atualizadas em `literature/papers/INDEX.md` (item 001: Lido=Sim,
   Corrigido=Sim, Implementado=Parcial — cálculo de apoio feito, mas
   sem hipótese nova sobre a conjectura).
+- 2026-07-15: PDF baixado manualmente pelo diretor científico e
+  arquivado em `literature/papers/001_Geometria-Residual-Ruiz-Castillo.pdf`.
+  `INDEX.md` atualizado (Arquivo local e Link).
