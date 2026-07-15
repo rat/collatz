@@ -97,7 +97,26 @@ erro. Verificado com `advisor()`.
 
 ## Onde estamos
 
-**Sessenta e duas hipóteses testadas (H-001 a H-062)**. **H-062**:
+**Sessenta e três hipóteses testadas (H-001 a H-063)**. **H-063**: item
+032 (Kosobutskyy & Mailland, "Jacobsthal Trees and Generalized κx±1
+Transformations", Communications in Advanced Mathematical Sciences
+9(2), peer-reviewed). Paper estrutural/notacional — generaliza a árvore
+inversa de Collatz para `κx±1` (κ ímpar qualquer) via "números de
+Jacobsthal generalizados"; explícito que não visa provar a conjectura
+clássica. O "Teorema da Periodicidade" central é exatamente o fato
+padrão de teoria dos números de que `T_κ` = ordem multiplicativa de 2
+mód κ — confirmado para κ=1..199 e byte-a-byte contra um número de 52
+dígitos (κ=181) da Tabela 2.2. Todas as 8 partes testadas (definições,
+teorema central, 2 tabelas, propriedades de unicidade/recorrência,
+pontos-atratores) sem falhas. Achado menor: o Remark 1.7 (prosa) diz
+PA={1,27,35} para κ=181, mas a própria Tabela 2.6 (dados) já mostra que
+`q0=1` diverge sob κ=181 — inconsistência textual entre seções do
+mesmo paper, não erro matemático. Relacionado ao item 084 (mesmos
+autores, versão pedagógica restrita a κ=3, revisão cross-referenciada
+em H-064 em vez de duplicada). Ver
+`hypotheses/H-063-jacobsthal-trees-review.md`.
+
+Anteriormente, **sessenta e duas hipóteses testadas (H-001 a H-062)**. **H-062**:
 item 031 (Melas & Poulios, "Predicting Extreme Stopping Time Behavior
 in the Collatz System", Journal of Dynamics and Games/AIMS,
 peer-reviewed, Univ. de Atenas). Paper estatístico (logit + árvore de
