@@ -196,7 +196,7 @@ coleção foi baixado dessa forma.
 | 073 | Expansions on Boundary Algebra | A Roif - academia.edu | [link](https://www.academia.edu/) | sem PDF livre (academia.edu bloqueia download automatizado) |  |  |  |
 | 074 | Loop Termination and Generalized Collatz Sequences | M Carelli - arXiv:2605.15094, 2026 | BAIXADO | `073_Loop-Termination-Generalized-Collatz.pdf` | Sim | Sim | Sim |
 | 075 | (Não relacionado - ruído do Scholar: afogamento na Dinamarca) | N Breindahl et al - Clinical.., 2026 - tandfonline | -- | excluído (não é sobre Collatz, falso positivo do Scholar) |  |  |  |
-| 076 | A Structural Proof of the Collatz Conjecture via non-repeating trajectory and Recursive Decay [ALEGAÇÃO DE PROVA] | YH Yun - osf.io | BAIXADO | `075_Structural-Proof-Collatz-nonrepeating.pdf` |  |  |  |
+| 076 | A Structural Proof of the Collatz Conjecture via non-repeating trajectory and Recursive Decay [ALEGAÇÃO DE PROVA] | YH Yun - osf.io | BAIXADO | `075_Structural-Proof-Collatz-nonrepeating.pdf` | Sim | Não | Sim |
 | 077 | Restoring Causal Structure through Natural Mathematics: A Case Study on the Collatz Conjecture | S Hamaji - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
 | 078 | Parity vectors and paradoxical sequences in the accelerated Collatz map [RETIRADO PELO AUTOR] | T Niu - arXiv:2605.13886, 2026 | [link](https://arxiv.org/abs/2605.13886) | sem PDF (paper retirado pelo autor no arXiv - só resta o abstract) |  |  |  |
 | 079 | (Não relacionado - ruído do Scholar: emergências oftalmológicas na Dinamarca) | N Jensen et al - Scandinavian J, 2026 - Springer | -- | excluído (não é sobre Collatz, falso positivo do Scholar) |  |  |  |

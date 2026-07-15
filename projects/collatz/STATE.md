@@ -97,7 +97,27 @@ erro. Verificado com `advisor()`.
 
 ## Onde estamos
 
-**Sessenta e sete hipóteses testadas (H-001 a H-067)**. **H-067**:
+**Sessenta e oito hipóteses testadas (H-001 a H-068)**. **H-068**:
+item 076 (Yun, "A Structural Proof of the Collatz Conjecture via
+non-repeating trajectory and Recursive Decay" — **ALEGAÇÃO DE PROVA
+COMPLETA**, osf.io, não peer-reviewed). Veredito: **não é uma prova
+válida** — mais fraco até que o item 049 (Boyle, H-065). Contém TRÊS
+argumentos circulares independentes: (1) gap mais grave — a "função de
+posto" `r(x):=min{n:f^(n)(x)=1}` só está definida para x cuja órbita
+já atinge 1, presumindo a própria conclusão (demonstrado por analogia
+com um mapa que provadamente diverge, cuja função de posto análoga
+também fica indefinida — expõe que o "embasamento em ZFC" do Apêndice
+A é retórica sobre uma definição vazia); (2) Teorema 6.1 afirma "o
+único ponto fixo conhecido é 1" como se isso fosse prova, quando é
+exatamente a conclusão apresentada como premissa; (3) argumento de
+"compressão informacional" é uma falácia sobre cardinalidades
+infinitas. Erro aritmético concreto também encontrado (Eq. 9.8: f(5)
+e f(21) calculados com expoentes de 2 errados, resultado alegado nem
+é ímpar). Busca computacional (até 2 milhões) não encontra
+contraexemplo, mas isso não resgata os argumentos do paper. Ver
+`hypotheses/H-068-yun-structural-proof-review.md`.
+
+Anteriormente, **sessenta e sete hipóteses testadas (H-001 a H-067)**. **H-067**:
 item 074 (Carelli, "Loop Termination and Generalized Collatz
 Sequences", arXiv:2605.15094, CISPA Helmholtz Center, financiamento
 ERC). Paper de ciência da computação teórica (STACS/LICS/CAV/ICALP)
