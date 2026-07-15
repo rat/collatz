@@ -117,7 +117,7 @@ coleção foi baixado dessa forma.
 | 012 | Proposed framework on Collatz conjecture | P Danesh - 2026 - cambridge.org | (sem link PDF detectado pelo Scholar) | sem PDF livre (nenhum link PDF listado) |  |  |  |
 | 013 | Operador de Transferencia Residual de Ruiz Castillo y estructura espectral en la dinamica acelerada de la Conjetura de Collatz | SDJCR Castillo - researchgate.net | BAIXADO | `013_Operador-Transferencia-Ruiz-Castillo.pdf` | Sim | Sim | Sim |
 | 014 | A Coordinate System for Collatz Dynamics | J Williams - arXiv:2607.01718, 2026 | BAIXADO | `014_A-Coordinate-System-for-Collatz-Dynamics.pdf` | Sim | Sim | Sim |
-| 015 | Canonical Shells and Residue-Cover Trees in a Conditional First-Descent Approach to the Collatz Problem | SY Kayadibi - researchgate.net | BAIXADO | `015_Canonical-Shells-Residue-Cover-Trees.pdf` |  |  |  |
+| 015 | Canonical Shells and Residue-Cover Trees in a Conditional First-Descent Approach to the Collatz Problem | SY Kayadibi - researchgate.net | BAIXADO | `015_Canonical-Shells-Residue-Cover-Trees.pdf` | Sim | Sim | Sim |
 | 016 | Collatz-Thwaites-Ulam-Hasse-Syracuse-Kakutani (CTUHSK) Theorem | KP Bikarnakatte - engrxiv.org | BAIXADO | `016_CTUHSK-Theorem.pdf` | Sim | Sim | Sim |
 | 017 | Medidas de Gibbs Residuales de Ruiz Castillo y estados de equilibrio en la dinamica acelerada de la Conjetura de Collatz | SDJCR Castillo - researchgate.net | BAIXADO | `017_Medidas-Gibbs-Residuales-Ruiz-Castillo.pdf` | Sim | Sim | Sim |
 | 018 | The Collatz Conjecture (book chapter) | R Snytsar - Mastering SIMD with Java Vector API, 2026 - Springer | (sem link PDF detectado pelo Scholar) | sem PDF livre (capitulo de livro Springer, pago) |  |  |  |

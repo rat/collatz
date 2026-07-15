@@ -97,7 +97,31 @@ erro. Verificado com `advisor()`.
 
 ## Onde estamos
 
-**Cinquenta e sete hipóteses testadas (H-001 a H-057)**. **H-057**:
+**Cinquenta e oito hipóteses testadas (H-001 a H-058)**. Retomamos a
+tarefa de revisar todos os papers já baixados (não só a série Ruiz
+Castillo) até esgotar a fila — 15 itens identificados como baixados
+mas não processados (item 014 acabou sendo um já revisado por engano
+de leitura do índice, ver H-042; os outros 14 são novos).
+
+**H-058**: item 015 (Kayadibi, "Canonical Shells and Residue-Cover
+Trees in a Conditional First-Descent Approach to the Collatz
+Problem", Victoria University Melbourne). Framework condicional denso
+(45 páginas) que reduz "primeira descida universal" a duas condições
+estruturais não provadas em geral (dyadic gap diofantino + fechamento
+de "residue-cover trees"), verificadas só computacionalmente em faixa
+finita pelo próprio paper. Honestidade epistêmica exemplar — Conclusão
+explícita: "does NOT prove the Collatz conjecture unconditionally...
+remain finite evidence only." Toda a maquinaria algébrica PROVADA
+(Persistence Identity, First-Exit Formula, Certified Exact Descent,
+Cumulative Affine Formula, Residue Cylinder) confirmada sem exceção
+contra simulação real de Collatz, incluindo reprodução exata dos
+valores da Tabela 1 do próprio paper (convergentes de log₂3:
+5,41,306,15601; K_m: 8,65,485,24727). Nenhum erro encontrado. Constrói
+sobre dois papers anteriores da mesma autora — um deles é o item 038
+desta coleção, ainda não revisado. Ver
+`hypotheses/H-058-kayadibi-canonical-shells-review.md`.
+
+Anteriormente, **cinquenta e sete hipóteses testadas (H-001 a H-057)**. **H-057**:
 testamos o candidato #1 do backlog (seção 6) — conectar nosso muro
 combinatório de ciclos (H-009/H-034) com a técnica clássica de exclusão
 via frações contínuas de log₂(3) (Steiner/Simons/de Weger/Hercher).
