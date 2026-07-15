@@ -97,7 +97,19 @@ erro. Verificado com `advisor()`.
 
 ## Onde estamos
 
-**Cinquenta e nove hipóteses testadas (H-001 a H-059)**. **H-059**:
+**Sessenta hipóteses testadas (H-001 a H-060)**. **H-060**: item 028
+(Csikos, "A Continuous Multi-Component Measure of Directed Acyclicity
+(DAG-ness)", arXiv:2606.22205) — **não é um paper sobre Collatz**, é
+teoria de grafos/ciência de redes (Binghamton + Moravian University);
+Collatz aparece só como exemplo ilustrativo de meia página. Revisão
+limitada a esse trecho (o framework geral de teoria de grafos está
+fora do escopo do projeto). Achado: o texto descreve o ciclo trivial
+como "1→2→4→1", mas pelas arestas reais do próprio mapa `T(n)` que
+definem (`T(1)=4,T(4)=2,T(2)=1`) a direção correta é "1→4→2→1" — erro
+de descrição textual, sem consequência nos cálculos numéricos do
+paper. Ver `hypotheses/H-060-csikos-dag-ness-review.md`.
+
+Anteriormente, **cinquenta e nove hipóteses testadas (H-001 a H-059)**. **H-059**:
 item 021 (Amirian & Amirian, "A Generalization of 3x+1 Problem to
 3x+4y+1", SSRN 6993335). Paper curto (3 páginas, sem provas), propõe
 `x_{i+1}=3x_i+4y+1` (ímpar) / `x_i/2-y` (par) como "generalização" de

@@ -91,6 +91,12 @@ por completo para contexto sobre o programa de pesquisa Ruiz Castillo
 (ver `STATE.md`), sem H-0XX/E-0XX próprio pois não há nada
 computacional para verificar.
 
+`****` no item 028: paper de teoria de grafos/ciência de redes (não é
+sobre Collatz especificamente), com Collatz aparecendo só como um
+exemplo ilustrativo de meia página (Seção 5.2) entre vários. Revisão
+(H-060) cobriu apenas esse conteúdo Collatz-específico, não o
+framework geral de teoria de grafos (fora do escopo deste projeto).
+
 `**` no item 026: o PDF (`026_Grandes-Desviaciones-Residuales-Ruiz-Castillo.pdf`)
 foi baixado por um subagente lançado para revisar este item (2026-07-14),
 via navegador, antes de o diretor científico estabelecer a regra de que
@@ -130,7 +136,7 @@ coleção foi baixado dessa forma.
 | 025 | Exact and Delayed Descent in Accelerated Odd Collatz Spines with AAS-Based Metamorphic Separation | SY Kayadibi - Zenodo v1, 2026 - researchgate.net | [link](https://www.researchgate.net/profile/Seyma-Yaman-Kayadibi/publication/407528640) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
 | 026 | Grandes Desviaciones Residuales de Ruiz Castillo en la dinamica acelerada de la Conjetura de Collatz | SDJCR Castillo - researchgate.net | BAIXADO (via Zenodo, DOI 10.5281/zenodo.20767811 -- ResearchGate bloqueia mas o mesmo paper esta espelhado aberto no Zenodo) | `026_Grandes-Desviaciones-Residuales-Ruiz-Castillo.pdf`** | Sim | Sim | Sim |
 | 027 | On the Proof of Collatz Conjecture | S Sharma, M Rani - Arya Bhatta Journal of Mathematics, 2026 - indianjournals.com | (sem link PDF detectado pelo Scholar) | sem PDF livre (journal pago) |  |  |  |
-| 028 | A Continuous Multi-Component Measure of Directed Acyclicity (DAG-ness) | E Csikos - arXiv:2606.22205, 2026 | BAIXADO | `027_Continuous-Multi-Component-Measure-DAG-ness.pdf` |  |  |  |
+| 028 | A Continuous Multi-Component Measure of Directed Acyclicity (DAG-ness) | E Csikos - arXiv:2606.22205, 2026 | BAIXADO | `027_Continuous-Multi-Component-Measure-DAG-ness.pdf`**** | Sim | Sim | Sim |
 | 029 | Collatz Progressions Reframed: Exponent Representation, Algorithmic Hierarchies, and Record Computations | N Alic - IEEE Access, 2026 | BAIXADO | `029_Collatz-Progressions-Reframed.pdf` |  |  |  |
 | 030 | NON-EXISTENCE OF COLLATZ m-CYCLES FOR m<=95 | X Wang - INTEGERS, 2026 - researchgate.net | [link](https://www.researchgate.net/profile/Xinjun-Wang-11/publication/408104976) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
 | 031 | Predicting extreme stopping time behavior in the Collatz system | E Melas, NC Poulios - Journal of Dynamics and Games, 2026 - aimsciences.org | BAIXADO | `031_Predicting-Extreme-Stopping-Time.pdf` |  |  |  |
