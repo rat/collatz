@@ -97,7 +97,20 @@ erro. Verificado com `advisor()`.
 
 ## Onde estamos
 
-**Sessenta hipóteses testadas (H-001 a H-060)**. **H-060**: item 028
+**Sessenta e uma hipóteses testadas (H-001 a H-061)**. **H-061**: item
+029 (Alic, "Collatz Progressions Reframed", IEEE Access,
+peer-reviewed). Paper de algoritmos/engenharia (Diretor do Photonics
+Lab, Qualcomm Institute/UCSD) — não faz alegação matemática sobre
+Collatz (explícito: "the conjecture remains unproven"). Propõe P2ER
+(representar n como vetor de expoentes de potências de 2), com o passo
+ímpar como concatenação+consolidação via carry binário e o passo par
+como deslocamento em bloco. Álgebra central verificada correta (20.000
+passos, 500 trajetórias até 4000 bits, mais todos os exemplos
+numéricos do próprio paper reproduzidos exatamente). "Computação
+recorde" (2^1.024.001-1, 13,8 milhões de passos) não reproduzida —
+inviável nesta sessão. Ver `hypotheses/H-061-alic-p2er-review.md`.
+
+Anteriormente, **sessenta hipóteses testadas (H-001 a H-060)**. **H-060**: item 028
 (Csikos, "A Continuous Multi-Component Measure of Directed Acyclicity
 (DAG-ness)", arXiv:2606.22205) — **não é um paper sobre Collatz**, é
 teoria de grafos/ciência de redes (Binghamton + Moravian University);
