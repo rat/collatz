@@ -549,6 +549,38 @@ que lemos e corrigimos um por um. Material já acumulado:
   "Conjetura". Sexto paper consecutivo do autor sem erro real
   encontrado (exceção: item 013/H-053).
 
+- **Item 026 (H-056) — segundo erro real na série Ruiz Castillo: Conjetura 7.3/Figura 1/Conjetura 7.5 contradizem a Proposición 3.4 já provada**:
+  "Grandes Desviaciones Residuales de Ruiz Castillo" — sétimo paper
+  deste autor na coleção (localizado via Zenodo, DOI
+  10.5281/zenodo.20767811, já que o link original de ResearchGate
+  bloqueia download). Seções 1-5 (identidades concretas, drift
+  residual negativo, cota de Chernoff do Teorema 5.2) inteiramente
+  corretas, confirmadas contra órbitas reais de Collatz e contra o
+  modelo i.i.d. ideal. Erro real: a Proposición 3.4 (pág. 19, JÁ
+  PROVADA) mostra que a função de tasa I_RC(x) — definida via o evento
+  de cauda UNILATERAL {L_k/k≥x} — é monótona não-decrescente; isso
+  força I_RC(x)=0 para todo x abaixo do drift típico x*=log₂3−2, não
+  só nesse ponto. Mas a Figura 1 (pág. 33), a Conjetura 7.3 (pág. 36:
+  "existe un único punto x* tal que I_RC(x*)=0") e a Conjetura 7.5
+  (pág. 38: I_RC(x)=sup_{t∈ℝ}{tx−Λ(t)}, sup irrestrito) descrevem as
+  três, mutuamente consistentes entre si, uma função BILATERAL em V/U
+  positiva nos dois lados de x* — contradizendo a Proposición 3.4.
+  Confirmado por três métodos independentes (fórmula restrita a t≥0,
+  Monte Carlo, Binomial Negativa exata para k pequeno). Não é alegação
+  de prova de Collatz (negado explicitamente no texto, 2x) nem erro de
+  cálculo isolado — é uma conjectura (Seção 7) inconsistente com uma
+  proposição já demonstrada no mesmo texto (Seção 3), com erro contido
+  (a Conclusión, Seção 8, não depende da propriedade errada). Nota de
+  integridade dupla: (a) verificado diretamente contra o PDF original
+  que um rascunho anterior desta análise atribuiu errado a restrição de
+  sinal à Conjetura 7.5 (achava que já vinha corrigida; na verdade é
+  irrestrita, mesmo erro que 7.3/Figura 1) — corrigido antes de
+  finalizar; (b) um bug de unpacking de tupla no código de verificação
+  foi relatado (por uma etapa anterior do mesmo trabalho) como
+  identificado e corrigido em sessão, sem histórico de git para
+  reconstruir a forma exata — registrado como relatado, não
+  re-verificado em detalhe.
+
 Continuar adicionando aqui (ou num arquivo dedicado, se a lista crescer
 muito) conforme processarmos os próximos itens da coleção. Ver memória
 `feedback_santos_pdf_paper_timing.md`.

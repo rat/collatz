@@ -97,7 +97,34 @@ erro. Verificado com `advisor()`.
 
 ## Onde estamos
 
-**Cinquenta e cinco hipóteses testadas (H-001 a H-055)**. **H-055**:
+**Cinquenta e seis hipóteses testadas (H-001 a H-056)**. **H-056**:
+sétimo paper de Ruiz Castillo (item 026, "Grandes Desviaciones
+Residuales", localizado via Zenodo DOI 10.5281/zenodo.20767811 —
+ResearchGate bloqueava) — **segundo erro real** encontrado na série
+(após item 013/H-053). Seções 1-5 (identidades concretas, drift
+residual negativo, cota de Chernoff do Teorema 5.2) inteiramente
+corretas. Erro: a Proposición 3.4 (já provada) mostra que I_RC(x) —
+definida via o evento de cauda UNILATERAL {L_k/k≥x} — é monótona
+não-decrescente, o que força I_RC(x)=0 para todo x abaixo do drift
+típico x*=log₂3−2, não só nesse ponto. Mas a Figura 1, a Conjetura 7.3
+("zero único em x*") e a Conjetura 7.5 (sup_{t∈ℝ} irrestrito — as três
+mutuamente consistentes entre si) descrevem I_RC como uma função
+BILATERAL em V, positiva nos dois lados de x* — contradizendo a
+Proposición 3.4. Confirmado por três métodos independentes (fórmula
+restrita a t≥0, Monte Carlo, Binomial Negativa exata). Não é alegação
+de prova de Collatz (negado 2x no texto) nem erro de cálculo isolado —
+conjectura (Seção 7) inconsistente com proposição já demonstrada no
+mesmo texto (Seção 3), erro contido (Conclusión não depende disso).
+Nota de integridade dupla: (a) confirmado diretamente contra o PDF que
+um rascunho anterior atribuiu errado a restrição de sinal correta à
+Conjetura 7.5 (na verdade irrestrita, mesmo erro que 7.3/Figura 1) —
+corrigido; (b) bug de unpacking de tupla no código de verificação
+relatado como corrigido em sessão anterior, sem histórico de git para
+confirmar a forma exata — registrado como relatado, não re-verificado.
+Ver `hypotheses/H-056...md` e `BACKLOG.md` item 026.
+
+Anteriormente, **cinquenta e cinco hipóteses testadas (H-001 a
+H-055)**. **H-055**:
 sexto paper de Ruiz Castillo (item 020, "Principio Variacional
 Residual") — sem erros. Unifica deuda residual, drift, presión,
 entropía, grandes desviaciones e dimensión sob um único princípio
