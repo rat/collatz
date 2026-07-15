@@ -1,10 +1,20 @@
-# H-042 — Revisão do paper #014 (Williams, "A Coordinate System for Collatz Dynamics") — sem erros encontrados
+# H-042 — Revisão do paper #014 (Williams, "A Coordinate System for Collatz Dynamics") — sem erros matemáticos; dois erros de citação OEIS
 
-Status: revisão externa concluída — paper de boa qualidade, ambos os
-teoremas centrais confirmados corretos
-Criada em: 2026-07-14
+Status: revisão externa concluída (estendida em 2026-07-15) — todos os
+teoremas confirmados; dois erros de citação bibliográfica na Seção 5.2
+(não afetam nenhuma prova)
+Criada em: 2026-07-14; estendida em 2026-07-15
 Origem: quarto paper priorizado da coleção (item 014, local,
-arXiv:2607.01718).
+arXiv:2607.01718). Reaberta por engano em 2026-07-15 dentro da tarefa
+"revisar todos os papers já baixados até esgotar": ao escanear
+rapidamente as ~100 linhas de `literature/papers/INDEX.md` para montar
+a lista de itens baixados-mas-não-processados, o item 014 foi incluído
+por erro de leitura — a linha já estava (e sempre esteve) marcada
+Lido=Sim/Corrigido=Sim/Implementado=Sim desde 2026-07-14, sem nenhuma
+inconsistência real no `INDEX.md`. Só percebido ao consultar
+`BACKLOG.md` e achar H-042 já existente. Consolidado aqui em vez de
+manter um H-058 duplicado (que chegou a ser criado e depois removido,
+nunca commitado).
 
 ## O paper
 
@@ -38,6 +48,53 @@ mostrando que passou por escrutínio real antes da publicação.
 
 **Nenhum erro encontrado.** Diferente dos itens 001 (H-039) e 004
 (H-040), este paper passou em todas as verificações que fizemos.
+
+## Extensão (2026-07-15) — mais 6 partes verificadas, dois erros de citação OEIS
+
+Ao retomar este item (achando, por engano, que ainda não tinha sido
+revisto), verificamos computacionalmente tudo que H-042 original **não**
+cobria: Teorema 2.13 (partição bijetora `Z≥0`→crown triangles, n=0..200.000,
+0 falhas), Proposição 3.10 (transição de fronteira `a=1`, 81 casos, 0
+falhas), Teorema 4.2 (contagem exata de posições "prime-admissible",
+k=2..300, 0 discrepâncias), Proposição 6.2 (fórmula assintótica de
+contagem de cadeias — ver "erro próprio" abaixo), Observação 6.3
+(linhas "acidentalmente" sem primos — listas exatas reproduzidas sem
+diferença), e as referências cruzadas da Seção 5.2 (OEIS).
+
+**Dois erros de citação OEIS encontrados** (conferidos via `curl` direto
+em oeis.org, não de memória):
+1. **A017557 citado para "crowns ≡ 8 (mod 12)" está errado.** `A017557`
+   é `12n+3` (≡3 mod 12), não ≡8 mod 12. A sequência correta é
+   **A017617** (`12n+8`). As outras três citações da mesma tabela
+   (A007494, A016777, A008594) conferem exatamente.
+2. **"Primos em `L_1` = A005105" é impreciso por um elemento.** A005105
+   (`2^i·3^j-1`, `i,j≥0`) inclui o primo 2 (via `i=0,j=1`), mas `L_1`
+   exige `a≥1` e nunca alcança 2. Correto seria "A005105 sem o elemento 2".
+
+Nenhum dos dois afeta qualquer prova do corpo do texto — ambos isolados
+na tabela expositiva da Seção 5.2.
+
+### Erro próprio encontrado e corrigido (via `advisor()`) — não é erro do paper
+
+Uma primeira tentativa de verificar a Proposição 6.2 concluiu
+(incorretamente) que havia um erro de fator 2, usando `T_c(k,0)` como
+"elemento mínimo da linha k". **Isso era um bug na verificação, não no
+paper**: `T_c(k,0)` é o elemento na posição PAR `j=0` (multiplicador de
+paridade `g=2`, Definição 2.7) — não o mínimo da linha. O mínimo real
+está em `j=1` (posição ímpar, `g=1`), `T_c(k,1)=λ·2^k-1`, exatamente a
+fórmula que a demonstração do paper usa. Confirmado diretamente contra
+o Exemplo 2.9 do próprio paper: linha k=2 de `L_1` é `[6,3,10,5,16]` —
+mínimo real **3** (em j=1), não 6 (em j=0). `advisor()` apontou a
+inconsistência antes de essa conclusão errada entrar neste arquivo.
+
+**Lição registrada**: a essa altura da sessão já tinham sido
+encontrados 3 erros reais em papers diferentes (H-053, H-056), e o
+padrão "prova contradiz [o que parece ser] um lema já provado no mesmo
+texto" pareceu familiar demais — convidando a atribuir a discrepância
+ao autor antes de checar a própria verificação contra o exemplo
+numérico que o paper já fornecia. Ordem de suspeita correta ao
+investigar uma discrepância: checar a própria verificação primeiro, os
+exemplos numéricos do paper depois, só então considerar erro do autor.
 
 ## Conteúdo matemático (resumo)
 
@@ -81,3 +138,11 @@ por enquanto, não uma hipótese concreta.
   confirmados corretos, sem erros encontrados. Flags atualizadas em
   `literature/papers/INDEX.md` (item 014: Lido=Sim, Corrigido=Sim
   [nada a corrigir], Implementado=Sim).
+- 2026-07-15: item reaberto por engano (erro de leitura ao escanear
+  `INDEX.md` rapidamente, não uma falha real de tracking — ver
+  "Origem" acima). Aproveitado para estender de verdade: mais 6 partes
+  verificadas (`experiments/E-042-williams-coordinate-system-check/experiment.py`),
+  dois erros de citação OEIS encontrados e confirmados via fonte
+  primária, um erro de verificação próprio (não do paper) encontrado e
+  corrigido via `advisor()`. Flags de `INDEX.md` conferidas — já
+  estavam corretas desde 2026-07-14, sem mudança necessária.
