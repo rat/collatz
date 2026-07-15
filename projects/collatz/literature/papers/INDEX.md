@@ -9,13 +9,17 @@ adição mais recente).
 
 - **100 resultados processados**, todas as 10 páginas do Google Scholar
   navegadas sem nenhum bloqueio/CAPTCHA da própria busca.
-- **31 PDFs baixados** com sucesso (arquivo local na tabela; coluna Link
+- **40 PDFs baixados** com sucesso (arquivo local na tabela; coluna Link
   mostra "BAIXADO" em vez do link original, já que o link só serve para
   indicar onde baixar) — 15 pela automação do navegador/Scholar, +16
-  baixados manualmente pelo diretor científico em 2026-07-14 (via
-  ResearchGate e outros hosts bloqueados para automação) e organizados
-  nesta sessão a partir de `/home/rat/Downloads/pepers/`.
-- **~60 sem PDF livre**, majoritariamente porque o host bloqueia download
+  baixados manualmente pelo diretor científico em 2026-07-14, +1 em
+  2026-07-15 (item 001), +7 em 2026-07-15 (itens 022, 023, 024, 025, 030,
+  035, 037) — os últimos dois lotes via ResearchGate/academia.edu e
+  outros hosts bloqueados para automação, organizados a partir de
+  `/home/rat/Downloads/pepers/` (identidade de cada arquivo confirmada
+  contra o conteúdo real antes de renomear, já que vários nomes de
+  download não batiam com o título do paper).
+- **~53 sem PDF livre**, majoritariamente porque o host bloqueia download
   automatizado (ver "Limitações técnicas" abaixo) — **não** porque o
   conteúdo é necessariamente pago; a tabela mantém o link original nessas
   linhas para o diretor científico baixar manualmente.
@@ -142,22 +146,22 @@ coleção foi baixado dessa forma.
 | 019 | Emergence of Gamma-Type Upward-Phase Statistics in the Collatz Map: An Effective Poisson Process Mechanism | W Fu, X Liu, Y Wang - arXiv:2606.26811, 2026 | BAIXADO | `018_Emergence-of-Gamma-Type-Upward-Phase-Statistics.pdf` | Sim | Sim | Sim |
 | 020 | Principio Variacional Residual de Ruiz Castillo y formalismo termodinamico para la dinamica acelerada de la Conjetura de Collatz | SDJCR Castillo - 2026 - researchgate.net | BAIXADO | `020_Principio-Variacional-Ruiz-Castillo.pdf` | Sim | Sim | Sim |
 | 021 | A GENERALIZATION OF 3x+1 PROBLEM TO 3x+4y+1 | R Amirian, A Amirian - SSRN 6993335 | BAIXADO | `021_Generalization-3x1-to-3x4y1.pdf` | Sim | Sim | Sim |
-| 022 | A NO-ALTERNATIVE PROOF VIA TERNARY COUNTERS, PRIMITIVE CARRY, AND FORCED THREAD DISPLACEMENT | ME Spencer - academia.edu | [link](https://www.academia.edu/download/133173533/collatz_conjecture_46_.pdf) | sem PDF livre (academia.edu bloqueou download, 403) |  |  |  |
-| 023 | Los castores en el limite de la computacion | SM Iglesias - La Gaceta de la RSME, 2026 - researchgate.net | [link](https://www.researchgate.net/profile/Sergio-Miguens-Iglesias/publication/406892500) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
-| 024 | The Coordinate System as Ontological Foundation: Why Existence Requires a Frame Before It Can Change | Z Charrat - 2026 - researchgate.net | [link](https://www.researchgate.net/profile/Zakaria-Charrat/publication/407406907) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
-| 025 | Exact and Delayed Descent in Accelerated Odd Collatz Spines with AAS-Based Metamorphic Separation | SY Kayadibi - Zenodo v1, 2026 - researchgate.net | [link](https://www.researchgate.net/profile/Seyma-Yaman-Kayadibi/publication/407528640) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
+| 022 | A NO-ALTERNATIVE PROOF VIA TERNARY COUNTERS, PRIMITIVE CARRY, AND FORCED THREAD DISPLACEMENT | ME Spencer - academia.edu | BAIXADO | `022_Finite-Block-Exhaustion-Rooted-Occupancy-Inverse-Collatz.pdf` |  |  |  |
+| 023 | Los castores en el limite de la computacion | SM Iglesias - La Gaceta de la RSME, 2026 - researchgate.net | BAIXADO (DOI 10.63427/QJWR5276) | `023_Los-Castores-en-el-Limite-de-la-Computacion.pdf` |  |  |  |
+| 024 | The Coordinate System as Ontological Foundation: Why Existence Requires a Frame Before It Can Change [filosofia/metafisica, Collatz citado apenas como analogia tangencial] | Z Charrat - 2026 - researchgate.net | BAIXADO | `024_Coordinate-System-Ontological-Foundation.pdf` |  |  |  |
+| 025 | Exact and Delayed Descent in Accelerated Odd Collatz Spines with AAS-Based Metamorphic Separation | SY Kayadibi - Zenodo v1, 2026 - researchgate.net | BAIXADO | `025_Exact-Delayed-Descent-Accelerated-Odd-Collatz-Spines-AAS.pdf` |  |  |  |
 | 026 | Grandes Desviaciones Residuales de Ruiz Castillo en la dinamica acelerada de la Conjetura de Collatz | SDJCR Castillo - researchgate.net | BAIXADO (via Zenodo, DOI 10.5281/zenodo.20767811 -- ResearchGate bloqueia mas o mesmo paper esta espelhado aberto no Zenodo) | `026_Grandes-Desviaciones-Residuales-Ruiz-Castillo.pdf`** | Sim | Sim | Sim |
 | 027 | On the Proof of Collatz Conjecture | S Sharma, M Rani - Arya Bhatta Journal of Mathematics, 2026 - indianjournals.com | (sem link PDF detectado pelo Scholar) | sem PDF livre (journal pago) |  |  |  |
 | 028 | A Continuous Multi-Component Measure of Directed Acyclicity (DAG-ness) | E Csikos - arXiv:2606.22205, 2026 | BAIXADO | `027_Continuous-Multi-Component-Measure-DAG-ness.pdf`**** | Sim | Sim | Sim |
 | 029 | Collatz Progressions Reframed: Exponent Representation, Algorithmic Hierarchies, and Record Computations | N Alic - IEEE Access, 2026 | BAIXADO | `029_Collatz-Progressions-Reframed.pdf` | Sim | Sim | Sim |
-| 030 | NON-EXISTENCE OF COLLATZ m-CYCLES FOR m<=95 | X Wang - INTEGERS, 2026 - researchgate.net | [link](https://www.researchgate.net/profile/Xinjun-Wang-11/publication/408104976) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
+| 030 | NON-EXISTENCE OF COLLATZ m-CYCLES FOR m<=95 | X Wang - INTEGERS, 2026 - researchgate.net | BAIXADO | `030_Non-Existence-Collatz-m-Cycles-m-leq-95.pdf` |  |  |  |
 | 031 | Predicting extreme stopping time behavior in the Collatz system | E Melas, NC Poulios - Journal of Dynamics and Games, 2026 - aimsciences.org | BAIXADO | `031_Predicting-Extreme-Stopping-Time.pdf` | Sim | Sim | Sim |
 | 032 | Jacobsthal Trees and Generalized Transformations | P Kosobutskyy, D Mailland - dergipark.org.tr | BAIXADO | `032_Jacobsthal-Trees-Generalized-Transformations.pdf` | Sim | Sim | Sim |
 | 033 | Dimension Disipativa de Ruiz Castillo y subcilindros fractales en la dinamica acelerada de la Conjetura de Collatz | SDJCR Castillo - researchgate.net | [link](https://www.researchgate.net/profile/Juan-Carlos-Ruiz-3/publication/407029463) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
 | 034 | The meme that has been amusing mathematicians for a century | J Aron - New Scientist, 2026 - Elsevier | (sem link PDF detectado pelo Scholar) | sem PDF livre (revista de divulgacao, paga) |  |  |  |
-| 035 | Disipacion Promedio de Ruiz Castillo y medidas de equilibrio en la dinamica acelerada de la Conjetura de Collatz | JCR Castillo - researchgate.net | [link](https://www.researchgate.net/profile/Juan-Carlos-Ruiz-3/publication/406908855) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
+| 035 | Disipacion Promedio de Ruiz Castillo y medidas de equilibrio en la dinamica acelerada de la Conjetura de Collatz | JCR Castillo - researchgate.net | BAIXADO (DOI 10.5281/zenodo.20636301) | `035_Disipacion-Promedio-Ruiz-Castillo.pdf` |  |  |  |
 | 036 | Upper bounds for the Laplacian spectral radius: Proofs and counterexamples | I Damnjanovic, T Ha, D Stevanovic - arXiv:2606.14550, 2026 | BAIXADO | `036_Upper-bounds-Laplacian-spectral-radius.pdf`***** | Sim | N/A | N/A |
-| 037 | ROOTED SURJECTIVITY FROM THE INVARIANT E/O REFINEMENT SYSTEM | ME Spencer - academia.edu | [link](https://www.academia.edu/download/133063629/collatz_conjecture_44_.pdf) | sem PDF livre (academia.edu bloqueou download, 403) |  |  |  |
+| 037 | ROOTED SURJECTIVITY FROM THE INVARIANT E/O REFINEMENT SYSTEM | ME Spencer - academia.edu | BAIXADO | `037_Rooted-Surjectivity-Invariant-EO-Refinement-System.pdf` |  |  |  |
 | 038 | A modular classification of pre-descent resistance in accelerated odd Collatz dynamics | SY Kayadibi - SSRN 6918258, 2026 | BAIXADO | `038_Modular-Classification-Pre-Descent-Resistance.pdf` | Sim | Sim | Sim |
 | 039 | Teoria espectral de las palabras de valuacion en la dinamica acelerada de la Conjetura de Collatz | SDJCR Castillo - researchgate.net | [link](https://www.researchgate.net/profile/Juan-Carlos-Ruiz-3/publication/406439765) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
 | 040 | (Não relacionado - ruído do Scholar: ECG/troponina cardíaca) | A Knudsen et al - Journal of.., 2026 - Elsevier | -- | excluído (não é sobre Collatz, falso positivo do Scholar) |  |  |  |
