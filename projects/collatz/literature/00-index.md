@@ -27,8 +27,12 @@ fragmentar por paper só vale a pena se o volume justificar depois.
 ## Conclusão do levantamento inicial
 
 Não há prova aceita pela comunidade matemática. O resultado mais forte e verificado é
-o de Tao (2019): quase todas as órbitas atingem valores quase limitados — uma
-afirmação de densidade, não a conjectura completa. Verificação computacional cobre
-todos os inteiros até 2^71 (Barina, 2025) sem contraexemplo. Ver
+o de Tao (anunciado 2019, publicado 2022 em Forum of Mathematics, Pi — PDF arquivado
+em `literature/papers/106_Almost-All-Orbits-Almost-Bounded-Values-Tao.pdf`): quase
+todas as órbitas atingem valores quase limitados — uma afirmação de densidade, não a
+conjectura completa. Verificação computacional cobre todos os inteiros até 2^71
+(Barina, 2025 — PDF arquivado em
+`literature/papers/110_Improved-Verification-Limit-2-71.pdf`; verificação anterior de
+2020/2021 até 10^20 também arquivada, item 105) sem contraexemplo. Ver
 `overview-and-known-results.md` para o obstáculo estrutural que todo método conhecido
 esbarra.

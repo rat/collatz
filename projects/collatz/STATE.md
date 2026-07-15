@@ -124,59 +124,49 @@ com outros conceitos matemáticos do mesmo Lothar Collatz, ou de
 coautoria). **Nenhuma revisão de conteúdo feita ainda** — apenas
 organização de arquivo e catalogação.
 
-**H-013/H-018: gargalo de memória quebrado, pergunta de convergência
-respondida (2026-07-15)**. O BFS original de E-018 guardava todo nó
-visitado em memória (O(nós), não O(profundidade)) — daí o OOM em 33-61GB
-registrado antes. Prova de que isso é desnecessário: Collatz é uma função,
-então na árvore reversa cada nó tem no máximo um pai; para raízes J_t com
-t≥4 a busca nunca reentra no ciclo trivial {1,2,4}, logo nenhum nó é
-redescoberto. Reescrito como DFS com pilha explícita
+**H-013/H-018: gargalo de memória quebrado e a oscilação da razão
+totalmente explicada (2026-07-15)**. O BFS original de E-018 guardava
+todo nó visitado em memória (O(nós), não O(profundidade)) — daí o OOM em
+33-61GB registrado antes. Prova de que isso é desnecessário: Collatz é
+uma função, então na árvore reversa cada nó tem no máximo um pai; para
+raízes J_t com t≥4 a busca nunca reentra no ciclo trivial {1,2,4}, logo
+nenhum nó é redescoberto. Reescrito como DFS com pilha explícita
 (`experiments/E-018-reverse-tree-branching/experiment_dfs.py`): t=10 com
-n_max=1e13 (266M nós) agora usa 9,8MB de RAM. Validado em 3 frentes (bate
-com o BFS antigo nó a nó; bate com o forward-scan exato de H-013; razão
-estável a <0.1% variando o multiplicador de busca e o n_max) antes de
-confiar em qualquer resultado novo — um teste sugerido pelo advisor que
+n_max=1e13 (266M nós) agora usa 9,8MB de RAM. Validado em 3 frentes antes
+de confiar em qualquer resultado novo (bate com o BFS antigo nó a nó;
+bate com o forward-scan exato de H-013; razão estável a <0.1% variando o
+multiplicador de busca e o n_max) — um teste sugerido pelo advisor que
 valeu a pena: a primeira leitura (6 pontos) sugeria falsamente um padrão
-mod9, que os 3 pontos seguintes derrubaram. Com o gargalo resolvido, medi
-9 pares (t=4 a 29): a razão entre classes adjacentes **não converge a um
+mod9, que 3 pontos seguintes derrubaram. Com o gargalo resolvido, medi 9
+pares (t=4 a 29): a razão entre classes adjacentes **não converge a um
 limite único** — oscila por ~2 ordens de magnitude (0.046 a 5.97), sem
-padrão periódico simples. Fórmula fechada continua em aberto (H-024 já
-explica por que: exige precisão 3-ádica ilimitada). Ver
-`hypotheses/H-018-reverse-tree-branching.md` e o README de E-018 para a
-tabela completa.
+padrão periódico simples.
 
-**Avanço adicional no "por quê" (mesmo dia)**: provei dois teoremas sobre
-a estrutura dos galhos da árvore reversa — (1) um nó ímpar w tem subárvore
-trivial (contribui exatamente 1 nó ímpar para sempre) sse w≡0 mod3
-(generaliza H-005 a qualquer nó, não só à família J_t); (2) os galhos
-sucessivos de primeiro nível têm resíduo mod3 exatamente periódico com
-período 3 (consequência de ord₉(4)=3) — 1 em cada 3 é estéril, em posição
-fixa determinada por t mod9. Isso explica por que a soma exata
-D(J_t)=ΣD(w_i) converge rápido na prática (2-3 termos capturam >97%) e por
-que medir só o primeiro termo engana. Mas confirmei explicitamente que
-essa fase NÃO explica a magnitude da razão (dispersão dentro de cada
-classe t mod9 é comparável ao espaçamento entre classes) — a parte que
-falta (taxa de decaimento entre galhos férteis) exige resíduos mais
-profundos (mod27, 81, ...), a mesma obstrução de H-024, agora localizada
-num objeto concreto. Redução real, não resolução.
+Avancei no "por quê" com dois teoremas provados sobre a estrutura dos
+galhos: (1) um nó ímpar w tem subárvore trivial (contribui exatamente 1
+nó ímpar para sempre) sse w≡0 mod3 (generaliza H-005 a qualquer nó, não
+só à família J_t); (2) os galhos sucessivos de primeiro nível têm
+resíduo mod3 exatamente periódico com período 3 (ord₉(4)=3) — 1 em cada
+3 é estéril, em posição fixa determinada por t mod9. Isso explica por
+que a soma exata D(J_t)=ΣD(w_i) converge rápido na prática (2-3 termos
+capturam >97%) e por que medir só o primeiro termo engana.
 
-**Fechamento da linha H-013/H-018 (mesmo dia): a oscilação é ruído
-genérico, não padrão escondido**. Pedido explícito para gerar (via agente
-rodando Opus) uma lista de ângulos novos e testar o melhor. Uma primeira
-tentativa teve um erro metodológico real (pego pelo advisor: comparava
-decaimento dentro-de-uma-raiz com a razão entre-duas-raízes que
-queríamos, usando um parâmetro livre e n=9 com erro padrão grande demais
-para a coincidência encontrada significar algo). Corrigido: como
-J_{t+1}=4·J_t+1 exatamente, o teste certo é medir D(4m+1)/D(m) para m
-ímpar aleatório — mesmo objeto das 9 razões medidas, sem parâmetro livre.
-Resultado (n=500): média geométrica (0.542) e desvio-padrão (0.758 dex)
-batem com os 9 valores reais (0.432 e 0.715±0.179 dex) dentro do erro
-esperado. **A oscilação de ~2 ordens de magnitude não é especial à
-família J_t — é o ruído típico de qualquer processo de ramificação
-3-ádico deste tipo.** Não fecha H-024 (sem fórmula), mas dissolve a
-pergunta do "por quê" em vez de deixá-la aberta — o melhor desfecho
-possível dado a obstrução já conhecida. Ver
-`experiments/E-018-reverse-tree-branching/README.md`.
+Por fim, pedido explícito para gerar (via agente rodando Opus) uma lista
+de ângulos novos e testar o melhor: uma primeira tentativa teve um erro
+metodológico real (pego pelo advisor: comparava decaimento
+dentro-de-uma-raiz com a razão entre-duas-raízes que queríamos, com
+parâmetro livre e n=9 cujo erro padrão era grande demais para a
+coincidência encontrada significar algo). Corrigido: como J_{t+1}=4·J_t+1
+exatamente, o teste certo é medir D(4m+1)/D(m) para m ímpar aleatório —
+mesmo objeto das 9 razões medidas, sem parâmetro livre. Resultado
+(n=500): média geométrica (0.542) e desvio-padrão (0.758 dex) batem com
+os 9 valores reais (0.432 e 0.715±0.179 dex) dentro do erro esperado.
+**A oscilação de ~2 ordens de magnitude não é especial à família J_t —
+é o ruído típico de qualquer processo de ramificação 3-ádico deste
+tipo.** Não fecha H-024 (sem fórmula fechada), mas dissolve a pergunta
+do "por quê" em vez de deixá-la aberta — o melhor desfecho possível dado
+a obstrução já conhecida. Ver `hypotheses/H-018-reverse-tree-branching.md`
+e `experiments/E-018-reverse-tree-branching/README.md`.
 
 **Síntese do programa Ruiz Castillo concluída**
 (`literature/ruiz-castillo-research-program.md`): consolida as sete
@@ -1209,21 +1199,30 @@ válido como instância específica; a família CRT de H-028 continua válida
 como consolidação), só recalibra a expectativa. Questões genuinamente em
 aberto que restam:
 
-1. **Fórmula fechada para a anomalia de H-013** — o gargalo de memória que
-   limitava a medição numérica foi quebrado em 2026-07-15 (BFS→DFS, ver
-   `experiments/E-018-reverse-tree-branching/`), permitindo medir 9 pares
-   (t=4 a 29) em vez de só 4. Resposta à pergunta de convergência: **não
-   converge a um limite único**, oscila por ~2 ordens de magnitude (0.046
-   a 5.97) sem padrão periódico simples (uma suspeita de padrão mod9 com
-   os primeiros 6 pontos foi derrubada pelos 3 pontos seguintes). Ainda
-   sem teoria que derive os valores a partir de primeiros princípios — H-024
-   explica por que a recursão exata D(v)=D(2v)+D(ramo) não fecha (exige
-   precisão 3-ádica ilimitada) — provavelmente um problema genuinamente
-   difícil, não um branco de tentativa. H-037 mostrou que α de Pratiher
-   (uma vez corrigido o rótulo) é essa MESMA quantidade agrupada por t
-   mod3 — dominada por poucos termos pequenos (p_2=D(5) sozinho é
-   93,77%), o que dá uma razão estrutural para mais tratabilidade que o
-   D(v) genérico, mas ainda não fechada.
+1. **Fórmula fechada para a anomalia de H-013 — status final desta linha
+   (2026-07-15)**: o gargalo de memória que limitava a medição numérica
+   foi quebrado (BFS→DFS, ver `experiments/E-018-reverse-tree-branching/`),
+   permitindo medir 9 pares (t=4 a 29) em vez de só 4. A razão **não
+   converge a um limite único** — oscila por ~2 ordens de magnitude
+   (0.046 a 5.97), sem padrão periódico simples (mod9 testado e
+   descartado duas vezes). Dois teoremas provados sobre a estrutura dos
+   galhos (esterilidade generalizada de H-005; periodicidade mod3 com
+   período 3, via ord₉(4)=3) explicam por que a soma exata
+   D(J_t)=ΣD(w_i) converge rápido na prática. E, testado contra o null
+   correto (D(4m+1)/D(m) para m ímpar aleatório, n=500), confirmou-se que
+   **a oscilação é ruído genérico de um processo de ramificação 3-ádico
+   — não um padrão especial da família J_t** (centro e dispersão da
+   distribuição nula batem com as 9 razões medidas dentro do erro
+   esperado). Isso **não fecha uma fórmula exata** — H-024 continua
+   explicando por que a recursão D(v)=D(2v)+D(ramo) exige precisão
+   3-ádica ilimitada, um problema genuinamente difícil — mas dissolve a
+   pergunta do "por quê oscila assim" em vez de deixá-la aberta; é o
+   melhor desfecho alcançado nesta linha, e não vale mais a pena
+   perseguir mais pares/módulos mais finos atrás da mesma coisa. H-037
+   mostrou que α de Pratiher (uma vez corrigido o rótulo) é essa MESMA
+   quantidade agrupada por t mod3 — dominada por poucos termos pequenos
+   (p_2=D(5) sozinho é 93,77%), o que dá uma razão estrutural para mais
+   tratabilidade que o D(v) genérico, mas ainda não fechada.
 2. **H-037 em aberto**: reportamos ao diretor científico um provável erro
    de rotulagem no paper de Pratiher (números corretos, forma errada) —
    decidir se/como isso deveria ser comunicado externamente é uma decisão
@@ -1244,8 +1243,17 @@ sobre o erro de rotulagem de Pratiher (`BACKLOG.md` item 7, pedido
 
 1. Tentar resolver a metade par de H-008 com uma ideia nova.
 2. Se alguém quiser retomar a fórmula fechada de H-013: a recursão
-   D(v)=D(2v)+D(ramo) é exata e correta, só não fecha sem mais alguma ideia
-   (talvez truncamento controlado, ou uma transformação diferente).
+   D(v)=D(2v)+D(ramo) é exata e correta, e agora (2026-07-15) sabemos por
+   que ela não fecha em algo simples — a oscilação da razão é ruído
+   genérico de ramificação 3-ádica, confirmado estatisticamente contra o
+   null correto (D(4m+1)/D(m)), não um padrão escondido esperando ser
+   achado. Perseguir mais pares/módulos mais finos não deve ajudar (já
+   tentado e descartado duas vezes). Uma fórmula fechada de verdade
+   exigiria uma ideia teórica genuinamente nova (não mais medição) —
+   talvez conectada à literatura de branching random walks/smoothing
+   transforms (ver as 6 direções propostas por um agente rodando Opus em
+   `experiments/E-018-reverse-tree-branching/README.md`, das quais só a
+   primeira foi testada).
 3. Considerar formalizar os teoremas já provados (H-005, H-007, H-009,
    H-012, H-014, H-015, H-017, H-019, H-021, H-022) em Lean/SageMath se o
    projeto crescer nessa direção (fora de escopo por enquanto, ver

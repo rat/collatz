@@ -368,6 +368,7 @@ pergunta mais precisa é exatamente a obstrução de H-024 (precisão 3-ádica
 ilimitada), agora localizada num objeto concreto e específico em vez de
 uma dificuldade abstrata geral. Não vale a pena caçar mais pares ou
 decompor mais t's atrás de uma estrutura mais fina — o mesmo tipo de caça
+já matou a hipótese mod9 duas vezes nesta sessão.
 
 ## A oscilação é ruído genérico de ramificação, não um padrão escondido (2026-07-15)
 
@@ -423,4 +424,3 @@ certo, sem parâmetro livre, poder estatístico adequado). Não vale a pena test
 brainstorm — eles mirariam a mesma pergunta que acabou de ser respondida (a oscilação é variância genérica,
 não estrutura escondida), e arriscam repetir o mesmo tipo de garimpo que já falhou duas vezes com mod9 e uma
 vez com D(w₁)/D(w₄).
-já matou a hipótese mod9 duas vezes nesta sessão.

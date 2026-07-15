@@ -10,7 +10,9 @@ inteiro positivo eventualmente atinge 1. Aberto desde ~1937.
 
 - **Verificação computacional**: sem contraexemplo até 2^71 (David Barina, 2025) —
   recorde mais recente encontrado na pesquisa; antes disso o limite citado com
-  frequência era 2.95×10^20.
+  frequência era 2.95×10^20 (Barina, 2020/2021). PDFs de ambos arquivados em
+  2026-07-15: `literature/papers/110_Improved-Verification-Limit-2-71.pdf` e
+  `literature/papers/105_Convergence-Verification-Collatz-Problem.pdf`.
   [Improved verification limit](https://link.springer.com/article/10.1007/s11227-025-07337-0)
 - **Tao (2019)**: "Almost all orbits of the Collatz map attain almost bounded values"
   — para qualquer função f → ∞ (por mais lenta que seja), quase todo n (densidade
@@ -18,7 +20,9 @@ inteiro positivo eventualmente atinge 1. Aberto desde ~1937.
   Ex.: Col_min(n) < log log log log n para quase todo n. É o resultado mais forte e
   rigoroso até hoje — mas é uma afirmação de densidade/quase-todos, não a conjectura
   completa (não descarta um conjunto de medida zero de contraexemplos, nem prova
-  convergência a 1 especificamente, só a valores limitados).
+  convergência a 1 especificamente, só a valores limitados). Versão publicada (Forum
+  of Mathematics, Pi, 2022) arquivada em 2026-07-15:
+  `literature/papers/106_Almost-All-Orbits-Almost-Bounded-Values-Tao.pdf`.
   [arXiv:1909.03562](https://arxiv.org/abs/1909.03562) ·
   [Quanta Magazine (resumo acessível)](https://www.quantamagazine.org/mathematician-proves-huge-result-on-dangerous-problem-20191211/) ·
   [post do próprio Tao](https://terrytao.wordpress.com/2019/09/10/almost-all-collatz-orbits-attain-almost-bounded-values/)

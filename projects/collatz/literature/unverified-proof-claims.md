@@ -21,8 +21,16 @@ estrutural" (ver `overview-and-known-results.md`) apareceria.
   pares).
 - "A Proof of the Collatz Conjecture via Boundedness and Cycle Uniqueness" —
   preprint em Preprints.org (idem, sem revisão por pares).
-- "Unfolding the Collatz Tree: An Indirect Structural Proof" — Taylor & Francis,
-  periódico de escopo genérico (não especializado em matemática pura), 2025.
+- "Unfolding the Collatz Tree: An Indirect Structural Proof" — Eyob Solomon
+  Getachew, Taylor & Francis ("Research in Mathematics"), periódico de escopo
+  genérico (não especializado em matemática pura), 2025. **PDF arquivado em
+  2026-07-15** via busca EBSCO/ScienceDirect (`literature/papers/INDEX.md` item
+  109, `109_Unfolding-Collatz-Tree-Structural-Proof.pdf`) — constrói uma árvore
+  reversa explícita e alega provar ausência de ciclos não-triviais e
+  alcançabilidade finita à raiz, tecnicamente próximo do que fizemos em H-018
+  deste projeto. **Ainda não lido/analisado** — candidato natural para revisão
+  quando pedido, dado que já temos ferramental (E-018) para checar as alegações
+  sobre a estrutura da árvore reversa diretamente.
 - Site pessoal "Phil Seawolf — Unified Fields Theory 1" alegando solução — sinal
   claro de trabalho fora do padrão acadêmico, sem revisão alguma.
 - **"Proving the Collatz Conjecture with Binaries Numbers"** — Olinto de Oliveira
