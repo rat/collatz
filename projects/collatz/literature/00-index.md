@@ -15,6 +15,14 @@ fragmentar por paper só vale a pena se o volume justificar depois.
 5. [`resources-and-tools.md`](resources-and-tools.md) — bibliografias de referência,
    projeto de formalização em andamento, e um paper metodológico sobre colaboração
    humano-LLM neste mesmo problema (relevante para como operamos aqui).
+6. [`external-ideas-review.md`](external-ideas-review.md) — avaliação crítica de
+   listas de ideias sugeridas por outras IAs.
+7. [`ruiz-castillo-research-program.md`](ruiz-castillo-research-program.md) — síntese
+   de sete papers do mesmo autor (Juan Carlos Ruiz Castillo) revisados individualmente
+   (H-039, H-050, H-052 a H-056): mesma identidade de drift revestida por um
+   vocabulário formal diferente a cada paper, dois erros reais de consistência
+   interna encontrados, chave explicativa no paper de filosofia da matemática do
+   mesmo autor (item 055).
 
 ## Conclusão do levantamento inicial
 

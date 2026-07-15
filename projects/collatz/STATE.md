@@ -104,6 +104,22 @@ erro. Verificado com `advisor()`.
 
 ## Onde estamos
 
+**Síntese do programa Ruiz Castillo concluída**
+(`literature/ruiz-castillo-research-program.md`): consolida as sete
+revisões técnicas (H-039, H-050, H-052 a H-056) mais a leitura
+contextual do paper de filosofia (item 055). Achado central: cada um
+dos sete papers aplica um conceito clássico diferente de teoria
+ergódica/mecânica estatística à mesma quantidade (deuda residual
+L_k(n) = k·log₂3 − A_k(n)); 5/7 sem nenhum erro, 2 com erros reais mas
+contidos e de consistência interna (item 013: enunciado contradiz sua
+própria demonstração; item 026: conjectura da Seção 7 contradiz
+proposição já provada na Seção 3). O paper de filosofia (item 055,
+citação conferida verbatim contra o PDF) revela a motivação real:
+Collatz como "modelo conceptual" para uma tese platonista/realista, não
+como alvo a resolver — explica o padrão de honestidade epistêmica
+consistente e a repetição de uma vocabulário por vez sem convergência
+cumulativa.
+
 **Setenta hipóteses testadas (H-001 a H-070)**. **H-070**: item 099
 (Lodders, "Selection Rules and Channel Structure in a Base–Octave Model
 of Collatz Dynamics", arXiv:2604.20181, 60 páginas, não peer-reviewed —
