@@ -24,7 +24,7 @@ O paper #084 (mesmos autores -- referencia [8] deste paper: "Modelling
 the Collatz problem from a Jacobsthal viewpoint", CDS 8(1) 2026, 49-55)
 e a versao PEDAGOGICA, restrita ao caso classico kappa=3, deste mesmo
 framework. A PARTE 8 abaixo verifica especificamente os exemplos
-numericos daquele paper (sera referenciada por H-064 em vez de duplicar
+numericos daquele paper (sera referenciada por H-065 em vez de duplicar
 todo o trabalho).
 
 Partes:

@@ -97,7 +97,23 @@ erro. Verificado com `advisor()`.
 
 ## Onde estamos
 
-Item 036 (Damnjanovic, Ha & Stevanovic, "Upper Bounds for the Laplacian
+**Sessenta e quatro hipóteses testadas (H-001 a H-064)**. **H-064**:
+item 038 (Kayadibi, "A Modular Classification of Pre-Descent Resistance
+in Accelerated Odd Collatz Dynamics", SSRN 6918258) — predecessor mais
+simples do item 015 (H-058, mesma autora), referenciado lá como `[11]`.
+Define a "espinha de resistência modular" `S_m={n: n≡-1 mod 2^m}` e
+prova 4 fatos algébricos sobre ela (valuation, expansão de primeiro
+passo, persistência, cota inferior determinística) — todos confirmados.
+Reprodução computacional **completa** (não amostrada) em `N=10⁷,
+L=5000`, idêntica à do próprio paper: 4.999.999 descidas, 0
+não-resolvidos, os dois casos extremos citados (τ=155 em n=8.088.063;
+ρ=3.033.050,2686 em n=6.631.675), estatísticas módulo 64, e as Tabelas
+2-3 completas (40 valores, m=6..15) — tudo bate exatamente. Rodou em
+~9s (framework 100% determinístico, sem amostragem aleatória). Nenhum
+erro encontrado. Ver
+`hypotheses/H-064-kayadibi-pre-descent-resistance-review.md`.
+
+Anteriormente, item 036 (Damnjanovic, Ha & Stevanovic, "Upper Bounds for the Laplacian
 Spectral Radius", arXiv:2606.14550) processado e descartado: **falso-
 positivo puro de busca por sobrenome** — as 5 menções a "Collatz" no
 texto são todas "Collatz–Wielandt comparison" (ferramenta de teoria de
