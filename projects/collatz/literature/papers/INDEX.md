@@ -169,7 +169,7 @@ coleção foi baixado dessa forma.
 | 046 | Analisis algebraico de ciclos en la funcion de Collatz | RM Rojas - academia.edu | [link](https://www.academia.edu/) | sem PDF livre (academia.edu bloqueia download automatizado) |  |  |  |
 | 047 | NOT ALL COLLATZ SEQUENCES TEND TO | TQ Cong - 2026 - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
 | 048 | Cotas disipativas y descomposicion residual de Ruiz Castillo en la dinamica acelerada de la Conjetura de Collatz | SDJCR Castillo - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
-| 049 | The Collatz Conjecture is True [ALEGAÇÃO DE PROVA - ver nota] | DG Boyle - 2026 - rxiverse.org | BAIXADO | `049_The-Collatz-Conjecture-is-True.pdf` |  |  |  |
+| 049 | The Collatz Conjecture is True [ALEGAÇÃO DE PROVA - ver nota] | DG Boyle - 2026 - rxiverse.org | BAIXADO | `049_The-Collatz-Conjecture-is-True.pdf` | Sim | Não | Sim |
 | 050 | On the Convergence of the Collatz Function [ALEGAÇÃO DE PROVA - ver nota] | A Roif - academia.edu | [link](https://www.academia.edu/) | sem PDF livre (academia.edu bloqueia download automatizado) |  |  |  |
 | 051 | A Machine-Verified Conditional Theory of the Collatz Conjecture [checado por Lean 4] | J Park - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
 | 052 | Sufes Conjecture: a parameterized generalization of the Syracuse/Collatz conjecture | A Khachnaoui - 2026 - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |

@@ -97,7 +97,28 @@ erro. Verificado com `advisor()`.
 
 ## Onde estamos
 
-**Sessenta e quatro hipóteses testadas (H-001 a H-064)**. **H-064**:
+**Sessenta e cinco hipóteses testadas (H-001 a H-065)**. **H-065**:
+item 049 (Boyle, "The Collatz Conjecture is True" — **ALEGAÇÃO DE
+PROVA COMPLETA**, rxiverse.org, não peer-reviewed). Veredito: **não é
+uma prova válida**. Gap fatal localizado no Lemma 4.2 ("a sequência
+gerada por n+1 não diverge"): deriva `e=2/3, o=1/3` sob a hipótese de
+"n aleatório" (Teorema 3.2 — argumento de densidade/ensemble sobre
+paridade), depois substitui esses valores diretamente numa alegação
+sobre UMA trajetória hipotética específica e fixa — a clássica
+falácia do "argumento do passeio aleatório" (heurística útil para
+intuição, não prova; a própria referência citada para a técnica é um
+post de fórum, não uma prova publicada). Demonstração quantitativa: a
+fração de passos pares realizada por trajetórias individuais completas
+(3.000 amostras) tem desvio-padrão 0,031 e 10,2% desviam de 2/3 por
+mais de 0,05 — "2/3" é média de ensemble, não restrição por
+trajetória. Gap secundário: Lemma 4.3 não trata o caso `n+1` ímpar na
+fatoração diofantina (a conclusão numérica sobrevive, a demonstração
+tem lacuna). Partes verificáveis (exclusão de ciclos curtos, aritmética
+da série geométrica) estão corretas — o problema é estrutural/lógico,
+não erro de cálculo. Ver
+`hypotheses/H-065-boyle-collatz-proof-review.md`.
+
+Anteriormente, **sessenta e quatro hipóteses testadas (H-001 a H-064)**. **H-064**:
 item 038 (Kayadibi, "A Modular Classification of Pre-Descent Resistance
 in Accelerated Odd Collatz Dynamics", SSRN 6918258) — predecessor mais
 simples do item 015 (H-058, mesma autora), referenciado lá como `[11]`.
