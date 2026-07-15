@@ -1,31 +1,47 @@
-# Índice de papers — busca Google Scholar "Collatz" (ordenado por data)
+# Índice de papers — busca Google Scholar "Collatz" (ordenado por data) + adições de outras buscas
 
-Coletado em 2026-07-13/14, a partir de:
+Itens 001-100 coletados em 2026-07-13/14, a partir de:
 `https://scholar.google.com/scholar?hl=pt-BR&as_sdt=0,5&q=Collatz&scisbd=1`
 (10 primeiras páginas de resultados, ~100 itens, ordenados por data de
-adição mais recente).
+adição mais recente). Itens 101+ vêm de buscas posteriores (EBSCO,
+ScienceDirect) feitas pelo diretor científico, não do Scholar — incluem
+tanto papers novos quanto clássicos/referências importantes que a busca
+por data recente do Scholar nunca teria capturado (ex: Tao 2022, Barina
+2021/2025, De Mol 2008, Andrei & Masalagiu 1998).
 
 ## Resumo
 
-- **100 resultados processados**, todas as 10 páginas do Google Scholar
-  navegadas sem nenhum bloqueio/CAPTCHA da própria busca.
-- **40 PDFs baixados** com sucesso (arquivo local na tabela; coluna Link
+- **100 resultados processados** da busca original do Scholar, todas as
+  10 páginas navegadas sem nenhum bloqueio/CAPTCHA da própria busca.
+  **+14 itens (101-114)** de uma busca posterior via EBSCO/ScienceDirect
+  (2026-07-15) — 10 relevantes, 4 excluídos por falso positivo (ver
+  abaixo).
+- **50 PDFs baixados** com sucesso (arquivo local na tabela; coluna Link
   mostra "BAIXADO" em vez do link original, já que o link só serve para
   indicar onde baixar) — 15 pela automação do navegador/Scholar, +16
   baixados manualmente pelo diretor científico em 2026-07-14, +1 em
   2026-07-15 (item 001), +7 em 2026-07-15 (itens 022, 023, 024, 025, 030,
-  035, 037) — os últimos dois lotes via ResearchGate/academia.edu e
-  outros hosts bloqueados para automação, organizados a partir de
-  `/home/rat/Downloads/pepers/` (identidade de cada arquivo confirmada
-  contra o conteúdo real antes de renomear, já que vários nomes de
-  download não batiam com o título do paper).
+  035, 037), +10 em 2026-07-15 via EBSCO/ScienceDirect (itens 101-110,
+  incluindo o paper de Tao 2022 e os dois de Barina 2021/2025 já citados
+  em `literature/00-index.md` sem PDF arquivado até agora, e um novo
+  ALEGAÇÃO DE PROVA de Getachew 2025, item 109) — todos os lotes
+  manuais organizados a partir de `/home/rat/Downloads/pepers/`
+  (identidade de cada arquivo confirmada contra o conteúdo real, e contra
+  hash MD5 para descartar duplicatas exatas, antes de renomear — já que
+  vários nomes de download não batiam com o título do paper).
 - **~53 sem PDF livre**, majoritariamente porque o host bloqueia download
   automatizado (ver "Limitações técnicas" abaixo) — **não** porque o
   conteúdo é necessariamente pago; a tabela mantém o link original nessas
   linhas para o diretor científico baixar manualmente.
-- **8 excluídos** por serem falsos-positivos do Scholar (nada a ver com a
-  conjectura — em geral "Collatz" é sobrenome de um coautor num paper de
-  outra área, ex: estudos hospitalares dinamarqueses).
+- **12 excluídos** por serem falsos-positivos (nada a ver com a
+  conjectura — em geral "Collatz" é sobrenome de um coautor, ou parte de
+  outro conceito matemático do mesmo Lothar Collatz, num contexto sem
+  relação): 8 do Scholar original (itens 001-100, ex: estudos
+  hospitalares dinamarqueses) + 4 do lote EBSCO/ScienceDirect (itens
+  111-114: "Collatz-Wielandt" é teoria de Perron-Frobenius/matrizes, não
+  a conjectura; "método multiponto de Collatz" é técnica de diferenças
+  finitas; "Nestler-Collatz" é sobrenome de coautora num paper de
+  psicologia).
 - **1 duplicado** (item 089 = mesmo paper do item 057, indexado duas vezes
   pelo Scholar via fontes diferentes).
 
@@ -225,3 +241,17 @@ coleção foi baixado dessa forma.
 | 098 | Teaching Theory of Computation in STEM K-12 Curricula Through Impossibility and Undecidability Problems (Collatz mencionado como exemplo) | R del Vado Virseda - ACM, 2026 | (sem link PDF detectado pelo Scholar) | sem PDF livre (ACM Digital Library, pago) |  |  |  |
 | 099 | Selection Rules and Channel Structure in a Base Octave Model of Collatz Dynamics | K Lodders - arXiv:2604.20181, 2026 | BAIXADO | `098_Selection-Rules-Channel-Structure-Base-Octave.pdf` | Sim | Não | Sim |
 | 100 | A Binary Tree Interpretation of Shared Key Generation Using Modular Ananta-Graph Paths (não parece ser sobre Collatz - criptografia) | HR Vidyashree et al - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado; também parece não ser sobre Collatz) |  |  |  |
+| 101 | About the Collatz conjecture | Ş Andrei, C Masalagiu - Acta Informatica 35, 167-179, 1998 | BAIXADO | `101_About-the-Collatz-Conjecture.pdf` |  |  |  |
+| 102 | Tag systems and Collatz-like functions | L De Mol - Theoretical Computer Science 390, 92-101, 2008 | BAIXADO | `102_Tag-Systems-and-Collatz-Like-Functions.pdf` |  |  |  |
+| 103 | An Artificial Life View of the Collatz Problem | H Sayama - Artificial Life 17, 137-140, 2011 | BAIXADO | `103_Artificial-Life-View-Collatz-Problem.pdf` |  |  |  |
+| 104 | A Novel Image Encryption Scheme Based on Collatz Conjecture | DM Ballesteros, J Peña, D Renza - Entropy 20(901), 2018 | BAIXADO | `104_Image-Encryption-Scheme-Based-Collatz.pdf` |  |  |  |
+| 105 | Convergence verification of the Collatz problem (verificado até 10^20) | D Barina - Journal of Supercomputing 77, 2681-2688, 2021 | BAIXADO | `105_Convergence-Verification-Collatz-Problem.pdf` |  |  |  |
+| 106 | Almost all orbits of the Collatz map attain almost bounded values [resultado mais forte já estabelecido, já citado em `literature/00-index.md`] | T Tao - Forum of Mathematics, Pi 10:e12, 2022 | BAIXADO | `106_Almost-All-Orbits-Almost-Bounded-Values-Tao.pdf` |  |  |  |
+| 107 | The Long Search for Collatz Counterexamples | OK Clay - Journal of Humanistic Mathematics 13(2), 2023 | BAIXADO | `107_Long-Search-Collatz-Counterexamples.pdf` |  |  |  |
+| 108 | Reduced Collatz dynamics is periodical and the period equals 2 to the power of the count of x/2 | W Ren - Research in Mathematics 12(1), 2025 | BAIXADO | `108_Reduced-Collatz-Dynamics-Periodical.pdf` |  |  |  |
+| 109 | Unfolding the Collatz Tree: An Indirect Structural Proof of the Collatz Conjecture [ALEGAÇÃO DE PROVA - constrói árvore reversa explícita, técnica próxima de H-018 deste projeto] | ES Getachew - Research in Mathematics 12(1), 2025 | BAIXADO | `109_Unfolding-Collatz-Tree-Structural-Proof.pdf` |  |  |  |
+| 110 | Improved verification limit for the convergence of the Collatz conjecture (verificado até 2^71, já citado em `literature/00-index.md`) | D Barina - Journal of Supercomputing 81:810, 2025 | BAIXADO | `110_Improved-Verification-Limit-2-71.pdf` |  |  |  |
+| 111 | (Não relacionado - coincidência de sobrenome: "Collatz-Wielandt sets" é teoria de Perron-Frobenius/matrizes, não a conjectura) | BS Tam, SF Wu - Linear Algebra and its Applications 125, 1989 | -- | excluído (falso positivo, busca EBSCO/ScienceDirect fora do Scholar) |  |  |  |
+| 112 | (Não relacionado - mesma coincidência de sobrenome: "Collatz-Wielandt numbers", teoria de operadores) | KH Förster, B Nagy - Linear Algebra and its Applications 120, 1989 | -- | excluído (falso positivo, busca EBSCO/ScienceDirect fora do Scholar) |  |  |  |
+| 113 | (Não relacionado - "método multiponto de Collatz" é técnica de diferenças finitas do mesmo Lothar Collatz, não a conjectura) | I Jaworska, J Orkisz - Engineering Analysis with Boundary Elements 50, 2015 | -- | excluído (falso positivo, busca EBSCO/ScienceDirect fora do Scholar) |  |  |  |
+| 114 | (Não relacionado - "Nestler-Collatz" é sobrenome de coautora, paper de psicologia sobre reconhecimento facial) | C Dobel, B Nestler-Collatz et al - Psychological Research 84, 2020 | -- | excluído (falso positivo, busca EBSCO/ScienceDirect fora do Scholar) |  |  |  |

@@ -104,6 +104,26 @@ erro. Verificado com `advisor()`.
 
 ## Onde estamos
 
+**10 papers novos arquivados via EBSCO/ScienceDirect (2026-07-15,
+`literature/papers/INDEX.md` itens 101-110)** — busca do diretor
+científico fora do Scholar original, trouxe referências importantes que
+o projeto já citava sem ter o PDF: **Tao (2022)**, "Almost all orbits of
+the Collatz map attain almost bounded values" (o resultado mais forte já
+estabelecido); **Barina (2021 e 2025)**, as duas verificações
+computacionais (10^20 e depois 2^71) já citadas em `00-index.md`. Também
+um **novo ALEGAÇÃO DE PROVA** ainda não revisado: Getachew (2025),
+"Unfolding the Collatz Tree" (Taylor & Francis, "Research in Mathematics"),
+constrói uma árvore reversa explícita e alega provar ausência de ciclos
+não-triviais e alcançabilidade finita à raiz — tecnicamente próximo do
+que fizemos em H-018, então bem posicionados para revisar com rigor
+quando pedido. Mais 6 papers relevantes (De Mol 2008 sobre tag systems,
+Sayama 2011 visão de "vida artificial", Ballesteros 2018 sobre
+criptografia, Clay 2023, Wei Ren 2025, Andrei & Masalagiu 1998) e 4
+falsos-positivos identificados e descartados (coincidência de sobrenome
+com outros conceitos matemáticos do mesmo Lothar Collatz, ou de
+coautoria). **Nenhuma revisão de conteúdo feita ainda** — apenas
+organização de arquivo e catalogação.
+
 **H-013/H-018: gargalo de memória quebrado, pergunta de convergência
 respondida (2026-07-15)**. O BFS original de E-018 guardava todo nó
 visitado em memória (O(nós), não O(profundidade)) — daí o OOM em 33-61GB
