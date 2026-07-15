@@ -97,7 +97,26 @@ erro. Verificado com `advisor()`.
 
 ## Onde estamos
 
-**Sessenta e cinco hipóteses testadas (H-001 a H-065)**. **H-065**:
+**Sessenta e seis hipóteses testadas (H-001 a H-066)**. **H-066**:
+item 057/089 (Reyes Jiménez, "A Fibonacci theorem for Collatz
+trajectories via modular graph structure", arXiv:2606.02621).
+Diferente da maioria dos papers desta fila, é **pesquisa matemática
+genuína e tecnicamente sofisticada** (doutorando UPC Barcelona) — não
+uma tentativa amadora nem alegação de prova. Prova um resultado
+combinatório EXATO e incondicional sobre um objeto finito (o grafo de
+transição mod 6 do mapa acelerado): exatamente F(m+1) dos 2^m inteiros
+ímpares em {1,...,2^m} evitam o resíduo 4 mod 6 nos passos 2..m — via
+uma "lacuna espectral" φ/2<1 entre raios espectrais φ (razão áurea) e
+2. Onze partes verificadas computacionalmente, incluindo reprodução
+exata da contagem de Fibonacci por força bruta para m=1 a 22
+(F(2)=1 até F(23)=28.657). Conexão com trabalho próprio: H-027
+(2026-07-13) já havia verificado independentemente a mesma tabela de
+transição mod 6 (Proposição 2.8) antes de conhecermos este paper.
+Nenhum erro do paper encontrado (2 bugs de indexação/normalização no
+próprio script de verificação, corrigidos). Ver
+`hypotheses/H-066-reyes-jimenez-fibonacci-review.md`.
+
+Anteriormente, **sessenta e cinco hipóteses testadas (H-001 a H-065)**. **H-065**:
 item 049 (Boyle, "The Collatz Conjecture is True" — **ALEGAÇÃO DE
 PROVA COMPLETA**, rxiverse.org, não peer-reviewed). Veredito: **não é
 uma prova válida**. Gap fatal localizado no Lemma 4.2 ("a sequência
