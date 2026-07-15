@@ -91,6 +91,16 @@ por completo para contexto sobre o programa de pesquisa Ruiz Castillo
 (ver `STATE.md`), sem H-0XX/E-0XX próprio pois não há nada
 computacional para verificar.
 
+`**` no item 026: o PDF (`026_Grandes-Desviaciones-Residuales-Ruiz-Castillo.pdf`)
+foi baixado por um subagente lançado para revisar este item (2026-07-14),
+via navegador, antes de o diretor científico estabelecer a regra de que
+Claude/subagentes nunca devem baixar PDFs por conta própria (ver memória
+`feedback_never_download_pdfs.md`). A análise (H-056) foi verificada com
+rigor e o achado é válido; o arquivo permanece no repositório por decisão
+explícita do diretor científico (2026-07-15) — mantido em vez de removido,
+com esta ressalva documentada para transparência. Nenhum outro item da
+coleção foi baixado dessa forma.
+
 | # | Título | Autores/Ano | Link | Arquivo local | Lido | Corrigido | Implementado |
 |---|---|---|---|---|---|---|---|
 | 001 | Geometría Residual de Ruiz Castillo para la dinámica acelerada de la Conjetura de Collatz | SDJCR Castillo - researchgate.net | [link](https://www.researchgate.net/profile/Juan-Carlos-Ruiz-3/publication/408622365_Geometria_Residual_de_Ruiz_Castillo_para_la_dinamica_acelerada_de_la_Conjetura_de_Collatz) | sem PDF livre (lido via navegador, ver `hypotheses/H-039...md`) | Sim | Sim | Sim |
@@ -118,7 +128,7 @@ computacional para verificar.
 | 023 | Los castores en el limite de la computacion | SM Iglesias - La Gaceta de la RSME, 2026 - researchgate.net | [link](https://www.researchgate.net/profile/Sergio-Miguens-Iglesias/publication/406892500) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
 | 024 | The Coordinate System as Ontological Foundation: Why Existence Requires a Frame Before It Can Change | Z Charrat - 2026 - researchgate.net | [link](https://www.researchgate.net/profile/Zakaria-Charrat/publication/407406907) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
 | 025 | Exact and Delayed Descent in Accelerated Odd Collatz Spines with AAS-Based Metamorphic Separation | SY Kayadibi - Zenodo v1, 2026 - researchgate.net | [link](https://www.researchgate.net/profile/Seyma-Yaman-Kayadibi/publication/407528640) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
-| 026 | Grandes Desviaciones Residuales de Ruiz Castillo en la dinamica acelerada de la Conjetura de Collatz | SDJCR Castillo - researchgate.net | BAIXADO (via Zenodo, DOI 10.5281/zenodo.20767811 -- ResearchGate bloqueia mas o mesmo paper esta espelhado aberto no Zenodo) | `026_Grandes-Desviaciones-Residuales-Ruiz-Castillo.pdf` | Sim | Sim | Sim |
+| 026 | Grandes Desviaciones Residuales de Ruiz Castillo en la dinamica acelerada de la Conjetura de Collatz | SDJCR Castillo - researchgate.net | BAIXADO (via Zenodo, DOI 10.5281/zenodo.20767811 -- ResearchGate bloqueia mas o mesmo paper esta espelhado aberto no Zenodo) | `026_Grandes-Desviaciones-Residuales-Ruiz-Castillo.pdf`** | Sim | Sim | Sim |
 | 027 | On the Proof of Collatz Conjecture | S Sharma, M Rani - Arya Bhatta Journal of Mathematics, 2026 - indianjournals.com | (sem link PDF detectado pelo Scholar) | sem PDF livre (journal pago) |  |  |  |
 | 028 | A Continuous Multi-Component Measure of Directed Acyclicity (DAG-ness) | E Csikos - arXiv:2606.22205, 2026 | BAIXADO | `027_Continuous-Multi-Component-Measure-DAG-ness.pdf` |  |  |  |
 | 029 | Collatz Progressions Reframed: Exponent Representation, Algorithmic Hierarchies, and Record Computations | N Alic - IEEE Access, 2026 | BAIXADO | `029_Collatz-Progressions-Reframed.pdf` |  |  |  |

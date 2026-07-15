@@ -174,6 +174,17 @@ Proposición 3.4 já demonstrada 17 páginas antes.
    isso registramos apenas o fato relatado (foi pego e corrigido em
    sessão), sem inventar um diff específico que não observamos
    diretamente.
+3. **Proveniência do PDF (retrospectiva, registrada em 2026-07-15)**: o
+   PDF local usado nesta análise foi baixado por um subagente lançado
+   para revisar este item, via navegador — isso aconteceu **antes** de
+   o diretor científico estabelecer a regra de que Claude/subagentes
+   nunca devem baixar PDFs por conta própria (ver memória
+   `feedback_never_download_pdfs.md`). O achado técnico acima não é
+   afetado (verificado com rigor, símbolo a símbolo, contra o PDF já em
+   mãos). Diretor científico decidiu explicitamente (2026-07-15) manter
+   o arquivo em vez de removê-lo, com esta ressalva documentada aqui e
+   em `literature/papers/INDEX.md` (nota `**` no item 026) para
+   transparência. Nenhum outro item da coleção foi obtido dessa forma.
 
 ## Novas hipóteses?
 
