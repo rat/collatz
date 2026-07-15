@@ -25,12 +25,21 @@ estrutural" (ver `overview-and-known-results.md`) apareceria.
   Getachew, Taylor & Francis ("Research in Mathematics"), periódico de escopo
   genérico (não especializado em matemática pura), 2025. **PDF arquivado em
   2026-07-15** via busca EBSCO/ScienceDirect (`literature/papers/INDEX.md` item
-  109, `109_Unfolding-Collatz-Tree-Structural-Proof.pdf`) — constrói uma árvore
-  reversa explícita e alega provar ausência de ciclos não-triviais e
-  alcançabilidade finita à raiz, tecnicamente próximo do que fizemos em H-018
-  deste projeto. **Ainda não lido/analisado** — candidato natural para revisão
-  quando pedido, dado que já temos ferramental (E-018) para checar as alegações
-  sobre a estrutura da árvore reversa diretamente.
+  109, `109_Unfolding-Collatz-Tree-Structural-Proof.pdf`), **lido e revisado
+  por completo em 2026-07-15 (H-079/E-079)**. Constrói a mesma árvore reversa
+  de H-018 deste projeto e alega provar cobertura, aciclicidade e terminação
+  finita do caminho de volta à raiz. **Veredito: não é uma prova válida.**
+  Furo lógico central: a relação "pai" definida no paper é literalmente
+  idêntica ao mapa de Collatz direto (parent(m)=m/2 par, 3m+1 ímpar), então
+  "todo caminho de volta é finito" (Lemma 4.3) é logicamente equivalente à
+  própria conjectura — não uma consequência de "árvore acíclica + pai único"
+  como a prova alega (aciclicidade e pai único garantem que o caminho não
+  repete nem bifurca, nunca que seja finito). O Teorema 5.1 (cobertura) sofre
+  do mesmo problema por outro caminho: prova uma identidade aritmética
+  universal (decomposição ímpar×potência-de-2), independente da regra de
+  ramificação real — confirmado computacionalmente que essa identidade não
+  usa g(n) em nenhum lugar. Ver `hypotheses/H-079-getachew-2025-review.md`
+  para a análise completa.
 - Site pessoal "Phil Seawolf — Unified Fields Theory 1" alegando solução — sinal
   claro de trabalho fora do padrão acadêmico, sem revisão alguma.
 - **"Proving the Collatz Conjecture with Binaries Numbers"** — Olinto de Oliveira

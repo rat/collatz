@@ -109,20 +109,24 @@ erro. Verificado com `advisor()`.
 científico fora do Scholar original, trouxe referências importantes que
 o projeto já citava sem ter o PDF: **Tao (2022)**, "Almost all orbits of
 the Collatz map attain almost bounded values" (o resultado mais forte já
-estabelecido); **Barina (2021 e 2025)**, as duas verificações
-computacionais (10^20 e depois 2^71) já citadas em `00-index.md`. Também
-um **novo ALEGAÇÃO DE PROVA** ainda não revisado: Getachew (2025),
-"Unfolding the Collatz Tree" (Taylor & Francis, "Research in Mathematics"),
-constrói uma árvore reversa explícita e alega provar ausência de ciclos
-não-triviais e alcançabilidade finita à raiz — tecnicamente próximo do
-que fizemos em H-018, então bem posicionados para revisar com rigor
-quando pedido. Mais 6 papers relevantes (De Mol 2008 sobre tag systems,
-Sayama 2011 visão de "vida artificial", Ballesteros 2018 sobre
-criptografia, Clay 2023, Wei Ren 2025, Andrei & Masalagiu 1998) e 4
-falsos-positivos identificados e descartados (coincidência de sobrenome
-com outros conceitos matemáticos do mesmo Lothar Collatz, ou de
-coautoria). **Nenhuma revisão de conteúdo feita ainda** — apenas
-organização de arquivo e catalogação.
+estabelecido, H-076); **Barina (2021)**, verificação até 10^20 (H-075).
+Todos os 10 itens revisados no mesmo dia (H-071 a H-079 + H-070 já
+existente): Andrei & Masalagiu 1998 (H-071, correto, um erro real
+contido no Teorema 3.2 parte 2); De Mol 2008 sobre tag systems (H-072,
+sem erros, não é sobre a conjectura em si); Sayama 2011 visão de "vida
+artificial" (H-073, correto); Ballesteros 2018 sobre criptografia
+(H-074, correto); Barina 2020/21 (H-075, sem erros); Tao 2022 (H-076,
+sem erros — verificação de exemplos, não "caça a erros"); Clay 2023
+(H-077, correto); Wei Ren 2025 (H-078, correto mas condicional, honesto
+sobre não fechar a conjectura); e **Getachew 2025 (H-079) — ALEGAÇÃO DE
+PROVA REFUTADA**: constrói a mesma árvore reversa de H-018, mas o furo
+lógico é que a relação "pai" definida é idêntica ao mapa de Collatz
+direto, então "terminação finita do caminho de volta" é logicamente
+equivalente à própria conjectura, não uma consequência de
+"acíclico+pai único" como a prova alega — petição de princípio
+disfarçada por linguagem de teoria dos grafos. Mais 4 falsos-positivos
+identificados e descartados (coincidência de sobrenome com outros
+conceitos matemáticos do mesmo Lothar Collatz, ou de coautoria).
 
 **H-013/H-018: gargalo de memória quebrado e a oscilação da razão
 totalmente explicada (2026-07-15)**. O BFS original de E-018 guardava
