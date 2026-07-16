@@ -198,14 +198,31 @@ do "por quê" em vez de deixá-la aberta — o melhor desfecho possível dado
 a obstrução já conhecida. Ver `hypotheses/H-018-reverse-tree-branching.md`
 e `experiments/E-018-reverse-tree-branching/README.md`.
 
-**Síntese da cadeia H-024→H-090 concluída (2026-07-16)**
+**Síntese da cadeia H-024→H-091 concluída (2026-07-16)**
 (`density-3adic-obstruction-synthesis.md`, raiz do projeto): consolida
 a jornada completa desde a obstrução original de densidade 3-ádica
-(H-024) até a conexão com a medida de Syracuse de Tao (H-090), passando
-pela crítica do Fable que separou magnitude de resíduo (H-086),
-continuidade 3-ádica confirmada (H-087), uma suspeita testada e
-descartada em H-018 (H-088) e uma correção real e documentada em H-026
-(H-089, revertida). Ver também `literature/00-index.md` item 8.
+(H-024) até a proporcionalidade quase exata com a medida de Syracuse de
+Tao (H-090/H-091), passando pela crítica do Fable que separou magnitude
+de resíduo (H-086), continuidade 3-ádica confirmada (H-087), uma
+suspeita testada e descartada em H-018 (H-088) e uma correção real e
+documentada em H-026 (H-089, revertida). Ver também
+`literature/00-index.md` item 8.
+
+**H-091 (mesmo dia, aprofundamento pedido explicitamente)**: as 3
+perguntas em aberto de H-090 foram respondidas a fundo. A correlação
+G(v)~μ_m não convergia a 1 — na verdade degradava com m (0,998→0,973
+até m=12). Descartadas 2 hipóteses (ruído amostral, deslocamento de
+janela) e uma terceira testada e refutada por mim mesmo (quebra da
+i.i.d. das valuações 2-ádicas sob resíduo fino — autocorrelação medida
+diretamente, ficou achatada em ~0 sempre). Escalado ao Fable com a
+derivação teórica própria da ponte forward↔reverso: ele confirmou a
+ponte (identidade combinatória exata, não heurística) e apontou a causa
+real da degradação — `measure_G` usava headroom fixo (`n_max=v·20`),
+insuficiente para resolver resíduos finos, com previsão quantitativa de
+onde o pico deveria se deslocar (m≈7 com headroom 200, m≈11-12 com
+2000). **Previsão confirmada**: com headroom corrigido, a correlação
+sobe monotonicamente até m=14 e o expoente ajustado converge a ~1,00
+exato — proporcionalidade, não só correlação. Ver `hypotheses/H-091-*.md`.
 
 **Síntese do programa Ruiz Castillo concluída**
 (`literature/ruiz-castillo-research-program.md`): consolida as sete

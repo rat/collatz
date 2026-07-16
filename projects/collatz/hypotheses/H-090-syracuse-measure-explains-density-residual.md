@@ -1,6 +1,6 @@
 # H-090 — A medida de Syracuse μ em ℤ₃ (Tao 2022, Lemma 1.12) explica G(v)=D(v)·v com correlação forte e crescente
 
-Status: confirmada (correlação log-log 0,92–0,98, estável em 5 sementes independentes; a ideia do Fable se confirma com evidência forte)
+Status: confirmada, resultado fortalecido em H-091 (correlação log-log inicial 0,92–0,98; com o headroom corrigido, converge a proporcionalidade quase exata — ver H-091)
 Criada em: 2026-07-16
 Origem: implementação da "ideia 2" proposta pelo modelo Fable (medida de
 Syracuse μ em ℤ₃) numa consulta anterior desta sessão, depois de H-086/
@@ -94,3 +94,14 @@ não apenas "sabemos que oscila".
   computacionalmente. Correlação log-log forte e crescente com m
   (0,916→0,980), estável em 5 sementes independentes. Confirma a
   conjectura do Fable com evidência real, não apenas plausibilidade.
+- 2026-07-16 (ver H-091): as três perguntas da seção "o que ainda não
+  foi feito" acima foram respondidas. A correlação não continuava
+  subindo para m>4 com o método original — na verdade DEGRADAVA até
+  m=12 (0,998→0,973). Investigação (com crítica dura do Fable)
+  encontrou a causa: `measure_G` usava headroom fixo (`n_max=v*20`),
+  insuficiente para resolver resíduos finos, mais um viés secundário da
+  média geométrica usada. Corrigido (headroom 200-2000, média
+  aritmética): a correlação **sobe monotonicamente até m=14** (não
+  degrada mais) e o expoente ajustado **converge a ~1,00 exato** — não
+  é só correlação forte, é proporcionalidade quase exata. Ver H-091
+  para a investigação completa e os números.
