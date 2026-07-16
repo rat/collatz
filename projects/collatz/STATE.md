@@ -104,6 +104,32 @@ erro. Verificado com `advisor()`.
 
 ## Onde estamos
 
+**Fila de 17 papers pendentes totalmente esgotada (2026-07-15)** —
+todos os itens `BAIXADO` do INDEX.md agora têm Lido/Corrigido/
+Implementado preenchidos (confirmado por grep, zero linhas
+remanescentes). Além dos 10 já descritos abaixo (itens 101-110), os 7
+restantes (itens 022-037, baixados numa sessão anterior):
+**H-081 (item 022, Spencer 2025) — ALEGAÇÃO DE PROVA REFUTADA**: mesmo
+furo que H-079, por caminho diferente ("classe residual ocupada" ⇏
+"inteiro específico atingido", confirmado com contraexemplo em n=27);
+itens 023 (Iglesias, divulgação sobre Busy Beaver) e 024 (Charrat,
+filosofia especulativa) marcados como lidos sem conteúdo técnico
+verificável sobre Collatz (Collatz citado só tangencialmente); **H-082
+(item 025, Kayadibi 2026)** — correto, honesto, não alega prova; **H-083
+(item 030, Wang 2026, INTEGERS)** — exclusão Diofantina de m-ciclos
+(m≤95), correto nas identidades verificáveis, mesmo território de
+H-057; **H-084 (item 035, Ruiz Castillo)** — oitavo paper da mesma
+série já sintetizada, mesmo padrão (deuda residual revestida agora com
+dinâmica simbólica/teoria ergódica); **H-085 (item 037, Spencer 2026) —
+veredito diferenciado**: mesmo autor do item 022, suspeita inicial de
+mesmo furo **não confirmada** pela investigação — a árvore real
+(estrutura diferente, grau infinito) mostrou cobertura completa em
+todas as escalas testadas, mas uma lacuna de rigor real foi identificada
+na demonstração (Teorema 14.1→14.2, passagem classe→elemento não
+justificada) sem contraexemplo computacional encontrado — caso
+documentado de autocorreção de uma suspeita baseada em precedente de
+autor, não confirmada cegamente.
+
 **10 papers novos arquivados via EBSCO/ScienceDirect (2026-07-15,
 `literature/papers/INDEX.md` itens 101-110)** — busca do diretor
 científico fora do Scholar original, trouxe referências importantes que

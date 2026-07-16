@@ -46,6 +46,12 @@ por data recente do Scholar nunca teria capturado (ex: Tao 2022, Barina
   psicologia).
 - **1 duplicado** (item 089 = mesmo paper do item 057, indexado duas vezes
   pelo Scholar via fontes diferentes).
+- **Todos os 50 PDFs baixados revisados (2026-07-15)**: zero linhas
+  `BAIXADO` remanescentes sem Lido/Corrigido/Implementado preenchidos.
+  Duas alegações de prova completa refutadas nesta rodada (itens
+  109/Getachew e 022/Spencer — H-079/H-081), uma com veredito
+  diferenciado (item 037, mesmo autor do 022, sem contraexemplo
+  encontrado apesar de uma lacuna de rigor real — H-085).
 
 ## Limpeza de itens não revisados por pares (2026-07-15)
 
