@@ -2,6 +2,30 @@
 
 Última atualização: 2026-07-16
 
+## ⏸ LEMBRETE — experimento pausado, retomar quando possível
+
+`experiments/E-090-syracuse-measure-vs-density/experiment_refinement_deep.py`
+está **pausado via SIGSTOP** (não matado — todo o progresso está preservado
+na memória dos processos, zero CPU consumida enquanto parado). Objetivo:
+teste de refinamento pedido pelo diretor científico para ver se o
+resid_std de H-091 (proporcionalidade G(v)~μ) estabiliza num platô
+conforme M cresce até 18, com amostra grande (30.000 v's) e headroom
+até 1.000.000× (paralelizado em 16 cores). Estimativa de tempo total
+revisada para **~7 horas** (custo real por chamada maior que o estimado
+inicialmente).
+
+**Para retomar**: rodar `ps aux | grep experiment_refinement_deep` para
+achar os PIDs (o processo bash pai e os 16 workers, todos em estado `T`
+= stopped), e mandar `kill -CONT <pid>` em cada um (ou `kill -CONT` em
+todos de uma vez). O processo continua exatamente de onde parou. **Só
+funciona enquanto a máquina não reiniciar** — se a máquina for
+reiniciada antes de retomar, os processos são perdidos e o experimento
+precisa ser rodado de novo do zero (`python3 experiment_refinement_deep.py`
+no diretório do experimento).
+
+Pausado em 2026-07-16 (~08:20) a pedido do diretor científico ("pause
+esse teste... me lembre de executar").
+
 ## Coleção de papers (nova, 2026-07-14)
 
 `literature/papers/INDEX.md` — 100 resultados do Google Scholar
