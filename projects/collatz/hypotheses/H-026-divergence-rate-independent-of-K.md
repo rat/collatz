@@ -1,6 +1,6 @@
 # H-026 — A taxa de divergência da aproximação de memória finita parece independer de K
 
-Status: confirmada com ressalva (sinal real mas ruidoso; não é uma medição estatisticamente robusta)
+Status: **REVERTIDA (2026-07-16, ver H-089)** — a conclusão original estava errada, não só fraca: media D(v) bruto, dominado pelo termo trivial de magnitude D~C/v (H-086), o que garantia matematicamente "K não importa" independente da verdade. Testado corretamente sobre G(v)=D(v)·v (a variável certa, H-087), K maior REDUZ a dispersão de forma clara. Ver H-089 para o teste corrigido e a explicação do erro.
 Criada em: 2026-07-13
 Origem: extensão direta de H-024, item #15 de uma quarta lista de ideias
 externas ("operador de transferência com memória 3-ádica finita crescente,
@@ -71,3 +71,16 @@ dimensão finita útil mesmo como aproximação, não só como fórmula exata.
   mas não estatisticamente robusto (ver ressalva acima). Reportado com
   essa hedge explícita em vez de superclaim, seguindo o padrão já usado em
   H-020.
+- 2026-07-16: **REVERTIDA**. O modelo Fable, consultado sobre risco
+  metodológico nesta linha, mostrou por aritmética direta que os
+  valores da tabela acima batem quase exatamente com o termo trivial
+  −ln(v/v₀) que H-086 depois identificou (D(v)≈C/v) — ou seja, esta
+  hipótese testou D(v) bruto, e a conclusão "K não importa" era
+  matematicamente garantida pelo desenho (comparando três cópias do
+  mesmo termo dominante, com o efeito real de K, ~0,1-0,4 dex,
+  soterrado embaixo de um termo de 5-10 unidades). Testado
+  corretamente sobre G(v)=D(v)·v, com dispersão medida em janelas de
+  magnitude controladas e 5 cadeias de resíduo independentes
+  (`experiments/E-089-h026-corrected/`): a dispersão CAI
+  monotonicamente com K (0,2352→0,0936 dex, K=2 a K=8) — o oposto da
+  conclusão aqui. Ver H-089-h026-corrected-K-does-help.md.

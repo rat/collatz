@@ -119,3 +119,18 @@ estado finito nesse sentido.
   explicar é muito mais modesta do que os "300× de variação" faziam
   parecer. Qualquer análise futura da estrutura 3-ádica de D deveria
   trabalhar com o resíduo D(v)·v, não com D(v) bruto. Ver H-086.
+- 2026-07-16: **cadeia de correções decorrentes desta recalibração**.
+  (1) H-087 confirmou que G(v)=D(v)·v tem continuidade 3-ádica real
+  (variância cai consistentemente com mais dígitos fixados, 5 cadeias
+  independentes) — diferente de D bruto, que "vazava para o infinito"
+  sem nenhum K reduzir a incerteza. (2) H-026 (que testava se K maior
+  atrasa a divergência de memória finita) estava **errada, não só
+  fraca**: usava D bruto, então sua conclusão "K não importa" era
+  matematicamente garantida pelo mesmo termo trivial 1/v — corrigida em
+  H-089, que mostra K maior de fato reduzindo a dispersão de G. (3) A
+  suspeita de que a mesma confusão afetasse a "taxa de decaimento entre
+  galhos" de H-018 (73×-680×) foi testada e **não se confirmou**
+  (H-088) — nesse caso a distância fixa "3 posições" já fixa o termo de
+  magnitude em exatamente 64 sem variar, então não havia confusão
+  possível; a obstrução de H-018 permanece como estava. Ver H-086 a
+  H-089 para a cadeia completa.
