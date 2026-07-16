@@ -1,6 +1,12 @@
 # H-100 — Teste de refinamento em altíssima precisão (N=30.000, headroom=1.000.000×, M até 18): resid_std continua caindo mas desacelera, extrapolação sugere piso não-zero (~0,04 dex)
 
-Status: resultado observacional, extrapolação preliminar não confirmada
+Status: resultado observacional, extrapolação preliminar **refutada** —
+ver H-101 (teste decisivo proposto pelo Fable, pares casados até
+m=29): a extrapolação para piso~0,042 dex era estatisticamente frágil
+(criticado pelo Fable) e os dados de H-101, com muito mais
+profundidade e precisão, mostram queda contínua sem platô confirmado
+até m=29 — mais compatível com convergência a zero do que com um piso
+real.
 Criada em: 2026-07-16
 Origem: versão "recursos não são problema" do teste de refinamento de
 H-091 Parte 2, rodada pausada e retomada nesta sessão
