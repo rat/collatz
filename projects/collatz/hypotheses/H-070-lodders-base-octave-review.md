@@ -5,7 +5,7 @@ computacionalmente (Corollary 9.6.7 falha, inclusive no próprio exemplo
 citado pelo paper); NÃO é uma prova válida
 Criada em: 2026-07-15
 Origem: item 099 da coleção (`literature/papers/INDEX.md`), já baixado
-(`098_Selection-Rules-Channel-Structure-Base-Octave.pdf` — nome de
+(`099_Selection-Rules-Channel-Structure-Base-Octave.pdf` — nome de
 arquivo com numeração trocada no download, mas o conteúdo é do item 099;
 o item 098 não tem PDF livre). **Alegação de prova completa** — requer
 maior rigor de escrutínio (arXiv, não peer-reviewed).

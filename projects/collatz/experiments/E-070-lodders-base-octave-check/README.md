@@ -7,7 +7,7 @@ Hipótese relacionada: [`H-070-lodders-base-octave-review.md`](../../hypotheses/
 Lodders, K. (2026). *Selection Rules and Channel Structure in a
 Base–Octave Model of Collatz Dynamics*. arXiv:2604.20181, 60 páginas
 (não peer-reviewed). PDF local:
-`literature/papers/098_Selection-Rules-Channel-Structure-Base-Octave.pdf`
+`literature/papers/099_Selection-Rules-Channel-Structure-Base-Octave.pdf`
 (nome de arquivo com numeração trocada no download — o conteúdo é do
 item 099; item 098 não tem PDF livre, ver `INDEX.md`).
 

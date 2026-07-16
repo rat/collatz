@@ -286,6 +286,29 @@ O(f(n))≤n é malformado (classe de funções comparada a escalar), não
 apenas incorreto; confirmado pela própria reação defensiva do autor
 criticado (H-094).
 
+**Noventa e oito hipóteses testadas (H-001 a H-098), 2026-07-16 —
+fila de "sem PDF livre" esgotada**: o diretor científico baixou mais
+2 dos 6 itens ainda pendentes (050, 098) e localizou por busca a fonte
+primária da disputa 092/093 (item novo, 115). Os 4 restantes (027,
+072, 086, 094) não foram encontrados na internet apesar de busca
+extensiva — marcados como removidos, não serão mais buscados.
+**H-096 (achado importante)**: item 050 (Roif, "On the Convergence of
+the Collatz Function", V4) — **ALEGAÇÃO DE PROVA REFUTADA** por erro
+elementar: a "Lemma 4.3" do paper afirma que "conjunto de densidade
+zero ⟹ conjunto vazio", falso como fato geral (contraexemplo trivial:
+quadrados perfeitos, densidade zero mas infinitos) — usada para
+"fechar" o conjunto excepcional de Tao (2022) e completar a "prova".
+**H-097**: item 098 (del Vado Vírseda, ACM/ITiCSE 2026) — paper de
+pedagogia/educação, Collatz só como exemplo didático; a única
+afirmação factual (indecidibilidade do Collatz GENERALIZADO,
+Conway/Kurtz-Simon 2007) é correta e distinta da conjectura clássica.
+**H-098**: item 115 (Syzdykov 2025, "Disproof of Collatz Conjecture by
+using O-notation") — a fonte primária nunca antes catalogada da
+disputa 092/093; confirma diretamente, na origem, o mesmo erro
+categorial já identificado por Lafontaine & Cheong (H-095): usa
+O(f(n))≤n tratando uma classe de funções como escalar, e declara
+"3^m>2^m−1" uma contradição sem derivar nenhuma.
+
 **Síntese do programa Ruiz Castillo concluída**
 (`literature/ruiz-castillo-research-program.md`): consolida as sete
 revisões técnicas (H-039, H-050, H-052 a H-056) mais a leitura
