@@ -2,29 +2,21 @@
 
 Última atualização: 2026-07-16
 
-## ⏸ LEMBRETE — experimento pausado, retomar quando possível
+## ▶ Experimento retomado (estava pausado)
 
 `experiments/E-090-syracuse-measure-vs-density/experiment_refinement_deep.py`
-está **pausado via SIGSTOP** (não matado — todo o progresso está preservado
-na memória dos processos, zero CPU consumida enquanto parado). Objetivo:
-teste de refinamento pedido pelo diretor científico para ver se o
-resid_std de H-091 (proporcionalidade G(v)~μ) estabiliza num platô
-conforme M cresce até 18, com amostra grande (30.000 v's) e headroom
-até 1.000.000× (paralelizado em 16 cores). Estimativa de tempo total
-revisada para **~7 horas** (custo real por chamada maior que o estimado
-inicialmente).
-
-**Para retomar**: rodar `ps aux | grep experiment_refinement_deep` para
-achar os PIDs (o processo bash pai e os 16 workers, todos em estado `T`
-= stopped), e mandar `kill -CONT <pid>` em cada um (ou `kill -CONT` em
-todos de uma vez). O processo continua exatamente de onde parou. **Só
-funciona enquanto a máquina não reiniciar** — se a máquina for
-reiniciada antes de retomar, os processos são perdidos e o experimento
-precisa ser rodado de novo do zero (`python3 experiment_refinement_deep.py`
-no diretório do experimento).
-
-Pausado em 2026-07-16 (~08:20) a pedido do diretor científico ("pause
-esse teste... me lembre de executar").
+foi pausado via SIGSTOP em 2026-07-16 ~08:20 e **retomado via SIGCONT
+em 2026-07-16 ~11:00** (a pedido do diretor científico, "continue o
+processo que estava parado"). Objetivo: teste de refinamento para ver
+se o resid_std de H-091 (proporcionalidade G(v)~μ) estabiliza num
+platô conforme M cresce até 18, com amostra grande (30.000 v's) e
+headroom até 1.000.000× (paralelizado em 16 cores). Estimativa total
+~7h de execução; ao retomar, já tinha completado o Teste B (headroom
+200/2000/20000/100000) e estava no último estágio (headroom=1.000.000)
+antes do Teste A começar. PIDs: processo bash pai 3905370 + python
+principal 3905372 + 16 workers 3905823-3905838. Se travar de novo,
+mesmo procedimento (`ps aux | grep experiment_refinement_deep`,
+`kill -CONT <pid>`) — só funciona enquanto a máquina não reiniciar.
 
 ## Coleção de papers (nova, 2026-07-14)
 
