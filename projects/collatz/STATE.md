@@ -260,6 +260,32 @@ exatidão total não certificada, e depende de afirmações de densidade
 no grafo de Collatz estritamente mais fortes que densidade positiva
 simples (esclarecido pelo Fable), todas em aberto. Ver `hypotheses/H-091-*.md` (Parte 2).
 
+**Noventa e cinco hipóteses testadas (H-001 a H-095), 2026-07-16**: o
+diretor científico baixou manualmente 4 dos 10 itens "sem PDF livre"
+pendentes (071, 087, 092, 093), reduzindo a fila a 6 (050, 072, 086,
+094, 098). **H-092**: item 071 (Koyuncu et al., "Parity-Based Level-Set
+Approach", Mathematics/MDPI, peer-reviewed) — sem erros, fórmula exata
+do Lemma 1 verificada contra trajetórias reais (incl. n=27), Tabela 1
+reproduzida quase byte-a-byte. **H-093 (achado importante)**: item 087
+(Tynski, "A Common Proof of the Riemann Hypothesis and the Collatz
+Conjecture", 99 páginas, academia.edu) — **ALEGAÇÃO DE PROVA REFUTADA**.
+Sob um andaime extenso de terminologia não-padrão (álgebra de Clifford,
+"Merkaba", "Logos section", "27 formulações equivalentes"), a exclusão
+de órbitas divergentes depende inteiramente de um "axioma (W6)" — limite
+de Lyapunov determinístico alegado "forçado" mas justificado de forma
+circular e só verificado numericamente até n₀≤3×10⁴ (C≤5). Refutado
+computacionalmente: o C mínimo necessário já excede 5 pouco além dessa
+faixa e chega a 8,34 para recordistas de atraso conhecidos — mesmo
+padrão de erro (média confundida com garantia determinística por
+trajetória) já visto em H-045/H-065. **H-094**: item 092 (Syzdykov,
+"Continued Disproof Sentence") — réplica a uma crítica (H-095) que não
+rebate o ponto técnico, reafirma o mesmo erro categorial redefinindo
+O(f(n)) como se fosse um escalar. **H-095**: item 093 (Lafontaine &
+Cheong, "A Note on a Claimed Disproof") — crítica curta e correta:
+O(f(n))≤n é malformado (classe de funções comparada a escalar), não
+apenas incorreto; confirmado pela própria reação defensiva do autor
+criticado (H-094).
+
 **Síntese do programa Ruiz Castillo concluída**
 (`literature/ruiz-castillo-research-program.md`): consolida as sete
 revisões técnicas (H-039, H-050, H-052 a H-056) mais a leitura

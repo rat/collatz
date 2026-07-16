@@ -29,12 +29,13 @@ por data recente do Scholar nunca teria capturado (ex: Tao 2022, Barina
   (identidade de cada arquivo confirmada contra o conteúdo real, e contra
   hash MD5 para descartar duplicatas exatas, antes de renomear — já que
   vários nomes de download não batiam com o título do paper).
-- **10 sem PDF livre restantes** (2026-07-15: reduzido de ~51 — ver
-  "Limpeza de itens não revisados por pares" abaixo), majoritariamente
-  porque o host bloqueia download automatizado (ver "Limitações
-  técnicas" abaixo) — **não** porque o conteúdo é necessariamente pago;
-  a tabela mantém o link original nessas linhas para o diretor
-  científico baixar manualmente.
+- **6 sem PDF livre restantes** (2026-07-16: reduzido de 10 — o diretor
+  científico baixou manualmente os itens 071, 087, 092 e 093, ver seção
+  "Novo lote baixado manualmente" abaixo), majoritariamente porque o
+  host bloqueia download automatizado (ver "Limitações técnicas"
+  abaixo) — **não** porque o conteúdo é necessariamente pago; a tabela
+  mantém o link original nessas linhas para o diretor científico baixar
+  manualmente.
 - **12 excluídos** por serem falsos-positivos (nada a ver com a
   conjectura — em geral "Collatz" é sobrenome de um coautor, ou parte de
   outro conceito matemático do mesmo Lothar Collatz, num contexto sem
@@ -78,7 +79,9 @@ serem revisados por pares**: as 6 alegações de prova/refutação (itens
 050, 086, 087, 092, 093, 094) — candidatas a revisão futura, seguindo o
 padrão já estabelecido neste projeto de encontrar erros reais em
 alegações não revisadas por pares (Boyle/H-065, Yun/H-068, Lodders/H-070,
-todos preprints).
+todos preprints). **Atualização 2026-07-16**: itens 087, 092 e 093 já
+foram baixados manualmente e revisados (H-093 a H-095); 050, 086 e 094
+seguem pendentes.
 
 **Mantidos por incerteza genuína sobre o status de revisão por pares**
 (não removidos por precaução, não por confirmação positiva): item 027
@@ -90,10 +93,11 @@ qualidade ou predatórios — mantido porque a alegação de revisão por
 pares em si não foi refutada, só sua confiabilidade está em dúvida).
 
 **Confirmados como revisados por pares (mantidos com confiança)**: item
-071 (Mathematics, MDPI — revisão por pares formal), item 072 (EPJ
-Special Topics, Springer/EDP Sciences — journal de física estabelecido),
-item 098 (ACM Digital Library — revisão por pares de conferência/journal
-formal).
+071 (Mathematics, MDPI — revisão por pares formal; **baixado e revisado
+2026-07-16, ver H-092**), item 072 (EPJ Special Topics, Springer/EDP
+Sciences — journal de física estabelecido; ainda pendente), item 098
+(ACM Digital Library — revisão por pares de conferência/journal formal;
+ainda pendente).
 
 ## Limitações técnicas encontradas (importante ler antes de usar a tabela)
 
@@ -232,7 +236,7 @@ coleção foi baixado dessa forma.
 | 055 | Platonismo y realismo en matematicas y fisica: un estudio ontologico y epistemologico | JCR Castillo, AFM Sanabria - Diotima, 2026 - usac.edu.gt | BAIXADO | `055_Platonismo-realismo-matematicas-fisica.pdf` | Sim | Sim* | Sim* |
 | 056 | (Não relacionado - ruído do Scholar: não-transporte de pacientes pré-hospitalares na Dinamarca) | S Kondrup et al - 2026 - sdu.dk | -- | excluído (não é sobre Collatz, falso positivo do Scholar - "Collatz" é sobrenome de coautora) |  |  |  |
 | 057 | A Fibonacci theorem for Collatz trajectories via modular graph structure | MAR Jimenez - arXiv:2606.02621, 2026 | BAIXADO | `056_Fibonacci-theorem-Collatz-modular-graph.pdf` | Sim | Sim | Sim |
-| 071 | Parity-Based Level-Set Approach to the Collatz Conjecture | S Koyuncu et al - Mathematics (MDPI), 2026 | [link](https://www.mdpi.com/2227-7390/14/10/1763) | sem PDF livre (mdpi.com bloqueou download automatizado, 403) |  |  |  |
+| 071 | Parity-Based Level-Set Approach to the Collatz Conjecture | S Koyuncu et al - Mathematics (MDPI), 2026 | BAIXADO (pelo diretor científico, 2026-07-16) | `071_Parity-Based-Level-Set-Approach-Collatz.pdf` | Sim | Sim | Sim |
 | 072 | Polar recurrence plots on Collatz sequences devoid of exact recurrences | CL Webber Jr - EPJ Special Topics, 2026 - Springer | (sem link PDF detectado pelo Scholar) | sem PDF livre (Springer, pago) |  |  |  |
 | 074 | Loop Termination and Generalized Collatz Sequences | M Carelli - arXiv:2605.15094, 2026 | BAIXADO | `073_Loop-Termination-Generalized-Collatz.pdf` | Sim | Sim | Sim |
 | 075 | (Não relacionado - ruído do Scholar: afogamento na Dinamarca) | N Breindahl et al - Clinical.., 2026 - tandfonline | -- | excluído (não é sobre Collatz, falso positivo do Scholar) |  |  |  |
@@ -241,11 +245,11 @@ coleção foi baixado dessa forma.
 | 081 | (Não relacionado - ruído do Scholar: doença de Ménière na Dinamarca) | C Gronlund et al - European Archives, 2026 - Springer | -- | excluído (não é sobre Collatz, falso positivo do Scholar) |  |  |  |
 | 084 | MODELLING THE COLLATZ PROBLEM FROM A JACOBSTHAL VIEWPOINT | D Mailland, P Kosobutskyy - 2026 - lpnu.ua | BAIXADO | `084_Modelling-Collatz-Jacobsthal-Viewpoint.pdf` | Sim | Sim | Sim |
 | 086 | The Axiom of Bijective Causality: Natural Numbers via Wave Processes and the Resolution of the Collatz Conjecture | S Hamaji - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
-| 087 | A Common Proof of the Riemann Hypothesis and the Collatz Conjecture [ALEGAÇÃO DE PROVA] | K Tynski - 2026 - academia.edu | [link](https://www.academia.edu/) | sem PDF livre (academia.edu bloqueia download automatizado) |  |  |  |
+| 087 | A Common Proof of the Riemann Hypothesis and the Collatz Conjecture [ALEGAÇÃO DE PROVA REFUTADA - o "axioma (W6)" (limite de Lyapunov determinístico) é a peça que faltava para excluir divergência, alegado "forçado" mas só verificado numericamente até n0<=3e4; refutado computacionalmente além dessa faixa] | K Tynski - 2026 - academia.edu | BAIXADO (pelo diretor científico, 2026-07-16) | `087_Common-Proof-Riemann-Hypothesis-Collatz-Conjecture.pdf` | Sim | Não | Sim |
 | 089 | A Fibonacci theorem for Collatz trajectories via modular graph structure [DUPLICADO - já temos, ver item 057] | MA Reyes Jimenez - arXiv e-prints, 2026 - adsabs | [link](https://arxiv.org/abs/2606.02621) | `056_Fibonacci-theorem-Collatz-modular-graph.pdf` (duplicado do item 057) | Sim | Sim | Sim |
 | 091 | (Não relacionado - ruído do Scholar: bioinformática, "M Collatz" é sobrenome de coautor) | T Eulenfeld, M Collatz et al - bioRxiv, 2026 | -- | excluído (não é sobre a conjectura, falso positivo do Scholar) |  |  |  |
-| 092 | Continued Disproof Sentence towards Collatz Conjecture [ALEGAÇÃO DE REFUTAÇÃO] | M Syzdykov - 2026 - cambridge.org | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
-| 093 | A Note on a Claimed Disproof of the Collatz Conjecture [RESPOSTA CRÍTICA a outra alegação] | M Lafontaine, G Cheong - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
+| 092 | Continued Disproof Sentence towards Collatz Conjecture [ALEGAÇÃO DE REFUTAÇÃO - réplica ao item 093, cita-o como [5]; não rebate a crítica, reafirma o mesmo erro categorial] | M Syzdykov - 2026 - cambridge.org | BAIXADO (pelo diretor científico, 2026-07-16) | `092_Continued-Disproof-Sentence-Collatz-Conjecture.pdf` | Sim | Não | N/A |
+| 093 | A Note on a Claimed Disproof of the Collatz Conjecture [RESPOSTA CRÍTICA a outra alegação (Syzdykov, "Disproof of Collatz Conjecture by using O-notation", não catalogado - não está na nossa lista de busca)] | M Lafontaine, G Cheong - researchgate.net | BAIXADO (pelo diretor científico, 2026-07-16) | `093_Note-Claimed-Disproof-Collatz-Conjecture.pdf` | Sim | Sim | N/A |
 | 094 | RESOLUTION OF THE COLLATZ CONJECTURE VIA THE AXIOM OF BIJECTIVE CAUSALITY [ALEGAÇÃO DE PROVA] | S Hamaji - researchgate.net | [link](https://www.researchgate.net/) | sem PDF livre (ResearchGate bloqueia download automatizado) |  |  |  |
 | 095 | (Não relacionado - ruído do Scholar: hospital domiciliar na Dinamarca) | MB Hagi-Pedersen et al - 2026 - regsj.dk | -- | excluído (não é sobre Collatz, falso positivo do Scholar) |  |  |  |
 | 098 | Teaching Theory of Computation in STEM K-12 Curricula Through Impossibility and Undecidability Problems (Collatz mencionado como exemplo) | R del Vado Virseda - ACM, 2026 | (sem link PDF detectado pelo Scholar) | sem PDF livre (ACM Digital Library, pago) |  |  |  |
