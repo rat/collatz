@@ -57,6 +57,25 @@ estrutural" (ver `overview-and-known-results.md`) apareceria.
   classe residual de n=27 está ocupada na árvore real construída até
   profundidade 6 e 8, mas por representantes muito maiores (ordem de
   10⁶-10⁸), nunca 27 em si. Ver `hypotheses/H-081-spencer-2025-review.md`.
+- "Rooted Surjectivity from the Invariant E/O Refinement System" — Michael
+  E. Spencer, academia.edu, 2026, sem revisão por pares (**mesmo autor do
+  item acima**). **PDF arquivado em 2026-07-15** (`literature/papers/INDEX.md`
+  item 037), **lido e revisado por completo em 2026-07-15 (H-085/E-085)**.
+  Usa uma árvore reversa diferente (grau infinito, via o inverso do mapa
+  acelerado T(m)=(3m+1)/2^v2(3m+1)) da árvore de grau≤2 do item acima.
+  **Veredito diferenciado, não a mesma conclusão do item acima**: a
+  investigação computacional (construir a árvore real e testar cobertura
+  com orçamento crescente) **não confirmou** a suspeita inicial de mesma
+  anatomia de erro — ao contrário, a cobertura observada foi completa em
+  todas as escalas testadas (até 10.000), e os aparentes "gaps" em rodadas
+  com orçamento menor convergiam exatamente à raiz quando checados sem
+  limite de magnitude (diferente do item acima, onde o gap persistia e
+  crescia independente do orçamento). Ainda assim, identificamos uma
+  **lacuna de rigor real** na demonstração escrita: o Teorema 14.1 prova
+  ocupação de *classes* residuais, mas o Teorema 14.2 conclui, sem
+  justificar a passagem, ocupação de *elementos individuais* — não é uma
+  prova válida como está, mas sem contraexemplo computacional encontrado.
+  Ver `hypotheses/H-085-spencer-2026-review.md`.
 - Site pessoal "Phil Seawolf — Unified Fields Theory 1" alegando solução — sinal
   claro de trabalho fora do padrão acadêmico, sem revisão alguma.
 - **"Proving the Collatz Conjecture with Binaries Numbers"** — Olinto de Oliveira
