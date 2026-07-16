@@ -101,3 +101,21 @@ estado finito nesse sentido.
   a recursão D(v)=D(2v)+D(ramo) nunca fecha em nenhum K (evidência forte
   + mecanismo plausível, **não** "provado para todo K" no sentido formal
   que Chang tenta manter com seu rótulo "Proved" vs "Numerical").
+- 2026-07-15: **recalibração importante (não invalida a conclusão, mas
+  muda a magnitude do fenômeno)**. Consultando o modelo Fable para
+  ideias criativas sobre esta linha, ele apontou uma crítica
+  metodológica direta: os 5 valores testados aqui (todos ≡85 mod 729)
+  variam em magnitude por um fator ~860×, e o desenho não separa o
+  efeito de magnitude do efeito de resíduo — se D(v) fatora como
+  C(log v)·G(v mod 3^K), a variação de 300× pode ser majoritariamente
+  o termo C, não G. Testado diretamente (H-086,
+  `experiments/E-086-mahler-magnitude-separation/`): regressão de
+  log₁₀(D) contra log₁₀(v), mesmo resíduo mod 729, confirma
+  D(v)≈C/v quase exatamente (inclinação=−0,9971, R²=0,9991).
+  Removendo esse termo trivial de magnitude, a variância "inexplicada"
+  cai de ~300× para **~1,26×**. **A conclusão formal desta hipótese
+  continua válida** (D não é função só do resíduo mod 3^K, para
+  nenhum K testado) — mas a magnitude do fenômeno que sobra para
+  explicar é muito mais modesta do que os "300× de variação" faziam
+  parecer. Qualquer análise futura da estrutura 3-ádica de D deveria
+  trabalhar com o resíduo D(v)·v, não com D(v) bruto. Ver H-086.
