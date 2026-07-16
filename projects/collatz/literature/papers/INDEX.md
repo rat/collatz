@@ -16,7 +16,7 @@ por data recente do Scholar nunca teria capturado (ex: Tao 2022, Barina
   **+14 itens (101-114)** de uma busca posterior via EBSCO/ScienceDirect
   (2026-07-15) — 10 relevantes, 4 excluídos por falso positivo (ver
   abaixo).
-- **57 PDFs baixados** com sucesso (arquivo local na tabela; coluna Link
+- **66 PDFs baixados** com sucesso (arquivo local na tabela; coluna Link
   mostra "BAIXADO" em vez do link original, já que o link só serve para
   indicar onde baixar) — 15 pela automação do navegador/Scholar, +16
   baixados manualmente pelo diretor científico em 2026-07-14, +1 em
@@ -36,6 +36,12 @@ por data recente do Scholar nunca teria capturado (ex: Tao 2022, Barina
   busca). Os 4 restantes (027, 072, 086, 094) **não foram localizados
   em busca extensiva** e foram marcados como removidos/inexistentes na
   internet — não serão mais baixados nem analisados.
+- **+10 itens novos (116-125)** baixados manualmente pelo diretor
+  científico em 2026-07-16, fora da busca original — a maioria papers
+  de verificação computacional/hardware peer-reviewed (IEEE, Hindawi),
+  não alegações de prova. Mais 1 duplicado (item 126 = item 074,
+  mesmo paper agora publicado no ICALP 2026/LIPIcs). Ainda não
+  revisados em detalhe (ver nota abaixo).
 - **12 excluídos** por serem falsos-positivos (nada a ver com a
   conjectura — em geral "Collatz" é sobrenome de um coautor, ou parte de
   outro conceito matemático do mesmo Lothar Collatz, num contexto sem
@@ -273,3 +279,14 @@ coleção foi baixado dessa forma.
 | 113 | (Não relacionado - "método multiponto de Collatz" é técnica de diferenças finitas do mesmo Lothar Collatz, não a conjectura) | I Jaworska, J Orkisz - Engineering Analysis with Boundary Elements 50, 2015 | -- | excluído (falso positivo, busca EBSCO/ScienceDirect fora do Scholar) |  |  |  |
 | 114 | (Não relacionado - "Nestler-Collatz" é sobrenome de coautora, paper de psicologia sobre reconhecimento facial) | C Dobel, B Nestler-Collatz et al - Psychological Research 84, 2020 | -- | excluído (falso positivo, busca EBSCO/ScienceDirect fora do Scholar) |  |  |  |
 | 115 | Disproof of Collatz Conjecture by using O-notation [ALEGAÇÃO DE REFUTAÇÃO REFUTADA - fonte primária da disputa 092/093, mesmo erro categorial confirmado diretamente] | M Syzdykov - 2025 - researchgate.net | BAIXADO (localizado por busca e pelo diretor científico, 2026-07-16) | `115_Disproof-Collatz-Conjecture-O-notation.pdf` | Sim | Não | N/A |
+| 116 | A Hardware-Software Cooperative Approach for the Exhaustive Verification of the Collatz Conjecture | Y Ito, K Nakano - IEEE ISPA, 2009 | BAIXADO (pelo diretor científico, 2026-07-16) | `116_Hardware-Software-Cooperative-Verification-Collatz.pdf` |  |  |  |
+| 117 | A Secured LSB-Based Image Steganography using Modified Collatz Conjecture (aplicação - Collatz usado como gerador pseudo-aleatório, sem alegação matemática sobre a conjectura) | AD Molato, FB Calanda - IEEE ICACCS, 2023 | BAIXADO (pelo diretor científico, 2026-07-16) | `117_Secured-LSB-Image-Steganography-Modified-Collatz.pdf` |  |  |  |
+| 118 | Collatz Conjecture for 2^100000-1 Is True - Algorithms for Verifying Extremely Large Numbers | W Ren, S Li, R Xiao, W Bi - IEEE SmartWorld, 2018 | BAIXADO (pelo diretor científico, 2026-07-16) | `118_Collatz-2-100000-1-Is-True-Extremely-Large-Numbers.pdf` |  |  |  |
+| 119 | Efficient Computation of Collatz Sequence Stopping Times: A Novel Algorithmic Approach | ES Getachew, BG Assefa - IEEE Access, 2025 (mesmo autor do item 109/H-079, paper diferente e não é alegação de prova) | BAIXADO (pelo diretor científico, 2026-07-16) | `119_Efficient-Computation-Collatz-Stopping-Times.pdf` |  |  |  |
+| 120 | Efficient Exhaustive Verification of the Collatz Conjecture using DSP48E blocks of Xilinx Virtex-5 FPGAs (mesmos autores do item 116, trabalho relacionado) | Y Ito, K Nakano - IEEE, 2010 | BAIXADO (pelo diretor científico, 2026-07-16) | `120_Efficient-Exhaustive-Verification-DSP48E-FPGA.pdf` |  |  |  |
+| 121 | Existence of Invariants in Periods of Generalized Collatz Sequences | YN Aliyev - IEEE PCI, 2023 | BAIXADO (pelo diretor científico, 2026-07-16) | `121_Existence-Invariants-Periods-Generalized-Collatz.pdf` |  |  |  |
+| 122 | How to Fast Verify Collatz Conjecture by Automata (cita e reusa a mesma verificação de 2^100000-1 do item 118, mesmos autores em comum) | W Ren, R Xiao - IEEE HPCC/SmartCity/DSS, 2019 | BAIXADO (pelo diretor científico, 2026-07-16) | `122_Fast-Verify-Collatz-Conjecture-Automata.pdf` |  |  |  |
+| 123 | On the Probabilistic Proof of the Convergence of the Collatz Conjecture | K Barghout - Journal of Probability and Statistics (Hindawi), 2019 | BAIXADO (pelo diretor científico, 2026-07-16) | `123_Probabilistic-Proof-Convergence-Collatz-Barghout.pdf` |  |  |  |
+| 124 | Performance Evaluation of Proof-of-Work and Collatz Conjecture Consensus Algorithms (aplicação - blockchain, sem alegação matemática sobre a conjectura) | HM A Aljassas, S Sasi - IEEE, 2019 | BAIXADO (pelo diretor científico, 2026-07-16) | `124_Performance-Evaluation-PoW-Collatz-Consensus.pdf` |  |  |  |
+| 125 | The 3x+1 Problem For Rational Numbers: Invariance of Periodic Sequences in 3x+1 Problem (mesmo autor do item 121) | YN Aliyev - IEEE AICT, 2020 | BAIXADO (pelo diretor científico, 2026-07-16) | `125_3x1-Problem-Rational-Numbers-Invariance-Periodic.pdf` |  |  |  |
+| 126 | Loop Termination and Generalized Collatz Sequences [DUPLICADO - mesmo paper do item 074 (M Carelli, já revisado em H-067), agora na versão publicada ICALP 2026/LIPIcs; "Related Version" no próprio paper aponta para o mesmo arXiv:2605.15094] | M Carelli - ICALP 2026, LIPIcs | BAIXADO (pelo diretor científico, 2026-07-16) | `073_Loop-Termination-Generalized-Collatz.pdf` (duplicado do item 074) | Sim | Sim | Sim |
