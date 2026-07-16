@@ -23,6 +23,12 @@ fragmentar por paper só vale a pena se o volume justificar depois.
    vocabulário formal diferente a cada paper, dois erros reais de consistência
    interna encontrados, chave explicativa no paper de filosofia da matemática do
    mesmo autor (item 055).
+8. [`../density-3adic-obstruction-synthesis.md`](../density-3adic-obstruction-synthesis.md)
+   — síntese de trabalho próprio (não revisão de literatura externa): a cadeia
+   H-024→H-086→H-087→H-088→H-089→H-090, da obstrução original de densidade
+   3-ádica até a conexão com a medida de Syracuse de Tao (2022, item 6 acima),
+   passando por uma correção real (H-026 revertida) e uma suspeita testada e
+   descartada (H-018 não afetada).
 
 ## Conclusão do levantamento inicial
 

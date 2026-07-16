@@ -1,6 +1,6 @@
 # Estado atual — Collatz
 
-Última atualização: 2026-07-15
+Última atualização: 2026-07-16
 
 ## Coleção de papers (nova, 2026-07-14)
 
@@ -197,6 +197,15 @@ tipo.** Não fecha H-024 (sem fórmula fechada), mas dissolve a pergunta
 do "por quê" em vez de deixá-la aberta — o melhor desfecho possível dado
 a obstrução já conhecida. Ver `hypotheses/H-018-reverse-tree-branching.md`
 e `experiments/E-018-reverse-tree-branching/README.md`.
+
+**Síntese da cadeia H-024→H-090 concluída (2026-07-16)**
+(`density-3adic-obstruction-synthesis.md`, raiz do projeto): consolida
+a jornada completa desde a obstrução original de densidade 3-ádica
+(H-024) até a conexão com a medida de Syracuse de Tao (H-090), passando
+pela crítica do Fable que separou magnitude de resíduo (H-086),
+continuidade 3-ádica confirmada (H-087), uma suspeita testada e
+descartada em H-018 (H-088) e uma correção real e documentada em H-026
+(H-089, revertida). Ver também `literature/00-index.md` item 8.
 
 **Síntese do programa Ruiz Castillo concluída**
 (`literature/ruiz-castillo-research-program.md`): consolida as sete
