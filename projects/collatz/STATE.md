@@ -2,6 +2,49 @@
 
 Última atualização: 2026-07-16
 
+## 📋 PRÓXIMO PASSO PROGRAMADO — assim que o experimento abaixo terminar
+
+O diretor científico consultou uma IA externa (prompt de contexto
+completo enviado, ver `density-3adic-obstruction-synthesis.md` e
+H-091) sobre a linha G(v) vs. medida de Syracuse. Ela sugeriu 5
+abordagens criativas para o resíduo/discrepância ainda não explicados.
+**Instrução explícita**: assim que o experimento
+`experiment_refinement_deep.py` (abaixo) terminar, iniciar o teste de
+cada uma das 5 hipóteses, analisando cada uma com cuidado, consultando
+o Fable em caso de dúvida.
+
+1. **Análise multifractal (função de partição Z(q))** — a sugestão #1
+   (desigualdade de Jensen) já foi testada e documentada em H-099:
+   confirmada como identidade algébrica exata (não resolve o mistério,
+   só o reformula), mas revelou que o termo de Jensen varia ~46× entre
+   classes residuais — heterogeneidade real na forma da distribuição
+   condicional de G(v). **Falta ainda**: calcular Z(q)=Σ G(v)^q por
+   classe e ver se o expoente de escala τ(q) é côncavo (assinatura de
+   multifractalidade real, não erro).
+2. **Espectro do operador de transferência (Ruelle-Perron-Frobenius)**:
+   μ é a autofunção principal (autovalor 1) da recursão que já
+   derivamos; extrair autofunções secundárias ψ₂,ψ₃,... via PCA/SVD
+   nos resíduos, procurar gap espectral.
+3. **Interferência 2-ádica cruzada**: regredir o resíduo (dispersão não
+   explicada por μ_M) contra v mod 2^K, para K∈{2,3,4,5}, cruzado com
+   as classes mod 3^M (ANOVA bidimensional).
+4. **Covariável de topologia local**: distância até a primeira
+   ramificação (ou grau da subárvore de profundidade 3) como
+   co-variável na regressão — exige instrumentar o código da árvore
+   para capturar essa métrica (não salva hoje).
+5. **Termo residual 1/v acumulado**: testar se o resíduo escala como
+   A+B/v por faixa de magnitude absoluta — já há evidência CONTRA isso
+   (convergência pareada mostrou desvio caindo geometricamente até
+   0,0044 dex em headroom=1.000.000, sem sinal de piso 1/v nessa escala
+   de v), mas testar formalmente mesmo assim, com cuidado, antes de
+   descartar.
+
+Para cada uma: implementar o teste, analisar o resultado com rigor
+(nada de aceitar números sem verificar — já tivemos vários bugs de
+amostragem nesta linha), documentar como H-1XX, e consultar o Fable
+sempre que a interpretação for duvidosa ou a matemática precisar de
+validação externa antes de agir.
+
 ## ▶ Experimento retomado (estava pausado)
 
 `experiments/E-090-syracuse-measure-vs-density/experiment_refinement_deep.py`
