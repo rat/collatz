@@ -221,8 +221,20 @@ real da degradação — `measure_G` usava headroom fixo (`n_max=v·20`),
 insuficiente para resolver resíduos finos, com previsão quantitativa de
 onde o pico deveria se deslocar (m≈7 com headroom 200, m≈11-12 com
 2000). **Previsão confirmada**: com headroom corrigido, a correlação
-sobe monotonicamente até m=14 e o expoente ajustado converge a ~1,00
-exato — proporcionalidade, não só correlação. Ver `hypotheses/H-091-*.md`.
+sobe monotonicamente até m=14 e o expoente ajustado fica perto de 1,00.
+
+**Segunda rodada no mesmo dia (pedido explícito de testar a fundo)**:
+uma análise de poder estatístico do Fable mostrou que "converge a
+~1,00 exato" era otimista — os dados certificam só b=1,000±0,012 (IC
+95%). Dois testes por v individual (evitando defeito de pareamento de
+um stress test anterior) deram o resultado mais forte da linha: G(v)
+individual **converge claramente** conforme o headroom cresce
+(dispersão de Δ(v) cai geometricamente, ~2,5×/década de headroom) —
+evidência direta a favor da existência do limite de escala. Mas o
+resíduo, embora caia com mais resolução (M até 14), não zera —
+exatidão total não certificada, e depende de afirmações de densidade
+no grafo de Collatz estritamente mais fortes que densidade positiva
+simples (esclarecido pelo Fable), todas em aberto. Ver `hypotheses/H-091-*.md` (Parte 2).
 
 **Síntese do programa Ruiz Castillo concluída**
 (`literature/ruiz-castillo-research-program.md`): consolida as sete

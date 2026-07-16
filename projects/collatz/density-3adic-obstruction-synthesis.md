@@ -113,12 +113,24 @@ truncar, e o Fable derivou uma previsão quantitativa exata de onde o
 pico de correlação deveria se deslocar se essa fosse a causa (m≈7 com
 headroom 200, m≈11-12 com headroom 2000). Testado: **a previsão bateu**
 — com headroom 200-2000, a correlação passa a subir monotonicamente até
-m=14 (não degrada mais), e o expoente ajustado converge a
-**aproximadamente 1,00 exato**. Não é mais "correlação forte": é
-**proporcionalidade quase exata** entre G(v) e 3^m·μ_m(r), condicional
-à existência de um limite de escala de G (o Fable observou que isso
-está próximo de questões de densidade no grafo de Collatz ainda em
-aberto — não fechamos essa parte, mas os dados a favorecem fortemente).
+m=14 (não degrada mais), e o expoente ajustado fica muito perto de 1,00.
+
+Antes de aceitar isso como fechado, uma segunda rodada (mesmo dia,
+pedido explícito de "testar isso, na dúvida consultar o Fable") mostrou
+que "converge a ~1,00 exato" era otimista: uma análise de poder
+estatístico do próprio Fable revelou que os dados certificam só
+**b=1,000±0,012 (IC 95%)**, não exatidão. Dois testes por v individual
+(evitando um defeito de pareamento identificado num primeiro stress
+test) deram o resultado mais interessante: **G(v) individual converge
+claramente conforme o headroom cresce** (dispersão de Δ(v) entre níveis
+de headroom cai geometricamente, ~2,5× a cada 10× de headroom) — a
+evidência mais forte e mais direta desta linha inteira a favor da
+existência do limite de escala de G. Mas um teste de refinamento
+mostrou que a dispersão residual cai com mais resolução (M até 14) sem
+chegar a zero — a exatidão total não está certificada, e o Fable
+esclareceu que ela depende de uma hierarquia de afirmações de densidade
+no grafo de Collatz **estritamente mais forte** que densidade positiva
+simples (não mais fraca, como eu tinha suposto), todas em aberto.
 
 ## O que essa cadeia deixa como saldo
 
