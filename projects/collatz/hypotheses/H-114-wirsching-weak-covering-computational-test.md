@@ -141,9 +141,24 @@ forma decisiva). Se a linha for retomada no futuro, o passo certo é
 reescrever o DP (bitset comprimido/vetorizado em C ou numpy) para
 alcançar ℓ~30+ de uma vez, não estender incrementalmente em Python.
 
+## Adendo (2026-07-17, ver H-124): também é teste do esqueleto de β=1 (Tao 2020)
+
+Busca literária dirigida encontrou que a conjectura β=1 de Tao (post de
+blog, jan/2020) é, estruturalmente, o mesmo objeto algébrico da WCC
+(verificado: a variável de Syracuse e os R_{j,k} de Wirsching coincidem
+após um twist de unidade). O excesso e(ℓ)=j*(ℓ)−log₄3·ℓ medido aqui é
+literalmente o o(n) do expoente de β=1 — e(ℓ) sub-linear (nossa leitura
+qualitativa) é evidência computacional direta a favor de β=1, não só
+da WCC. Reenquadramento: este é o primeiro teste computacional do
+esqueleto de cobertura de AMBAS as conjecturas (Wirsching 1998 e Tao
+2020). Ver H-124 para a análise completa.
+
 ## Referências
 
-- H-110/H-111/H-112 — a barreira de endogenia e sua conexão com a WCC.
+- H-110/H-111/H-112/H-124 — a barreira de endogenia, sua calibração
+  empírica, e a triangulação com a conjectura β=1 de Tao.
 - Wirsching (1998), Capítulo V (item 131 do INDEX), Corolário II.5.8,
   Definição V.1.1, Conjectura 3.9 (e a versão forte 3.8, p.138).
+- Tao (2020), "Equidistribution of Syracuse random variables and
+  density of Collatz preimages" (blog).
 - `experiments/E-098-wirsching-weak-covering-test/experiment_wcc.py`.

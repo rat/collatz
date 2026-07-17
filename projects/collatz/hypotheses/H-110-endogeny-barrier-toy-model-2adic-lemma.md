@@ -179,6 +179,20 @@ diferente (endogenia/smoothing transforms, mais moderno e conectado a
 Tao 2022, vs. combinatória direta de Wirsching) — não uma barreira
 nunca vista antes. Ver H-112 para a análise completa.
 
+## Adendo (2026-07-17, ver H-124): a rota de Tao (2020) evita a decorrelação mas bate na mesma parede
+
+Busca literária encontrou que Tao propôs (post de blog, jan/2020) uma
+rota condicional para densidade de Collatz que EVITA a decomposição
+endogenia/decorrelação bivariada daqui: substitui "quase-independência
+entre subárvores" por "separação determinística de pré-imagens (fácil)
++ controle L^∞ marginal (conjectura β=1, onde mora toda a
+dificuldade)". Responde a pergunta implícita desta hipótese ("existe
+rota que dispense a decorrelação?"): sim, existe, e ela bate na MESMA
+parede em forma marginal. Três articulações quase-equivalentes do
+mesmo ingrediente faltante: endogenia (aqui), Weak Covering Conjecture
+(H-112), β=1 (H-124) — nenhuma provada. Ver H-124 para a análise
+completa.
+
 ## Referências
 
 - H-091 (Parte 2) — decomposição (E)+(P)+(S), motivação original.

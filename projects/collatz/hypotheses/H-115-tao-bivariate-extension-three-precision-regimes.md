@@ -122,6 +122,24 @@ Wirsching até ℓ=17, regime assintótico indeterminado (H-114) — coerente,
 honesto, e defensável como o limite do que esta investigação alcança
 sem resolver um problema aberto reconhecido da área.
 
+## Adendo (2026-07-17, ver H-124): forma mínima nomeada do regime 3
+
+Busca literária dirigida encontrou que o próprio Tao (post de blog,
+janeiro 2020, "Equidistribution of Syracuse random variables and
+density of Collatz preimages") propôs uma conjectura — **β=1**
+(c_n:=inf_b P(Syrac(ℤ/3ⁿℤ)=b) = 3^{-n+o(n)}) — que é, após
+verificação estrutural, o MESMO objeto algébrico da Weak Covering
+Conjecture de Wirsching (H-112/H-114), numa forma um degrau mais fraca
+(WCC ⟹ β=1 essencialmente; β=1 sozinho só dá uma WCC enfraquecida).
+β=1 é uma barra mais baixa que o power-saving exigido pelo regime 3
+aqui descrito, e MESMO ASSIM está aberta há 6 anos, nunca virou paper.
+Isso dá ao regime 3 sua testemunha mais limpa possível: em vez de só
+"equivalente por analogia a território ×2×3/Breuillard-Varjú", agora
+também "sua forma mínima útil é uma conjectura nomeada do próprio Tao,
+não provada". Três articulações quase-equivalentes do mesmo
+ingrediente faltante: endogenia (H-110), WCC (H-112), β=1 (H-124) —
+nenhuma provada. Ver H-124 para a análise completa.
+
 ## Referências
 
 - H-110/H-111 — a barreira de endogenia e sua calibração empírica.

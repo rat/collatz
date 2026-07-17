@@ -2,6 +2,119 @@
 
 Última atualização: 2026-07-17
 
+## ⭐⭐ Terceira perna de triangulação: Wirsching (2003) e a função de Fabius base-3 (H-125)
+
+Segunda rodada da busca literária (pedido explícito: "achar coisas que
+ajudem a ter algo digno de citações") encontrou e baixou (com permissão
+explícita do diretor científico) Wirsching (2003), "On positive
+predecessor density in 3n+1 dynamics" (DCDS 9(3), 771-787, item 132 do
+INDEX) — uma rota DIFERENTE e mais refinada que a WCC do livro de 1998,
+para o mesmo objetivo.
+
+**Achado central**: a densidade invariante φ do paper (ponto fixo do
+operador de médias W₃) é a marginal ARQUIMEDIANA complementar da mesma
+contagem combinatória cuja marginal 3-ádica é nossa medida de
+Syracuse. φ acaba sendo identificada (pelo Fable) como o análogo
+BASE-3 da função de Fabius (família das "atomic functions" de
+Rvachev) — conecta nosso trabalho a uma literatura analítica madura
+(Berg, Krüppel, Rvachev) raramente citada pela comunidade Collatz.
+
+A cadeia de 3 conjecturas do paper vive na MESMA janela crítica (regime
+CLT k≈ℓ) que β=1 de Tao (H-124) e o regime 3 de H-115 — terceira
+roupagem independente da mesma barreira (equação funcional real, em
+vez de contagem inteira ou caracteres de Fourier). Não é atalho, é
+triangulação.
+
+**Experimento EXECUTADO (E-099) até ℓ=500 com erro certificado**:
+Conjectura 3 SUPORTADA numericamente. Razão decisiva L_ℓ → 2/3 com
+déficit (0,580±0,001)/ℓ — coeficiente reproduzido pela própria φ₀ de
+Berg-Krüppel (check de consistência subleading, não só o limite).
+ln(φ/φ₀) crescente/côncavo/uniforme em u∈[−2,2], consistente com
+limite finito: c ≈ 0,54, intervalo honesto 0,53–0,55 (incerteza
+dominada pela forma da cauda: C/√ℓ é a melhor forma, C/ln²ℓ
+degenerada nesta faixa; escada ℓ∈{1000,2000} discriminaria). Sem
+modulação log-periódica. Ressalva mantida: isso testa só a ponta mais
+concreta da cadeia; Conjecturas 1–2 seguem abertas.
+
+Ver **H-125** para a documentação completa.
+
+## ⭐⭐ Busca literária dirigida encontra triangulação máxima: β=1 de Tao (2020) = mesmo objeto da WCC de Wirsching (H-124)
+
+Pedido explícito do diretor científico: buscar literatura que pudesse
+melhorar o material da linha G(v)/qx+1/endogenia para uma publicação
+de respeito. 5 achados avaliados com o Fable (WebSearch/WebFetch):
+
+1. Tao (2011, blog): técnica Littlewood-Offord+Riesz+Bohr sets,
+   condicional à conjectura fraca de Collatz — sem ferramenta nova
+   (o próprio post reconhece que Baker já dá bound incondicional mais
+   forte), mas dá um lema de redução condicional honesto.
+2. Varjú-Yu (2022): decaimento de Fourier de medidas autosimilares —
+   nossa medida satisfaz nominalmente a condição, mas o teto é
+   polilog (insuficiente) e colapsa no problema aberto (3/2)^n mod 1
+   (Mahler, já conectado a Collatz por Lagarias).
+3. Badea-Grivaux (2023): irrelevante como obstáculo (resultado sobre
+   medidas genéricas de Baire, nossa medida é estruturada).
+4. **Tao (2020, blog) — o achado mais importante**: conjectura β=1
+   (medida de Syracuse quase-uniforme até a escala mais fina) é,
+   verificado estruturalmente, o MESMO objeto algébrico da Weak
+   Covering Conjecture de Wirsching (H-112/H-114), um degrau mais
+   fraca. Consequência direta: o excesso e(ℓ) medido em H-114 é
+   literalmente o o(n) do expoente de β=1 — nossos dados (e(ℓ)
+   sub-linear) são evidência computacional DIRETA a favor de β=1, não
+   só da WCC. E: a rota de Tao mostra que dá para evitar a
+   decorrelação bivariada de H-110 substituindo por controle L^∞
+   marginal — mas bate na MESMA parede. Três articulações
+   quase-equivalentes do mesmo ingrediente faltante (endogenia,
+   WCC, β=1), nenhuma provada, é a forma mínima nomeada da barreira,
+   aberta há 6 anos, nunca virou paper.
+5. Spiegelhofer (2021/2023): mesmo limiar log₄3 (estrutural, não
+   coincidência), mas é resultado abaixo-do-limiar (contagem/média),
+   não worst-case — fila condicional para um eventual lema de regime 2.
+
+**Não reabre o regime 3 de H-115** (nenhuma ferramenta nova), mas
+fortalece o pacote de publicação: H-114 e H-115 reenquadrados com a
+triangulação e a forma mínima nomeada (β=1). Ver **H-124** para a
+análise completa.
+
+## Fila de 10 papers pendentes (itens 116-125) esgotada — H-116 a H-123
+
+Os 10 papers baixados pelo diretor científico em 2026-07-16 mas nunca
+revisados foram lidos e analisados em paralelo (3 agentes). Nenhuma
+alegação de prova completa da conjectura clássica sobrevive — o único
+candidato próximo (item 123, Barghout, "Probabilistic Proof of
+Convergence") foi REFUTADO: mesma falácia recorrente do projeto
+(densidade estática de v₂ sobre inteiros pares, corretamente
+demonstrada, confundida com estatística de visitas de uma órbita
+dinâmica específica — hipótese de mixing nunca provada; exclusão de
+ciclos não-triviais admitidamente só probabilística no próprio texto).
+Achado extra: o argumento RF do Barghout toca diretamente nossa linha
+G(v)/Syracuse (é uma medida de frequência de v₂), e generaliza para
+kn+1 — conexão útil de contraste (H-116).
+
+Demais papers, sem erro de prova (a maioria sem nenhum erro
+matemático):
+- **H-117/H-118**: aplicações (esteganografia, blockchain) — sem
+  alegação matemática sobre a conjectura, sem erros.
+- **H-119**: Getachew (mesmo autor do H-079, já refutado antes) —
+  desta vez SEM prova disfarçada, mas com falhas reais de rigor
+  (complexidade O(1) falsa para bignums de 2^100000 bits, curve-fit
+  com 2 pontos, novidade superestimada — técnica CTZ padrão).
+- **H-120/H-121**: Aliyev, generalização algébrica de ciclos racionais
+  (diferente da nossa qx+1) — teorema confirmado por teste de estresse
+  independente (200 casos aleatórios, 0 violações); um erro de
+  copy-paste sem consequência.
+- **H-122**: Ito & Nakano, verificação exaustiva por FPGA (par
+  116/120) — engenharia sólida, sem erros.
+- **H-123**: Ren et al., verificação de um único número gigante +
+  autômato de classes residuais (par 118/122) — computação correta
+  mas alegação central mal enquadrada (confunde "checar um número" com
+  "verificação exaustiva"); bug de rotulação secundário no apêndice.
+
+Nenhum destes 10 papers tem sobreposição relevante com a linha
+G(v)/Syracuse/qx+1/endogenia (H-090 a H-115), exceto o contraste
+conceitual do item 123 (densidade estática vs. dinâmica). INDEX.md
+atualizado, fila de literatura pendente zerada novamente.
+
 ## ⭐⭐ Duas frentes de pesquisa genuína (não mais rodadas de consulta): teste direto da WCC (H-114) e por que a extensão de Tao não cruza a barreira (H-115)
 
 Depois de fechar o pacote de publicação (H-109-H-113) e esgotar 7
