@@ -2,7 +2,50 @@
 
 Última atualização: 2026-07-17
 
-## ⭐ Achado mais forte da linha G(v)/Syracuse: generalização qx+1 (H-109)
+## ⭐⭐ A peça teórica mais importante desta linha: barreira de endogenia (H-110)
+
+Quarta rodada de consulta à IA externa: perguntamos se a linha G(v)/μ
+estava madura para uma nota técnica. Veredito dela: sim, parar de
+explorar e fechar a questão da existência do limite com uma "barreira
+teórica" honesta em vez de deixá-la vaga — sugeriu um mecanismo
+específico ("conspiração 2-ádica"). Pedido ao Fable para avaliar com
+ceticismo (ele já tinha corrigido essa IA duas vezes antes). Resultado:
+
+1. **Existe um modelo "toy" real** (não espantalho) onde a recursão de
+   pressão da árvore (mesma equação exata de H-109) tem "liberdade de
+   gauge" — por ser linear, qualquer G(v)=W(v)·Y(y) com Y invariante
+   ao longo da árvore é OUTRA solução exata da mesma recursão, com a
+   MESMA pressão, MESMA cauda α=2, MESMO slope contra μ — mas com
+   variância residual que NUNCA colapsa a zero. Nenhuma estatística
+   que medimos nesta linha inteira distingue as duas soluções. Nome
+   técnico: "endogenia" (Aldous–Bandyopadhyay 2005) — literatura
+   estabelecida, não invenção do Fable.
+2. **Mas o mecanismo específico proposto pela IA ("conspiração
+   2-ádica") está refutado** por um lema de duas linhas: w_a mod 2^a é
+   uma CONSTANTE UNIVERSAL, independente de v (3·w_a≡−1 mod 2^a) — a
+   árvore reversa destrói toda informação 2-ádica sobre a raiz a cada
+   geração. **Verificado numericamente nesta sessão** (a=1 a 10,
+   500+ v's cada, bate exatamente). Terceira correção do Fable à mesma
+   IA externa (depois de "Kesten local" e "Furstenberg/Martin").
+3. **A barreira real está em outro lugar**: recursão sozinha não força
+   colapso; recursão+independência-entre-subárvores força (via
+   classificação padrão de smoothing transforms + Choquet–Deny) — mas
+   essa independência é uma afirmação ARITMÉTICA não provada sobre os
+   inteiros reais (os "dígitos 3-ádicos frescos das folhas" se
+   comportarem como independentes entre subárvores), não uma
+   propriedade automática do modelo. Formulação honesta registrada em
+   H-110 para uso em qualquer texto futuro.
+4. Reabilitação parcial: a sugestão anterior de Fronteira de Martin
+   (H-109, descartada como "empréstimo de prestígio") tinha um núcleo
+   real (o espaço de gauge É a fronteira de Poisson relativa ao fator
+   3-ádico) — diferente de Kesten/Furstenberg, que não tinham núcleo
+   salvável.
+
+Ver **H-110** para a documentação completa (o toy, o lema, a
+formulação da barreira, e o que pode/não pode ser afirmado com rigor
+de nota técnica).
+
+## Achado mais forte da linha G(v)/Syracuse: generalização qx+1 (H-109)
 
 Terceira rodada de consulta à IA externa (após H-099-H-107 abaixo)
 levou ao resultado mais forte desta linha inteira. Pedida uma
