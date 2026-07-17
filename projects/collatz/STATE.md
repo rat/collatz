@@ -2,7 +2,7 @@
 
 Última atualização: 2026-07-16
 
-## Consultas a IA externa sobre G(v) vs. medida de Syracuse (H-099 a H-106) — concluído
+## Consultas a IA externa sobre G(v) vs. medida de Syracuse (H-099 a H-107) — concluído
 
 O diretor científico consultou uma IA externa duas vezes (prompts de
 contexto completo, arquivos em scratchpad) sobre a linha G(v)/μ de
@@ -38,15 +38,24 @@ heterogeneidade é majoritariamente sinal real (razão sinal/ruído ~2,0)
 e que a correlação **fortalece para -0,74** ao filtrar classes ruidosas
 (**H-106**) — confirma PR(r) como preditor mecanístico genuíno.
 
-**Estado final desta linha**: existência do limite de escala G tem
-evidência forte; exatidão total (resíduo→0) não fechada, mas evidência
-pende para "converge", não "platô real"; a heterogeneidade de forma da
-distribuição condicional (gap de Jensen) tem agora explicação
-mecanicista parcial e sólida via cauda universal α=2 + razão de
-participação da árvore-prefixo. Ideia B da rodada 2 (espectro via
-DFT/"Chrestenson", com correção de viés n/(n-1) apontada pelo Fable)
-ainda não foi implementada — candidata a próximo passo se a linha for
-retomada.
+A última ponta pendente (Ideia B da rodada 2 — espectro via DFT/
+"Chrestenson", reformulada pelo Fable como ANOVA aninhada com correção
+de viés de Bessel) foi implementada e fechada em **H-107**: 2 blocos
+densos de 3¹¹ pontos consecutivos (magnitudes de v 5× diferentes)
+concordam com diferença <1% em toda a faixa t=1-7, e são consistentes
+com a curva de H-101 na profundidade comparável — validação cruzada
+forte entre dois métodos independentes (enumeração exaustiva vs.
+amostragem de pares).
+
+**Estado final desta linha (encerrada, todas as pontas fechadas)**:
+existência do limite de escala G tem evidência forte (agora reforçada
+por 3 métodos independentes); exatidão total (resíduo→0) não fechada
+formalmente, mas toda a evidência disponível (pares até m=29 + ANOVA
+em blocos densos) pende para "converge", não "platô real"; a
+heterogeneidade de forma da distribuição condicional (gap de Jensen)
+tem explicação mecanicista sólida via cauda universal α=2 (H-104) +
+razão de participação da árvore-prefixo (H-105/H-106, correlação
+reforçada a -0,74 após controle de ruído).
 
 ## Coleção de papers (nova, 2026-07-14)
 
