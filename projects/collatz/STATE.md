@@ -2,64 +2,51 @@
 
 Última atualização: 2026-07-16
 
-## 📋 PRÓXIMO PASSO PROGRAMADO — assim que o experimento abaixo terminar
+## Consultas a IA externa sobre G(v) vs. medida de Syracuse (H-099 a H-106) — concluído
 
-O diretor científico consultou uma IA externa (prompt de contexto
-completo enviado, ver `density-3adic-obstruction-synthesis.md` e
-H-091) sobre a linha G(v) vs. medida de Syracuse. Ela sugeriu 5
-abordagens criativas para o resíduo/discrepância ainda não explicados.
-**Instrução explícita**: assim que o experimento
-`experiment_refinement_deep.py` (abaixo) terminar, iniciar o teste de
-cada uma das 5 hipóteses, analisando cada uma com cuidado, consultando
-o Fable em caso de dúvida.
+O diretor científico consultou uma IA externa duas vezes (prompts de
+contexto completo, arquivos em scratchpad) sobre a linha G(v)/μ de
+Tao. **Rodada 1** (5 abordagens): #1 Jensen → **H-099** (identidade
+algébrica exata confirmada; revela gap variando ~46× entre classes
+finas). #3 interferência 2-ádica e #5 termo 1/v → **H-102** (ambas
+descartadas, sem sinal, como previsto). #2 espectro do operador de
+transferência (reformulado como variância estratificada) → **H-103**
+(heterogeneidade de taxa só modesta em mod 9, ~1,8×, bem menor que os
+46× — sugere que a heterogeneidade real está em escalas mais finas).
+#4 (topologia local) foi superada pelo teste de pares casados abaixo.
 
-1. **Análise multifractal (função de partição Z(q))** — a sugestão #1
-   (desigualdade de Jensen) já foi testada e documentada em H-099:
-   confirmada como identidade algébrica exata (não resolve o mistério,
-   só o reformula), mas revelou que o termo de Jensen varia ~46× entre
-   classes residuais — heterogeneidade real na forma da distribuição
-   condicional de G(v). **Falta ainda**: calcular Z(q)=Σ G(v)^q por
-   classe e ver se o expoente de escala τ(q) é côncavo (assinatura de
-   multifractalidade real, não erro).
-2. **Espectro do operador de transferência (Ruelle-Perron-Frobenius)**:
-   μ é a autofunção principal (autovalor 1) da recursão que já
-   derivamos; extrair autofunções secundárias ψ₂,ψ₃,... via PCA/SVD
-   nos resíduos, procurar gap espectral.
-3. **Interferência 2-ádica cruzada**: regredir o resíduo (dispersão não
-   explicada por μ_M) contra v mod 2^K, para K∈{2,3,4,5}, cruzado com
-   as classes mod 3^M (ANOVA bidimensional).
-4. **Covariável de topologia local**: distância até a primeira
-   ramificação (ou grau da subárvore de profundidade 3) como
-   co-variável na regressão — exige instrumentar o código da árvore
-   para capturar essa métrica (não salva hoje).
-5. **Termo residual 1/v acumulado**: testar se o resíduo escala como
-   A+B/v por faixa de magnitude absoluta — já há evidência CONTRA isso
-   (convergência pareada mostrou desvio caindo geometricamente até
-   0,0044 dex em headroom=1.000.000, sem sinal de piso 1/v nessa escala
-   de v), mas testar formalmente mesmo assim, com cuidado, antes de
-   descartar.
+**Teste decisivo paralelo** (proposto pelo Fable, não uma das 5): pares
+casados (v1,v2=v1+t·3^m) compartilhando dígitos 3-ádicos até
+profundidade m, sem precisar computar μ → **H-100/H-101**, alcançou
+m=29 (muito além do M=18 anterior). Resíduo continua caindo até m=29
+sem platô confirmado — inclui autocorreção registrada (um "platô"
+aparente com 500 pares se desfez ao aumentar para ~2300 pares/ponto).
 
-Para cada uma: implementar o teste, analisar o resultado com rigor
-(nada de aceitar números sem verificar — já tivemos vários bugs de
-amostragem nesta linha), documentar como H-1XX, e consultar o Fable
-sempre que a interpretação for duvidosa ou a matemática precisar de
-validação externa antes de agir.
+**Rodada 2** (5 abordagens novas, pedidas com os resultados da rodada
+1): a IA sugeriu "expoente de Kesten local por classe" para explicar o
+gap de 46×. O Fable **refutou essa formulação** (teoria errada para
+pesos determinísticos por prefixo) e calculou uma previsão exata
+própria: expoente de cauda **universal α*=2** (raiz de uma equação
+espectral, estável em 4 níveis de refinamento) — confirmado
+empiricamente via estimador de Hill (**H-104**: ~1,97 no topo da
+cauda global; 1,74-2,17 por classe, sem variar como a IA previa). A
+quantidade local correta do Fable (razão de participação PR(r) da
+árvore-prefixo) **explica ~34% da variância do gap de Jensen**
+(**H-105**, correlação -0,58) — e um bootstrap de verificação (alerta
+do próprio Fable sobre ruído de cauda pesada) mostrou que a
+heterogeneidade é majoritariamente sinal real (razão sinal/ruído ~2,0)
+e que a correlação **fortalece para -0,74** ao filtrar classes ruidosas
+(**H-106**) — confirma PR(r) como preditor mecanístico genuíno.
 
-## ▶ Experimento retomado (estava pausado)
-
-`experiments/E-090-syracuse-measure-vs-density/experiment_refinement_deep.py`
-foi pausado via SIGSTOP em 2026-07-16 ~08:20 e **retomado via SIGCONT
-em 2026-07-16 ~11:00** (a pedido do diretor científico, "continue o
-processo que estava parado"). Objetivo: teste de refinamento para ver
-se o resid_std de H-091 (proporcionalidade G(v)~μ) estabiliza num
-platô conforme M cresce até 18, com amostra grande (30.000 v's) e
-headroom até 1.000.000× (paralelizado em 16 cores). Estimativa total
-~7h de execução; ao retomar, já tinha completado o Teste B (headroom
-200/2000/20000/100000) e estava no último estágio (headroom=1.000.000)
-antes do Teste A começar. PIDs: processo bash pai 3905370 + python
-principal 3905372 + 16 workers 3905823-3905838. Se travar de novo,
-mesmo procedimento (`ps aux | grep experiment_refinement_deep`,
-`kill -CONT <pid>`) — só funciona enquanto a máquina não reiniciar.
+**Estado final desta linha**: existência do limite de escala G tem
+evidência forte; exatidão total (resíduo→0) não fechada, mas evidência
+pende para "converge", não "platô real"; a heterogeneidade de forma da
+distribuição condicional (gap de Jensen) tem agora explicação
+mecanicista parcial e sólida via cauda universal α=2 + razão de
+participação da árvore-prefixo. Ideia B da rodada 2 (espectro via
+DFT/"Chrestenson", com correção de viés n/(n-1) apontada pelo Fable)
+ainda não foi implementada — candidata a próximo passo se a linha for
+retomada.
 
 ## Coleção de papers (nova, 2026-07-14)
 
