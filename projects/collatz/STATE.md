@@ -2,6 +2,60 @@
 
 Última atualização: 2026-07-17
 
+## ⭐⭐ Duas frentes de pesquisa genuína (não mais rodadas de consulta): teste direto da WCC (H-114) e por que a extensão de Tao não cruza a barreira (H-115)
+
+Depois de fechar o pacote de publicação (H-109-H-113) e esgotar 7
+rodadas de "importar maquinaria de outra área" (todas refutadas —
+Kesten, Furstenberg, Martin, conspiração 2-ádica, Bourgain-Garaev-
+Konyagin, Breiman sem independência, Bilu/Chambert-Loir, Bourgain-
+Gamburd), o diretor científico pediu duas tentativas sérias e diretas,
+não mais rodadas de consulta:
+
+**H-114 — primeiro teste computacional direto (até onde sabemos) da
+Weak Covering Conjecture de Wirsching (1998)**: lida a definição exata
+do livro (Cap. V), implementado DP de bitset com rotação cíclica,
+validado 100% contra tabela de referência independente. Estendido até
+ℓ=20 (custo cresceu ~3,3×/passo, ℓ=20 sozinho levou ~27min — extensão
+adicional descartada por custo/benefício). Resultado final: j*(ℓ)
+existe e é finito em toda a faixa; a leitura intermediária
+("desaceleração monotônica até ≈0,77, perto do limiar") era artefato
+de um platô isolado em ℓ=16 — os 3 pontos novos (incrementos todos +1,
+sem novos platôs) mostram a inclinação local oscilando em 0,74-0,86 em
+torno do limiar teórico log₄3≈0,7925, não convergindo de forma limpa.
+Leitura qualitativa final (duas estatísticas independentes
+concordantes: ΔAIC≈5 e déficit de platôs p≈0,072): **favorece
+crescimento lento ilimitado de e(ℓ) sobre estabilização pura** —
+compatível com a versão fraca da conjectura (3.9), desfavorece a
+versão forte (3.8). Discriminação fina (log ℓ vs. √ℓ vs. linear muito
+lento) permanece inacessível nesta faixa — precisaria de ℓ~40, que
+exigiria reescrever o algoritmo, não mais Python puro.
+
+**H-115 — por que a extensão bivariada de Tao (2022) não cruza a
+barreira**: lida a Seção 7 inteira da prova de Tao (o mecanismo real).
+Percepção central (formulada nesta sessão, confirmada e aprofundada
+pelo Fable): para um par FIXO de folhas irmãs, a congruência de
+existência pina v numa única classe, e as duas folhas viram funções
+AFINS da MESMA variável livre — dependência determinística PERFEITA em
+qualquer precisão. "Aplicar Tao duas vezes + independência condicional"
+não é só circular, é FALSO como enunciado. Existe uma reformulação
+correta (segundo momento, soma sobre pares de caminhos, sem
+circularidade), mas com alcance limitado: **três regimes de precisão**
+— (1) par fixo: sem decaimento possível; (2) ℓ=O(log D): provável com
+a maquinaria de Tao quase inalterada, lema real ainda não escrito;
+(3) ℓ≍D (onde vive a barreira/WCC): exigiria decaimento de Fourier
+exponencial uniforme, equivalente a um problema aberto reconhecido da
+área (rigidez efetiva ×2×3 de Furstenberg / decaimento de Fourier de
+medidas auto-similares tipo Breuillard-Varjú — ferramenta que não
+existe hoje).
+
+**Recomendação disciplinada resultante**: não perseguir mais o regime 3
+por analogia (a resposta já é conhecida); o trabalho empírico (estender
+H-114 a ℓ≥18-20) continua valendo; o lema do regime 2 fica como opção
+de baixo risco/valor modesto, não perseguida ainda. Pacote final desta
+linha: ρ_eff≲0,06 (H-111) + quadro teórico de três regimes (H-115) +
+dados diretos sobre a WCC (H-114) — estado da arte defensável sem
+resolver um problema aberto reconhecido da área.
+
 ## ⭐ Portão estatístico fechado: disputa Kontorovich-Lagarias vs. Volkov resolvida (H-113)
 
 Sexta rodada de consulta externa recomendou consolidar um pacote de
