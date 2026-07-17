@@ -1,6 +1,37 @@
 # Estado atual — Collatz
 
-Última atualização: 2026-07-16
+Última atualização: 2026-07-17
+
+## ⭐ Achado mais forte da linha G(v)/Syracuse: generalização qx+1 (H-109)
+
+Terceira rodada de consulta à IA externa (após H-099-H-107 abaixo)
+levou ao resultado mais forte desta linha inteira. Pedida uma
+generalização do expoente universal α*=2 (H-104) para mapas qx+1, o
+Fable derivou que a equação de pressão espectral tem **forma fechada
+exata**: ρ(M_q(α))=q^(α−1)/(2^α−1) — não apenas numericamente estável
+como parecia em H-104, mas uma identidade algébrica. A equação
+q^(α−1)=2^α−1 tem raiz trivial α=1 sempre, e uma segunda raiz que é
+**2 exatamente para q=3** (nosso α*=2), mas cai **abaixo de 1 para
+q≥5** — uma virada estrutural completa (densidade positiva vs. zero,
+confirmada por drift log q − 2log2 mudando de sinal). Verificado
+independentemente nesta sessão (bisseção: α₂=0,650919 para q=5,
+0,373501 para q=7, 0,258108 para q=9) e confirmado empiricamente pelo
+Fable em árvores reais de 5x+1/7x+1 (slopes de contagem e Hill sobre a
+cauda do "martingale" batendo com a previsão). Nova previsão
+falisificável para o teste EVT (H-108): ξ=α₁/α₂, dá 0,5 para q=3
+(consistente com H-108: 0,4836/0,5575) e 0,651 para q=5 (não testado
+ainda). **H-109** documenta tudo, com ressalva de calibração: uma
+busca rápida achou território relacionado na literatura (Wirsching,
+Kontorovich-Lagarias, uma "dimensão de Hausdorff≈0,68" para q=5 em
+outro trabalho, próxima mas não idêntica ao nosso 0,651) — checagem de
+novidade rigorosa ainda pendente antes de qualquer alegação de
+publicação. As outras 3 sugestões da mesma rodada (Fronteira de
+Martin, Tauberiano, Furstenberg ×2×3) foram descartadas como direções
+de pesquisa pelo Fable — a de Furstenberg em particular era empréstimo
+de prestígio sem conexão rigorosa real, confirmando ceticismo prévio.
+Também: **H-108** confirmou α=2 por Teoria de Valores Extremos (máximo
+de blocos, imune ao problema de variância na fronteira de divergência)
+— terceira via independente de confirmação (teoria + Hill + EVT).
 
 ## Consultas a IA externa sobre G(v) vs. medida de Syracuse (H-099 a H-107) — concluído
 
