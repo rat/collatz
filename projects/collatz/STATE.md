@@ -2,6 +2,147 @@
 
 Última atualização: 2026-07-17
 
+## ⭐ Portão estatístico fechado: disputa Kontorovich-Lagarias vs. Volkov resolvida (H-113)
+
+Sexta rodada de consulta externa recomendou consolidar um pacote de
+publicação; o Fable identificou que a peça mais citável (resolver
+empiricamente a disputa KL-2009-vs-Volkov sobre o expoente de 5x+1,
+0,650919 vs 0,678) não estava de fato fechada — a citação anterior em
+H-109 ("Hill batendo em 0,650919") não tinha IC e acabou **corrigida
+para não-confirmatória** (erro padrão real do estimador ≈0,45; a
+concordância de 2 casas era coincidência estatística).
+
+Implementado do zero (código nunca antes persistido no repo, só
+descrito em H-109): árvore reversa real de 5x+1 (regra de
+admissibilidade derivada pelo Fable — sem condição de paridade, só
+integralidade mod 5), com duas autocorreções pelo caminho: (1) bug de
+amostragem meu (raízes ultrapassando a janela de medição, corrigido);
+(2) o modo de falha previsto pelo Fable ("com n grande o IC bilateral
+do estimador enviesado exclui os dois candidatos") realmente aconteceu
+e foi resolvido com uma reescrita do DFS (rastreio de path-max, uma
+única passada dá todos os buffers) + extrapolação de Richardson
+(Aitken Δ²).
+
+**Resultado final**: expoente extrapolado **0,639, IC95%=[0,633,
+0,645]** — exclui Volkov (0,678) com folga ampla (~10+ erros-padrão); o
+resíduo até Kontorovich-Lagarias (0,650919) tem assinatura de
+pré-assintótica de janela fixa (mensurada, não um viés remanescente
+não-corrigido). Ver **H-113** e `experiments/E-097-qx1-empirical-gate/`.
+
+Nesta mesma rodada, avaliamos e descartamos uma proposta da IA externa
+de atacar a barreira de endogenia via medida de Mahler/equidistribuição
+de raízes (Teoremas de Bilu/Chambert-Loir) — o Fable encontrou um
+contraexemplo direto e decisivo (P(X)=Xⁿ−1 tem raízes perfeitamente
+equidistribuídas mas P(2) mod 3^ℓ fica preso numa órbita minúscula:
+equidistribuição de raízes NÃO implica cobertura de resíduos, como
+princípio geral). A IA externa concordou integralmente e endossou o
+fechamento da linha exploratória — próximo passo é consolidar o pacote
+de publicação (H-109, H-110, H-111, H-112, H-113).
+
+## ⭐ Checagem de novidade concluída: recalibração honesta de H-109/H-110 (H-112)
+
+O diretor científico baixou os 5 papers/livro pendentes desde H-109
+(itens 127-131 do INDEX.md). Análise via 3 forks em paralelo revelou
+dois achados importantes de prior art:
+
+1. **α₂=0,650919 (q=5) NÃO é novo** — Kontorovich-Lagarias (2009) já
+   tinham essa quantidade exata (η5,BP, Teorema 8.10, via grandes
+   desvios), 15+ anos antes. A nota não resolvida "≈0,68" está
+   identificada: é η*5,BP≈0,678, previsão de um modelo estocástico
+   CONCORRENTE (Volkov), citada pelos próprios Kontorovich-Lagarias como
+   disputa em aberto desde 2009 — nossos dados empíricos (enumeração
+   real + Hill estimator batendo em 0,650919) são evidência nova a favor
+   da predição deles.
+2. **A virada estrutural qualitativa em q≥5 também NÃO é nova** —
+   Wirsching (1998, Cap. III) já previu isso heuristicamente
+   ("presumably", nunca provado), mesmo limiar exato. Confirmada
+   independentemente por Gonçalves-Greenfeld-Madrid (2022, Teorema 1.3,
+   prova forward rigorosa que exclui q≥5 para p=2).
+3. **A barreira de endogenia (H-110) tem precedente direto**: Wirsching
+   (1998, Cap. V) prova densidade positiva condicionalmente a uma "Weak
+   Covering Conjecture" estruturalmente idêntica ao nosso "ingrediente
+   que falta" — ainda em aberto no livro, sem evidência de resolução
+   desde então. Pode ser o mesmo problema em aberto há ~30 anos.
+
+**O que sobrevive como contribuição real**: a forma fechada exata
+ρ(M_q(α))=q^(α−1)/(2^α−1) válida para q arbitrário (ninguém unificou
+isso numa fórmula de família antes), a confirmação quantitativa+empírica
+rigorosa, e a calibração ρ_eff≲0,06 de H-111 (sem precedente
+identificado). Ver **H-112** para a análise completa, e H-109/H-110
+atualizados com as respectivas notas de recalibração.
+
+## ⭐ Experimento de controle de 3 braços concluído: ρ_eff≲0,06, nenhum acoplamento positivo detectado (H-111)
+
+Implementado e rodado o experimento de controle desenhado pelo Fable
+(braço 1 sintético i.i.d., braço 2 sintético com acoplamento de
+conteúdo ρ ajustável, braço 3 árvore aritmética real remedida no mesmo
+mult=2000) para calibrar quantitativamente a barreira de endogenia de
+H-110. Percurso completo com dois desvios interessantes:
+
+1. **Autocorreção do Fable durante o checklist**: a criticidade medida
+   (E[G|tipo]) não batia com a previsão original dele (1,00/2,00) —
+   ficava ~2,6× mais alta, consistentemente. Diagnóstico: erro na
+   *derivação teórica* dele (omitiu um fator do teorema de renovação de
+   Markov), não bug de implementação — confirmado por um oráculo de
+   programação dinâmica exata que ele mesmo escreveu, batendo com os
+   dados dentro do erro amostral.
+2. **Braço 1 vs. braço 3**: variâncias residuais quase idênticas em
+   toda a grade m=8-29 — nenhum sinal de acoplamento positivo entre
+   subárvores irmãs da árvore real.
+3. **Rodada de forma do braço 2** confirmou o mecanismo funciona (var
+   cresce com ρ), mas descobriu contaminação por saturação em ρ
+   alto+m profundo (até 91% dos pares) — perseguir essa região seria
+   inviável (mult da ordem de milhões) e desnecessário.
+4. **Slope final + bootstrap de excesso** (n=4000, ρ pequeno, m=11-20):
+   excesso (real−sintético) converge monotonicamente a zero com a
+   profundidade — assinatura de descasamento residual do null (mais
+   persistente em profundidade do que o Fable havia estimado), não
+   sinal aritmético real, e por ter sinal oposto ao acoplamento
+   procurado, só reforça a conclusão.
+
+**Resultado final**: nenhum acoplamento aritmético positivo detectado;
+cota **ρ_eff≲0,06 (IC95%, em m=20)** — o acoplamento aritmético efetivo
+entre folhas da árvore reversa real é, no máximo, ~6% do acoplamento
+máximo simulável. Converte a barreira teórica de H-110 (existência do
+gap) numa medida empírica quantitativa do seu tamanho. Ver **H-111**
+para a documentação completa, incluindo os dois desvios/autocorreções.
+
+## Quinta rodada de consulta externa avaliada: uma direção viva, um experimento a rodar (H-111)
+
+Pedimos à IA externa caminhos reais para atacar a decorrelação entre
+folhas identificada em H-110. Resposta mais tecnicamente densa que as
+anteriores — quatro alegações, avaliadas pelo Fable com o mesmo
+ceticismo das rodadas passadas (esta já é a quarta correção
+substantiva a essa IA nesta linha):
+
+1. **Baker/fase arquimediana**: meio-certo — núcleo real, mas o
+   teorema certo para taxa polinomial é Rhin (1987, mesma cota da
+   literatura de exclusão de m-ciclos, H-057), não Baker genérico; e
+   ataca a metade do problema que já estava resolvida (Choquet-Deny em
+   H-110), não o gargalo.
+2. **Somas exponenciais cruzadas** (decorrelação 3-ádica entre
+   folhas): **a melhor sugestão desta IA em toda a linha** — extensão
+   bivariada correta e verificável da Proposição 1.17 de Tao (2022).
+   Citação Bourgain-Garaev-Konyagin errada de regime, mas a redução em
+   si tem superfície de ataque real. Próxima ação barata: checar na
+   demonstração de Tao (PDF já arquivado, item H-076) se o decaimento
+   de Fourier é uniforme no resíduo inicial.
+3. **Lema de Breiman** (blindagem do expoente α*=2 contra a crise de
+   endogenia): conclusão correta, justificativa errada (Breiman exige
+   independência que não temos) — a blindagem real vem de sanduíche +
+   equação de pressão. Caveat que a IA omitiu: só o expoente é
+   blindado, a CONSTANTE de cauda não.
+4. **Experimento de "falsificação de controle"**: núcleo bom, as duas
+   implementações propostas quebram em direções opostas (acoplar
+   valuações entre irmãos → nenhum piso aparece; acoplar tempos de
+   parada entre gerações → o próprio α se move). Desenho corrigido de
+   3 braços (controle i.i.d. + controle com conteúdo de subárvores
+   acoplado por ρ ajustável + árvore aritmética real) daria uma curva
+   de calibração piso(ρ), convertendo as cotas de H-101/H-107 sobre σ_Y
+   numa medida quantitativa interpretável — barato, vale rodar.
+
+Ver **H-111** para os detalhes completos de cada item.
+
 ## ⭐⭐ A peça teórica mais importante desta linha: barreira de endogenia (H-110)
 
 Quarta rodada de consulta à IA externa: perguntamos se a linha G(v)/μ

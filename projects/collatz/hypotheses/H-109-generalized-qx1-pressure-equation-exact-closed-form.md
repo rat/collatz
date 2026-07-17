@@ -58,10 +58,19 @@ a razão raiz-maior/raiz-menor (2/1=2 para q=3; 1/α₁ para q≥5).
   0,62–0,66, contra previsão teórica 0,650919.
 - **q=7**: slopes ≈ 0,36–0,39, contra previsão teórica 0,373501.
 - **Hill sobre W_v para q=5** (600 raízes, headroom 10⁶): top 2% dá
-  1,547, contra previsão teórica 1,5363 — ótima concordância.
+  1,547, contra previsão teórica 1,5363 — **CORREÇÃO (2026-07-17, ver
+  H-113): esta concordância NÃO é confirmatória.** Com k≈12 pontos de
+  cauda (topo de 2% de 600), o erro padrão do estimador de Hill é
+  ξ_cauda/√k≈0,45 — a concordância de 2 casas decimais foi coincidência
+  estatística, não evidência. Não citar este número como confirmação em
+  nenhum texto futuro. O resultado válido e citável para a disputa
+  Kontorovich-Lagarias vs. Volkov é H-113 (slope de contagem por
+  década, n=300, com correção de Richardson: 0,639±IC[0,633,0,645],
+  exclui Volkov/0,678 com folga).
 - Últimas 1-2 décadas subestimam por artefato de truncamento conhecido
   (mesmo tipo de efeito de headroom já mapeado em H-090/H-091 para
-  q=3).
+  q=3) — quantificado e corrigido em H-113 (efeito de pré-assintótica
+  de janela + viés de truncamento, ambos mensurados).
 
 ## Nova previsão falsificável para o teste EVT em andamento (H-108)
 
@@ -96,36 +105,42 @@ se a linha for retomada com q=5.
   de um problema famoso, não uma conexão precisa. Valor residual: uma
   frase de calibração que H-091 já tinha concluído por conta própria.
 
-## Ressalva de calibração sobre novidade (importante, honesta)
+## Checagem de novidade concluída (2026-07-17, ver H-112)
 
-Uma busca rápida na literatura encontrou território genuinamente
-relacionado: Wirsching (1998, argumento heurístico p-ádico para q≥5),
-modelos estocásticos de Kontorovich–Lagarias para 3x+1 e 5x+1
-(arXiv:0910.1944, menciona uma constante de processo de ramificação
-β₅,BP≈0,01179816 para 5x+1 — quantidade diferente da nossa, mas mesma
-família de modelo), e uma menção a "dimensão de Hausdorff ≈0,68" para
-a densidade de órbitas limitadas em q=5 num outro trabalho — **próxima
-mas não idêntica** ao nosso α₁=0,650919. Isso não invalida o achado,
-mas confirma que essa área já tem trabalho publicado sobre modelos de
-ramificação para qx+1, e uma checagem de novidade rigorosa (ler os
-papers relevantes, não só buscar por palavras-chave) é necessária antes
-de qualquer alegação de originalidade — especialmente para saber se o
-número 0,68 daquele outro trabalho é a mesma quantidade que nosso α₁,
-calculada de outra forma, ou algo genuinamente diferente.
+A checagem rigorosa (leitura completa, não busca por palavras-chave) foi
+feita: Kontorovich-Lagarias (2009), Wirsching (1998), Applegate-Lagarias
+(1995, dois papers) e Gonçalves-Greenfeld-Madrid (2022). Veredito
+recalibrado (detalhes completos em **H-112**):
+
+- **α₂=0,650919 (q=5) NÃO é novo** — Kontorovich-Lagarias já tinham essa
+  quantidade exata (η5,BP, Teorema 8.10, via grandes desvios sobre um
+  branching random walk, não nossa equação de pressão). O "≈0,68" da
+  nota anterior está identificado: é η*5,BP≈0,678, previsão de um modelo
+  ESTOCÁSTICO CONCORRENTE (Volkov), citada pelos próprios
+  Kontorovich-Lagarias como uma disputa em aberto desde 2009. Nossos
+  dados (enumeração real + Hill estimator) são evidência nova a favor
+  da predição deles sobre a de Volkov.
+- **A virada estrutural qualitativa em q≥5 também NÃO é nova** —
+  Wirsching (1998, Cap. III) já previu isso heuristicamente ("presumably
+  impossível para p≥5"), mesmo limiar exato, nunca provado. Confirmada
+  independentemente por Gonçalves-Greenfeld-Madrid (2022, Teorema 1.3
+  exclui q≥5 para p=2, via prova forward rigorosa).
+- **O que sobrevive como novo**: a forma fechada exata
+  ρ(M_q(α))=q^(α−1)/(2^α−1) válida para q arbitrário, com derivação
+  rigorosa (ninguém unificou isso numa fórmula de família antes), e a
+  confirmação quantitativa+empírica que fecha a lacuna entre a
+  heurística de 1998 e um resultado verificável.
 
 ## Avaliação geral
 
-Este é o resultado mais forte de toda a série de consultas externas: não
-apenas confirma α*=2 como caso particular de uma família mais ampla,
-como revela uma identidade exata (não só numericamente estável) e uma
-virada estrutural real (q=3 é qualitativamente diferente de q≥5, com
-densidade positiva vs. densidade zero) — confirmada empiricamente em
-duas frentes (contagem direta e cauda do martingale) para q=5 e q=7.
-Fica pendente, antes de qualquer alegação de publicação: (1) checagem
-de novidade rigorosa contra Wirsching/Kontorovich-Lagarias/Applegate-
-Lagarias; (2) reprodução independente das medições empíricas de árvores
-reais do Fable (feitas nesta sessão só a verificação da equação
-algébrica, não a parte empírica de q=5/7).
+Este resultado confirma α*=2 como caso particular de uma família mais
+ampla e revela uma identidade exata (não só numericamente estável) — mas
+a checagem de novidade mostrou que tanto o valor numérico quanto a
+virada estrutural qualitativa já tinham precedente na literatura
+(Kontorovich-Lagarias 2009, Wirsching 1998). A contribuição real e
+defensável é a forma fechada de família e a confirmação rigorosa+
+empírica — não a descoberta do fenômeno em si. Ver H-112 para a análise
+completa e honesta desta recalibração.
 
 ## Referências
 

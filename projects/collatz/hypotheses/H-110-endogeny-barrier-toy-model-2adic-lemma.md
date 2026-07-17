@@ -163,12 +163,30 @@ Martin), mas com reconhecimento explícito de que, desta vez, havia um
 núcleo de intuição real que só precisava de correção, não descarte
 total.
 
+## Nota de novidade (2026-07-17, ver H-112)
+
+Checagem de literatura encontrou um precedente direto para o
+"ingrediente que falta" (decorrelação/quase-independência aritmética):
+Wirsching (1998), Capítulo V, prova densidade positiva uniforme
+CONDICIONALMENTE a uma "Weak Covering Conjecture for Mixed Power Sums"
+(3.9) — estruturalmente idêntica à nossa barreira (recursão +
+equidistribuição/cobertura aritmética não provada ⟹ densidade
+positiva), sobre o mesmo tipo de objeto (somas mistas de potências de 2
+e 3 mod 3^ℓ). Não há evidência de que essa conjectura tenha sido
+resolvida desde 1998. Leitura honesta: o "ingrediente que falta" pode
+ser o MESMO problema em aberto há quase 30 anos, articulado de forma
+diferente (endogenia/smoothing transforms, mais moderno e conectado a
+Tao 2022, vs. combinatória direta de Wirsching) — não uma barreira
+nunca vista antes. Ver H-112 para a análise completa.
+
 ## Referências
 
 - H-091 (Parte 2) — decomposição (E)+(P)+(S), motivação original.
 - H-104/H-108/H-109 — α*=2 e sua generalização, usados aqui para
   excluir a classe de soluções não-endógenas de índice 1.
 - H-101/H-107 — reinterpretados como cotas superiores sobre σ_Y.
+- H-112 — checagem de novidade completa, incluindo a conjectura de
+  cobertura de Wirsching (1998) como precedente direto.
 - Literatura citada pelo Fable (não lida nesta sessão, candidata a
   checagem futura): Aldous & Bandyopadhyay (2005, endogenia);
   Durrett & Liggett (1983) e Alsmeyer, Biggins & Meiners (2012)
