@@ -4,3 +4,12 @@ __pycache__/
 venv/
 .DS_Store
 .claude/
+
+# artefatos de compilação LaTeX (main.pdf é commitado, o resto não)
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
