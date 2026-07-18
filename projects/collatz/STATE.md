@@ -1,6 +1,68 @@
 # Estado atual — Collatz
 
-Última atualização: 2026-07-17
+Última atualização: 2026-07-18
+
+## Estrutura nova: pasta `papers/` para resultado final (pedido do diretor científico)
+
+Criada `papers/` (distinta de `literature/`, que é sobre papers de
+terceiros): `papers/01-syracuse-qx1-endogenia/OUTLINE.md` tem o esboço
+completo do paper principal (escopo H-109 a H-128, seção por seção,
+apontando para as hipóteses-fonte) para a sessão que começar a redação
+não precisar reminerar este STATE.md do zero. `papers/02-critica-
+cumulativa-literatura/` é um stub apontando para BACKLOG.md item 8
+(não iniciar sem pedido explícito). Também criado `protocols/
+literature-search.md` (codifica o padrão de busca dirigida usado
+repetidamente em H-112, H-116-125, H-124, H-128) e uma seção "Consultando
+o Fable" em `CLAUDE.md` (o erro `subagent_type: "fable"` já foi
+cometido antes — registrado para não repetir).
+
+## Segunda rodada de busca literária: nenhuma via nova, uma correção de terminologia útil (H-128)
+
+Pedido explícito de continuar buscando. Três candidatos novos
+avaliados com o Fable (Fuglede/Salem em Q_p, Li-Sahlsten renovação
+quantitativa, Kolesko-Mentemeier caso crítico de smoothing transform)
+— todos confirmam a mesma barreira, por razões técnicas específicas
+verificadas (não intuição): a medida de Syracuse tem razão de
+contração 3-ádica ÚNICA (1/3) em todo ramo, o que faz degenerar
+qualquer técnica que dependa de múltiplas razões distintas ou de
+sintonia fina de parâmetro. Único ganho real: confirmado que α*=2 é
+"segunda raiz/cauda de Goldie" (m'(2)>0), não "caso crítico" — corrige
+terminologia em H-110, evita reavaliar no futuro uma classe de papers
+irrelevante para q=3. Ver H-128 para os detalhes. Não muda o próximo
+passo.
+
+## Os dois testes pedidos ("será que matam a charada?") foram feitos — não mataram, mas renderam achados honestos (H-128/E-102)
+
+Pedido explícito: testar se Baker-Banaji ou Chang resolvem algo. Não
+resolvem, mas: (1) Fable identificou que a medida de Syracuse É uma
+medida autossimilar 3-ádica genuína, e que a maquinaria de decaimento
+lento de Baker-Banaji trivializa nesse caso por rigidez de Z_3^× (todo
+subgrupo fechado tem índice finito, sem espaço para "Pisot 3-ádico") —
+observação nova, pequena, citável (meio parágrafo, não lema), vira
+addendum em H-127. (2) A conjectura de "one-bit mixing" de Chang foi
+testada computacionalmente em E-102: numa órbita única muito longa
+(16000 bits, ~4761 eventos), o desvio de balanço acompanha ruído
+~1/√i sem viés sistemático — suporte empírico qualificado, não prova.
+Ver H-128 para os detalhes completos. Não muda o próximo passo.
+
+## Busca literária dirigida em ângulos novos, pós-H-127 (H-128)
+
+Pedido explícito: buscar na web algo que ajude a explicar a linha, em
+lugares ainda não visitados. Três achados: (1) **Baker & Banaji (2026,
+arXiv:2602.05593)** — medidas Rajchman sem taxa uniforme de decaimento
+de Fourier são fenômeno genérico na literatura, não patologia; reforça
+a Proposição C de H-127 (adicionado como addendum). (2) **Chang (2026,
+arXiv:2603.25753)** — redução puramente combinatória (sem Fourier) da
+Collatz a um balanço de resíduos mod 32 numa subsequência esparsa:
+sétima articulação independente do mesmo ingrediente faltante. (3)
+Siegel (série "Non-Archimedean Spectral Theory", 2020-2023) — programa
+relacionado mas sem sobreposição direta, só preprints. Nota de cautela
+registrada (não investigada): cluster de alegações de prova completa
+via "Fresh 3-Bit Constraint" (ccchallenge.org) — mesmo padrão já
+refutado várias vezes nesta linha, fora de escopo agora (cabe no paper
+cumulativo de críticas, só quando pedido). Ver **H-128** para a análise
+completa. Não muda o próximo passo: nenhuma investigação nova aberta,
+seguir para escrever o paper.
 
 ## ✅ Os dois lemas pendentes foram executados (H-126, H-127) — nenhum ficou como esperado, mas ambos deram resultado citável
 

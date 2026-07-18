@@ -96,6 +96,24 @@ v) satisfaça a hipótese de independência do modelo — "os dígitos
 subárvores" é uma afirmação aritmética **não provada**, não uma
 propriedade automática.
 
+## Addendum (2026-07-18, busca literária H-128) — precisão de regime, para não reabrir depois
+
+Verificado com o Fable se α*=2 (raiz da equação de pressão m(α):=
+3^(α-1)/(2^α-1)=1, H-109) é o "caso crítico" m'(α)=0 da teoria clássica
+de smoothing transforms (Kolesko-Mentemeier 2015 e afins, "boundary
+case" de Biggins-Kyprianou). **Não é**: m tem duas raízes distintas,
+α=1 (m'(1)≈-0,288<0) e α=2 (m'(2)=ln3-(4/3)ln2≈+0,174>0) — como m é
+log-convexa, duas raízes distintas implicam necessariamente que nenhuma
+das duas é crítica (o caso crítico exigiria as raízes colapsarem numa
+só, o que não acontece em q=3). **O regime correto de α*=2 é o de
+segunda raiz com m'>0 — cauda tipo Goldie/Guivarc'h** (Buraczewski–
+Damek–Mikosch; Alsmeyer–Biggins–Meiners para a classificação geral),
+não o caso crítico/boundary case. Registrado aqui para não reavaliar no
+futuro papers do tipo "caso crítico" (Kolesko-Mentemeier, Aïdékon-Shi
+etc.) — são estruturalmente irrelevantes para q=3, mesmo que pareçam
+tematicamente próximos numa busca literária. Ver H-128 para a busca
+completa que motivou esta checagem.
+
 ## Enunciado da barreira (para uso honesto em qualquer texto futuro)
 
 > Qualquer argumento que use apenas (i) a recursão exata de pesos da

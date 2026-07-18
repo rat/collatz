@@ -2,9 +2,12 @@
 
 ## Agora
 
-- [ ] Levantamento do estado da arte sobre a Conjectura de Collatz (literatura recente,
+- [x] Levantamento do estado da arte sobre a Conjectura de Collatz (literatura recente,
       abordagens já tentadas, o que já foi refutado).
-- [ ] Definir os primeiros ângulos de exploração para `projects/collatz`.
+- [x] Definir os primeiros ângulos de exploração para `projects/collatz`.
+- [ ] Escrever o paper principal da linha G(v)/qx+1/endogenia (H-109 a H-128) —
+      ver `projects/collatz/papers/01-syracuse-qx1-endogenia/OUTLINE.md`. Hipóteses
+      fechadas, redação ainda não iniciada.
 
 ## Depois (só se necessário)
 

@@ -11,14 +11,15 @@ Projeto ativo: [Collatz](projects/collatz/README.md).
 ResearchOS/
 ├── CLAUDE.md                 # instruções para o Claude Code
 ├── ROADMAP.md                # prioridades gerais do laboratório
-├── protocols/                # processos leves (hipótese, experimento, checkpoint)
+├── protocols/                # processos leves (hipótese, experimento, busca literária, checkpoint)
 ├── scripts/                  # utilitários (ex: checkpoint.sh)
 └── projects/
     └── collatz/               # primeira linha de pesquisa
         ├── STATE.md           # memória: estado atual, hipóteses, próximos passos
         ├── hypotheses/
         ├── experiments/
-        ├── literature/
+        ├── literature/        # notas sobre papers de TERCEIROS
+        ├── papers/            # papers PRÓPRIOS (resultado final a escrever/publicar)
         └── logs/
 ```
 

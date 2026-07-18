@@ -16,11 +16,25 @@ projetos que ainda não existem.
 
 - Nova hipótese → siga `protocols/new-hypothesis.md`.
 - Novo experimento (script, cálculo, teste numérico) → siga `protocols/new-experiment.md`.
+- Busca literária dirigida (ingrediente técnico específico, não a coleção ampla do
+  Google Scholar) → siga `protocols/literature-search.md`.
+- Paper próprio (resultado final, distinto de notas sobre papers de terceiros) →
+  vive em `projects/collatz/papers/<NN-titulo>/`, com um `OUTLINE.md` mínimo. Ver
+  `projects/collatz/papers/README.md`.
 - Registre decisões e descobertas relevantes em `STATE.md` conforme forem acontecendo,
   não só no final.
 - Não crie agentes, personas ou protocolos novos "por precaução". Só formalize algo
   quando a necessidade aparecer de verdade (ex: se retrabalho ou perda de contexto virar
   um problema recorrente).
+
+## Consultando o Fable (IA externa consultora de matemática)
+
+Quando surgir dúvida de matemática/prova que exija julgamento externo, consulte o
+Fable via `Agent` com `subagent_type: "general-purpose"` e `model: "fable"`
+(NÃO `subagent_type: "fable"` — isso não existe e erra). Dê contexto completo e
+autocontido no prompt (o Fable não vê o histórico da sessão). Reserve o Fable para
+julgamento matemático de verdade; busca/leitura de papers é mais barata feita
+diretamente (WebSearch/WebFetch).
 
 ## Fim de sessão — checkpoint
 

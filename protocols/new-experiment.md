@@ -40,6 +40,21 @@ que assume paridade da entrada, deixe isso explícito (nome, docstring, ou um
 `assert n % 2 == 1`) — ou, melhor, use sempre uma versão genérica (mapa padrão,
 sem assumir paridade) ao testar algo com números arbitrários.
 
+## Armadilha conhecida — validar a recursão inteira, não só o caso base
+
+Uma recursão/DP nova precisa ser validada em pelo menos um ponto que
+EXERCITE a recursão de verdade, não só o caso base hard-coded. Em
+`experiments/E-100-syracuse-collision-mass-k-ell/`, a única checagem
+inicial de `experiment_k_ell.py` era "K_1=5/3 exato" — que é o caso
+base já embutido no código, não um teste da recursão em si. Só depois
+de escrever `validate_against_direct_mc.py` (comparando a distribuição
+bin-a-bin da recursão contra amostragem Monte Carlo direta da
+definição primária, em ℓ=3 e ℓ=4) é que a maquinaria foi de fato
+validada. Ao escrever uma recursão/DP nova, planeje desde o início um
+teste independente (Monte Carlo direto, força bruta, ou outra
+derivação) num nível pequeno o bastante para ser viável mas grande o
+bastante para passar pelo primeiro passo recursivo real.
+
 ## Armadilha conhecida — nunca reconstruir dados de memória
 
 Ao caracterizar o resultado de um experimento (ex: contar resíduos de uma lista

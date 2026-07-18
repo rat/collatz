@@ -144,6 +144,61 @@ ficar abaixo dessa barra.
    moram as configurações — coerente com a lógica da dicotomia, mas
    deve ser dito no paper).
 
+## Addendum (2026-07-18, busca literária dirigida + consulta ao Fable — H-128)
+
+**Baker & Banaji (2026), "Self-similar and self-conformal measures with
+slow Fourier decay" (arXiv:2602.05593)**: provam a existência de
+medidas autossimilares/autoconformais Rajchman SEM taxa uniforme de
+decaimento de Fourier, para qualquer taxa-alvo arbitrariamente lenta.
+Consulta ao Fable para avaliar se essa maquinaria (ou o critério de
+Brémont subjacente) se transfere para a medida de Syracyse — resultado
+mais rico e mais honesto do que a primeira leitura sugeria:
+
+1. **Correção de enquadramento**: a medida de Syracuse É literalmente
+   uma medida autossimilar em Z_3 — desenrolando a recursão de
+   renovação, X = Σ_{k≥1} 3^{k-1}·2^{-S_k} (S_k = a_1+...+a_k), ponto
+   fixo do IFS afim contável φ_a(x)=2^{-a}(1+3x) em Z_3, todos os mapas
+   com razão ultramétrica |3·2^{-a}|_3=1/3. "Não é um IFS" (leitura
+   inicial) era impreciso; é IFS 3-ádico contável, com overlaps
+   massivos.
+2. **Por que a ponte não ajuda mesmo assim**: o mecanismo de
+   Teo. 1.11/Cor. 1.12 (fase estacionária arquimediana, f''≠0) daria no
+   máximo Rajchman qualitativo — estritamente mais fraco que o
+   decaimento super-polinomial já garantido pela Prop. 1.17 de Tao. E o
+   critério de Pisot de Brémont, no análogo 3-ádico, **trivializa por
+   rigidez estrutural**: todo subgrupo fechado infinito de Z_3^× tem
+   índice finito (subgrupos fechados de (Z_3,+) são 3^kZ_3) — não há
+   espaço para uma "órbita multiplicativa fina" tipo Pisot. Como 2 é
+   raiz primitiva mod 3^n para todo n, as fases unitárias 2^{-a} se
+   espalham ao máximo — exatamente o input aritmético que a prova de
+   Tao já explora. Nenhuma classificação tipo Brémont 3-ádica publicada
+   foi encontrada; a literatura de Fourier p-ádico existente (Salem
+   sets em corpos locais, Fuglede em Q_p) é de outra natureza.
+3. **Status da Prop. C, com ressalva honesta**: Baker-Banaji é citável
+   como "taxa uniforme de decaimento não é de graça, mesmo para medidas
+   estruturadas" (legitima a moldura: qualquer prova de β=1/WCC precisa
+   do input aritmético específico, não vem de suavidade genérica). MAS
+   não deve ser sobre-interpretado como suporte ao cenário: o fenômeno
+   deles vem de sintonia fina de um parâmetro (tipo Liouville — denso
+   na família, excepcional em medida; típico dá decaimento polinomial,
+   Solomyak/Varjú-Yu); a medida de Syracuse é um objeto aritmético
+   RÍGIDO sem parâmetro sintonizável, e a rigidez de Z_3^× do item 2
+   mostra que o mecanismo habilitador (aproximação diofantina fina em
+   R) simplesmente não existe do lado 3-ádico — o que corta CONTRA o
+   cenário da Prop. C tanto quanto a favor. Citar com a disanalogia
+   explícita, não como evidência.
+4. **Subproduto que vale registrar** (não um lema, meia página no
+   paper): a reformulação autossimilar de X acima + a observação de
+   rigidez (subgrupos fechados de Z_3^× de índice finito ⟹ não existe
+   obstrução tipo Pisot 3-ádica ⟹ por que a maquinaria arquimediana de
+   decaimento lento não transporta) posiciona a Prop. C corretamente no
+   mapa da literatura e antecipa a objeção óbvia de um referee de
+   análise harmônica.
+
+Ver H-128 para a busca completa (inclui também Chang 2026, sétima
+articulação independente do mesmo ingrediente faltante, testada
+computacionalmente em E-102).
+
 ## Veredito final e conexão com o resto da linha
 
 O ramo espectralmente difuso — o que a Proposição C mostra ser
