@@ -34,8 +34,13 @@ arXiv:2111.06170), conferido contra o PDF já arquivado (item 128); e
 **Brémont (2021)** — volume/páginas confirmados (Annales Henri
 Lebesgue 4, 973-1004) e o Teorema 2.5 citado pelo Fable verificado
 palavra por palavra contra o texto completo (arXiv:1910.03463).
-Zeladoria do paper (referências externas) quase fechada — só falta o
-**Halász 1971 original** (só temos um adendo de 1972 ao paper certo).
+**Fechamento (mesmo dia)**: diretor científico buscou o Halász 1971
+original em HathiTrust/Internet Archive/JSTOR/acervos húngaros — não
+encontrado em digitalização aberta. Zeladoria bibliográfica de H-127
+**encerrada**: 8 de 9 referências verificadas contra o texto primário,
+1 (Halász 1971) documentada como inacessível por ora (não esquecida —
+`main.tex` tem nota explícita). Resta só a outra zeladoria, separada:
+conferir equações do Wirsching (2003) contra a versão final DCDS.
 
 ## Segunda rodada de busca literária: nenhuma via nova, uma correção de terminologia útil (H-128)
 

@@ -265,3 +265,20 @@ a métodos ℓ¹ tipo Littlewood-Offord".
     de citar com segurança. Este episódio é o exemplo concreto de por
     que a verificação valia a pena: um erro real (ano) só apareceu ao
     tentar confirmar.
+- **2026-07-18 (fechamento)**: diretor científico buscou o original de
+  1971 em HathiTrust, Internet Archive, JSTOR e acervos institucionais
+  húngaros — não encontrado em digitalização aberta. Fica como
+  **irresolvível por ora**: a referência bibliográfica em si (título,
+  ano, volume, páginas) segue independentemente corroborada por várias
+  fontes secundárias (catálogos, citações), mas o texto primário nunca
+  foi lido por nós. `main.tex` atualizado para refletir isso com
+  honestidade (nota explícita, não apagada). Nesta mesma passada,
+  identificadas e corrigidas mais duas referências sem precisar de
+  novo download: **Gonçalves-Greenfeld-Madrid (2022)** tinha título
+  inventado/errado na bibliografia do paper (corrigido contra o PDF já
+  arquivado, item 128 do INDEX); **Brémont (2021)** teve volume/páginas
+  confirmados e o Teorema 2.5 citado pelo Fable verificado
+  integralmente contra o texto completo (arXiv:1910.03463) — bate
+  exatamente. Zeladoria bibliográfica de H-127 **encerrada**: 8 de 9
+  referências verificadas, 1 (Halász 1971) documentada como
+  inacessível, não como esquecida.
