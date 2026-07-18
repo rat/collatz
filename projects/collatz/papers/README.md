@@ -15,8 +15,13 @@ quando a redação avançar, os arquivos de rascunho em si.
   generalização qx+1 da medida de Syracuse de Tao, barreira de
   endogenia, e a caracterização precisa (por 6+ vias independentes) do
   ingrediente que falta para fechar densidade positiva/β=1/WCC. Escopo:
-  H-109 a H-128. **Em andamento** — hipóteses fechadas, escrita ainda
-  não iniciada.
+  H-109 a H-128. **Rascunho completo em LaTeX** (`main.tex`/`main.pdf`,
+  inglês — padrão para submissão em periódicos) **e uma versão em
+  português** (`main-pt-br.tex`/`main-pt-br.pdf`, tradução completa
+  para o diretor científico conferir o conteúdo). **Sempre que um dos
+  dois for editado por pedido do diretor científico, editar o outro
+  também** — são a mesma fonte de verdade em dois idiomas, não podem
+  divergir.
 - **`02-critica-cumulativa-literatura/`** — paper cumulativo de
   críticas aos papers da coleção do Google Scholar (alegações de prova
   refutadas, erros encontrados). Ver `BACKLOG.md` item 8. **Não
