@@ -48,16 +48,31 @@ e sua Caracterização Convergente por Sete Vias Independentes}
 Estudamos uma generalização natural para mapas $qx+1$ da variável
 aleatória de Syracuse de Tao \cite{Tao2022}, o objeto probabilístico
 que sustenta o resultado parcial incondicional mais forte já obtido em
-direção à conjectura de Collatz. Derivamos uma equação de pressão em
-forma fechada $\rho(M_q(\alpha)) = q^{\alpha-1}/(2^\alpha-1)$ que
-governa o expoente de cauda do funcional populacional multiplicativo
-natural na árvore reversa do mapa $qx+1$ acelerado, e mostramos que sua
-raiz não trivial sofre uma transição estrutural em $q=5$: ela vale
-exatamente $\alpha^\ast=2$ em $q=3$, coincidindo com o expoente de
-cauda universal estabelecido empiricamente em trabalho anterior sobre
-o mapa de Collatz clássico, mas cai estritamente abaixo de $1$ para
-todo $q\ge 5$, sinalizando uma mudança qualitativa de densidade natural
-positiva para densidade nula da árvore reversa. Em seguida
+direção à conjectura de Collatz. Provamos uma identidade exata, $\rho_{\mathrm{ann}}(\alpha) =
+q^{\alpha-1}/(2^\alpha-1)$, para a pressão \emph{anelada} do funcional
+populacional multiplicativo natural na árvore reversa do mapa $qx+1$
+acelerado --- a taxa de crescimento exponencial, em média sobre todas
+as raízes-residuais numa dada profundidade, da função de partição
+associada --- via uma bijeção exata de contagem de fibra, corrigindo
+um argumento de autômato finito para a mesma identidade que mostramos
+não estar bem posto. A raiz não trivial de $\rho_{\mathrm{ann}}(\alpha)=1$
+sofre uma transição estrutural em $q=5$: vale exatamente $\alpha^\ast=2$
+em $q=3$ e cai estritamente abaixo de $1$ para todo $q\ge5$,
+sinalizando uma mudança qualitativa de densidade natural positiva para
+densidade nula da árvore reversa. Mostramos, além disso, que as duas
+raízes dessa equação sempre ficam em lados opostos de uma transição de
+congelamento quenched/anelado no sentido de polímeros dirigidos em
+ambiente aleatório: a raiz menor está sempre não-congelada, então a
+identidade anelada se transfere rigorosamente para a função de
+contagem quenched real; a raiz maior está sempre congelada, então ela
+não estabelece por si só o índice de cauda do fator de escala do
+martingale que governa o termo de correção sub-exponencial, fato que
+verificamos independentemente por cálculo exato. Em $q=3$ essa raiz
+maior, $\alpha^\ast=2$, ainda coincide com o expoente de cauda
+estabelecido empiricamente (independentemente do argumento de pressão)
+por três métodos separados em trabalho anterior sobre o mapa de
+Collatz clássico; para $q\ge5$ a alegação análoga fica como uma
+conjectura explícita e fracamente sustentada. Em seguida
 identificamos e caracterizamos formalmente uma \emph{barreira de
 endogenia}, no sentido técnico de Aldous--Bandyopadhyay
 \cite{AldousBandyopadhyay2005}, que obstrui qualquer prova apoiada
@@ -262,49 +277,183 @@ abaixo, e que é o análogo direto em árvore reversa de
 \section{A equação de pressão em forma fechada}
 \label{sec:pressure}
 
-\subsection{O operador de pressão e sua forma fechada}
+\subsection{O operador de pressão: uma identidade anelada exata}
 
-Seja $M_q(\alpha)$ o operador de transferência (infinito, mas
-finito por linha/coluna no sentido relevante) sobre classes de resíduo
-mod $q$ cujas entradas são as potências $\alpha$-ésimas dos pesos de
-ramo em \eqref{eq:G-recursion}; concretamente, a entrada do
-resíduo-pai $r$ para o resíduo-filho $r'$ coleta o peso
-$(q\cdot 2^{-a})^\alpha$ para cada $a$ admissível que leva $r$ a $r'$.
-Como a admissibilidade depende do pai só através de $u\bmod q$ e cicla
-por uma única classe de resíduo de $a$ módulo $d=\OpOrd_q(2)$, o peso
-total de saída de um resíduo-pai fixo é
+Uma primeira tentativa natural de organizar a recursão
+\eqref{eq:G-recursion} numa operador de transferência é acompanhar só
+a classe de resíduo do pai módulo $q$. Essa tentativa falha, e vale a
+pena registrar exatamente por quê, já que uma versão anterior deste
+paper afirmava algo assim que não resiste a escrutínio.
+
+\begin{example}[O autômato ingênuo mod $q$ não está bem definido]
+\label{ex:naive-fails}
+Tome $q=3$ (logo $d=\OpOrd_3(2)=2$) e $a=2$, admissível para todo pai
+$u\equiv1\pmod3$. Dois pais $u=1$ e $u=7$, ambos $\equiv1\pmod3$, dão
+$w_2(1)=(4-1)/3=1$ e $w_2(7)=(28-1)/3=9$, com $w_2(1)\equiv1\pmod3$
+mas $w_2(7)\equiv0\pmod3$: a classe de resíduo do filho depende de
+$u\bmod9$, não só de $u\bmod3$. Em geral, escrevendo $u=u_0+qk$ com
+$u_0=u\bmod q$, obtém-se $w_a\bmod q = [(2^au_0-1)/q\bmod q] +
+[2^ak\bmod q]$: dependência explícita de $k=\lfloor u/q\rfloor\bmod q$.
+Nenhum módulo finito $q^k$ conserta isso: o mesmo cálculo mostra que
+$w_a\bmod q^k$ depende de $u\bmod q^{k+1}$, um dígito além do que o
+conhecimento de $u$ mod $q^k$ fornece. Não existe, portanto, um
+operador de transferência de estado finito bem definido rastreando uma
+única geração da recursão em classes de resíduo de qualquer módulo
+finito fixo.
+\end{example}
+
+O que \emph{está} bem definido, e é o substituto correto do quadro
+ingênuo do Exemplo~\ref{ex:naive-fails}, é uma bijeção entre uma fibra
+admissível inteira num nível da torre de dígitos e o anel de resíduos
+completo um nível abaixo.
+
+\begin{lemma}[Bijeção de fibra]\label{lem:fibre-bijection}
+Fixe $a\ge1$ e $j\ge1$. O mapa $v\mapsto w_a(v):=(2^av-1)/q$ é uma
+bijeção de $\{v\bmod q^j : 2^av\equiv1\!\!\pmod q\}$ (uma progressão
+aritmética de $q^{j-1}$ resíduos mod $q^j$) sobre
+$\mathbb{Z}/q^{j-1}\mathbb{Z}$.
+\end{lemma}
+\begin{proof}
+Bem definido: $v\bmod q^j$ determina $2^av-1\bmod q^j$, logo
+$w_a(v)\bmod q^{j-1}$. Injetivo: se $v\not\equiv v'\pmod{q^j}$ dentro
+da progressão, escreva $v-v'=qt$ com $t\not\equiv0\pmod{q^{j-1}}$;
+então $w_a(v)-w_a(v')=2^at\not\equiv0\pmod{q^{j-1}}$ já que $2$ é
+unidade mod $q^{j-1}$. A sobrejetividade segue por ser uma injeção
+entre dois conjuntos finitos de mesmo tamanho $q^{j-1}$.
+\end{proof}
+
+Iterando o Lema~\ref{lem:fibre-bijection} ao longo de um caminho de
+profundidade $k$ $(a_1,\dots,a_k)$ recupera-se, em forma truncada,
+exatamente a identidade autossimilar \eqref{eq:X-selfsimilar} da
+\S\ref{sec:context} abaixo: toda sequência
+$(a_1,\dots,a_k)\in(\mathbb{Z}_{\ge1})^k$, sem restrição de
+admissibilidade sobre os $a_i$ individuais, é admissível para
+\emph{exatamente uma} raiz-residual $u_0\bmod q^k$, a saber
+$u_0\equiv\sum_{i=1}^k q^{i-1}2^{-S_i}\pmod{q^k}$,
+$S_i:=a_1+\cdots+a_i$. Defina a função de partição em profundidade $k$
+enraizada em $u_0$,
 \[
-  \sum_{k=0}^{\infty} \bigl(q\cdot 2^{-(a_0+kd)}\bigr)^{\alpha}
-  = \frac{q^{\alpha}\, 2^{-\alpha a_0}}{1-2^{-\alpha d}},
+  Z_k(\alpha;u_0) := \sum_{\substack{(a_1,\dots,a_k)\text{ admissível}\\ \text{a partir de } u_0}} \ \prod_{i=1}^k \bigl(q\cdot2^{-a_i}\bigr)^\alpha .
 \]
-a priori dependente de $a_0=a_0(u\bmod q)$. O fato estrutural-chave,
-verificado independentemente por bisseção exata para $q\in\{3,5,7,9\}$
-abaixo e derivado da estrutura bijetiva do mapa de admissibilidade
-(para cada $a$ fixo, o mapa $u\bmod q^k\mapsto w_a\bmod q^k$ é
-injetivo em seu domínio de definição, consequência de $2$ ser
-invertível módulo $q^k$), é que as somas de \emph{coluna} de
-$M_q(\alpha)$ --- não as somas de linha --- são constantes entre
-classes de resíduo, de modo que o autovalor de Perron (raio espectral)
-de $M_q(\alpha)$ admite a forma fechada
-\begin{equation}\label{eq:pressure-closed-form}
-  \rho\bigl(M_q(\alpha)\bigr) = \frac{q^{\alpha-1}}{2^\alpha-1}.
-\end{equation}
 
-\begin{theorem}[Equação de pressão]\label{thm:pressure}
-O expoente de cauda $\alpha$ do martingale populacional $G$ na árvore
-reversa de $T_q$ satisfaz $\rho(M_q(\alpha))=1$, equivalentemente
+\begin{theorem}[Identidade de pressão anelada exata]\label{thm:pressure}
+Para todo $q\ge3$ ímpar, todo $k\ge1$, e todo $\alpha>0$,
+\begin{equation}\label{eq:annealed-identity}
+  \sum_{u_0\in\mathbb{Z}/q^k\mathbb{Z}} Z_k(\alpha;u_0) \;=\; \Bigl(\frac{q^\alpha}{2^\alpha-1}\Bigr)^{k},
+\end{equation}
+logo a \emph{média} de $Z_k(\alpha;\cdot)$ sobre todas as $q^k$
+raízes-residuais vale exatamente $\bigl(q^{\alpha-1}/(2^\alpha-1)\bigr)^k$;
+a pressão anelada associada é
+\begin{equation}\label{eq:pressure-closed-form}
+  \rho_{\mathrm{ann}}(\alpha) = \frac{q^{\alpha-1}}{2^\alpha-1},
+\end{equation}
+dando a equação de pressão em $\rho_{\mathrm{ann}}=1$:
 \begin{equation}\label{eq:pressure-eq}
-  q^{\alpha-1} = 2^{\alpha}-1 .
+  q^{\alpha-1} = 2^{\alpha}-1.
 \end{equation}
 \end{theorem}
+\begin{proof}
+Pelo Lema~\ref{lem:fibre-bijection} (iterado), as sequências
+admissíveis de profundidade $k$ enraizadas nos $q^k$ resíduos distintos
+particionam o conjunto completo e irrestrito $(\mathbb{Z}_{\ge1})^k$,
+sem sobreposição nem omissão. Somar $\prod_i(q2^{-a_i})^\alpha$ sobre
+\emph{todas} as sequências em $(\mathbb{Z}_{\ge1})^k$ portanto se
+fatora como $\bigl(\sum_{a=1}^\infty (q2^{-a})^\alpha\bigr)^k =
+\bigl(q^\alpha/(2^\alpha-1)\bigr)^k$, que é exatamente o lado esquerdo
+de \eqref{eq:annealed-identity} somado sobre a partição.
+\end{proof}
+
+Verificamos \eqref{eq:annealed-identity} independentemente por
+enumeração direta para $q\in\{3,5,7,9\}$, $k\in\{1,2,3\}$, e
+$\alpha\in\{0{,}26,0{,}5,1,1{,}37,2\}$, batendo a menos do erro de
+truncamento da cauda (rapidamente convergente) da soma sobre $a$.
 
 \begin{remark}[Conservação de massa como corolário]
-A equação~\eqref{eq:pressure-closed-form} vale exatamente $1$ em
-$\alpha=1$ para todo $q$, já que $q^0=1=2-1$. Logo $\alpha=1$ é sempre
-raiz de \eqref{eq:pressure-eq}, consistente com a conservação de massa
-do processo de ramificação (em $\alpha=1$, $M_q(1)$ é um operador
-genuinamente estocástico sobre contagens populacionais).
+O lado direito de \eqref{eq:annealed-identity} vale exatamente $1^k=1$
+em $\alpha=1$ para todo $q$ (conservação de massa do processo de
+ramificação). Logo $\alpha=1$ é sempre raiz de \eqref{eq:pressure-eq}.
 \end{remark}
+
+\subsection{Quenched vs.\ anelado: uma transição de congelamento}
+\label{sec:freezing}
+
+O Teorema~\ref{thm:pressure} é uma afirmação sobre a \emph{média} de
+$Z_k(\alpha;\cdot)$ sobre raízes-residuais; não é, por si só, uma
+afirmação sobre $Z_k(\alpha;u_0)^{1/k}$ para uma raiz $u_0$ única e
+fixa --- que é o que de fato governa o martingale populacional $G(v)$
+para um inteiro específico $v$. Se as duas coincidem é exatamente a
+questão quenched-versus-anelado familiar de polímeros dirigidos em
+ambiente aleatório e do modelo de energia aleatória de Derrida,
+governada por um critério de congelamento padrão. Escrevendo
+$P(\alpha):=\log\rho_{\mathrm{ann}}(\alpha)$ para a log-pressão anelada
+e $s(\alpha):=P(\alpha)-\alpha P'(\alpha)$ para a entropia associada, as
+taxas quenched e anelada coincidem onde $s(\alpha)>0$ (uma fase
+\emph{não-congelada}) e divergem onde $s(\alpha)<0$ (uma fase
+\emph{congelada}, na qual a taxa quenched é dominada por caminhos raros
+de baixa entropia, não pelo grosso do ensemble).
+
+\begin{proposition}[A raiz maior está sempre congelada]\label{prop:always-frozen}
+Para todo $q\ge3$ ímpar, escrevendo $\alpha_-<\alpha_+$ para as duas
+raízes positivas de $\rho_{\mathrm{ann}}(\alpha)=1$: $s(\alpha_-)>0$
+(não-congelada) e $s(\alpha_+)<0$ (congelada), incondicionalmente.
+\end{proposition}
+\begin{proof}
+Em qualquer raiz, $P(\alpha)=0$, logo $s(\alpha)=-\alpha P'(\alpha)$.
+Como $\rho_{\mathrm{ann}}=e^P$ é log-convexa (\S\ref{sec:endogeny-addendum}),
+$P$ em si é estritamente convexa; com exatamente dois zeros
+$\alpha_-<\alpha_+$, necessariamente $P'(\alpha_-)<0<P'(\alpha_+)$ (a
+função precisa estar decrescendo no primeiro zero e crescendo no
+segundo, em lados opostos de seu mínimo único). Logo
+$s(\alpha_-)=-\alpha_-P'(\alpha_-)>0$ e
+$s(\alpha_+)=-\alpha_+P'(\alpha_+)<0$.
+\end{proof}
+
+Para $q\ge5$, onde $\alpha_+=1$ sempre, isso tem forma fechada exata:
+em $\alpha=1$, $2^\alpha-1=1$ logo $\log(2^\alpha-1)=0$, e
+$s(1)=2\log2-\log q=\log(4/q)$, negativo exatamente quando $q>4$.
+Então o congelamento da raiz trivial para todo $q\ge5$ ímpar não é
+coincidência numérica, é a mesma condição de sinal da observação sobre
+o drift médio abaixo ($\log q-2\log2>0$): o drift que faz órbitas
+expandirem em média é, a menos de um sinal, exatamente o déficit de
+entropia que congela $\alpha_+=1$.
+
+Calculamos o limiar de congelamento $\alpha_c(q)$ (a raiz de
+$s(\alpha)=0$, que pela Proposição~\ref{prop:always-frozen} sempre fica
+estritamente entre $\alpha_-(q)$ e $\alpha_+(q)$) diretamente:
+\begin{center}
+\begin{tabular}{c|c}
+$q$ & $\alpha_c(q)$ \\ \hline
+$3$ & $1{,}355$ \\
+$5$ & $0{,}794$ \\
+$7$ & $0{,}564$ \\
+$9$ & $0{,}437$
+\end{tabular}
+\end{center}
+confirmando $\alpha_-(q)<\alpha_c(q)<\alpha_+(q)$ em todos os casos,
+como a Proposição~\ref{prop:always-frozen} exige. Também verificamos
+numericamente, com uma recursão memoizada independente calculando
+$Z_k(\alpha;u_0)$ exatamente numa raiz fixa (não a média), que o
+congelamento não é só um cálculo formal de entropia, mas uma divergência
+genuína entre crescimento quenched e anelado: em $q=3$, $u_0=1$ --- um
+ciclo genuíno de período um da dinâmica de resíduos, já que $w_2(1)=1$
+exatamente --- $Z_k(2;1)^{1/k}$ mostra oscilação com razão de média
+geométrica bem abaixo da taxa anelada $\rho_{\mathrm{ann}}(2)=1$; em
+$q=5$, $Z_k(1;u_0)^{1/k}$ em várias raízes $u_0\in\{1,2,3,4\}$
+igualmente falha em acompanhar $\rho_{\mathrm{ann}}(1)=1$. Relatamos
+isso como confirmação qualitativa de congelamento (quenched
+estritamente abaixo do anelado), não como um ajuste quantitativo a
+nenhuma assintótica específica de fase congelada, que não derivamos.
+
+A consequência, pela Proposição~\ref{prop:always-frozen}, é
+incondicional: o Teorema~\ref{thm:pressure}, embora exato, se
+transfere rigorosamente só para a metade de \emph{expoente de
+contagem} do Teorema~\ref{thm:transition} abaixo (a raiz menor
+$\alpha_-(q)$, sempre não-congelada); ele nunca estabelece, para
+nenhum $q$, o índice de cauda do fator de escala do martingale $W_u$
+também alegado ali, já que a raiz maior $\alpha_+(q)$ que governaria
+essa alegação está sempre congelada. Tratamos isso honestamente como a
+Conjectura~\ref{conj:tail-index} abaixo, não como mais uma consequência
+do Teorema~\ref{thm:pressure}.
 
 \subsection{A transição estrutural em $q=5$}
 
@@ -337,18 +486,55 @@ $\{\alpha_-,\alpha_+\}=\{1,2\}$ em $q=3$ mas
 $\{\alpha_-,\alpha_+\}=\{\alpha^\ast(q),1\}$ para $q\ge5$: a raiz
 trivial passa a ser a \emph{maior} das duas.
 
-\begin{theorem}[Transição estrutural]\label{thm:transition}
+\begin{theorem}[Transição estrutural: densidade]\label{thm:transition}
 Para $q=3$ a árvore reversa de $T_q$ tem densidade natural positiva
 (função de contagem $N_u(x)\sim x$); para todo $q\ge 5$ ímpar ela tem
-densidade natural nula, com $N_u(x)\sim W_u\cdot x^{\alpha_-(q)}$,
-$\alpha_-(q)<1$, onde $W_u$ é um fator de escala aleatório de
-índice-de-cauda $(\alpha_+/\alpha_-)$.
+densidade natural nula, com $N_u(x)\sim W_u\cdot x^{\alpha_-(q)}$ para
+algum fator de escala aleatório $W_u$, $\alpha_-(q)<1$.
 \end{theorem}
 
-O drift médio $\log q - 2\log 2$ muda de sinal exatamente nesse limiar:
+Pela Proposição~\ref{prop:always-frozen}, $\alpha_-(q)$ é sempre
+não-congelada, então a identidade anelada do Teorema~\ref{thm:pressure}
+se transfere para a função de contagem quenched real, nesta raiz,
+consistente com a confirmação empírica direta abaixo e com a medição
+estatisticamente calibrada da \S\ref{sec:kl}.
+
+\begin{conjecture}[Índice de cauda do fator de escala]\label{conj:tail-index}
+$W_u$ tem cauda regularmente variável de índice
+$\alpha_+(q)/\alpha_-(q)$, onde $\alpha_+(q)$ é a raiz maior de
+\eqref{eq:pressure-eq} ($\alpha_+(3)=2$; $\alpha_+(q)=1$ para todo
+$q\ge5$).
+\end{conjecture}
+
+Enunciamos isso como conjectura, não como parte do
+Teorema~\ref{thm:transition}, precisamente porque a
+Proposição~\ref{prop:always-frozen} mostra que $\alpha_+(q)$ está
+\emph{sempre} congelada: a identidade de pressão anelada não a
+estabelece para nenhum $q$, e ela precisa se apoiar em evidência
+externa ao Teorema~\ref{thm:pressure}. Em $q=3$ essa evidência é real e
+tripla: o estimador de Hill sobre amostras de árvores reais e a teoria
+de valores extremos sobre máximos de blocos (ambos de etapas anteriores
+deste projeto) dão $\alpha\approx2$ independentemente do argumento de
+pressão, e a confirmação do expoente de contagem abaixo soma uma
+terceira linha relacionada de apoio. Para $q\ge5$ a evidência
+correspondente é marcadamente mais fraca: uma medição inicial via
+estimador de Hill da cauda de $W_u$ para $q=5$ (600 raízes,
+concordância a duas casas decimais com o previsto $1{,}536\ldots$) foi
+depois mostrada, ao longo deste projeto, ser estatisticamente
+não-confirmatória nesse tamanho de amostra (o erro-padrão real do
+estimador é $\approx0{,}45$, uma ordem de magnitude maior que a
+concordância alegada). Não temos conhecimento de nenhum outro teste
+empírico direto da Conjectura~\ref{conj:tail-index} para $q\ge5$, e a
+listamos como problema em aberto explícito na \S\ref{sec:conclusion}.
+
+O drift médio $\log q - 2\log 2$ muda de sinal exatamente no limiar
+$q=5$ que separa os dois casos do Teorema~\ref{thm:transition}:
 negativo para $q=3$ (órbitas contraem em média), positivo para $q\ge5$
-(órbitas expandem em média), consistente com o
-Teorema~\ref{thm:transition}.
+(órbitas expandem em média). Isso não é coincidência ao lado do cálculo
+de congelamento da \S\ref{sec:freezing}: em $\alpha=1$ a entropia é
+exatamente $s(1)=\log(4/q)$, então o mesmo sinal que decide contração
+versus expansão de órbitas também decide se a raiz trivial $\alpha=1$
+está congelada.
 
 \subsection{Confirmação empírica em árvores reversas reais}
 
@@ -374,11 +560,20 @@ heuristicamente em 1998, e Kontorovich--Lagarias já haviam calculado a
 mesma quantidade (denotada $\eta_{5,BP}$ no Teorema~8.10 deles) via
 métodos de grandes desvios para um passeio aleatório ramificado, uma
 rota diferente da nossa derivação via equação de pressão, mas
-numericamente idêntica a ela. O que sobrevive como novo é a própria
-equação em forma fechada~\eqref{eq:pressure-eq}, unificando a família
-para $q$ arbitrário numa única identidade algébrica, junto com a
-derivação rigorosa e a confirmação numérica independente relatadas
-aqui.
+numericamente idêntica a ela. Dado a \S\ref{sec:freezing}, essa
+diferença de rota pode importar mais do que uma mera derivação
+alternativa: um argumento genuíno de grandes desvios para um passeio
+aleatório ramificado é, no sentido apropriado, uma afirmação quenched,
+enquanto nossa identidade de pressão (Teorema~\ref{thm:pressure}) é
+anelada. Que as duas concordem numericamente em $\alpha_-(5)$ é
+consistente com $\alpha_-(5)$ ser não-congelada
+(Proposição~\ref{prop:always-frozen}), onde quenched e anelado devem
+coincidir; isso não certifica por si só que nossa rota anelada
+concordaria com uma rota quenched numa raiz congelada. O que sobrevive
+como novo aqui é a própria equação em forma fechada~\eqref{eq:pressure-eq},
+unificando a família para $q$ arbitrário numa única identidade
+algébrica, junto com sua derivação anelada rigorosa e confirmação
+numérica independente.
 \end{remark}
 
 \section{A barreira de endogenia}
@@ -541,7 +736,16 @@ unicidade do caso crítico de \cite{KoleskoMentemeier2015}
 \emph{pressupõe} exatamente a independência entre cópias de subárvore
 que é a lacuna aritmética do Teorema~\ref{thm:barrier} --- então, mesmo
 deixando de lado o descompasso de regime, ele não poderia ter
-fornecido uma ferramenta nova para fechar essa lacuna.
+fornecido uma ferramenta nova para fechar essa lacuna. Registramos,
+ligando isso à \S\ref{sec:freezing}, que "segunda raiz com $m'>0$" é
+exatamente a condição de congelamento da
+Proposição~\ref{prop:always-frozen}: o nome do regime
+Goldie/Guivar'ch classifica corretamente a raiz algébrica
+$\alpha^\ast=2$ de $m(\alpha)=1$, mas por si só não diz nada sobre se
+essa raiz governa a cauda \emph{quenched} da nossa recursão aritmética
+específica --- que é exatamente a pergunta que a
+Proposição~\ref{prop:always-frozen} e a Conjectura~\ref{conj:tail-index}
+endereçam diretamente.
 
 \section{Calibração empírica do acoplamento residual}
 \label{sec:calibration}
@@ -1521,12 +1725,36 @@ forma mais limpa que conseguimos dar a eles.
 \item \textbf{A conjectura de balanço de resíduos de Chang}
   \cite{Chang2026} (\S\ref{sec:context}), suportada empiricamente aqui
   numa única órbita muito longa, não provada.
+\item \textbf{O índice de cauda do fator de escala do martingale}
+  (Conjectura~\ref{conj:tail-index}), para todo $q\ge5$: diferente do
+  caso $q=3$, isso não tem nem derivação rigorosa (a raiz relevante
+  está sempre congelada, Proposição~\ref{prop:always-frozen}) nem apoio
+  empírico sólido (a única medição existente, para $q=5$, já foi
+  mostrada ser estatisticamente não-confirmatória). Esta é,
+  honestamente, a alegação com apoio mais fraco do paper, e a
+  sinalizamos como tal em vez de deixá-la herdar credibilidade do caso
+  $q=3$ só por compartilhar a fórmula.
 \end{enumerate}
 
-Qualquer progresso em qualquer um de (A1)--(A6) muito provavelmente se
+Qualquer progresso em qualquer um de (A1)--(A7) muito provavelmente se
 transferiria, dadas as identidades estruturais estabelecidas neste
 paper, para progresso em vários dos outros simultaneamente. Vemos esta
 convergência como o achado central do paper.
+
+\section*{Disponibilidade de código e dados}
+
+Todo resultado computacional relatado neste paper --- os cálculos de
+pressão e congelamento da \S\ref{sec:pressure}, o experimento de
+controle do acoplamento residual da \S\ref{sec:calibration}, o portão
+Kontorovich--Lagarias vs.\ Volkov da \S\ref{sec:kl}, o teste da Weak
+Covering Conjecture da \S\ref{sec:wcc}, o teste da Conjectura~3 de
+Wirsching (2003) e os cálculos de $L^2$/Jensen das
+\S\ref{sec:triangulation}--\S\ref{sec:lemmas}, e o teste de balanço de
+resíduos de Chang da \S\ref{sec:context} --- tem um script próprio,
+independentemente executável, organizado por seção, em
+\url{https://github.com/faculdade/collatz-endogeny}. Cada subpasta
+daquele repositório tem seu próprio README dizendo o que verifica,
+como rodar, e o resultado esperado.
 
 \section*{Agradecimentos}
 

@@ -47,15 +47,30 @@ and Its Convergent Characterization Across Seven Independent Routes}
 We study a natural $qx+1$ generalization of Tao's Syracuse random
 variable \cite{Tao2022}, the probabilistic object underlying the
 strongest unconditional partial result toward the Collatz conjecture.
-We derive a closed-form pressure equation $\rho(M_q(\alpha)) =
-q^{\alpha-1}/(2^\alpha-1)$ governing the tail exponent of the natural
-multiplicative population functional on the reverse tree of the
-accelerated $qx+1$ map, and show that its nontrivial root undergoes a
-structural transition at $q=5$: it equals exactly $\alpha^\ast=2$ at
-$q=3$, matching the universal tail exponent established empirically in
-earlier work on the classical Collatz map, but falls strictly below
-$1$ for every $q\ge 5$, signalling a qualitative change from positive
-to zero natural density of the reverse tree. We then identify and
+We prove an exact identity, $\rho_{\mathrm{ann}}(\alpha) =
+q^{\alpha-1}/(2^\alpha-1)$, for the \emph{annealed} pressure of the
+natural multiplicative population functional on the reverse tree of
+the accelerated $qx+1$ map --- the exponential growth rate, averaged
+over all root residues at a given depth, of the associated partition
+function --- via an exact fibre-counting bijection, correcting a
+finite-automaton argument for the same identity that we show is not
+well posed. The nontrivial root of $\rho_{\mathrm{ann}}(\alpha)=1$
+undergoes a structural transition at $q=5$: it equals exactly
+$\alpha^\ast=2$ at $q=3$ and falls strictly below $1$ for every
+$q\ge5$, signalling a qualitative change from positive to zero natural
+density of the reverse tree. We show, moreover, that the two roots of
+this equation always sit on opposite sides of a quenched/annealed
+freezing transition in the sense of directed polymers in a random
+environment: the smaller root is always unfrozen, so the annealed
+identity transfers rigorously to the real, quenched counting function;
+the larger root is always frozen, so it does \emph{not} by itself
+establish the tail index of the martingale scale factor governing the
+sub-exponential correction term, a fact we verify independently by
+exact computation. At $q=3$ this larger root, $\alpha^\ast=2$, still
+matches the tail exponent established empirically (independently of
+the pressure argument) by three separate methods in earlier work on
+the classical Collatz map; for $q\ge5$ the analogous claim is left as
+an explicit, weakly-supported conjecture. We then identify and
 formally characterize an \emph{endogeny barrier}, in the technical
 sense of Aldous--Bandyopadhyay \cite{AldousBandyopadhyay2005},
 obstructing any proof that relies only on the linear recursive
@@ -257,48 +272,182 @@ below, and which is the direct reverse-tree analogue of
 \section{The closed-form pressure equation}
 \label{sec:pressure}
 
-\subsection{The pressure operator and its closed form}
+\subsection{The pressure operator: an exact annealed identity}
 
-Let $M_q(\alpha)$ denote the (infinite, but row/column-finite in the
-relevant sense) transfer operator on residue classes mod $q$ whose
-matrix entries are the $\alpha$-th powers of the branch weights in
-\eqref{eq:G-recursion}; concretely, the entry from parent-residue $r$
-to child-residue $r'$ collects the weight $(q\cdot 2^{-a})^\alpha$ for
-each admissible $a$ mapping $r$ to $r'$. Because admissibility depends
-on the parent only through $u\bmod q$ and cycles through a single
-residue class of $a$ modulo $d=\ord_q(2)$, the total outgoing weight
-from a fixed parent residue is
+A first, natural attempt to organize the recursion \eqref{eq:G-recursion}
+into a transfer operator is to track the parent's residue class modulo
+$q$ alone. This attempt fails, and it is worth recording exactly why,
+since an earlier draft of this paper asserted a version of it that does
+not survive scrutiny.
+
+\begin{example}[The naive mod-$q$ automaton is not well defined]
+\label{ex:naive-fails}
+Take $q=3$ (so $d=\ord_3(2)=2$) and $a=2$, admissible for every parent
+$u\equiv1\pmod3$. Two parents $u=1$ and $u=7$, both $\equiv1\pmod3$,
+give $w_2(1)=(4-1)/3=1$ and $w_2(7)=(28-1)/3=9$, with $w_2(1)\equiv
+1\pmod3$ but $w_2(7)\equiv0\pmod3$: the child's residue class depends
+on $u\bmod9$, not merely on $u\bmod3$. In general, writing
+$u=u_0+qk$ with $u_0=u\bmod q$, one finds $w_a\bmod q =
+[(2^au_0-1)/q\bmod q] + [2^ak\bmod q]$: an explicit dependence on
+$k=\lfloor u/q\rfloor\bmod q$. No finite modulus $q^k$ repairs this:
+the same computation shows $w_a\bmod q^k$ depends on $u\bmod q^{k+1}$,
+one digit further than what mod-$q^k$ knowledge of $u$ supplies. There
+is therefore no well-defined finite-state transfer operator tracking a
+single generation of the recursion on residue classes of any fixed
+finite modulus.
+\end{example}
+
+What \emph{is} well defined, and is the correct replacement for the
+naive picture of Example~\ref{ex:naive-fails}, is a bijection between
+an entire admissible fibre at one level of the digit tower and the
+full residue ring one level below.
+
+\begin{lemma}[Fibre bijection]\label{lem:fibre-bijection}
+Fix $a\ge1$ and $j\ge1$. The map $v\mapsto w_a(v):=(2^av-1)/q$ is a
+bijection from $\{v\bmod q^j : 2^av\equiv1\!\!\pmod q\}$ (an arithmetic
+progression of $q^{j-1}$ residues mod $q^j$) onto
+$\mathbb{Z}/q^{j-1}\mathbb{Z}$.
+\end{lemma}
+\begin{proof}
+Well defined: $v\bmod q^j$ determines $2^av-1\bmod q^j$, hence
+$w_a(v)\bmod q^{j-1}$. Injective: if $v\not\equiv v'\pmod{q^j}$ within
+the progression, write $v-v'=qt$ with $t\not\equiv0\pmod{q^{j-1}}$;
+then $w_a(v)-w_a(v')=2^at\not\equiv0\pmod{q^{j-1}}$ since $2$ is a unit
+mod $q^{j-1}$. Surjectivity follows since the map is an injection
+between two finite sets of equal size $q^{j-1}$.
+\end{proof}
+
+Iterating Lemma~\ref{lem:fibre-bijection} along a depth-$k$ path
+$(a_1,\dots,a_k)$ recovers, in truncated form, exactly the self-similar
+identity \eqref{eq:X-selfsimilar} of \S\ref{sec:context} below: every
+sequence $(a_1,\dots,a_k)\in(\mathbb{Z}_{\ge1})^k$, with no
+admissibility restriction on the individual $a_i$, is admissible for
+\emph{exactly one} root residue $u_0\bmod q^k$, namely
+$u_0\equiv\sum_{i=1}^k q^{i-1}2^{-S_i}\pmod{q^k}$, $S_i:=a_1+\cdots+a_i$.
+Define the depth-$k$ partition function rooted at $u_0$,
 \[
-  \sum_{k=0}^{\infty} \bigl(q\cdot 2^{-(a_0+kd)}\bigr)^{\alpha}
-  = \frac{q^{\alpha}\, 2^{-\alpha a_0}}{1-2^{-\alpha d}},
+  Z_k(\alpha;u_0) := \sum_{\substack{(a_1,\dots,a_k)\text{ admissible}\\ \text{from } u_0}} \ \prod_{i=1}^k \bigl(q\cdot2^{-a_i}\bigr)^\alpha .
 \]
-a priori dependent on $a_0=a_0(u\bmod q)$. The key structural fact,
-verified independently by exact bisection for $q\in\{3,5,7,9\}$ below
-and derived from the bijective structure of the admissibility map (for
-each fixed $a$, the map $u\bmod q^k\mapsto w_a\bmod q^k$ is injective
-on its domain of definition, a consequence of $2$ being invertible
-modulo $q^k$), is that the column sums of $M_q(\alpha)$ --- not the row
-sums --- are constant across residue classes, so that the Perron
-eigenvalue (spectral radius) of $M_q(\alpha)$ admits the closed form
-\begin{equation}\label{eq:pressure-closed-form}
-  \rho\bigl(M_q(\alpha)\bigr) = \frac{q^{\alpha-1}}{2^\alpha-1}.
-\end{equation}
 
-\begin{theorem}[Pressure equation]\label{thm:pressure}
-The tail exponent $\alpha$ of the population martingale $G$ on the
-reverse tree of $T_q$ satisfies $\rho(M_q(\alpha))=1$, equivalently
+\begin{theorem}[Exact annealed pressure identity]\label{thm:pressure}
+For every odd $q\ge3$, every $k\ge1$, and every $\alpha>0$,
+\begin{equation}\label{eq:annealed-identity}
+  \sum_{u_0\in\mathbb{Z}/q^k\mathbb{Z}} Z_k(\alpha;u_0) \;=\; \Bigl(\frac{q^\alpha}{2^\alpha-1}\Bigr)^{k},
+\end{equation}
+so the \emph{average} of $Z_k(\alpha;\cdot)$ over all $q^k$ root
+residues equals exactly $\bigl(q^{\alpha-1}/(2^\alpha-1)\bigr)^k$; the
+associated annealed pressure is
+\begin{equation}\label{eq:pressure-closed-form}
+  \rho_{\mathrm{ann}}(\alpha) = \frac{q^{\alpha-1}}{2^\alpha-1},
+\end{equation}
+giving the pressure equation at $\rho_{\mathrm{ann}}=1$:
 \begin{equation}\label{eq:pressure-eq}
-  q^{\alpha-1} = 2^{\alpha}-1 .
+  q^{\alpha-1} = 2^{\alpha}-1.
 \end{equation}
 \end{theorem}
+\begin{proof}
+By Lemma~\ref{lem:fibre-bijection} (iterated), the admissible depth-$k$
+sequences rooted at the $q^k$ distinct residues $u_0$ partition the
+full, unconstrained set $(\mathbb{Z}_{\ge1})^k$ with no overlap and no
+omission. Summing $\prod_i(q2^{-a_i})^\alpha$ over \emph{all} sequences
+in $(\mathbb{Z}_{\ge1})^k$ therefore factors as
+$\bigl(\sum_{a=1}^\infty (q2^{-a})^\alpha\bigr)^k =
+\bigl(q^\alpha/(2^\alpha-1)\bigr)^k$, which is exactly the left-hand
+side of \eqref{eq:annealed-identity} summed over the partition.
+\end{proof}
+
+We verified \eqref{eq:annealed-identity} independently by direct
+enumeration for $q\in\{3,5,7,9\}$, $k\in\{1,2,3\}$, and
+$\alpha\in\{0.26,0.5,1,1.37,2\}$, matching to the truncation error of
+the (rapidly convergent) tail of the sum over $a$.
 
 \begin{remark}[Mass conservation as a corollary]
-Equation~\eqref{eq:pressure-closed-form} evaluates to exactly $1$ at
-$\alpha=1$ for every $q$, since $q^0=1=2-1$. Thus $\alpha=1$ is always
-a root of \eqref{eq:pressure-eq}, consistently with mass conservation
-of the branching process (at $\alpha=1$, $M_q(1)$ is a genuine
-stochastic-type operator on population counts).
+The right-hand side of \eqref{eq:annealed-identity} evaluates to
+exactly $1^k=1$ at $\alpha=1$ for every $q$ (mass conservation of the
+branching process). Thus $\alpha=1$ is always a root of
+\eqref{eq:pressure-eq}.
 \end{remark}
+
+\subsection{Quenched vs.\ annealed: a freezing transition}
+\label{sec:freezing}
+
+Theorem~\ref{thm:pressure} is a statement about the \emph{average} of
+$Z_k(\alpha;\cdot)$ over root residues; it is not, by itself, a
+statement about $Z_k(\alpha;u_0)^{1/k}$ for a single, fixed root
+$u_0$ --- which is what actually governs the population martingale
+$G(v)$ for one specific integer $v$. Whether the two coincide is
+exactly the quenched-versus-annealed question familiar from directed
+polymers in a random environment and from Derrida's random energy
+model, governed by a standard freezing criterion. Writing
+$P(\alpha):=\log\rho_{\mathrm{ann}}(\alpha)$ for the annealed
+log-pressure and $s(\alpha):=P(\alpha)-\alpha P'(\alpha)$ for the
+associated entropy, quenched and annealed rates coincide where
+$s(\alpha)>0$ (an \emph{unfrozen} phase) and diverge where
+$s(\alpha)<0$ (a \emph{frozen} phase, in which the quenched rate is
+dominated by rare, low-entropy paths rather than by the bulk of the
+ensemble).
+
+\begin{proposition}[The larger root is always frozen]\label{prop:always-frozen}
+For every odd $q\ge3$, writing $\alpha_-<\alpha_+$ for the two positive
+roots of $\rho_{\mathrm{ann}}(\alpha)=1$: $s(\alpha_-)>0$ (unfrozen) and
+$s(\alpha_+)<0$ (frozen), unconditionally.
+\end{proposition}
+\begin{proof}
+At any root, $P(\alpha)=0$, so $s(\alpha)=-\alpha P'(\alpha)$. Since
+$\rho_{\mathrm{ann}}=e^P$ is log-convex (\S\ref{sec:endogeny-addendum}),
+$P$ itself is strictly convex; with exactly two zeros
+$\alpha_-<\alpha_+$, necessarily $P'(\alpha_-)<0<P'(\alpha_+)$
+(the function must be decreasing through the first zero and increasing
+through the second, on either side of its unique minimum). Hence
+$s(\alpha_-)=-\alpha_-P'(\alpha_-)>0$ and
+$s(\alpha_+)=-\alpha_+P'(\alpha_+)<0$.
+\end{proof}
+
+For $q\ge5$, where $\alpha_+=1$ always, this has an exact closed form:
+at $\alpha=1$, $2^\alpha-1=1$ so $\log(2^\alpha-1)=0$, and
+$s(1)=2\log2-\log q=\log(4/q)$, which is negative exactly when $q>4$.
+So the freezing of the trivial root for every odd $q\ge5$ is not a
+numerical coincidence but the same sign condition as the mean-drift
+remark above ($\log q-2\log2>0$): the drift that makes orbits expand on
+average is, up to a minus sign, exactly the entropy deficit that
+freezes $\alpha_+=1$.
+
+We computed the freezing threshold $\alpha_c(q)$ (the root of
+$s(\alpha)=0$, which by Proposition~\ref{prop:always-frozen} always
+lies strictly between $\alpha_-(q)$ and $\alpha_+(q)$) directly:
+\begin{center}
+\begin{tabular}{c|c}
+$q$ & $\alpha_c(q)$ \\ \hline
+$3$ & $1.355$ \\
+$5$ & $0.794$ \\
+$7$ & $0.564$ \\
+$9$ & $0.437$
+\end{tabular}
+\end{center}
+confirming $\alpha_-(q)<\alpha_c(q)<\alpha_+(q)$ in every case, as
+Proposition~\ref{prop:always-frozen} requires. We also verified
+numerically, with an independent memoised recursion computing
+$Z_k(\alpha;u_0)$ exactly at a fixed (not averaged) root, that the
+freezing is not merely a formal entropy computation but a genuine
+divergence of quenched from annealed growth: at $q=3$, $u_0=1$ --- a
+genuine period-one cycle of the residue dynamics, since $w_2(1)=1$
+exactly --- $Z_k(2;1)^{1/k}$ shows an oscillation with geometric-mean
+ratio well below the annealed rate $\rho_{\mathrm{ann}}(2)=1$; at
+$q=5$, $Z_k(1;u_0)^{1/k}$ at several roots $u_0\in\{1,2,3,4\}$ likewise
+fails to track $\rho_{\mathrm{ann}}(1)=1$. We report these as
+qualitative confirmation of freezing (quenched strictly below annealed)
+rather than as a quantitative match to any specific frozen-phase
+asymptotic, which we have not derived.
+
+The consequence, by Proposition~\ref{prop:always-frozen}, is
+unconditional: Theorem~\ref{thm:pressure}, though exact, rigorously
+transfers only to the \emph{counting-exponent} half of
+Theorem~\ref{thm:transition} below (the smaller root $\alpha_-(q)$,
+always unfrozen); it never establishes, for any $q$, the tail index of
+the martingale scale factor $W_u$ also claimed there, since the larger
+root $\alpha_+(q)$ governing that claim is always frozen. We treat this
+honestly as Conjecture~\ref{conj:tail-index} below, rather than as a
+further consequence of Theorem~\ref{thm:pressure}.
 
 \subsection{The structural transition at $q=5$}
 
@@ -330,18 +479,54 @@ the two roots, we have $\{\alpha_-,\alpha_+\}=\{1,2\}$ at $q=3$ but
 $\{\alpha_-,\alpha_+\}=\{\alpha^\ast(q),1\}$ for $q\ge5$: the trivial
 root becomes the \emph{larger} of the two.
 
-\begin{theorem}[Structural transition]\label{thm:transition}
+\begin{theorem}[Structural transition: density]\label{thm:transition}
 For $q=3$ the reverse tree of $T_q$ has positive natural density
 (counting function $N_u(x)\sim x$); for every odd $q\ge 5$ it has
-natural density zero, with $N_u(x)\sim W_u\cdot x^{\alpha_-(q)}$,
-$\alpha_-(q)<1$, where $W_u$ is a random tail-index-$(\alpha_+/\alpha_-)$
-scale factor.
+natural density zero, with $N_u(x)\sim W_u\cdot x^{\alpha_-(q)}$ for
+some random scale factor $W_u$, $\alpha_-(q)<1$.
 \end{theorem}
 
-The mean drift $\log q - 2\log 2$ changes sign exactly at this
-threshold: negative for $q=3$ (orbits contract on average), positive
-for $q\ge 5$ (orbits expand on average), consistent with
-Theorem~\ref{thm:transition}.
+By Proposition~\ref{prop:always-frozen}, $\alpha_-(q)$ is always
+unfrozen, so the annealed identity of Theorem~\ref{thm:pressure}
+transfers to the real, quenched counting function at this root,
+consistently with the direct empirical confirmation below and with the
+statistically calibrated measurement of \S\ref{sec:kl}.
+
+\begin{conjecture}[Tail index of the scale factor]\label{conj:tail-index}
+$W_u$ has a regularly varying tail of index $\alpha_+(q)/\alpha_-(q)$,
+where $\alpha_+(q)$ is the larger root of \eqref{eq:pressure-eq}
+($\alpha_+(3)=2$; $\alpha_+(q)=1$ for every $q\ge5$).
+\end{conjecture}
+
+We state this as a conjecture, not as part of
+Theorem~\ref{thm:transition}, precisely because
+Proposition~\ref{prop:always-frozen} shows $\alpha_+(q)$ is
+\emph{always} frozen: the annealed pressure identity does not
+establish it for any $q$, and it must rest on evidence external to
+Theorem~\ref{thm:pressure}. At $q=3$ that evidence is real and
+threefold: the Hill estimator on real-tree samples and extreme-value
+theory on block maxima (both from earlier stages of this project) give
+$\alpha\approx2$ independently of the pressure argument, and the
+counting-exponent confirmation below adds a third, related line of
+support. For $q\ge5$ the corresponding evidence is markedly weaker: an
+early Hill-estimator measurement of the tail of $W_u$ for $q=5$ (600
+roots, agreement to two decimal places with the predicted
+$1.536\ldots$) was later shown, over the course of this project, to be
+statistically non-confirmatory at that sample size (the estimator's
+true standard error is $\approx0.45$, an order of magnitude larger
+than the agreement being claimed). We are not aware of any other
+direct empirical test of Conjecture~\ref{conj:tail-index} for $q\ge5$,
+and list it as an explicit open problem in \S\ref{sec:conclusion}.
+
+The mean drift $\log q - 2\log 2$ changes sign exactly at the
+threshold $q=5$ separating the two cases of
+Theorem~\ref{thm:transition}: negative for $q=3$ (orbits contract on
+average), positive for $q\ge 5$ (orbits expand on average). This is not
+a coincidence alongside the freezing computation of
+\S\ref{sec:freezing}: at $\alpha=1$ the entropy is exactly
+$s(1)=\log(4/q)$, so the same sign that decides contraction versus
+expansion of orbits also decides whether the trivial root $\alpha=1$
+is frozen.
 
 \subsection{Empirical confirmation on real reverse trees}
 
@@ -365,11 +550,20 @@ already conjectured the transition heuristically in 1998, and
 Kontorovich--Lagarias had already computed the same quantity
 (denoted $\eta_{5,BP}$ in their Theorem~8.10) via large-deviations
 methods for a branching random walk, a route different from, but
-numerically identical to, our pressure-equation derivation. What
-survives as new is the closed-form equation~\eqref{eq:pressure-eq}
+numerically identical to, our pressure-equation derivation. Given
+\S\ref{sec:freezing}, this difference in route may matter more than a
+mere alternative derivation: a genuine large-deviations argument for a
+branching random walk is, in the appropriate sense, a quenched
+statement, whereas our pressure identity (Theorem~\ref{thm:pressure})
+is annealed. That the two agree numerically at $\alpha_-(5)$ is
+consistent with $\alpha_-(5)$ being unfrozen
+(Proposition~\ref{prop:always-frozen}), where quenched and annealed
+are expected to coincide; it does not by itself certify that our
+annealed route would agree with a quenched one at a frozen root. What
+survives as new here is the closed-form equation~\eqref{eq:pressure-eq}
 itself, unifying the family for arbitrary $q$ in a single algebraic
-identity, together with the rigorous derivation and independent
-numerical confirmation reported here.
+identity, together with its rigorous annealed derivation and
+independent numerical confirmation.
 \end{remark}
 
 \section{The endogeny barrier}
@@ -530,6 +724,14 @@ theorem of \cite{KoleskoMentemeier2015} \emph{presupposes} exactly the
 independence between subtree copies that is the arithmetic gap of
 Theorem~\ref{thm:barrier} --- so even setting aside the regime
 mismatch, it could not have supplied a new tool for closing that gap.
+We note, tying this to \S\ref{sec:freezing}, that ``second root with
+$m'>0$'' is exactly the freezing condition of
+Proposition~\ref{prop:always-frozen}: the Goldie/Guivar'ch regime
+name correctly classifies the algebraic root $\alpha^\ast=2$ of
+$m(\alpha)=1$, but by itself says nothing about whether this root
+governs the \emph{quenched} tail of our specific arithmetic recursion
+--- which is exactly the question Proposition~\ref{prop:always-frozen}
+and Conjecture~\ref{conj:tail-index} address directly.
 
 \section{Empirical calibration of the residual coupling}
 \label{sec:calibration}
@@ -1476,12 +1678,35 @@ cleanest form we have been able to give them.
 \item \textbf{Chang's residue-balance conjecture} \cite{Chang2026}
   (\S\ref{sec:context}), supported empirically here on a single very
   long orbit, unproved.
+\item \textbf{The tail index of the martingale scale factor}
+  (Conjecture~\ref{conj:tail-index}), for every $q\ge5$: unlike the
+  $q=3$ case, this has neither a rigorous derivation (the relevant root
+  is always frozen, Proposition~\ref{prop:always-frozen}) nor solid
+  empirical support (the one existing measurement, for $q=5$, has since
+  been shown to be statistically non-confirmatory). This is, honestly,
+  the weakest-supported claim in the paper, and we flag it as such
+  rather than let it inherit credibility from the $q=3$ case merely by
+  sharing a formula.
 \end{enumerate}
 
-Any progress on any one of (O1)--(O6) would very likely transfer, given
+Any progress on any one of (O1)--(O7) would very likely transfer, given
 the structural identities established in this paper, to progress on
 several of the others simultaneously. We regard this convergence as
 the paper's central finding.
+
+\section*{Code and data availability}
+
+Every computational result reported in this paper --- the pressure and
+freezing computations of \S\ref{sec:pressure}, the residual-coupling
+control experiment of \S\ref{sec:calibration}, the Kontorovich--Lagarias
+vs.\ Volkov gate of \S\ref{sec:kl}, the Weak Covering Conjecture test of
+\S\ref{sec:wcc}, the Wirsching (2003) Conjecture~3 test and the $L^2$/Jensen
+computations of \S\ref{sec:triangulation}--\S\ref{sec:lemmas}, and the
+Chang residue-balance test of \S\ref{sec:context} --- has an
+accompanying, independently runnable script, organized by section, at
+\url{https://github.com/faculdade/collatz-endogeny}. Each subfolder of
+that repository has its own README stating what it verifies, how to
+run it, and the expected output.
 
 \section*{Acknowledgments}
 

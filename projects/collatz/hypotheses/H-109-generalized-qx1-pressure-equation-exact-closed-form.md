@@ -142,13 +142,59 @@ defensável é a forma fechada de família e a confirmação rigorosa+
 empírica — não a descoberta do fenômeno em si. Ver H-112 para a análise
 completa e honesta desta recalibração.
 
+## Addendum (2026-07-18) — correção real encontrada por revisão externa, mecanismo consertado
+
+Uma revisão externa do paper apontou, com contraexemplo concreto e
+correto, que o mecanismo descrito na §3 do paper ("operador de
+transferência em resíduos mod q, somas de coluna constantes") está
+**errado como enunciado**: o resíduo do filho mod q depende do pai mod
+q² (não só mod q), verificado com q=3, a=2, u=1 vs u=7 (filhos caem em
+resíduos diferentes mod 3). Generaliza para qualquer módulo finito —
+nenhum automato de estado finito em resíduos mod q^k está bem definido
+para uma única geração da recursão.
+
+**O conserto (Fable + verificação independente minha, dupla, com
+scripts próprios não copiados do Fable)**: existe uma identidade
+correta, mas ela é sobre a **média** (pressão anelada) sobre todas as
+raízes mod q^k, não sobre uma raiz fixa (quenched). Via um Lema de
+bijeção de fibra (para a fixo, v↦(2^av-1)/q é bijeção entre a fibra
+admissível mod q^j e Z/q^{j-1}Z), toda sequência (a_1,...,a_k) é
+admissível para exatamente uma raiz mod q^k — dá a identidade EXATA
+Σ_raízes Z_k(α;raiz) = (q^α/(2^α-1))^k. Verifiquei isso por força
+bruta, independentemente do Fable, para q=3,5,7,9, k=1,2,3, várias α —
+bate a menos de erro de truncamento.
+
+**A ressalva séria**: existe uma transição de congelamento
+quenched/anelado (teoria de polímeros dirigidos / REM de Derrida). Fato
+estrutural (provado, não só numérico): a raiz MAIOR da equação está
+**sempre** congelada, para todo q (P convexa com duas raízes ⟹
+s(raiz menor)>0, s(raiz maior)<0, sempre). Para q≥5, forma fechada
+exata: s(1)=log(4/q)<0 para q>4 — mesmo sinal do drift médio já
+citado no paper, não coincidência. Verifiquei numericamente com DP
+memoizada própria (não copiada do Fable): para q=3,α=2,u=1 (um
+self-loop genuíno, w_2(1)=1), a razão quenched fica em ~0,6, não 1;
+para q=5,α=1, mesma coisa em várias raízes.
+
+**Consequência para o paper**: a equação de pressão (agora "Identidade
+de pressão anelada exata", provada) continua correta e agora tem
+demonstração de verdade — mas só garante o expoente de CONTAGEM
+α_-(q) (que está sempre não-congelado, Teorema de transição sobrevive
+intacto para a parte de densidade). O índice de cauda do martingale
+W_u (α_+/α_-, incluindo nosso querido α*=2 para q=3) virou
+**Conjectura** separada, não teorema — em q=3 com 3 confirmações
+empíricas independentes (Hill, EVT, mais a de H-113), em q≥5 **sem**
+apoio sólido (a medição de Hill de H-109/H-113 já tinha sido sinalizada
+como não-confirmatória). `main.tex`/`main-pt-br.tex` reescritos com
+Lema, Teorema, Proposição (congelamento sempre) e Conjectura (índice
+de cauda) — ver §3 e §4 do paper.
+
 ## Referências
 
 - H-104 (achado original α*=2 para q=3, agora explicado como caso
-  particular exato, não aproximado).
+  particular exato, não aproximado — mas ver addendum acima: o índice
+  de cauda em si virou conjectura, não teorema).
 - H-108 (teste EVT em andamento — nova previsão ξ=α₁/α₂ para
   generalizações futuras).
-- Scripts do Fable (não reproduzidos nesta sessão, exceto a verificação
-  algébrica independente acima): `.../scratchpad/pressure_qx1.py` e
-  `.../scratchpad/empirical_qx1_tree.py` — copiar para `experiments/`
-  se esta linha for formalizada.
+- Scripts do Fable, agora arquivados em `experiments/E-097-qx1-empirical-gate/`
+  (`pressure_qx1.py`, `empirical_qx1_tree.py`) e no repositório de
+  verificação `collatz-endogeny/sec3-pressure-equation/`.

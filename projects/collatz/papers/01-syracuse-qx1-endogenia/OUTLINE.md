@@ -19,13 +19,21 @@ prosa.
   enquadramento importa (discussão com o diretor científico,
   2026-07-18).
 
-## 2. Forma fechada da equação de pressão (H-109)
+## 2. Forma fechada da equação de pressão (H-109) — CORRIGIDA 2026-07-18
 
-ρ(M_q(α)) = q^(α-1)/(2^α-1). Raiz trivial α=1 sempre; segunda raiz
-α*=2 exatamente em q=3; vira <1 para q≥5 (virada estrutural,
-densidade positiva vs. zero). Verificado independentemente
-(bisseção: α₂=0,650919 para q=5, 0,373501 para q=7, 0,258108 para
-q=9) e confirmado em árvores reais de 5x+1/7x+1.
+ρ_ann(α) = q^(α-1)/(2^α-1), agora provada como identidade EXATA mas
+ANELADA (média sobre raízes mod q^k, via Lema de bijeção de fibra —
+revisão externa achou erro real no mecanismo original "automato mod
+q", consertado). Raiz trivial α=1 sempre; segunda raiz α*=2
+exatamente em q=3; vira <1 para q≥5 (virada estrutural, densidade
+positiva vs. zero — esta parte, o expoente de CONTAGEM, sobrevive
+como teorema, pois a raiz menor está sempre não-congelada). O índice
+de cauda do martingale (α_+/α_-, nosso α*=2 incluso) virou
+**Conjectura** separada — a raiz maior está sempre congelada
+(Proposição nova, provada), então não é consequência do teorema; em
+q=3 bem sustentada por 3 confirmações empíricas independentes, em
+q≥5 sem apoio sólido. Ver addendum completo em H-109 e §3/§4 do
+paper.
 
 ## 3. Barreira de endogenia (H-110, com addendum de H-128)
 

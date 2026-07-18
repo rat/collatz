@@ -2,6 +2,30 @@
 
 Última atualização: 2026-07-18
 
+## Erro real na §3 do paper encontrado por revisão externa e corrigido (H-109)
+
+Revisão externa achou um erro matemático concreto e correto na equação
+de pressão qx+1 (§3 do paper): o mecanismo descrito ("automato de
+resíduos mod q") não está bem definido — contraexemplo verificado
+(q=3, u=1 vs u=7, mesmo resíduo mod 3, mesmo a, filhos em resíduos
+diferentes). Consultei o Fable, verifiquei tudo independentemente (2
+rodadas, scripts próprios, não copiados) e achei um conserto real: a
+equação é uma identidade EXATA, mas sobre a média entre raízes (pressão
+anelada), via um Lema de bijeção de fibra — provado e verificado por
+força bruta. Achado extra (também verificado por mim, não só o Fable):
+a raiz MAIOR da equação está **sempre congelada** (quenched≠anelado),
+para todo q — fato estrutural provado (não numérico). Isso rebaixa o
+índice de cauda do martingale (nosso α*=2 para q=3, e o análogo para
+q≥5) de teorema a **conjectura** — bem sustentada empiricamente em
+q=3 (3 confirmações independentes), mas **sem apoio sólido em q≥5**
+(a medição de Hill já tinha sido sinalizada como não-confirmatória em
+H-113). `main.tex`/`main-pt-br.tex` reescritos com Lema, Teorema,
+Proposição e Conjectura novos; H-109 tem o addendum completo. Também
+adicionada seção "Code and data availability" no paper apontando para
+o repositório `collatz-endogeny` (GitHub). E-mail para o dono do canal
+que originou este projeto (Igor Vinicius, Corre de PhD) fica em espera
+até o diretor científico revisar esta correção.
+
 ## Estrutura nova: pasta `papers/` para resultado final (pedido do diretor científico)
 
 Criada `papers/` (distinta de `literature/`, que é sobre papers de
