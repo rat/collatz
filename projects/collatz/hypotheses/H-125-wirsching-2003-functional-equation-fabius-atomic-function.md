@@ -1,6 +1,6 @@
 # H-125 — Wirsching (2003): densidade invariante φ = análogo base-3 da função de Fabius, terceira perna de triangulação com teste computacional certificável
 
-Status: aberta — experimento EXECUTADO até ℓ=500 (E-099, 2026-07-17): Conjectura 3 SUPORTADA numericamente com c≈0,54 (intervalo honesto 0,53–0,55); L_ℓ→2/3 com déficit 0,580/ℓ previsto pela própria φ₀ (ver seção "Resultado do experimento" abaixo)
+Status: concluída — experimento EXECUTADO até ℓ=500 (E-099, 2026-07-17): Conjectura 3 SUPORTADA numericamente com c≈0,54 (intervalo honesto 0,53–0,55); L_ℓ→2/3 com déficit 0,580/ℓ previsto pela própria φ₀ (ver seção "Resultado do experimento" abaixo). Integrada ao paper (Proposição~\ref{prop:fabius}, Teorema~\ref{thm:conjecture3}, main.tex/main-pt-br.tex, 2026-07-18 confirmado). Único item restante é opcional (escada ℓ∈{1000,2000,5000} para apertar a constante c) e explicitamente não recomendado sem necessidade específica.
 Criada em: 2026-07-17
 Origem: busca literária dirigida pedida explicitamente pelo diretor
 científico ("achar coisas que ajudem a ter algo digno de citações").
