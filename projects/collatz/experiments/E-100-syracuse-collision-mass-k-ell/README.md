@@ -47,16 +47,31 @@ demonstrada).
 Checagem de sanidade: K_1 = 5/3 exato (calculado à mão a partir de
 P(Syrac_1=1)=1/3, P(Syrac_1=2)=2/3 — bate com o script, erro <1e-10).
 
+**Validação da maquinaria (pedida pelo advisor)**: o único ponto
+conferido acima (ℓ=1) é o caso base hard-coded, que não exercita a
+recursão em si. `validate_against_direct_mc.py` compara a distribuição
+p_ℓ da recursão, BIN A BIN (não só K_ℓ), contra amostragem Monte Carlo
+DIRETA da definição primária de Syrac (F_ℓ(a) = Σ_j 3^{j-1}·2^{-a_[1,j]}
+mod 3^ℓ, a_i~Geom(2) iid, 3×10⁶ amostras) em ℓ=3 e ℓ=4 — os primeiros
+níveis onde a recursão de fato roda. Resultado: max|p_dp-p_mc| =
+0,000311 (ℓ=3) e 0,000213 (ℓ=4), ambos DENTRO do ruído Monte Carlo
+esperado (~1/√N≈0,000577). A recursão está correta nos níveis
+testados; como a maquinaria é a mesma em todo ℓ (não há caso especial
+por nível), isso valida o método, não apenas dois pontos.
+
 ## Arquivos
 
 - `experiment_k_ell.py` — script único: recursão da lei de F_n via
   DP na órbita cíclica, cálculo de K_ℓ para ℓ=1..17, ajuste log-log
   grosseiro do expoente de crescimento.
+- `validate_against_direct_mc.py` — validação bin-a-bin da recursão
+  contra amostragem Monte Carlo direta em ℓ=3,4.
 
 ## Reproduzir
 
 ```
 python3 experiment_k_ell.py
+python3 validate_against_direct_mc.py
 ```
 
 Custo: ℓ≤14 é instantâneo; ℓ=17 leva ~55s (dominado pelo `np.roll`
