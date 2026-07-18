@@ -39,8 +39,12 @@ original em HathiTrust/Internet Archive/JSTOR/acervos húngaros — não
 encontrado em digitalização aberta. Zeladoria bibliográfica de H-127
 **encerrada**: 8 de 9 referências verificadas contra o texto primário,
 1 (Halász 1971) documentada como inacessível por ora (não esquecida —
-`main.tex` tem nota explícita). Resta só a outra zeladoria, separada:
-conferir equações do Wirsching (2003) contra a versão final DCDS.
+`main.tex` tem nota explícita). **A outra zeladoria também fechada (2026-07-18)**: diretor científico
+confirmou que as equações do Wirsching (2003) são as mesmas entre a
+versão preliminar em mãos e a versão final publicada na DCDS. **Toda a
+zeladoria bibliográfica do paper está encerrada** — nenhuma pendência
+de citação restante além da nota já documentada sobre Halász (1971,
+inacessível, não esquecida).
 
 ## Segunda rodada de busca literária: nenhuma via nova, uma correção de terminologia útil (H-128)
 

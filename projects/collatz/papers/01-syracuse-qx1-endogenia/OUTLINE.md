@@ -133,14 +133,21 @@ medidas autossimilares tipo Breuillard-Varjú).
   reconhecer esse padrão comum antes de gastar uma consulta inteira em
   cada novo candidato "parecido".
 
-## 11. Zeladoria pendente antes de citar (não bloqueia a redação, só a submissão)
+## 11. Zeladoria — ENCERRADA (2026-07-18)
 
-- Conferir números de equação do Wirsching (2003) contra a versão
-  final da DCDS 9(3) (PDF em mãos é "preliminary version").
-- Verificar referências externas citadas só de memória pelo Fable em
-  H-127 (Halász 1977, Tao-Vu 2009, Nguyen-Vu 2011, Mahler 1968,
-  Flatto-Lagarias-Pollington 1995, Erdős 1979, Lagarias 2009) — só as
-  que sobreviverem à redação final.
+- ~~Conferir números de equação do Wirsching (2003) contra a versão
+  final da DCDS 9(3) (PDF em mãos é "preliminary version").~~
+  **Confirmado pelo diretor científico: mesmas equações.**
+- ~~Verificar referências externas citadas só de memória pelo Fable em
+  H-127~~ (Halász, Tao-Vu, Nguyen-Vu, Mahler, Flatto-Lagarias-
+  Pollington, Erdős, Lagarias, mais Brémont e Gonçalves-Greenfeld-
+  Madrid que também tinham detalhes a corrigir). **8 de 9 confirmadas
+  contra o texto primário; 1 (Halász 1971) documentada no próprio
+  `main.tex` como inacessível por busca aberta, não esquecida.** Ver
+  H-127 (addendum de 2026-07-18) e `literature/papers/INDEX.md` itens
+  139-144.
+
+Nenhuma zeladoria bibliográfica pendente resta para este paper.
 
 ## Próximo passo concreto
 

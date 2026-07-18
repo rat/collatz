@@ -242,10 +242,13 @@ a separação √ vs 1/ln² sobe a 1,5×10⁻³) discriminaria; ℓ=1000 sozinho
    Wirsching 2003 não foi superada, nem por Tao (que resolve um
    problema diferente, densidade LOGARÍTMICA de órbitas limitadas, não
    densidade natural de predecessores).
-3. Nota de rigor bibliográfico: o PDF baixado é marcado "(preliminary
+3. ~~Nota de rigor bibliográfico: o PDF baixado é marcado "(preliminary
    version)" — a versão de journal é DCDS 9(3), 771-787 (2003);
    conferir números de equação contra a versão final antes de citar
-   no pacote.
+   no pacote.~~ **CONFIRMADO (2026-07-18) pelo diretor científico: as
+   equações são as mesmas entre a versão preliminar em mãos e a versão
+   final publicada.** Citações de (7.5), (7.11), (7.12), (7.13) etc.
+   no paper e nesta hipótese podem ser usadas sem ressalva.
 
 ## Próximos passos
 
