@@ -26,9 +26,16 @@ texto primário (Tao-Vu 2009, Nguyen-Vu 2011, Flatto-Lagarias-Pollington
 confirmada via referência [4] do próprio Lagarias). **Um erro real
 encontrado**: Halász estava citado com o ano errado ("1977"; o certo é
 1971) — e o PDF obtido é um adendo de 1972, não o paper original, que
-ainda falta conseguir. `main.tex` e H-127 atualizados. Zeladoria do
-paper (referências externas) parcialmente resolvida — só falta o
-Halász 1971 original.
+ainda falta conseguir. `main.tex` e H-127 atualizados. Depois, resolvidas sem precisar de download novo (arquivos já em mãos
+ou de acesso livre): **Gonçalves-Greenfeld-Madrid (2022)** — a
+bibliografia do paper tinha um título INVENTADO/errado; corrigido para
+o real ("Generalized Collatz Maps with Almost Bounded Orbits",
+arXiv:2111.06170), conferido contra o PDF já arquivado (item 128); e
+**Brémont (2021)** — volume/páginas confirmados (Annales Henri
+Lebesgue 4, 973-1004) e o Teorema 2.5 citado pelo Fable verificado
+palavra por palavra contra o texto completo (arXiv:1910.03463).
+Zeladoria do paper (referências externas) quase fechada — só falta o
+**Halász 1971 original** (só temos um adendo de 1972 ao paper certo).
 
 ## Segunda rodada de busca literária: nenhuma via nova, uma correção de terminologia útil (H-128)
 
