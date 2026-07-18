@@ -16,6 +16,20 @@ repetidamente em H-112, H-116-125, H-124, H-128) e uma seção "Consultando
 o Fable" em `CLAUDE.md` (o erro `subagent_type: "fable"` já foi
 cometido antes — registrado para não repetir).
 
+## Verificação bibliográfica das 7 referências de H-127 concluída (2026-07-18)
+
+Diretor científico baixou 6 dos 7 papers citados de memória pelo Fable
+em H-127 (`/home/rat/Downloads/papers`, arquivados em
+`literature/papers/` itens 139-144). 5 confirmados exatamente contra o
+texto primário (Tao-Vu 2009, Nguyen-Vu 2011, Flatto-Lagarias-Pollington
+1995, Mahler 1968, Lagarias 2009 — inclusive a citação de Erdős 1979,
+confirmada via referência [4] do próprio Lagarias). **Um erro real
+encontrado**: Halász estava citado com o ano errado ("1977"; o certo é
+1971) — e o PDF obtido é um adendo de 1972, não o paper original, que
+ainda falta conseguir. `main.tex` e H-127 atualizados. Zeladoria do
+paper (referências externas) parcialmente resolvida — só falta o
+Halász 1971 original.
+
 ## Segunda rodada de busca literária: nenhuma via nova, uma correção de terminologia útil (H-128)
 
 Pedido explícito de continuar buscando. Três candidatos novos

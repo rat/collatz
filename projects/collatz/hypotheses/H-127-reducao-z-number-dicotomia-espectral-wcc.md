@@ -231,10 +231,10 @@ a métodos ℓ¹ tipo Littlewood-Offord".
 - H-126 — condição L² (irmã espectral desta dicotomia).
 - Tao, post de blog 2011 (Littlewood-Offord/potências de 2 e 3) —
   lido/conferido pelo Fable, não baixado/arquivado nesta sessão.
-- Halász (1977), Tao-Vu (2009), Nguyen-Vu (2011), Mahler (1968),
-  Flatto-Lagarias-Pollington (1995), Erdős (1979), Lagarias (2009) —
-  citados pelo Fable a partir de conhecimento, NÃO verificados/lidos
-  nesta sessão; checagem futura se este lema for usado no paper.
+- Halász (1971 — não 1977, ver correção abaixo), Tao-Vu (2009),
+  Nguyen-Vu (2011), Mahler (1968), Flatto-Lagarias-Pollington (1995),
+  Erdős (1979), Lagarias (2009) — ver "Atualizações" para o resultado
+  da verificação bibliográfica (2026-07-18).
 
 ## Atualizações
 
@@ -242,3 +242,26 @@ a métodos ℓ¹ tipo Littlewood-Offord".
   formalizada como dicotomia condicional, com resultado negativo
   próprio (Proposição C, identidade de Jensen) explicando o limite da
   técnica.
+- **2026-07-18: verificação bibliográfica das 7 referências citadas de
+  memória pelo Fable, concluída.** Diretor científico baixou 6 PDFs;
+  arquivados em `literature/papers/` (itens 139-144 do INDEX.md).
+  Resultado:
+  - **Tao-Vu (2009), Nguyen-Vu (2011), Flatto-Lagarias-Pollington
+    (1995), Mahler (1968), Lagarias (2009)**: confirmados contra o
+    texto primário. Destaque: a definição exata de Z-number no Mahler
+    (α é Z-number sse 0≤r_n<1/2 para todo n, α(3/2)ⁿ=q_n+r_n) bate
+    exatamente com a descrição usada aqui; a citação de Erdős (1979)
+    foi confirmada não pelo PDF dele diretamente (não localizado como
+    paper independente), mas por estar corretamente listada como
+    referência [4] no próprio Lagarias (2009): "P. Erdős, Some
+    unconventional problems in number theory, Math. Mag. 52(2) (1979),
+    67-70" — ano e atribuição do Fable estavam certos.
+  - **Halász**: o ANO estava errado na citação original desta hipótese
+    ("1977") — o correto é **1971** (Studia Scientiarum Mathematicarum
+    Hungarica 6, 211-233), o que só percebemos ao tentar verificar.
+    O PDF baixado (item 144) é na verdade um adendo/errata de 1972 do
+    próprio Halász ao paper de 1971 ("Remarks to my paper..."), não o
+    original — **ainda falta obter o paper de 1971 de verdade** antes
+    de citar com segurança. Este episódio é o exemplo concreto de por
+    que a verificação valia a pena: um erro real (ano) só apareceu ao
+    tentar confirmar.
