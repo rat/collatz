@@ -247,6 +247,70 @@ Fable recomendou como âncora mais confiável; a bateria completa
 como próximo passo caso a linha seja retomada — ver
 `E-103/README.md`, seção "Próximos passos".
 
+## Addendum 3 (2026-07-18) — bateria completa + teste exato: inconclusivo, não confirmatório
+
+O diretor científico notou que o Teste 1 do Addendum 2 tinha uma "nota
+de limitação" (bateria completa não implementada "por falta de tempo")
+inconsistente com a autorização já dada de usar tempo/Fable à vontade.
+Implementamos a bateria completa e, depois, um teste ainda mais
+rigoroso (momento populacional exato). Resultado honesto, em duas
+rodadas:
+
+**Bateria completa de 4 estimadores** (Gabaix-Ibragimov, Huisman,
+GPD, Clauset-Shalizi-Newman+Vuong): quadro misto. Huisman estável
+perto do previsto (1,536), mas GPD sem platô limpo e Vuong favorecendo
+**lognormal** sobre lei de potência em 3 de 4 headrooms (p≈0,03). Fable:
+os 4 métodos, lidos pela profundidade de cauda que cada um resume,
+concordam entre si que o índice local sobe suavemente de ~1,3 a ~2,2 —
+os "acertos" anteriores eram artefato de janela de observação, não
+confirmação. Veredito: rebaixar de "encorajador" para "inconclusivo".
+
+**Teste exato via momento populacional** (reusa a DP `Z_k(θ;u)`,
+θ=α₋(5), sobre TODOS os resíduos mod 5^k, não amostra): checagem de
+sanidade M_k(1,0)=1,0 exato em todo k (bate com a identidade de pressão
+anelada, confirma implementação). Rodado exato até k=11 (teto seguro de
+memória — k=12 estoura, mesmo problema de explosão de estado da
+verificação de congelamento). M_k(p) satura para p≤1,6 e diverge para
+p≥1,7 — sugeriria índice real >1,536 se lido ingenuamente. MAS: a razão
+entre incrementos sucessivos ainda não estabilizou para p≤1,6 em k=11
+(ao contrário de p≥1,7, já estável) — assinatura de "desaceleração
+crítica" perto de qualquer criticalidade, não evidência de índice mais
+alto. O transiente conhecido de q=5 (raiz complexa subdominante,
+k^-0,222) cai só ~7% entre k=8 e k=11; reduzi-lo pela metade exigiria
+k≈250, inalcançável por enumeração exaustiva (custo 5^k). Extrapolação
+Aitken/Richardson tentada e descartada (transiente é oscilatório de
+raiz complexa, não geométrico — quebra a premissa do método). Veredito
+final do Fable: **inconclusivo, não desconfirmatório**.
+
+**Consequência para o paper**: §3.3 (Conjectura do índice de cauda)
+reescrita em `main.tex`/`main-pt-br.tex` para reportar as duas rodadas
+honestamente — nem confirmação, nem refutação, com o motivo específico
+identificado (transiente de convergência lenta conhecido) em vez de
+deixar a questão vaga. Ambos os scripts (`full_battery.py`,
+`exact_moment_test.py`) espelhados em
+`collatz-endogeny/sec3-pressure-equation/` para reprodutibilidade.
+
+**Ideia descartada no caminho**: uma calibração via árvore i.i.d. de
+fase aleatória foi tentada e abandonada — circular (cai algebricamente
+na identidade de pressão anelada já provada, no ponto sempre congelado)
+E tecnicamente quebrada (contagem bruta de nós explode
+combinatorialmente sob fase i.i.d. — ver
+`E-103/stage0_iid_power_check.ABANDONED.py`).
+
+**Frente paralela (H-129)**: inspirada por um paper externo (Jon
+Seymour, "Rigidity of the Syracuse Transition Matrix", 2026) que prova
+que toda a não-rigidez do mapa Syracuse padrão (q=3, forward) se
+concentra no polo 2-ádico −1/3. A transcrição literal para nossa árvore
+reversa NÃO funciona (mecanismo diferente — nosso "precisa de mais um
+dígito" é universal, o dele é localizado numa sequência rara) — mas
+abriu um reframing teórico genuíno do congelamento via otimização
+ergódica/formalismo termodinâmico a temperatura zero (Mañé, Bousch,
+Contreras-Lopes-Thieullen, Jenkinson), com uma confirmação parcial já
+verificada por força bruta (a dinâmica gulosa nos resíduos recupera
+exatamente o ciclo real mais simples de q=5 e q=7). Ver
+`H-129-q-adic-pole-analog-seymour.md` para os detalhes — não fechada,
+não integrada ao paper ainda.
+
 ## Referências
 
 - H-104 (achado original α*=2 para q=3, agora explicado como caso

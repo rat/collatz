@@ -2,6 +2,58 @@
 
 Última atualização: 2026-07-18
 
+## Índice de cauda q≥5: investigação fechada como inconclusiva (paper atualizado)
+
+Depois da bateria de 4 testes (ver seção abaixo), o diretor científico
+pediu a bateria COMPLETA de estimadores (Gabaix-Ibragimov, Huisman,
+GPD, CSN+Vuong) sobre o teste de índice de cauda q=5 — resultado misto
+(Huisman estável perto do previsto, mas GPD sem platô e CSN+Vuong
+favorecendo lognormal em 3 de 4 headrooms). Autorizada calibração
+adicional (até 12h se necessário, ou k grande em enumeração exata).
+
+Descartamos a ideia inicial de calibração (árvore i.i.d. de fase
+aleatória) por dois motivos: (1) circular — o s* dela cai exatamente
+na identidade de pressão anelada já provada, no ponto que já sabemos
+estar sempre congelado; (2) e pior, a contagem BRUTA de nós explode
+combinatoriamente sob fase i.i.d. (headroom=100: árvore real=42 nós,
+sintética i.i.d.>200000 nós) — ver
+`experiments/E-103.../stage0_iid_power_check.ABANDONED.py`.
+
+**Teste decisivo executado**: momento populacional exato via DP
+`Z_k(θ=0,650919; u)` sobre TODOS os resíduos mod 5^k (não amostra),
+até k=11 (teto seguro de memória). M_k(1,0)=1,0 exato em todo k
+(confirma implementação). M_k(p) satura para p≤1,6 e diverge para
+p≥1,7 — mas a razão entre incrementos sucessivos ainda não estabilizou
+para p≤1,6 (ao contrário de p≥1,7, já estável): assinatura de
+desaceleração crítica, não evidência de índice mais alto. O transiente
+conhecido de q=5 (raiz complexa subdominante, k^-0,222) cai só ~7%
+entre k=8 e k=11; k≈250 seria necessário para reduzi-lo pela metade —
+inalcançável por enumeração exaustiva. **Veredito final: inconclusivo,
+não desconfirmatório** — parado aqui, sem Estágio 2 (Markov-modulado,
+~12h), conforme a regra de decisão combinada com o advisor.
+
+**Paper atualizado** (`main.tex`/`main-pt-br.tex`, §3.3, e o problema
+aberto O7 na conclusão): reescrito para reportar as duas rodadas
+(bateria estatística + momento exato) honestamente, nem confirmando
+nem refutando, com o motivo específico (transiente de convergência
+lenta) em vez de deixar vago. Ambos os scripts espelhados em
+`collatz-endogeny/sec3-pressure-equation/` (`full_battery.py`,
+`exact_moment_test.py`). Ambos os PDFs recompilados limpos (28/29 pág).
+
+**Frente paralela (H-129, aberta, não fechada)**: inspirada por um
+paper externo (Jon Seymour, "Rigidity of the Syracuse Transition
+Matrix", 2026, achado pelo diretor científico) sobre rigidez 2-ádica
+do mapa Syracuse padrão (forward). A transcrição literal para nossa
+árvore reversa NÃO funciona (mecanismo diferente — nosso "precisa de
+mais um dígito" é universal, o dele é localizado numa sequência rara
+convergindo a um polo). Mas abriu um reframing teórico do congelamento
+via otimização ergódica/formalismo termodinâmico a zero (Mañé, Bousch,
+Contreras-Lopes-Thieullen, Jenkinson), com confirmação parcial já
+verificada por força bruta (a dinâmica gulosa nos resíduos recupera
+exatamente o ciclo real mais simples de q=5 e q=7, mas não os ciclos
+secundários de q=5). Ver `hypotheses/H-129-*.md` — não integrada ao
+paper, próximo passo (Perron-Frobenius espectral) não executado.
+
 ## Bateria de 4 testes de acompanhamento à correção da §3 (H-109, addendum 2)
 
 Depois de corrigir o erro da §3 (ver seção abaixo), o diretor científico

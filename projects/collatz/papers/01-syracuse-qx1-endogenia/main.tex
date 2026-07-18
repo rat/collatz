@@ -547,21 +547,67 @@ roots, agreement to two decimal places with the predicted
 $1.536\ldots$) was later shown, over the course of this project, to be
 statistically non-confirmatory at that sample size (the estimator's
 true standard error is $\approx0.45$, an order of magnitude larger
-than the agreement being claimed). A subsequent, substantially larger
-test (5000 roots, four headroom levels up to $10^8$, bootstrap
-confidence intervals, and an independent rank-size regression;
-\texttt{collatz-endogeny/sec3-pressure-equation}) is encouraging but
-still not decisive: the estimate is remarkably stable across headroom
-levels, and at the tail fraction judged most balanced (5\%) it lands
-at $1.58$ (95\% CI $[1.41,1.80]$), close to the predicted $1.536$ ---
-but, as is typical of Hill-type estimators, the point estimate is
-unstable across the choice of tail fraction (from $1.39$ at 10\% to
-$2.10$ at 1\%), so we do not treat this as confirmation. We are not
-aware of any fully decisive empirical test of
-Conjecture~\ref{conj:tail-index} for $q\ge5$ (e.g.\ a pre-registered
-Clauset--Shalizi--Newman-type comparison against alternative tail
-models), and list it as an explicit open problem in
-\S\ref{sec:conclusion}.
+than the agreement being claimed). We pursued this further along two
+independent routes, and report both honestly rather than stopping at
+whichever gave the more favorable number.
+
+First, a substantially larger statistical test (5000 roots, four
+headroom levels up to $10^8$; \texttt{collatz-endogeny/sec3-pressure-equation})
+applied a battery of four estimators (a rank-size regression with the
+Gabaix--Ibragimov finite-sample correction; a bias-corrected Hill
+estimator following Huisman et al.; a generalized-Pareto threshold-stability
+scan; and a Clauset--Shalizi--Newman fit with a Vuong test against a
+truncated log-normal alternative). The outcome is mixed rather than
+confirmatory: the bias-corrected Hill estimator is remarkably stable
+across headroom levels and lands close to the predicted $1.536$, but
+the threshold-stability scan shows no clean plateau near the predicted
+shape parameter, and the Vuong test favors the log-normal alternative
+over the power law, at conventional significance, in three of the four
+headroom levels tested. Reading the four estimators together by the
+depth of tail they each summarize shows the apparent local tail index
+rising smoothly with depth (from $\approx1.3$ at the widest window to
+$\approx2.2$ at the narrowest) rather than settling near any single
+value --- consistent with a slowly-converging pre-asymptotic regime in
+which no estimator at this sample size can be treated as decisive.
+
+Second, we tested the conjecture by an exact, non-statistical route
+(\texttt{collatz-endogeny/sec3-pressure-equation/exact\_moment\_test.py}):
+the same depth-$k$ recursion $Z_k(\theta;u)$ used to verify the
+frozen-phase growth law above (with $\theta=\alpha_-(5)$) was evaluated
+over the \emph{entire} population of residues $u\bmod 5^k$ (not a
+sample), for $k$ up to $11$ ($5^{11}\approx4.9\times10^7$ residues; a
+sanity check --- that the population mean of $Z_k(\theta;u)$ equals
+exactly $1$ for every $k$, forced by Theorem~\ref{thm:pressure} at
+$\alpha=\theta$ --- passed to floating-point precision, confirming the
+implementation). If $W_u=\lim_k Z_k(\theta;u)$ has tail index
+$\iota$, the population moment $M_k(p)=\mathrm{mean}_u\,Z_k(\theta;u)^p$
+should saturate in $k$ for $p<\iota$ and diverge for $p>\iota$.
+The data show saturating behavior throughout $p\le1.6$ and diverging
+behavior for $p\ge1.7$, which would place $\iota$ higher than the
+predicted $1.536$ if taken at face value --- but the ratio of
+successive increments has not yet stabilized for $p\le1.6$ at $k=11$
+(unlike $p\ge1.7$, where it has), the classic signature of a system
+still relaxing toward its asymptotic exponent rather than one that has
+reached it. Given the previously established slow convergence rate for
+$q=5$ (a subdominant complex root giving $k^{-0.222}$ decay,
+\S\ref{sec:freezing}), the transient decays by only about $7\%$ between
+$k=8$ and $k=11$; halving it would require $k\approx250$, far beyond
+what exhaustive enumeration over $5^k$ residues can reach. We therefore
+cannot distinguish, from this data, between $\theta=1.536$ lying just
+below a nearby true index and lying further below one --- the test is
+inconclusive, not disconfirming, and enumeration alone will not resolve
+it.
+
+Taken together, neither route confirms Conjecture~\ref{conj:tail-index}
+for $q\ge5$ and neither refutes it; both are more informative than the
+original under-powered measurement, and both point to the same honest
+conclusion: this is a harder statistical question than the $q=3$ case
+already settled in \S\ref{sec:regimes}, and resolving it will likely
+require either an analytic handle on the transfer operator's
+subdominant spectrum or a pre-registered comparison against alternative
+tail models on a much larger computational budget than exhaustive
+population enumeration allows. We list it as an explicit open problem
+in \S\ref{sec:conclusion}.
 
 The mean drift $\log q - 2\log 2$ changes sign exactly at the
 threshold $q=5$ separating the two cases of
@@ -1728,12 +1774,14 @@ cleanest form we have been able to give them.
   $q=3$ case, this has neither a rigorous derivation (the relevant root
   is always frozen, Proposition~\ref{prop:always-frozen}) nor solid
   empirical support: the original measurement, for $q=5$, has since
-  been shown to be statistically non-confirmatory, and a much larger
-  follow-up test (\S\ref{sec:freezing}) is encouraging at one tail
-  fraction but unstable across others, hence still not decisive. This
-  is, honestly, the weakest-supported claim in the paper, and we flag
-  it as such rather than let it inherit credibility from the $q=3$
-  case merely by sharing a formula.
+  been shown to be statistically non-confirmatory, a full battery of
+  four estimators (\S\ref{sec:freezing}) gives a mixed rather than
+  confirmatory picture, and an exact population-level moment test on
+  the same section is inconclusive at the depth exhaustive enumeration
+  can reach, for a specific and identified reason (a known
+  slowly-decaying transient). This is, honestly, the weakest-supported
+  claim in the paper, and we flag it as such rather than let it inherit
+  credibility from the $q=3$ case merely by sharing a formula.
 \end{enumerate}
 
 Any progress on any one of (O1)--(O7) would very likely transfer, given

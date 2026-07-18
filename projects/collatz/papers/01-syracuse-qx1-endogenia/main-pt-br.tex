@@ -556,21 +556,72 @@ concordância a duas casas decimais com o previsto $1{,}536\ldots$) foi
 depois mostrada, ao longo deste projeto, ser estatisticamente
 não-confirmatória nesse tamanho de amostra (o erro-padrão real do
 estimador é $\approx0{,}45$, uma ordem de magnitude maior que a
-concordância alegada). Um teste subsequente, substancialmente maior
-(5000 raízes, quatro níveis de headroom até $10^8$, intervalos de
-confiança via bootstrap, e uma regressão rank-size independente;
-\texttt{collatz-endogeny/sec3-pressure-equation}) é encorajador mas
-ainda não decisivo: a estimativa é notavelmente estável entre níveis
-de headroom, e na fração de cauda julgada mais equilibrada (5\%) cai
-em $1{,}58$ (IC 95\% $[1{,}41,1{,}80]$), próximo do previsto
-$1{,}536$ --- mas, como é típico de estimadores tipo Hill, o valor
-pontual é instável conforme a escolha da fração de cauda (de $1{,}39$
-em 10\% a $2{,}10$ em 1\%), de modo que não tratamos isso como
-confirmação. Não temos conhecimento de nenhum teste empírico
-totalmente decisivo da Conjectura~\ref{conj:tail-index} para $q\ge5$
-(por exemplo, uma comparação pré-registrada tipo
-Clauset--Shalizi--Newman contra modelos alternativos de cauda), e a
-listamos como problema em aberto explícito na \S\ref{sec:conclusion}.
+concordância alegada). Aprofundamos isso por duas rotas independentes,
+e reportamos as duas honestamente, em vez de parar naquela que desse o
+número mais favorável.
+
+Primeiro, um teste estatístico substancialmente maior (5000 raízes,
+quatro níveis de headroom até $10^8$;
+\texttt{collatz-endogeny/sec3-pressure-equation}) aplicou uma bateria
+de quatro estimadores (regressão rank-size com a correção de amostra
+finita de Gabaix--Ibragimov; estimador de Hill com correção de viés
+segundo Huisman et al.; varredura de estabilidade de limiar via
+distribuição de Pareto generalizada; e um ajuste
+Clauset--Shalizi--Newman com teste de Vuong contra uma alternativa
+log-normal truncada). O resultado é misto, não confirmatório: o
+estimador de Hill com correção de viés é notavelmente estável entre
+níveis de headroom e cai perto do previsto $1{,}536$, mas a varredura
+de estabilidade de limiar não mostra platô limpo perto do parâmetro de
+forma previsto, e o teste de Vuong favorece a alternativa log-normal
+sobre a lei de potência, em significância convencional, em três dos
+quatro níveis de headroom testados. Lendo os quatro estimadores juntos
+pela profundidade de cauda que cada um resume, o índice de cauda local
+aparente sobe suavemente com a profundidade (de $\approx1{,}3$ na
+janela mais larga a $\approx2{,}2$ na mais estreita) em vez de se
+estabilizar perto de um único valor --- consistente com um regime
+pré-assintótico de convergência lenta no qual nenhum estimador nesse
+tamanho de amostra pode ser tratado como decisivo.
+
+Segundo, testamos a conjectura por uma rota exata, não estatística
+(\texttt{collatz-endogeny/sec3-pressure-equation/exact\_moment\_test.py}):
+a mesma recursão de profundidade-$k$ $Z_k(\theta;u)$ usada para verificar
+a lei de crescimento da fase congelada acima (com $\theta=\alpha_-(5)$)
+foi calculada sobre a população \emph{inteira} de resíduos $u\bmod
+5^k$ (não uma amostra), até $k=11$ ($5^{11}\approx4{,}9\times10^7$
+resíduos; uma checagem de sanidade --- que a média populacional de
+$Z_k(\theta;u)$ é exatamente $1$ para todo $k$, forçada pelo
+Teorema~\ref{thm:pressure} em $\alpha=\theta$ --- passou à precisão de
+ponto flutuante, confirmando a implementação). Se $W_u=\lim_k
+Z_k(\theta;u)$ tem índice de cauda $\iota$, o momento populacional
+$M_k(p)=\text{média}_u\,Z_k(\theta;u)^p$ deve saturar em $k$ para
+$p<\iota$ e divergir para $p>\iota$. Os dados mostram comportamento de
+saturação em todo $p\le1{,}6$ e de divergência para $p\ge1{,}7$, o que
+colocaria $\iota$ mais alto que o previsto $1{,}536$ se tomado ao pé da
+letra --- mas a razão entre incrementos sucessivos ainda não
+estabilizou para $p\le1{,}6$ em $k=11$ (ao contrário de $p\ge1{,}7$,
+onde já estabilizou), a assinatura clássica de um sistema ainda
+relaxando em direção ao seu expoente assintótico, não um que já o
+atingiu. Dada a taxa de convergência lenta já estabelecida para $q=5$
+(uma raiz complexa subdominante dando decaimento $k^{-0{,}222}$,
+\S\ref{sec:freezing}), o transiente decai só cerca de $7\%$ entre
+$k=8$ e $k=11$; reduzi-lo à metade exigiria $k\approx250$, muito além
+do que a enumeração exaustiva sobre $5^k$ resíduos alcança. Portanto
+não conseguimos distinguir, a partir desses dados, entre
+$\theta=1{,}536$ estar logo abaixo de um índice verdadeiro próximo ou
+bem abaixo de um mais distante --- o teste é inconclusivo, não
+desconfirmatório, e enumeração sozinha não resolve isso.
+
+Em conjunto, nenhuma das duas rotas confirma a
+Conjectura~\ref{conj:tail-index} para $q\ge5$ e nenhuma a refuta; ambas
+são mais informativas que a medição original subdimensionada, e ambas
+apontam para a mesma conclusão honesta: esta é uma questão estatística
+mais difícil que o caso $q=3$ já resolvido na \S\ref{sec:regimes}, e
+resolvê-la provavelmente exigirá ou um controle analítico sobre o
+espectro subdominante do operador de transferência, ou uma comparação
+pré-registrada contra modelos alternativos de cauda com um orçamento
+computacional muito maior do que a enumeração populacional exaustiva
+permite. Listamos isso como problema em aberto explícito na
+\S\ref{sec:conclusion}.
 
 O drift médio $\log q - 2\log 2$ muda de sinal exatamente no limiar
 $q=5$ que separa os dois casos do Teorema~\ref{thm:transition}:
@@ -1775,12 +1826,15 @@ forma mais limpa que conseguimos dar a eles.
   caso $q=3$, isso não tem nem derivação rigorosa (a raiz relevante
   está sempre congelada, Proposição~\ref{prop:always-frozen}) nem apoio
   empírico sólido: a medição original, para $q=5$, já foi mostrada ser
-  estatisticamente não-confirmatória, e um teste maior subsequente
-  (\S\ref{sec:freezing}) é encorajador numa fração de cauda mas
-  instável entre outras, portanto ainda não decisivo. Esta é,
-  honestamente, a alegação com apoio mais fraco do paper, e a
-  sinalizamos como tal em vez de deixá-la herdar credibilidade do caso
-  $q=3$ só por compartilhar a fórmula.
+  estatisticamente não-confirmatória, uma bateria completa de quatro
+  estimadores (\S\ref{sec:freezing}) dá um quadro misto, não
+  confirmatório, e um teste exato de momento populacional na mesma
+  seção é inconclusivo na profundidade que a enumeração exaustiva
+  alcança, por um motivo específico e identificado (um transiente de
+  decaimento lento conhecido). Esta é, honestamente, a alegação com
+  apoio mais fraco do paper, e a sinalizamos como tal em vez de
+  deixá-la herdar credibilidade do caso $q=3$ só por compartilhar a
+  fórmula.
 \end{enumerate}
 
 Qualquer progresso em qualquer um de (A1)--(A7) muito provavelmente se
