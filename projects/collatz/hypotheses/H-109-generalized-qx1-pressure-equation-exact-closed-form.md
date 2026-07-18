@@ -188,6 +188,65 @@ como não-confirmatória). `main.tex`/`main-pt-br.tex` reescritos com
 Lema, Teorema, Proposição (congelamento sempre) e Conjectura (índice
 de cauda) — ver §3 e §4 do paper.
 
+## Addendum 2 (2026-07-18) — bateria de 4 testes de acompanhamento (Fable + verificação independente)
+
+Depois do conserto acima, pedido explícito do diretor científico: "faça
+todos os testes, se precisar chame Fable. sejam criteriosos". Rodados
+4 testes, cada um com consulta ao Fable seguida de verificação
+independente minha (scripts próprios, não copiados):
+
+**Teste 1 — índice de cauda q=5, estatística mais robusta.** Ver
+`experiments/E-103-tail-index-q5-rigorous-test/README.md`. Amostra 8x
+maior (5000 raízes vs. 600), 4 níveis de headroom (10^5–10^8) numa só
+passada de DFS por raiz, Hill com bootstrap CI em 4 frações de cauda +
+regressão Zipf independente. **Resultado**: estabilidade excelente
+entre headrooms (o transiente lento que o Fable temia para q=5, raiz
+subdominante complexa, não aparece como problema nesta faixa); na
+fração de 5% o Hill bate quase exatamente com o previsto (1,58 vs
+1,536 previsto, IC95%=[1,41; 1,80]) — mas instabilidade clássica entre
+frações (1%→2,10; 10%→1,39) mostra que não é um teste decisivo.
+Veredito: encorajador, não conclusivo — Conjectura permanece Conjectura.
+
+**Teste 2 — mais raízes / mais profundidade para o congelamento em
+q=3.** Reteste limpo (`/tmp/verify_freezing_clean.py`, raízes fixas via
+seed=777, a_max=40 fixo em todos os k, ao contrário de rodadas
+anteriores que variavam esses parâmetros entre k raso e profundo — o
+que o Fable apontou como possível fonte de inconsistência). Para q=3
+(k=5..22) e q=5 (k=5..17, processo interrompido manualmente em k=20
+por segurança de memória — memo crescia ~15x por passo, já em 16GB),
+o resíduo C_k = log Z_k − A·k + B·log(k) ficou consistentemente na
+faixa 2,6–3,4 (q=3) e 2,0–3,0 (q=5), confirmando C_k=O(1) como previsto
+pela fórmula assintótica do Fable (ver Addendum 1 e Teste 4 abaixo).
+Não converge monotonicamente em k raso — comportamento pré-assintótico
+esperado, não bug (ver Teste 4).
+
+**Teste 3 — teorema tipo Biggins rigoroso.** Fable confirmou que
+Biggins (1992) é genuinamente o teorema certo para a região
+não-congelada de um branching random walk genuíno (i.i.d.), mas NÃO
+cobre nossa recursão aritmética diretamente — a lacuna é a mesma
+independência que já nomeávamos no Teorema da barreira, agora em forma
+quantitativa de grandes desvios. Sem teorema mais forte disponível na
+literatura para o caso arithmetic (confirmado por busca — nenhuma ponte
+direta existe). Adicionado como `Remark` (rem:transfer-basis) no paper,
+citando Biggins1992 + Applegate-Lagarias1995 I/II.
+
+**Teste 4 — por que os números de congelamento não batiam com a
+previsão ingênua.** Resolvido pelo Fable: crescimento na fase congelada
+não é puramente exponencial, é log Z_k(α) = A·k − B·log(k) + O(1), com
+B=3α/(2α_c) — um termo log(k) não-desprezível em k raso. Cruzamento
+estimado k≈139 (q=3) e k≈407 (q=5) antes do termo A·k dominar
+visivelmente. Explica por que medições em k raso oscilam em vez de
+convergir monotonicamente — não é bug, é o regime pré-assintótico
+correto. Confirmado independentemente no Teste 2 (C_k estável dentro
+de uma faixa O(1), não divergente).
+
+**Limitação reconhecida e não corrigida**: o estimador de regressão
+Zipf no Teste 1 não inclui a correção rank−½ de Gabaix-Ibragimov que o
+Fable recomendou como âncora mais confiável; a bateria completa
+(GI-correção, MLE de GPD, teste Clauset-Shalizi-Newman+Vuong) fica
+como próximo passo caso a linha seja retomada — ver
+`E-103/README.md`, seção "Próximos passos".
+
 ## Referências
 
 - H-104 (achado original α*=2 para q=3, agora explicado como caso
@@ -198,3 +257,5 @@ de cauda) — ver §3 e §4 do paper.
 - Scripts do Fable, agora arquivados em `experiments/E-097-qx1-empirical-gate/`
   (`pressure_qx1.py`, `empirical_qx1_tree.py`) e no repositório de
   verificação `collatz-endogeny/sec3-pressure-equation/`.
+- E-103 (`experiments/E-103-tail-index-q5-rigorous-test/`) — teste de
+  índice de cauda robusto para q=5, ver Addendum 2 acima.

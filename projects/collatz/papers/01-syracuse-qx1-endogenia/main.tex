@@ -492,11 +492,44 @@ transfers to the real, quenched counting function at this root,
 consistently with the direct empirical confirmation below and with the
 statistically calibrated measurement of \S\ref{sec:kl}.
 
+\begin{remark}[What ``transfers'' rests on]\label{rem:transfer-basis}
+We are precise about the status of this transfer, since it is exactly
+the kind of step that caused the error corrected in this section. For
+the genuine i.i.d.\ branching-random-walk model that the annealed
+identity of Theorem~\ref{thm:pressure} describes, quenched-equals-annealed
+growth throughout the unfrozen region is a rigorous, classical result
+\cite{Biggins1992}. For our arithmetic recursion, no analogous theorem
+is known to us: the gap is the same one already identified in
+Theorem~\ref{thm:barrier} (near-independence of fresh digits across
+sibling subtrees, here in a quantitative large-deviations form rather
+than a qualitative one), and the closest genuine arithmetic result in
+the literature is a one-sided density bound of Applegate--Lagarias
+\cite{ApplegateLagarias1995I,ApplegateLagarias1995II}, later sharpened
+by Krasikov--Lagarias \cite{KrasikovLagarias2003} (already cited in
+\S\ref{sec:triangulation}), not a matching two-sided quenched
+statement. We therefore treat the transfer, at every root we invoke it
+for, as supported by (i) the classical stochastic-model theorem, (ii)
+direct numerical confirmation, and not by a proof for the arithmetic
+tree itself --- naming the gap precisely rather than letting the
+stochastic-model theorem's rigor bleed by association into the
+arithmetic claim.
+\end{remark}
+
 \begin{conjecture}[Tail index of the scale factor]\label{conj:tail-index}
 $W_u$ has a regularly varying tail of index $\alpha_+(q)/\alpha_-(q)$,
 where $\alpha_+(q)$ is the larger root of \eqref{eq:pressure-eq}
 ($\alpha_+(3)=2$; $\alpha_+(q)=1$ for every $q\ge5$).
 \end{conjecture}
+
+This is exactly the exponent predicted by the classical theory of
+fixed points of the (multitype) smoothing transform
+\cite{Guivarch1990,Liu2000,Mentemeier2016} for the genuine stochastic
+model: the tail-index equation $\mathbb{E}[\sum_i A_i^s]=1$ becomes,
+for our weights, $q^{\alpha_-s-1}=2^{\alpha_- s}-1$, solved exactly by
+$s=\alpha_+/\alpha_-$. This is further reason to take the conjecture
+seriously as a prediction, even though, per
+Remark~\ref{rem:transfer-basis}, the theory only rigorously covers the
+stochastic model, not our arithmetic recursion.
 
 We state this as a conjecture, not as part of
 Theorem~\ref{thm:transition}, precisely because
@@ -514,9 +547,21 @@ roots, agreement to two decimal places with the predicted
 $1.536\ldots$) was later shown, over the course of this project, to be
 statistically non-confirmatory at that sample size (the estimator's
 true standard error is $\approx0.45$, an order of magnitude larger
-than the agreement being claimed). We are not aware of any other
-direct empirical test of Conjecture~\ref{conj:tail-index} for $q\ge5$,
-and list it as an explicit open problem in \S\ref{sec:conclusion}.
+than the agreement being claimed). A subsequent, substantially larger
+test (5000 roots, four headroom levels up to $10^8$, bootstrap
+confidence intervals, and an independent rank-size regression;
+\texttt{collatz-endogeny/sec3-pressure-equation}) is encouraging but
+still not decisive: the estimate is remarkably stable across headroom
+levels, and at the tail fraction judged most balanced (5\%) it lands
+at $1.58$ (95\% CI $[1.41,1.80]$), close to the predicted $1.536$ ---
+but, as is typical of Hill-type estimators, the point estimate is
+unstable across the choice of tail fraction (from $1.39$ at 10\% to
+$2.10$ at 1\%), so we do not treat this as confirmation. We are not
+aware of any fully decisive empirical test of
+Conjecture~\ref{conj:tail-index} for $q\ge5$ (e.g.\ a pre-registered
+Clauset--Shalizi--Newman-type comparison against alternative tail
+models), and list it as an explicit open problem in
+\S\ref{sec:conclusion}.
 
 The mean drift $\log q - 2\log 2$ changes sign exactly at the
 threshold $q=5$ separating the two cases of
@@ -1682,11 +1727,13 @@ cleanest form we have been able to give them.
   (Conjecture~\ref{conj:tail-index}), for every $q\ge5$: unlike the
   $q=3$ case, this has neither a rigorous derivation (the relevant root
   is always frozen, Proposition~\ref{prop:always-frozen}) nor solid
-  empirical support (the one existing measurement, for $q=5$, has since
-  been shown to be statistically non-confirmatory). This is, honestly,
-  the weakest-supported claim in the paper, and we flag it as such
-  rather than let it inherit credibility from the $q=3$ case merely by
-  sharing a formula.
+  empirical support: the original measurement, for $q=5$, has since
+  been shown to be statistically non-confirmatory, and a much larger
+  follow-up test (\S\ref{sec:freezing}) is encouraging at one tail
+  fraction but unstable across others, hence still not decisive. This
+  is, honestly, the weakest-supported claim in the paper, and we flag
+  it as such rather than let it inherit credibility from the $q=3$
+  case merely by sharing a formula.
 \end{enumerate}
 
 Any progress on any one of (O1)--(O7) would very likely transfer, given
@@ -1818,6 +1865,31 @@ computation is a known source of silent error.
 \bibitem{KrasikovLagarias2003} I.\ Krasikov and J.\ C.\ Lagarias,
   \emph{Bounds for the $3x+1$ problem using difference inequalities},
   Acta Arithmetica \textbf{109} (2003), 237--258.
+
+\bibitem{Biggins1992} J.\ D.\ Biggins, \emph{Uniform convergence of
+  martingales in the branching random walk}, Annals of Probability
+  \textbf{20}(1) (1992), 137--151.
+
+\bibitem{ApplegateLagarias1995I} D.\ Applegate and J.\ C.\ Lagarias,
+  \emph{Density bounds for the $3x+1$ problem I: tree-search method},
+  Mathematics of Computation \textbf{64} (1995), 411--426.
+
+\bibitem{ApplegateLagarias1995II} D.\ Applegate and J.\ C.\ Lagarias,
+  \emph{Density bounds for the $3x+1$ problem II: Krasikov
+  inequalities}, Mathematics of Computation \textbf{64} (1995),
+  427--438.
+
+\bibitem{Guivarch1990} Y.\ Guivarc'h, \emph{Sur une extension de la
+  notion de loi semi-stable}, Annales de l'Institut Henri Poincaré
+  Probabilités et Statistiques \textbf{26} (1990), 261--285.
+
+\bibitem{Liu2000} Q.\ Liu, \emph{On generalized multiplicative
+  cascades}, Stochastic Processes and their Applications
+  \textbf{86}(2) (2000), 263--286.
+
+\bibitem{Mentemeier2016} S.\ Mentemeier, \emph{The fixed points of the
+  multivariate smoothing transform}, Probability Theory and Related
+  Fields \textbf{164}(1--2) (2016), 401--458.
 
 \bibitem{BakerBanaji2026} S.\ Baker and A.\ Banaji, \emph{Self-similar
   and self-conformal measures with slow Fourier decay},

@@ -499,12 +499,45 @@ se transfere para a função de contagem quenched real, nesta raiz,
 consistente com a confirmação empírica direta abaixo e com a medição
 estatisticamente calibrada da \S\ref{sec:kl}.
 
+\begin{remark}[No que essa "transferência" se apoia]\label{rem:transfer-basis}
+Somos precisos sobre o status dessa transferência, já que é exatamente
+o tipo de passo que causou o erro corrigido nesta seção. Para o modelo
+genuíno i.i.d.\ de passeio aleatório ramificado que a identidade
+anelada do Teorema~\ref{thm:pressure} descreve, quenched=anelado em
+toda a região não-congelada é um resultado clássico e rigoroso
+\cite{Biggins1992}. Para nossa recursão aritmética, nenhum teorema
+análogo é conhecido por nós: a lacuna é a mesma já identificada no
+Teorema~\ref{thm:barrier} (quase-independência de dígitos frescos entre
+subárvores irmãs, aqui numa forma quantitativa de grandes desvios em
+vez de qualitativa), e o resultado aritmético genuíno mais próximo na
+literatura é uma cota unilateral de densidade de
+Applegate--Lagarias \cite{ApplegateLagarias1995I,ApplegateLagarias1995II},
+depois refinada por Krasikov--Lagarias \cite{KrasikovLagarias2003} (já
+citado na \S\ref{sec:triangulation}), não uma afirmação quenched
+bilateral correspondente. Tratamos, portanto, a transferência, em toda
+raiz onde a invocamos, como apoiada por (i) o teorema clássico do
+modelo estocástico, (ii) confirmação numérica direta, e não por uma
+prova para a própria árvore aritmética --- nomeando a lacuna com
+precisão em vez de deixar o rigor do teorema do modelo estocástico
+vazar por associação para a alegação aritmética.
+\end{remark}
+
 \begin{conjecture}[Índice de cauda do fator de escala]\label{conj:tail-index}
 $W_u$ tem cauda regularmente variável de índice
 $\alpha_+(q)/\alpha_-(q)$, onde $\alpha_+(q)$ é a raiz maior de
 \eqref{eq:pressure-eq} ($\alpha_+(3)=2$; $\alpha_+(q)=1$ para todo
 $q\ge5$).
 \end{conjecture}
+
+Este é exatamente o expoente previsto pela teoria clássica de pontos
+fixos da transformação de suavização (multitipo)
+\cite{Guivarch1990,Liu2000,Mentemeier2016} para o modelo estocástico
+genuíno: a equação de índice de cauda $\mathbb{E}[\sum_i A_i^s]=1$
+vira, para nossos pesos, $q^{\alpha_-s-1}=2^{\alpha_- s}-1$, resolvida
+exatamente por $s=\alpha_+/\alpha_-$. Isso é razão adicional para levar
+a conjectura a sério como previsão, ainda que, pela
+Observação~\ref{rem:transfer-basis}, a teoria só cubra rigorosamente o
+modelo estocástico, não nossa recursão aritmética.
 
 Enunciamos isso como conjectura, não como parte do
 Teorema~\ref{thm:transition}, precisamente porque a
@@ -523,8 +556,20 @@ concordância a duas casas decimais com o previsto $1{,}536\ldots$) foi
 depois mostrada, ao longo deste projeto, ser estatisticamente
 não-confirmatória nesse tamanho de amostra (o erro-padrão real do
 estimador é $\approx0{,}45$, uma ordem de magnitude maior que a
-concordância alegada). Não temos conhecimento de nenhum outro teste
-empírico direto da Conjectura~\ref{conj:tail-index} para $q\ge5$, e a
+concordância alegada). Um teste subsequente, substancialmente maior
+(5000 raízes, quatro níveis de headroom até $10^8$, intervalos de
+confiança via bootstrap, e uma regressão rank-size independente;
+\texttt{collatz-endogeny/sec3-pressure-equation}) é encorajador mas
+ainda não decisivo: a estimativa é notavelmente estável entre níveis
+de headroom, e na fração de cauda julgada mais equilibrada (5\%) cai
+em $1{,}58$ (IC 95\% $[1{,}41,1{,}80]$), próximo do previsto
+$1{,}536$ --- mas, como é típico de estimadores tipo Hill, o valor
+pontual é instável conforme a escolha da fração de cauda (de $1{,}39$
+em 10\% a $2{,}10$ em 1\%), de modo que não tratamos isso como
+confirmação. Não temos conhecimento de nenhum teste empírico
+totalmente decisivo da Conjectura~\ref{conj:tail-index} para $q\ge5$
+(por exemplo, uma comparação pré-registrada tipo
+Clauset--Shalizi--Newman contra modelos alternativos de cauda), e a
 listamos como problema em aberto explícito na \S\ref{sec:conclusion}.
 
 O drift médio $\log q - 2\log 2$ muda de sinal exatamente no limiar
@@ -1729,8 +1774,10 @@ forma mais limpa que conseguimos dar a eles.
   (Conjectura~\ref{conj:tail-index}), para todo $q\ge5$: diferente do
   caso $q=3$, isso não tem nem derivação rigorosa (a raiz relevante
   está sempre congelada, Proposição~\ref{prop:always-frozen}) nem apoio
-  empírico sólido (a única medição existente, para $q=5$, já foi
-  mostrada ser estatisticamente não-confirmatória). Esta é,
+  empírico sólido: a medição original, para $q=5$, já foi mostrada ser
+  estatisticamente não-confirmatória, e um teste maior subsequente
+  (\S\ref{sec:freezing}) é encorajador numa fração de cauda mas
+  instável entre outras, portanto ainda não decisivo. Esta é,
   honestamente, a alegação com apoio mais fraco do paper, e a
   sinalizamos como tal em vez de deixá-la herdar credibilidade do caso
   $q=3$ só por compartilhar a fórmula.
@@ -1872,6 +1919,31 @@ não validado é uma fonte conhecida de erro silencioso.
 \bibitem{KrasikovLagarias2003} I.\ Krasikov and J.\ C.\ Lagarias,
   \emph{Bounds for the $3x+1$ problem using difference inequalities},
   Acta Arithmetica \textbf{109} (2003), 237--258.
+
+\bibitem{Biggins1992} J.\ D.\ Biggins, \emph{Uniform convergence of
+  martingales in the branching random walk}, Annals of Probability
+  \textbf{20}(1) (1992), 137--151.
+
+\bibitem{ApplegateLagarias1995I} D.\ Applegate and J.\ C.\ Lagarias,
+  \emph{Density bounds for the $3x+1$ problem I: tree-search method},
+  Mathematics of Computation \textbf{64} (1995), 411--426.
+
+\bibitem{ApplegateLagarias1995II} D.\ Applegate and J.\ C.\ Lagarias,
+  \emph{Density bounds for the $3x+1$ problem II: Krasikov
+  inequalities}, Mathematics of Computation \textbf{64} (1995),
+  427--438.
+
+\bibitem{Guivarch1990} Y.\ Guivarc'h, \emph{Sur une extension de la
+  notion de loi semi-stable}, Annales de l'Institut Henri Poincaré
+  Probabilités et Statistiques \textbf{26} (1990), 261--285.
+
+\bibitem{Liu2000} Q.\ Liu, \emph{On generalized multiplicative
+  cascades}, Stochastic Processes and their Applications
+  \textbf{86}(2) (2000), 263--286.
+
+\bibitem{Mentemeier2016} S.\ Mentemeier, \emph{The fixed points of the
+  multivariate smoothing transform}, Probability Theory and Related
+  Fields \textbf{164}(1--2) (2016), 401--458.
 
 \bibitem{BakerBanaji2026} S.\ Baker and A.\ Banaji, \emph{Self-similar
   and self-conformal measures with slow Fourier decay},

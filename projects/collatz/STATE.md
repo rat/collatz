@@ -2,6 +2,47 @@
 
 Última atualização: 2026-07-18
 
+## Bateria de 4 testes de acompanhamento à correção da §3 (H-109, addendum 2)
+
+Depois de corrigir o erro da §3 (ver seção abaixo), o diretor científico
+pediu "faça todos os testes, se precisar chame Fable. sejam
+criteriosos e podem usar vou a vontade" — 4 testes, cada um com
+consulta ao Fable + verificação independente minha:
+
+1. **Índice de cauda q=5, teste mais robusto** (novo experimento
+   `experiments/E-103-tail-index-q5-rigorous-test/`): amostra 8x maior
+   (5000 raízes), 4 headrooms, Hill+bootstrap+Zipf. Resultado:
+   estável entre headrooms, ponto na fração de 5% quase exato
+   (1,58 vs 1,536 previsto), mas instável entre frações (1,39–2,10) —
+   encorajador, não conclusivo. A Conjectura do índice de cauda para
+   q≥5 continua conjectura, agora com evidência mais forte mas ainda
+   não decisiva.
+2. **Mais raízes/profundidade para o congelamento** (q=3 até k=22,
+   q=5 até k=17, interrompido em k=20 por segurança de memória — memo
+   crescia ~15x por passo): resíduo C_k confirmado O(1) (2,6–3,4 para
+   q=3, 2,0–3,0 para q=5), como previsto pela fórmula assintótica do
+   Fable.
+3. **Teorema tipo Biggins**: confirmado que Biggins (1992) cobre a
+   região não-congelada só para BRW genuíno (i.i.d.), não a recursão
+   aritmética — mesma lacuna já nomeada no Teorema da barreira, agora
+   quantitativa. Adicionado como Remark no paper.
+4. **Por que os números de congelamento não batiam com a previsão
+   ingênua**: resolvido — crescimento é log Z_k = A·k − B·log(k) + O(1),
+   termo log(k) não-desprezível em k raso (cruzamento k≈139 para q=3,
+   k≈407 para q=5). Não é bug, é regime pré-assintótico esperado.
+
+Detalhes completos: addendum 2 de
+`hypotheses/H-109-generalized-qx1-pressure-equation-exact-closed-form.md`.
+Limitação reconhecida: o estimador de índice de cauda no Teste 1 não
+inclui a correção rank−½ de Gabaix-Ibragimov recomendada pelo Fable;
+bateria completa (GI, MLE de GPD, Clauset-Shalizi-Newman+Vuong) fica
+como próximo passo se a linha for retomada.
+
+**Ainda pendente**: decidir com cuidado se/como incorporar o resultado
+do Teste 1 na Conjectura do índice de cauda em `main.tex`/`main-pt-br.tex`
+(hoje o paper diz "sem teste empírico forte para q≥5" — o correto agora
+é "teste maior existe, encorajador mas não decisivo", sem exagerar).
+
 ## Erro real na §3 do paper encontrado por revisão externa e corrigido (H-109)
 
 Revisão externa achou um erro matemático concreto e correto na equação
