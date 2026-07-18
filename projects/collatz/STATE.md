@@ -2,6 +2,52 @@
 
 Última atualização: 2026-07-17
 
+## ✅ Os dois lemas pendentes foram executados (H-126, H-127) — nenhum ficou como esperado, mas ambos deram resultado citável
+
+Os dois "próximos passos" declarados em H-115 foram concluídos
+(2026-07-17), com consulta ao Fable e checagem cruzada (advisor +
+verificação direta contra o PDF de Tao 2022 + experimento
+computacional decisivo). Nenhum dos dois virou o "lema positivo
+fácil" que se esperava — ambos colapsaram, por vias independentes, no
+MESMO ingrediente que já faltava no regime 3:
+
+1. **Lema do regime 2 → H-126**: REFUTADO como esboçado (o orçamento
+   D^{-A} contradiz a identidade exata eq. 1.23 de Tao — conferida
+   verbatim no PDF). O que sobrevive: um teorema de estrutura exato e
+   positivo (Prop. 2 — a correlação grosseira de agregados irmãos NÃO
+   desaparece, é fórmula fechada independente de profundidade) mais um
+   lema condicional cuja hipótese (medida de Syracuse em L²(Z_3)) foi
+   **refutada computacionalmente** em E-100: K_ℓ diverge linearmente
+   até ℓ=17 (incrementos → 0,47, sem saturação).
+2. **Lema de redução Z-number → H-127**: vira uma dicotomia condicional
+   (Lema B), não uma equivalência limpa — e inclui um resultado
+   negativo próprio (Proposição C): identidade exata de Jensen mostra
+   que o orçamento de Fourier anelado tem folga de fator 1,88 contra o
+   necessário no regime da WCC (confirmado por Monte Carlo em E-101).
+   O ramo espectralmente difuso, inacessível à técnica, "é exatamente
+   o núcleo de β=1".
+
+**Isto é bom para o paper, não ruim**: em vez de dois lemas soltos,
+temos cinco/seis articulações independentes convergindo no mesmo
+ingrediente faltante (endogenia H-110, WCC H-112/H-114, β=1 H-124,
+condição L² H-126, dicotomia espectral H-127) — evidência estrutural
+de que o ingrediente é real, não artefato de uma abordagem. Ver H-115
+seção "Execução dos dois próximos passos" para o resumo, H-126/H-127
+para os teoremas completos.
+
+## 🔜 PRÓXIMO PASSO: escrever o paper — não há mais lema pendente
+
+Nenhuma investigação nova está aberta. Escopo do paper: H-109 a H-127
+(a linha G(v)/qx+1/endogenia — as refutações de alegações de prova
+falsas ficam para o "paper cumulativo de críticas" separado,
+BACKLOG.md item 8, só quando pedido explicitamente). Zeladoria
+pendente antes de citar: conferir os números de equação do Wirsching
+(2003) contra a versão final da DCDS (o PDF em mãos é "preliminary
+version"); conferir as referências externas citadas só de memória
+pelo Fable em H-127 (Halász 1977, Tao-Vu 2009, Nguyen-Vu 2011, Mahler
+1968, Flatto-Lagarias-Pollington 1995, Erdős 1979, Lagarias 2009) se
+forem usadas no texto final.
+
 ## ⭐⭐ Terceira perna de triangulação: Wirsching (2003) e a função de Fabius base-3 (H-125)
 
 Segunda rodada da busca literária (pedido explícito: "achar coisas que

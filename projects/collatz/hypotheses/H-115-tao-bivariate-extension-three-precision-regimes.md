@@ -1,9 +1,10 @@
 # H-115 — Por que a extensão bivariada de Tao não cruza a barreira: três regimes de precisão, e onde cada um vive
 
-Status: fechada — obstrução identificada com precisão matemática; um
-lema tratável (regime 2) identificado como próximo passo opcional de
-baixo risco; a barreira em si (regime 3) é equivalente a um problema
-aberto reconhecido da área
+Status: fechada — obstrução identificada com precisão matemática; os
+dois lemas de próximo passo (regime 2, redução Z-number) foram
+executados (ver H-126/H-127) e convergem, por vias independentes, no
+mesmo ingrediente faltante do regime 3 — problema aberto reconhecido
+da área, não mais perseguido
 Criada em: 2026-07-17
 Origem: depois de fechar o pacote de publicação (H-109 a H-113) e
 esgotar 7 rodadas de tentativas de "importar maquinaria de outra área"
@@ -139,6 +140,72 @@ também "sua forma mínima útil é uma conjectura nomeada do próprio Tao,
 não provada". Três articulações quase-equivalentes do mesmo
 ingrediente faltante: endogenia (H-110), WCC (H-112), β=1 (H-124) —
 nenhuma provada. Ver H-124 para a análise completa.
+
+## Próximos passos declarados (2026-07-17) — antes de escrever o paper
+
+Dois lemas concretos, de baixo risco/custo, identificados ao longo
+desta hipótese mas ainda não escritos. Marcados como próxima ação
+(não mais rodada exploratória — são fechamentos de pontas já
+mapeadas):
+
+1. **Lema do regime 2**: decorrelação de agregados de subárvore (não
+   folha-a-folha) em módulos grosseiros 3^{O(log D)}, via contagem de
+   pares de caminhos + Prop. 1.14 de Tao (condicionada no primeiro
+   passo, uniforme em ξ) — maquinaria da Seção 7 quase inalterada.
+   Seria o primeiro enunciado teórico POSITIVO e demonstrado (não só
+   medido) desta linha inteira.
+2. **Lema de redução Z-number** (da análise de Littlewood-Offord de
+   Tao 2011, ver adendo acima): formalizar "falha da WCC em escala ℓ
+   com j acima do limiar ⟹ concentração de Bohr dos geradores de
+   potências de 2 ⟹ configuração tipo Z-number para ×2 mod 3^s" —
+   upgrade de "analogia com problema aberto" para "redução explícita
+   a problema aberto nomeado".
+
+Ambos "dias, não semanas" segundo o Fable. Fazer os dois antes de
+começar a redação do paper — depois disso, parar de investigar.
+
+## Execução dos dois próximos passos (2026-07-17) — ambos concluídos, ambos com resultado diferente do esperado
+
+**Lema do regime 2 → H-126.** Refutado como esboçado: o orçamento
+"|ρ(ξ)|≤C_A·D^{-A} uniforme em ξ" contradiz uma identidade EXATA de
+Tao (eq. 1.23, auto-similaridade — não uma estimativa perdida). O que
+sobrevive é um teorema de estrutura POSITIVO (a componente grosseira
+da covariância de irmãs é exata, não-nula, independente de D — Prop.
+2 de H-126, endogenia convertida em fórmula fechada) mais um lema
+condicional cuja hipótese (K_∞<∞, medida de Syracuse em L²(Z_3)) foi
+testada e **refutada computacionalmente** em E-100 (K_ℓ diverge
+linearmente até ℓ=17, incrementos convergindo a ≈0,47 sem sinal de
+saturação). Regime 2 não é um degrau mais fácil que o regime 3 — é
+irmão dele, com o mesmo ingrediente faltante, agora com refutação
+direta em vez de "em aberto".
+
+**Lema de redução Z-number → H-127.** Não é a equivalência limpa
+esperada — é uma dicotomia condicional (Lema B): falha da WCC +
+concentração espectral ⟹ configuração de Bohr pós-wrap (parente de
+Erdős-Lagarias-Furstenberg, não do problema clássico de Mahler); o
+ramo espectralmente difuso é inacessível a métodos ℓ¹ tipo
+Littlewood-Offord, por uma parede de constantes EXATA (Proposição C,
+identidade de Jensen Λ=log γ_c≈0,58 contra o necessário log3≈1,10,
+folga de fator 1,88, confirmada por Monte Carlo em E-101). O ramo
+difuso inacessível é "exatamente o núcleo de β=1" — mesma parede do
+regime 3 e da condição L² de H-126, vista por uma quarta via
+independente.
+
+**Consequência para o pacote final**: em vez de dois lemas positivos
+fechando pontas, o resultado é uma quinta e sexta articulação
+independente do MESMO ingrediente faltante (endogenia H-110, WCC
+H-112/H-114, β=1 H-124, condição L² H-126, dicotomia espectral H-127)
+— nenhuma provada, todas convergindo. Isso é, honestamente, um
+resultado mais forte para o paper do que dois lemas soltos teriam
+sido: a convergência de cinco/seis formulações independentes no mesmo
+ponto é evidência estrutural de que o ingrediente é real e único, não
+um artefato de uma abordagem específica. Ver H-126/H-127 para os
+teoremas de estrutura positivos que sobrevivem em cada caso (Prop. 2
+de H-126; Prop. C de H-127) — ambos citáveis por si mesmos.
+
+**Próximo passo agora**: nenhum lema pendente. Parar de investigar e
+começar a escrever o paper (escopo H-109 a H-127, conforme já
+decidido).
 
 ## Referências
 
