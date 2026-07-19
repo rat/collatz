@@ -2,6 +2,71 @@
 
 Última atualização: 2026-07-19
 
+## Segunda rodada de auditoria externa: 9 correções adicionais aplicadas
+
+Uma segunda auditoria (verificação linha a linha da primeira rodada de
+correções) confirmou as duas correções matemáticas de fundo (Teorema
+3.6/Conjectura 3.7, Teorema 10.12) como corretas, mas achou defeitos
+novos e pendências reais:
+
+- **Repositório**: a auditoria insistiu, pela segunda vez, que
+  `github.com/faculdade/collatz-endogeny` não existe/é placeholder.
+  Reconfirmado (de novo) via `curl`/API do GitHub: HTTP 200,
+  `private: false`. A auditoria está errada — provavelmente busca sem
+  indexação de um repo pushado no mesmo dia. Nada a corrigir.
+- **Vazamento de português no `main.tex` em inglês** (real, corrigido):
+  "cauda"→"tail" (2x, Resultado Empírico de Wirsching Conjectura 3) e
+  "roupagens"→"guises".
+  Ambos no bloco de teoria de Wirsching.
+- **Grafia inconsistente** (real, corrigido): "Goldie/Guivar'ch" →
+  "Goldie/Guivarc'h" (a própria bibliografia já grafava certo).
+- **Arredondamento** (real, corrigido): "Λ≈0,5834" → "0,5836" (log γc =
+  0,583600...; o Monte Carlo do paper, 0,58344±0,0005, já era
+  consistente com o valor certo).
+- **Contagem inconsistente** (real, mas só num lugar — não em todo o
+  paper como a auditoria sugeriu): "six independent angles" no
+  parágrafo final da §12 deveria ser "seven" (a mesma seção já tinha
+  estabelecido 7 rotas duas páginas antes). Corrigido.
+- **Referência cruzada quebrada** (real, corrigido): "§sec:regimes"
+  (que é a seção dos 3 regimes de Tao, sem relação) apontava
+  erroneamente para a medição Hill/EVT de q=3 → corrigido para
+  "§sec:pressure" (onde essa medição realmente é discutida).
+- **Ciclos na enumeração de T₅/T₇** (real, corrigido): §6.2 não
+  declarava que a árvore reversa tem ciclos genuínos (ex.: {1,3} em
+  q=5: w₄(1)=3, w₁(3)=1 — verifiquei isso eu mesmo e confirmei contra
+  o código real do mirror, que já exclui `CYCLE5 =
+  {1,3,13,33,83,17,27,43}` via um set `seen`). Adicionado parágrafo
+  explicando o mecanismo real usado.
+- **Precisão do Teorema 3.6/modelo i.i.d.** (real, corrigido após
+  consulta ao Fable): o enunciado dizia "N(x)~x" em q=3 sem fator
+  aleatório W, mas com W_u explícito em q≥5 — inconsistente, já que a
+  degenerescência de W é propriedade da lei de reprodução (variância
+  genuína em ambos os casos), não do valor de α₋. Fable também apontou
+  que Biggins 1992 sozinho só sustenta a transferência ao nível do
+  *expoente*; a assíntota fina N(x)~W·x^α exige o teorema de renovação
+  de Nerman (1981, C-M-J), agora citado. Reescrito em dois níveis
+  (expoente via Biggins; assíntota fina via Nerman, com W não-degenerado
+  em todo q≥3 incluindo q=3), com duas ressalvas honestas: condição
+  não-reticulada favorável (log q/log 2 irracional), e deslocamentos
+  negativos exigindo a extensão padrão de Nerman (hipóteses não
+  verificadas em detalhe).
+- **Rótulos "Theorem" em resultados empíricos** (mudança de decisão,
+  após segunda consulta ao Fable): na primeira rodada mantive
+  Teoremas 6.1/7.2/9.4 como estavam (título já autodeclarava
+  "empirical"/"numerical test"). Fable mudou de veredito na segunda
+  consulta: a autodeclaração no título mitiga engano mas não corrige o
+  erro de categoria ("Theorem" com IC/AIC/p-valor dentro do enunciado é
+  incoerente com a disciplina epistêmica que o próprio paper acabou de
+  aplicar ao rebaixar o Teorema 3.6). Custo de correção é trivial
+  (contador compartilhado, numeração 6.1/7.2/9.4 preservada). Criado
+  ambiente `\newtheorem{empirical}{Empirical Result}` e migrados os 3
+  ambientes + ~5 referências cruzadas. O Teorema 10.3 (refutação L²,
+  `thm:l2-refutation`) foi mantido como Teorema — é dedução exata via
+  recursão fechada, não medição estatística, categoria diferente.
+
+PDFs recompilados limpos nas duas versões (main.pdf: 29 páginas;
+main-pt-br.pdf: 30 páginas).
+
 ## Auditoria externa do paper (pré-envio ao Igor): 3 correções aplicadas
 
 Diretor científico rodou uma auditoria sistemática externa do paper

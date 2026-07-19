@@ -13,6 +13,7 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{empirical}[theorem]{Empirical Result}
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
 \theoremstyle{remark}
@@ -488,11 +489,23 @@ Let $N(x)$ be the population counting function of the i.i.d.\
 branching-random-walk model whose annealed pressure is exactly
 $\rho_{\mathrm{ann}}(\alpha)=q^{\alpha-1}/(2^\alpha-1)$
 (Theorem~\ref{thm:pressure}). Since $\alpha_-(q)$ is always unfrozen
-(Proposition~\ref{prop:always-frozen}), quenched-equals-annealed growth
-holds throughout the unfrozen region \cite{Biggins1992}, and almost
-surely: $N(x)\sim x$ at $q=3$ (positive density, since $\alpha_-(3)=1$
-exactly); $N(x)\sim W_u\cdot x^{\alpha_-(q)}$ for some a.s.\ positive
-random scale factor $W_u$, for every odd $q\ge5$ ($\alpha_-(q)<1$).
+(Proposition~\ref{prop:always-frozen}), $\log N(x)/\log x\to\alpha_-(q)$
+almost surely, for every odd $q\ge3$ \cite{Biggins1992}: exponent $1$
+(linear growth) at $q=3$; exponent $\alpha_-(q)<1$ for every $q\ge5$.
+At the finer level of the Crump--Mode--Jagers renewal theorem for
+general branching processes \cite{Nerman1981} (whose non-lattice
+hypothesis holds here, since $\log q/\log2$ is irrational for every
+$q\ge3$), the sharper asymptotic holds uniformly, \emph{including} at
+$q=3$: $N(x)\sim W\cdot x^{\alpha_-(q)}$ almost surely, for some a.s.\
+positive, non-degenerate random scale factor $W$ --- not a
+deterministic constant at any $q$, since the underlying reproduction
+law has genuine variance. (Nerman's theorem is stated for point
+processes on $[0,\infty)$; our branching displacements include negative
+values, e.g.\ $2/3<1$ at $q=3$, since a child can be numerically
+smaller than its parent, so the finer statement applies here only via
+the standard extension to general, not necessarily one-sided,
+reproduction measures, whose hypotheses we have not verified in
+detail.)
 \end{theorem}
 
 \begin{conjecture}[Structural transition: density, arithmetic tree]\label{conj:transition-arithmetic}
@@ -647,8 +660,9 @@ it.
 Taken together, neither route confirms Conjecture~\ref{conj:tail-index}
 for $q\ge5$ and neither refutes it; both are more informative than the
 original under-powered measurement, and both point to the same honest
-conclusion: this is a harder statistical question than the $q=3$ case
-already settled in \S\ref{sec:regimes}. We have since pursued exactly
+conclusion: this is a harder statistical question than the $q=3$ case,
+already settled by the independent Hill/EVT measurements noted in
+\S\ref{sec:pressure}. We have since pursued exactly
 the two follow-ups this pointed to. A pre-registered log-periodic fit
 (motivated by the branch weights being powers of $2$) was tested against
 a period derived analytically, not fitted: the relevant renewal-theoretic
@@ -691,7 +705,14 @@ counting slopes per decade of $3$ independently sampled roots gave
 $\approx 0.62$--$0.66$ for $q=5$ (predicted $0.650919$) and
 $\approx 0.36$--$0.39$ for $q=7$ (predicted $0.373501$). A more careful,
 statistically calibrated measurement for $q=5$ is the subject of
-\S\ref{sec:kl}.
+\S\ref{sec:kl}. As already noted above for $q=3$ (where $w_2(1)=1$ is a
+genuine fixed point), the smallest-branch map $u\mapsto
+w_{A_0(u\bmod q)}(u)$ has finite cycles for $q=5$ (e.g.\
+$1\mapsto3\mapsto1$, since $w_4(1)=3$ and $w_1(3)=1$) and $q=7$; naive
+enumeration would loop on nodes that reach one. Our implementation
+excludes all such cycle members explicitly (precomputed for each $q$)
+and deduplicates visited nodes, rather than relying only on sampling
+roots far from them.
 
 \begin{remark}[Bibliographic calibration]\label{rem:novelty-109}
 A directed novelty check against Kontorovich--Lagarias
@@ -871,7 +892,7 @@ necessarily straddle the unique minimum of $m$, so \emph{neither} can
 be a critical (double) root; criticality would require the two roots
 to merge, which does not happen at $q=3$. The correct classification
 of $\alpha^\ast=2$ is therefore as the \emph{second root with
-$m'>0$} --- a Goldie/Guivar'ch-type regularly-varying tail regime
+$m'>0$} --- a Goldie/Guivarc'h-type regularly-varying tail regime
 \cite{Goldie1991,BuraczewskiDamekMikosch2016}, not the critical case.
 This distinction matters operationally: the critical-case uniqueness
 theorem of \cite{KoleskoMentemeier2015} \emph{presupposes} exactly the
@@ -880,7 +901,7 @@ Theorem~\ref{thm:barrier} --- so even setting aside the regime
 mismatch, it could not have supplied a new tool for closing that gap.
 We note, tying this to \S\ref{sec:freezing}, that ``second root with
 $m'>0$'' is exactly the freezing condition of
-Proposition~\ref{prop:always-frozen}: the Goldie/Guivar'ch regime
+Proposition~\ref{prop:always-frozen}: the Goldie/Guivarc'h regime
 name correctly classifies the algebraic root $\alpha^\ast=2$ of
 $m(\alpha)=1$, but by itself says nothing about whether this root
 governs the \emph{quenched} tail of our specific arithmetic recursion
@@ -1014,7 +1035,7 @@ $0.6509$ monotonically without having reached it --- the signature of
 enough''), not of uncorrected truncation bias (already handled by the
 Richardson extrapolation above).
 
-\begin{theorem}[Empirical resolution of the Kontorovich--Lagarias vs.\
+\begin{empirical}[Empirical resolution of the Kontorovich--Lagarias vs.\
 Volkov dispute]\label{thm:kl}
 The $5x+1$ reverse-tree counting exponent, measured by exact
 enumeration with Richardson-extrapolated truncation correction, is
@@ -1022,7 +1043,7 @@ $0.639$ (95\% CI $[0.633,0.645]$). This excludes the competing Volkov
 prediction ($0.678$) with high confidence and is consistent with the
 Kontorovich--Lagarias prediction ($0.650919$) up to a measured and
 explained finite-window pre-asymptotic effect.
-\end{theorem}
+\end{empirical}
 
 This result stands entirely on its own, independent of the theoretical
 program of \S\S\ref{sec:endogeny}--\ref{sec:lemmas}; we highlight it
@@ -1119,7 +1140,7 @@ indistinguishable from one another in this range
 $j^\ast$ near $\ell\approx 40$, out of reach of this algorithmic
 approach.
 
-\begin{theorem}[Direct computational test of the Weak Covering
+\begin{empirical}[Direct computational test of the Weak Covering
 Conjecture]\label{thm:wcc}
 $j^\ast(\ell)$ exists and is finite for all $\ell\le 20$ (the first
 direct computational test, to our knowledge, of the exact object of
@@ -1129,7 +1150,7 @@ $\Delta\mathrm{AIC}$ and plateau frequency, in the same direction but
 not individually decisive), consistent with the weak form
 (Conjecture~\ref{conj:wcc}) and disfavoring the corresponding strong
 form with $K(\ell)$ bounded.
-\end{theorem}
+\end{empirical}
 
 \section{Three precision regimes for Tao's bivariate extension}
 \label{sec:regimes}
@@ -1313,7 +1334,7 @@ zero-truncation-error evaluation of $\varphi$ at depth $\ell$ up to
 $\ell=500$ (working throughout in log-space with $60$-digit precision;
 error certified $\le 10^{-8}$).
 
-\begin{theorem}[Numerical test of Wirsching's Conjecture 3]
+\begin{empirical}[Numerical test of Wirsching's Conjecture 3]
 \label{thm:conjecture3}
 The decisive ratio $L_\ell := 3^{1-\ell}\varphi(3x_\ell^+)/\varphi(x_\ell^+)$,
 measured for $\ell=250,\dots,500$ in the CLT window ($u\in[-2,2]$),
@@ -1323,16 +1344,16 @@ independently reproduced by Berg--Krüppel's own asymptotic
 $\varphi_0$. The quantity $\ln(\varphi/\varphi_0)$ is increasing,
 concave, and uniform across $u\in[-2,2]$ (dispersion $<10^{-4}$),
 consistent with a finite limit $L=-0.619\pm0.001\,(\mathrm{stat})$,
-with a cauda-shape systematic uncertainty of $\pm 0.015$, giving
+with a tail-shape systematic uncertainty of $\pm 0.015$, giving
 $c=e^L\approx 0.538$ (honest range $0.53$--$0.55$), best fit by a
-cauda term $0.79/\sqrt\ell$; no log-periodic modulation is detected.
+tail term $0.79/\sqrt\ell$; no log-periodic modulation is detected.
 This supports Conjecture~3 (Wirsching's most concrete conjecture in
 the chain) with certified numerical error, on the tested range;
 Conjectures~1 and~2 above it remain open.
-\end{theorem}
+\end{empirical}
 
-Together, Theorems~\ref{thm:wcc}, Proposition~\ref{prop:beta-wcc}, and
-\ref{thm:conjecture3} give three independent formal ``roupagens'' ---
+Together, Empirical Results~\ref{thm:wcc} and~\ref{thm:conjecture3} and
+Proposition~\ref{prop:beta-wcc} give three independent formal ``guises'' ---
 integer counting (Wirsching 1998), Fourier characters (Tao 2020), a
 real functional equation (Wirsching 2003) --- of the same critical
 window, none resolved.
@@ -1599,13 +1620,13 @@ $\mathbb{E}[\log|Z|]=\log p$, i.e.\ \eqref{eq:jensen}.
 Applying Theorem~\ref{thm:jensen} with $p=p_c=1/\gamma_c\approx0.558$
 (the tilted model matching the Weak Covering Conjecture's threshold
 slope; note $p_c\ge\tfrac12$, as the theorem requires) gives
-$\Lambda = \log\gamma_c \approx 0.5834+O(c)$, confirmed by Monte Carlo
+$\Lambda = \log\gamma_c \approx 0.5836+O(c)$, confirmed by Monte Carlo
 ($8\times10^6$ samples: $0.58344\pm0.0005$), against the value
 $\log 3\approx 1.0986$ that would be needed to exclude a diffuse hole
 by an annealed $\ell^1$ Fourier-budget argument: a deficit factor of
 $\approx 1.88$. The annealed criterion would only invert at
 $\gamma=3$ ($j\ge 2\ell$), far above the regime of the conjecture
-($j^\ast(\ell)/\ell\approx1.2$, Theorem~\ref{thm:wcc}).
+($j^\ast(\ell)/\ell\approx1.2$, Empirical Result~\ref{thm:wcc}).
 
 \begin{theorem}[Proposition C: self-consistency of a diffuse hole]
 \label{thm:propC}
@@ -1788,7 +1809,7 @@ evidence that the obstruction is a structural feature of the problem
 itself.
 
 Third, this theoretical package sits alongside a result
-(Theorem~\ref{thm:kl}) whose validity does not depend on any of the
+(Empirical Result~\ref{thm:kl}) whose validity does not depend on any of the
 above framing at all: a direct, falsifiable, statistically calibrated
 empirical measurement resolving a long-standing dispute in the
 literature. We consider this the single most framing-independent
@@ -1800,9 +1821,9 @@ proof of any part of the Collatz conjecture, nor as a report of
 failure, but as a precise map of where a specific, natural,
 technically rich line of attack --- Tao's Syracuse-measure program,
 generalized to $qx+1$ --- runs into a wall, together with an exact
-quantification of the size and shape of that wall from six independent
-angles, and one hard, unconditional empirical result obtained along
-the way.
+quantification of the size and shape of that wall from seven
+independent angles, and one hard, unconditional empirical result
+obtained along the way.
 
 \section{Conclusion and open directions}
 \label{sec:conclusion}
@@ -1923,7 +1944,7 @@ computation is a known source of silent error.
   the identity is exact and independent of simulation; the Monte Carlo
   estimate ($8\times10^6$ samples) serves only as a sanity check on
   the analytic value, and matches it to four significant figures.
-\item \emph{Wirsching 2003 moment recursion} (Theorem~\ref{thm:conjecture3}):
+\item \emph{Wirsching 2003 moment recursion} (Empirical Result~\ref{thm:conjecture3}):
   validated by an independent fixed-point check on an independent
   grid, agreeing to the grid's resolution ($\approx 6$ digits), and by
   confirming the functional equation~(7.12) of \cite{Wirsching2003}
@@ -1999,6 +2020,11 @@ computation is a known source of silent error.
 \bibitem{Biggins1992} J.\ D.\ Biggins, \emph{Uniform convergence of
   martingales in the branching random walk}, Annals of Probability
   \textbf{20}(1) (1992), 137--151.
+
+\bibitem{Nerman1981} O.\ Nerman, \emph{On the convergence of
+  supercritical general (C-M-J) branching processes}, Zeitschrift
+  f\"ur Wahrscheinlichkeitstheorie und verwandte Gebiete
+  \textbf{57}(3) (1981), 365--395.
 
 \bibitem{ApplegateLagarias1995I} D.\ Applegate and J.\ C.\ Lagarias,
   \emph{Density bounds for the $3x+1$ problem I: tree-search method},

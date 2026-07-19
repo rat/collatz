@@ -14,6 +14,7 @@
 \newtheorem{lemma}[theorem]{Lema}
 \newtheorem{corollary}[theorem]{Corolário}
 \newtheorem{conjecture}[theorem]{Conjectura}
+\newtheorem{empirical}[theorem]{Resultado Empírico}
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definição}
 \theoremstyle{remark}
@@ -495,12 +496,24 @@ Seja $N(x)$ a função de contagem populacional do modelo i.i.d.\ de
 passeio aleatório ramificado cuja pressão anelada é exatamente
 $\rho_{\mathrm{ann}}(\alpha)=q^{\alpha-1}/(2^\alpha-1)$
 (Teorema~\ref{thm:pressure}). Como $\alpha_-(q)$ é sempre não-congelada
-(Proposição~\ref{prop:always-frozen}), o crescimento quenched=anelado
-vale em toda a região não-congelada \cite{Biggins1992}, e quase
-certamente: $N(x)\sim x$ em $q=3$ (densidade positiva, já que
-$\alpha_-(3)=1$ exatamente); $N(x)\sim W_u\cdot x^{\alpha_-(q)}$ para
-algum fator de escala aleatório q.c.\ positivo $W_u$, para todo $q\ge5$
-ímpar ($\alpha_-(q)<1$).
+(Proposição~\ref{prop:always-frozen}), $\log N(x)/\log x\to\alpha_-(q)$
+quase certamente, para todo $q\ge3$ ímpar \cite{Biggins1992}: expoente
+$1$ (crescimento linear) em $q=3$; expoente $\alpha_-(q)<1$ para todo
+$q\ge5$. No nível mais fino do teorema de renovação de
+Crump--Mode--Jagers para processos de ramificação gerais
+\cite{Nerman1981} (cuja hipótese não-reticulada vale aqui, já que
+$\log q/\log2$ é irracional para todo $q\ge3$), a assíntota mais fina
+vale uniformemente, \emph{inclusive} em $q=3$: $N(x)\sim W\cdot
+x^{\alpha_-(q)}$ quase certamente, para algum fator de escala aleatório
+$W$ q.c.\ positivo e não-degenerado --- não uma constante
+determinística em nenhum $q$, já que a lei de reprodução subjacente
+tem variância genuína. (O teorema de Nerman é enunciado para processos
+pontuais em $[0,\infty)$; nossos deslocamentos de ramificação incluem
+valores negativos, e.g.\ $2/3<1$ em $q=3$, já que um filho pode ser
+numericamente menor que seu pai, então a afirmação mais fina se aplica
+aqui só via a extensão padrão a medidas de reprodução gerais, não
+necessariamente unilaterais, cujas hipóteses não verificamos em
+detalhe.)
 \end{theorem}
 
 \begin{conjecture}[Transição estrutural: densidade, árvore aritmética]\label{conj:transition-arithmetic}
@@ -663,7 +676,8 @@ Em conjunto, nenhuma das duas rotas confirma a
 Conjectura~\ref{conj:tail-index} para $q\ge5$ e nenhuma a refuta; ambas
 são mais informativas que a medição original subdimensionada, e ambas
 apontam para a mesma conclusão honesta: esta é uma questão estatística
-mais difícil que o caso $q=3$ já resolvido na \S\ref{sec:regimes}.
+mais difícil que o caso $q=3$, já resolvido pelas medições
+independentes de Hill/EVT observadas na \S\ref{sec:pressure}.
 Perseguimos desde então exatamente os dois desdobramentos que isso
 apontava. Um ajuste log-periódico pré-registrado (motivado pelos pesos
 dos ramos serem potências de $2$) foi testado contra um período
@@ -708,7 +722,14 @@ década de $3$ raízes amostradas independentemente deram
 $\approx 0{,}62$--$0{,}66$ para $q=5$ (previsto $0{,}650919$) e
 $\approx 0{,}36$--$0{,}39$ para $q=7$ (previsto $0{,}373501$). Uma
 medição mais cuidadosa e estatisticamente calibrada para $q=5$ é o
-assunto da \S\ref{sec:kl}.
+assunto da \S\ref{sec:kl}. Como já observado acima para $q=3$ (onde
+$w_2(1)=1$ é um ponto fixo genuíno), o mapa de menor ramo
+$u\mapsto w_{A_0(u\bmod q)}(u)$ tem ciclos finitos para $q=5$ (ex.\
+$1\mapsto3\mapsto1$, já que $w_4(1)=3$ e $w_1(3)=1$) e $q=7$;
+enumeração ingênua entraria em loop nos nós que alcançam algum deles.
+Nossa implementação exclui explicitamente todos os membros de ciclo
+(pré-computados para cada $q$) e deduplica nós visitados, em vez de
+depender apenas de amostrar raízes distantes deles.
 
 \begin{remark}[Calibração bibliográfica]\label{rem:novelty-109}
 Uma checagem de novidade dirigida contra Kontorovich--Lagarias
@@ -892,7 +913,7 @@ delas pode ser raiz crítica (dupla); criticalidade exigiria que as duas
 raízes se fundissem, o que não acontece em $q=3$. A classificação
 correta de $\alpha^\ast=2$ é portanto como \emph{segunda raiz com
 $m'>0$} --- um regime de cauda regularmente variável do tipo
-Goldie/Guivar'ch \cite{Goldie1991,BuraczewskiDamekMikosch2016}, não o
+Goldie/Guivarc'h \cite{Goldie1991,BuraczewskiDamekMikosch2016}, não o
 caso crítico. Esta distinção importa operacionalmente: o teorema de
 unicidade do caso crítico de \cite{KoleskoMentemeier2015}
 \emph{pressupõe} exatamente a independência entre cópias de subárvore
@@ -902,7 +923,7 @@ fornecido uma ferramenta nova para fechar essa lacuna. Registramos,
 ligando isso à \S\ref{sec:freezing}, que "segunda raiz com $m'>0$" é
 exatamente a condição de congelamento da
 Proposição~\ref{prop:always-frozen}: o nome do regime
-Goldie/Guivar'ch classifica corretamente a raiz algébrica
+Goldie/Guivarc'h classifica corretamente a raiz algébrica
 $\alpha^\ast=2$ de $m(\alpha)=1$, mas por si só não diz nada sobre se
 essa raiz governa a cauda \emph{quenched} da nossa recursão aritmética
 específica --- que é exatamente a pergunta que a
@@ -1042,7 +1063,7 @@ de $0{,}6509$ monotonicamente sem tê-lo alcançado --- a assinatura de
 ``profunda o suficiente''), não de viés de truncamento não corrigido
 (já tratado pela extrapolação de Richardson acima).
 
-\begin{theorem}[Resolução empírica da disputa Kontorovich--Lagarias
+\begin{empirical}[Resolução empírica da disputa Kontorovich--Lagarias
 vs.\ Volkov]\label{thm:kl}
 O expoente de contagem da árvore reversa de $5x+1$, medido por
 enumeração exata com correção de truncamento por extrapolação de
@@ -1051,7 +1072,7 @@ previsão concorrente de Volkov ($0{,}678$) com alta confiança e é
 consistente com a previsão de Kontorovich--Lagarias ($0{,}650919$) a
 menos de um efeito de pré-assintótica de janela finita, medido e
 explicado.
-\end{theorem}
+\end{empirical}
 
 Este resultado se sustenta inteiramente por si só, independente do
 programa teórico das \S\S\ref{sec:endogeny}--\ref{sec:lemmas};
@@ -1149,7 +1170,7 @@ indistinguíveis entre si nesta faixa ($\Delta\mathrm{AIC}<0{,}5$); eles
 só se separariam por $\ge 1$ unidade de $j^\ast$ perto de $\ell\approx
 40$, fora do alcance desta abordagem algorítmica.
 
-\begin{theorem}[Teste computacional direto da Weak Covering
+\begin{empirical}[Teste computacional direto da Weak Covering
 Conjecture]\label{thm:wcc}
 $j^\ast(\ell)$ existe e é finito para todo $\ell\le 20$ (o primeiro
 teste computacional direto, até onde sabemos, do objeto exato da
@@ -1159,7 +1180,7 @@ qualitativamente crescimento lento ilimitado sobre estabilização
 platôs, na mesma direção mas não individualmente decisivas),
 consistente com a forma fraca (Conjectura~\ref{conj:wcc}) e
 desfavorecendo a forma forte correspondente com $K(\ell)$ limitado.
-\end{theorem}
+\end{empirical}
 
 \section{Três regimes de precisão para a extensão bivariada de Tao}
 \label{sec:regimes}
@@ -1351,7 +1372,7 @@ profundidade $\ell$ até $\ell=500$ (trabalhando o tempo todo em
 espaço-logarítmico com precisão de $60$ dígitos; erro certificado
 $\le 10^{-8}$).
 
-\begin{theorem}[Teste numérico da Conjectura 3 de Wirsching]
+\begin{empirical}[Teste numérico da Conjectura 3 de Wirsching]
 \label{thm:conjecture3}
 A razão decisiva $L_\ell := 3^{1-\ell}\varphi(3x_\ell^+)/\varphi(x_\ell^+)$,
 medida para $\ell=250,\dots,500$ na janela do TCL ($u\in[-2,2]$),
@@ -1368,10 +1389,11 @@ $0{,}79/\sqrt\ell$; nenhuma modulação log-periódica é detectada. Isto
 suporta a Conjectura~3 (a mais concreta da cadeia de Wirsching) com
 erro numérico certificado, na faixa testada; as Conjecturas~1 e~2
 acima dela permanecem abertas.
-\end{theorem}
+\end{empirical}
 
-Juntos, o Teorema~\ref{thm:wcc}, a Proposição~\ref{prop:beta-wcc}, e o
-Teorema~\ref{thm:conjecture3} dão três ``roupagens'' formais
+Juntos, o Resultado Empírico~\ref{thm:wcc}, a
+Proposição~\ref{prop:beta-wcc}, e o Resultado Empírico~\ref{thm:conjecture3}
+dão três ``roupagens'' formais
 independentes --- contagem de inteiros (Wirsching 1998), caracteres de
 Fourier (Tao 2020), uma equação funcional real (Wirsching 2003) --- da
 mesma janela crítica, nenhuma resolvida.
@@ -1647,13 +1669,13 @@ $\mathbb{E}[\log|Z|]=\log p$, i.e.\ \eqref{eq:jensen}.
 Aplicando o Teorema~\ref{thm:jensen} com $p=p_c=1/\gamma_c\approx0{,}558$
 (o modelo inclinado que casa com a inclinação-limiar da Weak Covering
 Conjecture; note que $p_c\ge\tfrac12$, como o teorema exige) obtemos
-$\Lambda = \log\gamma_c \approx 0{,}5834+O(c)$,
+$\Lambda = \log\gamma_c \approx 0{,}5836+O(c)$,
 confirmado por Monte Carlo ($8\times10^6$ amostras: $0{,}58344\pm0{,}0005$),
 contra o valor $\log 3\approx 1{,}0986$ que seria necessário para
 excluir um buraco difuso por um argumento anelado de orçamento de
 Fourier $\ell^1$: um fator de déficit de $\approx 1{,}88$. O critério
 anelado só inverteria em $\gamma=3$ ($j\ge 2\ell$), bem acima do regime
-da conjectura ($j^\ast(\ell)/\ell\approx1{,}2$, Teorema~\ref{thm:wcc}).
+da conjectura ($j^\ast(\ell)/\ell\approx1{,}2$, Resultado Empírico~\ref{thm:wcc}).
 
 \begin{theorem}[Proposição C: autoconsistência de um buraco
 difuso]\label{thm:propC}
@@ -1840,7 +1862,7 @@ elementar de resíduos) é evidência muito melhor de que a obstrução é
 uma característica estrutural do problema em si.
 
 Terceiro, este pacote teórico convive com um resultado
-(Teorema~\ref{thm:kl}) cuja validade não depende de nada do
+(Resultado Empírico~\ref{thm:kl}) cuja validade não depende de nada do
 enquadramento acima: uma medição empírica direta, falsificável, e
 estatisticamente calibrada, resolvendo uma disputa de longa data na
 literatura. Consideramos esta a contribuição mais independente de
@@ -1853,7 +1875,7 @@ como um relato de fracasso, mas como um mapa preciso de onde uma linha
 de ataque específica, natural e tecnicamente rica --- o programa da
 medida de Syracuse de Tao, generalizado para $qx+1$ --- esbarra numa
 parede, junto com uma quantificação exata do tamanho e da forma dessa
-parede a partir de seis ângulos independentes, e um resultado empírico
+parede a partir de sete ângulos independentes, e um resultado empírico
 duro e incondicional obtido no caminho.
 
 \section{Conclusão e direções em aberto}
@@ -1986,7 +2008,7 @@ não validado é uma fonte conhecida de erro silencioso.
   sanidade sobre o valor analítico, e bate com ele em quatro
   algarismos significativos.
 \item \emph{Recursão de momentos de Wirsching 2003}
-  (Teorema~\ref{thm:conjecture3}): validada por uma checagem
+  (Resultado Empírico~\ref{thm:conjecture3}): validada por uma checagem
   independente de ponto fixo numa grade independente, concordando até
   a resolução da grade ($\approx 6$ dígitos), e confirmando a equação
   funcional~(7.12) de \cite{Wirsching2003} numericamente até
@@ -2062,6 +2084,11 @@ não validado é uma fonte conhecida de erro silencioso.
 \bibitem{Biggins1992} J.\ D.\ Biggins, \emph{Uniform convergence of
   martingales in the branching random walk}, Annals of Probability
   \textbf{20}(1) (1992), 137--151.
+
+\bibitem{Nerman1981} O.\ Nerman, \emph{On the convergence of
+  supercritical general (C-M-J) branching processes}, Zeitschrift
+  f\"ur Wahrscheinlichkeitstheorie und verwandte Gebiete
+  \textbf{57}(3) (1981), 365--395.
 
 \bibitem{ApplegateLagarias1995I} D.\ Applegate and J.\ C.\ Lagarias,
   \emph{Density bounds for the $3x+1$ problem I: tree-search method},
