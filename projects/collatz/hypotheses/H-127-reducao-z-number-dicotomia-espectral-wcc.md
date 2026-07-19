@@ -2,8 +2,15 @@
 
 Status: em revisão — redução real mas mais fraca do que o esboço de
 H-115 sugeria; inclui um resultado negativo próprio (Proposição C, com
-identidade exata via fórmula de Jensen) explicando por que a técnica
-não fecha no regime da WCC
+identidade exata via fórmula de Jensen, agora com verificação Monte
+Carlo formal em E-106) explicando por que a técnica não fecha no
+regime da WCC. Atualização 2026-07-19: o Lema B (a redução em si, não
+a Proposição C) está mais fraco do que se pensava — a Etapa 6
+("upgrade diagonal⟹segmento contínuo") não é lacuna técnica de rotina,
+é o conteúdo todo do lema, e não fecha por nenhuma das duas rotas
+tentadas (mesma parede de constantes da Prop. C, terceira aparição); a
+Definição 2 sem esse upgrade é vazia (verificado, E-107). Ver seção
+"Lema B" para a análise completa.
 Criada em: 2026-07-17
 Origem: execução do segundo dos dois "próximos passos declarados" de
 H-115 — formalizar "falha da WCC em escala ℓ ⟹ configuração tipo
@@ -87,6 +94,77 @@ reindexar por escala. (5) descida de escala (rotina). (6) upgrade
 diagonal⟹segmento contínuo: **lacuna declarada** — precisa de
 estabilidade do espectro sob j′↦j′+1, plausível mas não escrita.
 
+**ATUALIZAÇÃO (2026-07-19) — Etapa 6 investigada a fundo (consulta ao
+Fable + verificação numérica própria): a lacuna é mais séria do que
+"detalhe técnico a preencher". Três achados, em ordem de importância.**
+
+**(i) Correção ao meu próprio diagnóstico**: a multiescala da Def. 2
+NÃO precisa de estabilidade em j. Os geradores do produto de Riesz são
+w_i=2^{α_i}·3^i, e ‖ξ·w_i/3^ℓ‖=‖ξ·2^{α_i}/3^{ℓ-i}‖ — pondo t=ℓ-i, um
+ÚNICO ξ já produz a condição em todas as escalas t=1,...,ℓ
+simultaneamente, porque a condição na escala t só depende de ξ mod 3^t
+(a graduação 3-ádica interna da soma fornece as escalas de graça). Isso
+simplifica o quadro, mas não fecha a lacuna — só muda onde ela mora.
+
+**(ii) Achado principal: a Definição 2, como está escrita, é VAZIA —
+satisfeita por ξ genérico, incluindo ξ=1.** Verificado numericamente
+(`experiments/E-107-h127-def2-vacuity-check/`, s=300, γ=γ₀, ξ∈{1,5,7,
+5 aleatórios ~2^200}): em δ=1/6 e δ=1/10, fração de escalas com "hit"
+= 0,97-0,997 para TODOS os ξ testados, sem diferença entre ξ=1 e ξ
+aleatório. O conteúdo de rigidez não está em "ter um hit por escala"
+(típico, sem custo), mas num **segmento contínuo encadeável** — um run
+de escalas consecutivas com expoentes a_t monótonos e incrementos
+limitados (B=⌊log₂(1/2δ)⌋). O maior run encadeável medido ficou em 5-9
+para TODO ξ testado (incluindo ξ=1), consistente com o Θ(log s)
+previsto para ξ genérico (log 300≈5,7) — sem vantagem para ξ
+estruturado. **Conclusão**: o Lema B, usando a Def. 2 tal como
+escrita, não exclui nada — conclui algo que vale para quase todo ξ.
+O objeto com conteúdo é o segmento encadeado de comprimento ≫log ℓ, e
+é exatamente esse upgrade que a Etapa 6 precisaria fornecer.
+
+**(iii) As duas rotas para fechar a Etapa 6, e por que nenhuma fecha
+com as ferramentas em jogo**:
+
+- *Rota estabilidade-em-j* (a que eu tinha em mente originalmente):
+  **não fecha**. A relação entre μ_{ℓ,j} e μ_{ℓ,j+1} não é convolução
+  por medida fixa — é a divisão de Pascal C(j+ℓ+1,ℓ)=C(j+ℓ,ℓ)+C(j+ℓ,
+  ℓ-1), dando μ_{ℓ,j+1}=(1-q)μ_{ℓ,j}+q·(translação/imagem por ×3 de
+  μ_{ℓ-1,j+1}), q=ℓ/(j+ℓ+1)≈1/γ. Em Fourier isso é MÉDIA CONVEXA com
+  pesos Θ(1), não produto — com coeficientes de ordem 3^{-εℓ}, o ξ que
+  concentra massa em j pode migrar livremente para j+1 sem controle;
+  nada no produto de Riesz, Halász ou modelo tilted restringe essa
+  migração. SC(ε) é fraca demais para dar essa rigidez.
+- *Rota encadeamento intra-j*: fecha só até comprimento O(1/η(ε)) —
+  uma CONSTANTE, não crescente com ℓ. O conteúdo começa em runs ≫log ℓ;
+  entre O(1) e log ℓ há um abismo que exigiria ε→0 com ℓ, fora do
+  regime SC(ε) com ε constante. **É a mesma parede de constantes da
+  Proposição C, aparecendo pela terceira vez.**
+
+**Erro adicional identificado no item (4) do esboço** (registrado por
+honestidade): o quantificador "fração ≥1-O(√ε) das bases" é do regime
+clássico de Halász (|μ̂|≥1-ε). No regime SC(ε) (|μ̂|≥3^{-εℓ}, massa
+exponencialmente pequena, não próxima de 1), Markov só dá um conjunto
+de bases boas de medida ≥~3^{-εℓ} — **exponencialmente raro**, não
+típico. Consequência: propriedades em escala fina (a janela t^{2/3} da
+Def. 2) não são herdáveis contra um conjunto 3^{-εℓ}-raro; só
+sobrevivem propriedades de grandes desvios com taxa >ε·log3 — corredor
+de largura ~√ε·ℓ, não t^{2/3}. Ou seja: mesmo os itens 1-5 "já feitos"
+provam uma versão mais fraca da Def. 2 do que a escrita.
+
+**Coerência que fortalece o diagnóstico**: a barra de encadeamento
+δ<2^{-γ}/2≈0,144 e a barra de abundância já existente em H-127 (δ<1/6≈
+0,167, seção "Heurística de abundância" abaixo) são essencialmente o
+mesmo número por caminhos diferentes — a heurística de abundância já
+estava, sem dizer, contando o objeto ENCADEADO, não o objeto que os
+itens 1-5 realmente provam. A distância entre esses dois objetos É a
+Etapa 6.
+
+**Veredito (recomendação do Fable, aceita)**: não tentar escrever essa
+prova — não é questão de redação, é um obstáculo estrutural (parede de
+constantes pela terceira vez). **Etapa 6 reclassificada de "lacuna
+técnica, plausível" para "problema em aberto explícito, com mecanismo
+de por-que-não-fecha identificado para ambas as rotas tentadas."**
+
 ## Proposição C — a parede das constantes (o resultado negativo próprio desta hipótese)
 
 **(a) Halász puro**: incondicionalmente só τ≥3^{-ℓ} (não SC(ε)), dando
@@ -105,10 +183,10 @@ inverte de sinal**.
 > de Jensen, não estimativa.
 
 Logo **Λ = log γ_c ≈ 0,5834+O(c), contra o necessário log 3 ≈
-1,0986**. Confirmado por Monte Carlo nesta sessão (8×10⁶ amostras):
-0,58344±0,0005 no modelo tilted (script `lambda_mc.py`, gerado pelo
-Fable no scratchpad da sessão — **não persistido como experimento
-formal**; promover a E-0xx se este resultado entrar no paper). Um
+1,0986**. Confirmado por Monte Carlo (8×10⁶ amostras): 0,58344±0,0005
+no modelo tilted — script promovido a experimento formal em
+[`E-106-h127-jensen-lambda-monte-carlo`](../experiments/E-106-h127-jensen-lambda-monte-carlo/README.md)
+(2026-07-19; sobrevivia só em scratchpad de sessão até então). Um
 buraco espectralmente difuso satisfaz o orçamento de Fourier com folga
 de fator 1,88 — é auto-consistente do ponto de vista ℓ¹, e nenhuma
 contagem tipo Littlewood-Offord o exclui. O critério anelado só
@@ -139,8 +217,15 @@ ficar abaixo dessa barra.
    recomendado**: "configuração de Bohr pós-wrap" no enunciado
    formal; "tipo-Z" só na discussão informal, com ressalva explícita.
 4. **Lacunas técnicas remanescentes**: tilt/CLT local (rotina);
-   estabilidade de ξ em j (não rotina, Etapa 6); quenched vs anelado
-   na Prop. C(b) (benchmark é anelado; pior caso quenched é onde
+   **Etapa 6 (upgrade diagonal⟹segmento contínuo)** — investigada a
+   fundo em 2026-07-19 (ver seção "Lema B" acima): não é lacuna
+   técnica de rotina, é a etapa que carregaria todo o conteúdo do
+   lema, e não fecha por nenhuma das duas rotas tentadas (estabilidade
+   em j esbarra na média convexa de Pascal; encadeamento intra-j só dá
+   comprimento O(1/η), constante) — mesma parede de constantes da
+   Proposição C, terceira aparição. A Definição 2 sem esse upgrade é
+   vazia (verificado numericamente, E-107); quenched vs anelado na
+   Prop. C(b) (benchmark é anelado; pior caso quenched é onde
    moram as configurações — coerente com a lógica da dicotomia, mas
    deve ser dito no paper).
 
@@ -213,16 +298,35 @@ identificou para o regime 3).
 
 ## Recomendação para o paper
 
-Enunciar três peças: (i) Lema B com SC(ε) explícita (dicotomia); (ii)
-Proposição C com as duas contas (déficit 2,2-7× + identidade de
-Jensen Λ=log γ_c) — upgrade real sobre H-124: não só "a técnica de
+**Atualizada em 2026-07-19 após a investigação da Etapa 6** (ver seção
+"Lema B" acima): o Lema B como originalmente enunciado (Def. 2 sem o
+encadeamento) **não deve ir para o paper como está** — é vazio de
+conteúdo (E-107). Duas opções honestas: (a) reformular o Lema B usando
+a definição correta, com o segmento ENCADEADO em vez da configuração
+diagonal solta, e declarar a Etapa 6 (existência desse segmento
+encadeado de comprimento ≫log ℓ) como problema em aberto explícito,
+com o mecanismo de por-que-não-fecha documentado (rota j-estabilidade:
+média convexa de Pascal; rota intra-j: comprimento O(1/η) constante);
+ou (b) não incluir o Lema B no paper por ora, e reportar só a
+Proposição C (que não depende da Def. 2 e permanece válida como
+resultado negativo próprio, incluindo agora a identidade de Jensen
+verificada em E-106).
+
+Peças que SOBREVIVEM intactas e valem para o paper independente do
+destino do Lema B: (i) Proposição C com as duas contas (déficit 2,2-7×
++ identidade de Jensen Λ=log γ_c, agora com verificação Monte Carlo
+formal em E-106) — upgrade real sobre H-124: não só "a técnica de
 2011 transfere estruturalmente", mas "transfere e falha por um fator
 exato, pela mesma parede que o ε da Prop. 7 do post de 2011 já
-denunciava"; (iii) Lema 0 + barra de abundância como sanidade da
-definição. **Não** alegar "redução da WCC a Z-numbers" — alegar
+denunciava, e que reaparece uma terceira vez na Etapa 6 do Lema B";
+(ii) Lema 0 + barra de abundância como sanidade da definição; (iii) o
+próprio achado da vacuidade da Def. 2 (E-107) é, honestamente, mais
+uma articulação quantitativa da mesma parede — vale registrar no paper
+como tal. **Não** alegar "redução da WCC a Z-numbers" — alegar
 "redução do ramo espectralmente concentrado à família
 Erdős-Lagarias-Furstenberg, e prova de que o ramo difuso é inacessível
-a métodos ℓ¹ tipo Littlewood-Offord".
+a métodos ℓ¹ tipo Littlewood-Offord" (isso continua correto,
+independente do destino do Lema B).
 
 ## Referências
 
@@ -282,3 +386,58 @@ a métodos ℓ¹ tipo Littlewood-Offord".
   exatamente. Zeladoria bibliográfica de H-127 **encerrada**: 8 de 9
   referências verificadas, 1 (Halász 1971) documentada como
   inacessível, não como esquecida.
+
+- **2026-07-19 — Duas pendências executadas: `lambda_mc.py` promovido
+  a experimento formal (E-106); Etapa 6 investigada a fundo, resultado
+  é um retrocesso real e bem entendido, não um avanço.**
+
+  Pedido explícito do diretor científico para avançar H-127. Duas
+  ações:
+
+  1. **Promoção de `lambda_mc.py`** (Monte Carlo da identidade de
+     Jensen da Proposição C(b), até então só em scratchpad de sessão)
+     para [`E-106-h127-jensen-lambda-monte-carlo`](../experiments/E-106-h127-jensen-lambda-monte-carlo/README.md).
+     Reproduz exatamente o valor já citado (Λ=0,5834±0,0005 vs.
+     log(γ₀)=0,5836 previsto). Mecânico, sem novidade matemática.
+
+  2. **Tentativa de fechar a Etapa 6** (upgrade "configuração
+     diagonal"⟹"segmento contínuo" no Lema B, marcada como "plausível
+     mas não escrita"). Consultei o Fable com contexto completo antes
+     de tentar escrever a prova — a resposta, verificada numericamente
+     por mim de forma independente (script reproduzido, mesmos
+     números), foi mais séria do que uma lacuna técnica:
+     - A Definição 2 (configuração diagonal), como estava escrita, é
+       **vazia** — satisfeita por ξ genérico, incluindo ξ=1 (agora
+       [`E-107-h127-def2-vacuity-check`](../experiments/E-107-h127-def2-vacuity-check/README.md)).
+       O objeto com conteúdo real é um segmento ENCADEADO de
+       comprimento ≫log ℓ, não a configuração diagonal solta.
+     - As duas rotas possíveis para fornecer esse upgrade **não
+       fecham** com as ferramentas em jogo: estabilidade em j esbarra
+       numa média convexa de Pascal (não uma convolução — o ξ
+       maximizante pode migrar livremente entre j e j+1, sem controle
+       do produto de Riesz/Halász); encadeamento intra-j só dá
+       comprimento O(1/η(ε)), uma constante, não crescente com ℓ.
+     - Isso é a mesma "parede de constantes" da Proposição C,
+       aparecendo pela terceira vez — não uma falha isolada.
+     - Um erro adicional de quantificador no item (4) do esboço
+       original (regime SC(ε) dá bases boas de medida
+       exponencialmente rara ~3^{-εℓ}, não a fração ≥1-O(√ε) do regime
+       clássico de Halász) também foi identificado e documentado.
+
+  **Avaliação honesta**: isso é um retrocesso real no Lema B
+  especificamente (não na Proposição C, que permanece intacta e agora
+  mais bem verificada) — mas é um retrocesso BEM ENTENDIDO, com
+  mecanismo exato identificado para ambas as rotas tentadas, e não fica
+  como "não tive tempo de escrever" e sim como "tentei, e há uma razão
+  estrutural específica para não fechar". Seguindo a recomendação do
+  Fable (não insistir em escrever a prova nesta sessão — o problema não
+  é de redação), reclassifiquei a Etapa 6 de "lacuna técnica plausível"
+  para "problema em aberto explícito" e atualizei a seção "Recomendação
+  para o paper" para não propor mais o Lema B como está.
+
+  **Status de H-127**: continua "em revisão". A Proposição C (o
+  resultado negativo, agora com E-106) segue como a peça mais sólida
+  desta hipótese. O Lema B precisa ou de reformulação (definição
+  correta + Etapa 6 como problema aberto explícito) ou de não entrar no
+  paper por ora — ambas as opções são honestas, nenhuma é um
+  fechamento.

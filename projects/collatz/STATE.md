@@ -2,6 +2,46 @@
 
 Última atualização: 2026-07-19
 
+## H-127 — avançada (2026-07-19): Proposição C fica mais sólida (E-106), Lema B fica mais fraco (E-107)
+
+Pedido explícito do diretor científico para avançar H-127 depois de
+fechar H-129. Duas pendências declaradas na hipótese, ambas executadas:
+
+1. **`lambda_mc.py` promovido a experimento formal**
+   (`E-106-h127-jensen-lambda-monte-carlo`): a verificação Monte Carlo
+   da identidade de Jensen da Proposição C(b) (Λ=log γ_c≈0,5834)
+   sobrevivia só em scratchpad de sessão. Reproduzido e confirmado
+   (0,5834±0,0005 vs. 0,5836 previsto). Mecânico, sem novidade.
+
+2. **Etapa 6 do Lema B investigada a fundo** (upgrade "configuração
+   diagonal"⟹"segmento contínuo", marcada como "plausível mas não
+   escrita"). Consulta ao Fable + verificação numérica independente
+   (reproduzi os números do script dele antes de aceitar a conclusão)
+   revelou algo mais sério que uma lacuna técnica: a Definição 2
+   (configuração diagonal), como estava escrita, é **VAZIA** —
+   satisfeita por ξ genérico, incluindo ξ=1
+   (`E-107-h127-def2-vacuity-check`). O objeto com conteúdo real é um
+   segmento ENCADEADO de comprimento ≫log ℓ, e as duas rotas possíveis
+   para prová-lo **não fecham** com as ferramentas em jogo:
+   estabilidade em j esbarra numa média convexa de Pascal (não
+   convolução — o ξ maximizante migra livremente entre j e j+1, sem
+   controle); encadeamento intra-j só dá comprimento O(1/η(ε)),
+   constante, não crescente com ℓ. **Mesma parede de constantes da
+   Proposição C, terceira aparição.**
+
+**Avaliação honesta**: isso é um retrocesso real no Lema B
+especificamente — mas bem entendido, com mecanismo exato identificado,
+não "faltou tempo". Seguindo a recomendação do Fable, a Etapa 6 foi
+reclassificada de "lacuna técnica plausível" para "problema em aberto
+explícito", e a recomendação para o paper foi atualizada: o Lema B não
+deve entrar como estava. A Proposição C (o resultado negativo,
+independente do Lema B) permanece sólida e agora mais bem verificada.
+
+**Status de H-127**: continua "em revisão". Ver
+`hypotheses/H-127-reducao-z-number-dicotomia-espectral-wcc.md` para o
+registro completo, `experiments/E-106-h127-jensen-lambda-monte-carlo/`
+e `experiments/E-107-h127-def2-vacuity-check/`.
+
 ## H-129 — status final da sessão de 2026-07-19 (consolidado)
 
 Sessão inteira dedicada a H-129 a pedido explícito do diretor
@@ -1724,16 +1764,30 @@ rotulagem off-by-one encontrado na Conjectura 10.4 de Pratiher 2026
   advisor+Fable antes de reportar como confirmados).
 - `H-127` — redução condicional da falha da WCC (Wirsching) a
   configurações de Bohr pós-wrap, via Littlewood-Offord/Halász. Status
-  do próprio arquivo diz "em revisão", mas a zeladoria bibliográfica
-  (8 de 9 referências verificadas contra o texto primário) foi
-  encerrada em 2026-07-18 e a conclusão matemática está estabelecida:
-  é uma redução real mas condicional (implicação, não equivalência) que
-  NÃO recupera a WCC plena — inclui um resultado negativo próprio
-  (Proposição C: a técnica falha por um fator exato, não por
-  fraqueza de estimativa). Convergência com H-110/H-112/H-114/H-124/
-  H-126: todas apontam para o mesmo ingrediente faltante, nunca provado.
-  Recomendação registrada para o paper (3 peças: Lema B, Proposição C,
-  Lema 0), mas ainda não integrada. Ver
+  do próprio arquivo diz "em revisão". Zeladoria bibliográfica (8 de 9
+  referências verificadas contra o texto primário) encerrada em
+  2026-07-18. Duas peças distintas, destinos diferentes:
+  - **Proposição C** (resultado negativo próprio: a técnica falha por
+    um fator exato — déficit 2,2-7× no orçamento de Fourier, identidade
+    de Jensen Λ=log γ_c≈0,5834) permanece SÓLIDA — agora com
+    verificação Monte Carlo formal (`E-106-h127-jensen-lambda-monte-carlo`,
+    2026-07-19; script até então só existia em scratchpad de sessão).
+  - **Lema B** (a redução condicional em si): investigação a fundo da
+    Etapa 6 pendente ("upgrade diagonal⟹segmento contínuo",
+    2026-07-19) revelou que a Definição 2 usada, como estava escrita,
+    é VAZIA (satisfeita por ξ genérico incluindo ξ=1 — verificado,
+    `E-107-h127-def2-vacuity-check`), e que a Etapa 6 não fecha por
+    nenhuma das duas rotas tentadas (estabilidade em j esbarra numa
+    média convexa de Pascal; encadeamento intra-j só dá comprimento
+    constante) — mesma parede de constantes da Proposição C, terceira
+    aparição. Reclassificada de "lacuna técnica plausível" para
+    "problema em aberto explícito". Recomendação para o paper
+    atualizada: Lema B não deve ir como estava; ou reformular com a
+    Etapa 6 como problema aberto declarado, ou reportar só a Proposição
+    C. Nada disso foi integrado ao paper (confirmado — a seção WCC do
+    paper é só H-114/H-124, distintas de H-127).
+  Convergência com H-110/H-112/H-114/H-124/H-126: todas apontam para o
+  mesmo ingrediente faltante, nunca provado. Ver
   `hypotheses/H-127-reducao-z-number-dicotomia-espectral-wcc.md`.
 
 (H-008, citada aqui numa versão anterior deste arquivo como "questão em

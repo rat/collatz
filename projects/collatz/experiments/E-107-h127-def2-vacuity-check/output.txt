@@ -1,0 +1,33 @@
+
+=== delta = 0.1667  (B = incremento max encadeavel = 1) ===
+xi = 1                            fracao de escalas com hit:  0.987  misses t>50:   0  maior run encadeavel: 8
+xi = 5                            fracao de escalas com hit:  0.997  misses t>50:   0  maior run encadeavel: 8
+xi = 7                            fracao de escalas com hit:  0.997  misses t>50:   0  maior run encadeavel: 8
+xi = random~2^200 (13850249...)   fracao de escalas com hit:  0.997  misses t>50:   0  maior run encadeavel: 7
+xi = random~2^200 (10018319...)   fracao de escalas com hit:  0.997  misses t>50:   0  maior run encadeavel: 8
+xi = random~2^200 (11791058...)   fracao de escalas com hit:  0.993  misses t>50:   0  maior run encadeavel: 6
+xi = random~2^200 (70671704...)   fracao de escalas com hit:  0.990  misses t>50:   0  maior run encadeavel: 7
+xi = random~2^200 (13137172...)   fracao de escalas com hit:  0.990  misses t>50:   0  maior run encadeavel: 6
+log(S) = 5.7  -- comparar com 'maior run encadeavel'
+
+=== delta = 0.1000  (B = incremento max encadeavel = 2) ===
+xi = 1                            fracao de escalas com hit:  0.973  misses t>50:   0  maior run encadeavel: 7
+xi = 5                            fracao de escalas com hit:  0.983  misses t>50:   1  maior run encadeavel: 7
+xi = 7                            fracao de escalas com hit:  0.980  misses t>50:   0  maior run encadeavel: 7
+xi = random~2^200 (78893864...)   fracao de escalas com hit:  0.977  misses t>50:   0  maior run encadeavel: 6
+xi = random~2^200 (15714577...)   fracao de escalas com hit:  0.983  misses t>50:   0  maior run encadeavel: 7
+xi = random~2^200 (11989242...)   fracao de escalas com hit:  0.980  misses t>50:   0  maior run encadeavel: 7
+xi = random~2^200 (89191128...)   fracao de escalas com hit:  0.977  misses t>50:   0  maior run encadeavel: 9
+xi = random~2^200 (10412235...)   fracao de escalas com hit:  0.970  misses t>50:   0  maior run encadeavel: 9
+log(S) = 5.7  -- comparar com 'maior run encadeavel'
+
+=== delta = 0.0333  (B = incremento max encadeavel = 3) ===
+xi = 1                            fracao de escalas com hit:  0.797  misses t>50:  31  maior run encadeavel: 6
+xi = 5                            fracao de escalas com hit:  0.823  misses t>50:  25  maior run encadeavel: 6
+xi = 7                            fracao de escalas com hit:  0.797  misses t>50:  34  maior run encadeavel: 6
+xi = random~2^200 (11414771...)   fracao de escalas com hit:  0.810  misses t>50:  27  maior run encadeavel: 6
+xi = random~2^200 (14336823...)   fracao de escalas com hit:  0.817  misses t>50:  27  maior run encadeavel: 6
+xi = random~2^200 (81241667...)   fracao de escalas com hit:  0.783  misses t>50:  36  maior run encadeavel: 5
+xi = random~2^200 (63706952...)   fracao de escalas com hit:  0.803  misses t>50:  27  maior run encadeavel: 8
+xi = random~2^200 (14912133...)   fracao de escalas com hit:  0.803  misses t>50:  30  maior run encadeavel: 6
+log(S) = 5.7  -- comparar com 'maior run encadeavel'
