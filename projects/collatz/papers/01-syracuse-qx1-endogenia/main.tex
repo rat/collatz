@@ -524,7 +524,16 @@ where $\alpha_+(q)$ is the larger root of \eqref{eq:pressure-eq}
 This is exactly the exponent predicted by the classical theory of
 fixed points of the (multitype) smoothing transform
 \cite{Guivarch1990,Liu2000,Mentemeier2016} for the genuine stochastic
-model: the tail-index equation $\mathbb{E}[\sum_i A_i^s]=1$ becomes,
+model:\footnote{A related structural prediction of the multitype model,
+confirmed empirically for $q=5$: conditioning on the root's residue
+class $i=u_0\bmod q$ (with $a_0(i)$ the smallest admissible branch
+exponent for class $i$), the scale factor satisfies
+$W_i\stackrel{d}{=}2^{-a_0(i)\theta}\cdot W^*$ for a common $W^*$,
+i.e.\ residue class only rescales $W_u$, it does not change its shape.
+Verified on $5000$ sampled roots across four headroom levels, with
+quantile ratios matching this prediction to within $2$--$9\%$; exact
+only in the idealized i.i.d.\ model, as in Remark~\ref{rem:transfer-basis}.}
+the tail-index equation $\mathbb{E}[\sum_i A_i^s]=1$ becomes,
 for our weights, $q^{\alpha_-s-1}=2^{\alpha_- s}-1$, solved exactly by
 $s=\alpha_+/\alpha_-$. This is further reason to take the conjecture
 seriously as a prediction, even though, per

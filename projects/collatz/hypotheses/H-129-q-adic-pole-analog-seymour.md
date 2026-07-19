@@ -418,6 +418,17 @@ convergência quenched-anelado, mas isso ainda não foi verificado).
   desvios sistemáticos de 2-9% medem onde a árvore real diverge da
   hipótese de resíduo-filho uniforme i.i.d.).
 
+  **Entrou no paper (2026-07-19, pedido do diretor científico)**: dos
+  três achados candidatos avaliados para citação (este, o gap espectral
+  de E-105, a constante de Bramson), só este foi considerado por mim
+  como merecedor — os outros dois não resolvem nenhum problema já
+  declarado em aberto no paper (O1-O7) e/ou dependem de um framing
+  (otimização ergódica) que nunca entrou no texto. Adicionado como nota
+  de rodapé em `main.tex`/`main-pt-br.tex`, logo após a citação da
+  transformada de suavização multitipo na discussão da
+  Conjectura~conj:tail-index — duas frases, com a ressalva do modelo
+  idealizado incluída. PDFs recompilados limpos (28/29 páginas).
+
   **(c) Tentativa de usar (b) para reforçar o teste de κ — não
   melhorou o quadro**: reescalei as 5000 amostras pelo fator previsto
   2^(a₀(tipo)θ) e rodei a bateria completa de 4 estimadores no pool

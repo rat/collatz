@@ -2,6 +2,20 @@
 
 Última atualização: 2026-07-19
 
+## Nota de rodapé sobre família de escala (E-103 Estágio 4) adicionada ao paper
+
+Diretor científico pediu avaliação de 3 achados da sessão como
+candidatos a citação no paper: gap espectral (E-105), família de
+escala por tipo (E-103 Estágio 4), constante de Bramson (H-129/E-104).
+Avaliação: só a família de escala resolve o critério "agrega ao paper"
+— os outros dois não resolvem nenhum problema já declarado em aberto
+(O1-O7) e/ou dependem de framing nunca integrado ao texto. Adicionada
+como nota de rodapé (a primeira do paper) em `main.tex`/`main-pt-br.tex`,
+§3.3, logo após a citação da transformada de suavização multitipo na
+Conjectura do índice de cauda. PDFs recompilados limpos (28/29 páginas).
+Ver `hypotheses/H-129-q-adic-pole-analog-seymour.md`, seção (b) do
+esforço final.
+
 ## H-127 — avançada (2026-07-19): Proposição C fica mais sólida (E-106), Lema B fica mais fraco (E-107)
 
 Pedido explícito do diretor científico para avançar H-127 depois de
