@@ -74,10 +74,19 @@ sustenta com a formalização correta do operador.
 
 ## Próximos passos (se a linha for retomada)
 
-Testar a hipótese log-periódica da cauda diretamente: ajuste
-x^-χ·(A+B·cos(2π log x/log 2 + φ)) contra os dados já coletados em
-E-103 (Rodadas 1-2) ou no teste de momento exato — ver
-`experiments/E-103-tail-index-q5-rigorous-test/README.md`, item 4.
+~~Testar a hipótese log-periódica da cauda diretamente~~ — **feito e
+não suportado, E-103 Estágio 2 (2026-07-19)**: consulta ao Fable
+derivou que o sistema é não-aritmético (log₂5 irracional destrói a
+periodicidade, dicotomia de Goldie) — sem log-periodicidade assintótica
+esperada. Teste pré-registrado nos dois períodos derivados confirmou:
+potência do periodograma no nível de ruído em todos os 4 headrooms
+testados. Ver `experiments/E-103-tail-index-q5-rigorous-test/README.md`,
+seção "Estágio 2".
+
+Isso NÃO fecha a origem do k^-0,222 — só refuta mais uma explicação
+candidata (a primeira foi o gap espectral, aqui mesmo). O item real que
+resta é testar o transiente no eixo em que ele foi observado (M_k(p)
+vs. k, não a cauda de W_v em x) — ver E-103 item 5 dos próximos passos.
 
 ## Arquivos
 

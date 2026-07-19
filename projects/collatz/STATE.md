@@ -32,24 +32,36 @@ Fable como armadilha — não um autovalor real "fechando o gap").
 não-linear crítica (fase congelada = caso de fronteira de branching
 random walk / transformada de suavização — Bramson, Aïdékon), onde
 correções polinomiais em k são esperadas e coexistem com gap espectral
-perfeito na camada linear. Hipótese de trabalho nova (não testada):
-a oscilação é um efeito de reticulado log-periódico, já que os pesos
-são potências de 2 — próximo passo natural seria testar um ajuste
-x^-χ·(A+B·cos(2π log x/log 2 + φ)) em vez de lei de potência pura.
+perfeito na camada linear.
 
-**Terminologia corrigida** em H-109, E-103/README.md e aqui: a frase
-"raiz complexa subdominante do operador de transferência" foi removida/
-anotada como erro nos três lugares onde aparecia — não é um resultado
-que se sustenta com a formalização correta do operador.
+**Terminologia corrigida** em H-109, E-103/README.md, no paper
+(`main.tex`/`main-pt-br.tex`, §3.3, recompilado) e aqui: a frase "raiz
+complexa subdominante do operador de transferência" foi removida/
+anotada como erro em todos os lugares onde aparecia — não é um
+resultado que se sustenta com a formalização correta do operador.
+
+**Atualização (mesmo dia, continuação) — hipótese log-periódica também
+testada e FECHADA como não suportada** (E-103 Estágio 2): a hipótese de
+trabalho ("a oscilação é efeito de reticulado log-periódico, pesos são
+potências de 2") foi levada ao Fable para derivação teórica ANTES de
+testar. Resultado: o sistema é NÃO-ARITMÉTICO (deslocamento log₂5 é
+irracional, dicotomia de Goldie) — sem log-periodicidade assintótica
+esperada. Teste pré-registrado (periodograma de Lomb-Scargle nos 2
+períodos derivados, não ajustados aos dados) confirmou: potência no
+nível de ruído em todos os 4 headrooms testados. Teoria e dado
+concordam — negativo limpo, não coincidência.
 
 **Status de H-129**: permanece aberta. O achado de hoje fecha
-definitivamente a via "análise espectral do operador" que H-129/E-104
-listavam como próximo passo (não há gap para fechar — já está fechado,
-e não ajuda a resolver a Conjectura do índice de cauda, que é um
-fenômeno de camada não-linear). Resta como via real: formalismo de
-Manneville-Pomeau/Sarig-Iommi NÃO é necessário (motivo: o mecanismo que
-o justificaria — ausência de gap — foi descartado); e o teste
-log-periódico da cauda, ainda não executado.
+definitivamente DUAS vias candidatas que H-129/E-104/E-105 listavam
+como explicação do transiente k^-0,222: (1) "análise espectral do
+operador" (não há gap para fechar — já está fechado, gap perfeito
+provado) e (2) log-periodicidade da cauda (testada, não suportada,
+consistente com a teoria). Nenhuma das duas EXPLICA o transiente — só
+eliminam duas hipóteses específicas; a origem continua em aberto. Resta
+como via real, não executada: testar o transiente diretamente no eixo
+onde ele foi observado (M_k(p) vs. profundidade k, não a cauda de W_v
+em x) — ver `experiments/E-103-tail-index-q5-rigorous-test/README.md`,
+item 5 dos próximos passos.
 
 ## Índice de cauda q≥5: investigação fechada como inconclusiva (paper atualizado)
 
@@ -1683,10 +1695,14 @@ rotulagem off-by-one encontrado na Conjectura 10.4 de Pratiher 2026
   precisaria de ausência de gap) não se aplica; o transiente k^-0,222
   pertence a uma camada não-linear crítica separada (ver seção acima),
   não ao espectro do operador — corrigimos essa atribuição errada em
-  H-109/E-103 também. Nem morta, nem confirmada — resta como
-  via real o teste log-periódico da cauda (não executado). Não
-  integrada ao paper. Ver
-  `hypotheses/H-129-q-adic-pole-analog-seymour.md`.
+  H-109/E-103 também. Continuação mesmo dia (E-103 Estágio 2): a
+  hipótese log-periódica levantada para essa camada também foi testada
+  e FECHADA como não suportada (derivação do Fable: caso não-aritmético,
+  log₂5 irracional, sem periodicidade assintótica esperada; teste
+  pré-registrado confirmou potência no nível de ruído). Nem morta, nem
+  confirmada — resta como via real testar o transiente no eixo em que
+  foi observado (M_k(p) vs. k, não a cauda em x). Não integrada ao
+  paper. Ver `hypotheses/H-129-q-adic-pole-analog-seymour.md`.
 - `H-127` — redução condicional da falha da WCC (Wirsching) a
   configurações de Bohr pós-wrap, via Littlewood-Offord/Halász. Status
   do próprio arquivo diz "em revisão", mas a zeladoria bibliográfica

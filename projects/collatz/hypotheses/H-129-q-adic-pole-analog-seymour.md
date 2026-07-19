@@ -336,8 +336,44 @@ convergência quenched-anelado, mas isso ainda não foi verificado).
   perfeito, provado) e não ajuda a resolver a Conjectura do índice de
   cauda (que vive na camada errada). O formalismo de Manneville-
   Pomeau/Sarig-Iommi também está descartado como caminho (não há
-  ausência de gap a explicar). **Status: ainda aberta.** Resta como via
-  real, não executada: testar a hipótese log-periódica da cauda
-  diretamente (ajuste x^-χ·(A+B·cos(2π log x/log 2 + φ)) contra os
-  dados de E-103) — ver `experiments/E-103.../README.md`, item 4 dos
-  próximos passos.
+  ausência de gap a explicar). **Status: ainda aberta.**
+
+- **2026-07-19 (mesma sessão, continuação) — hipótese log-periódica
+  também testada e FECHADA como não suportada (E-103 Estágio 2).**
+
+  A hipótese de trabalho levantada acima ("compatíveis com
+  log-periodicidade... pesos são potências de 2") foi testada, não só
+  especulada. Consulta ao Fable derivou a previsão teórica ANTES do
+  teste (mesma disciplina que faltou na primeira tentativa de a*): os
+  multiplicadores A_a=(5·2^-a)^θ formam um reticulado deslocado por
+  tipo de resíduo, com deslocamento irracional (log₂5 ∉ ℚ, pois 5 não é
+  potência de 2) — pela dicotomia aritmético/não-aritmético da teoria
+  de renovação implícita (Goldie 1991), este é o caso NÃO-ARITMÉTICO:
+  **sem log-periodicidade assintótica esperada**. Dois períodos
+  candidatos (só visíveis como artefato de profundidade finita, com
+  amplitude prevista para DECRESCER em k): θ·log2=0,4512 (união de
+  todos os a) e 4θ·log2=1,8047 (por tipo, espaçamento d=ord₅(2)=4).
+
+  Teste pré-registrado (`experiments/E-103.../stage2_periodogram.py`):
+  potência de periodograma de Lomb-Scargle exatamente nesses dois
+  períodos, nas 4 amostras de W_v já coletadas (headroom 10⁵-10⁸).
+  **Resultado**: potência no nível de ruído de fundo em todos os 4
+  headrooms, para ambos os períodos (bem cotado no período "união":
+  6,7-9,7 ciclos cabem no alcance dos dados). Um único valor não-trivial
+  (H=10⁸, período-tipo) fica abaixo do limiar de significância, tem
+  poucos ciclos, e aparece no headroom mais profundo — o oposto do que
+  a previsão diria. Teoria e dado concordam: **sem log-periodicidade**.
+
+  **Status de H-129: continua aberta.** Agora refutamos DUAS
+  explicações candidatas para o transiente k^-0,222 (raiz espectral
+  isolada; log-periodicidade) — isso não fecha nem explica o
+  transiente, só elimina duas hipóteses específicas. Note-se também:
+  o teste log-periódico foi feito na cauda de W_v em x (headroom fixo);
+  o transiente k^-0,222 propriamente dito vive no eixo k (M_k(p) vs.
+  profundidade) — esse eixo específico não foi testado. Resta como via
+  real, não executada: testar diretamente se alguma oscilação em M_k(p)
+  vs. k decresce em amplitude com k (previsão específica do Fable) —
+  ver `experiments/E-103.../README.md`, item 5 dos próximos passos.
+  Achado colateral não testado: κ=α₊/α₋ recuperado por um argumento de
+  matriz média de posto 1 no modelo idealizado multi-tipo — não escapa
+  a ressalva quenched-vs-anelado já honesta do paper (rem:transfer-basis).

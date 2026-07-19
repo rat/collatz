@@ -109,14 +109,74 @@ resolveu a formalização correta do operador (par dual L_α/M_α agindo
 sobre Z_q) e mostrou, com verificação numérica exata em E-105, que M_α
 tem espectro EXATAMENTE {Λ,0} em qualquer nível de truncamento — gap
 espectral perfeito, sem nenhum autovalor subdominante isolado. O
-transiente k^-0,222 não é um fenômeno espectral linear; ele pertence à
-camada não-linear crítica (fase congelada = caso de fronteira de
-branching random walk / transformada de suavização), onde correções
-polinomiais em k são o comportamento esperado (Bramson, Aïdékon) e são
-compatíveis com log-periodicidade (efeito de reticulado, já que os
-pesos são potências de 2). Próximo passo real, se a linha for retomada:
-testar a cauda contra um ajuste log-periódico explícito
-x^-χ·(A+B·cos(2π log x/log 2 + φ)) em vez de lei de potência pura.
+transiente k^-0,222 não é um fenômeno espectral linear — pertence a
+uma camada não-linear diferente (ver Estágio 2 abaixo para o que essa
+camada acabou não sendo).
+
+## Estágio 2 (2026-07-19) — hipótese log-periódica testada e NÃO suportada
+
+Levantamos a hipótese de que o transiente k^-0,222 fosse um efeito de
+reticulado log-periódico (pesos dos ramos são potências de 2). Antes
+de testar, consultamos o Fable para DERIVAR o período previsto (não
+ajustar aos dados — a mesma armadilha que já pegou o a* em H-129).
+
+**Derivação (Fable)**: os multiplicadores A_a=(5·2^-a)^θ formam um
+reticulado deslocado por tipo (u0 mod 5), com deslocamento
+b_i/s=(log₂5−a₀(i))/4 — **irracional**, pois log₂5 é irracional (5 não
+é potência de 2). Pela dicotomia aritmético/não-aritmético da teoria de
+renovação implícita (Goldie 1991), este é o caso **não-aritmético**:
+não deve haver correção log-periódica assintótica (a fase gira log₂5
+por nível, irracional, e "lava" com k crescente — teorema de
+Blackwell). Dois períodos candidatos seriam visíveis só como artefato
+de profundidade finita, com amplitude esperada DECRESCENTE em k:
+θ·log2=0,4512 ("união", todos os a) e 4θ·log2=1,8047 ("por-tipo",
+espaçamento d=ord₅(2)=4), em log natural de x.
+
+**Teste** (`stage2_periodogram.py`): ajuste de lei de potência pura via
+CSN nas 4 amostras de W_v (headroom 10⁵-10⁸, n=5000 raízes cada, já
+existentes de E-103 Rodadas 1-2), resíduo log(S_emp/S_pred) em
+t=log(x/xmin), potência de Lomb-Scargle medida EXATAMENTE nos dois
+períodos pré-registrados (não escolhidos a posteriori), comparada
+contra o nível de ruído de fundo (grade ampla de períodos).
+
+**Resultado**: em nenhum dos 4 headrooms a potência nos períodos
+previstos passa do percentil 95 do ruído de fundo. No período "união"
+(bem cotado — 6,7 a 9,7 ciclos cabem no alcance dos dados), a potência
+é praticamente nula (0,003-0,010, ruído de fundo médio ~0,11-0,14). No
+período "por-tipo", 3 dos 4 headrooms também dão potência próxima de
+zero; o único valor não-trivial (H=10⁸, potência=0,1985) ainda fica
+abaixo do p95 (0,263), tem só 1,7 ciclos no alcance dos dados (abaixo
+do mínimo recomendável), e aparece no headroom MAIS profundo — o
+oposto do que a previsão teórica diria (amplitude deveria decrescer
+com k, não aparecer só no k mais profundo). Os três fatos triangulam
+para ruído, não sinal.
+
+**Veredito**: hipótese log-periódica **testada e não suportada** —
+consistente com a própria previsão teórica do Fable (caso
+não-aritmético, sem log-periodicidade assintótica esperada). Isso é
+uma confirmação mútua teoria+dado, não uma coincidência favorável.
+Checagem de coerência de fase entre headrooms (planejada como guarda
+estrutural) ficou sem objeto — não há amplitude para checar fase.
+
+**O que isso NÃO fecha**: a origem do transiente k^-0,222 continua em
+aberto. Já refutamos dois mecanismos candidatos (raiz espectral
+isolada — E-105; log-periodicidade — aqui). Isso não "explica" o
+transiente, só elimina duas explicações específicas. E o teste aqui foi
+na cauda de W_v EM x (headroom fixo, threshold variável); o transiente
+k^-0,222 propriamente dito vive no eixo k (M_k(p) vs. profundidade,
+dados da Rodada 3) — esse eixo não foi testado por este experimento. A
+própria origem numérica do valor "0,222" permanece sem localização no
+projeto (ver correção em H-109/E-105).
+
+**Achado colateral (não testado, registrar para o futuro)**: a
+derivação do Fable recupera κ=α₊/α₋=1/α₋=1,536290 por um argumento de
+matriz média de posto 1 (as 4 progressões de tipo particionam todos os
+a, então o autovalor de Perron quenched coincide com a soma anelada —
+d=4 não altera κ). Isso é uma derivação no modelo idealizado
+multi-tipo/i.i.d., NÃO uma prova para a recursão aritmética real — não
+escapa a ressalva já honesta do paper (Observação rem:transfer-basis).
+Previsão colateral falsificável, não executada: pesos relativos por
+tipo C_i ∝ 2^(−a₀(i)θκ), i.e. (2⁻⁴,2⁻³,2⁻¹,2⁻²) para tipos (1,2,3,4).
 
 ## Arquivos
 
@@ -129,6 +189,8 @@ x^-χ·(A+B·cos(2π log x/log 2 + φ)) em vez de lei de potência pura.
 - `rerun_save_raw.py` — script auxiliar que reroda a Rodada 1 salvando
   amostras brutas de W_v (usado para alimentar a Rodada 2 sem refazer
   o DFS).
+- `stage2_periodogram.py` — Estágio 2 (teste log-periódico pré-registrado).
+- `stage2_periodogram_results.json` — resultados do Estágio 2 (4 headrooms).
 
 Mirror público (código idêntico, adaptado para autocontido):
 `collatz-endogeny/sec3-pressure-equation/` (`full_battery.py`,
@@ -140,25 +202,34 @@ Mirror público (código idêntico, adaptado para autocontido):
 python3 experiment_tail_index_q5.py    # ~20 min, Rodada 1
 python3 full_battery.py                # ~25 min, Rodada 2 (precisa das amostras brutas — ver rerun_save_raw.py)
 python3 stage1_exact_moment_test.py    # ~15 min (k ate 11), usa ~10-15GB RAM no pico
+python3 stage2_periodogram.py          # segundos, precisa das amostras brutas (rerun_save_raw.py)
 ```
 
 ## Próximos passos (se a linha for retomada)
 
 1. ~~Controle analítico do espectro subdominante do operador de
-   transferência~~ — **fechado por E-105** (ver correção de terminologia
-   acima): não há autovalor subdominante isolado a controlar, o gap
-   espectral da camada linear é perfeito e comprovado. O que resta é
-   testar a hipótese log-periódica na camada não-linear (item novo
-   abaixo).
-2. Bateria estatística completa (CSN+Vuong pré-registrado) com amostra
+   transferência~~ — **fechado por E-105**: não há autovalor
+   subdominante isolado a controlar, o gap espectral da camada linear é
+   perfeito e comprovado.
+2. ~~Testar o ajuste log-periódico contra a lei de potência pura~~ —
+   **fechado pelo Estágio 2 (2026-07-19)**: testado e não suportado,
+   consistente com a derivação teórica do Fable (caso não-aritmético).
+   Ver seção acima.
+3. Bateria estatística completa (CSN+Vuong pré-registrado) com amostra
    muito maior (10^5+ raízes) e headroom maior, se viável
-   computacionalmente.
-3. Ver H-129 para uma frente teórica paralela (otimização ergódica)
+   computacionalmente — ainda não feito, e as duas vias acima fechadas
+   não o tornam menos necessário.
+4. Ver H-129 para uma frente teórica paralela (otimização ergódica)
    que pode dar uma caracterização exata do congelamento sem depender
    de estimadores numéricos.
-4. Testar explicitamente o ajuste log-periódico x^-χ·(A+B·cos(2π log
-   x/log 2 + φ)) contra a lei de potência pura, no teste de momento
-   exato ou na bateria estatística — hipótese levantada pelo Fable em
-   E-105 para explicar tanto o "transiente lento" quanto a oscilação
-   observada nas Rodadas 1-2 (efeito de reticulado: os pesos são
-   potências de 2).
+5. **Item real que resta, não executado**: testar o transiente k^-0,222
+   no eixo em que ele foi observado (M_k(p) vs. profundidade k, dados
+   da Rodada 3 / `stage1_moment_results.json`), não no eixo em x testado
+   no Estágio 2. Previsão específica do Fable a checar, se retomado:
+   qualquer amplitude oscilatória em k deveria DECRESCER com k (mistura
+   de fase por log₂5 irracional) — um teste discriminante melhor que
+   ajustar um período livre.
+6. Previsão colateral falsificável do Estágio 2 (não executada): pesos
+   relativos por tipo de resíduo mod 5, C_i ∝ 2^(−a₀(i)θκ) =
+   (2⁻⁴,2⁻³,2⁻¹,2⁻²) para tipos (1,2,3,4) — checável nos mesmos dados
+   de W_v já coletados, separando por tipo de raiz.
