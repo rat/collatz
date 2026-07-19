@@ -161,12 +161,25 @@ estrutural) ficou sem objeto — não há amplitude para checar fase.
 **O que isso NÃO fecha**: a origem do transiente k^-0,222 continua em
 aberto. Já refutamos dois mecanismos candidatos (raiz espectral
 isolada — E-105; log-periodicidade — aqui). Isso não "explica" o
-transiente, só elimina duas explicações específicas. E o teste aqui foi
-na cauda de W_v EM x (headroom fixo, threshold variável); o transiente
-k^-0,222 propriamente dito vive no eixo k (M_k(p) vs. profundidade,
-dados da Rodada 3) — esse eixo não foi testado por este experimento. A
-própria origem numérica do valor "0,222" permanece sem localização no
-projeto (ver correção em H-109/E-105).
+transiente, só elimina duas explicações específicas. A própria origem
+numérica do valor "0,222" permanece sem localização no projeto (ver
+correção em H-109/E-105).
+
+**Checagem complementar no eixo k** (`stage3_k_axis_check.py`, dados
+da Rodada 3, k=5..11): a razão de incrementos sucessivos de M_k(p) é
+MONOTÔNICA em k, sem nenhum sinal de oscilação, para os 3 valores de p
+próximos do índice previsto — corrobora (não prova de novo) a ausência
+de oscilação já estabelecida em E-105/Estágio 2. Uma tentativa de
+ajustar |razão(k)−1|~k^-χ para comparar contra "0,222" foi feita e
+DESCARTADA (revisão do advisor): o alvo "1" só é assintoticamente
+correto exatamente no p crítico, e n=5 pontos suaves/correlacionados
+não sustenta um erro-padrão confiável (o χ ajustado varia 0,98 a 3,60
+entre os 3 p's testados — sinal de sub-poder, não medida real). O
+código fica no repositório por transparência, mas o número não deve ser
+citado. Resolver a origem de "0,222" continua exigindo ou localizar a
+derivação original, ou estender k além do teto de memória de 5^k (uma
+formulação nova, não um ajuste de script) — nenhum dos dois é uma ação
+imediata.
 
 **Achado colateral (não testado, registrar para o futuro)**: a
 derivação do Fable recupera κ=α₊/α₋=1/α₋=1,536290 por um argumento de
@@ -191,6 +204,8 @@ tipo C_i ∝ 2^(−a₀(i)θκ), i.e. (2⁻⁴,2⁻³,2⁻¹,2⁻²) para tipos 
   o DFS).
 - `stage2_periodogram.py` — Estágio 2 (teste log-periódico pré-registrado).
 - `stage2_periodogram_results.json` — resultados do Estágio 2 (4 headrooms).
+- `stage3_k_axis_check.py` — checagem de monotonicidade no eixo k (sem
+  ajuste citável — ver seção "Checagem complementar no eixo k" acima).
 
 Mirror público (código idêntico, adaptado para autocontido):
 `collatz-endogeny/sec3-pressure-equation/` (`full_battery.py`,
@@ -222,13 +237,14 @@ python3 stage2_periodogram.py          # segundos, precisa das amostras brutas (
 4. Ver H-129 para uma frente teórica paralela (otimização ergódica)
    que pode dar uma caracterização exata do congelamento sem depender
    de estimadores numéricos.
-5. **Item real que resta, não executado**: testar o transiente k^-0,222
-   no eixo em que ele foi observado (M_k(p) vs. profundidade k, dados
-   da Rodada 3 / `stage1_moment_results.json`), não no eixo em x testado
-   no Estágio 2. Previsão específica do Fable a checar, se retomado:
-   qualquer amplitude oscilatória em k deveria DECRESCER com k (mistura
-   de fase por log₂5 irracional) — um teste discriminante melhor que
-   ajustar um período livre.
+5. ~~Testar o transiente k^-0,222 no eixo em que ele foi observado~~ —
+   checagem leve feita (`stage3_k_axis_check.py`): sem oscilação visível
+   na razão de incrementos de M_k(p), k=5..11. Só 5-7 pontos existem por
+   causa do teto real de memória de 5^k — não dá para medir decaimento
+   de amplitude com k nem localizar "0,222" com esses dados. **Item real
+   que resta, não executado**: localizar a derivação original de
+   "0,222" (busca, não cálculo novo) ou estender k além do teto atual
+   (formulação nova, custo alto).
 6. Previsão colateral falsificável do Estágio 2 (não executada): pesos
    relativos por tipo de resíduo mod 5, C_i ∝ 2^(−a₀(i)θκ) =
    (2⁻⁴,2⁻³,2⁻¹,2⁻²) para tipos (1,2,3,4) — checável nos mesmos dados

@@ -367,13 +367,20 @@ convergência quenched-anelado, mas isso ainda não foi verificado).
   **Status de H-129: continua aberta.** Agora refutamos DUAS
   explicações candidatas para o transiente k^-0,222 (raiz espectral
   isolada; log-periodicidade) — isso não fecha nem explica o
-  transiente, só elimina duas hipóteses específicas. Note-se também:
-  o teste log-periódico foi feito na cauda de W_v em x (headroom fixo);
-  o transiente k^-0,222 propriamente dito vive no eixo k (M_k(p) vs.
-  profundidade) — esse eixo específico não foi testado. Resta como via
-  real, não executada: testar diretamente se alguma oscilação em M_k(p)
-  vs. k decresce em amplitude com k (previsão específica do Fable) —
-  ver `experiments/E-103.../README.md`, item 5 dos próximos passos.
+  transiente, só elimina duas hipóteses específicas.
+
+  Checagem leve complementar no eixo k (`stage3_k_axis_check.py`,
+  dados da Rodada 3, k=5..11): razão de incrementos de M_k(p)
+  monotônica, sem oscilação visível — corrobora, não prova de novo.
+  Uma tentativa de ajustar |razão−1|~k^-χ para comparar contra "0,222"
+  foi feita e descartada (revisão do advisor: alvo assintótico "1" só
+  correto exatamente no p crítico; n=5 pontos correlacionados não
+  sustenta erro-padrão confiável — χ ajustado variou 0,98 a 3,60 entre
+  3 valores próximos de p, sinal de sub-poder, não medida real). A
+  origem de "0,222" segue sem localização — resolvê-la exige localizar
+  a derivação original ou estender k além do teto de memória de 5^k,
+  nenhum dos dois uma ação imediata.
+
   Achado colateral não testado: κ=α₊/α₋ recuperado por um argumento de
   matriz média de posto 1 no modelo idealizado multi-tipo — não escapa
   a ressalva quenched-vs-anelado já honesta do paper (rem:transfer-basis).

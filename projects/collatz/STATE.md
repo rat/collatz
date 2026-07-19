@@ -1699,10 +1699,14 @@ rotulagem off-by-one encontrado na Conjectura 10.4 de Pratiher 2026
   hipótese log-periódica levantada para essa camada também foi testada
   e FECHADA como não suportada (derivação do Fable: caso não-aritmético,
   log₂5 irracional, sem periodicidade assintótica esperada; teste
-  pré-registrado confirmou potência no nível de ruído). Nem morta, nem
-  confirmada — resta como via real testar o transiente no eixo em que
-  foi observado (M_k(p) vs. k, não a cauda em x). Não integrada ao
-  paper. Ver `hypotheses/H-129-q-adic-pole-analog-seymour.md`.
+  pré-registrado confirmou potência no nível de ruído). Checagem leve
+  no eixo k (M_k(p) vs. profundidade, dados da Rodada 3): sem oscilação
+  visível, mas só 5-7 pontos existem (teto de memória 5^k) — não dá
+  para localizar "0,222" nem medir decaimento de amplitude com esses
+  dados; uma tentativa de ajuste foi feita e descartada por
+  sub-poder (ver H-129/E-103 para os detalhes). Nem morta, nem
+  confirmada — a origem de "0,222" segue sem localização. Não
+  integrada ao paper. Ver `hypotheses/H-129-q-adic-pole-analog-seymour.md`.
 - `H-127` — redução condicional da falha da WCC (Wirsching) a
   configurações de Bohr pós-wrap, via Littlewood-Offord/Halász. Status
   do próprio arquivo diz "em revisão", mas a zeladoria bibliográfica
