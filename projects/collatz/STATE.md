@@ -1644,9 +1644,10 @@ rotulagem off-by-one encontrado na Conjectura 10.4 de Pratiher 2026
   Lema 0), mas ainda não integrada. Ver
   `hypotheses/H-127-reducao-z-number-dicotomia-espectral-wcc.md`.
 
-(Ver também "Questões em aberto" abaixo para H-008, mais antiga e de
-natureza diferente — sem prova nem refutação, não uma investigação
-ativa no momento; e "Próximos passos" para candidatas não iniciadas.)
+(H-008, citada aqui numa versão anterior deste arquivo como "questão em
+aberto", foi na verdade RESOLVIDA POR COMPLETO em 2026-07-13 — ver seção
+"Hipóteses confirmadas" abaixo, H-022+H-027. Ver "Próximos passos" para
+candidatas não iniciadas.)
 
 ## Hipóteses confirmadas
 
@@ -1769,17 +1770,24 @@ ativa no momento; e "Próximos passos" para candidatas não iniciadas.)
   log₂n), não por informação nova. Ver
   `hypotheses/H-020-high-bits-no-information.md`.
 
-## H-008 — RESOLVIDA PARCIALMENTE (avanço real)
+## H-008 — RESOLVIDA POR COMPLETO (H-022 + H-027)
+
+(Título desta seção corrigido em 2026-07-19 — dizia "RESOLVIDA
+PARCIALMENTE", desatualizado desde que a metade par foi fechada em
+H-027 no mesmo dia da criação de H-022, 2026-07-13.)
 
 - `H-022` — **prova parcial de H-008** via relação multiplicativa (2 passos
   acelerados, não deslocamento aditivo como H-015/H-016). Provado: todo
   N=18j+13 (metade ímpar de N≡4 mod9) tem M=16j+11<N com
   total_stopping_time(M)=total_stopping_time(N)+5 — exclusão rigorosa,
   verificada sem exceção em 100.000 casos, confirmada não-redundante com
-  H-007/H-014 (75% dos casos não eram já cobertos). A metade **par**
-  (N≡4 mod18) continua sem prova — passos acelerados só alcançam ímpares,
-  a mesma técnica não se aplica diretamente. Ver
+  H-007/H-014 (75% dos casos não eram já cobertos). Ver
   `hypotheses/H-022-mod9-multiplicative-exclusion.md`.
+- `H-027` — fecha a metade **par** (N≡4 mod18) como corolário direto de
+  H-007: um único passo de halving (N par → N/2) já cai em M≡2 mod3,
+  ao qual H-007 se aplica de imediato. Mostra que a condição correta é
+  N≡4 mod6 (mais ampla que mod9/18). Verificado sem exceção em 500.000
+  casos. Ver `hypotheses/H-027-mod6-corollary-closes-h008-even-half.md`.
 
 ## Hipóteses refutadas relacionadas a H-008 (tentativas negativas registradas)
 
@@ -1830,10 +1838,10 @@ ativa no momento; e "Próximos passos" para candidatas não iniciadas.)
 
 ## Questões em aberto (sem prova nem refutação)
 
-- `H-008` — por que a classe 4 mod 9 nunca aparece em recordistas (mesmo não
-  sendo excluída pela prova de H-007). Tentei generalizar a técnica de H-007
-  e não encontrei uma relação algébrica curta. Ver
-  `hypotheses/H-008-mod9-class4-open-question.md`.
+(nenhuma no momento — H-008, que ficava aqui, foi RESOLVIDA POR COMPLETO
+em 2026-07-13 via H-022+H-027; a entrada antiga foi removida em
+2026-07-19 por estar desatualizada. Ver "Hipóteses abertas" acima para
+H-129/H-127, as investigações genuinamente ativas no momento.)
 
 ## Descobertas recentes
 
@@ -2082,7 +2090,11 @@ paper sobre os erros do PDF de Santos (`BACKLOG.md` item 5) e paper
 sobre o erro de rotulagem de Pratiher (`BACKLOG.md` item 7, pedido
 2026-07-13 "assim como o outro"). Outras candidatas:
 
-1. Tentar resolver a metade par de H-008 com uma ideia nova.
+1. ~~Tentar resolver a metade par de H-008 com uma ideia nova~~ —
+   **obsoleto**: H-008 já foi RESOLVIDA POR COMPLETO em 2026-07-13
+   (H-022 metade ímpar + H-027 metade par, ambas provadas e verificadas
+   em 500.000+ casos). Este item ficou na lista por engano depois da
+   resolução; removido da próxima revisão.
 2. Se alguém quiser retomar a fórmula fechada de H-013: a recursão
    D(v)=D(2v)+D(ramo) é exata e correta, e agora (2026-07-15) sabemos por
    que ela não fecha em algo simples — a oscilação da razão é ruído
