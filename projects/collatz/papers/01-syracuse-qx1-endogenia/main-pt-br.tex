@@ -619,16 +619,30 @@ Em conjunto, nenhuma das duas rotas confirma a
 Conjectura~\ref{conj:tail-index} para $q\ge5$ e nenhuma a refuta; ambas
 são mais informativas que a medição original subdimensionada, e ambas
 apontam para a mesma conclusão honesta: esta é uma questão estatística
-mais difícil que o caso $q=3$ já resolvido na \S\ref{sec:regimes}, e
-resolvê-la provavelmente exigirá uma comparação pré-registrada contra
-modelos alternativos de cauda (em particular um ajuste log-periódico,
-já que os pesos dos ramos são potências de $2$) com um orçamento
-computacional muito maior do que a enumeração populacional exaustiva
-permite; um controle analítico sobre o espectro do operador de
-transferência linear, uma vez obtido, revelou-se não relevante para
-esta questão, pois o transiente vive numa camada não-linear separada.
-Listamos isso como problema em aberto explícito na
-\S\ref{sec:conclusion}.
+mais difícil que o caso $q=3$ já resolvido na \S\ref{sec:regimes}.
+Perseguimos desde então exatamente os dois desdobramentos que isso
+apontava. Um ajuste log-periódico pré-registrado (motivado pelos pesos
+dos ramos serem potências de $2$) foi testado contra um período
+derivado analiticamente, não ajustado aos dados: a dicotomia relevante
+da teoria de renovação é não-aritmética (o deslocamento $\log_2 5$ é
+irracional), logo nenhuma log-periodicidade assintótica é prevista, e
+um teste de periodograma não encontrou potência nas frequências
+previstas. Um controle analítico sobre o espectro do operador de
+transferência linear, uma vez obtido, também se revelou irrelevante
+para esta questão, pois o transiente vive numa camada não-linear
+separada (o operador tem um gap espectral comprovadamente perfeito). O
+outro desdobramento moveu o ponteiro de fato: uma comparação
+pré-registrada com amostra $20\times$ maior ($10^5$ raízes) produziu,
+pela primeira vez, um platô de estabilidade de limiar de GPD limpo no
+valor previsto, uma estimativa de Hill fortemente concentrada, e um
+teste de Vuong que deixa de favorecer a alternativa lognormal --- tudo
+confirmado contra duas calibrações sintéticas de sanidade, não tomado
+ao pé da letra. Esta é agora a evidência mais forte até hoje a favor da
+Conjectura~\ref{conj:tail-index} para $q=5$, embora não seja uma prova
+dela: a não-rejeição de Vuong não é confirmação, e o martingale
+provadamente ainda está em regime pré-assintótico no headroom
+alcançado. Listamos a conjectura como problema em aberto explícito na
+\S\ref{sec:conclusion}, atualizado para refletir essa mudança.
 
 O drift médio $\log q - 2\log 2$ muda de sinal exatamente no limiar
 $q=5$ que separa os dois casos do Teorema~\ref{thm:transition}:
@@ -1830,18 +1844,28 @@ forma mais limpa que conseguimos dar a eles.
   numa única órbita muito longa, não provada.
 \item \textbf{O índice de cauda do fator de escala do martingale}
   (Conjectura~\ref{conj:tail-index}), para todo $q\ge5$: diferente do
-  caso $q=3$, isso não tem nem derivação rigorosa (a raiz relevante
-  está sempre congelada, Proposição~\ref{prop:always-frozen}) nem apoio
-  empírico sólido: a medição original, para $q=5$, já foi mostrada ser
-  estatisticamente não-confirmatória, uma bateria completa de quatro
-  estimadores (\S\ref{sec:freezing}) dá um quadro misto, não
-  confirmatório, e um teste exato de momento populacional na mesma
-  seção é inconclusivo na profundidade que a enumeração exaustiva
-  alcança, por um motivo específico e identificado (um transiente de
-  decaimento lento conhecido). Esta é, honestamente, a alegação com
-  apoio mais fraco do paper, e a sinalizamos como tal em vez de
-  deixá-la herdar credibilidade do caso $q=3$ só por compartilhar a
-  fórmula.
+  caso $q=3$, ainda não tem derivação rigorosa (a raiz relevante está
+  sempre congelada, Proposição~\ref{prop:always-frozen}). O apoio
+  empírico, porém, se fortaleceu substancialmente desde a medição
+  original subdimensionada: uma amostra $20\times$ maior ($10^5$
+  raízes, a comparação pré-registrada pedida acima) produziu, pela
+  primeira vez nesta investigação, um platô de estabilidade de limiar
+  de GPD limpo no valor previsto em todos os níveis de limiar testados,
+  uma estimativa de Hill com correção de viés fortemente concentrada e
+  consistente com ele em todos os níveis de headroom, e um teste de
+  Vuong contra uma alternativa lognormal truncada que deixa de
+  favorecer a alternativa. Duas calibrações de sanidade (contra uma
+  amostra sintética exata de Pareto no índice previsto, e contra um
+  expoente de normalização propositalmente mal especificado) não
+  encontraram artefato por trás dessa mudança. Consideramos a
+  conjectura agora fortemente apoiada para $q=5$, embora não provada: o
+  teste de Vuong dá não-rejeição, não confirmação, e o martingale
+  subjacente provadamente ainda está em regime pré-assintótico no
+  headroom alcançado (sua mediana continua a variar com o headroom
+  mesmo quando o índice de cauda estimado não varia). Esta era,
+  honestamente, a alegação com apoio mais fraco do paper; já não é,
+  mas continua sendo a única que repousa sobre evidência estatística
+  em vez de uma derivação fechada.
 \end{enumerate}
 
 Qualquer progresso em qualquer um de (A1)--(A7) muito provavelmente se

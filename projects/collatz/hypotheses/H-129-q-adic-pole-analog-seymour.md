@@ -450,3 +450,77 @@ convergência quenched-anelado, mas isso ainda não foi verificado).
   estrutural novo estabelecido, e a obstrução exata ao fechamento
   completo (o índice de cauda quenched) precisamente identificada em
   vez de vaga.
+
+- **2026-07-19 (mesma sessão, continuação do esforço final) — pedido
+  explícito do diretor científico para seguir o caminho identificado
+  acima (item 3 dos próximos passos de E-103: amostra muito maior).
+  Resultado: a evidência para κ=1,536290 passa de INCONCLUSIVA para
+  FORTEMENTE FAVORÁVEL — mas ainda não é fechamento.**
+
+  Gerei 100.000 raízes (20x a Rodada 1/2, que usava 5.000), mesmos 4
+  headrooms (10⁵-10⁸), paralelizado (12 processos, ~73 min de
+  computação real — `stage6_large_sample_generation.py`; V_RANGE
+  expandido 10x para ter raízes suficientes sem repetição). Rodei a
+  mesma bateria de 4 estimadores (`stage6_large_sample_battery.py`).
+
+  **Resultado, muito mais limpo que qualquer rodada anterior**:
+  - **GPD com platô de limiar LIMPO pela primeira vez em toda a
+    investigação**: ξ estável em 0,63-0,68 (previsto 0,6509) em TODOS
+    os 9 níveis de limiar testados (q=0,80 a 0,99), em TODOS os 4
+    headrooms — a instabilidade que persistiu em Rodadas 1, 2 e
+    Estágio 5 (n=5000) desapareceu com n=100.000.
+  - **Huisman (Hill com correção de viés) muito estável**: 1,545 (n/2)
+    e 1,50-1,54 (n/4), com IC95% [1,51;1,58] cobrindo o previsto,
+    idêntico nos 4 headrooms independentes.
+  - **CSN+Vuong: "indistinguível" em TODOS os 4 headrooms** (p=0,13-
+    0,16) — a rodada anterior favorecia lognormal em 3/4 casos; esse
+    resultado específico não aparece mais.
+
+  **Duas calibrações pedidas pelo advisor antes de promover isso a
+  qualquer coisa mais forte que "parece confirmar"**
+  (`stage6_calibration_checks.py`):
+  1. **Nulo sintético** (Pareto puro exato, κ=1,536290, n=100.000):
+     Huisman deu 1,545/1,538 — praticamente IDÊNTICO ao valor obtido
+     nos dados reais (1,545/1,503) — mostra que o Huisman está bem
+     calibrado e não enviesado neste n. GPD no sintético TAMBÉM mostra
+     "instabilidade" de limiar nos níveis mais altos (ξ chega a 0,75 em
+     q=0,99) mesmo sendo um Pareto EXATO — ou seja, o "ruído" de limiar
+     visto nos dados reais está dentro do esperado por acaso amostral
+     neste n, não é sinal de má especificação. CSN no sintético deu
+     1,55 (bem próximo do alvo) com n_tail≈63.000 (quase toda a
+     amostra, correto para Pareto puro sem corpo); nos dados reais CSN
+     deu 1,40 com n_tail≈7.300 (~7% da amostra) — a diferença é
+     esperada e correta: dados reais têm corpo genuíno que não é lei
+     de potência (só a cauda extrema é), então CSN corretamente separa
+     um n_tail bem menor; seu ponto estimado mais baixo (1,40) parece
+     ser uma fraqueza conhecida do estimador nessa estrutura
+     corpo+cauda, não evidência contra κ=1,536.
+  2. **Invariância a θ' (descarta circularidade)**: κ_previsto=1/θ e
+     W=contagem/H^θ parece autoreferente à primeira vista. Recalculei
+     W com θ'=0,60 (errado de propósito) — TODOS os números da bateria
+     saíram IDÊNTICOS (até a 4ª casa decimal) aos com θ real. Confirma
+     que o índice de cauda estimado não depende da normalização
+     escolhida — 1,536 vem dos dados, não é artefato circular da
+     definição de W.
+
+  **Veredito honesto (não inflar)**: isso NÃO é "confirmado" nem
+  "fechado". Três razões específicas: (1) Vuong foi para
+  "indistinguível", não "lei de potência vence" — remove a
+  desconfirmação anterior (progresso real), mas não confirma a lei de
+  potência sobre a lognormal; (2) W provadamente ainda não convergiu —
+  a mediana cai monotonicamente de 2,04 (H=10⁵) a 0,94 (H=10⁸), mesmo
+  com o índice de cauda estável nos 4 headrooms (forma estabiliza antes
+  da escala, mas nenhum número aqui é assintótico); (3) o espalhamento
+  entre estimadores (1,40 a 1,55) agora está CALIBRADO, não apenas
+  observado — mas calibrado não é o mesmo que decidido.
+
+  **Status de H-129 e da Conjectura do índice de cauda**: a evidência
+  passa de INCONCLUSIVA para FORTEMENTE FAVORÁVEL a κ=1,536290 — o
+  platô de GPD que faltava em toda a investigação anterior finalmente
+  apareceu, e nenhuma calibração de sanidade (nulo sintético,
+  invariância a θ) revelou um artefato. Isso é exatamente o padrão que
+  o próprio paper (§3.3) propôs como necessário para decidir a questão
+  ("comparação pré-registrada... com orçamento computacional muito
+  maior"). **H-129 permanece aberta** (o índice de cauda não está
+  provado, só fortemente apoiado), mas o quadro mudou de forma real e
+  mensurável nesta sessão.

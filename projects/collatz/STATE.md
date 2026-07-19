@@ -2,6 +2,36 @@
 
 Última atualização: 2026-07-19
 
+## Conjectura do índice de cauda (q=5): amostra 20x maior muda o quadro de inconclusivo para fortemente favorável (E-103 Estágio 6)
+
+Continuação do esforço de fechar H-129: gerei 100.000 raízes (vs. 5.000
+nas rodadas anteriores), paralelizado (12 processos, ~73 min), mesmos
+4 headrooms (10⁵-10⁸). Resultado qualitativamente diferente de tudo
+antes: **GPD mostra platô de limiar limpo pela primeira vez** (ξ
+estável 0,63-0,68 em TODOS os 9 níveis de limiar e 4 headrooms,
+previsto 0,6509); Huisman muito estável (1,545, IC95% cobrindo o
+previsto, idêntico nos 4 headrooms); CSN+Vuong "indistinguível" nos 4
+headrooms (a rodada anterior favorecia lognormal em 3/4 casos).
+
+Duas calibrações de sanidade (pedidas pelo advisor antes de qualquer
+conclusão): (1) nulo sintético (Pareto exato, κ=1,536290, n=100.000) —
+Huisman deu quase o mesmo valor que nos dados reais, confirma
+calibração do estimador; GPD no sintético também "oscila" nos limiares
+altos, mostrando que isso é ruído amostral normal, não má
+especificação; (2) invariância a θ' (recalculado com θ errado de
+propósito) — todos os números da bateria saíram idênticos, descarta
+circularidade na definição de W.
+
+**Veredito honesto**: NÃO é confirmação nem fechamento — Vuong foi para
+"indistinguível" (não "lei de potência vence"), e W provadamente ainda
+não convergiu (mediana cai monotonicamente com o headroom, mesmo com
+índice de cauda estável). Mas a evidência passa de INCONCLUSIVA para
+FORTEMENTE FAVORÁVEL a κ=1,536290 — exatamente o padrão que o próprio
+paper (§3.3) propôs como necessário para decidir a questão. Ver
+`hypotheses/H-129-q-adic-pole-analog-seymour.md` e
+`experiments/E-103-tail-index-q5-rigorous-test/README.md` (seção
+"Estágio 6") para o registro completo.
+
 ## H-129: esforço final para fechar — pergunta literal fechada/refutada, achado estrutural novo confirmado, índice de cauda continua aberto
 
 Pedido explícito do diretor científico: tentar fechar H-129 usando
@@ -1734,11 +1764,16 @@ rotulagem off-by-one encontrado na Conjectura 10.4 de Pratiher 2026
   κ, cancela algebricamente). O que NÃO se sustentou: a previsão
   numérica a* (erro de processo corrigido antes de reportar); usar a
   família de escala para melhorar o teste de κ (Estágio 5, sem ganho).
-  **Núcleo que permanece aberto**: o índice de cauda κ=α₊/α₋=1,536290
-  continua consistente com os dados, mas não confirmado — obstrução
-  exata identificada (5000 amostras não alcançam profundidade de cauda
-  suficiente; testes de razão de quantis são κ-invariantes por
-  construção). Origem numérica de "0,222" também segue sem localização.
+  **Atualização (mesma sessão, item 3 executado)**: amostra de 100.000
+  raízes (20x, paralelizada) muda o quadro do índice de cauda κ de
+  INCONCLUSIVO para FORTEMENTE FAVORÁVEL — GPD com platô de limiar
+  limpo pela primeira vez (ξ estável 0,63-0,68 em todos os limiares e
+  headrooms), Huisman muito estável cobrindo o previsto, Vuong deixa de
+  favorecer lognormal. Duas calibrações (nulo sintético, invariância a
+  θ') não revelaram artefato. AINDA NÃO é confirmação/fechamento: Vuong
+  ficou "indistinguível" (não "lei de potência vence"), e W provadamente
+  ainda não convergiu (mediana cai monotonicamente com headroom). Origem
+  numérica de "0,222" segue sem localização (não testada nesta rodada).
   Nada disso integrado ao paper. Ver
   `hypotheses/H-129-q-adic-pole-analog-seymour.md` para o registro
   completo (inclui dois erros de processo autocorrigidos com

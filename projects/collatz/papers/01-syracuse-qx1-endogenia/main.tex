@@ -606,15 +606,27 @@ Taken together, neither route confirms Conjecture~\ref{conj:tail-index}
 for $q\ge5$ and neither refutes it; both are more informative than the
 original under-powered measurement, and both point to the same honest
 conclusion: this is a harder statistical question than the $q=3$ case
-already settled in \S\ref{sec:regimes}, and resolving it will likely
-require a pre-registered comparison against alternative tail models
-(in particular a log-periodic fit, given that the branch weights are
-powers of $2$) on a much larger computational budget than exhaustive
-population enumeration allows; an analytic handle on the linear
-transfer operator's spectrum, once obtained, turned out not to bear on
-this question, since the transient lives in a separate nonlinear
-layer. We list it as an explicit open problem
-in \S\ref{sec:conclusion}.
+already settled in \S\ref{sec:regimes}. We have since pursued exactly
+the two follow-ups this pointed to. A pre-registered log-periodic fit
+(motivated by the branch weights being powers of $2$) was tested against
+a period derived analytically, not fitted: the relevant renewal-theoretic
+dichotomy is non-arithmetic (the shift $\log_2 5$ is irrational), so no
+asymptotic log-periodicity is predicted, and a periodogram test found no
+power at the predicted frequencies. An analytic handle on the linear
+transfer operator's spectrum, once obtained, likewise turned out not to
+bear on this question, since the transient lives in a separate nonlinear
+layer (the operator has a provably perfect spectral gap). The other
+follow-up did move the needle: a pre-registered comparison on a
+$20\times$ larger sample ($10^5$ roots) produced, for the first time,
+a clean GPD threshold-stability plateau at the predicted value, a
+tightly concentrated Hill estimate, and a Vuong test that no longer
+favors the lognormal alternative -- all confirmed against two synthetic
+calibration checks rather than taken at face value. This is now the
+strongest evidence to date in favor of Conjecture~\ref{conj:tail-index}
+for $q=5$, though not a proof of it: Vuong non-rejection is not
+confirmation, and the martingale is provably still pre-asymptotic at
+the headroom reached. We list the conjecture as an explicit open
+problem in \S\ref{sec:conclusion}, updated to reflect this shift.
 
 The mean drift $\log q - 2\log 2$ changes sign exactly at the
 threshold $q=5$ separating the two cases of
@@ -1778,17 +1790,27 @@ cleanest form we have been able to give them.
   long orbit, unproved.
 \item \textbf{The tail index of the martingale scale factor}
   (Conjecture~\ref{conj:tail-index}), for every $q\ge5$: unlike the
-  $q=3$ case, this has neither a rigorous derivation (the relevant root
-  is always frozen, Proposition~\ref{prop:always-frozen}) nor solid
-  empirical support: the original measurement, for $q=5$, has since
-  been shown to be statistically non-confirmatory, a full battery of
-  four estimators (\S\ref{sec:freezing}) gives a mixed rather than
-  confirmatory picture, and an exact population-level moment test on
-  the same section is inconclusive at the depth exhaustive enumeration
-  can reach, for a specific and identified reason (a known
-  slowly-decaying transient). This is, honestly, the weakest-supported
-  claim in the paper, and we flag it as such rather than let it inherit
-  credibility from the $q=3$ case merely by sharing a formula.
+  $q=3$ case, this still has no rigorous derivation (the relevant root
+  is always frozen, Proposition~\ref{prop:always-frozen}). Empirical
+  support, however, has substantially strengthened since the original
+  under-powered measurement: a $20\times$ larger sample ($10^5$ roots,
+  the pre-registered comparison called for above) produced, for the
+  first time in this investigation, a clean GPD threshold-stability
+  plateau at the predicted value across every threshold level tested,
+  a tightly concentrated bias-corrected Hill estimate consistent with
+  it across all headroom levels, and a Vuong test against a truncated
+  lognormal alternative that no longer favors the alternative. Two
+  calibration checks (against an exact synthetic Pareto sample of the
+  predicted index, and against a deliberately mis-specified
+  normalization exponent) found no artifact behind this shift. We
+  regard the conjecture as now strongly supported for $q=5$, though
+  not proved: the Vuong test yields non-rejection rather than
+  confirmation, and the underlying martingale is provably still
+  pre-asymptotic at the headroom reached (its median continues to
+  drift with headroom even as the estimated tail index does not). This
+  was, honestly, the weakest-supported claim in the paper; it no
+  longer is, but it remains the only one resting on statistical
+  evidence rather than a closed derivation.
 \end{enumerate}
 
 Any progress on any one of (O1)--(O7) would very likely transfer, given

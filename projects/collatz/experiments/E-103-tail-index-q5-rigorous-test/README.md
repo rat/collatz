@@ -232,6 +232,59 @@ de sempre (5000 amostras não alcançam profundidade de cauda suficiente
 para decidir), agora com a razão precisa por que o teste de razão de
 quantis não pode ajudar (é κ-invariante por construção).
 
+## Estágio 6 (2026-07-19) — amostra 20x maior: evidência passa de inconclusiva para fortemente favorável
+
+Item 3 da lista de próximos passos, finalmente executado: 100.000
+raízes (vs. 5.000 nas Rodadas 1-2), mesmos 4 headrooms, gerado em
+paralelo (12 processos, ~73 min — `stage6_large_sample_generation.py`;
+V_RANGE expandido 10x para não esgotar o pool de raízes válidas). Mesma
+bateria de 4 estimadores (`stage6_large_sample_battery.py`).
+
+**Resultado, qualitativamente diferente de todas as rodadas anteriores**:
+
+- **GPD com platô de limiar LIMPO pela primeira vez**: ξ estável em
+  0,63-0,68 (previsto 0,6509) em TODOS os 9 níveis de limiar e 4
+  headrooms — a instabilidade sistemática de Rodada 2/Estágio 5
+  desapareceu.
+- **Huisman muito estável**: 1,545 (n/2), IC95% [1,51;1,58] cobrindo
+  1,536290, idêntico nos 4 headrooms.
+- **CSN+Vuong "indistinguível" nos 4 headrooms** (p=0,13-0,16) — a
+  rodada anterior (n=5000) favorecia lognormal em 3/4 casos; esse sinal
+  não aparece mais com n=100.000.
+
+**Duas calibrações de sanidade** (`stage6_calibration_checks.py`,
+pedidas pelo advisor antes de qualquer conclusão mais forte):
+
+1. **Nulo sintético** (Pareto puro exato, κ=1,536290, n=100.000):
+   Huisman deu 1,545/1,538 — quase idêntico ao valor real (1,545/1,503)
+   — confirma que o Huisman está bem calibrado neste n. GPD no
+   sintético TAMBÉM mostra "instabilidade" nos limiares mais altos
+   mesmo sendo Pareto exato — o ruído visto nos dados reais está dentro
+   do esperado por acaso amostral, não é má especificação. CSN no
+   sintético deu 1,55 com n_tail≈63.000 (quase toda a amostra, correto
+   p/ Pareto puro); nos dados reais deu 1,40 com n_tail≈7.300 (~7%) —
+   diferença esperada (dados reais têm corpo genuíno não-lei-de-potência,
+   só a cauda extrema é) — o CSN mais baixo nos dados reais parece
+   fraqueza conhecida do estimador nessa estrutura corpo+cauda, não
+   evidência contra κ.
+2. **Invariância a θ' (descarta circularidade)**: κ_previsto=1/θ e
+   W=contagem/H^θ parece autoreferente. Recalculado W com θ'=0,60
+   (errado de propósito) — todos os números da bateria saíram
+   IDÊNTICOS aos com θ real. Confirma que κ vem dos dados, não é
+   artefato circular da definição de W.
+
+**Veredito honesto**: NÃO é "confirmado" nem "fechado". (1) Vuong foi
+para "indistinguível", não "lei de potência vence" — remove a
+desconfirmação anterior, não confirma sobre a lognormal; (2) W
+provadamente ainda não convergiu (mediana cai monotonicamente de 2,04
+em H=10⁵ a 0,94 em H=10⁸, mesmo com índice de cauda estável — forma
+estabiliza antes da escala); (3) o espalhamento entre estimadores
+(1,40-1,55) agora está calibrado, não só observado — calibrado não é
+decidido. Mas a evidência passa de INCONCLUSIVA para FORTEMENTE
+FAVORÁVEL a κ=1,536290 — exatamente o padrão que o próprio paper (§3.3)
+propôs como necessário ("comparação pré-registrada... orçamento muito
+maior"). Ver H-129 para o registro completo.
+
 ## Arquivos
 
 - `experiment_tail_index_q5.py` — Rodada 1 (Hill/Zipf simples).
@@ -251,6 +304,15 @@ quantis não pode ajudar (é κ-invariante por construção).
   — Estágio 4 (família de escala por tipo, confirmada).
 - `stage5_rescaled_pool_battery.py` / `stage5_rescaled_pool_results.json`
   — Estágio 5 (pool reescalado, não melhora o teste de κ).
+- `stage6_large_sample_generation.py` — Estágio 6, gera 100.000 raízes
+  em paralelo (salva em `/tmp/tail_index_q5_large_sample.json`, não
+  commitado — regenerável deterministicamente, ~73 min, 12 processos).
+- `stage6_large_sample_battery.py` / `stage6_large_sample_battery_results.json`
+  — bateria de 4 estimadores na amostra grande (evidência favorável).
+- `stage6_calibration_checks.py` / `stage6_calibration_output.txt` —
+  nulo sintético + invariância a θ' (as duas calibrações de sanidade
+  do Estágio 6; script não salva JSON, só imprime — saída completa
+  preservada no .txt).
 
 Mirror público (código idêntico, adaptado para autocontido):
 `collatz-endogeny/sec3-pressure-equation/` (`full_battery.py`,
@@ -266,6 +328,9 @@ python3 stage2_periodogram.py          # segundos, precisa das amostras brutas (
 python3 stage3_k_axis_check.py         # segundos, usa stage1_moment_results.json
 python3 stage4_type_constants_check.py # ~1 min, reconstroi raizes + amostras brutas
 python3 stage5_rescaled_pool_battery.py # ~2 min, idem
+python3 stage6_large_sample_generation.py # ~73 min (12 processos), 100k raizes
+python3 stage6_large_sample_battery.py    # ~2 min, usa a saida do anterior
+python3 stage6_calibration_checks.py      # ~2 min, idem
 ```
 
 ## Próximos passos (se a linha for retomada)
@@ -278,14 +343,18 @@ python3 stage5_rescaled_pool_battery.py # ~2 min, idem
    **fechado pelo Estágio 2 (2026-07-19)**: testado e não suportado,
    consistente com a derivação teórica do Fable (caso não-aritmético).
    Ver seção acima.
-3. Bateria estatística completa (CSN+Vuong pré-registrado) com amostra
-   muito maior (10^5+ raízes) e headroom maior, se viável
-   computacionalmente — ainda não feito, e nenhum dos achados desta
-   sessão (Estágios 2-5) o torna menos necessário. Este continua sendo
-   o único caminho concreto identificado para de fato pressionar o
-   índice de cauda κ, dado que o teste de razão de quantis (Estágio 4)
-   é κ-invariante por construção e o pool reescalado (Estágio 5) não
-   melhorou o poder do teste.
+3. ~~Bateria estatística completa (CSN+Vuong pré-registrado) com
+   amostra muito maior (10^5+ raízes)~~ — **feito, Estágio 6
+   (2026-07-19)**: 100.000 raízes, evidência passa de inconclusiva
+   para fortemente favorável a κ=1,536290 (GPD com platô limpo pela
+   primeira vez, Huisman muito estável, Vuong deixa de favorecer
+   lognormal). Duas calibrações de sanidade (nulo sintético,
+   invariância a θ') não revelaram artefato. NÃO é confirmação/
+   fechamento (Vuong é "indistinguível", não "lei de potência vence";
+   W ainda não convergiu — mediana cai monotonicamente com headroom).
+   Ver seção "Estágio 6" acima e H-129 para o registro completo. Se
+   quiser ir além: headroom maior (>10⁸) exigiria mais tempo de DFS por
+   raiz, ainda não tentado.
 4. Ver H-129 para uma frente teórica paralela (otimização ergódica)
    que pode dar uma caracterização exata do congelamento sem depender
    de estimadores numéricos.

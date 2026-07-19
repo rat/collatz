@@ -1,0 +1,172 @@
+======================================================================
+CALIBRACAO 1: Pareto sintetico puro, kappa=1,536290, n=100000
+======================================================================
+
+======================================================================
+PARETO SINTETICO (kappa=1,536290 exato) (n=100000)
+======================================================================
+
+--- 1. Gabaix-Ibragimov (rank-1/2) ---
+  frac=0.01 (k=1000): alpha_GI=1.4418  SE=0.0645  IC95%=[1.3154,1.5682]
+  frac=0.02 (k=2000): alpha_GI=1.4851  SE=0.0470  IC95%=[1.3931,1.5772]
+  frac=0.05 (k=5000): alpha_GI=1.5163  SE=0.0303  IC95%=[1.4569,1.5758]
+  frac=0.10 (k=10000): alpha_GI=1.5273  SE=0.0216  IC95%=[1.4849,1.5696]
+
+--- 2. Huisman (bias-corrected Hill) ---
+  kappa=n/2: alpha_Huisman=1.5449  bootstrap_mean=1.5443  IC95%=[1.5132,1.5755]  corr(k,gamma)=-0.347
+  kappa=n/4: alpha_Huisman=1.5377  bootstrap_mean=1.5369  IC95%=[1.4942,1.5829]  corr(k,gamma)=-0.397
+
+--- 3. GPD MLE + estabilidade de limiar ---
+  q=0.800 u=2.839 n_exc=20000  xi=0.6536±0.0229  alpha=1.5300  cobre xi_previsto=0.6509? SIM
+  q=0.825 u=3.096 n_exc=17500  xi=0.6582±0.0246  alpha=1.5192  cobre xi_previsto=0.6509? SIM
+  q=0.850 u=3.407 n_exc=15000  xi=0.6514±0.0264  alpha=1.5352  cobre xi_previsto=0.6509? SIM
+  q=0.875 u=3.832 n_exc=12500  xi=0.6522±0.0290  alpha=1.5332  cobre xi_previsto=0.6509? SIM
+  q=0.900 u=4.434 n_exc=10000  xi=0.6635±0.0326  alpha=1.5071  cobre xi_previsto=0.6509? SIM
+  q=0.925 u=5.323 n_exc=7500  xi=0.6610±0.0376  alpha=1.5129  cobre xi_previsto=0.6509? SIM
+  q=0.950 u=6.882 n_exc=5000  xi=0.6438±0.0456  alpha=1.5533  cobre xi_previsto=0.6509? SIM
+  q=0.975 u=11.001 n_exc=2500  xi=0.6983±0.0666  alpha=1.4321  cobre xi_previsto=0.6509? SIM
+  q=0.990 u=19.573 n_exc=1000  xi=0.7476±0.1083  alpha=1.3376  cobre xi_previsto=0.6509? SIM
+
+--- 4. CSN (x_min via KS) + Vuong vs lognormal truncada ---
+  x_min=1.3549  n_tail=62877  D_KS=0.0020
+  alpha_CSN(densidade)=2.5500  =>  indice de sobrevivencia=1.5500  (previsto 1.5363)
+  lognormal truncada: mu=-33.9932 sigma=4.8160
+  Vuong: R=5.6301  z=1.0708  p=0.2842  =>  indistinguiveis nestes dados
+
+======================================================================
+CALIBRACAO 2: invariancia a theta (theta'=0,60 errado de proposito)
+======================================================================
+
+--- H=1e+05, reescalado com theta'=0.6 (vs theta real=0.650918639898) ---
+
+======================================================================
+H=1e+05 (theta'=0.6) (n=100000)
+======================================================================
+
+--- 1. Gabaix-Ibragimov (rank-1/2) ---
+  frac=0.01 (k=1000): alpha_GI=1.4784  SE=0.0661  IC95%=[1.3488,1.6080]
+  frac=0.02 (k=2000): alpha_GI=1.4936  SE=0.0472  IC95%=[1.4010,1.5861]
+  frac=0.05 (k=5000): alpha_GI=1.4630  SE=0.0293  IC95%=[1.4057,1.5204]
+  frac=0.10 (k=10000): alpha_GI=1.4219  SE=0.0201  IC95%=[1.3825,1.4613]
+
+--- 2. Huisman (bias-corrected Hill) ---
+  kappa=n/2: alpha_Huisman=1.5464  bootstrap_mean=1.5457  IC95%=[1.5136,1.5800]  corr(k,gamma)=0.995
+  kappa=n/4: alpha_Huisman=1.5033  bootstrap_mean=1.5020  IC95%=[1.4612,1.5452]  corr(k,gamma)=0.966
+
+--- 3. GPD MLE + estabilidade de limiar ---
+  q=0.800 u=10.906 n_exc=19998  xi=0.6409±0.0227  alpha=1.5602  cobre xi_previsto=0.6509? SIM
+  q=0.825 u=12.403 n_exc=17499  xi=0.6497±0.0244  alpha=1.5391  cobre xi_previsto=0.6509? SIM
+  q=0.850 u=14.231 n_exc=14999  xi=0.6530±0.0265  alpha=1.5315  cobre xi_previsto=0.6509? SIM
+  q=0.875 u=16.600 n_exc=12500  xi=0.6533±0.0290  alpha=1.5306  cobre xi_previsto=0.6509? SIM
+  q=0.900 u=19.864 n_exc=10000  xi=0.6451±0.0322  alpha=1.5500  cobre xi_previsto=0.6509? SIM
+  q=0.925 u=25.021 n_exc=7500  xi=0.6503±0.0373  alpha=1.5378  cobre xi_previsto=0.6509? SIM
+  q=0.950 u=33.878 n_exc=5000  xi=0.6411±0.0455  alpha=1.5597  cobre xi_previsto=0.6509? SIM
+  q=0.975 u=56.142 n_exc=2500  xi=0.6344±0.0641  alpha=1.5763  cobre xi_previsto=0.6509? SIM
+  q=0.990 u=106.561 n_exc=1000  xi=0.6838±0.1044  alpha=1.4625  cobre xi_previsto=0.6509? SIM
+
+--- 4. CSN (x_min via KS) + Vuong vs lognormal truncada ---
+  x_min=25.6230  n_tail=7302  D_KS=0.0126
+  alpha_CSN(densidade)=2.3967  =>  indice de sobrevivencia=1.3967  (previsto 1.5363)
+  lognormal truncada: mu=-13.6587 sigma=3.6183
+  Vuong: R=-4.5041  z=-1.4590  p=0.1446  =>  indistinguiveis nestes dados
+
+--- H=1e+06, reescalado com theta'=0.6 (vs theta real=0.650918639898) ---
+
+======================================================================
+H=1e+06 (theta'=0.6) (n=100000)
+======================================================================
+
+--- 1. Gabaix-Ibragimov (rank-1/2) ---
+  frac=0.01 (k=1000): alpha_GI=1.4783  SE=0.0661  IC95%=[1.3487,1.6079]
+  frac=0.02 (k=2000): alpha_GI=1.4933  SE=0.0472  IC95%=[1.4007,1.5859]
+  frac=0.05 (k=5000): alpha_GI=1.4625  SE=0.0292  IC95%=[1.4051,1.5198]
+  frac=0.10 (k=10000): alpha_GI=1.4213  SE=0.0201  IC95%=[1.3819,1.4606]
+
+--- 2. Huisman (bias-corrected Hill) ---
+  kappa=n/2: alpha_Huisman=1.5453  bootstrap_mean=1.5447  IC95%=[1.5127,1.5788]  corr(k,gamma)=0.995
+  kappa=n/4: alpha_Huisman=1.5025  bootstrap_mean=1.5011  IC95%=[1.4603,1.5438]  corr(k,gamma)=0.966
+
+--- 3. GPD MLE + estabilidade de limiar ---
+  q=0.800 u=11.428 n_exc=20000  xi=0.6412±0.0227  alpha=1.5597  cobre xi_previsto=0.6509? SIM
+  q=0.825 u=13.002 n_exc=17500  xi=0.6502±0.0244  alpha=1.5380  cobre xi_previsto=0.6509? SIM
+  q=0.850 u=14.908 n_exc=15000  xi=0.6518±0.0264  alpha=1.5341  cobre xi_previsto=0.6509? SIM
+  q=0.875 u=17.411 n_exc=12500  xi=0.6540±0.0290  alpha=1.5290  cobre xi_previsto=0.6509? SIM
+  q=0.900 u=20.828 n_exc=10000  xi=0.6450±0.0322  alpha=1.5504  cobre xi_previsto=0.6509? SIM
+  q=0.925 u=26.240 n_exc=7500  xi=0.6504±0.0374  alpha=1.5376  cobre xi_previsto=0.6509? SIM
+  q=0.950 u=35.528 n_exc=5000  xi=0.6407±0.0455  alpha=1.5607  cobre xi_previsto=0.6509? SIM
+  q=0.975 u=58.863 n_exc=2500  xi=0.6328±0.0640  alpha=1.5803  cobre xi_previsto=0.6509? SIM
+  q=0.990 u=111.616 n_exc=1000  xi=0.6783±0.1040  alpha=1.4742  cobre xi_previsto=0.6509? SIM
+
+--- 4. CSN (x_min via KS) + Vuong vs lognormal truncada ---
+  x_min=27.1211  n_tail=7219  D_KS=0.0127
+  alpha_CSN(densidade)=2.3979  =>  indice de sobrevivencia=1.3979  (previsto 1.5363)
+  lognormal truncada: mu=-14.0979 sigma=3.6656
+  Vuong: R=-4.2350  z=-1.4159  p=0.1568  =>  indistinguiveis nestes dados
+
+--- H=1e+07, reescalado com theta'=0.6 (vs theta real=0.650918639898) ---
+
+======================================================================
+H=1e+07 (theta'=0.6) (n=100000)
+======================================================================
+
+--- 1. Gabaix-Ibragimov (rank-1/2) ---
+  frac=0.01 (k=1000): alpha_GI=1.4784  SE=0.0661  IC95%=[1.3488,1.6080]
+  frac=0.02 (k=2000): alpha_GI=1.4932  SE=0.0472  IC95%=[1.4007,1.5858]
+  frac=0.05 (k=5000): alpha_GI=1.4622  SE=0.0292  IC95%=[1.4049,1.5196]
+  frac=0.10 (k=10000): alpha_GI=1.4209  SE=0.0201  IC95%=[1.3815,1.4602]
+
+--- 2. Huisman (bias-corrected Hill) ---
+  kappa=n/2: alpha_Huisman=1.5449  bootstrap_mean=1.5442  IC95%=[1.5124,1.5784]  corr(k,gamma)=0.995
+  kappa=n/4: alpha_Huisman=1.5020  bootstrap_mean=1.5006  IC95%=[1.4601,1.5432]  corr(k,gamma)=0.966
+
+--- 3. GPD MLE + estabilidade de limiar ---
+  q=0.800 u=10.804 n_exc=20000  xi=0.6420±0.0228  alpha=1.5576  cobre xi_previsto=0.6509? SIM
+  q=0.825 u=12.287 n_exc=17500  xi=0.6503±0.0245  alpha=1.5377  cobre xi_previsto=0.6509? SIM
+  q=0.850 u=14.089 n_exc=15000  xi=0.6518±0.0264  alpha=1.5343  cobre xi_previsto=0.6509? SIM
+  q=0.875 u=16.463 n_exc=12500  xi=0.6549±0.0290  alpha=1.5270  cobre xi_previsto=0.6509? SIM
+  q=0.900 u=19.698 n_exc=10000  xi=0.6460±0.0323  alpha=1.5479  cobre xi_previsto=0.6509? SIM
+  q=0.925 u=24.801 n_exc=7500  xi=0.6495±0.0373  alpha=1.5396  cobre xi_previsto=0.6509? SIM
+  q=0.950 u=33.608 n_exc=4998  xi=0.6409±0.0455  alpha=1.5602  cobre xi_previsto=0.6509? SIM
+  q=0.975 u=55.658 n_exc=2498  xi=0.6308±0.0640  alpha=1.5852  cobre xi_previsto=0.6509? SIM
+  q=0.990 u=105.503 n_exc=1000  xi=0.6763±0.1039  alpha=1.4787  cobre xi_previsto=0.6509? SIM
+
+--- 4. CSN (x_min via KS) + Vuong vs lognormal truncada ---
+  x_min=25.1491  n_tail=7400  D_KS=0.0126
+  alpha_CSN(densidade)=2.3941  =>  indice de sobrevivencia=1.3941  (previsto 1.5363)
+  lognormal truncada: mu=-13.2565 sigma=3.5800
+  Vuong: R=-4.7777  z=-1.5035  p=0.1327  =>  indistinguiveis nestes dados
+
+--- H=1e+08, reescalado com theta'=0.6 (vs theta real=0.650918639898) ---
+
+======================================================================
+H=1e+08 (theta'=0.6) (n=100000)
+======================================================================
+
+--- 1. Gabaix-Ibragimov (rank-1/2) ---
+  frac=0.01 (k=1000): alpha_GI=1.4784  SE=0.0661  IC95%=[1.3488,1.6080]
+  frac=0.02 (k=2000): alpha_GI=1.4932  SE=0.0472  IC95%=[1.4006,1.5857]
+  frac=0.05 (k=5000): alpha_GI=1.4622  SE=0.0292  IC95%=[1.4049,1.5195]
+  frac=0.10 (k=10000): alpha_GI=1.4207  SE=0.0201  IC95%=[1.3813,1.4601]
+
+--- 2. Huisman (bias-corrected Hill) ---
+  kappa=n/2: alpha_Huisman=1.5448  bootstrap_mean=1.5441  IC95%=[1.5124,1.5783]  corr(k,gamma)=0.995
+  kappa=n/4: alpha_Huisman=1.5018  bootstrap_mean=1.5005  IC95%=[1.4599,1.5431]  corr(k,gamma)=0.966
+
+--- 3. GPD MLE + estabilidade de limiar ---
+  q=0.800 u=7.145 n_exc=20000  xi=0.6412±0.0227  alpha=1.5596  cobre xi_previsto=0.6509? SIM
+  q=0.825 u=8.127 n_exc=17499  xi=0.6497±0.0244  alpha=1.5392  cobre xi_previsto=0.6509? SIM
+  q=0.850 u=9.325 n_exc=15000  xi=0.6523±0.0264  alpha=1.5331  cobre xi_previsto=0.6509? SIM
+  q=0.875 u=10.899 n_exc=12500  xi=0.6558±0.0290  alpha=1.5248  cobre xi_previsto=0.6509? SIM
+  q=0.900 u=13.038 n_exc=10000  xi=0.6466±0.0323  alpha=1.5466  cobre xi_previsto=0.6509? SIM
+  q=0.925 u=16.407 n_exc=7500  xi=0.6488±0.0373  alpha=1.5412  cobre xi_previsto=0.6509? SIM
+  q=0.950 u=22.255 n_exc=5000  xi=0.6429±0.0455  alpha=1.5556  cobre xi_previsto=0.6509? SIM
+  q=0.975 u=36.833 n_exc=2499  xi=0.6313±0.0640  alpha=1.5841  cobre xi_previsto=0.6509? SIM
+  q=0.990 u=69.808 n_exc=1000  xi=0.6755±0.1039  alpha=1.4803  cobre xi_previsto=0.6509? SIM
+
+--- 4. CSN (x_min via KS) + Vuong vs lognormal truncada ---
+  x_min=16.8807  n_tail=7268  D_KS=0.0128
+  alpha_CSN(densidade)=2.3964  =>  indice de sobrevivencia=1.3964  (previsto 1.5363)
+  lognormal truncada: mu=-14.2688 sigma=3.6378
+  Vuong: R=-4.3977  z=-1.4426  p=0.1491  =>  indistinguiveis nestes dados
+
+Calibracoes concluidas.
