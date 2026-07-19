@@ -1,57 +1,60 @@
-# E-016 — Busca de coalescência mod 9 para H-008 (resultado negativo)
+# E-016 — Mod-9 coalescence search for H-008 (negative result)
 
-Hipótese relacionada: [`H-016-mod9-coalescence-search.md`](../../hypotheses/H-016-mod9-coalescence-search.md)
+Related hypothesis: [`H-016-mod9-coalescence-search.md`](../../hypotheses/H-016-mod9-coalescence-search.md)
 
-## O que foi testado
+## What was tested
 
-Generalizamos o simulador simbólico de E-015 para módulo conjunto 9·2^d
-(informação completa mod 9 + d bits binários), buscando alguma coalescência
-N vs. N−k que excluísse a classe 4 mod 9 (questão em aberto de H-008).
+We generalized E-015's symbolic simulator to joint modulus 9·2^d (full
+information mod 9 + d binary bits), searching for some coalescence N
+vs. N−k that would exclude class 4 mod 9 (H-008's open question).
 
-## Resultado — encontramos candidatos, mas nenhum é genuíno
+## Result — candidates found, but none genuine
 
-A busca (d=1 a 6, k=1 a 100) encontrou várias coalescências aparentes para
-N≡4 mod9 (ex: d=3, N≡13 mod72, M=N−1, verificado contra órbitas reais: 10/10
-K's confirmados). **Mas ao testar se essas relações são exclusivas da classe
-4 mod 9** — repetindo a mesma busca (mesmo d, mesmo resíduo mod 2^d, mesmo
-k) para os outros 8 resíduos possíveis mod 9 — **todas funcionaram para os 9
-resíduos igualmente**. Ou seja: nenhuma dessas coalescências depende de fato
-do resíduo mod 9 — são fenômenos puramente mod-2^d (já cobertos pela busca
-mais ampla de H-015), que só "aparecem" na classe 4 mod 9 por coincidência
-aritmética (o r1 escolhido também satisfaz ≡4 mod9, sem que isso seja
-relevante ao mecanismo).
+The search (d=1 to 6, k=1 to 100) found several apparent coalescences
+for N≡4 mod9 (e.g. d=3, N≡13 mod72, M=N−1, verified against real
+orbits: 10/10 K's confirmed). **But when testing whether these
+relations are exclusive to class 4 mod 9** — repeating the same search
+(same d, same residue mod 2^d, same k) for the other 8 possible
+residues mod 9 — **all of them worked equally for all 9 residues**. In
+other words: none of these coalescences actually depends on the
+residue mod 9 — they are purely mod-2^d phenomena (already covered by
+H-015's broader search), which only "appear" in class 4 mod 9 by
+arithmetic coincidence (the chosen r1 also happens to satisfy ≡4 mod9,
+without this being relevant to the mechanism).
 
-Repetimos a busca com k até 100 e nenhum achado exclusivo de mod9=4 apareceu.
+We repeated the search with k up to 100 and no finding exclusive to
+mod9=4 appeared.
 
-## Por que isso não funciona (explicação técnica)
+## Why this doesn't work (technical explanation)
 
-Derivamos: T(n) mod 9 = (3r+1)·5^a mod 9, onde r = n mod 3 (não n mod 9!) e
-a é a valuação do passo. Ou seja, a evolução do resíduo mod 9 **só depende
-de n mod 3**, não do valor completo de n mod 9 — o resíduo mod 9 de n
-carrega informação "extra" que não influencia em nada a trajetória futura
-mod 9. Isso explica por que fixar o módulo conjunto 9·2^d não cria nenhuma
-restrição nova além do que já vem do mod-2^d puro: a parte "mod 9 além de
-mod 3" é irrelevante para qualquer coalescência baseada em subtrair k
-pequeno.
+We derived: T(n) mod 9 = (3r+1)·5^a mod 9, where r = n mod 3 (not n mod
+9!) and a is the step's valuation. That is, the evolution of the
+residue mod 9 **only depends on n mod 3**, not on the full value of n
+mod 9 — n's residue mod 9 carries "extra" information that has no
+effect whatsoever on the future trajectory mod 9. This explains why
+fixing the joint modulus 9·2^d creates no new restriction beyond what
+already comes from pure mod-2^d: the "mod 9 beyond mod 3" part is
+irrelevant to any coalescence based on subtracting a small k.
 
-## Conclusão
+## Conclusion
 
-**Esta técnica não resolve H-008.** É um resultado negativo, mas instrutivo:
-mostra que a via "coalescência tipo H-014/H-015, só que com módulo mod 9
-junto" está estruturalmente fadada a não encontrar nada específico de mod 9,
-porque a mecânica de coalescência por subtração de k pequeno é dirigida
-inteiramente pela estrutura binária (mod 2^d), e a informação relevante mod 3
-que de fato afeta a dinâmica (H-005) é mais grosseira que mod 9 inteiro.
+**This technique does not solve H-008.** It's a negative result, but
+an instructive one: it shows that the "H-014/H-015-style coalescence,
+just with modulus mod 9 added" route is structurally bound to find
+nothing specific to mod 9, because the coalescence mechanics driven by
+subtracting a small k is entirely governed by the binary structure (mod
+2^d), and the relevant mod-3 information that actually affects the
+dynamics (H-005) is coarser than the full mod 9.
 
-Se H-008 tiver solução, provavelmente precisa de uma ideia diferente — não
-uma busca por coalescência com deslocamento pequeno, mas talvez uma relação
-multiplicativa (não aditiva) entre N e M, ou uma análise de ciclo/período
-usando diretamente a fórmula T(n) mod 9 = (3r+1)·5^a mod9 de forma mais
-elaborada (ex: olhando toda a órbita, não só um passo).
+If H-008 has a solution, it probably needs a different idea — not a
+small-offset coalescence search, but perhaps a multiplicative (not
+additive) relation between N and M, or a cycle/period analysis using
+the T(n) mod 9 = (3r+1)·5^a mod9 formula directly in a more elaborate
+way (e.g. looking at the whole orbit, not just one step).
 
-## Status de H-016
+## Status of H-016
 
-**Refutada como abordagem para H-008** (tecnicamente funciona como
-coalescência, mas não é específica de mod 9 — não avança a questão em
-aberto). Explicação teórica documentada para não repetir a tentativa nesta
-forma exata no futuro.
+**Refuted as an approach to H-008** (technically works as a
+coalescence, but isn't specific to mod 9 — doesn't advance the open
+question). Theoretical explanation documented so as not to repeat this
+exact attempt in the future.

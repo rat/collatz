@@ -1,41 +1,41 @@
-# E-039 — Cálculo explícito da pressão residual de Ruiz Castillo (item 001)
+# E-039 — Explicit computation of Ruiz Castillo's residual pressure (item 001)
 
-Hipótese relacionada: [`H-039-ruiz-castillo-geometria-residual-review.md`](../../hypotheses/H-039-ruiz-castillo-geometria-residual-review.md)
+Related hypothesis: [`H-039-ruiz-castillo-geometria-residual-review.md`](../../hypotheses/H-039-ruiz-castillo-geometria-residual-review.md)
 
-## O que foi testado
+## What was tested
 
-O paper #001 da coleção (`literature/papers/INDEX.md`) define uma
-"pressão residual" P_RC(t) para o observável de dissipação
-φ(a)=a-log₂(3), mas nunca a calcula explicitamente — toda a análise
-fica em nível de "SE P_RC for convexa, ENTÃO g_RC(t)≥0" etc. Este
-experimento calcula P_RC(t), g_RC(t) e K_RC(t) explicitamente para o
-modelo i.i.d. padrão (a ~ Geométrica(1/2), já estabelecido em
-H-001/H-011 deste projeto).
+Paper #001 from the collection (`literature/papers/INDEX.md`) defines a
+"residual pressure" P_RC(t) for the dissipation observable
+φ(a)=a-log₂(3), but never computes it explicitly — the whole analysis
+stays at the level of "IF P_RC is convex, THEN g_RC(t)≥0" etc. This
+experiment computes P_RC(t), g_RC(t), and K_RC(t) explicitly for the
+standard i.i.d. model (a ~ Geometric(1/2), already established in
+H-001/H-011 of this project).
 
-## Resultado
+## Result
 
-- Λ(t) [≡P_RC(t) até convenção de sinal] tem forma fechada:
-  `t(1-log₂3) - log(2-eᵗ)`, domínio t<log(2).
-- Verificação cruzada: Λ'(0)=2-log₂3≈0,415 e Λ''(0)=2 batem
-  exatamente com E[a]-log₂3 e Var[a]=2, já estabelecidos.
-- g_RC(t)=2eᵗ/(2-eᵗ)² — estritamente positiva/convexa em todo o
-  domínio (confirma, para o modelo i.i.d., a hipótese que o paper só
-  assume formalmente).
-- **Singularidade real**: g_RC(t)→∞ quando t→log(2)⁻ — a métrica
-  diverge exatamente no ponto onde a FGM da geométrica deixa de
-  convergir (consequência direta do "2" na Geométrica(1/2)).
-- K_RC(t) = -2·g_RC(t) exatamente (relação fechada específica deste
-  modelo) — sempre estritamente negativa, nunca zero, diferente do
-  desenho conceitual em U do próprio paper (que é explicitamente
-  ilustrativo, não computado).
+- Λ(t) [≡P_RC(t) up to sign convention] has a closed form:
+  `t(1-log₂3) - log(2-eᵗ)`, domain t<log(2).
+- Cross-check: Λ'(0)=2-log₂3≈0.415 and Λ''(0)=2 match exactly E[a]-log₂3
+  and Var[a]=2, already established.
+- g_RC(t)=2eᵗ/(2-eᵗ)² — strictly positive/convex over the whole domain
+  (confirms, for the i.i.d. model, the hypothesis the paper only
+  assumes formally).
+- **Real singularity**: g_RC(t)→∞ as t→log(2)⁻ — the metric diverges
+  exactly at the point where the geometric distribution's MGF stops
+  converging (a direct consequence of the "2" in Geometric(1/2)).
+- K_RC(t) = -2·g_RC(t) exactly (a closed relation specific to this
+  model) — always strictly negative, never zero, unlike the paper's own
+  conceptual U-shaped sketch (which is explicitly illustrative, not
+  computed).
 
-## Reproduzir
+## Reproduce
 
 `python3 experiment.py`
 
 ## Status
 
-Cálculo de apoio para H-039 — não é uma hipótese testada isoladamente
-sobre a conjectura, é uma extensão computacional honesta de um paper
-externo revisado, feita para preencher a lacuna que o próprio paper
-deixa (nunca calcula nada explicitamente para o problema real).
+Supporting computation for H-039 — not a hypothesis tested in isolation
+about the conjecture, it's an honest computational extension of a
+reviewed external paper, done to fill the gap the paper itself leaves
+(it never computes anything explicitly for the real problem).

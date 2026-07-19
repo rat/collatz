@@ -1,31 +1,31 @@
-# E-072 — Revisão de De Mol, "Tag systems and Collatz-like functions" (2008)
+# E-072 — Review of De Mol, "Tag systems and Collatz-like functions" (2008)
 
-Hipótese relacionada: [`H-072-de-mol-tag-systems-review.md`](../../hypotheses/H-072-de-mol-tag-systems-review.md)
+Related hypothesis: [`H-072-de-mol-tag-systems-review.md`](../../hypotheses/H-072-de-mol-tag-systems-review.md)
 
-## O que foi feito
+## What was done
 
-Implementamos literalmente o sistema de tag T_C do Teorema 2.1 do paper
-(item 102, `literature/papers/102_Tag-Systems-and-Collatz-Like-Functions.pdf`)
-— μ=3 símbolos {α,c,y}, shift v=2, regras α→cy, c→α, y→ααα — e verificamos
-que ele simula corretamente a função acelerada de Collatz C'(2m)=m,
-C'(2m+1)=3m+2.
+We literally implemented the tag system T_C from the paper's Theorem
+2.1 (item 102, `literature/papers/102_Tag-Systems-and-Collatz-Like-Functions.pdf`)
+— μ=3 symbols {α,c,y}, shift v=2, rules α→cy, c→α, y→ααα — and verified
+that it correctly simulates the accelerated Collatz function
+C'(2m)=m, C'(2m+1)=3m+2.
 
-## Resultado
+## Result
 
-Confirmado sem exceção: 200 casos diretos (n=1 a 200), 4 trajetórias
-iteradas completas (sementes 7, 27, 97, 871, até convergirem a {1,2,4}),
-e o exemplo introdutório do próprio paper (período 6). Ver H-072 para o
-veredito completo. Paper não faz nenhuma alegação sobre a Conjectura de
-Collatz em si — é um resultado de teoria da computabilidade sobre
-sistemas de tag, usando Collatz como caso de estudo.
+Confirmed without exception: 200 direct cases (n=1 to 200), 4 full
+iterated trajectories (seeds 7, 27, 97, 871, until converging to
+{1,2,4}), and the paper's own introductory example (period 6). See
+H-072 for the full verdict. The paper makes no claim whatsoever about
+the Collatz Conjecture itself — it's a computability-theory result
+about tag systems, using Collatz as a case study.
 
-## Nota de performance
+## Performance note
 
-Implementação inicial usava concatenação de string (O(n) por passo);
-para n grandes isso deu O(n²) total e estourou timeout. Reimplementado
-com `collections.deque` (O(1) por passo) — ver `experiment.py`.
+The initial implementation used string concatenation (O(n) per step);
+for large n this gave O(n²) total and timed out. Reimplemented with
+`collections.deque` (O(1) per step) — see `experiment.py`.
 
-## Reproduzir
+## Reproduce
 
 ```
 python3 experiment.py

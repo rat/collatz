@@ -1,36 +1,37 @@
-# E-071 — Revisão de Andrei & Masalagiu, "About the Collatz conjecture" (1998)
+# E-071 — Review of Andrei & Masalagiu, "About the Collatz conjecture" (1998)
 
-Hipótese relacionada: [`H-071-andrei-masalagiu-review.md`](../../hypotheses/H-071-andrei-masalagiu-review.md)
+Related hypothesis: [`H-071-andrei-masalagiu-review.md`](../../hypotheses/H-071-andrei-masalagiu-review.md)
 
-## O que foi feito
+## What was done
 
-Verificação computacional dos resultados centrais do paper (item 101 da
-coleção, `literature/papers/101_About-the-Collatz-Conjecture.pdf`):
+Computational verification of the paper's central results (item 101 of
+the collection, `literature/papers/101_About-the-Collatz-Conjecture.pdf`):
 
-1. Teorema 3.1 (fórmula de atalho para 2p passos consecutivos) — 458 casos, 0 falhas.
-2. Lema 4.1 (família explícita simples) — 21 casos, 0 falhas.
-3. Teorema 4.2 (família explícita geral) — 110 casos, 0 falhas, após
-   corrigir um erro de precedência de parênteses na minha própria
-   primeira tentativa de reimplementar a fórmula.
-4. Teorema 3.2 parte (1) (limite inferior Racc≥1,5) — 99.998 casos, 0 falhas.
-5. Teorema 3.2 parte (2) (limite superior Racc≤i) — **refutado**, 5
-   contraexemplos até n=10.000.
-6. Conjectura 2 (limite assintótico=3, não provada pelo paper) — testada
-   até n=2^16-2^17, consistente com convergência lenta a 3.
+1. Theorem 3.1 (shortcut formula for 2p consecutive steps) — 458 cases,
+   0 failures.
+2. Lemma 4.1 (simple explicit family) — 21 cases, 0 failures.
+3. Theorem 4.2 (general explicit family) — 110 cases, 0 failures, after
+   fixing a parenthesis-precedence error in our own first attempt to
+   reimplement the formula.
+4. Theorem 3.2 part (1) (lower bound Racc≥1.5) — 99,998 cases, 0
+   failures.
+5. Theorem 3.2 part (2) (upper bound Racc≤i) — **refuted**, 5
+   counterexamples up to n=10,000.
+6. Conjecture 2 (asymptotic limit=3, not proven by the paper) — tested
+   up to n=2^16-2^17, consistent with slow convergence to 3.
 
-## Resultado
+## Result
 
-Ver H-071 para o veredito completo. Resumo: paper correto e honesto na
-maior parte, com um erro real contido — Teorema 3.2 parte (2) tem prova
-ausente (uma frase não-demonstrada) e é refutável com contraexemplos
-pequenos (menor: n=5).
+See H-071 for the full verdict. Summary: a correct and honest paper for
+the most part, with one real contained error — Theorem 3.2 part (2) has
+a missing proof (an unproven sentence) and is refutable with small
+counterexamples (smallest: n=5).
 
-## Reproduzir
+## Reproduce
 
 ```
 python3 experiment.py
 ```
 
-Sem argumentos de linha de comando — os limites de busca (max_p, max_t,
-n_max, max_power) estão fixos no código, escolhidos para rodar em menos
-de um minuto.
+No command-line arguments — the search limits (max_p, max_t, n_max,
+max_power) are fixed in the code, chosen to run in under a minute.

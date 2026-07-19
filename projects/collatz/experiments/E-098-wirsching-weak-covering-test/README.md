@@ -1,27 +1,27 @@
-# E-098 — Teste computacional direto da Weak Covering Conjecture (Wirsching 1998)
+# E-098 — Direct computational test of the Weak Covering Conjecture (Wirsching 1998)
 
-Hipótese relacionada: [`H-114-wirsching-weak-covering-computational-test.md`](../../hypotheses/H-114-wirsching-weak-covering-computational-test.md)
+Related hypothesis: [`H-114-wirsching-weak-covering-computational-test.md`](../../hypotheses/H-114-wirsching-weak-covering-computational-test.md)
 
-## O que foi feito
+## What was done
 
-Primeiro teste computacional direto (até onde sabemos) da "Weak
-Covering Conjecture for Mixed Power Sums" de Wirsching (1998, Cap. V),
-a conjectura em aberto há ~30 anos identificada em H-112 como
-estruturalmente equivalente ao "ingrediente que falta" da barreira de
-endogenia (H-110/H-111). Implementa DP de bitset com rotação cíclica
-para calcular, para cada ℓ, o menor j*(ℓ) tal que R_{j-1,j} (somas
-mistas de potências de 2 e 3, definição exata do livro) cobre todos os
-resíduos invertíveis mod 3^ℓ.
+The first direct computational test (as far as we know) of Wirsching's
+(1998, Ch. V) "Weak Covering Conjecture for Mixed Power Sums", the
+conjecture open for ~30 years identified in H-112 as structurally
+equivalent to the endogeny barrier's "missing ingredient" (H-110/
+H-111). Implements a bitset DP with cyclic rotation to compute, for
+each ℓ, the smallest j*(ℓ) such that R_{j-1,j} (mixed sums of powers of
+2 and 3, the book's exact definition) covers every invertible residue
+mod 3^ℓ.
 
-## Resultado
+## Result
 
-j*(ℓ) existe e é finito para ℓ=1 a 17 (validado exatamente contra
-tabela de referência independente). Regime assintótico do excesso
-e(ℓ)=j*(ℓ)-ℓ·log₄3 ainda indeterminado com 17 pontos (rejeitado apenas
-o cenário mais pessimista de crescimento linear rápido). Ver H-114
-para a análise completa.
+j*(ℓ) exists and is finite for ℓ=1 to 17 (validated exactly against an
+independent reference table). The asymptotic regime of the excess
+e(ℓ)=j*(ℓ)-ℓ·log₄3 remains undetermined with 17 points (only the most
+pessimistic fast-linear-growth scenario is rejected). See H-114 for the
+full analysis.
 
-## Reproduzir
+## Reproduce
 
 ```
 python3 experiment_wcc.py

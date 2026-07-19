@@ -1,35 +1,37 @@
-# E-021 — Erosão de runs de 1s terminais
+# E-021 — Erosion of terminal runs of 1s
 
-Hipótese relacionada: [`H-021-terminal-run-erosion.md`](../../hypotheses/H-021-terminal-run-erosion.md)
+Related hypothesis: [`H-021-terminal-run-erosion.md`](../../hypotheses/H-021-terminal-run-erosion.md)
 
-## O que foi testado
+## What was tested
 
-(a) Regra de erosão: n terminando em run de t≥2 uns dá valuação a=1 e
-resultado com run t−1. (b) Comparação de comprimento médio de runs de a=1
-entre recordistas oficiais e órbitas típicas.
+(a) Erosion rule: n ending in a run of t≥2 ones gives valuation a=1 and
+a result with run t−1. (b) Comparison of the average length of a=1 runs
+between official record holders and typical orbits.
 
-## Resultado
+## Result
 
-(a) **Confirmada sem exceção** em 50.000 testes, t de 2 a 20.
+(a) **Confirmed without exception** in 50,000 tests, t from 2 to 20.
 
-(b) Recordistas: 13.741 runs, média=**2.512**. Órbitas típicas: 4.744 runs,
-média=**2.035** (bate quase exatamente com a previsão teórica sob H-001:
-E[run]=1/(1−0.5)=2, já que a run de a=1's consecutivos, sob i.i.d.
-geométrica(1/2), é ela mesma geométrica com taxa de parada 0.5).
+(b) Record holders: 13,741 runs, mean=**2.512**. Typical orbits: 4,744
+runs, mean=**2.035** (matches almost exactly the theoretical prediction
+under H-001: E[run]=1/(1−0.5)=2, since the run of consecutive a=1's,
+under i.i.d. geometric(1/2), is itself geometric with stopping rate
+0.5).
 
-## Interpretação (com ressalva de tautologia)
+## Interpretation (with a tautology caveat)
 
-Recordistas têm runs de subida (a=1) sistematicamente mais longos que o
-típico. Isso é plausível mas **parcialmente tautológico**: ter stopping
-time excepcionalmente alto quase por definição exige períodos mais longos
-de descida lenta (a=1 = subida, contribui menos para a queda). Não
-tratamos isso como descoberta nova — é consistente com (e talvez
-redutível a) o próprio mecanismo que já caracterizamos em H-002/H-004.
+Record holders have systematically longer runs of ascent (a=1) than
+typical. This is plausible but **partly tautological**: having an
+exceptionally high stopping time almost by definition requires longer
+periods of slow descent (a=1 = ascent, contributes less to the drop).
+We do not treat this as a new discovery — it is consistent with (and
+perhaps reducible to) the very mechanism already characterized in
+H-002/H-004.
 
-Reproduzir: `python3 experiment.py 50000`.
+Reproduce: `python3 experiment.py 50000`.
 
-## Status de H-021
+## Status of H-021
 
-**Confirmada** (mecanismo de erosão, parte a) e **suportada com ressalva
-de tautologia** (diferença de runs recordistas vs. típico, parte b) — não
-apresentada como descoberta nova.
+**Confirmed** (erosion mechanism, part a) and **supported with a
+tautology caveat** (record-holder vs. typical run difference, part b)
+— not presented as a new discovery.

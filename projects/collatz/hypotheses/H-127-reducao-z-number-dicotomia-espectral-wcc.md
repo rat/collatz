@@ -2,8 +2,9 @@
 
 Status: em revisão — redução real mas mais fraca do que o esboço de
 H-115 sugeria; inclui um resultado negativo próprio (Proposição C, com
-identidade exata via fórmula de Jensen, agora com verificação Monte
-Carlo formal em E-106) explicando por que a técnica não fecha no
+identidade exata via fórmula de Jensen, verificação Monte Carlo formal
+em E-101, já espelhado em `collatz-endogeny/sec10-l2-refutation-and-jensen/`)
+explicando por que a técnica não fecha no
 regime da WCC. Atualização 2026-07-19: o Lema B (a redução em si, não
 a Proposição C) está mais fraco do que se pensava — a Etapa 6
 ("upgrade diagonal⟹segmento contínuo") não é lacuna técnica de rotina,
@@ -184,9 +185,9 @@ inverte de sinal**.
 
 Logo **Λ = log γ_c ≈ 0,5834+O(c), contra o necessário log 3 ≈
 1,0986**. Confirmado por Monte Carlo (8×10⁶ amostras): 0,58344±0,0005
-no modelo tilted — script promovido a experimento formal em
-[`E-106-h127-jensen-lambda-monte-carlo`](../experiments/E-106-h127-jensen-lambda-monte-carlo/README.md)
-(2026-07-19; sobrevivia só em scratchpad de sessão até então). Um
+no modelo tilted — experimento formal já existente em
+[`E-101-jensen-constant-annealed-fourier-budget`](../experiments/E-101-jensen-constant-annealed-fourier-budget/README.md),
+já espelhado em `collatz-endogeny/sec10-l2-refutation-and-jensen/`. Um
 buraco espectralmente difuso satisfaz o orçamento de Fourier com folga
 de fator 1,88 — é auto-consistente do ponto de vista ℓ¹, e nenhuma
 contagem tipo Littlewood-Offord o exclui. O critério anelado só
@@ -309,13 +310,13 @@ com o mecanismo de por-que-não-fecha documentado (rota j-estabilidade:
 média convexa de Pascal; rota intra-j: comprimento O(1/η) constante);
 ou (b) não incluir o Lema B no paper por ora, e reportar só a
 Proposição C (que não depende da Def. 2 e permanece válida como
-resultado negativo próprio, incluindo agora a identidade de Jensen
-verificada em E-106).
+resultado negativo próprio, incluindo a identidade de Jensen já
+verificada em E-101).
 
 Peças que SOBREVIVEM intactas e valem para o paper independente do
 destino do Lema B: (i) Proposição C com as duas contas (déficit 2,2-7×
-+ identidade de Jensen Λ=log γ_c, agora com verificação Monte Carlo
-formal em E-106) — upgrade real sobre H-124: não só "a técnica de
++ identidade de Jensen Λ=log γ_c, com verificação Monte Carlo
+formal em E-101) — upgrade real sobre H-124: não só "a técnica de
 2011 transfere estruturalmente", mas "transfere e falha por um fator
 exato, pela mesma parede que o ε da Prop. 7 do post de 2011 já
 denunciava, e que reaparece uma terceira vez na Etapa 6 do Lema B";
@@ -387,18 +388,26 @@ independente do destino do Lema B).
   referências verificadas, 1 (Halász 1971) documentada como
   inacessível, não como esquecida.
 
-- **2026-07-19 — Duas pendências executadas: `lambda_mc.py` promovido
-  a experimento formal (E-106); Etapa 6 investigada a fundo, resultado
-  é um retrocesso real e bem entendido, não um avanço.**
+- **2026-07-19 — Duas ações: uma redundante (corrigida), uma real
+  (Etapa 6 investigada a fundo — retrocesso bem entendido, não um
+  avanço).**
 
   Pedido explícito do diretor científico para avançar H-127. Duas
   ações:
 
-  1. **Promoção de `lambda_mc.py`** (Monte Carlo da identidade de
-     Jensen da Proposição C(b), até então só em scratchpad de sessão)
-     para [`E-106-h127-jensen-lambda-monte-carlo`](../experiments/E-106-h127-jensen-lambda-monte-carlo/README.md).
-     Reproduz exatamente o valor já citado (Λ=0,5834±0,0005 vs.
-     log(γ₀)=0,5836 previsto). Mecânico, sem novidade matemática.
+  1. **Erro cometido e corrigido**: acreditei na nota deste arquivo
+     ("`lambda_mc.py`... não persistido como experimento formal") sem
+     checar a pasta de experimentos primeiro, e criei um E-106
+     duplicado. Uma auditoria de reprodutibilidade posterior (pedida
+     pelo diretor científico) revelou que
+     [`E-101-jensen-constant-annealed-fourier-budget`](../experiments/E-101-jensen-constant-annealed-fourier-budget/README.md)
+     já existia (criado na mesma sessão original de H-127,
+     2026-07-17) com o MESMO script, e já estava espelhado em
+     `collatz-endogeny/sec10-l2-refutation-and-jensen/`. A nota antiga
+     estava errada/desatualizada. E-106 foi removido; todas as
+     referências neste arquivo corrigidas para apontar a E-101. Lição:
+     checar a pasta de experimentos antes de confiar numa nota interna
+     que diz "não persistido".
 
   2. **Tentativa de fechar a Etapa 6** (upgrade "configuração
      diagonal"⟹"segmento contínuo" no Lema B, marcada como "plausível
@@ -436,8 +445,8 @@ independente do destino do Lema B).
   para o paper" para não propor mais o Lema B como está.
 
   **Status de H-127**: continua "em revisão". A Proposição C (o
-  resultado negativo, agora com E-106) segue como a peça mais sólida
-  desta hipótese. O Lema B precisa ou de reformulação (definição
+  resultado negativo, com verificação Monte Carlo em E-101) segue como
+  a peça mais sólida desta hipótese. O Lema B precisa ou de reformulação (definição
   correta + Etapa 6 como problema aberto explícito) ou de não entrar no
   paper por ora — ambas as opções são honestas, nenhuma é um
   fechamento.

@@ -1,20 +1,20 @@
-# E-024 — Densidade exige precisão 3-ádica ilimitada
+# E-024 — Density requires unbounded 3-adic precision
 
-Hipótese relacionada: [`H-024-density-needs-unbounded-precision.md`](../../hypotheses/H-024-density-needs-unbounded-precision.md)
+Related hypothesis: [`H-024-density-needs-unbounded-precision.md`](../../hypotheses/H-024-density-needs-unbounded-precision.md)
 
-Origem: lista de ideias de outra IA (sugestão de abordagem espectral/grafos
-para H-013), testada antes de investir esforço nessa direção.
+Origin: a list of ideas from another AI (suggesting a spectral/graph
+approach for H-013), tested before investing effort in that direction.
 
-## O que foi testado
+## What was tested
 
-Se a densidade D(v) do subárvore reverso de Collatz depende só de v mod 3^K
-(residuo finito) — o que permitiria um operador de transferência de
-dimensão finita para calculá-la exatamente.
+Whether the density D(v) of the Collatz reverse subtree depends only
+on v mod 3^K (a finite residue) — which would allow a finite-dimensional
+transfer operator to compute it exactly.
 
-## Resultado
+## Result
 
-Cinco valores de v, todos ≡85 (mod 729=3⁶), com orçamento de magnitude
-proporcional (evitando o erro de comparar orçamentos desiguais):
+Five values of v, all ≡85 (mod 729=3⁶), with proportional magnitude
+budget (avoiding the error of comparing unequal budgets):
 
 | v | D(v) |
 |---|---|
@@ -24,23 +24,23 @@ proporcional (evitando o erro de comparar orçamentos desiguais):
 | 14665 | 0.000038 |
 | 72985 | 0.000027 |
 
-**Variação de mais de 300×** entre números com o mesmo resíduo mod 729.
-Metodologia validada (reproduz exatamente os valores já conferidos de J_4
-na configuração original antes de rodar este teste).
+**Variation of more than 300×** between numbers with the same residue
+mod 729. Methodology validated (exactly reproduces the already-checked
+J_4 values in the original setup before running this test).
 
-Reproduzir: `python3 experiment.py 6 24`.
+Reproduce: `python3 experiment.py 6 24`.
 
-## Conclusão
+## Conclusion
 
-D(v) **não** é função de resíduo 3-ádico limitado — depende de estrutura
-arbitrariamente profunda. Isso fecha, com evidência direta (não apenas
-tentativa fracassada), a linha de "operador de transferência de dimensão
-finita" para a fórmula de H-013, e também informa contra tentar a "teoria
-espectral/grafos" de forma ingênua (truncando resíduos) para esta
-quantidade específica.
+D(v) is **not** a function of a bounded 3-adic residue — it depends on
+arbitrarily deep structure. This closes, with direct evidence (not just
+a failed attempt), the "finite-dimensional transfer operator" line for
+H-013's formula, and also informs against naively trying a
+"spectral/graph theory" approach (truncating residues) for this
+specific quantity.
 
-## Status de H-024
+## Status of H-024
 
-**Confirmada** — resultado negativo que explica rigorosamente uma
-limitação já suspeitada, encerrando essa linha de investigação com clareza
-em vez de deixá-la em aberto sem explicação.
+**Confirmed** — a negative result that rigorously explains an
+already-suspected limitation, closing this investigation line with
+clarity instead of leaving it open unexplained.

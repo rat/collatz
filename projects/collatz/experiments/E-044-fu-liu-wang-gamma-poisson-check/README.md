@@ -1,64 +1,64 @@
-# E-044 — Verificação do paper #018/019 (Fu, Liu & Wang — Gamma/Poisson)
+# E-044 — Verification of paper #018/019 (Fu, Liu & Wang — Gamma/Poisson)
 
-## Objetivo
+## Goal
 
-Verificar de forma independente o paper "Emergence of Gamma-Type
-Upward-Phase Statistics in the Collatz Map: An Effective Poisson
-Process Mechanism" (Fu, Liu & Wang, arXiv:2606.26811) — item 019 do
-`INDEX.md` (arquivo local numerado `018_...pdf`, um dos 15 baixados).
-Diferente do CTUHSK (H-043), **este paper não alega provar a
-conjectura** — propõe um mecanismo heurístico (processo de Poisson +
-valuação 2-ádica geométrica) para explicar por que N↑ (número de passos
-de Syracuse até atingir 1) segue aproximadamente uma distribuição
-Gamma.
+Independently verify the paper "Emergence of Gamma-Type Upward-Phase
+Statistics in the Collatz Map: An Effective Poisson Process Mechanism"
+(Fu, Liu & Wang, arXiv:2606.26811) — item 019 of `INDEX.md` (local file
+numbered `018_...pdf`, one of the 15 downloaded). Unlike CTUHSK
+(H-043), **this paper does not claim to prove the conjecture** — it
+proposes a heuristic mechanism (Poisson process + geometric 2-adic
+valuation) to explain why N↑ (number of Syracuse steps until reaching
+1) approximately follows a Gamma distribution.
 
-## O que fizemos
+## What we did
 
-1. Confirmamos E[h]=2, Var(h)=2 para a valuação 2-ádica (já estabelecido
-   em H-001/H-011 — ponto de calibração).
-2. Testamos a Eq.6 do paper (fórmula fechada aproximada ligando N↓ a
-   X0 e N↑, herdada da ref.[19] do mesmo grupo) contra o N↓ exato
-   simulado, para todo X0 ímpar de 3 a 200.001 — incluindo a órbita
-   classicamente longa de X0=27 (41 passos acelerados).
-3. Reproduzimos (em escala bem menor que o paper: L=10⁴ e 10⁵ vs
-   10⁵–10¹⁵ deles) a verificação central — média e variância empíricas
-   de N↑ comparadas às previsões teóricas θ_T=2/(2−log₂3)² e
-   K_T=(2−log₂3)/2·(1+log₂L).
-4. Conferimos manualmente, termo a termo, a álgebra da condição de
-   fechamento de ciclos (Eqs.30-34).
+1. Confirmed E[h]=2, Var(h)=2 for the 2-adic valuation (already
+   established in H-001/H-011 — a calibration point).
+2. Tested the paper's Eq.6 (an approximate closed formula linking N↓ to
+   X0 and N↑, inherited from ref.[19] of the same group) against the
+   exact simulated N↓, for every odd X0 from 3 to 200,001 — including
+   the classically long orbit of X0=27 (41 accelerated steps).
+3. Reproduced (at a much smaller scale than the paper: L=10⁴ and 10⁵ vs
+   their 10⁵–10¹⁵) the central verification — empirical mean and
+   variance of N↑ compared to the theoretical predictions θ_T=2/(2−log₂3)²
+   and K_T=(2−log₂3)/2·(1+log₂L).
+4. Manually checked, term by term, the algebra of the cycle-closure
+   condition (Eqs.30-34).
 
-## Resultado
+## Result
 
-- **Eq.6 bate exatamente em 99999/99999 (100%) dos casos testados**,
-  inclusive X0=27 — nossa hipótese inicial de que a aproximação
-  quebraria em órbitas longas estava errada; a fórmula é mais robusta
-  do que esperávamos.
-- **Média de N↑** bate com a previsão corrigida (Eq.37) a ~2% em
-  L=10⁴ e 10⁵ — mesma ordem de precisão relatada pelo próprio paper.
-- **θ empírico (~10.6) fica ~8,5% abaixo de θ_T=11,61** nessas escalas.
-  Isso **não é um erro do paper** — o próprio paper mostra que θ só se
-  aproxima do valor teórico lentamente conforme L cresce, e mesmo em
-  L=10¹⁵ o valor ajustado (11,245) ainda fica ~3% abaixo do teórico.
-  Como não temos orçamento computacional para replicar L=10¹⁵, um gap
-  maior nas nossas escalas menores é o esperado, na direção correta —
-  confirmação com escopo honestamente limitado, não uma discrepância.
-- **Álgebra da condição de fechamento de ciclos (Eqs.30-34) está
-  correta** — verificamos cada passo da derivação manualmente.
-  Diferente do CTUHSK (H-043), este paper é **explícito e correto** ao
-  afirmar que essa obstrução assintótica NÃO prova a inexistência de
-  ciclos não-triviais — reconhece textualmente que a correção finita
-  1/Xn não pode ser descartada rigorosamente.
+- **Eq.6 matches exactly in 99999/99999 (100%) of tested cases**,
+  including X0=27 — our initial hypothesis that the approximation would
+  break down for long orbits was wrong; the formula is more robust than
+  we expected.
+- **Mean of N↑** matches the corrected prediction (Eq.37) to ~2% at
+  L=10⁴ and 10⁵ — the same precision order the paper itself reports.
+- **Empirical θ (~10.6) is ~8.5% below θ_T=11.61** at these scales.
+  This is **not an error in the paper** — the paper itself shows θ only
+  approaches the theoretical value slowly as L grows, and even at
+  L=10¹⁵ the fitted value (11.245) is still ~3% below theoretical.
+  Since we don't have the computational budget to replicate L=10¹⁵, a
+  larger gap at our smaller scales is expected, in the right direction
+  — a confirmation with honestly limited scope, not a discrepancy.
+- **The cycle-closure condition's algebra (Eqs.30-34) is correct** — we
+  verified every step of the derivation by hand. Unlike CTUHSK
+  (H-043), this paper is **explicit and correct** in stating that this
+  asymptotic obstruction does NOT prove the nonexistence of
+  non-trivial cycles — it textually acknowledges that the finite
+  correction 1/Xn cannot be rigorously ruled out.
 
-**Nenhum erro encontrado.** Ver
+**No error found.** See
 `hypotheses/H-044-fu-liu-wang-gamma-poisson-review.md`.
 
-## Como rodar
+## How to run
 
 ```
 /home/rat/.venv/bin/python3 experiment.py
 ```
 
-Sem dependências externas (apenas `math` e `collections` da biblioteca
-padrão — não usamos scipy, que não está instalado no venv do projeto;
-o ajuste de Gamma foi feito por método dos momentos, suficiente para
-comparar com as previsões teóricas do próprio paper).
+No external dependencies (only `math` and `collections` from the
+standard library — we did not use scipy, which isn't installed in the
+project's venv; the Gamma fit was done by the method of moments,
+sufficient for comparison with the paper's own theoretical
+predictions).

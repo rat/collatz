@@ -1,56 +1,55 @@
-# E-090 — Medida de Syracuse μ em ℤ₃ vs. densidade residual G(v)
+# E-090 — Syracuse measure μ in ℤ₃ vs. residual density G(v)
 
-Hipótese relacionada: [`H-090-syracuse-measure-explains-density-residual.md`](../../hypotheses/H-090-syracuse-measure-explains-density-residual.md)
+Related hypothesis: [`H-090-syracuse-measure-explains-density-residual.md`](../../hypotheses/H-090-syracuse-measure-explains-density-residual.md)
 
-## O que foi feito
+## What was done
 
-O Fable propôs (e ajudou a validar a montagem matemática antes de
-implementar) que G(v)=D(v)·v — o resíduo 3-ádico de D(v) depois de
-remover o termo trivial de magnitude (H-086) — é bem aproximado pela
-densidade local de uma medida μ em ℤ₃, definida pela mesma recursão
-do Lemma 1.12 de Tao (2022) para a variável Syrac(ℤ/3ⁿℤ), já
-implementada e verificada neste projeto em E-076.
+The Fable proposed (and helped validate the mathematical setup before
+implementing) that G(v)=D(v)·v — D(v)'s 3-adic residual after removing
+the trivial magnitude term (H-086) — is well approximated by the local
+density of a measure μ on ℤ₃, defined by the same recursion as Tao's
+(2022) Lemma 1.12 for the variable Syrac(ℤ/3ⁿℤ), already implemented
+and verified in this project in E-076.
 
-Reaproveitamos essa implementação, escrevemos uma versão truncada em
-ponto flutuante para escalar a m maior (validada contra a versão
-exata, erro ~0), e comparamos 3^m·μ_m(r) com a média geométrica de
-G(v) medida computacionalmente para v's com resíduo r mod 3^m,
-magnitude controlada.
+We reused that implementation, wrote a floating-point-truncated version
+to scale to larger m (validated against the exact version, error ~0),
+and compared 3^m·μ_m(r) against the geometric mean of G(v) measured
+computationally for v's with residue r mod 3^m, controlled magnitude.
 
-## Resultado
+## Result
 
-Correlação log-log forte e crescente com m: 0,916 (m=2) → 0,969 (m=3)
-→ 0,980 (m=4), estável em 5 sementes independentes (0,947-0,988 para
-m=3, 0,968-0,981 para m=4). A conjectura do Fable se confirma com
-evidência real. Ver H-090 para a análise completa.
+Strong log-log correlation, growing with m: 0.916 (m=2) → 0.969 (m=3)
+→ 0.980 (m=4), stable across 5 independent seeds (0.947-0.988 for m=3,
+0.968-0.981 for m=4). The Fable's conjecture is confirmed with real
+evidence. See H-090 for the full analysis.
 
-## Reproduzir
+## Reproduce
 
 ```
 python3 experiment.py
 ```
 
-## Experimento de controle de 3 braços (H-111, 2026-07-17)
+## Three-arm control experiment (H-111, 2026-07-17)
 
-Calibra quantitativamente a barreira de endogenia de H-110: braço 1
-(`experiment_synthetic_core.py`) simula a árvore sob a hipótese nula de
-dígitos 3-ádicos frescos independentes entre subárvores; braço 2
-(mesmo arquivo, parâmetro `rho`) adiciona acoplamento de conteúdo
-ajustável entre subárvores irmãs; braço 3 (`experiment_control_arms.py`,
-reusa `measure_G_headroom`) remede a árvore aritmética real no mesmo
-`mult` dos braços sintéticos. `experiment_synthetic_dp_oracle.py` é um
-oráculo de programação dinâmica exata para validar a criticidade do
-simulador (E[G|tipo]) sem Monte Carlo.
+Quantitatively calibrates H-110's endogeny barrier: arm 1
+(`experiment_synthetic_core.py`) simulates the tree under the null
+hypothesis of fresh, independent 3-adic digits between subtrees; arm 2
+(same file, `rho` parameter) adds adjustable content coupling between
+sibling subtrees; arm 3 (`experiment_control_arms.py`, reuses
+`measure_G_headroom`) re-measures the real arithmetic tree at the same
+`mult` as the synthetic arms. `experiment_synthetic_dp_oracle.py` is an
+exact dynamic-programming oracle to validate the simulator's
+criticality (E[G|type]) without Monte Carlo.
 
-Resultado: nenhum acoplamento aritmético positivo detectado entre
-braço 1 e braço 3; cota ρ_eff≲0,06 (IC95%, m=20). Ver H-111 para a
-documentação completa, incluindo uma autocorreção do Fable na
-derivação teórica de criticidade (descoberta pelo checklist de
-validação, não um bug de implementação).
+Result: no positive arithmetic coupling detected between arm 1 and arm
+3; bound ρ_eff≲0.06 (95% CI, m=20). See H-111 for the complete
+documentation, including a self-correction by the Fable in the
+theoretical criticality derivation (found by the validation checklist,
+not an implementation bug).
 
 ```
-python3 experiment_synthetic_core.py          # checklist de validacao
-python3 experiment_control_arms.py braco1     # braco 1, grade completa
-python3 experiment_control_arms.py braco3     # braco 3, remedido
-python3 experiment_control_arms.py slope      # slope + bootstrap de excesso (resultado final)
+python3 experiment_synthetic_core.py          # validation checklist
+python3 experiment_control_arms.py braco1     # arm 1, full grid (literal CLI arg, do not translate)
+python3 experiment_control_arms.py braco3     # arm 3, re-measured (literal CLI arg, do not translate)
+python3 experiment_control_arms.py slope      # slope + excess bootstrap (final result)
 ```

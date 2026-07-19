@@ -1,23 +1,23 @@
-# E-092 — Verificação de Koyuncu et al. (2026), item 071
+# E-092 — Verification of Koyuncu et al. (2026), item 071
 
-Hipótese relacionada: [`H-092-koyuncu-2026-review.md`](../../hypotheses/H-092-koyuncu-2026-review.md)
+Related hypothesis: [`H-092-koyuncu-2026-review.md`](../../hypotheses/H-092-koyuncu-2026-review.md)
 
-## O que foi feito
+## What was done
 
-Verificação do Lemma 1 (fórmula exata de n a partir do código de
-paridade) contra trajetórias reais de Collatz via aritmética `Fraction`
-exata, e reprodução do experimento central do paper (regressão
-log(média)~k para cada comprimento L=10..30, n≤100.000).
+Verification of Lemma 1 (exact formula for n from the parity code)
+against real Collatz trajectories via exact `Fraction` arithmetic, and
+reproduction of the paper's central experiment (regression
+log(mean)~k for each length L=10..30, n≤100,000).
 
-## Resultado
+## Result
 
-Lemma 1 bate exatamente em todos os casos testados. Tabela 1 do paper
-reproduzida quase byte-a-byte (slopes idênticos até a 4ª casa decimal
-para L=10,11,12). Nenhum erro encontrado. Ver H-092 para a análise
-completa, incluindo uma nuance não discutida pelo paper (slope
-observado ~2% mais negativo que o valor "ingênuo" −log 6).
+Lemma 1 matches exactly in every tested case. Table 1 of the paper
+reproduced almost byte-for-byte (slopes identical to the 4th decimal
+place for L=10,11,12). No error found. See H-092 for the full analysis,
+including a nuance not discussed by the paper (observed slope ~2% more
+negative than the "naive" value −log 6).
 
-## Reproduzir
+## Reproduce
 
 ```
 python3 experiment.py

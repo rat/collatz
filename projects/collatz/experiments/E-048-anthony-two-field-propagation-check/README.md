@@ -1,58 +1,58 @@
-# E-048 — Verificação do paper #006 (Michael Mark Anthony, "A Two-Field Propagation Model for the Collatz Map")
+# E-048 — Verification of paper #006 (Michael Mark Anthony, "A Two-Field Propagation Model for the Collatz Map")
 
-## Objetivo
+## Goal
 
-Verificar "A Two-Field Propagation Model for the Collatz Map" (Michael
-Mark Anthony, Enertron Inc., 17 páginas). Paper elaborado, com muito
-aparato matemático (equação P de Riemann, monodromia, PGL(2,C), função
-digamma, hipergeometria, 24 soluções de Kummer) — mas honesto e
-explícito, em várias seções, sobre não estender resultados conhecidos
-nem provar a conjectura.
+Verify "A Two-Field Propagation Model for the Collatz Map" (Michael
+Mark Anthony, Enertron Inc., 17 pages). An elaborate paper, with heavy
+mathematical apparatus (Riemann P-equation, monodromy, PGL(2,C),
+digamma function, hypergeometrics, 24 Kummer solutions) — but honest
+and explicit, in several sections, about not extending known results
+nor proving the conjecture.
 
-## O que fizemos
+## What we did
 
-Verificamos computacionalmente as reivindicações centrais checáveis:
+We computationally verified the central checkable claims:
 
-1. **Reformulação Möbius Φ(n)=1/(n+1)** (Proposição 5.1): confirmada
-   em 4999 casos — M_E e M_O reproduzem exatamente Φ(T(n)).
-2. **Teorema 8.1** (regime m=1 não persiste indefinidamente): maior
-   corrida encontrada até n=200.000 foi de 16 passos; a construção
-   explícita n₀=2^(t+1)-1 sustenta exatamente t passos como previsto
-   pela prova por indução 2-ádica do próprio teorema.
-3. **Exemplo trabalhado da Seção 9** (n=7): trajetória confirmada
-   exatamente.
-4. **Teoremas 10.3/10.4** (identidade harmônica exata H_q=ψ(q+1)+γ e
-   limite de Euler-Mascheroni): confirmados via `mpmath` (50 dígitos
-   de precisão) — fatos padrão da função digamma, não específicos do
-   Collatz, mas corretamente usados.
-5. **Identidade hipergeométrica da Eq.28** (ψ(z)=(z-1)·₃F₂(1,1,2-z;2,2;1)-γ):
-   confirmada numericamente para vários z.
+1. **Möbius reformulation Φ(n)=1/(n+1)** (Proposition 5.1): confirmed
+   in 4999 cases — M_E and M_O exactly reproduce Φ(T(n)).
+2. **Theorem 8.1** (the m=1 regime doesn't persist indefinitely):
+   longest run found up to n=200,000 was 16 steps; the explicit
+   construction n₀=2^(t+1)-1 sustains exactly t steps as predicted by
+   the theorem's own 2-adic induction proof.
+3. **Worked example from Section 9** (n=7): trajectory confirmed
+   exactly.
+4. **Theorems 10.3/10.4** (exact harmonic identity H_q=ψ(q+1)+γ and the
+   Euler-Mascheroni limit): confirmed via `mpmath` (50 digits of
+   precision) — standard digamma-function facts, not specific to
+   Collatz, but correctly used.
+5. **Hypergeometric identity from Eq.28** (ψ(z)=(z-1)·₃F₂(1,1,2-z;2,2;1)-γ):
+   confirmed numerically for several z.
 
-## Resultado
+## Result
 
-**Nenhum erro encontrado** em nenhuma reivindicação testável. O paper é
-notavelmente cuidadoso ao longo de TODO o texto (Remarks 5.2, 6.1,
-10.1, 11.1, 12.1, 14.1, e a Seção 16 inteira) em distinguir: o que é
-teorema provado sobre a reformulação; o que é analogia estrutural, não
-identificação literal ("this is an analogy of form, not of kind"); o
-que é heurístico/condicional (o "Collapse Theorem" 14.1 é explicitamente
-rotulado "conditional...consistent with, but not a proof of, the
-conjecture"); e onde não há extensão de resultados conhecidos (Seção
-12 sobre o resultado de Tao). O próprio autor identifica e corrige,
-dentro do texto, uma reivindicação anterior equivocada (δ_m=1/m, Seção
-10) — sinal de prática de pesquisa cuidadosa.
+**No error found** in any testable claim. The paper is remarkably
+careful throughout the ENTIRE text (Remarks 5.2, 6.1, 10.1, 11.1, 12.1,
+14.1, and the whole of Section 16) in distinguishing: what is a proven
+theorem about the reformulation; what is a structural analogy, not a
+literal identification ("this is an analogy of form, not of kind");
+what is heuristic/conditional (the "Collapse Theorem" 14.1 is
+explicitly labeled "conditional...consistent with, but not a proof of,
+the conjecture"); and where there is no extension of known results
+(Section 12, about Tao's result). The author himself identifies and
+corrects, within the text, an earlier mistaken claim (δ_m=1/m, Section
+10) — a sign of careful research practice.
 
-Muito do aparato (equação P, monodromia, PGL(2,C), digamma,
-hipergeometria, Kummer) funciona mais como contexto/analogia decorativa
-do que como conteúdo matemático com peso real sobre a conjectura — o
-próprio paper concorda com essa leitura (Seção 16).
+Much of the apparatus (P-equation, monodromy, PGL(2,C), digamma,
+hypergeometrics, Kummer) functions more as decorative context/analogy
+than as mathematical content with real weight on the conjecture — the
+paper itself agrees with this reading (Section 16).
 
-Ver `hypotheses/H-048-anthony-two-field-propagation-review.md`.
+See `hypotheses/H-048-anthony-two-field-propagation-review.md`.
 
-## Como rodar
+## How to run
 
 ```
 /home/rat/.venv/bin/python3 experiment.py
 ```
 
-Requer `mpmath` (já instalado no venv do projeto).
+Requires `mpmath` (already installed in the project's venv).

@@ -1,25 +1,29 @@
-# E-012 — Predecessores de potências de 2
+# E-012 — Predecessors of powers of 2
 
-Hipótese relacionada: [`H-012-powers-of-2-predecessor-structure.md`](../../hypotheses/H-012-powers-of-2-predecessor-structure.md)
+Related hypothesis: [`H-012-powers-of-2-predecessor-structure.md`](../../hypotheses/H-012-powers-of-2-predecessor-structure.md)
 
-## Origem
+## Origin
 
-Observação do diretor científico explorando a árvore reversa de Collatz:
-potências de 2 como 32 e 64 parecem se comportar diferente — algumas só são
-alcançadas pela cadeia trivial de duplicação, outras têm um ramo extra.
+Observation from the scientific director while exploring the Collatz
+reverse tree: powers of 2 like 32 and 64 seem to behave differently —
+some are only reached via the trivial doubling chain, others have an
+extra branch.
 
-## O que foi verificado
+## What was verified
 
-2^k tem um predecessor ímpar genuíno (via 3m+1=2^k) se e somente se k é par,
-e nesse caso o predecessor é exatamente Σ_{i=0}^{k/2−1} 4^i (sempre ímpar).
-Prova completa em `hypotheses/H-012-powers-of-2-predecessor-structure.md`.
+2^k has a genuine odd predecessor (via 3m+1=2^k) if and only if k is
+even, in which case the predecessor is exactly Σ_{i=0}^{k/2−1} 4^i
+(always odd). Full proof in
+`hypotheses/H-012-powers-of-2-predecessor-structure.md`.
 
-## Resultado
+## Result
 
-Verificado sem exceção para k=1 até 60. Reproduzir: `python3 experiment.py 60`.
+Verified without exception for k=1 through 60. Reproduce:
+`python3 experiment.py 60`.
 
 ## Status
 
-**Confirmada.** Explica exatamente a observação original: 2^5=32 (k ímpar)
-não tem predecessor ímpar — só é alcançado duplicando 16 — enquanto 2^6=64
-(k par) tem o predecessor ímpar 21 (3·21+1=64), um ramo extra na árvore.
+**Confirmed.** Exactly explains the original observation: 2^5=32 (odd
+k) has no odd predecessor — it's only reached by doubling 16 — while
+2^6=64 (even k) has the odd predecessor 21 (3·21+1=64), an extra
+branch in the tree.

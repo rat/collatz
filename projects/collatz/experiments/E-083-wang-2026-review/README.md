@@ -1,25 +1,25 @@
-# E-083 — Revisão de Wang, "Non-Existence of Collatz m-Cycles for m≤95" (2026)
+# E-083 — Review of Wang, "Non-Existence of Collatz m-Cycles for m≤95" (2026)
 
-Hipótese relacionada: [`H-083-wang-2026-review.md`](../../hypotheses/H-083-wang-2026-review.md)
+Related hypothesis: [`H-083-wang-2026-review.md`](../../hypotheses/H-083-wang-2026-review.md)
 
-## O que foi feito
+## What was done
 
-Não alega prova completa — exclui ciclos não-triviais específicos
-(m≤95), estilo Simons–de Weger/Hercher (mesmo território de H-057
-deste projeto). Verificamos as identidades algébricas centrais
-verificáveis sem reproduzir o aparato computacional pesado do autor:
-Lemma 1 (transição de mínimo local), Lemma 3 (estimativa elementar
-T(n)<3/n), Lemma 9 (monotonicidade de expoentes de sufixo), e a
-aritmética do Lemma 13 (U(49)<7×10¹¹).
+Does not claim a full proof — excludes specific non-trivial cycles
+(m≤95), in the Simons–de Weger/Hercher style (the same territory as
+this project's H-057). We verified the central, checkable algebraic
+identities without reproducing the author's heavy computational
+apparatus: Lemma 1 (local-minimum transition), Lemma 3 (elementary
+estimate T(n)<3/n), Lemma 9 (suffix-exponent monotonicity), and Lemma
+13's arithmetic (U(49)<7×10¹¹).
 
-## Resultado
+## Result
 
-Tudo confirmado sem exceção. Os valores numéricos específicos da
-Tabela do Lemma 12 e as buscas finitas para m=92-95 não foram
-reproduzidos (exigiriam replicar o "affine a-ladder" completo). Ver
-H-083 para o veredito completo.
+Everything confirmed without exception. The specific numerical values
+in Lemma 12's Table and the finite searches for m=92-95 were not
+reproduced (would require replicating the full "affine a-ladder"). See
+H-083 for the full verdict.
 
-## Reproduzir
+## Reproduce
 
 ```
 python3 experiment.py

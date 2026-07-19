@@ -1,25 +1,25 @@
-# E-075 — Revisão de Barina, "Convergence verification of the Collatz problem" (2020/2021)
+# E-075 — Review of Barina, "Convergence verification of the Collatz problem" (2020/2021)
 
-Hipótese relacionada: [`H-075-barina-2020-verification-review.md`](../../hypotheses/H-075-barina-2020-verification-review.md)
+Related hypothesis: [`H-075-barina-2020-verification-review.md`](../../hypotheses/H-075-barina-2020-verification-review.md)
 
-## O que foi feito
+## What was done
 
-Verificamos o algoritmo central do paper (item 105) — uma técnica para
-evitar a etapa aditiva "+1" trocando entre os domínios n e n+1, usando
-só operações multiplicativas. Reimplementamos literalmente as
-identidades (Eqs. 4-6) e os dois algoritmos de convergência
-(Algorithm 1: glide; Algorithm 2: delay).
+We verified the paper's central algorithm (item 105) — a technique for
+avoiding the additive "+1" step by switching between the n and n+1
+domains, using only multiplicative operations. We literally
+reimplemented the identities (Eqs. 4-6) and the two convergence
+algorithms (Algorithm 1: glide; Algorithm 2: delay).
 
-## Resultado
+## Result
 
-Confirmado sem exceção: identidades Eq.4/Eq.5 (200.000 casos), Algorithm
-1 convergindo corretamente (999 casos), Algorithm 2 batendo exatamente
-com a contagem padrão de delay (5 sementes), fórmula geral Eq.6 (1000
-casos aleatórios), e a afirmação textual sobre a média de 4 iterados por
-passo do algoritmo (confirmado empiricamente, 4,009 vs 4,0 previsto).
-Ver H-075 para o veredito completo.
+Confirmed without exception: identities Eq.4/Eq.5 (200,000 cases),
+Algorithm 1 converging correctly (999 cases), Algorithm 2 exactly
+matching the standard delay count (5 seeds), the general formula Eq.6
+(1000 random cases), and the textual claim about the average of 4
+iterations per algorithm step (empirically confirmed, 4.009 vs 4.0
+predicted). See H-075 for the full verdict.
 
-## Reproduzir
+## Reproduce
 
 ```
 python3 experiment.py

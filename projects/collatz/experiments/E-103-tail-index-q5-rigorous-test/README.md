@@ -1,373 +1,376 @@
-# E-103 — Índice de cauda de W_v para q=5 (Conjectura do índice de cauda, §3.3 do paper)
+# E-103 — Tail index of W_v for q=5 (Tail-Index Conjecture, paper §3.3)
 
-Hipótese relacionada: [`H-109-generalized-qx1-pressure-equation-exact-closed-form.md`](../../hypotheses/H-109-generalized-qx1-pressure-equation-exact-closed-form.md)
-Ver também: [`H-129-q-adic-pole-analog-seymour.md`](../../hypotheses/H-129-q-adic-pole-analog-seymour.md) (frente paralela, framing teórico diferente)
+Related hypothesis: [`H-109-generalized-qx1-pressure-equation-exact-closed-form.md`](../../hypotheses/H-109-generalized-qx1-pressure-equation-exact-closed-form.md)
+See also: [`H-129-q-adic-pole-analog-seymour.md`](../../hypotheses/H-129-q-adic-pole-analog-seymour.md) (a parallel front, different theoretical framing)
 
-## O que foi feito
+## What was done
 
-Depois de corrigir a §3 do paper (equação de pressão anelada + transição
-de congelamento) e rebaixar o índice de cauda do martingale para q≥5 a
-uma Conjectura sem apoio empírico sólido (a medição original de
-H-109/H-113, Hill com 600 raízes, já tinha sido sinalizada como
-estatisticamente não-confirmatória), o diretor científico pediu
-sucessivamente testes mais robustos, com autorização explícita de usar
-o tempo de computação e o Fable à vontade. A investigação passou por
-três rodadas, cada uma mais rigorosa que a anterior:
+After fixing paper §3 (annealed pressure equation + freezing
+transition) and downgrading the martingale's tail index for q≥5 to a
+Conjecture with no solid empirical support (the original H-109/H-113
+measurement, Hill with 600 roots, had already been flagged as
+statistically non-confirmatory), the scientific director successively
+requested more robust tests, with explicit authorization to use
+computation time and the Fable freely. The investigation went through
+three rounds, each more rigorous than the last:
 
-**Rodada 1** — Hill/Zipf mais cuidadoso (`experiment_tail_index_q5.py`):
-amostra 8x maior (5000 vs 600 raízes), 4 headrooms, bootstrap. Resultado
-inicial parecia "encorajador" (perto do previsto na fração de 5%).
+**Round 1** — a more careful Hill/Zipf test (`experiment_tail_index_q5.py`):
+an 8x larger sample (5000 vs 600 roots), 4 headrooms, bootstrap. The
+initial result seemed "encouraging" (close to predicted at the 5%
+fraction).
 
-**Rodada 2** — bateria completa de 4 estimadores (`full_battery.py`):
-regressão Gabaix-Ibragimov, Hill com correção de viés (Huisman et al.),
-MLE de GPD com varredura de estabilidade de limiar, e
-Clauset-Shalizi-Newman + teste de Vuong contra lognormal. Revelou que a
-Rodada 1 tinha sido otimista demais — ver "Resultado" abaixo.
+**Round 2** — a full battery of 4 estimators (`full_battery.py`):
+Gabaix-Ibragimov regression, bias-corrected Hill (Huisman et al.), GPD
+MLE with threshold-stability sweep, and Clauset-Shalizi-Newman + Vuong
+test against lognormal. Revealed that Round 1 had been overly
+optimistic — see "Result" below.
 
-**Rodada 3** — teste EXATO via momento populacional (`exact_moment_test.py`):
-em vez de estimador estatístico sobre amostra de raízes, usa a DP exata
-`Z_k(θ;u)` (já validada nos testes de congelamento) sobre a POPULAÇÃO
-COMPLETA de resíduos mod 5^k. Decisivo em princípio (sem ruído de
-amostragem), mas limitado por profundidade alcançável (k≤11 por
-memória).
+**Round 3** — an EXACT test via population moment (`exact_moment_test.py`):
+instead of a statistical estimator over a sample of roots, uses the
+exact DP `Z_k(θ;u)` (already validated in the freezing tests) over the
+COMPLETE population of residues mod 5^k. Decisive in principle (no
+sampling noise), but limited by reachable depth (k≤11 due to memory).
 
-**Descartado antes da Rodada 3** — uma ideia de calibração via árvore
-i.i.d. de fase aleatória (`stage0_iid_power_check.ABANDONED.py`) foi
-abandonada por dois motivos: (1) circular (o índice dela cai
-algebricamente na identidade de pressão anelada já provada, no ponto
-que já sabemos estar sempre congelado — não pode falhar por
-construção); (2) contagem bruta de nós explode combinatorialmente sob
-fase i.i.d. (headroom=100: árvore real=42 nós, sintética>200000 nós) —
-ver o arquivo para os detalhes.
+**Discarded before Round 3** — an idea for calibration via a random-phase
+i.i.d. tree (`stage0_iid_power_check.ABANDONED.py`) was abandoned for
+two reasons: (1) circular (its index falls out algebraically from the
+already-proven annealed pressure identity, at the point already known
+to always be frozen — it cannot fail by construction); (2) raw node
+count explodes combinatorially under i.i.d. phase (headroom=100: real
+tree=42 nodes, synthetic>200000 nodes) — see the file for details.
 
-## Resultado da Rodada 2 (bateria completa) — quadro misto
+## Round 2 Result (full battery) — a mixed picture
 
-**Estabilidade entre headrooms**: excelente para o Huisman (bias-corrected
-Hill), que fica em ~1,61 em todos os 4 níveis de headroom, IC bootstrap
-≈[1,48; 1,77] — cobre o previsto 1,536 com folga.
+**Stability across headrooms**: excellent for Huisman (bias-corrected
+Hill), which sits at ~1.61 across all 4 headroom levels, bootstrap CI
+≈[1.48; 1.77] — comfortably covers the predicted 1.536.
 
-**Mas**: a varredura de estabilidade de limiar (GPD) não mostra platô
-limpo perto do ξ previsto (0,651) — ξ̂(u) decresce de ~0,58 para ~0,45
-conforme o limiar sobe, sem estabilizar. E o teste de Vuong favorece a
-alternativa **lognormal** sobre a lei de potência, com significância
-(p≈0,03), em 3 dos 4 níveis de headroom testados.
+**But**: the threshold-stability sweep (GPD) shows no clean plateau
+near the predicted ξ (0.651) — ξ̂(u) decreases from ~0.58 to ~0.45 as
+the threshold rises, with no stabilization. And the Vuong test favors
+the **lognormal** alternative over the power law, with significance
+(p≈0.03), in 3 of the 4 tested headroom levels.
 
-Consultado o Fable para interpretar: os 4 estimadores, quando lidos
-pela profundidade de cauda que cada um resume, concordam entre si sobre
-a FORMA da curva — o índice local aparente sobe suavemente de ~1,3
-(janela larga) a ~2,2 (janela estreita), cruzando o valor previsto perto
-da janela de 10%. Ou seja, os "acertos" anteriores eram artefato de
-janela, não confirmação — uma curva côncava assim "confirmaria" quase
-qualquer valor entre 1,3 e 2,2 em alguma profundidade. Veredito do
-Fable: rebaixar de "encorajador" para "inconclusivo".
+Consulted the Fable to interpret: the 4 estimators, when read by the
+tail depth each one summarizes, agree with each other on the SHAPE of
+the curve — the apparent local index rises smoothly from ~1.3 (wide
+window) to ~2.2 (narrow window), crossing the predicted value near the
+10% window. In other words, the earlier "hits" were a window artifact,
+not confirmation — a concave curve like this would "confirm" almost any
+value between 1.3 and 2.2 at some depth. Fable's verdict: downgrade
+from "encouraging" to "inconclusive".
 
-## Resultado da Rodada 3 (momento exato) — inconclusivo, motivo identificado
+## Round 3 Result (exact moment) — inconclusive, reason identified
 
-Checagem de sanidade: M_k(1,0)=1,0 exatamente em todo k (forçado pela
-identidade de pressão anelada já provada — confirma a implementação).
+Sanity check: M_k(1.0)=1.0 exactly at every k (forced by the
+already-proven annealed pressure identity — confirms the
+implementation).
 
-Para o índice de cauda: M_k(p) satura (incrementos decrescentes) para
-p≤1,6 e diverge (incrementos crescentes) para p≥1,7 — o que colocaria
-o índice real ACIMA do previsto 1,536 se tomado ao pé da letra.
+For the tail index: M_k(p) saturates (decreasing increments) for
+p≤1.6 and diverges (increasing increments) for p≥1.7 — which would
+place the real index ABOVE the predicted 1.536 if taken at face value.
 
-Mas, analisando a RAZÃO entre incrementos sucessivos (não só o sinal):
-para p≥1,7 essa razão já relaxou para o regime geométrico assintótico
-em k=8-11; para p≤1,6, incluindo o valor previsto, a razão **ainda está
-se movendo** — a assinatura clássica de "desaceleração crítica" perto
-de qualquer ponto crítico, não evidência de que a criticalidade esteja
-acima de 1,6. O transiente conhecido de q=5 (decaimento k^-0,222) cai só
-~7% entre k=8 e k=11; reduzi-lo pela metade exigiria k≈250 — impossível
-por enumeração exaustiva (custo 5^k). Tentativas de extrapolação
-(Aitken/Richardson) deram valores instáveis e não confiáveis (o
-transiente parece oscilatório, não geométrico simples — quebra a
-premissa do extrapolador).
+But, analyzing the RATIO between successive increments (not just the
+sign): for p≥1.7 this ratio has already relaxed to the asymptotic
+geometric regime at k=8-11; for p≤1.6, including the predicted value,
+the ratio **is still moving** — the classic signature of "critical
+slowing down" near any critical point, not evidence that criticality
+lies above 1.6. The known q=5 transient (k^-0.222 decay) drops only
+~7% between k=8 and k=11; halving it would require k≈250 — impossible
+by exhaustive enumeration (cost 5^k). Extrapolation attempts
+(Aitken/Richardson) gave unstable, unreliable values (the transient
+appears oscillatory, not simply geometric — breaking the
+extrapolator's assumption).
 
-**Veredito final (Fable + verificação própria)**: inconclusivo, não
-desconfirmatório. Não dá para distinguir, com este método, entre o
-valor previsto estar logo abaixo do índice real (consistente com a
-teoria) ou bem abaixo dele (evidência contra). Ir mais fundo por
-enumeração exaustiva não resolve — o custo cresce exponencialmente
-(5^k) enquanto o transiente decai em lei de potência lenta.
+**Final verdict (Fable + our own check)**: inconclusive, not
+disconfirming. This method cannot distinguish between the predicted
+value sitting just below the real index (consistent with theory) or
+well below it (evidence against). Going deeper by exhaustive
+enumeration doesn't resolve it — the cost grows exponentially (5^k)
+while the transient decays as a slow power law.
 
-## Veredito consolidado (as duas rodadas juntas)
+## Consolidated verdict (both rounds together)
 
-Nenhuma das duas rotas confirma a Conjectura para q≥5, nenhuma a
-refuta. Ambas são muito mais informativas que a medição original
-subdimensionada. O texto do paper (main.tex/main-pt-br.tex, §3.3) foi
-reescrito para refletir isso honestamente — ver commit correspondente.
-Caminhos mais promissores para resolver isso de vez, se a linha for
-retomada: uma comparação pré-registrada tipo Clauset-Shalizi-Newman com
-orçamento muito maior que enumeração exaustiva, testando explicitamente
-contra um ajuste log-periódico (ver correção abaixo — a via do "espectro
-subdominante" foi fechada por E-105: não existe subdominante isolado a
-controlar).
+Neither route confirms the Conjecture for q≥5, neither refutes it.
+Both are far more informative than the original under-powered
+measurement. The paper's text (main.tex/main-pt-br.tex, §3.3) was
+rewritten to reflect this honestly — see the corresponding commit.
+More promising paths to resolve this for good, if the line is resumed:
+a pre-registered Clauset-Shalizi-Newman-style comparison with a much
+larger budget than exhaustive enumeration, explicitly testing against a
+log-periodic fit (see the correction below — the "subdominant
+spectrum" route was closed by E-105: there is no isolated subdominant
+to control).
 
-**Correção de terminologia (2026-07-19, ver H-129/E-105)**: a frase
-"raiz complexa subdominante do operador de transferência" que aparecia
-aqui e no restante do projeto estava errada. Uma consulta ao Fable
-resolveu a formalização correta do operador (par dual L_α/M_α agindo
-sobre Z_q) e mostrou, com verificação numérica exata em E-105, que M_α
-tem espectro EXATAMENTE {Λ,0} em qualquer nível de truncamento — gap
-espectral perfeito, sem nenhum autovalor subdominante isolado. O
-transiente k^-0,222 não é um fenômeno espectral linear — pertence a
-uma camada não-linear diferente (ver Estágio 2 abaixo para o que essa
-camada acabou não sendo).
+**Terminology correction (2026-07-19, see H-129/E-105)**: the phrase
+"subdominant complex root of the transfer operator", which appeared
+here and elsewhere in the project, was wrong. A consultation with the
+Fable resolved the correct formalization of the operator (the dual pair
+L_α/M_α acting on Z_q) and showed, with exact numerical verification in
+E-105, that M_α has spectrum EXACTLY {Λ,0} at any truncation level —
+a perfect spectral gap, with no isolated subdominant eigenvalue. The
+k^-0.222 transient is not a linear spectral phenomenon — it belongs to
+a different, nonlinear layer (see Stage 2 below for what that layer
+turned out NOT to be).
 
-## Estágio 2 (2026-07-19) — hipótese log-periódica testada e NÃO suportada
+## Stage 2 (2026-07-19) — log-periodic hypothesis tested and NOT supported
 
-Levantamos a hipótese de que o transiente k^-0,222 fosse um efeito de
-reticulado log-periódico (pesos dos ramos são potências de 2). Antes
-de testar, consultamos o Fable para DERIVAR o período previsto (não
-ajustar aos dados — a mesma armadilha que já pegou o a* em H-129).
+We raised the hypothesis that the k^-0.222 transient was a
+log-periodic lattice effect (branch weights are powers of 2). Before
+testing, we consulted the Fable to DERIVE the predicted period (not fit
+it to the data — the same trap that already caught the a* result in
+H-129).
 
-**Derivação (Fable)**: os multiplicadores A_a=(5·2^-a)^θ formam um
-reticulado deslocado por tipo (u0 mod 5), com deslocamento
-b_i/s=(log₂5−a₀(i))/4 — **irracional**, pois log₂5 é irracional (5 não
-é potência de 2). Pela dicotomia aritmético/não-aritmético da teoria de
-renovação implícita (Goldie 1991), este é o caso **não-aritmético**:
-não deve haver correção log-periódica assintótica (a fase gira log₂5
-por nível, irracional, e "lava" com k crescente — teorema de
-Blackwell). Dois períodos candidatos seriam visíveis só como artefato
-de profundidade finita, com amplitude esperada DECRESCENTE em k:
-θ·log2=0,4512 ("união", todos os a) e 4θ·log2=1,8047 ("por-tipo",
-espaçamento d=ord₅(2)=4), em log natural de x.
+**Derivation (Fable)**: the multipliers A_a=(5·2^-a)^θ form a
+lattice shifted by type (u0 mod 5), with shift
+b_i/s=(log₂5−a₀(i))/4 — **irrational**, since log₂5 is irrational (5
+is not a power of 2). By the arithmetic/non-arithmetic dichotomy of
+implicit renewal theory (Goldie 1991), this is the **non-arithmetic**
+case: no asymptotic log-periodic correction should be expected (the
+phase rotates by log₂5 per level, irrational, and "washes out" as k
+grows — Blackwell's theorem). Two candidate periods would only be
+visible as a finite-depth artifact, with expected DECREASING amplitude
+in k: θ·log2=0.4512 ("union", all a's) and 4θ·log2=1.8047 ("by-type",
+spacing d=ord₅(2)=4), in natural log of x.
 
-**Teste** (`stage2_periodogram.py`): ajuste de lei de potência pura via
-CSN nas 4 amostras de W_v (headroom 10⁵-10⁸, n=5000 raízes cada, já
-existentes de E-103 Rodadas 1-2), resíduo log(S_emp/S_pred) em
-t=log(x/xmin), potência de Lomb-Scargle medida EXATAMENTE nos dois
-períodos pré-registrados (não escolhidos a posteriori), comparada
-contra o nível de ruído de fundo (grade ampla de períodos).
+**Test** (`stage2_periodogram.py`): pure power-law fit via CSN on the 4
+W_v samples (headroom 10⁵-10⁸, n=5000 roots each, already existing from
+E-103 Rounds 1-2), residual log(S_emp/S_pred) at t=log(x/xmin),
+Lomb-Scargle power measured EXACTLY at the two pre-registered periods
+(not chosen after the fact), compared against the background noise
+level (a wide grid of periods).
 
-**Resultado**: em nenhum dos 4 headrooms a potência nos períodos
-previstos passa do percentil 95 do ruído de fundo. No período "união"
-(bem cotado — 6,7 a 9,7 ciclos cabem no alcance dos dados), a potência
-é praticamente nula (0,003-0,010, ruído de fundo médio ~0,11-0,14). No
-período "por-tipo", 3 dos 4 headrooms também dão potência próxima de
-zero; o único valor não-trivial (H=10⁸, potência=0,1985) ainda fica
-abaixo do p95 (0,263), tem só 1,7 ciclos no alcance dos dados (abaixo
-do mínimo recomendável), e aparece no headroom MAIS profundo — o
-oposto do que a previsão teórica diria (amplitude deveria decrescer
-com k, não aparecer só no k mais profundo). Os três fatos triangulam
-para ruído, não sinal.
+**Result**: at none of the 4 headrooms does the power at the predicted
+periods exceed the 95th percentile of the background noise. At the
+"union" period (well-powered — 6.7 to 9.7 cycles fit within the data's
+range), the power is essentially null (0.003-0.010, mean background
+noise ~0.11-0.14). At the "by-type" period, 3 of the 4 headrooms also
+give near-zero power; the one nontrivial value (H=10⁸, power=0.1985)
+still falls below the p95 (0.263), has only 1.7 cycles within the
+data's range (below the recommended minimum), and appears at the
+DEEPEST headroom — the opposite of what the theoretical prediction
+would say (amplitude should decrease with k, not appear only at the
+deepest k). The three facts triangulate to noise, not signal.
 
-**Veredito**: hipótese log-periódica **testada e não suportada** —
-consistente com a própria previsão teórica do Fable (caso
-não-aritmético, sem log-periodicidade assintótica esperada). Isso é
-uma confirmação mútua teoria+dado, não uma coincidência favorável.
-Checagem de coerência de fase entre headrooms (planejada como guarda
-estrutural) ficou sem objeto — não há amplitude para checar fase.
+**Verdict**: the log-periodic hypothesis was **tested and not
+supported** — consistent with the Fable's own theoretical prediction
+(non-arithmetic case, no asymptotic log-periodicity expected). This is
+a mutual theory+data confirmation, not a favorable coincidence.
+A phase-coherence check across headrooms (planned as a structural
+guard) had no object to check — there's no amplitude to check phase
+on.
 
-**O que isso NÃO fecha**: a origem do transiente k^-0,222 continua em
-aberto. Já refutamos dois mecanismos candidatos (raiz espectral
-isolada — E-105; log-periodicidade — aqui). Isso não "explica" o
-transiente, só elimina duas explicações específicas. A própria origem
-numérica do valor "0,222" permanece sem localização no projeto (ver
-correção em H-109/E-105).
+**What this does NOT close**: the origin of the k^-0.222 transient
+remains open. We have now refuted two candidate mechanisms (isolated
+spectral root — E-105; log-periodicity — here). This doesn't "explain"
+the transient, it only eliminates two specific explanations. The
+numerical origin of the value "0.222" itself remains unlocated in the
+project (see the correction in H-109/E-105).
 
-**Checagem complementar no eixo k** (`stage3_k_axis_check.py`, dados
-da Rodada 3, k=5..11): a razão de incrementos sucessivos de M_k(p) é
-MONOTÔNICA em k, sem nenhum sinal de oscilação, para os 3 valores de p
-próximos do índice previsto — corrobora (não prova de novo) a ausência
-de oscilação já estabelecida em E-105/Estágio 2. Uma tentativa de
-ajustar |razão(k)−1|~k^-χ para comparar contra "0,222" foi feita e
-DESCARTADA (revisão do advisor): o alvo "1" só é assintoticamente
-correto exatamente no p crítico, e n=5 pontos suaves/correlacionados
-não sustenta um erro-padrão confiável (o χ ajustado varia 0,98 a 3,60
-entre os 3 p's testados — sinal de sub-poder, não medida real). O
-código fica no repositório por transparência, mas o número não deve ser
-citado. Resolver a origem de "0,222" continua exigindo ou localizar a
-derivação original, ou estender k além do teto de memória de 5^k (uma
-formulação nova, não um ajuste de script) — nenhum dos dois é uma ação
-imediata.
+**Complementary check on the k axis** (`stage3_k_axis_check.py`, Round
+3 data, k=5..11): the ratio of successive increments of M_k(p) is
+MONOTONIC in k, with no sign of oscillation, for the 3 values of p near
+the predicted index — corroborates (doesn't prove anew) the absence of
+oscillation already established in E-105/Stage 2. An attempt to fit
+|ratio(k)−1|~k^-χ to compare against "0.222" was made and DISCARDED
+(advisor review): the target "1" is only asymptotically correct exactly
+at the critical p, and n=5 smooth/correlated points doesn't support a
+reliable standard error (the fitted χ varied from 0.98 to 3.60 across
+the 3 tested p's — a sign of underpowering, not a real measurement).
+The code stays in the repository for transparency, but the number
+should not be cited. Resolving the origin of "0.222" still requires
+either locating the original derivation, or extending k beyond the
+5^k memory ceiling (a new formulation, not a script tweak) — neither
+is an immediate action.
 
-## Estágio 4 (2026-07-19) — família de escala por tipo de resíduo: CONFIRMADA (mas não testa κ)
+## Stage 4 (2026-07-19) — scale family by residue type: CONFIRMED (but doesn't test κ)
 
-A previsão colateral do Fable (pesos relativos por tipo C_i ∝
-2^(−a₀(i)θκ), i.e. (2⁻⁴,2⁻³,2⁻¹,2⁻²) para tipos u0 mod 5 = 1,2,3,4)
-foi testada, não deixada para depois. Reconstruí a lista de raízes
-(mesma seed, sem refazer o DFS) para recuperar o tipo de cada amostra
-de W_v já coletada, e comparei razões de quantis condicionais x_i/x_1
-(top30%/20%/10%) contra a previsão (C_i/C_1)^(1/κ), κ=α₊/α₋=1,536290.
+The Fable's collateral prediction (relative weights by type C_i ∝
+2^(−a₀(i)θκ), i.e. (2⁻⁴,2⁻³,2⁻¹,2⁻²) for types u0 mod 5 = 1,2,3,4) was
+tested, not left for later. I reconstructed the root list (same seed,
+without redoing the DFS) to recover each already-collected W_v sample's
+type, and compared conditional quantile ratios x_i/x_1
+(top30%/20%/10%) against the prediction (C_i/C_1)^(1/κ),
+κ=α₊/α₋=1.536290.
 
-**Resultado**: bate muito bem (2-9% de desvio) em TODOS os 4 headrooms
-independentes e 3 níveis de cauda, com notável estabilidade cruzada
-(ex. x₃/x₁≈4,06-4,12 ao longo de 4 ordens de grandeza de headroom —
-não parece ruído). Consultei o Fable para confirmar a tradução, e ele
-revelou um ponto crucial que eu não tinha visto: **κ se cancela
-algebricamente** nessa razão — (C_i/C_j)^(1/κ) = 2^((a₀(j)−a₀(i))θ),
-independente de κ. Ou seja, este teste confirma a **família de escala
-exata W_i =_d 2^(−a₀(i)θ)·W\*** (mesma distribuição para todo tipo de
-resíduo, só reescalada por θ e a₀) e rejeita a alternativa "C_i entra
-linearmente" (previria x₃/x₁=8; medido 4,06-4,12) — mas **não testa o
-índice de cauda κ em si**. Escopo exato: confirma θ e a decomposição
-multi-tipo, não κ; e é exato só no modelo idealizado (resíduos
-sistemáticos de 2-9% medem onde a árvore real diverge da hipótese de
-resíduo-filho uniforme i.i.d.).
+**Result**: matches very well (2-9% deviation) across ALL 4 independent
+headrooms and 3 tail levels, with notable cross-stability (e.g.
+x₃/x₁≈4.06-4.12 across 4 orders of magnitude of headroom — doesn't
+look like noise). I consulted the Fable to confirm the translation, and
+it revealed a crucial point I had missed: **κ cancels algebraically**
+in this ratio — (C_i/C_j)^(1/κ) = 2^((a₀(j)−a₀(i))θ), independent of
+κ. That is, this test confirms the **exact scale family
+W_i =_d 2^(−a₀(i)θ)·W\*** (the same distribution for every residue
+type, only rescaled by θ and a₀) and rejects the "C_i enters linearly"
+alternative (would predict x₃/x₁=8; measured 4.06-4.12) — but it
+**does not test the tail index κ itself**. Exact scope: confirms θ and
+the multi-type decomposition, not κ; and it's exact only in the
+idealized model (systematic 2-9% residuals measure where the real tree
+diverges from the uniform-i.i.d.-child-residue hypothesis).
 
-## Estágio 5 (2026-07-19) — pool reescalado por tipo: não melhora o teste de κ
+## Stage 5 (2026-07-19) — rescaled pool by type: doesn't improve the test of κ
 
-Tentativa de usar a família de escala do Estágio 4 para um teste mais
-limpo de κ: reescalei as 5000 amostras pelo fator previsto 2^(a₀(tipo)θ)
-e rodei a mesma bateria de 4 estimadores (Estágio/Rodada 2) no pool
-reescalado. **Não melhorou**: Huisman ficou em ~1,50 (IC95%
-[1,38;1,63], cobre 1,536, estável nos 4 headrooms) e Gabaix-Ibragimov
-em ~1,57 — consistente com κ=1,536, não confirmatório (mesmo padrão de
-sempre); GPD continua sem platô de limiar limpo. O CSN+Vuong pareceu
-piorar (lognormal favorecida com p<0,001 em 3 dos 4 headrooms), mas
-isso é ARTEFATO: nesses 3 casos o x_min ótimo por KS caiu para dentro
-do CORPO da distribuição (n_tail~2000, ~40% da amostra, não é teste de
-cauda). O único headroom com cauda genuína por CSN (H=10⁵, x_min=95,
-n_tail=112) deu "indistinguível" (p=0,93), não lognormal — evidência de
-que o sinal "lognormal" nos outros 3 é artefato de corpo, não de cauda.
-Lognormal global já está descartada de outra forma: M_k(p) diverge
-para p≥1,7 (Rodada 3) — lognormal tem todos os momentos finitos,
-incompatível com um momento exato divergente.
+An attempt to use Stage 4's scale family for a cleaner test of κ: I
+rescaled the 5000 samples by the predicted factor 2^(a₀(type)θ) and
+ran the same battery of 4 estimators (Stage/Round 2) on the rescaled
+pool. **No improvement**: Huisman came out at ~1.50 (95% CI
+[1.38;1.63], covers 1.536, stable across the 4 headrooms) and
+Gabaix-Ibragimov at ~1.57 — consistent with κ=1.536, not confirmatory
+(the same pattern as always); GPD still shows no clean threshold
+plateau. CSN+Vuong seemed to get worse (lognormal favored with p<0.001
+in 3 of the 4 headrooms), but this is an ARTIFACT: in these 3 cases the
+KS-optimal x_min fell inside the BODY of the distribution (n_tail~2000,
+~40% of the sample, not a tail test). The one headroom with a genuine
+tail per CSN (H=10⁵, x_min=95, n_tail=112) gave "indistinguishable"
+(p=0.93), not lognormal — evidence that the "lognormal" signal in the
+other 3 is a body artifact, not a tail one. Global lognormality is
+already ruled out another way: M_k(p) diverges for p≥1.7 (Round 3) —
+lognormal has all finite moments, incompatible with a diverging exact
+moment.
 
-**Veredito consolidado dos Estágios 4-5**: um achado estrutural novo e
-real (família de escala por tipo), mas de escopo limitado — não
-resolve nem aproxima a resolução da Conjectura do índice de cauda. κ
-continua **consistente com 1,536290, não confirmado**: mesmo obstáculo
-de sempre (5000 amostras não alcançam profundidade de cauda suficiente
-para decidir), agora com a razão precisa por que o teste de razão de
-quantis não pode ajudar (é κ-invariante por construção).
+**Consolidated verdict for Stages 4-5**: a new, real structural finding
+(scale family by type), but of limited scope — doesn't resolve nor
+approach resolving the Tail-Index Conjecture. κ remains **consistent
+with 1.536290, not confirmed**: the same obstacle as always (5000
+samples don't reach sufficient tail depth to decide), now with the
+precise reason why the quantile-ratio test can't help (it's
+κ-invariant by construction).
 
-## Estágio 6 (2026-07-19) — amostra 20x maior: evidência passa de inconclusiva para fortemente favorável
+## Stage 6 (2026-07-19) — 20x larger sample: evidence moves from inconclusive to strongly favorable
 
-Item 3 da lista de próximos passos, finalmente executado: 100.000
-raízes (vs. 5.000 nas Rodadas 1-2), mesmos 4 headrooms, gerado em
-paralelo (12 processos, ~73 min — `stage6_large_sample_generation.py`;
-V_RANGE expandido 10x para não esgotar o pool de raízes válidas). Mesma
-bateria de 4 estimadores (`stage6_large_sample_battery.py`).
+Item 3 of the next-steps list, finally executed: 100,000 roots (vs.
+5,000 in Rounds 1-2), same 4 headrooms, generated in parallel (12
+processes, ~73 min — `stage6_large_sample_generation.py`; V_RANGE
+expanded 10x so as not to exhaust the pool of valid roots). Same
+battery of 4 estimators (`stage6_large_sample_battery.py`).
 
-**Resultado, qualitativamente diferente de todas as rodadas anteriores**:
+**Result, qualitatively different from every previous round**:
 
-- **GPD com platô de limiar LIMPO pela primeira vez**: ξ estável em
-  0,63-0,68 (previsto 0,6509) em TODOS os 9 níveis de limiar e 4
-  headrooms — a instabilidade sistemática de Rodada 2/Estágio 5
-  desapareceu.
-- **Huisman muito estável**: 1,545 (n/2), IC95% [1,51;1,58] cobrindo
-  1,536290, idêntico nos 4 headrooms.
-- **CSN+Vuong "indistinguível" nos 4 headrooms** (p=0,13-0,16) — a
-  rodada anterior (n=5000) favorecia lognormal em 3/4 casos; esse sinal
-  não aparece mais com n=100.000.
+- **GPD with a CLEAN threshold plateau for the first time**: ξ stable
+  at 0.63-0.68 (predicted 0.6509) across ALL 9 threshold levels and 4
+  headrooms — the systematic instability from Round 2/Stage 5 is gone.
+- **Huisman very stable**: 1.545 (n/2), 95% CI [1.51;1.58] covering
+  1.536290, identical across the 4 headrooms.
+- **CSN+Vuong "indistinguishable" at all 4 headrooms** (p=0.13-0.16) —
+  the previous round (n=5000) favored lognormal in 3/4 cases; this
+  signal no longer appears at n=100,000.
 
-**Duas calibrações de sanidade** (`stage6_calibration_checks.py`,
-pedidas pelo advisor antes de qualquer conclusão mais forte):
+**Two sanity calibrations** (`stage6_calibration_checks.py`, requested
+by the advisor before any stronger conclusion):
 
-1. **Nulo sintético** (Pareto puro exato, κ=1,536290, n=100.000):
-   Huisman deu 1,545/1,538 — quase idêntico ao valor real (1,545/1,503)
-   — confirma que o Huisman está bem calibrado neste n. GPD no
-   sintético TAMBÉM mostra "instabilidade" nos limiares mais altos
-   mesmo sendo Pareto exato — o ruído visto nos dados reais está dentro
-   do esperado por acaso amostral, não é má especificação. CSN no
-   sintético deu 1,55 com n_tail≈63.000 (quase toda a amostra, correto
-   p/ Pareto puro); nos dados reais deu 1,40 com n_tail≈7.300 (~7%) —
-   diferença esperada (dados reais têm corpo genuíno não-lei-de-potência,
-   só a cauda extrema é) — o CSN mais baixo nos dados reais parece
-   fraqueza conhecida do estimador nessa estrutura corpo+cauda, não
-   evidência contra κ.
-2. **Invariância a θ' (descarta circularidade)**: κ_previsto=1/θ e
-   W=contagem/H^θ parece autoreferente. Recalculado W com θ'=0,60
-   (errado de propósito) — todos os números da bateria saíram
-   IDÊNTICOS aos com θ real. Confirma que κ vem dos dados, não é
-   artefato circular da definição de W.
+1. **Synthetic null** (exact pure Pareto, κ=1.536290, n=100,000):
+   Huisman gave 1.545/1.538 — nearly identical to the real value
+   (1.545/1.503) — confirms Huisman is well-calibrated at this n. GPD
+   on the synthetic ALSO shows "instability" at higher thresholds even
+   though it's an exact Pareto — the noise seen in the real data is
+   within what's expected from sampling chance, not misspecification.
+   CSN on the synthetic gave 1.55 with n_tail≈63,000 (nearly the whole
+   sample, correct for a pure Pareto); on the real data it gave 1.40
+   with n_tail≈7,300 (~7%) — an expected difference (real data has a
+   genuine non-power-law body, only the extreme tail is) — the lower
+   CSN value on real data looks like a known weakness of the estimator
+   under this body+tail structure, not evidence against κ.
+2. **Invariance to θ' (rules out circularity)**: predicted κ=1/θ and
+   W=count/H^θ looks self-referential. Recomputed W with θ'=0.60
+   (deliberately wrong) — every number in the battery came out
+   IDENTICAL to those with the real θ. Confirms κ comes from the data,
+   not a circular artifact of W's definition.
 
-**Veredito honesto**: NÃO é "confirmado" nem "fechado". (1) Vuong foi
-para "indistinguível", não "lei de potência vence" — remove a
-desconfirmação anterior, não confirma sobre a lognormal; (2) W
-provadamente ainda não convergiu (mediana cai monotonicamente de 2,04
-em H=10⁵ a 0,94 em H=10⁸, mesmo com índice de cauda estável — forma
-estabiliza antes da escala); (3) o espalhamento entre estimadores
-(1,40-1,55) agora está calibrado, não só observado — calibrado não é
-decidido. Mas a evidência passa de INCONCLUSIVA para FORTEMENTE
-FAVORÁVEL a κ=1,536290 — exatamente o padrão que o próprio paper (§3.3)
-propôs como necessário ("comparação pré-registrada... orçamento muito
-maior"). Ver H-129 para o registro completo.
+**Honest verdict**: this is NOT "confirmed" nor "closed". (1) Vuong
+went to "indistinguishable", not "power law wins" — removes the
+earlier disconfirmation, doesn't confirm over lognormal; (2) W
+provably still hasn't converged (median drops monotonically from 2.04
+at H=10⁵ to 0.94 at H=10⁸, even with the tail index stable — shape
+stabilizes before scale); (3) the spread across estimators
+(1.40-1.55) is now calibrated, not just observed — calibrated isn't
+the same as decided. But the evidence moves from INCONCLUSIVE to
+STRONGLY FAVORABLE for κ=1.536290 — exactly the pattern the paper
+itself (§3.3) proposed as necessary ("pre-registered comparison... a
+much larger budget"). See H-129 for the full record.
 
-## Arquivos
+## Files
 
-- `experiment_tail_index_q5.py` — Rodada 1 (Hill/Zipf simples).
-- `results.json` — resultados da Rodada 1.
-- `full_battery.py` — Rodada 2 (bateria de 4 estimadores).
-- `stage0_iid_power_check.ABANDONED.py` — ideia descartada, documentada.
-- `stage1_exact_moment_test.py` — Rodada 3 (momento populacional exato).
-- `stage1_moment_results.json` — resultados da Rodada 3 (k=5..11).
-- `rerun_save_raw.py` — script auxiliar que reroda a Rodada 1 salvando
-  amostras brutas de W_v (usado para alimentar a Rodada 2 sem refazer
-  o DFS).
-- `stage2_periodogram.py` — Estágio 2 (teste log-periódico pré-registrado).
-- `stage2_periodogram_results.json` — resultados do Estágio 2 (4 headrooms).
-- `stage3_k_axis_check.py` — checagem de monotonicidade no eixo k (sem
-  ajuste citável — ver seção "Checagem complementar no eixo k" acima).
+- `experiment_tail_index_q5.py` — Round 1 (simple Hill/Zipf).
+- `results.json` — Round 1 results.
+- `full_battery.py` — Round 2 (battery of 4 estimators).
+- `stage0_iid_power_check.ABANDONED.py` — a discarded idea, documented.
+- `stage1_exact_moment_test.py` — Round 3 (exact population moment).
+- `stage1_moment_results.json` — Round 3 results (k=5..11).
+- `rerun_save_raw.py` — helper script that reruns Round 1 saving raw
+  W_v samples (used to feed Round 2 without redoing the DFS).
+- `stage2_periodogram.py` — Stage 2 (pre-registered log-periodic test).
+- `stage2_periodogram_results.json` — Stage 2 results (4 headrooms).
+- `stage3_k_axis_check.py` — monotonicity check on the k axis (no
+  citable fit — see the "Complementary check on the k axis" section
+  above).
 - `stage4_type_constants_check.py` / `stage4_type_constants_results.json`
-  — Estágio 4 (família de escala por tipo, confirmada).
+  — Stage 4 (scale family by type, confirmed).
 - `stage5_rescaled_pool_battery.py` / `stage5_rescaled_pool_results.json`
-  — Estágio 5 (pool reescalado, não melhora o teste de κ).
-- `stage6_large_sample_generation.py` — Estágio 6, gera 100.000 raízes
-  em paralelo (salva em `/tmp/tail_index_q5_large_sample.json`, não
-  commitado — regenerável deterministicamente, ~73 min, 12 processos).
+  — Stage 5 (rescaled pool, doesn't improve the test of κ).
+- `stage6_large_sample_generation.py` — Stage 6, generates 100,000
+  roots in parallel (saves to `/tmp/tail_index_q5_large_sample.json`,
+  not committed — deterministically regenerable, ~73 min, 12
+  processes).
 - `stage6_large_sample_battery.py` / `stage6_large_sample_battery_results.json`
-  — bateria de 4 estimadores na amostra grande (evidência favorável).
+  — battery of 4 estimators on the large sample (favorable evidence).
 - `stage6_calibration_checks.py` / `stage6_calibration_output.txt` —
-  nulo sintético + invariância a θ' (as duas calibrações de sanidade
-  do Estágio 6; script não salva JSON, só imprime — saída completa
-  preservada no .txt).
+  synthetic null + invariance to θ' (the two Stage 6 sanity
+  calibrations; the script doesn't save JSON, only prints — full
+  output preserved in the .txt).
 
-Mirror público (código idêntico, adaptado para autocontido):
+Public mirror (identical code, adapted to be self-contained):
 `collatz-endogeny/sec3-pressure-equation/` (`full_battery.py`,
 `exact_moment_test.py`).
 
-## Reproduzir
+## Reproduce
 
 ```
-python3 experiment_tail_index_q5.py    # ~20 min, Rodada 1
-python3 full_battery.py                # ~25 min, Rodada 2 (precisa das amostras brutas — ver rerun_save_raw.py)
-python3 stage1_exact_moment_test.py    # ~15 min (k ate 11), usa ~10-15GB RAM no pico
-python3 stage2_periodogram.py          # segundos, precisa das amostras brutas (rerun_save_raw.py)
-python3 stage3_k_axis_check.py         # segundos, usa stage1_moment_results.json
-python3 stage4_type_constants_check.py # ~1 min, reconstroi raizes + amostras brutas
-python3 stage5_rescaled_pool_battery.py # ~2 min, idem
-python3 stage6_large_sample_generation.py # ~73 min (12 processos), 100k raizes
-python3 stage6_large_sample_battery.py    # ~2 min, usa a saida do anterior
-python3 stage6_calibration_checks.py      # ~2 min, idem
+python3 experiment_tail_index_q5.py    # ~20 min, Round 1
+python3 full_battery.py                # ~25 min, Round 2 (needs the raw samples — see rerun_save_raw.py)
+python3 stage1_exact_moment_test.py    # ~15 min (k up to 11), uses ~10-15GB RAM at peak
+python3 stage2_periodogram.py          # seconds, needs the raw samples (rerun_save_raw.py)
+python3 stage3_k_axis_check.py         # seconds, uses stage1_moment_results.json
+python3 stage4_type_constants_check.py # ~1 min, reconstructs roots + raw samples
+python3 stage5_rescaled_pool_battery.py # ~2 min, same
+python3 stage6_large_sample_generation.py # ~73 min (12 processes), 100k roots
+python3 stage6_large_sample_battery.py    # ~2 min, uses the output above
+python3 stage6_calibration_checks.py      # ~2 min, same
 ```
 
-## Próximos passos (se a linha for retomada)
+## Next steps (if the line is resumed)
 
-1. ~~Controle analítico do espectro subdominante do operador de
-   transferência~~ — **fechado por E-105**: não há autovalor
-   subdominante isolado a controlar, o gap espectral da camada linear é
-   perfeito e comprovado.
-2. ~~Testar o ajuste log-periódico contra a lei de potência pura~~ —
-   **fechado pelo Estágio 2 (2026-07-19)**: testado e não suportado,
-   consistente com a derivação teórica do Fable (caso não-aritmético).
-   Ver seção acima.
-3. ~~Bateria estatística completa (CSN+Vuong pré-registrado) com
-   amostra muito maior (10^5+ raízes)~~ — **feito, Estágio 6
-   (2026-07-19)**: 100.000 raízes, evidência passa de inconclusiva
-   para fortemente favorável a κ=1,536290 (GPD com platô limpo pela
-   primeira vez, Huisman muito estável, Vuong deixa de favorecer
-   lognormal). Duas calibrações de sanidade (nulo sintético,
-   invariância a θ') não revelaram artefato. NÃO é confirmação/
-   fechamento (Vuong é "indistinguível", não "lei de potência vence";
-   W ainda não convergiu — mediana cai monotonicamente com headroom).
-   Ver seção "Estágio 6" acima e H-129 para o registro completo. Se
-   quiser ir além: headroom maior (>10⁸) exigiria mais tempo de DFS por
-   raiz, ainda não tentado.
-4. Ver H-129 para uma frente teórica paralela (otimização ergódica)
-   que pode dar uma caracterização exata do congelamento sem depender
-   de estimadores numéricos.
-5. ~~Testar o transiente k^-0,222 no eixo em que ele foi observado~~ —
-   checagem leve feita (`stage3_k_axis_check.py`): sem oscilação visível
-   na razão de incrementos de M_k(p), k=5..11. Só 5-7 pontos existem por
-   causa do teto real de memória de 5^k — não dá para medir decaimento
-   de amplitude com k nem localizar "0,222" com esses dados. **Item real
-   que resta, não executado**: localizar a derivação original de
-   "0,222" (busca, não cálculo novo) ou estender k além do teto atual
-   (formulação nova, custo alto).
-6. ~~Previsão colateral falsificável (pesos por tipo de resíduo)~~ —
-   **feita, Estágio 4 (2026-07-19)**: CONFIRMADA (família de escala
-   exata por tipo), mas mostrou não testar κ (cancela algebricamente).
-   Tentativa de usar isso para melhorar o teste de κ (Estágio 5) também
-   feita — não ajudou. Ver seções acima.
+1. ~~Analytic control of the transfer operator's subdominant
+   spectrum~~ — **closed by E-105**: there's no isolated subdominant
+   eigenvalue to control, the linear layer's spectral gap is perfect
+   and proven.
+2. ~~Test the log-periodic fit against the pure power law~~ —
+   **closed by Stage 2 (2026-07-19)**: tested and not supported,
+   consistent with the Fable's theoretical derivation (non-arithmetic
+   case). See section above.
+3. ~~Full statistical battery (pre-registered CSN+Vuong) with a much
+   larger sample (10^5+ roots)~~ — **done, Stage 6 (2026-07-19)**:
+   100,000 roots, evidence moves from inconclusive to strongly
+   favorable for κ=1.536290 (GPD with a clean plateau for the first
+   time, Huisman very stable, Vuong stops favoring lognormal). Two
+   sanity calibrations (synthetic null, invariance to θ') revealed no
+   artifact. NOT confirmation/closure (Vuong is "indistinguishable",
+   not "power law wins"; W hasn't converged yet — median drops
+   monotonically with headroom). See the "Stage 6" section above and
+   H-129 for the full record. To go further: larger headroom (>10⁸)
+   would require more DFS time per root, not yet attempted.
+4. See H-129 for a parallel theoretical front (ergodic optimization)
+   that might give an exact characterization of the freezing without
+   relying on numerical estimators.
+5. ~~Test the k^-0.222 transient on the axis where it was observed~~ —
+   a light check done (`stage3_k_axis_check.py`): no oscillation
+   visible in the ratio of M_k(p) increments, k=5..11. Only 5-7 points
+   exist because of the real 5^k memory ceiling — can't measure
+   amplitude decay with k nor locate "0.222" with this data. **Real
+   item that remains, not executed**: locate the original derivation
+   of "0.222" (a search, not new computation) or extend k beyond the
+   current ceiling (a new formulation, high cost).
+6. ~~Falsifiable collateral prediction (weights by residue type)~~ —
+   **done, Stage 4 (2026-07-19)**: CONFIRMED (exact scale family by
+   type), but shown not to test κ (cancels algebraically). An attempt
+   to use this to improve the test of κ (Stage 5) was also made — it
+   didn't help. See sections above.

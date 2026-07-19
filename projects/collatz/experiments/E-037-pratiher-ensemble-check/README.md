@@ -1,62 +1,63 @@
-# E-037 — Verificação da Conjectura 10.4 de Pratiher (2026)
+# E-037 — Verification of Pratiher's (2026) Conjecture 10.4
 
-Hipótese relacionada: [`H-037-pratiher-form-off-by-one.md`](../../hypotheses/H-037-pratiher-form-off-by-one.md)
+Related hypothesis: [`H-037-pratiher-form-off-by-one.md`](../../hypotheses/H-037-pratiher-form-off-by-one.md)
 
-## O que foi testado
+## What was tested
 
-Objetivo original: verificar se Freq_a(N) (fração assintótica de {1,...,N}
-cuja órbita atinge, pela primeira vez, uma potência de 2 ≡8 mod9, "forma
-𝔞" na notação de Pratiher) converge para α≈0,9762 como o paper afirma
-(Conjecture 10.4), e se esse valor é derivável por métodos de
-equidistribuição/operador de transferência.
+Original goal: verify whether Freq_a(N) (the asymptotic fraction of
+{1,...,N} whose orbit first reaches a power of 2 ≡8 mod9, "form 𝔞" in
+Pratiher's notation) converges to α≈0.9762 as the paper claims
+(Conjecture 10.4), and whether this value is derivable via
+equidistribution/transfer-operator methods.
 
-Implementação: para cada n∈[1,N], simula a trajetória de Collatz direta
-(não acelerada) até encontrar a primeira potência de 2 (checagem via bit
-trick `n & (n-1) == 0`), extrai o expoente M, e classifica `M mod 6` na
-tabela do próprio Pratiher (Teorema 4.3: 0↔𝔡, 1↔𝔠, 2↔𝔟, 3↔𝔞, 4↔𝔣, 5↔𝔢).
-Memoiza por convergência de trajetórias (múltiplos n compartilham cauda).
+Implementation: for each n∈[1,N], simulates the direct (not
+accelerated) Collatz trajectory until finding the first power of 2
+(checked via the bit trick `n & (n-1) == 0`), extracts the exponent M,
+and classifies `M mod 6` per Pratiher's own table (Theorem 4.3: 0↔𝔡,
+1↔𝔠, 2↔𝔟, 3↔𝔞, 4↔𝔣, 5↔𝔢). Memoizes via trajectory convergence (multiple
+n share a tail).
 
-## Resultado
+## Result
 
-**A distribuição numérica bate quase exatamente com a tabela de Pratiher
-(Observação 10.2) — mas sob os rótulos ERRADOS.**
+**The numerical distribution matches Pratiher's table (Observation
+10.2) almost exactly — but under the WRONG labels.**
 
-| N | minha forma dominante (M par) | Pratiher relata |
+| N | my dominant form (M even) | Pratiher reports |
 |---|---|---|
-| 10^6 | 𝔣 = 0,976082 | Freq_a(10^6) — paper não lista, mas tendência bate |
-| 10^7 | 𝔣 = 0,9761136 | Freq_a(10^7) = 0,97611 |
-| 10^7 | 𝔟 = 0,0238808 | Freq_c(10^7) = 0,02388 |
+| 10^6 | 𝔣 = 0.976082 | Freq_a(10^6) — not listed in the paper, but the trend matches |
+| 10^7 | 𝔣 = 0.9761136 | Freq_a(10^7) = 0.97611 |
+| 10^7 | 𝔟 = 0.0238808 | Freq_c(10^7) = 0.02388 |
 
-Todas as 6 formas conferem **exatamente** sob um deslocamento cíclico de
-1 posição na correspondência (M mod6 ↔ letra): o valor que Pratiher
-relata para a forma X é, número por número (inclusive nas caudas raras:
-4, 4, 4, 44 em 10^7), o que este script calcula para a forma em
-M ≡ (X's M + 1) mod 6. Ver `hypotheses/H-037...md` para a tabela completa
-de correspondência e o argumento teórico (paridade, idêntico ao mecanismo
-de H-012) que prova que a forma dominante REAL tem que ter M par — nunca
-ímpar como a Tabela 10.2 do paper alega.
+All 6 forms match **exactly** under a cyclic shift of 1 position in the
+correspondence (M mod6 ↔ letter): the value Pratiher reports for form X
+is, number for number (including in the rare tails: 4, 4, 4, 44 at
+10^7), what this script computes for the form at
+M ≡ (X's M + 1) mod 6. See `hypotheses/H-037...md` for the full
+correspondence table and the theoretical argument (parity, identical to
+H-012's mechanism) proving that the REAL dominant form must have M
+even — never odd, as the paper's Table 10.2 claims.
 
-Verificação adicional (exata, não só numérica): as 3 formas de "cauda"
-com M ímpar (as únicas que podem vir de n JÁ sendo uma potência de 2 com
-expoente ímpar, já que nenhuma trajetória não-trivial pode entrar num
-expoente ímpar) têm contagem EXATA de 4 cada em N=10^7 — batendo
-exatamente com a contagem teórica de potências de 2 de expoente ímpar
-≤10^7 distribuídas por resíduo mod6 (12 expoentes ímpares ≤23, 4 em cada
-classe mod6). Ver seção "Verificação exata" em H-037.md.
+Additional (exact, not just numerical) verification: the 3 "tail" forms
+with M odd (the only ones that can come from n ALREADY being a power of
+2 with an odd exponent, since no non-trivial trajectory can enter an
+odd exponent) have an EXACT count of 4 each at N=10^7 — matching exactly
+the theoretical count of odd-exponent powers of 2 ≤10^7 distributed by
+residue mod6 (12 odd exponents ≤23, 4 in each mod6 class). See the
+"Exact verification" section in H-037.md.
 
-## Reproduzir
+## Reproduce
 
-`/home/rat/.venv/bin/python3 experiment.py [N]` (sem argumento, roda
-N=10,100,...,10^7 em sequência; ~8s para N=10^7 em single-thread com
-memoização).
+`/home/rat/.venv/bin/python3 experiment.py [N]` (with no argument, runs
+N=10,100,...,10^7 in sequence; ~8s for N=10^7 single-threaded with
+memoization).
 
-## Status de H-037
+## Status of H-037
 
-**Refutada a pergunta original** (não foi isso que motivou a
-investigação de fato — a pergunta "dá para derivar α por
-equidistribuição" ficou em suspenso), mas **encontrado algo mais
-concreto**: evidência muito forte (correspondência exata, não
-aproximada, em todas as 6 classes) de um erro de rotulagem
-off-by-one no paper de Pratiher — os números (0,9762 / 0,0238) estão
-corretos, a atribuição de qual "forma" carrega cada número está
-deslocada em 1 posição no ciclo de 6.
+**The original question refuted** (that isn't actually what motivated
+the investigation — the question "can α be derived via
+equidistribution" was left hanging), but **something more concrete was
+found**: very strong evidence (exact, not approximate, correspondence
+across all 6 classes) of an off-by-one labeling error in Pratiher's
+paper — the numbers (0.9762 / 0.0238) are correct, the assignment of
+which "form" carries which number is shifted by 1 position in the
+6-cycle.

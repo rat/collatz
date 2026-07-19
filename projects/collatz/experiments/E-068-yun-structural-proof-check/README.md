@@ -1,45 +1,45 @@
-# E-068 — Verificação do paper #076 (Yun, "A Structural Proof of the Collatz Conjecture") — ALEGAÇÃO DE PROVA
+# E-068 — Verification of paper #076 (Yun, "A Structural Proof of the Collatz Conjecture") — PROOF CLAIM
 
-Hipótese relacionada: [`H-068-yun-structural-proof-review.md`](../../hypotheses/H-068-yun-structural-proof-review.md)
+Related hypothesis: [`H-068-yun-structural-proof-review.md`](../../hypotheses/H-068-yun-structural-proof-review.md)
 
 ## Paper
 
 Yun, Y.H. (2026). *A Structural Proof of the Collatz Conjecture via
-non-repeating trajectory and Recursive Decay*. osf.io (não
-peer-reviewed). PDF local:
+non-repeating trajectory and Recursive Decay*. osf.io (not
+peer-reviewed). Local PDF:
 `literature/papers/075_Structural-Proof-Collatz-nonrepeating.pdf`.
 
-## Veredito
+## Verdict
 
-**NÃO é uma prova válida** — mais fraco que o item 049 (Boyle, H-065).
-Contém três argumentos circulares independentes:
+**NOT a valid proof** — weaker than item 049 (Boyle, H-065). Contains
+three independent circular arguments:
 
-1. **Gap mais grave** (Seção 8): a "função de posto"
-   `r(x):=min{n : f^(n)(x)=1}` só está definida para `x` cuja órbita
-   já atinge 1 — presume a própria conclusão. Demonstrado por
-   analogia com um mapa que provadamente diverge (`g(x)=2x`), cuja
-   "função de posto" análoga também fica indefinida.
-2. Teorema 6.1: "o único ponto fixo conhecido é 1" — apresenta a
-   conclusão (ausência de outros ciclos) como premissa.
-3. Seção 5/9.2.3: falácia sobre cardinalidades infinitas
-   (não-injetividade não implica convergência dinâmica).
+1. **Most severe gap** (Section 8): the "rank function"
+   `r(x):=min{n : f^(n)(x)=1}` is only defined for `x` whose orbit
+   already reaches 1 — it presumes its own conclusion. Demonstrated by
+   analogy with a map that provably diverges (`g(x)=2x`), whose
+   analogous "rank function" is likewise undefined.
+2. Theorem 6.1: "the only known fixed point is 1" — presents the
+   conclusion (absence of other cycles) as a premise.
+3. Section 5/9.2.3: a fallacy about infinite cardinalities
+   (non-injectivity doesn't imply dynamical convergence).
 
-Erro aritmético concreto também encontrado (Equação 9.8): `f(5)` e
-`f(21)` calculados com expoentes de 2 errados, chegando a um
-resultado (2) que nem é ímpar.
+A concrete arithmetic error was also found (Equation 9.8): `f(5)` and
+`f(21)` computed with wrong powers of 2, arriving at a result (2) that
+isn't even odd.
 
-## O que foi testado
+## What was tested
 
-1. Lema 6.1 (distinção de vizinhos) — correto.
-2. Erro aritmético na Equação 9.8 — confirmado.
-3. Contraexemplo de método para a função de posto (Parte 3).
-4. Busca computacional por ciclos não-triviais até 2 milhões — nenhum
-   encontrado (não prova a ausência, só não a contradiz).
+1. Lemma 6.1 (neighbor distinction) — correct.
+2. Arithmetic error in Equation 9.8 — confirmed.
+3. Method counterexample for the rank function (Part 3).
+4. Computational search for non-trivial cycles up to 2 million — none
+   found (doesn't prove their absence, just doesn't contradict it).
 
-## Como reproduzir
+## How to reproduce
 
 ```
 python3 experiment.py
 ```
 
-Sem dependências além da stdlib. Roda em alguns segundos.
+No dependencies beyond the stdlib. Runs in a few seconds.

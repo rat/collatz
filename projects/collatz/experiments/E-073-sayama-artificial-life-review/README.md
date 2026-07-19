@@ -1,31 +1,31 @@
-# E-073 — Revisão de Sayama, "An Artificial Life View of the Collatz Problem" (2011)
+# E-073 — Review of Sayama, "An Artificial Life View of the Collatz Problem" (2011)
 
-Hipótese relacionada: [`H-073-sayama-artificial-life-review.md`](../../hypotheses/H-073-sayama-artificial-life-review.md)
+Related hypothesis: [`H-073-sayama-artificial-life-review.md`](../../hypotheses/H-073-sayama-artificial-life-review.md)
 
-## O que foi feito
+## What was done
 
-Verificamos as duas fórmulas centrais do paper (item 103): taxa de
-crescimento L_app=log₂3≈1,585 bits/passo (Eq.5) e taxa de extinção
-R_app=2 bits/passo (Eq.6), para a dinâmica acelerada sem divisão
+We verified the paper's two central formulas (item 103): growth rate
+L_app=log₂3≈1.585 bits/step (Eq.5) and extinction rate R_app=2
+bits/step (Eq.6), for the accelerated, division-free dynamics
 x_{t+1}=3x_t+LSNB(x_t).
 
-## Achado interessante durante a verificação
+## Interesting finding during verification
 
-Medir L sobre uma trajetória longa deu ~2,0 em vez de ~1,585 — pareceu
-uma discrepância real. Investigação mostrou que potências de 2 são
-estado absorvente exato dessa dinâmica (3·2^k+2^k=2^(k+2)), e 200/200
-amostras aleatórias atingem uma potência de 2 em ≤500 passos. Medindo
-só a fase ativa (antes de atingir a potência de 2), a taxa bate com
-log₂3 dentro de <0,5%. **Não é um erro do paper** — o texto já reconhece
-esse caso extremo explicitamente logo após a Eq.5.
+Measuring L over a long trajectory gave ~2.0 instead of ~1.585 — it
+looked like a real discrepancy. Investigation showed powers of 2 are an
+exact absorbing state of this dynamics (3·2^k+2^k=2^(k+2)), and 200/200
+random samples reach a power of 2 within ≤500 steps. Measuring only the
+active phase (before reaching the power of 2), the rate matches log₂3
+within <0.5%. **Not an error in the paper** — the text already
+explicitly acknowledges this extreme case right after Eq.5.
 
-## Resultado
+## Result
 
-Ambas as fórmulas centrais confirmadas. Ver H-073 para o veredito
-completo e a discussão sobre o que esse estado absorvente implica para
-o alcance da "explicação ecológica" proposta pelo paper.
+Both central formulas confirmed. See H-073 for the full verdict and the
+discussion of what this absorbing state implies for the reach of the
+"ecological explanation" the paper proposes.
 
-## Reproduzir
+## Reproduce
 
 ```
 python3 experiment.py

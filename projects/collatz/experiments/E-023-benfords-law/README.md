@@ -1,54 +1,56 @@
-# E-023 — Lei de Benford nos valores da órbita de Collatz
+# E-023 — Benford's Law in Collatz orbit values
 
-Hipótese relacionada: [`H-023-benfords-law.md`](../../hypotheses/H-023-benfords-law.md)
+Related hypothesis: [`H-023-benfords-law.md`](../../hypotheses/H-023-benfords-law.md)
 
-Origem: vídeo do Veritasium sobre a Conjectura de Collatz (trazido pelo
-diretor científico).
+Origin: a Veritasium video about the Collatz Conjecture (brought by the
+scientific director).
 
-## O que foi testado
+## What was tested
 
-Se os valores visitados numa órbita de Collatz seguem a Lei de Benford
-(P(primeiro dígito=d) = log₁₀(1+1/d), P(1)≈30.1%). Dois testes limpos
-(evitando a armadilha de colisão de órbitas):
-(a) uma única órbita longa (837799, 525 passos);
-(b) 500.000 órbitas independentes, um valor por órbita (n grande e
-distinto, valor tomado após um número aleatório de passos, 10-200).
+Whether the values visited in a Collatz orbit follow Benford's Law
+(P(first digit=d) = log₁₀(1+1/d), P(1)≈30.1%). Two clean tests
+(avoiding the orbit-collision pitfall):
+(a) a single long orbit (837799, 525 steps);
+(b) 500,000 independent orbits, one value per orbit (large, distinct n,
+value taken after a random number of steps, 10-200).
 
-## Bug metodológico encontrado e corrigido
+## Methodological bug found and fixed
 
-Primeira tentativa da parte (b) deu um ajuste muito ruim (qui-quadrado=837,
-p≈10⁻¹¹²) — 2.61% das amostras já haviam atingido n=1 antes do fim da janela
-de passos escolhida, "prendendo" o valor em 1 (dígito 1) artificialmente e
-inflando essa contagem. Um teste com janela ainda maior (50-2000 passos)
-tornou isso dramaticamente óbvio: 91.7% das amostras davam dígito 1, porque
-a maioria das órbitas já tinha convergido bem antes do fim da janela.
-**Corrigido** descartando amostras que atingem 1 antes do fim da janela em
-vez de contar o 1 espúrio.
+The first attempt at part (b) gave a very poor fit (chi-square=837,
+p≈10⁻¹¹²) — 2.61% of samples had already reached n=1 before the end of
+the chosen step window, artificially "trapping" the value at 1 (digit
+1) and inflating that count. A test with an even larger window
+(50-2000 steps) made this dramatically obvious: 91.7% of samples gave
+digit 1, because most orbits had already converged well before the
+window ended. **Fixed** by discarding samples that reach 1 before the
+window ends, instead of counting the spurious 1.
 
-## Resultado (após correção)
+## Result (after correction)
 
-- **(a) Órbita única**: qui-quadrado=7.49, p=0.486 — **consistente com
-  Benford** (amostra modesta, 525 pontos).
-- **(b) 500.000 órbitas independentes**: ajuste excelente em magnitude —
-  dígito 1: 30.11% observado vs. 30.10% previsto; todos os outros dígitos
-  também batem na 3ª-4ª casa decimal. Qui-quadrado=43.10, p=1.4×10⁻⁶ —
-  tecnicamente "significativo", mas com desvios absolutos minúsculos,
-  esperado dado o tamanho enorme da amostra (mesmo desvios de ruído fino
-  ficam detectáveis com n=500.000).
+- **(a) Single orbit**: chi-square=7.49, p=0.486 — **consistent with
+  Benford** (modest sample, 525 points).
+- **(b) 500,000 independent orbits**: excellent fit in magnitude —
+  digit 1: 30.11% observed vs. 30.10% predicted; every other digit also
+  matches to the 3rd-4th decimal place. Chi-square=43.10, p=1.4×10⁻⁶ —
+  technically "significant", but with tiny absolute deviations,
+  expected given the huge sample size (even fine noise deviations
+  become detectable with n=500,000).
 
-Reproduzir: `python3 experiment.py 837799 500000`.
+Reproduce: `python3 experiment.py 837799 500000`.
 
-## Conclusão
+## Conclusion
 
-A Lei de Benford é confirmada com excelente precisão prática nos valores de
-órbitas de Collatz — consequência natural do comportamento tipo "passeio
-aleatório multiplicativo" já estabelecido em H-001/H-010/H-011/H-017 (o
-logaritmo do valor "equidistribui" ao longo da órbita). Não é uma
-descoberta matemática nova, mas conecta uma observação popular (do vídeo)
-ao nosso próprio arcabouço teórico já validado, e o processo revelou (e
-corrigiu) um viés metodológico real na amostragem.
+Benford's Law is confirmed with excellent practical precision in
+Collatz orbit values — a natural consequence of the "multiplicative
+random walk"-like behavior already established in H-001/H-010/H-011/
+H-017 (the value's logarithm "equidistributes" along the orbit). Not a
+new mathematical discovery, but it connects a popular observation
+(from the video) to our own already-validated theoretical framework,
+and the process revealed (and fixed) a real methodological bias in the
+sampling.
 
-## Status de H-023
+## Status of H-023
 
-**Confirmada** (excelente ajuste prático; desvio estatístico residual é
-esperado dado o tamanho da amostra, não uma falha real do modelo).
+**Confirmed** (excellent practical fit; the residual statistical
+deviation is expected given the sample size, not a real model
+failure).

@@ -1,39 +1,39 @@
-# E-062 — Verificação do paper #031 (Melas & Poulios, "Predicting Extreme Stopping Time Behavior")
+# E-062 — Verification of paper #031 (Melas & Poulios, "Predicting Extreme Stopping Time Behavior")
 
-Hipótese relacionada: [`H-062-melas-poulios-stopping-time-review.md`](../../hypotheses/H-062-melas-poulios-stopping-time-review.md)
+Related hypothesis: [`H-062-melas-poulios-stopping-time-review.md`](../../hypotheses/H-062-melas-poulios-stopping-time-review.md)
 
 ## Paper
 
 Melas, E. & Poulios, N.C. (2026). *Predicting Extreme Stopping Time
 Behavior in the Collatz System: A Probabilistic and Statistical
-Approach*. Journal of Dynamics and Games (AIMS), peer-reviewed. PDF
-local: `literature/papers/031_Predicting-Extreme-Stopping-Time.pdf`.
+Approach*. Journal of Dynamics and Games (AIMS), peer-reviewed. Local
+PDF: `literature/papers/031_Predicting-Extreme-Stopping-Time.pdf`.
 
-## O que foi testado
+## What was tested
 
-Paper estatístico (regressão logit + árvore de decisão) para prever
-tempo de parada extremo, não para provar Collatz. Usa `Col(n)=n/2`
-(par) `/(3n+1)/2` (ímpar) — mapa diferente do acelerado `T(n)` usado
-em outras revisões desta coleção.
+A statistical paper (logit regression + decision tree) for predicting
+extreme stopping time, not for proving Collatz. Uses `Col(n)=n/2`
+(even) `/(3n+1)/2` (odd) — a different map from the accelerated `T(n)`
+used in other reviews in this collection.
 
-1. Identidade logarítmica exata (Eq. 3), via `Fraction`, 300 casos.
-2. Exemplo numérico específico do paper (`n=10`).
-3. Sanidade do mapa Collatz modificado `Col_mod` (`n=2..200.000`).
-4. Reprodução exata e determinística (censo completo, sem amostragem
-   aleatória) das 6 janelas de densidade citadas (Figuras 7 e 8).
+1. Exact logarithmic identity (Eq. 3), via `Fraction`, 300 cases.
+2. The paper's specific numerical example (`n=10`).
+3. Sanity check of the modified Collatz map `Col_mod` (`n=2..200,000`).
+4. Exact, deterministic reproduction (full census, no random sampling)
+   of the 6 density windows cited (Figures 7 and 8).
 
-## Resultado
+## Result
 
-**Tudo confirmado exatamente**, incluindo as 6 contagens de densidade
-(potências de 10 e de 3, até `10¹⁵`). Os modelos logit/árvore de
-decisão (Seções 5-7) não foram reproduzidos byte-a-byte — dependem de
-amostragem aleatória cujo gerador/semente exato não é totalmente
-especificado no paper (fora de escopo, não uma falha).
+**Everything confirmed exactly**, including the 6 density counts
+(powers of 10 and of 3, up to `10¹⁵`). The logit/decision-tree models
+(Sections 5-7) were not reproduced byte-for-byte — they depend on
+random sampling whose exact generator/seed isn't fully specified in
+the paper (out of scope, not a failure).
 
-## Como reproduzir
+## How to reproduce
 
 ```
 python3 experiment.py
 ```
 
-Sem dependências além da stdlib (`fractions`). Roda em ~1,6s.
+No dependencies beyond the stdlib (`fractions`). Runs in ~1.6s.

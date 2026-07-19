@@ -1,68 +1,66 @@
-# E-054 — Verificação do paper #017 (Ruiz Castillo, "Medidas de Gibbs Residuales")
+# E-054 — Verification of paper #017 (Ruiz Castillo, "Residual Gibbs Measures")
 
-## Objetivo
+## Goal
 
-Verificar "Medidas de Gibbs Residuales de Ruiz Castillo y estados de
+Verify "Medidas de Gibbs Residuales de Ruiz Castillo y estados de
 equilibrio en la dinámica acelerada de la Conjetura de Collatz" (Juan
-Carlos Ruiz Castillo, 62 páginas). Quinto paper deste autor revisado
-na coleção (após item 001/H-039, item 008/H-050, item 010/H-052, item
-013/H-053). Introduz "Medidas de Gibbs Residuales" atribuindo pesos
-termodinâmicos aos cilindros realizáveis via
-`μ_t([ω]_C) ≍ exp(tL(ω) − kP_RC(t))`, usando a mesma identidade
-fundamental `S_k(φ)(ω) = −L(ω)` de sempre.
+Carlos Ruiz Castillo, 62 pages). The fifth paper by this author
+reviewed in the collection (after item 001/H-039, item 008/H-050, item
+010/H-052, item 013/H-053). Introduces "Residual Gibbs Measures"
+assigning thermodynamic weights to realizable cylinders via
+`μ_t([ω]_C) ≍ exp(tL(ω) − kP_RC(t))`, using the same fundamental
+identity `S_k(φ)(ω) = −L(ω)` as always.
 
-## O que fizemos
+## What we did
 
-Verificamos computacionalmente todas as proposições/teoremas/corolários
-concretos e verificáveis:
+We computationally verified every concrete, checkable
+proposition/theorem/corollary:
 
-1. **Proposición 1.1** (U(n) bem definido, ímpar→ímpar): confirmada.
-2. **Proposición 1.3** (interpretação logarítmica L_k=log₂(3^k/2^Ak))
-   e **Corolario 1.4** (L_k<0 ⟺ 2^Ak>3^k, via `Fraction` exata para
-   evitar falsos positivos de ponto flutuante perto do limiar — lição
-   já aplicada em H-050/E-050): confirmadas.
-3. **Teorema 3.6 / Proposición 1.5** (identidade fundamental
-   S_k(φ)(ω)=−L(ω)): confirmada — 39×5 casos, 0 falhas.
-4. **Proposición 2.6** (semiconjugação simbólica π(U(n))=σ(π(n))):
-   confirmada.
-5. **Proposición 2.11/2.13** (partição por cilindros realizáveis):
-   confirmada (checagem finita, sem ambiguidade).
-6. **Proposición 9.1** (equivalência Gibbs-residual, identidade
-   pontual de eventos): confirmada.
+1. **Proposition 1.1** (U(n) well-defined, odd→odd): confirmed.
+2. **Proposition 1.3** (logarithmic interpretation L_k=log₂(3^k/2^Ak))
+   and **Corollary 1.4** (L_k<0 ⟺ 2^Ak>3^k, via exact `Fraction` to
+   avoid floating-point false positives near the threshold — a lesson
+   already applied in H-050/E-050): confirmed.
+3. **Theorem 3.6 / Proposition 1.5** (fundamental identity
+   S_k(φ)(ω)=−L(ω)): confirmed — 39×5 cases, 0 failures.
+4. **Proposition 2.6** (symbolic semiconjugacy π(U(n))=σ(π(n))):
+   confirmed.
+5. **Proposition 2.11/2.13** (partition by realizable cylinders):
+   confirmed (a finite check, no ambiguity).
+6. **Proposition 9.1** (Gibbs-residual equivalence, pointwise event
+   identity): confirmed.
 
-## Resultado
+## Result
 
-**Nenhum erro real encontrado** — ao contrário do item 013 (H-053, que
-continha a Proposición 5.3 **falsa**, contradita pela própria
-demonstração), este paper volta ao padrão "elementar mas correto" de
-H-039/H-050/H-052. Toda derivação concreta é correta (reescrita
-algébrica trivial da mesma identidade fundamental de sempre), e todo
-resultado genuinamente em aberto é honestamente rotulado **"Conjetura"**,
-não "Teorema" ou "Proposición":
+**No real error found** — unlike item 013 (H-053, which had a
+**false** Proposition 5.3, contradicted by its own proof), this paper
+returns to the "elementary but correct" pattern of H-039/H-050/H-052.
+Every concrete derivation is correct (a trivial algebraic rewriting of
+the same fundamental identity as always), and every genuinely open
+result is honestly labeled **"Conjecture"**, not "Theorem" or
+"Proposition":
 
-- Conjetura 7.3 (propriedade cuasi-Bernoulli residual)
-- Conjetura 8.4 (Gibbs implica equilíbrio residual)
-- Conjetura 9.3 (dualidade Gibbs–grandes desviaciones)
-- Conjetura 10.4 (fórmula de dimensão Gibbs residual)
+- Conjecture 7.3 (residual quasi-Bernoulli property)
+- Conjecture 8.4 (Gibbs implies residual equilibrium)
+- Conjecture 9.3 (Gibbs–large-deviations duality)
+- Conjecture 10.4 (residual Gibbs dimension formula)
 
-**Sem consequência empírica diretamente testável** (diferente do item
-010/H-052): as conjecturas deste paper tratam da **existência** de uma
-família de medidas μ_t nunca construída explicitamente — diferente do
-operador de transferência do item 013, que tinha fórmula fechada sobre
-o espaço irrestrito e permitia teste numérico direto. Não há
-estatística computável em trajetórias reais para testar diretamente
-estas conjecturas de existência, então não escrevemos uma "Parte 2"
-empírica para este paper.
+**No directly testable empirical consequence** (unlike item 010/H-052):
+this paper's conjectures deal with the **existence** of a family of
+measures μ_t that is never explicitly constructed — unlike item 013's
+transfer operator, which had a closed formula over the unrestricted
+space and allowed direct numerical testing. There is no computable
+statistic on real trajectories to directly test these existence
+conjectures, so we did not write an empirical "Part 2" for this paper.
 
-**Nota estilística (não é erro)**: Proposición 4.4 ("interpretación
-normalizadora") é argumentada de forma retórica/informal, sem cota
-quantitativa efetivamente verificável — mas, diferente da Proposición
-5.3 do item 013, não faz nenhuma afirmação numérica concreta que seja
-falsa.
+**Stylistic note (not an error)**: Proposition 4.4 ("normalizing
+interpretation") is argued rhetorically/informally, without an
+effectively checkable quantitative bound — but, unlike item 013's
+Proposition 5.3, it makes no concrete numerical claim that is false.
 
-Ver `hypotheses/H-054-ruiz-castillo-gibbs-measures-review.md`.
+See `hypotheses/H-054-ruiz-castillo-gibbs-measures-review.md`.
 
-## Como rodar
+## How to run
 
 ```
 /home/rat/.venv/bin/python3 experiment.py

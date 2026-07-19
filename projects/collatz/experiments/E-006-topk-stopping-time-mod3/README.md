@@ -1,39 +1,42 @@
-# E-006 — Tentativa de réplica com top-K por valor bruto (não recordistas estritos)
+# E-006 — Replication attempt with top-K by raw value (not strict record holders)
 
-Hipótese relacionada: [`H-006-top-k-stopping-time-mod3.md`](../../hypotheses/H-006-top-k-stopping-time-mod3.md)
+Related hypothesis: [`H-006-top-k-stopping-time-mod3.md`](../../hypotheses/H-006-top-k-stopping-time-mod3.md)
 
-## O que foi testado
+## What was tested
 
-Tentamos aumentar o poder estatístico do achado mod-3 de H-004 usando os top-K
-números por stopping time bruto (K=200, 1000) num intervalo grande (1M-30M),
-em vez de exigir a definição estrita de "recordista" (bate todo m < n).
+We tried to increase the statistical power of the H-004 mod-3 finding
+by using the top-K numbers by raw stopping time (K=200, 1000) over a
+large interval (1M-30M), instead of requiring the strict "record
+holder" definition (beats every m < n).
 
-## Resultado
+## Result
 
-Nenhum viés mod-3 foi detectado no top-K bruto (distribuição ~uniforme,
-32-35% em cada classe, p > 0.18 em todos os testes).
+No mod-3 bias was detected in the raw top-K (~uniform distribution,
+32-35% in each class, p > 0.18 in all tests).
 
-## Por que isso NÃO refuta H-004 (diagnóstico importante)
+## Why this does NOT refute H-004 (important diagnosis)
 
-Investigando a discrepância, imprimimos os números reais do "top-50 por valor
-bruto" e comparamos com a lista oficial de recordistas estritos (OEIS
-A006877). São **populações diferentes**: só 5 dos 50 números do top-K bruto
-são recordistas estritos de verdade (ex: 15733191, 14934241, 11200681,
-8400511, 6649279); o resto são números que têm stopping time coincidentemente
-alto mas que **nunca bateram um recorde** (um n menor já havia atingido valor
-igual ou maior).
+Investigating the discrepancy, we printed the actual numbers in the
+"top-50 by raw value" and compared them to the official strict
+record-holder list (OEIS A006877). They are **different populations**:
+only 5 of the 50 numbers in the raw top-K are true strict record
+holders (e.g. 15733191, 14934241, 11200681, 8400511, 6649279); the rest
+are numbers with a coincidentally high stopping time that **never set a
+record** (a smaller n had already reached an equal or higher value).
 
-Isso significa que E-006 testou uma hipótese relacionada mas distinta de
-H-004 — "números com stopping time alto em geral" em vez de "números que
-batem um recorde novo". O viés mod-3 parece ser específico da segunda noção
-(recordista estrito), não da primeira. Ver a análise corrigida e definitiva em
-`experiments/E-004-true-record-holders/README.md` (usando a sequência oficial
-completa de recordistas estritos, n=148), que confirma o achado com força
-estatística esmagadora (p < 10^-13).
+This means E-006 tested a hypothesis related to, but distinct from,
+H-004 — "numbers with high stopping time in general" rather than
+"numbers that set a new record." The mod-3 bias appears to be specific
+to the second notion (strict record holder), not the first. See the
+corrected, definitive analysis in
+`experiments/E-004-true-record-holders/README.md` (using the complete
+official strict-record-holder sequence, n=148), which confirms the
+finding with overwhelming statistical strength (p < 10^-13).
 
-## Status de H-006
+## Status of H-006
 
-Não suportada como formulada (top-K bruto não reproduz o viés) — mas o
-diagnóstico foi valioso: esclareceu que "recordista estrito" e "top-K bruto"
-são populações genuinamente diferentes para esta pergunta, e ajudou a
-identificar (indiretamente) o erro de transcrição corrigido em E-004.
+Not supported as formulated (raw top-K doesn't reproduce the bias) —
+but the diagnosis was valuable: it clarified that "strict record
+holder" and "raw top-K" are genuinely different populations for this
+question, and it helped (indirectly) identify the transcription error
+corrected in E-004.

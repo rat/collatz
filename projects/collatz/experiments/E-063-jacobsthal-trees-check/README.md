@@ -1,55 +1,56 @@
-# E-063 — Verificação do paper #032 (Kosobutskyy & Mailland, "Jacobsthal Trees and Generalized κx±1 Transformations")
+# E-063 — Verification of paper #032 (Kosobutskyy & Mailland, "Jacobsthal Trees and Generalized κx±1 Transformations")
 
-Hipótese relacionada: [`H-063-jacobsthal-trees-review.md`](../../hypotheses/H-063-jacobsthal-trees-review.md)
+Related hypothesis: [`H-063-jacobsthal-trees-review.md`](../../hypotheses/H-063-jacobsthal-trees-review.md)
 
 ## Paper
 
 Kosobutskyy, P. & Mailland, D. (2026). *Jacobsthal Trees and
 Generalized κx±1 Transformations*. Communications in Advanced
-Mathematical Sciences, 9(2), 77-91, peer-reviewed. PDF local:
+Mathematical Sciences, 9(2), 77-91, peer-reviewed. Local PDF:
 `literature/papers/032_Jacobsthal-Trees-Generalized-Transformations.pdf`.
 
-Também cobre os exemplos numéricos do paper #084 (mesmos autores, versão
-pedagógica restrita a κ=3) — ver [`H-069`](../../hypotheses/H-069-mailland-kosobutskyy-jacobsthal-viewpoint-review.md).
+Also covers the numerical examples of paper #084 (same authors, a
+pedagogical version restricted to κ=3) — see
+[`H-069`](../../hypotheses/H-069-mailland-kosobutskyy-jacobsthal-viewpoint-review.md).
 
-## O que foi testado
+## What was tested
 
-Paper estrutural/notacional que generaliza a árvore inversa de Collatz
-para `κx±1` (κ ímpar qualquer) via "números de Jacobsthal
-generalizados". Não alega provar a conjectura clássica.
+A structural/notational paper generalizing the Collatz reverse tree to
+`κx±1` (any odd κ) via "generalized Jacobsthal numbers". Doesn't claim
+to prove the classical conjecture.
 
-1. Definição 1.1 vs. Tabela 2.1 (reduz-se a Jacobsthal clássico, OEIS
-   A001045, no caso κ=3).
-2. Teorema 2.1 (periodicidade) — `T_κ` = ordem multiplicativa de 2 mod
-   κ, testado para κ=1..199 e contra a Tabela 2.2 (incluindo um número
-   de 52 dígitos para κ=181).
-3. Tabela 2.4 (formação periódica dos nós) — 24 células.
-4. Tabela 2.6 / Remark 1.7 (pontos-atratores) — simulação direta do
-   mapa forward para κ=3,5,181.
-5. Property 2.6 (unicidade da partição).
-6. Property 2.7 (nós de ramificação = valores ímpares no ciclo).
-7. Property 2.5 (razão assintótica entre nós consecutivos).
-8. Exemplos específicos do paper #084 (caso especial κ=3).
+1. Definition 1.1 vs. Table 2.1 (reduces to classical Jacobsthal, OEIS
+   A001045, in the κ=3 case).
+2. Theorem 2.1 (periodicity) — `T_κ` = multiplicative order of 2 mod κ,
+   tested for κ=1..199 and against Table 2.2 (including a 52-digit
+   number for κ=181).
+3. Table 2.4 (periodic node formation) — 24 cells.
+4. Table 2.6 / Remark 1.7 (attractor points) — direct simulation of the
+   forward map for κ=3,5,181.
+5. Property 2.6 (uniqueness of the partition).
+6. Property 2.7 (branching nodes = odd values in the cycle).
+7. Property 2.5 (asymptotic ratio between consecutive nodes).
+8. Specific examples from paper #084 (special case κ=3).
 
-## Resultado
+## Result
 
-**0 falhas em todas as 8 partes.** Um achado menor: o Remark 1.7 diz
-"PA={1,27,35}" para κ=181, mas a própria Tabela 2.6 mostra que `q0=1`
-diverge sob κ=181 (`⋯→1→∞`) — confirmado por simulação (diverge,
-32+ dígitos em 47 iterações). Inconsistência textual entre seções do
-mesmo paper, não um erro matemático de fundo.
+**0 failures across all 8 parts.** A minor finding: Remark 1.7 says
+"PA={1,27,35}" for κ=181, but Table 2.6 itself shows that `q0=1`
+diverges under κ=181 (`⋯→1→∞`) — confirmed by simulation (diverges,
+32+ digits after 47 iterations). A textual inconsistency between
+sections of the same paper, not an underlying mathematical error.
 
-## Nota de metodologia
+## Methodology note
 
-Duas iterações do próprio script de verificação continham bugs de
-indexação (mistura das famílias `m`/`p`, que têm paridades de índice
-diferentes) — corrigidos antes de finalizar; ver seção "Notas de
-metodologia própria" em H-063 para detalhes.
+Two iterations of our own verification script contained indexing bugs
+(mixing up the `m`/`p` families, which have different index parities)
+— fixed before finalizing; see the "Own methodology notes" section in
+H-063 for details.
 
-## Como reproduzir
+## How to reproduce
 
 ```
 python3 experiment.py
 ```
 
-Sem dependências além da stdlib. Roda em alguns segundos.
+No dependencies beyond the stdlib. Runs in a few seconds.

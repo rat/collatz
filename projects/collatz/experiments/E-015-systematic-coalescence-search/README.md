@@ -1,22 +1,22 @@
-# E-015 — Busca sistemática de coalescências mod 2^d
+# E-015 — Systematic search for coalescences mod 2^d
 
-Hipótese relacionada: [`H-015-systematic-coalescence-search.md`](../../hypotheses/H-015-systematic-coalescence-search.md)
+Related hypothesis: [`H-015-systematic-coalescence-search.md`](../../hypotheses/H-015-systematic-coalescence-search.md)
 
-## O que foi testado
+## What was tested
 
-Generalização direta da técnica de H-014: para cada classe residual
-N≡r₁ (mod 2^d), buscar M=N−k (mesmo "K" livre, k pequeno) cuja órbita
-simbólica colide exatamente com a de N, excluindo N como recordista. Busca
-para d=2 até 16, k=1 até 40, com deduplicação (uma classe só conta como
-"nova" se não for refinamento de uma exclusão de módulo menor já
-encontrada).
+Direct generalization of the H-014 technique: for each residue class
+N≡r₁ (mod 2^d), search for M=N−k (same free "K", small k) whose
+symbolic orbit collides exactly with N's, excluding N as a record
+holder. Search for d=2 through 16, k=1 through 40, with
+deduplication (a class only counts as "new" if it isn't a refinement
+of an already-found smaller-modulus exclusion).
 
-## Resultado — quantitativo
+## Result — quantitative
 
-**2.374 classes residuais genuinamente novas encontradas** (além de H-014).
-Fração cumulativa de resíduos excluídos por módulo:
+**2,374 genuinely new residue classes found** (beyond H-014).
+Cumulative fraction of excluded residues by modulus:
 
-| d (mod 2^d) | excluídos | fração |
+| d (mod 2^d) | excluded | fraction |
 |---|---|---|
 | 3 | 1/8 | 12.5% |
 | 6 | 26/64 | 40.6% |
@@ -24,46 +24,49 @@ Fração cumulativa de resíduos excluídos por módulo:
 | 12 | 2532/4096 | 61.8% |
 | 16 | 45430/65536 | **69.3%** |
 
-A fração cresce rapidamente e continua subindo com d maior (busca não
-exaustiva — parou em d=16 por escopo de tempo, não por limite teórico).
+The fraction grows rapidly and keeps rising with larger d (not an
+exhaustive search — stopped at d=16 for time scope, not a theoretical
+limit).
 
-## Verificação crítica (armadilha encontrada e resolvida)
+## Critical verification (pitfall found and resolved)
 
-Primeira tentativa de verificar os achados contra órbitas reais em K=0
-**falhou** para todos os casos testados — investigando, descobri que é um
-efeito de borda: para K muito pequeno, o valor real N=2^d·K+r é pequeno
-demais e a trajetória "colapsa" (atinge 1 ou um valor pequeno) antes do
-prefixo simbólico assumido se completar. Testando com K≥10, **todos os casos
-verificados bateram exatamente** (diferença de stopping time = previsto,
-sem exceção).
+The first attempt to verify the findings against real orbits at K=0
+**failed** for every tested case — investigating, I found it's a
+boundary effect: for K too small, the actual value N=2^d·K+r is too
+small and the trajectory "collapses" (reaches 1 or a small value)
+before the assumed symbolic prefix completes. Testing with K≥10,
+**every verified case matched exactly** (stopping-time difference =
+predicted, no exceptions).
 
-Isso tem um paralelo direto com N=2 em H-007 (onde o M dominante colapsa em 1
-— o mesmo tipo de exceção de número pequeno).
+This directly parallels N=2 in H-007 (where the dominating M collapses
+to 1 — the same kind of small-number exception).
 
-## Verificação contra os 148 recordistas oficiais
+## Verification against the 148 official record holders
 
-6 recordistas "violam" alguma classe excluída: **3, 6, 7, 9, 18, 25** — todos
-entre os primeiros 8 recordistas da lista oficial (números muito pequenos).
-Nenhum recordista maior (a partir de 27) viola qualquer exclusão encontrada.
-Isso é exatamente o efeito de borda esperado — a técnica é válida para N
-suficientemente grande dentro de cada classe; os recordistas pequenos são
-exceções conhecidas, análogas ao N=2 de H-007.
+6 record holders "violate" some excluded class: **3, 6, 7, 9, 18,
+25** — all among the first 8 record holders in the official list (very
+small numbers). No larger record holder (from 27 onward) violates any
+found exclusion. This is exactly the expected boundary effect — the
+technique is valid for N sufficiently large within each class; the
+small record holders are known exceptions, analogous to H-007's N=2.
 
-## Limitação importante (por construção, não por falta de esforço)
+## Important limitation (by construction, not for lack of effort)
 
-Esta busca é restrita a módulo 2^d. Como 2^d e 9 são coprimos, **nenhuma
-restrição mod 2^d pode dizer algo sobre o resíduo mod 9** (via teorema chinês
-do resto) — logo esta técnica **não pode, por construção, resolver H-008**
-(a ausência da classe 4 mod 9). Isso não é uma falha da busca, é uma
-limitação estrutural clara, documentada para não perder tempo tentando essa
-mesma técnica para H-008 no futuro — precisaria de uma técnica mod-3^b
-separada (ex: uma generalização de H-005 para mod 9).
+This search is restricted to modulus 2^d. Since 2^d and 9 are coprime,
+**no restriction mod 2^d can say anything about the residue mod 9**
+(via the Chinese Remainder Theorem) — so this technique **cannot, by
+construction, solve H-008** (the absence of class 4 mod 9). This isn't
+a failure of the search, it's a clear structural limitation, documented
+so as not to waste time trying this same technique on H-008 in the
+future — it would need a separate mod-3^b technique (e.g. a
+generalization of H-005 to mod 9).
 
-Reproduzir: `python3 experiment.py 16 40` (~6s).
+Reproduce: `python3 experiment.py 16 40` (~6s).
 
-## Status de H-015
+## Status of H-015
 
-**Confirmada como técnica geral e válida** (com a ressalva de N grande o
-suficiente). Não resolve H-008. Resultado quantitativo (69% dos resíduos mod
-2^16 excluídos) é, por si só, um achado interessante sobre quão "raro"
-estruturalmente é sobreviver como candidato a recordista.
+**Confirmed as a general, valid technique** (with the caveat of N being
+large enough). Does not solve H-008. The quantitative result (69% of
+residues mod 2^16 excluded) is, on its own, an interesting finding
+about how structurally "rare" it is to survive as a record-holder
+candidate.

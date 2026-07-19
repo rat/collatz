@@ -1,33 +1,32 @@
-# E-086 — Separação magnitude/resíduo em D(v), testando a crítica do Fable a H-024
+# E-086 — Magnitude/residue separation in D(v), testing Fable's critique of H-024
 
-Hipótese relacionada: [`H-086-density-magnitude-factorization.md`](../../hypotheses/H-086-density-magnitude-factorization.md)
+Related hypothesis: [`H-086-density-magnitude-factorization.md`](../../hypotheses/H-086-density-magnitude-factorization.md)
 
-## O que foi feito
+## What was done
 
-O modelo Fable, consultado para ideias criativas sobre H-013/H-018/
-H-024, apontou que o desenho experimental de H-024 (fixar resíduo mod
-3⁶, deixar magnitude variar livremente por ~860×) não separa o efeito
-de magnitude do efeito de resíduo. Testamos isso diretamente: medimos
-D(v) para muitos v com o mesmo resíduo mod 729, variando magnitude
-livremente, e fizemos a regressão log-log.
+The Fable model, consulted for creative ideas about H-013/H-018/
+H-024, pointed out that H-024's experimental design (fixing the residue
+mod 3⁶, letting magnitude vary freely by ~860×) doesn't separate the
+magnitude effect from the residue effect. We tested this directly: we
+measured D(v) for many v with the same residue mod 729, varying
+magnitude freely, and ran the log-log regression.
 
-## Resultado
+## Result
 
-D(v) ≈ C/v quase exatamente (inclinação da regressão log-log =
-−0,9971, R²=0,9991). Removendo esse termo, a variância "inexplicada"
-cai de ~300× (H-024 original) para ~1,26× — mais de duas ordens de
-magnitude de redução. A conclusão formal de H-024 continua correta
-(não existe K finito que explique D(v) sozinho), mas a magnitude do
-fenômeno restante é muito mais modesta do que parecia. Ver H-086 para
-a análise completa.
+D(v) ≈ C/v almost exactly (log-log regression slope = −0.9971,
+R²=0.9991). Removing this term, the "unexplained" variance drops from
+~300× (original H-024) to ~1.26× — more than two orders of magnitude of
+reduction. H-024's formal conclusion remains correct (no finite K
+explains D(v) alone), but the magnitude of the remaining phenomenon is
+much more modest than it appeared. See H-086 for the full analysis.
 
-## Reproduzir
+## Reproduce
 
 ```
 python3 experiment.py
 ```
 
-Ou, para reproduzir a regressão específica citada em H-086, ver o
-código inline usado na investigação (medir D(v) para v com resíduo
-fixo mod 729 e magnitude log-uniforme entre 10² e 10⁷, depois regredir
-log10(D) contra log10(v)).
+Or, to reproduce the specific regression cited in H-086, see the inline
+code used in the investigation (measure D(v) for v with fixed residue
+mod 729 and log-uniform magnitude between 10² and 10⁷, then regress
+log10(D) against log10(v)).

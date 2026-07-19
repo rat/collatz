@@ -1,33 +1,34 @@
-# E-034 — Segue-a-partir-do-vídeo: equação de ciclo e extensão de H-009
+# E-034 — Following up from the video: cycle equation and H-009 extension
 
-Hipótese relacionada: [`H-034-video-cycle-equation-followup.md`](../../hypotheses/H-034-video-cycle-equation-followup.md)
+Related hypothesis: [`H-034-video-cycle-equation-followup.md`](../../hypotheses/H-034-video-cycle-equation-followup.md)
 
-## O que foi testado
+## What was tested
 
-Parte 1: reproduz o achado específico de um vídeo informal (n=13 para 3
-multiplicações + 5 divisões) com a fórmula correta e verificada (mesma de
-H-009/E-009).
+Part 1: reproduces the specific finding from an informal video (n=13
+for 3 multiplications + 5 divisions) with the correct, verified formula
+(same as H-009/E-009).
 
-Parte 2: estende H-009 (que foi até a=14) para além disso, quantificando
-precisamente onde a explosão combinatória de composições torna força
-bruta inviável.
+Part 2: extends H-009 (which went up to a=14) beyond that, precisely
+quantifying where the combinatorial explosion of compositions makes
+brute force infeasible.
 
-## Resultado
+## Result
 
-Parte 1: **refutado** — nenhum candidato inteiro existe para (a=3,S=5) em
-nenhuma das 6 ordens. O achado do vídeo não se sustenta.
+Part 1: **refuted** — no integer candidate exists for (a=3,S=5) in any
+of the 6 orders. The video's finding doesn't hold up.
 
-Parte 2: verificação completa e limpa até **a=16** (restringindo a
-S=S_min exatamente). Além disso, a combinatória cresce rápido demais
-(bilhões de composições por par a testar) para força bruta pura.
+Part 2: complete, clean verification up to **a=16** (restricting to
+S=S_min exactly). Beyond that, the combinatorics grow too fast
+(billions of compositions per pair to test) for pure brute force.
 
-Reproduzir: `python3 experiment.py [A_MAX] [JANELA_S] [MAX_COMPOSICOES]`
-(ex: `python3 experiment.py 16 0 5000000` para a busca limpa completa).
+Reproduce: `python3 experiment.py [A_MAX] [S_WINDOW] [MAX_COMPOSITIONS]`
+(e.g. `python3 experiment.py 16 0 5000000` for the complete clean
+search).
 
-## Status de H-034
+## Status of H-034
 
-**Confirmada** — achado do vídeo tecnicamente refutado; H-009 estendido
-de a=14 para a=16 (janela mais estreita); parede combinatória
-quantificada com precisão, explicando por que a literatura profissional
-(Simons & de Weger) precisa de frações contínuas + técnicas adicionais,
-não apenas mais poder computacional.
+**Confirmed** — the video's finding is technically refuted; H-009
+extended from a=14 to a=16 (narrower window); the combinatorial wall
+precisely quantified, explaining why the professional literature
+(Simons & de Weger) needs continued fractions + additional techniques,
+not just more computational power.

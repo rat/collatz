@@ -1,46 +1,46 @@
-# E-045 — Verificação do paper #011 (Abdullah Mohammed) — alegação de prova completa
+# E-045 — Verification of paper #011 (Abdullah Mohammed) — full-proof claim
 
-## Objetivo
+## Goal
 
-Verificar "Structural Analysis, Dynamic Density Sieve, and Logarithmic
+Verify "Structural Analysis, Dynamic Density Sieve, and Logarithmic
 Contraction of Collatz Sequences" (Abdullah Mohammed, Kafr El-Sheikh
-University, Egito) — alega prova completa da Conjectura de Collatz via
-sieve de densidade geométrica + Teorema de Baker (formas lineares em
-logaritmos).
+University, Egypt) — claims a complete proof of the Collatz Conjecture
+via a geometric density sieve + Baker's theorem (linear forms in
+logarithms).
 
-## Resultado
+## Result
 
-**Seções 2-5 corretas** (mas não-novas): sieve geométrico P(M=m)=1/2^m,
-E[M]=2 (nosso próprio H-001/H-011), exclusão elementar de 1-ciclos
-(n=1/(2^m-3), única solução positiva é m=2,n=1), sequência de "special
-numbers" 1,5,21,85,341,... (OEIS A002450, números que atingem 1 em um
-passo).
+**Sections 2-5 are correct** (but not new): geometric sieve
+P(M=m)=1/2^m, E[M]=2 (our own H-001/H-011), elementary exclusion of
+1-cycles (n=1/(2^m-3), the only positive solution is m=2,n=1), the
+"special numbers" sequence 1,5,21,85,341,... (OEIS A002450, numbers
+that reach 1 in one step).
 
-**Furo decisivo na Seção 7.1 (Eq.48)**: para usar o Teorema de Baker e
-excluir ciclos não-triviais, é preciso comparar o limite inferior de
-Baker contra o valor de M/P que um ciclo REAL forçaria. A própria Seção
-6 do paper deriva a equação de ciclo 2^M=∏(3+1/n_i), que força M/P →
-log₂(3)≈1,585 para elementos grandes (provado aqui elementarmente: para
-qualquer P≥2, 3^P < ∏(3+1/n_i) < 4^P, logo M∈(P·log₂3, 2P) estritamente
-— nunca igual a 2P). Mas a Eq.48 substitui M≈2P — a expectativa
-ERGODICA/MÉDIA E[M]=2 da Seção 3, que descreve o número ímpar
-TÍPICO/ALEATÓRIO, não a restrição que um ciclo autoconsistente
-específico precisaria satisfazer. Essa substituição errada produz
-Λ≈0,288·P (cresce linearmente, confirmado bate exatamente com o número
-do paper), que trivialmente satisfaz o limite fraco de Baker — a
-"checagem" não restringe nada. A comparação que importaria (Λ→0 quando
-M/P→log₂3) é exatamente onde estaria a dificuldade genuína.
+**Decisive hole in Section 7.1 (Eq.48)**: to use Baker's theorem to
+exclude non-trivial cycles, one must compare Baker's lower bound
+against the value of M/P that a REAL cycle would force. Section 6 of
+the paper itself derives the cycle equation 2^M=∏(3+1/n_i), which
+forces M/P → log₂(3)≈1.585 for large elements (proven here
+elementarily: for any P≥2, 3^P < ∏(3+1/n_i) < 4^P, so M∈(P·log₂3, 2P)
+strictly — never equal to 2P). But Eq.48 substitutes M≈2P — the
+ERGODIC/AVERAGE expectation E[M]=2 from Section 3, which describes the
+TYPICAL/RANDOM odd number, not the constraint a specific
+self-consistent cycle would need to satisfy. This wrong substitution
+produces Λ≈0.288·P (grows linearly, confirmed to match the paper's
+number exactly), which trivially satisfies Baker's weak bound — the
+"check" restricts nothing. The comparison that would actually matter
+(Λ→0 as M/P→log₂3) is exactly where the genuine difficulty would lie.
 
-Este é o mesmo método usado de verdade por Simons & de Weger (2005) com
-constantes de Baker explícitas para excluir ciclos até certos
-comprimentos — mas não "todos os ciclos" em geral, porque não fecha
-para P arbitrariamente grande com as constantes efetivas conhecidas.
-O paper de Mohammed nem chega a esse nível (não computa C, κ
-explicitamente) e ainda usa a substituição errada.
+This is the same method genuinely used by Simons & de Weger (2005) with
+explicit Baker constants to exclude cycles up to certain lengths — but
+not "all cycles" in general, because it doesn't close for arbitrarily
+large P with the known effective constants. Mohammed's paper doesn't
+even reach that level (doesn't compute C, κ explicitly) and still uses
+the wrong substitution.
 
-Ver `hypotheses/H-045-mohammed-density-sieve-baker-flaw.md`.
+See `hypotheses/H-045-mohammed-density-sieve-baker-flaw.md`.
 
-## Como rodar
+## How to run
 
 ```
 /home/rat/.venv/bin/python3 experiment.py

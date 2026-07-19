@@ -1,114 +1,115 @@
-# E-056 — Verificação do paper #026 (Ruiz Castillo, "Grandes Desviaciones Residuales")
+# E-056 — Verification of paper #026 (Ruiz Castillo, "Residual Large Deviations")
 
-Hipótese relacionada: `H-056`.
+Related hypothesis: `H-056`.
 
 ## Paper
 
 Ruiz Castillo, J.C. (2026). *Grandes Desviaciones Residuales de Ruiz
 Castillo en la dinámica acelerada de la Conjetura de Collatz*. Zenodo,
 DOI [10.5281/zenodo.20767811](https://zenodo.org/records/20767811), 44
-páginas. Sétimo paper deste autor revisado nesta coleção (após item
-001/H-039, 008/H-050, 010/H-052, 013/H-053, 017/H-054, 020/H-055).
+pages. The seventh paper by this author reviewed in this collection
+(after item 001/H-039, 008/H-050, 010/H-052, 013/H-053, 017/H-054,
+020/H-055).
 
-PDF local: `literature/papers/026_Grandes-Desviaciones-Residuales-Ruiz-Castillo.pdf`
-(md5:f12d30c3d0e052854f6da782f0af7bab, confere com o md5 listado na
-página do Zenodo). O link original da coleção (item 026 do
-`literature/papers/INDEX.md`) aponta para o ResearchGate, que bloqueia
-download automatizado — o mesmo paper está espelhado no Zenodo (aberto,
-sem bloqueio) sob o DOI acima; usamos essa via.
+Local PDF: `literature/papers/026_Grandes-Desviaciones-Residuales-Ruiz-Castillo.pdf`
+(md5:f12d30c3d0e052854f6da782f0af7bab, matches the md5 listed on the
+Zenodo page). The original collection link (item 026 of
+`literature/papers/INDEX.md`) points to ResearchGate, which blocks
+automated download — the same paper is mirrored on Zenodo (open, no
+blocking) under the DOI above; we used that route.
 
-## O que foi testado
+## What was tested
 
-**Parte 1 — identidades algébricas (Seções 1-2), contra órbitas REAIS
-de Collatz** (não o modelo i.i.d. abstrato): Proposición 1.2
-(interpretação multiplicativa da deuda residual), Proposición 2.3
-(equivalência residual-disipativa), Corolario 2.4 (evento crítico
-x=0), Proposición 2.5 (monotonia de eventos, o análogo "para k finito"
-da Proposición 3.4 que entra no achado central). 24 valores de n (9
-fixos + 15 aleatórios ímpares até 10⁶) × 6 valores de k × (até 8
-valores de x ou 5 pares) = 2160 casos totais.
+**Part 1 — algebraic identities (Sections 1-2), against REAL Collatz
+orbits** (not the abstract i.i.d. model): Proposition 1.2
+(multiplicative interpretation of residual debt), Proposition 2.3
+(residual-dissipative equivalence), Corollary 2.4 (critical event
+x=0), Proposition 2.5 (event monotonicity, the "finite k" analogue of
+Proposition 3.4 that enters the central finding). 24 values of n (9
+fixed + 15 random odd numbers up to 10⁶) × 6 values of k × (up to 8
+values of x or 5 pairs) = 2160 total cases.
 
-**Parte 2 — modelo probabilístico ideal** (a_j iid Geométrica(1/2),
-mesmo modelo de H-001/H-011): Proposición 4.4 (E[a]=2), Teorema 4.7
-(drift residual negativo, log₂3−2), Teorema 5.2 (cota de Chernoff
-P(L_k≥0)≤e^{-ck}) — todos verificados calculando o MGF/Ψ(t) em forma
-fechada e comparando com a demonstração do próprio paper.
+**Part 2 — ideal probabilistic model** (a_j iid Geometric(1/2), the
+same model as H-001/H-011): Proposition 4.4 (E[a]=2), Theorem 4.7
+(negative residual drift, log₂3−2), Theorem 5.2 (Chernoff bound
+P(L_k≥0)≤e^{-ck}) — all verified by computing the MGF/Ψ(t) in closed
+form and comparing against the paper's own proof.
 
-**Achado central — inconsistência interna real** (não erro de cálculo
-isolado): a Definición 3.1 define I_RC(x) via o evento de cauda
-**unilateral** {L_k/k≥x}. A Proposición 3.4 (pág. 19, **já provada**)
-mostra corretamente que essa I_RC é monótona não-decrescente — mas essa
-conclusão é *condicional* à existência do limite que define I_RC em
-cada ponto. A Figura 1 (pág. 33, Seção 6, "conceptual") e a Conjetura
-7.3 (pág. 36, propriedade 2: "existe un único punto x* tal que
-I_RC(x*)=0") descrevem I_RC como uma função **bilateral** em V/U,
-positiva nos dois lados de x*=log₂3−2. A Conjetura 7.5 (pág. 38,
-conferida diretamente contra o PDF) formaliza essa mesma leitura
-bilateral: I_RC(x)=sup_{t∈ℝ}{tx−Λ(t)}, sup **irrestrito** — ou seja,
-Figura 1, Conjetura 7.3 e Conjetura 7.5 são as três mutuamente
-consistentes entre si, e é esse trio que contradiz a Proposición 3.4:
-uma função monótona não-decrescente com um zero em x* é
-obrigatoriamente zero em TODO x≤x*, não só num ponto único.
+**Central finding — a real internal inconsistency** (not an isolated
+calculation error): Definition 3.1 defines I_RC(x) via the
+**one-sided** tail event {L_k/k≥x}. Proposition 3.4 (p. 19, **already
+proven**) correctly shows this I_RC is non-decreasing — but this
+conclusion is *conditional* on the existence of the limit defining
+I_RC at each point. Figure 1 (p. 33, Section 6, "conceptual") and
+Conjecture 7.3 (p. 36, property 2: "existe un único punto x* tal que
+I_RC(x*)=0") describe I_RC as a **two-sided** function over V/U,
+positive on both sides of x*=log₂3−2. Conjecture 7.5 (p. 38, checked
+directly against the PDF) formalizes this same two-sided reading:
+I_RC(x)=sup_{t∈ℝ}{tx−Λ(t)}, an **unrestricted** sup — i.e., Figure 1,
+Conjecture 7.3, and Conjecture 7.5 are mutually consistent with each
+other, and it's this trio that contradicts Proposition 3.4: a
+non-decreasing function with a zero at x* must necessarily be zero at
+EVERY x≤x*, not just at a single point.
 
-Confirmamos de três formas independentes que I_RC(x)=0 (não positivo)
-para x<x*, e que portanto **o limite que define I_RC de fato existe
-nesse regime** (a condição de que depende a Proposición 3.4 — sem essa
-checagem, o achado seria "uma conjectura falsa" em vez de "uma
-conjectura provadamente incompatível com uma proposição já demonstrada
-no mesmo paper"):
+We confirmed in three independent ways that I_RC(x)=0 (not positive)
+for x<x*, and hence that **the limit defining I_RC does in fact exist
+in this regime** (the condition Proposition 3.4 depends on — without
+this check, the finding would be "a false conjecture" rather than "a
+conjecture provably incompatible with a proposition already proven in
+the same paper"):
 
-1. **Analiticamente**: `I_RC_restricted(x)` = sup_{t≥0}{tx−Λ(t)} — a
-   restrição de sinal padrão da teoria de grandes desvios para eventos
-   unilaterais (Dembo-Zeitouni, cap. 2), a mesma restrição usada
-   implicitamente (só para x=0) na demonstração já provada do Teorema
-   5.2. Dá exatamente 0 para x<x*, coincidindo com `J_unrestricted(x)`
-   (a Legendre-Fenchel bilateral, sem restrição — Conjetura 7.5 como
-   realmente escrita) apenas para x≥x*.
-2. **Monte Carlo**: para x=−0.6 (<x*≈−0.415), simulando somas de k
-   Geométricas(1/2) iid, P(L_k/k≥x) **sobe** de 0.667 (k=10) para
-   0.99996 (k=1000) — o evento fica cada vez MENOS raro, não mais.
-3. **Exato para k pequeno**: distribuição Binomial Negativa fechada via
-   `Fraction` (sem ponto flutuante perto do limiar), mesmo padrão
-   crescente (k=5→40: 0.623→0.804).
+1. **Analytically**: `I_RC_restricted(x)` = sup_{t≥0}{tx−Λ(t)} — the
+   standard sign restriction from large-deviations theory for one-sided
+   events (Dembo-Zeitouni, ch. 2), the same restriction used implicitly
+   (only for x=0) in the already-proven proof of Theorem 5.2. Gives
+   exactly 0 for x<x*, coinciding with `J_unrestricted(x)` (the
+   two-sided Legendre-Fenchel, unrestricted — Conjecture 7.5 as
+   literally written) only for x≥x*.
+2. **Monte Carlo**: for x=−0.6 (<x*≈−0.415), simulating sums of k iid
+   Geometric(1/2)'s, P(L_k/k≥x) **rises** from 0.667 (k=10) to 0.99996
+   (k=1000) — the event becomes LESS rare, not more.
+3. **Exact for small k**: closed-form Negative Binomial distribution via
+   `Fraction` (no floating point near the threshold), same increasing
+   pattern (k=5→40: 0.623→0.804).
 
-## Como reproduzir
+## How to reproduce
 
 ```
 python3 experiment.py
 ```
 
-Sem dependências além de `numpy` (usado só na simulação Monte Carlo
-vetorizada). Roda em poucos segundos.
+No dependencies beyond `numpy` (used only for the vectorized Monte
+Carlo simulation). Runs in a few seconds.
 
-## Nota de integridade (ver H-056 para detalhes)
+## Integrity note (see H-056 for details)
 
-1. **Verificado diretamente contra o PDF original**: um rascunho
-   anterior desta mesma análise caracterizava a Conjetura 7.5 como já
-   tendo a restrição de sinal correta (t≥0) — tratando-a como "a
-   correção que o próprio paper oferece" para a Conjetura 7.3. Isso
-   estava **errado**: conferimos a pág. 38 diretamente e a Conjetura
-   7.5, como escrita, é irrestrita (sup_{t∈ℝ}). Corrigido no
-   `experiment.py` antes de finalizar. O achado central não muda — só
-   a atribuição de qual conjectura tem qual fórmula.
-2. **Reportado, não re-verificado em detalhe**: também nesta sessão foi
-   relatado (por uma etapa anterior do mesmo trabalho) um bug de
-   inversão na ordem de unpacking de tupla no código de verificação,
-   identificado e corrigido antes de qualquer número ser reportado. Não
-   temos histórico de git do arquivo (ainda não commitado) nem a forma
-   exata do bug para reconstruir com certeza — relatamos o fato de que
-   foi pego e corrigido em sessão, sem inventar o diff específico.
+1. **Verified directly against the original PDF**: an earlier draft of
+   this same analysis characterized Conjecture 7.5 as already having
+   the correct sign restriction (t≥0) — treating it as "the correction
+   the paper itself offers" for Conjecture 7.3. This was **wrong**: we
+   checked p. 38 directly and Conjecture 7.5, as written, is
+   unrestricted (sup_{t∈ℝ}). Fixed in `experiment.py` before
+   finalizing. The central finding doesn't change — only the
+   attribution of which conjecture has which formula.
+2. **Reported, not re-verified in detail**: also in this session, an
+   earlier stage of the same work reported a tuple-unpacking order bug
+   in the verification code, identified and fixed before any number was
+   reported. We don't have the file's git history (not yet committed)
+   nor the exact form of the bug to reconstruct it with certainty — we
+   report the fact that it was caught and fixed in-session, without
+   inventing the specific diff.
 
-## Resultado
+## Result
 
-Suporta H-056: Seções 1-5 do paper (identidades concretas, drift
-negativo, cota de Chernoff) inteiramente corretas. O erro real está
-contido na Seção 7 (inteiramente conjectural, nunca rotulada
-"Teorema"/"Proposición"), que entra em contradição com a Proposición
-3.4 (Seção 3, já demonstrada). Não é uma alegação de prova de Collatz
-— o paper nega isso explicitamente ("El marco desarrollado no
-demuestra la Conjetura de Collatz", pág. 41) — nem um erro de cálculo
-isolado. É uma conjectura de estrutura global (função de tasa
-bilateral em V) inconsistente com uma proposição local já provada no
-mesmo texto, por confundir a função de tasa de Cramér clássica
-(bilateral) com a função de tasa real do evento de cauda unilateral
-que a Definición 3.1 realmente define.
+Supports H-056: Sections 1-5 of the paper (concrete identities,
+negative drift, Chernoff bound) are entirely correct. The real error is
+contained in Section 7 (entirely conjectural, never labeled
+"Theorem"/"Proposition"), which contradicts Proposition 3.4 (Section 3,
+already proven). Not a claim of proving Collatz — the paper explicitly
+denies this ("El marco desarrollado no demuestra la Conjetura de
+Collatz", p. 41) — nor an isolated calculation error. It's a
+global-structure conjecture (a two-sided rate function over V)
+inconsistent with a local proposition already proven in the same text,
+by conflating the classical (two-sided) Cramér rate function with the
+real rate function of the one-sided tail event that Definition 3.1
+actually defines.

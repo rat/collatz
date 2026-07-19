@@ -16,16 +16,21 @@ Conjectura do índice de cauda. PDFs recompilados limpos (28/29 páginas).
 Ver `hypotheses/H-129-q-adic-pole-analog-seymour.md`, seção (b) do
 esforço final.
 
-## H-127 — avançada (2026-07-19): Proposição C fica mais sólida (E-106), Lema B fica mais fraco (E-107)
+## H-127 — avançada (2026-07-19): duplicação E-106/E-101 corrigida, Lema B fica mais fraco (E-107)
 
 Pedido explícito do diretor científico para avançar H-127 depois de
-fechar H-129. Duas pendências declaradas na hipótese, ambas executadas:
+fechar H-129. Duas ações:
 
-1. **`lambda_mc.py` promovido a experimento formal**
-   (`E-106-h127-jensen-lambda-monte-carlo`): a verificação Monte Carlo
-   da identidade de Jensen da Proposição C(b) (Λ=log γ_c≈0,5834)
-   sobrevivia só em scratchpad de sessão. Reproduzido e confirmado
-   (0,5834±0,0005 vs. 0,5836 previsto). Mecânico, sem novidade.
+1. **Erro cometido e corrigido**: acreditei numa nota do próprio
+   H-127 dizendo que `lambda_mc.py` "não estava persistido como
+   experimento formal", sem checar a pasta de experimentos primeiro —
+   criei um E-106 duplicado. Uma auditoria de reprodutibilidade
+   posterior (pedida pelo diretor científico) revelou que
+   `E-101-jensen-constant-annealed-fourier-budget` JÁ EXISTIA (criado
+   na sessão original de H-127, 2026-07-17) com o mesmo script, e já
+   estava espelhado em `collatz-endogeny/sec10-l2-refutation-and-jensen/`.
+   E-106 removido; H-127 corrigida para referenciar E-101. Lição:
+   checar a pasta de experimentos antes de confiar numa nota interna.
 
 2. **Etapa 6 do Lema B investigada a fundo** (upgrade "configuração
    diagonal"⟹"segmento contínuo", marcada como "plausível mas não
@@ -53,7 +58,7 @@ independente do Lema B) permanece sólida e agora mais bem verificada.
 
 **Status de H-127**: continua "em revisão". Ver
 `hypotheses/H-127-reducao-z-number-dicotomia-espectral-wcc.md` para o
-registro completo, `experiments/E-106-h127-jensen-lambda-monte-carlo/`
+registro completo, `experiments/E-101-jensen-constant-annealed-fourier-budget/`
 e `experiments/E-107-h127-def2-vacuity-check/`.
 
 ## H-129 — status final da sessão de 2026-07-19 (consolidado)
@@ -1783,9 +1788,12 @@ rotulagem off-by-one encontrado na Conjectura 10.4 de Pratiher 2026
   2026-07-18. Duas peças distintas, destinos diferentes:
   - **Proposição C** (resultado negativo próprio: a técnica falha por
     um fator exato — déficit 2,2-7× no orçamento de Fourier, identidade
-    de Jensen Λ=log γ_c≈0,5834) permanece SÓLIDA — agora com
-    verificação Monte Carlo formal (`E-106-h127-jensen-lambda-monte-carlo`,
-    2026-07-19; script até então só existia em scratchpad de sessão).
+    de Jensen Λ=log γ_c≈0,5834) permanece SÓLIDA — verificação Monte
+    Carlo formal já existente desde 2026-07-17 em
+    `E-101-jensen-constant-annealed-fourier-budget` (já espelhada em
+    `collatz-endogeny`; um E-106 duplicado foi criado por engano em
+    2026-07-19 e removido no mesmo dia após auditoria de
+    reprodutibilidade).
   - **Lema B** (a redução condicional em si): investigação a fundo da
     Etapa 6 pendente ("upgrade diagonal⟹segmento contínuo",
     2026-07-19) revelou que a Definição 2 usada, como estava escrita,

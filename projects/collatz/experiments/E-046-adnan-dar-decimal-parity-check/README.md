@@ -1,46 +1,49 @@
-# E-046 — Verificação do paper #002 (Adnan & Dar, "Decimal-Parity-Based 3n+1 Mapping")
+# E-046 — Verification of paper #002 (Adnan & Dar, "Decimal-Parity-Based 3n+1 Mapping")
 
-## Objetivo
+## Goal
 
-Verificar "Behavior of a Decimal-Parity-Based 3n+1 Mapping" (J. Adnan,
-S.A. Dar — Global Journal of Pure and Applied Mathematics, 2026). O
-paper **não** alega provar/refutar a Conjectura de Collatz original —
-propõe uma extensão ad hoc a decimais em (0,1) e conclui que ela
-diverge.
+Verify "Behavior of a Decimal-Parity-Based 3n+1 Mapping" (J. Adnan,
+S.A. Dar — Global Journal of Pure and Applied Mathematics, 2026). The
+paper does **not** claim to prove/refute the original Collatz
+Conjecture — it proposes an ad hoc extension to decimals in (0,1) and
+concludes it diverges.
 
-## O que fizemos
+## What we did
 
-1. Reproduzimos todos os exemplos numéricos do paper (Tables 1-2,
-   Examples 1-3, a cadeia de 5 passos da Seção 6) com aritmética exata
-   (`fractions.Fraction`) — todos batem.
-2. Testamos se a regra de "paridade via último dígito significativo" é
-   definida para números sem expansão decimal finita (1/3, 1/7, √2/10).
-3. Testamos 200 decimais aleatórios em (0,1) sob a regra do paper.
+1. Reproduced all the paper's numerical examples (Tables 1-2, Examples
+   1-3, the 5-step chain from Section 6) with exact arithmetic
+   (`fractions.Fraction`) — all match.
+2. Tested whether the "parity via last significant digit" rule is
+   defined for numbers without a finite decimal expansion (1/3, 1/7,
+   √2/10).
+3. Tested 200 random decimals in (0,1) under the paper's rule.
 
-## Resultado
+## Result
 
-**Aritmética do paper correta** — nenhum erro de cálculo nos exemplos.
+**The paper's arithmetic is correct** — no calculation errors in the
+examples.
 
-**Problema conceitual em dois níveis**:
-1. A regra de "paridade" só é definida para decimais com expansão
-   finita — um subconjunto **contável** (medida zero) de (0,1). A "Lei
-   Matemática" da conclusão do paper ("para todo n∈(0,1), o limite
-   diverge") é uma afirmação sobre o contínuo, mas não está nem
-   bem-definida para quase todo número real do domínio que alega
-   cobrir (contra-exemplos triviais: 1/3, 1/7, qualquer irracional).
-2. Mesmo restrita aos decimais finitos, a divergência é um artefato
-   trivial (confirmado: 200/200 decimais aleatórios divergem em 30
-   passos) — decorre de aplicar uma "paridade" sem relação algébrica
-   com o valor numérico a uma constante aditiva (+1) nunca normalizada
-   em relação à escala do domínio (0,1). Diferente do Collatz real,
-   onde 3n+1 é sempre par para n ímpar por construção algébrica
-   (garantindo divisão estrutural, não arbitrária), aqui não há
-   mecanismo análogo — a divergência é esperada por construção, não
-   uma descoberta.
+**Conceptual problem at two levels**:
+1. The "parity" rule is only defined for decimals with a finite
+   expansion — a **countable** (measure zero) subset of (0,1). The
+   "Mathematical Law" in the paper's conclusion ("for every n∈(0,1),
+   the limit diverges") is a statement about the continuum, but isn't
+   even well-defined for almost every real number in the domain it
+   claims to cover (trivial counterexamples: 1/3, 1/7, any
+   irrational).
+2. Even restricted to finite decimals, the divergence is a trivial
+   artifact (confirmed: 200/200 random decimals diverge within 30
+   steps) — it follows from applying a "parity" with no algebraic
+   relation to the numeric value to an additive constant (+1) never
+   normalized relative to the (0,1) domain's scale. Unlike the real
+   Collatz map, where 3n+1 is always even for odd n by algebraic
+   construction (guaranteeing structural, not arbitrary, division),
+   there is no analogous mechanism here — the divergence is expected by
+   construction, not a discovery.
 
-Ver `hypotheses/H-046-adnan-dar-decimal-parity-review.md`.
+See `hypotheses/H-046-adnan-dar-decimal-parity-review.md`.
 
-## Como rodar
+## How to run
 
 ```
 /home/rat/.venv/bin/python3 experiment.py

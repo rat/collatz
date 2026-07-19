@@ -1,24 +1,24 @@
-# E-076 — Revisão de Tao, "Almost all orbits of the Collatz map attain almost bounded values" (2022)
+# E-076 — Review of Tao, "Almost all orbits of the Collatz map attain almost bounded values" (2022)
 
-Hipótese relacionada: [`H-076-tao-2022-review.md`](../../hypotheses/H-076-tao-2022-review.md)
+Related hypothesis: [`H-076-tao-2022-review.md`](../../hypotheses/H-076-tao-2022-review.md)
 
-## O que foi feito
+## What was done
 
-Não uma "caça a erros" (paper de Terence Tao, revisado por pares num
-periódico de primeira linha) — verificação disciplinada dos exemplos
-numéricos e identidades explícitas concretas que o texto apresenta:
-exemplos do mapa de Siracusa, a identidade Col_min(N)=Syr_min(N/2^v2(N)),
-e a distribuição exata de Syrac(ℤ/3ℤ) e Syrac(ℤ/9ℤ) via reimplementação
-independente da fórmula recursiva do Lemma 1.12.
+Not a "bug hunt" (a Terence Tao paper, peer-reviewed in a top-tier
+journal) — a disciplined verification of the numerical examples and
+concrete explicit identities the text presents: examples of the
+Syracuse map, the identity Col_min(N)=Syr_min(N/2^v2(N)), and the exact
+distribution of Syrac(ℤ/3ℤ) and Syrac(ℤ/9ℤ) via an independent
+reimplementation of Lemma 1.12's recursive formula.
 
-## Resultado
+## Result
 
-Tudo confirmado sem exceção, incluindo reprodução exata (aritmética de
-frações, não ponto flutuante) de 12 valores de probabilidade racionais
-não-triviais (ex: 8/63, 22/63) que o texto apresenta como resultado da
-fórmula recursiva. Ver H-076 para o veredito completo.
+Everything confirmed without exception, including exact reproduction
+(fraction arithmetic, not floating point) of 12 non-trivial rational
+probability values (e.g. 8/63, 22/63) that the text presents as the
+recursive formula's result. See H-076 for the full verdict.
 
-## Reproduzir
+## Reproduce
 
 ```
 python3 experiment.py

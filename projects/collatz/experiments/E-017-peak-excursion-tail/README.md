@@ -1,43 +1,43 @@
-# E-017 — Cauda do pico da órbita: fator exato de 2 por bit
+# E-017 — Orbit peak tail: exact factor of 2 per bit
 
-Hipótese relacionada: [`H-017-peak-excursion-tail.md`](../../hypotheses/H-017-peak-excursion-tail.md)
+Related hypothesis: [`H-017-peak-excursion-tail.md`](../../hypotheses/H-017-peak-excursion-tail.md)
 
-## O que foi testado
+## What was tested
 
-A sequência de Collatz é um martingale multiplicativo exato (E[3/2^a]=1,
-verificado analiticamente — soma exata da série geométrica, não
-aproximação). Isso implica, via equação de Cramér para grandes desvios, que
-o expoente de decaimento da cauda do pico da órbita é **exatamente θ*=1**
-— verificamos isso resolvendo 3^θ = 2^(1+θ)−1 e confirmando θ=1 é raiz
-exata (3¹=3, 2²−1=3).
+The Collatz sequence is an exact multiplicative martingale (E[3/2^a]=1,
+verified analytically — exact geometric series sum, not an
+approximation). Via the Cramér large-deviations equation, this implies
+the orbit peak's tail decay exponent is **exactly θ*=1** — we verified
+this by solving 3^θ = 2^(1+θ)−1 and confirming θ=1 is an exact root
+(3¹=3, 2²−1=3).
 
-Previsão: P(pico(n) ≥ n·2^Δ) ~ C·2^(−Δ) — a cauda decai por um fator de
-exatamente 2 a cada bit extra de excursão.
+Prediction: P(peak(n) ≥ n·2^Δ) ~ C·2^(−Δ) — the tail decays by exactly
+a factor of 2 per extra bit of excursion.
 
-## Resultado
+## Result
 
-Amostra de 2.000.000 de n aleatórios em [10⁹, 10¹²]. Ajuste log-linear de
+Sample of 2,000,000 random n in [10⁹, 10¹²]. Log-linear fit of
 P(Δ≥x) vs. x:
 
-- Usando todos os pontos com contagem estatística razoável (x=2 a 15):
-  inclinação empírica = **−0.9657** (previsto −1.0).
-- Usando só a cauda mais distante (x≥6, onde a aproximação assintótica é
-  mais precisa): inclinação empírica = **−1.0045** — diferença de apenas
-  **0.45%** do valor teórico exato.
+- Using all points with reasonable statistical count (x=2 to 15):
+  empirical slope = **−0.9657** (predicted −1.0).
+- Using only the farthest tail (x≥6, where the asymptotic approximation
+  is more accurate): empirical slope = **−1.0045** — a difference of
+  only **0.45%** from the exact theoretical value.
 
-Reproduzir: `python3 experiment.py 2000000 1000000000 1000000000000 99`
-(~30s). Confirmado também com amostra menor (500k) e seed diferente (42):
-inclinação −0.9682 (todos os pontos).
+Reproduce: `python3 experiment.py 2000000 1000000000 1000000000000 99`
+(~30s). Also confirmed with a smaller sample (500k) and a different
+seed (42): slope −0.9682 (all points).
 
-## Conclusão
+## Conclusion
 
-O expoente de Cramér θ*=1 (sem nenhum parâmetro livre, derivado só da
-propriedade de martingale já implícita em H-001) prevê a cauda do pico da
-órbita com precisão de menos de 0.5% na região assintótica. Esta é a
-terceira confirmação teórica precisa do projeto no estilo H-010/H-011
-(derivar → confirmar), desta vez para o **máximo** da órbita em vez da
-média/variância do tempo.
+The Cramér exponent θ*=1 (with no free parameter, derived solely from
+the martingale property already implicit in H-001) predicts the orbit
+peak's tail with better than 0.5% precision in the asymptotic region.
+This is the project's third precise theoretical confirmation in the
+H-010/H-011 style (derive → confirm), this time for the orbit's
+**maximum** rather than the mean/variance of time.
 
-## Status de H-017
+## Status of H-017
 
-**Confirmada** (inclinação da cauda distante dentro de 0.5% do previsto).
+**Confirmed** (far-tail slope within 0.5% of predicted).

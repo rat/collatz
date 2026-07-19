@@ -1,99 +1,102 @@
-# E-105 — Gap espectral do operador de transferência dual (H-129)
+# E-105 — Spectral gap of the dual transfer operator (H-129)
 
-Hipótese relacionada: [`H-129-q-adic-pole-analog-seymour.md`](../../hypotheses/H-129-q-adic-pole-analog-seymour.md)
-Ver também: [`H-109-...md`](../../hypotheses/H-109-generalized-qx1-pressure-equation-exact-closed-form.md),
+Related hypothesis: [`H-129-q-adic-pole-analog-seymour.md`](../../hypotheses/H-129-q-adic-pole-analog-seymour.md)
+See also: [`H-109-...md`](../../hypotheses/H-109-generalized-qx1-pressure-equation-exact-closed-form.md),
 [`E-103-tail-index-q5-rigorous-test`](../E-103-tail-index-q5-rigorous-test/README.md)
-(corrigidos por este experimento).
+(corrected by this experiment).
 
-## O que motivou
+## What motivated this
 
-As notas do projeto (H-109, E-103, H-129) atribuíam o transiente lento
-de convergência k^-0,222 observado no teste de índice de cauda de q=5
-a "uma raiz complexa subdominante do operador de transferência". Ao
-retomar H-129 ("análise espectral de Perron-Frobenius" era o próximo
-passo listado em H-129/E-104), percebi uma tensão real antes de
-programar qualquer coisa: decaimento **geométrico oscilatório**
-(assinatura de autovalor subdominante isolado) e decaimento em **lei de
-potência** k^-0,222 (assinatura clássica de AUSÊNCIA de gap espectral)
-são categorias matematicamente incompatíveis na mesma camada.
+The project's notes (H-109, E-103, H-129) attributed the slow
+convergence transient k^-0.222 observed in the q=5 tail-index test to
+"a subdominant complex root of the transfer operator". While resuming
+H-129 ("Perron-Frobenius spectral analysis" was the next step listed
+in H-129/E-104), I noticed a real tension before writing any code:
+**oscillatory geometric** decay (the signature of an isolated
+subdominant eigenvalue) and **power-law** decay k^-0.222 (the classic
+signature of the ABSENCE of a spectral gap) are mathematically
+incompatible categories at the same layer.
 
-## Consulta ao Fable
+## Consulting the Fable
 
-Consultei o Fable (contexto completo: Lema da bijeção de fibra, a
-impossibilidade de estado finito já provada — Exemplo ex:naive-fails —,
-a identidade de pressão anelada, a dicotomia quenched/anelado). Resposta
-resumida (ver H-129 para o texto completo):
+I consulted the Fable (full context: the fiber-bijection lemma, the
+already-proven impossibility of a finite state — Example
+ex:naive-fails —, the annealed pressure identity, the quenched/annealed
+dichotomy). Summarized response (see H-129 for the full text):
 
-1. O operador certo é o **dual** M_α (pai→filho, via φ_a(w)=(qw+1)·2^-a),
-   não o Koopman L_α (filho→pai, esse é o que o Fato 2/Exemplo
-   ex:naive-fails proíbe como estado finito). M_α PRESERVA funções
-   localmente constantes mod q^K exatamente.
-2. M_α tem **gap espectral perfeito e estrutural**: expansão q-ádica
-   uniforme por fator exato q, distorção zero — espectro de M_α
-   restrito a qualquer nível K é EXATAMENTE {Λ,0} (Λ=q^α/(2^α−1)), sem
-   nenhum autovalor subdominante isolado. Manneville-Pomeau/Sarig-Iommi
-   (que precisaria de ausência de gap) não se aplica.
-3. O k^-0,222 pertence a uma camada NÃO-LINEAR diferente: o teste de
-   momento em α perto do índice de cauda está sentado no caso de
-   fronteira de branching random walk (α_+ é sempre congelado, já
-   provado) — correções polinomiais em k (Bramson, Aïdékon) são
-   esperadas aí, sem contradizer o gap da camada linear. Suspeita:
-   efeito de reticulado log-periódico (pesos são potências de 2).
-4. Armadilha identificada preventivamente: um teste tipo Ulam ingênuo
-   (ver espectro de L_α truncado, ou esperar "autovalor subdominante
-   convergindo" conforme K cresce) produziria um artefato numérico
-   garantido, por não-normalidade do bloco nilpotente — não um sinal
-   real de "gap fechando".
+1. The right operator is the **dual** M_α (parent→child, via
+   φ_a(w)=(qw+1)·2^-a), not the Koopman L_α (child→parent, which is
+   what Fact 2/Example ex:naive-fails forbids as a finite state). M_α
+   PRESERVES locally constant functions mod q^K exactly.
+2. M_α has a **perfect, structural spectral gap**: uniform q-adic
+   expansion by an exact factor q, zero distortion — the spectrum of
+   M_α restricted to any level K is EXACTLY {Λ,0} (Λ=q^α/(2^α−1)), with
+   no isolated subdominant eigenvalue. Manneville-Pomeau/Sarig-Iommi
+   (which would require the absence of a gap) doesn't apply.
+3. The k^-0.222 belongs to a different, NONLINEAR layer: the moment
+   test at α near the tail index sits at the boundary case of branching
+   random walk (α_+ is always frozen, already proven) — polynomial
+   corrections in k (Bramson, Aïdékon) are expected there, without
+   contradicting the linear layer's gap. Suspicion: a log-periodic
+   lattice effect (weights are powers of 2).
+4. A pitfall identified preemptively: a naive Ulam-type test (looking
+   at the truncated L_α spectrum, or expecting a "subdominant
+   eigenvalue converging" as K grows) would produce a guaranteed
+   numerical artifact, due to non-normality of the nilpotent block —
+   not a real signal of "the gap closing".
 
-## Verificação numérica (`experiment_gap_check.py`)
+## Numerical verification (`experiment_gap_check.py`)
 
-Construção exata (aritmética modular exata para os índices; ponto
-flutuante só nos pesos/autovalores) da matriz q^K×q^K de M_α, para
-q=5, α_+=1 (congelada) e α_-=0,650919 (não-congelada), K=2,3,4.
+Exact construction (exact modular arithmetic for the indices; floating
+point only for the weights/eigenvalues) of the q^K×q^K matrix of M_α,
+for q=5, α_+=1 (frozen) and α_-=0.650919 (non-frozen), K=2,3,4.
 
-**Resultado — confirma a previsão do Fable em todos os pontos**:
+**Result — confirms the Fable's prediction at every point**:
 
-- Soma de linhas de M_α = Λ teórico exatamente (casa 8+ dígitos), em
-  toda linha e todo K — confirma M_α·1=Λ·1.
-- Autovalor dominante = Λ, em todos os casos.
-- Todos os demais autovalores ≈0: 2,3e-8 (K=2) → 9,3e-6 (K=3) → 2,0e-4
-  (K=4). O crescimento com K é exatamente o ruído de não-normalidade
-  previsto pelo Fable (bloco nilpotente crescente) — **não** um
-  autovalor real se aproximando de Λ. Não interpretei isso como "gap
-  fechando" porque fui avisado do artefato antes de rodar.
+- The row sums of M_α = the theoretical Λ exactly (matches to 8+
+  digits), in every row and every K — confirms M_α·1=Λ·1.
+- The dominant eigenvalue = Λ, in every case.
+- All other eigenvalues ≈0: 2.3e-8 (K=2) → 9.3e-6 (K=3) → 2.0e-4 (K=4).
+  The growth with K is exactly the non-normality noise predicted by the
+  Fable (growing nilpotent block) — **not** a real eigenvalue
+  approaching Λ. I did not interpret this as "the gap closing" because
+  I was warned about the artifact before running it.
 
-## Conclusão
+## Conclusion
 
-Espectro {Λ,0} confirmado estrutural e numericamente — gap espectral
-perfeito na camada linear. A via "análise espectral de Perron-Frobenius"
-listada em H-129/E-104 como próximo passo está **fechada**: a resposta
-é definitiva, e não resolve a Conjectura do índice de cauda (que vive
-na camada não-linear crítica, não na linear). Corrigimos a terminologia
-"raiz complexa subdominante" em H-109 e E-103/README.md — ela não se
-sustenta com a formalização correta do operador.
+Spectrum {Λ,0} confirmed both structurally and numerically — a perfect
+spectral gap at the linear layer. The "Perron-Frobenius spectral
+analysis" route listed in H-129/E-104 as a next step is **closed**: the
+answer is definitive, and doesn't resolve the Tail-Index Conjecture
+(which lives in the nonlinear critical layer, not the linear one). We
+corrected the "subdominant complex root" terminology in H-109 and
+E-103/README.md — it doesn't hold up under the correct formalization of
+the operator.
 
-## Próximos passos (se a linha for retomada)
+## Next steps (if the line is resumed)
 
-~~Testar a hipótese log-periódica da cauda diretamente~~ — **feito e
-não suportado, E-103 Estágio 2 (2026-07-19)**: consulta ao Fable
-derivou que o sistema é não-aritmético (log₂5 irracional destrói a
-periodicidade, dicotomia de Goldie) — sem log-periodicidade assintótica
-esperada. Teste pré-registrado nos dois períodos derivados confirmou:
-potência do periodograma no nível de ruído em todos os 4 headrooms
-testados. Ver `experiments/E-103-tail-index-q5-rigorous-test/README.md`,
-seção "Estágio 2".
+~~Directly test the log-periodic hypothesis for the tail~~ — **done and
+not supported, E-103 Stage 2 (2026-07-19)**: a Fable consultation
+derived that the system is non-arithmetic (log₂5 irrational destroys
+the periodicity, Goldie's dichotomy) — no asymptotic log-periodicity
+expected. A pre-registered test at the two derived periods confirmed:
+periodogram power at the noise level across all 4 tested headrooms.
+See `experiments/E-103-tail-index-q5-rigorous-test/README.md`, the
+"Stage 2" section.
 
-Isso NÃO fecha a origem do k^-0,222 — só refuta mais uma explicação
-candidata (a primeira foi o gap espectral, aqui mesmo). O item real que
-resta é testar o transiente no eixo em que ele foi observado (M_k(p)
-vs. k, não a cauda de W_v em x) — ver E-103 item 5 dos próximos passos.
+This does NOT close the origin of the k^-0.222 — it only refutes one
+more candidate explanation (the first was the spectral gap, here). The
+real item that remains is testing the transient on the axis where it
+was observed (M_k(p) vs. k, not W_v's tail in x) — see E-103's next
+steps, item 5.
 
-## Arquivos
+## Files
 
-- `experiment_gap_check.py` — construção e verificação numérica de M_α.
+- `experiment_gap_check.py` — construction and numerical verification
+  of M_α.
 
-## Reproduzir
+## Reproduce
 
 ```
-python3 experiment_gap_check.py    # segundos, sem dependências além de numpy
+python3 experiment_gap_check.py    # seconds, no dependencies beyond numpy
 ```

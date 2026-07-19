@@ -1,25 +1,26 @@
-# E-078 — Revisão de Wei Ren, "Reduced Collatz dynamics is periodical..." (2025)
+# E-078 — Review of Wei Ren, "Reduced Collatz dynamics is periodical..." (2025)
 
-Hipótese relacionada: [`H-078-wei-ren-2025-review.md`](../../hypotheses/H-078-wei-ren-2025-review.md)
+Related hypothesis: [`H-078-wei-ren-2025-review.md`](../../hypotheses/H-078-wei-ren-2025-review.md)
 
-## O que foi feito
+## What was done
 
-Verificamos o "Period Theorem" central do paper (item 108): se a
-"dinâmica reduzida" d_r(x) (sequência de operações I/O até o primeiro
-iterado abaixo de x) existe, então d_r(x+2^L)=d_r(x), onde L é o
-comprimento da sequência. Também verificamos a extensão (Corollary
-3.24) e a caracterização de forma do apêndice (Form Corollary).
+We verified the paper's central "Period Theorem" (item 108): if the
+"reduced dynamics" d_r(x) (the I/O operation sequence up to the first
+iterate below x) exists, then d_r(x+2^L)=d_r(x), where L is the
+sequence length. We also verified the extension (Corollary 3.24) and
+the appendix's form characterization (Form Corollary).
 
-## Resultado
+## Result
 
-Tudo confirmado sem exceção: exemplos do próprio paper, Period Theorem
-(499 casos), Corollary 3.24 (245 casos), Form Corollary (999 casos, nas
-duas partes). Confirmamos também que o teorema é condicional (só vale
-para x cuja dinâmica reduzida já existe) e não fecha a conjectura — algo
-que o próprio autor reconhece explicitamente na conclusão. Ver H-078
-para o veredito completo.
+Everything confirmed without exception: the paper's own examples, the
+Period Theorem (499 cases), Corollary 3.24 (245 cases), the Form
+Corollary (999 cases, in both parts). We also confirmed the theorem is
+conditional (only holds for x whose reduced dynamics already exists)
+and doesn't close the conjecture — something the author himself
+explicitly acknowledges in the conclusion. See H-078 for the full
+verdict.
 
-## Reproduzir
+## Reproduce
 
 ```
 python3 experiment.py

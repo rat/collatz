@@ -1,50 +1,51 @@
-# E-079 — Revisão de Getachew, "Unfolding the Collatz Tree: An Indirect Structural Proof" (2025)
+# E-079 — Review of Getachew, "Unfolding the Collatz Tree: An Indirect Structural Proof" (2025)
 
-Hipótese relacionada: [`H-079-getachew-2025-review.md`](../../hypotheses/H-079-getachew-2025-review.md)
+Related hypothesis: [`H-079-getachew-2025-review.md`](../../hypotheses/H-079-getachew-2025-review.md)
 
-**ALEGAÇÃO DE PROVA COMPLETA — REFUTADA.**
+**FULL-PROOF CLAIM — REFUTED.**
 
-## O que foi feito
+## What was done
 
-O paper (item 109) constrói a árvore reversa de Collatz — a mesma
-construção de H-018/E-018 deste projeto — e alega provar a conjectura
-mostrando que a árvore (1) cobre todo n∈ℕ, (2) é acíclica exceto pelo
-ciclo trivial, e (3) todo caminho de volta à raiz é finito.
+The paper (item 109) constructs the Collatz reverse tree — the same
+construction as this project's H-018/E-018 — and claims to prove the
+conjecture by showing the tree (1) covers every n∈ℕ, (2) is acyclic
+except for the trivial cycle, and (3) every path back to the root is
+finite.
 
-## O furo lógico central
+## The central logical hole
 
-A relação "pai" definida no paper (Remark 1) é **idêntica ao mapa de
-Collatz direto**: parent(m)=m/2 (par) ou 3m+1 (ímpar). Logo, "caminho de
-volta até a raiz" É a órbita direta de Collatz. O Lemma 4.3 (todo
-caminho de volta é finito) não decorre de "acíclico + pai único" —
-aciclicidade e unicidade de pai garantem que o caminho não repete nem
-bifurca, mas **não garantem que seja finito**. O lemma é logicamente
-equivalente à própria conjectura, apresentado como se decorresse de
-propriedades estruturais mais fracas.
+The "parent" relation defined in the paper (Remark 1) is **identical
+to the direct Collatz map**: parent(m)=m/2 (even) or 3m+1 (odd). So,
+"path back to the root" IS the direct Collatz orbit. Lemma 4.3 (every
+path back is finite) does not follow from "acyclic + unique parent" —
+acyclicity and parent uniqueness guarantee the path doesn't repeat or
+branch, but they **do not guarantee it's finite**. The lemma is
+logically equivalent to the conjecture itself, presented as if it
+followed from weaker structural properties.
 
-O Teorema 5.1 (cobertura) sofre do mesmo problema por outro caminho: a
-fórmula de indexação que ele soma é só a decomposição única
-ímpar×potência-de-2 de qualquer inteiro — um fato aritmético universal,
-independente de qualquer regra de ramificação de Collatz.
+Theorem 5.1 (coverage) suffers from the same problem via another route:
+the indexing formula it sums is just the unique odd×power-of-2
+decomposition of any integer — a universal arithmetic fact, independent
+of any Collatz branching rule.
 
-## Verificação computacional
+## Computational verification
 
-Confirmamos: (1) o Teorema 5.1 está correto mas é tautológico
-(independente de g(n)); (2) parent(x)=f(x) exatamente; (3) o número 27
-é, em princípio, alcançável a partir da raiz (o caminho reverso de sua
-órbita satisfaz a regra de ramificação em todos os 111 passos), mas uma
-busca direta a partir da raiz (sem atalho) não o encontra dentro de
-milhões de nós processados — evidência concreta de que "cobertura" não
-pode ser estabelecida por um argumento combinatório como o do Teorema
-5.1, sem verificar Collatz diretamente.
+We confirmed: (1) Theorem 5.1 is correct but tautological (independent
+of g(n)); (2) parent(x)=f(x) exactly; (3) the number 27 is, in
+principle, reachable from the root (its orbit's reverse path satisfies
+the branching rule at all 111 steps), but a direct search from the root
+(with no shortcut) doesn't find it within millions of processed nodes —
+concrete evidence that "coverage" cannot be established by a
+combinatorial argument like Theorem 5.1's, without directly verifying
+Collatz.
 
-## Resultado
+## Result
 
-Não é uma prova válida. Ver H-079 para a análise completa da anatomia
-do erro (petição de princípio disfarçada por reformulação em linguagem
-de teoria dos grafos).
+Not a valid proof. See H-079 for the full analysis of the error's
+anatomy (a disguised petitio principii, dressed up in graph-theory
+language).
 
-## Reproduzir
+## Reproduce
 
 ```
 python3 experiment.py

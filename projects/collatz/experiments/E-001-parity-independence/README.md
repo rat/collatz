@@ -1,66 +1,71 @@
-# E-001 — Independência entre valuações 2-ádicas consecutivas
+# E-001 — Independence between consecutive 2-adic valuations
 
-Hipótese relacionada: [`H-001-parity-independence.md`](../../hypotheses/H-001-parity-independence.md)
+Related hypothesis: [`H-001-parity-independence.md`](../../hypotheses/H-001-parity-independence.md)
 
-## O que foi testado
+## What was tested
 
-Se a_i (valuação 2-ádica de 3n+1 na órbita acelerada) e a_{i+1} (a valuação do
-passo seguinte) são estatisticamente independentes, como os modelos estocásticos
-padrão da literatura assumem.
+Whether a_i (2-adic valuation of 3n+1 in the accelerated orbit) and
+a_{i+1} (the valuation of the next step) are statistically independent,
+as standard stochastic models in the literature assume.
 
-## Tentativa 1 — `experiment.py` (com falha metodológica identificada)
+## Attempt 1 — `experiment.py` (with an identified methodological flaw)
 
-Agregou pares (a_i, a_{i+1}) de **todas as posições de todas as órbitas** para os
-primeiros N números ímpares. Resultado inicial: qui-quadrado enorme, aparentando
-forte dependência.
+Aggregated pairs (a_i, a_{i+1}) from **all positions of all orbits**
+for the first N odd numbers. Initial result: huge chi-square,
+appearing to show strong dependence.
 
-**Problema descoberto**: órbitas de Collatz colidem — uma vez que duas
-trajetórias diferentes atingem o mesmo valor intermediário, toda a cauda seguinte
-é idêntica entre elas. Agregar por posição-em-órbita conta o mesmo trecho de
-caminho múltiplas vezes, violando a suposição de amostras independentes
-(pseudo-replicação). Um filtro simples por "n mínimo" (para excluir a cauda final
-universal ...→8→4→2→1) reduziu mas não eliminou o efeito — colisões acontecem bem
-antes da cauda final, sempre que órbitas distintas convergem para o mesmo valor.
+**Problem discovered**: Collatz orbits collide — once two different
+trajectories reach the same intermediate value, their entire
+subsequent tail is identical. Aggregating by position-in-orbit counts
+the same path segment multiple times, violating the independent-sample
+assumption (pseudo-replication). A simple "minimum n" filter (to
+exclude the universal final tail ...→8→4→2→1) reduced but did not
+eliminate the effect — collisions happen well before the final tail,
+whenever distinct orbits converge to the same value.
 
-**Esse problema em si é um achado útil**: qualquer experimento futuro que agregue
-estatísticas ao longo de múltiplas órbitas precisa considerar colisão de órbitas
-como fonte de pseudo-replicação. Ver nota adicionada em `protocols/new-experiment.md`.
+**This problem is itself a useful finding**: any future experiment
+aggregating statistics across multiple orbits needs to consider orbit
+collision as a source of pseudo-replication. See the note added to
+`protocols/new-experiment.md`.
 
-## Tentativa 2 — `experiment_v2_clean.py` (desenho corrigido)
+## Attempt 2 — `experiment_v2_clean.py` (corrected design)
 
-Amostra K números ímpares **distintos e aleatórios** num intervalo grande
-(10^9–10^12), olhando apenas para os 2 primeiros passos (a_1, a_2) de cada um.
-Com números iniciais grandes e espalhados, a chance de duas trajetórias colidirem
-em 1-2 passos é desprezível — cada par é uma observação genuinamente independente
-(confirmado: 0 colisões em m1 detectadas em ambas as rodadas).
+Samples K **distinct, random** odd numbers over a large interval
+(10^9–10^12), looking only at the first 2 steps (a_1, a_2) of each.
+With large, spread-out starting numbers, the chance of two
+trajectories colliding within 1-2 steps is negligible — each pair is a
+genuinely independent observation (confirmed: 0 collisions detected in
+either round).
 
-### Resultados
+### Results
 
-| K (amostras) | seed | Pearson r | p (Pearson) | qui-quadrado | dof | p (qui-quadrado) |
+| K (samples) | seed | Pearson r | p (Pearson) | chi-square | dof | p (chi-square) |
 |---|---|---|---|---|---|---|
-| 300.000 | 42 | -0.00376 | 0.039 | 42.0 | 49 | 0.75 |
-| 1.000.000 | 7 | -0.00035 | 0.72 | 39.5 | 49 | 0.83 |
+| 300,000 | 42 | -0.00376 | 0.039 | 42.0 | 49 | 0.75 |
+| 1,000,000 | 7 | -0.00035 | 0.72 | 39.5 | 49 | 0.83 |
 
-Reproduzir: `python3 experiment_v2_clean.py 1000000 1000000000000 7`
+Reproduce: `python3 experiment_v2_clean.py 1000000 1000000000000 7`
 
-## Conclusão
+## Conclusion
 
-Com o desenho experimental correto (sem pseudo-replicação por colisão de órbitas),
-**a independência entre a_1 e a_2 não é rejeitada** — os dados são consistentes com
-o modelo i.i.d. usado pela literatura estocástica padrão. O sinal de "dependência"
-da Tentativa 1 era um artefato metodológico, não um fenômeno real.
+With the correct experimental design (no pseudo-replication from orbit
+collisions), **independence between a_1 and a_2 is not rejected** — the
+data are consistent with the i.i.d. model used by the standard
+stochastic literature. The "dependence" signal from Attempt 1 was a
+methodological artifact, not a real phenomenon.
 
-Isso é consistente com o teorema clássico de equidistribuição de Terras (1976) /
-Everett (1977), que já estabelece formalmente que blocos finitos da sequência de
-paridade são equidistribuídos conforme n varia — ou seja, este experimento
-**reproduz empiricamente um resultado já conhecido**, em vez de descobrir algo
-novo. Valor do exercício: validar nossa própria metodologia (e a armadilha de
-colisão de órbitas) antes de tentar algo mais original.
+This is consistent with the classical equidistribution theorem of
+Terras (1976) / Everett (1977), which already formally establishes
+that finite blocks of the parity sequence are equidistributed as n
+varies — i.e., this experiment **empirically reproduces an already
+known result**, rather than discovering something new. Value of the
+exercise: validating our own methodology (and the orbit-collision
+pitfall) before attempting something more original.
 
-## Status de H-001
+## Status of H-001
 
-**Refutada** (na forma testada aqui — independência simples de 2 passos, n grande).
-Não suportada pelos dados. Extensão natural (dependência de longo alcance, ou
-efeitos condicionados a estrutura residual) fica registrada como possível
-próximo passo, mas não é prioridade imediata dado que o caso simples já é
-conhecido/confirmado.
+**Refuted** (in the form tested here — simple 2-step independence,
+large n). Not supported by the data. A natural extension (long-range
+dependence, or effects conditioned on residual structure) is recorded
+as a possible next step, but is not an immediate priority given that
+the simple case is already known/confirmed.

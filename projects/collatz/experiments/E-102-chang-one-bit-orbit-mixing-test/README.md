@@ -1,84 +1,83 @@
-# E-102 — Teste computacional da conjectura de "one-bit orbit mixing" (Chang, 2026)
+# E-102 — Computational test of the "one-bit orbit mixing" conjecture (Chang, 2026)
 
-Hipótese relacionada: [`H-128-busca-literaria-dirigida-pos-h127.md`](../../hypotheses/H-128-busca-literaria-dirigida-pos-h127.md)
+Related hypothesis: [`H-128-busca-literaria-dirigida-pos-h127.md`](../../hypotheses/H-128-busca-literaria-dirigida-pos-h127.md)
 
-## O que foi feito
+## What was done
 
-Pedido do diretor científico: testar se o achado 2 de H-128 (Chang 2026,
-arXiv:2603.25753, "A Structural Reduction of the Collatz Conjecture to
-One-Bit Orbit Mixing") pode ajudar a explicar/fechar algo da linha.
-Extraídas as definições exatas do paper (mapa comprimido ímpar-a-ímpar
-T(n)=(3n+1)/2^v2(3n+1), indicador de burst X_t=1[n_t≡1 mod4], burst-
-ending times, Prop. 5.1-5.5 relacionando bit4/mod32 a comprimento de
-gap) e implementado um teste direto sobre órbitas reais — sem Fourier,
-sem medida, só aritmética de órbita.
+Requested by the scientific director: test whether H-128's finding 2
+(Chang 2026, arXiv:2603.25753, "A Structural Reduction of the Collatz
+Conjecture to One-Bit Orbit Mixing") can help explain/close something
+in the line. We extracted the paper's exact definitions (the
+odd-to-odd compressed map T(n)=(3n+1)/2^v2(3n+1), the burst indicator
+X_t=1[n_t≡1 mod4], burst-ending times, Props. 5.1-5.5 relating
+bit4/mod32 to gap length) and implemented a direct test on real orbits
+— no Fourier, no measure, just orbit arithmetic.
 
-A conjectura remanescente do paper (Seção 5.9): na subclasse de
-burst-endings com n≡1 mod 8, a fração que cai em n≡9 mod 32 (gap longo)
-vs. n≡25 mod 32 (gap unitário) fica **limitada** perto de 1/2 (não
-precisa convergir a 1/2 exatamente, só ficar abaixo de algum δ).
+The paper's remaining conjecture (Section 5.9): within the
+burst-ending subclass with n≡1 mod 8, the fraction landing at n≡9 mod
+32 (long gap) vs. n≡25 mod 32 (unit gap) stays **bounded** near 1/2
+(doesn't need to converge to 1/2 exactly, just stay below some δ).
 
-Dois experimentos complementares:
+Two complementary experiments:
 
-1. **`experiment_ensemble.py`** — muitas órbitas moderadas (2×10⁴ a
-   5×10⁴, 20-50 bits) rodadas em paralelo (numpy vetorizado), agregando
-   todos os burst-endings de todas as órbitas, do início ao fim de cada
-   uma.
-2. **`experiment_deep_orbit.py`** — poucas órbitas ÚNICAS mas muito
-   longas (500 a 16000 bits, inteiros Python de precisão arbitrária),
-   acompanhando a evolução cumulativa do desvio DENTRO de uma mesma
-   trajetória — mais fiel ao "T→∞ ao longo de uma órbita" que o paper
-   de fato enuncia.
+1. **`experiment_ensemble.py`** — many moderate orbits (2×10⁴ to
+   5×10⁴, 20-50 bits) run in parallel (vectorized numpy), aggregating
+   every burst-ending from every orbit, start to finish for each.
+2. **`experiment_deep_orbit.py`** — few but very long SINGLE orbits (500
+   to 16000 bits, arbitrary-precision Python integers), tracking the
+   cumulative evolution of the deviation WITHIN the same trajectory —
+   truer to the "T→∞ along one orbit" the paper actually states.
 
-## Resultado
+## Result
 
-**Validação da implementação**: em nenhum dos dois experimentos surgiu
-um burst-ending com n≡1 ou 17 (mod 32) na subclasse n≡1 mod 8 — bate
-exatamente com a Prop. 5.1-5.5 do paper (só 9 e 25 deveriam ocorrer).
+**Implementation validation**: in neither experiment did a
+burst-ending with n≡1 or 17 (mod 32) appear in the n≡1 mod 8 subclass —
+matches exactly Props. 5.1-5.5 of the paper (only 9 and 25 should
+occur).
 
-**Ensemble (muitas órbitas curtas agregadas)**: o desvio |B9/(B9+B25) −
-1/2| CRESCE de forma consistente ao longo dos primeiros ~100 passos e
-depois estabiliza num platô de ~0,012-0,019 (1,2%-1,9%) — não parece
-crescer sem limite, mas também não cai a zero. **Isto por si só ainda é
-consistente com a conjectura do Chang** (ela só pede limitação, não
-convergência a 0).
+**Ensemble (many short orbits aggregated)**: the deviation
+|B9/(B9+B25) − 1/2| GROWS consistently over the first ~100 steps and
+then stabilizes at a plateau of ~0.012-0.019 (1.2%-1.9%) — doesn't seem
+to grow without bound, but also doesn't drop to zero. **This alone is
+still consistent with Chang's conjecture** (it only asks for
+boundedness, not convergence to 0).
 
-**Órbita única longa (o teste mais fiel ao enunciado do paper)**: aqui
-o quadro é mais limpo. Rodando uma única órbita de 16000 bits (38395
-passos comprimidos, 4761 burst-endings na subclasse relevante) e
-acompanhando o desvio a cada 100 eventos, ele **acompanha de perto a
-curva de ruído estatístico ~1/√i** (comparação direta na tabela de
-saída), sem nenhum sinal de viés sistemático persistente, terminando em
-|desvio|=0,00053 no evento 4761. As 5 órbitas de 500 a 8000 bits
-testadas em `experiment_deep_orbit.py` (main) mostram o mesmo padrão:
-desvios pequenos e consistentes com ruído amostral (0,0004 a 0,028),
-sem tendência de crescimento com o tamanho da órbita.
+**Single long orbit (the test truest to the paper's statement)**: here
+the picture is cleaner. Running a single 16000-bit orbit (38395
+compressed steps, 4761 burst-endings in the relevant subclass) and
+tracking the deviation every 100 events, it **closely tracks the
+~1/√i statistical-noise curve** (direct comparison in the output
+table), with no sign of persistent systematic bias, ending at
+|deviation|=0.00053 at event 4761. The 5 orbits of 500 to 8000 bits
+tested in `experiment_deep_orbit.py` (main) show the same pattern:
+small deviations consistent with sample noise (0.0004 to 0.028), with
+no growth trend as orbit size increases.
 
-**Interpretação**: o platô de ~1-2% visto no ensemble é aparentemente
-um artefato de agregar muitas órbitas curtas e finitas (dominadas pela
-fase inicial/transiente, correlacionada entre órbitas de magnitude
-parecida), não um viés assintótico real. O teste mais rigoroso (órbita
-única, T genuinamente grande dentro da mesma trajetória) é consistente
-com a conjectura de mixing do Chang — o desvio se comporta como ruído
-decrescente, não como um viés persistente. **Suporte empírico
-(qualificado) à conjectura remanescente do paper**, na escala testada
-(até ~4761 eventos numa única órbita de 16000 bits) — não uma prova,
-mesmo padrão epistêmico dos outros testes empíricos desta linha
-(H-111, H-114).
+**Interpretation**: the ~1-2% plateau seen in the ensemble is
+apparently an artifact of aggregating many short, finite orbits
+(dominated by the initial/transient phase, correlated across
+similar-magnitude orbits), not a real asymptotic bias. The more
+rigorous test (single orbit, genuinely large T within the same
+trajectory) is consistent with Chang's mixing conjecture — the
+deviation behaves like decreasing noise, not a persistent bias.
+**Empirical (qualified) support for the paper's remaining conjecture**,
+at the tested scale (up to ~4761 events in a single 16000-bit orbit) —
+not a proof, the same epistemic pattern as this line's other empirical
+tests (H-111, H-114).
 
-## Arquivos
+## Files
 
-- `experiment_ensemble.py` — teste vetorizado (numpy) em muitas órbitas
-  moderadas.
-- `experiment_deep_orbit.py` — teste em poucas órbitas únicas muito
-  longas (inteiros de precisão arbitrária).
+- `experiment_ensemble.py` — vectorized (numpy) test on many moderate
+  orbits.
+- `experiment_deep_orbit.py` — test on a few very long single orbits
+  (arbitrary-precision integers).
 
-## Reproduzir
+## Reproduce
 
 ```
 python3 experiment_ensemble.py
 python3 experiment_deep_orbit.py
 ```
 
-Custo: ambos rodam em segundos a poucos minutos (a órbita de 16000 bits
-usada na análise fina do texto acima foi rodada à parte, ~1-2min).
+Cost: both run in seconds to a few minutes (the 16000-bit orbit used
+in the fine-grained analysis above was run separately, ~1-2min).

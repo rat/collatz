@@ -1,27 +1,27 @@
-# E-033 — Extensão do problema aberto de Chang (2026) com órbitas mais longas
+# E-033 — Extending Chang's (2026) open problem with longer orbits
 
-Hipótese relacionada: [`H-033-chang-bit4-longorbit-extension.md`](../../hypotheses/H-033-chang-bit4-longorbit-extension.md)
+Related hypothesis: [`H-033-chang-bit4-longorbit-extension.md`](../../hypotheses/H-033-chang-bit4-longorbit-extension.md)
 
-## O que foi testado
+## What was tested
 
-O paper de Chang (H-030) deixa aberto: toda órbita visita 9 e 25 (mod 32)
-com equilíbrio suficiente ao longo do fim-de-burst no canal ≡1 mod8? Ele
-testou até n0=10⁹ com poucas dezenas de observações por órbita. Aqui
-rastreamos o equilíbrio individualmente ao longo dos 8 maiores
-recordistas reais (878-920 passos, 131-134 observações cada — 3× mais
-que o melhor caso do paper original).
+Chang's paper (H-030) leaves open: does every orbit visit 9 and 25 (mod
+32) with sufficient balance along the end-of-burst in the ≡1 mod8
+channel? He tested up to n0=10⁹ with a few dozen observations per
+orbit. Here we track the balance individually along the 8 largest real
+record holders (878-920 steps, 131-134 observations each — 3× more
+than the original paper's best case).
 
-## Resultado
+## Result
 
-Desvio persiste (0,54-0,64, não 0,5), sem sinal de convergência mesmo com
-mais dados. Consistente com H-021/H-030 (recordistas têm runs de subida
-mais longos por seleção) e com o próprio reconhecimento do Chang de que
-órbitas individuais desviam ±10-25%. Não resolve nem contradiz o
-problema aberto dele — δ_max exato não foi derivado aqui.
+The deviation persists (0.54-0.64, not 0.5), with no sign of
+convergence even with more data. Consistent with H-021/H-030 (record
+holders have longer ascent runs by selection) and with Chang's own
+acknowledgment that individual orbits deviate ±10-25%. Does not resolve
+nor contradict his open problem — the exact δ_max was not derived here.
 
-Reproduzir: `python3 experiment.py`.
+Reproduce: `python3 experiment.py`.
 
-## Status de H-033
+## Status of H-033
 
-**Confirmada** como extensão empírica honesta — dado novo e maior escala,
-sem superclaim sobre o problema aberto original.
+**Confirmed** as an honest empirical extension — new data at larger
+scale, without overclaiming about the original open problem.

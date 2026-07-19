@@ -1,25 +1,24 @@
-# E-096 — Refutação da alegação de prova de Roif (2026), item 050
+# E-096 — Refutation of Roif's (2026) proof claim, item 050
 
-Hipótese relacionada: [`H-096-roif-2026-review.md`](../../hypotheses/H-096-roif-2026-review.md)
+Related hypothesis: [`H-096-roif-2026-review.md`](../../hypotheses/H-096-roif-2026-review.md)
 
-## O que foi feito
+## What was done
 
-O paper fecha o "gap ergódico" (o conjunto excepcional de densidade
-zero do Teorema de Tao 2022) afirmando que "densidade zero implica
-conjunto vazio" (Lemma 4.3). Este experimento demonstra numericamente
-que isso é falso via dois contraexemplos clássicos e elementares:
-quadrados perfeitos e potências de 2 — ambos infinitos, ambos com
-densidade tendendo a zero.
+The paper closes the "ergodic gap" (the density-zero exceptional set
+from Tao's 2022 Theorem) by asserting that "density zero implies empty
+set" (Lemma 4.3). This experiment numerically demonstrates this is
+false via two classic, elementary counterexamples: perfect squares and
+powers of 2 — both infinite, both with density tending to zero.
 
-## Resultado
+## Result
 
-Densidade dos quadrados perfeitos cai de 10⁻¹ (N=10²) a 10⁻⁶ (N=10¹²);
-densidade das potências de 2 cai a 4×10⁻¹¹ (N=10¹²) — em ambos os
-casos o conjunto é obviamente infinito. Refuta diretamente a Lemma 4.3
-do paper, que é o único mecanismo usado para fechar o conjunto
-excepcional de Tao e completar a "prova".
+The density of perfect squares drops from 10⁻¹ (N=10²) to 10⁻⁶
+(N=10¹²); the density of powers of 2 drops to 4×10⁻¹¹ (N=10¹²) — in
+both cases the set is obviously infinite. Directly refutes the paper's
+Lemma 4.3, which is the only mechanism used to close Tao's exceptional
+set and complete the "proof".
 
-## Reproduzir
+## Reproduce
 
 ```
 python3 experiment.py

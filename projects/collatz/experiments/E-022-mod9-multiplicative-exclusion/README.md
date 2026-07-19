@@ -1,41 +1,42 @@
-# E-022 — Prova parcial de H-008 via relação multiplicativa (2 passos)
+# E-022 — Partial proof of H-008 via a multiplicative (2-step) relation
 
-Hipótese relacionada: [`H-022-mod9-multiplicative-exclusion.md`](../../hypotheses/H-022-mod9-multiplicative-exclusion.md)
+Related hypothesis: [`H-022-mod9-multiplicative-exclusion.md`](../../hypotheses/H-022-mod9-multiplicative-exclusion.md)
 
-## O que foi testado
+## What was tested
 
-Depois de H-015/H-016 falharem (buscavam M=N−k, deslocamento aditivo, que
-nunca poderia isolar mod 9), tentamos uma construção **multiplicativa**:
-M tal que 2 passos acelerados a partir de M levam exatamente a N. Resolvendo
-a congruência para N≡4 (mod 9), achamos a solução mais simples: valuações
-(a,b)=(1,2), dando M=(8N−5)/9.
+After H-015/H-016 failed (they searched for M=N−k, an additive shift,
+which could never isolate mod 9), we tried a **multiplicative**
+construction: M such that 2 accelerated steps from M lead exactly to N.
+Solving the congruence for N≡4 (mod 9), we found the simplest
+solution: valuations (a,b)=(1,2), giving M=(8N−5)/9.
 
-## Resultado
+## Result
 
-Para N=18j+13 (a metade **ímpar** de N≡4 mod9), M=16j+11 satisfaz M<N
-sempre, e a cadeia M→M₁→N (2 passos acelerados, valuações exatas 1 e 2)
-vale para todo j — **verificado sem exceção para j=0 a 100.000** (N até
-~1.8 milhões).
+For N=18j+13 (the **odd** half of N≡4 mod9), M=16j+11 always satisfies
+M<N, and the chain M→M₁→N (2 accelerated steps, exact valuations 1 and
+2) holds for every j — **verified without exception for j=0 to
+100,000** (N up to ~1.8 million).
 
-Confirmado que 0 dos 148 recordistas oficiais são ≡13 mod18 (consistente
-com a prova) e também 0 são ≡4 mod18 (a metade par, ainda não provada).
+Confirmed that 0 of the 148 official record holders are ≡13 mod18
+(consistent with the proof) and also 0 are ≡4 mod18 (the even half,
+not yet proven).
 
-**Novidade confirmada**: de 1000 casos testados, 750 (75%) não eram já
-cobertos por H-007 (mod3=2) nem H-014 (mod8=5) — não é uma redescoberta
-disfarçada.
+**Confirmed novelty**: of 1000 tested cases, 750 (75%) were not already
+covered by H-007 (mod3=2) or H-014 (mod8=5) — not a disguised
+rediscovery.
 
-Reproduzir: `python3 experiment.py 100000`.
+Reproduce: `python3 experiment.py 100000`.
 
-## O que falta
+## What's missing
 
-A metade **par** de N≡4 mod9 (N≡4 mod18) não pode ser excluída pela mesma
-técnica — passos acelerados só alcançam números ímpares, então N par nunca
-é o "alvo" direto de uma cadeia a partir de outro M. Precisaria de um
-argumento diferente. Fica como questão em aberto (mas empiricamente também
-nunca observada nos 148 recordistas reais).
+The **even** half of N≡4 mod9 (N≡4 mod18) cannot be excluded by the
+same technique — accelerated steps only reach odd numbers, so an even N
+is never the direct "target" of a chain from another M. Would need a
+different argument. Remains an open question (but also empirically
+never observed among the 148 real record holders).
 
-## Status de H-022
+## Status of H-022
 
-**Confirmada** (metade ímpar de H-008 provada rigorosamente). H-008 (a
-questão original completa) fica **parcialmente resolvida**: metade
-provada, metade (par) ainda em aberto.
+**Confirmed** (odd half of H-008 rigorously proven). H-008 (the
+original, complete question) is now **partially resolved**: half
+proven, half (even) still open.

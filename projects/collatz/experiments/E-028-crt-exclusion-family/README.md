@@ -1,28 +1,28 @@
-# E-028 — Consolidação da família de exclusões via CRT
+# E-028 — Consolidation of the exclusion family via CRT
 
-Hipótese relacionada: [`H-028-crt-exclusion-family-consolidated.md`](../../hypotheses/H-028-crt-exclusion-family-consolidated.md)
+Related hypothesis: [`H-028-crt-exclusion-family-consolidated.md`](../../hypotheses/H-028-crt-exclusion-family-consolidated.md)
 
-Origem: sugestão do advisor — a família de teoremas de exclusão (H-007,
-H-014, H-022, H-027) consolidada é o candidato mais realista a resultado
-"publicável" do projeto até agora, mais do que qualquer hipótese isolada
-ou as direções espectrais/especulativas.
+Origin: a suggestion from the advisor — the consolidated family of
+exclusion theorems (H-007, H-014, H-022, H-027) is the most realistic
+candidate for a "publishable" result from the project so far, more so
+than any single hypothesis or the speculative spectral directions.
 
-## O que foi testado
+## What was tested
 
-Combinar via CRT as quatro regras de exclusão provadas (mod3, mod6, mod8,
-mod9) numa única caracterização mod 72, e validar contra os 148
-recordistas reais conhecidos (OEIS A006877).
+Combining, via CRT, the four proven exclusion rules (mod3, mod6, mod8,
+mod9) into a single characterization mod 72, and validating it against
+the 148 known real record holders (OEIS A006877).
 
-## Resultado
+## Result
 
-45 de 72 resíduos mod 72 (62.5%) provavelmente excluídos. Zero violações
-contra os 148 recordistas reais. 18 dos 27 resíduos permitidos aparecem de
-fato na amostra.
+45 of 72 residues mod 72 (62.5%) are likely excluded. Zero violations
+against the 148 real record holders. 18 of the 27 allowed residues
+actually appear in the sample.
 
-Reproduzir: `python3 experiment.py` (usa o arquivo de dados de E-004).
+Reproduce: `python3 experiment.py` (uses E-004's data file).
 
-## Status de H-028
+## Status of H-028
 
-**Confirmada** — consolidação aritmética (CRT é elementar), sem
-matemática nova além da combinação, mas resultado limpo e validado a
-100% contra os dados reais.
+**Confirmed** — an arithmetic consolidation (CRT is elementary), no new
+mathematics beyond the combination, but a clean result validated 100%
+against real data.

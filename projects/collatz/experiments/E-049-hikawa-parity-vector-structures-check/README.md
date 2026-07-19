@@ -1,53 +1,53 @@
-# E-049 — Verificação do paper #007 (Kazunobu Hikawa, "Parity Vector Structures")
+# E-049 — Verification of paper #007 (Kazunobu Hikawa, "Parity Vector Structures")
 
-## Objetivo
+## Goal
 
-Verificar "Finite-Dimensional Combinatorial and Arithmetic Structures
-of Parity Vectors for the Accelerated Collatz Map" (Kazunobu Hikawa,
-34 páginas). Paper puramente combinatório sobre "vetores de paridade"
-(strings binárias que codificam a sequência de passos ímpar/par do
-mapa acelerado), classificados por comprimento k e peso de Hamming d.
-Repetidamente honesto: "these finite-dimensional results do not by
-themselves determine the existence or nonexistence of an infinite
-non-convergent trajectory... remain an open problem."
+Verify "Finite-Dimensional Combinatorial and Arithmetic Structures of
+Parity Vectors for the Accelerated Collatz Map" (Kazunobu Hikawa, 34
+pages). A purely combinatorial paper about "parity vectors" (binary
+strings encoding the odd/even step sequence of the accelerated map),
+classified by length k and Hamming weight d. Repeatedly honest: "these
+finite-dimensional results do not by themselves determine the
+existence or nonexistence of an infinite non-convergent trajectory...
+remain an open problem."
 
-## O que fizemos
+## What we did
 
-1. **Teorema 3.2** (bijeção explícita Φ:U(d)→J(d+1), identidade
-   X(d+1)=W(d)): confirmado por força bruta para d=1..7 — geramos
-   U(d) e J(d+1) diretamente por peso (via combinações, evitando
-   enumerar todos os 2^(k-1) vetores) e confirmamos que a imagem de Φ
-   aplicada a TODO U(d) coincide exatamente (como conjunto) com J(d+1).
-2. **Teorema 5.2** (rigidez 2-ádica): confirmado em 2000 pares
-   aleatórios de vetores de mesmo comprimento e mesmo peso, com
-   aritmética exata (`fractions.Fraction`).
-3. **Remark 5.3** (contraexemplo do próprio paper para pesos
-   desiguais): confirmado que a fórmula realmente NÃO vale nesse caso,
-   como o paper honestamente antecipa.
-4. **Reimplementação independente do Algoritmo 1** (programação
-   dinâmica): reproduz exatamente os valores de W(k) e W(d) das
-   Tabelas 1-2 do paper (k=1,10,100; d=1,2,5,10,20 — todos batem
-   exatamente, dentro do alcance computável nesta sessão, k até 200).
+1. **Theorem 3.2** (explicit bijection Φ:U(d)→J(d+1), identity
+   X(d+1)=W(d)): confirmed by brute force for d=1..7 — we generated
+   U(d) and J(d+1) directly by weight (via combinations, avoiding
+   enumerating all 2^(k-1) vectors) and confirmed that Φ's image
+   applied to ALL of U(d) coincides exactly (as a set) with J(d+1).
+2. **Theorem 5.2** (2-adic rigidity): confirmed on 2000 random pairs of
+   vectors of the same length and same weight, with exact arithmetic
+   (`fractions.Fraction`).
+3. **Remark 5.3** (the paper's own counterexample for unequal weights):
+   confirmed that the formula indeed does NOT hold in this case, as the
+   paper honestly anticipates.
+4. **Independent reimplementation of Algorithm 1** (dynamic
+   programming): exactly reproduces the W(k) and W(d) values from the
+   paper's Tables 1-2 (k=1,10,100; d=1,2,5,10,20 — all match exactly,
+   within what's computable in this session, k up to 200).
 
-## Nota de eficiência
+## Efficiency note
 
-A primeira versão do script tentou enumerar TODOS os vetores binários
-de comprimento até 40 (2^39 ≈ 5,5×10¹¹) para depois filtrar por peso —
-computacionalmente inviável, o processo em background falhou sem
-produzir saída. Corrigido gerando vetores diretamente pelo peso exato
-via `itertools.combinations` (escolhendo as posições dos 1s), reduzindo
-o custo de exponencial para polinomial no comprimento.
+The first version of the script tried enumerating ALL binary vectors up
+to length 40 (2^39 ≈ 5.5×10¹¹) and then filtering by weight —
+computationally infeasible, the background process failed without
+producing output. Fixed by generating vectors directly by exact weight
+via `itertools.combinations` (choosing the positions of the 1s),
+reducing the cost from exponential to polynomial in the length.
 
-## Resultado
+## Result
 
-**Nenhum erro encontrado** em nenhuma reivindicação testada. Paper de
-alta qualidade combinatória, honesto sobre o escopo limitado dos seus
-resultados (nada sobre a conjectura em si). Declara uso de IA generativa
-apenas para prosa/estrutura, com responsabilidade final do autor.
+**No error found** in any tested claim. A combinatorially high-quality
+paper, honest about the limited scope of its results (nothing about the
+conjecture itself). Discloses use of generative AI only for
+prose/structure, with final responsibility resting with the author.
 
-Ver `hypotheses/H-049-hikawa-parity-vector-structures-review.md`.
+See `hypotheses/H-049-hikawa-parity-vector-structures-review.md`.
 
-## Como rodar
+## How to run
 
 ```
 /home/rat/.venv/bin/python3 experiment.py

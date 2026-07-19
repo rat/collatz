@@ -1,53 +1,53 @@
-# E-070 — Verificação do paper #099 (Lodders, "Selection Rules and Channel Structure in a Base-Octave Model of Collatz Dynamics") — ALEGAÇÃO DE PROVA
+# E-070 — Verification of paper #099 (Lodders, "Selection Rules and Channel Structure in a Base-Octave Model of Collatz Dynamics") — PROOF CLAIM
 
-Hipótese relacionada: [`H-070-lodders-base-octave-review.md`](../../hypotheses/H-070-lodders-base-octave-review.md)
+Related hypothesis: [`H-070-lodders-base-octave-review.md`](../../hypotheses/H-070-lodders-base-octave-review.md)
 
 ## Paper
 
 Lodders, K. (2026). *Selection Rules and Channel Structure in a
-Base–Octave Model of Collatz Dynamics*. arXiv:2604.20181, 60 páginas
-(não peer-reviewed). PDF local:
+Base–Octave Model of Collatz Dynamics*. arXiv:2604.20181, 60 pages
+(not peer-reviewed). Local PDF:
 `literature/papers/099_Selection-Rules-Channel-Structure-Base-Octave.pdf`
-(nome de arquivo com numeração trocada no download — o conteúdo é do
-item 099; item 098 não tem PDF livre, ver `INDEX.md`).
+(filename with swapped numbering on download — the content is item
+099's; item 098 has no free PDF, see `INDEX.md`).
 
-## Veredito
+## Verdict
 
-**NÃO é uma prova válida.** O paper reformula Collatz num "modelo
-base-octava" (h=B+8(A-1)), deriva 16 regras de transição entre 8 classes
-de base (Seção 5) e identifica a classe B=7 (com índice de octava A par)
-como o único canal capaz de sustentar crescimento persistente. Até aqui,
-correto — verificado. O paper então afirma (Theorem 9.6.8) que toda
-trajetória de Collatz está confinada à bacia terminal {1,2} — **alegação
-de prova completa** — apoiada no Corollary 9.6.7 (o índice de octava A,
-na entrada de episódios sucessivos de persistência base-7, deve
-decrescer estritamente), por sua vez apoiado numa enumeração exaustiva
-de "22 caminhos de retorno" num sistema de 128 estados (Apêndice A2).
+**NOT a valid proof.** The paper reformulates Collatz in a
+"base-octave model" (h=B+8(A-1)), derives 16 transition rules between 8
+base classes (Section 5), and identifies class B=7 (with even octave
+index A) as the only channel able to sustain persistent growth. Up to
+here, correct — verified. The paper then claims (Theorem 9.6.8) that
+every Collatz trajectory is confined to the terminal basin {1,2} — a
+**full-proof claim** — supported by Corollary 9.6.7 (the octave index
+A, at the entry of successive base-7 persistence episodes, must
+strictly decrease), which is in turn supported by an exhaustive
+enumeration of "22 return paths" in a 128-state system (Appendix A2).
 
-**O Corollary 9.6.7 é falso.** O próprio exemplo citado pelo paper na
-Introdução (n=27, "requer substancialmente mais passos que valores
-vizinhos") já o viola: seus episódios de persistência base-7 têm
-v2(A_entrada) = 2, 1, 3, 1 — o salto de 1 para 3 contradiz diretamente
-"deve decrescer estritamente". Em escala (N até 500.000), 56,7% de todos
-os pares de episódios sucessivos violam a alegação — não é um caso raro
-de borda.
+**Corollary 9.6.7 is false.** The paper's own example, cited in the
+Introduction (n=27, "requires substantially more steps than
+neighboring values"), already violates it: its base-7 persistence
+episodes have v2(A_entry) = 2, 1, 3, 1 — the jump from 1 to 3 directly
+contradicts "must strictly decrease". At scale (N up to 500,000), 56.7%
+of all successive-episode pairs violate the claim — not a rare edge
+case.
 
-## O que foi testado
+## What was tested
 
-1. Codificação base-octava e mapa acelerado, validados contra o exemplo
-   próprio do paper (trajetória de h1=7, página 22) e a Tabela 2.
-2. As 16 regras de seleção (Seção 5, Casos 1-4) — 31.992 pares (B,A)
-   testados, 0 falhas.
-3. Proposition 8.4 (comprimento do episódio de persistência ≤
-   v2(A_entrada)) — 515.342 episódios testados, 0 falhas.
-4. **Corollary 9.6.7** (resultado principal) — falsificado com o próprio
-   exemplo do paper (n=27, n=31) e em escala (988.476 pares de episódios
-   testados, 560.682 falhas).
+1. Base-octave encoding and the accelerated map, validated against the
+   paper's own example (trajectory of h1=7, page 22) and Table 2.
+2. The 16 selection rules (Section 5, Cases 1-4) — 31,992 (B,A) pairs
+   tested, 0 failures.
+3. Proposition 8.4 (persistence-episode length ≤ v2(A_entry)) —
+   515,342 episodes tested, 0 failures.
+4. **Corollary 9.6.7** (main result) — falsified with the paper's own
+   example (n=27, n=31) and at scale (988,476 episode pairs tested,
+   560,682 failures).
 
-## Como reproduzir
+## How to reproduce
 
 ```
 python3 experiment.py
 ```
 
-Sem dependências além da stdlib. Roda em menos de 2 minutos.
+No dependencies beyond the stdlib. Runs in under 2 minutes.

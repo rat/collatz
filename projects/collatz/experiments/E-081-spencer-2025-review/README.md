@@ -1,33 +1,33 @@
-# E-081 — Revisão de Spencer, "Finite Block Exhaustion and Rooted Occupancy..." (2025)
+# E-081 — Review of Spencer, "Finite Block Exhaustion and Rooted Occupancy..." (2025)
 
-Hipótese relacionada: [`H-081-spencer-2025-review.md`](../../hypotheses/H-081-spencer-2025-review.md)
+Related hypothesis: [`H-081-spencer-2025-review.md`](../../hypotheses/H-081-spencer-2025-review.md)
 
-**ALEGAÇÃO DE PROVA COMPLETA — REFUTADA.**
+**FULL-PROOF CLAIM — REFUTED.**
 
-## O que foi feito
+## What was done
 
-Constrói a mesma árvore reversa de H-018/E-018, com aparato combinatório
-sofisticado (contador ternário de classes residuais mod 2·3^J). Alega
-provar que toda classe residual primitiva está "ocupada" em cada escala
-finita, e conclui (Teorema 15.3) que todo inteiro ímpar tem endereço
-reverso finito.
+Constructs the same reverse tree as H-018/E-018, with a sophisticated
+combinatorial apparatus (a ternary counter of residue classes mod
+2·3^J). Claims to prove that every primitive residue class is
+"occupied" at every finite scale, and concludes (Theorem 15.3) that
+every odd integer has a finite reverse address.
 
-## O furo lógico
+## The logical hole
 
-"Classe residual ocupada" (afirmação sobre resíduos, objetos abstratos)
-não implica "inteiro específico atingido" — o paper nunca conecta as
-duas coisas. Confirmamos isso concretamente: construímos a árvore real
-até profundidade 6 e 8 e mostramos que a classe residual de 27 está
-ocupada, mas por representantes muito maiores (ordem de 10⁶-10⁸),
-nunca 27 em si.
+"Residue class occupied" (a statement about residues, abstract
+objects) does not imply "a specific integer is reached" — the paper
+never connects the two. We confirmed this concretely: we built the real
+tree up to depth 6 and 8 and showed that 27's residue class is
+occupied, but by representatives far larger (on the order of
+10⁶-10⁸), never 27 itself.
 
-## Resultado
+## Result
 
-Não é uma prova válida — mesma anatomia de erro do item 109
-(Getachew/H-079), por um caminho diferente. Ver H-081 para a análise
-completa.
+Not a valid proof — the same error anatomy as item 109
+(Getachew/H-079), via a different route. See H-081 for the full
+analysis.
 
-## Reproduzir
+## Reproduce
 
 ```
 python3 experiment.py

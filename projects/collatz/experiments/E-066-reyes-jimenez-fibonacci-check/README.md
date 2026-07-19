@@ -1,50 +1,52 @@
-# E-066 — Verificação do paper #057/089 (Reyes Jiménez, "A Fibonacci theorem for Collatz trajectories via modular graph structure")
+# E-066 — Verification of paper #057/089 (Reyes Jiménez, "A Fibonacci theorem for Collatz trajectories via modular graph structure")
 
-Hipótese relacionada: [`H-066-reyes-jimenez-fibonacci-review.md`](../../hypotheses/H-066-reyes-jimenez-fibonacci-review.md)
+Related hypothesis: [`H-066-reyes-jimenez-fibonacci-review.md`](../../hypotheses/H-066-reyes-jimenez-fibonacci-review.md)
 
 ## Paper
 
 Reyes Jiménez, M-A. (2026). *A Fibonacci theorem for Collatz
 trajectories via modular graph structure*. arXiv:2606.02621 [math.NT].
-PDF local: `literature/papers/056_Fibonacci-theorem-Collatz-modular-graph.pdf`.
+Local PDF: `literature/papers/056_Fibonacci-theorem-Collatz-modular-graph.pdf`.
 
-Pesquisa matemática genuína e tecnicamente sofisticada (não uma
-tentativa amadora de resolver a conjectura). Item 089 é duplicata
-confirmada.
+Genuine, technically sophisticated mathematical research (not an
+amateur attempt at solving the conjecture). Item 089 is a confirmed
+duplicate.
 
-## O que foi testado
+## What was tested
 
-11 partes, cobrindo toda a estrutura do paper:
+11 parts, covering the paper's whole structure:
 
-1. Lemma 2.1 (resíduo corretivo) + Exemplo 2.2.
-2. Proposição 2.3 (bijetividade/periodicidade).
-3. Lemmas 2.4-2.5 (antissimetria/translação).
-4. Proposição 2.8 (transição mod 6 — já verificada em H-027).
-5. Proposições 3.1/3.3 (SCCs e ciclos simples do grafo).
-6. Cinco raios espectrais (Proposições 3.4, 4.10, 4.11, 4.13, Teorema 4.15).
-7. Corolário 4.5 (confinamento a {1,2,4,5}).
-8. **Teorema 4.7 (resultado principal)**: contagem de Fibonacci exata.
-9. Exemplo 4.8.
-10. Teorema 4.1 + Corolário 4.4 (teorema do caminho modular).
-11. Proposição 4.18/Corolário 4.19 (distribuição em ciclos positivos).
+1. Lemma 2.1 (corrective residue) + Example 2.2.
+2. Proposition 2.3 (bijectivity/periodicity).
+3. Lemmas 2.4-2.5 (antisymmetry/translation).
+4. Proposition 2.8 (mod 6 transition — already verified in H-027).
+5. Propositions 3.1/3.3 (graph SCCs and simple cycles).
+6. Five spectral radii (Propositions 3.4, 4.10, 4.11, 4.13, Theorem
+   4.15).
+7. Corollary 4.5 (confinement to {1,2,4,5}).
+8. **Theorem 4.7 (main result)**: exact Fibonacci count.
+9. Example 4.8.
+10. Theorem 4.1 + Corollary 4.4 (modular path theorem).
+11. Proposition 4.18/Corollary 4.19 (distribution over positive
+    cycles).
 
-## Resultado
+## Result
 
-**0 falhas em todas as 11 partes.** A contagem de Fibonacci (Teorema
-4.7) foi reproduzida por força bruta exatamente para m=1 a 22
-(F(2)=1 até F(23)=28.657). Nenhum erro matemático encontrado — o
-paper de maior rigor técnico revisado nesta sessão.
+**0 failures across all 11 parts.** The Fibonacci count (Theorem 4.7)
+was reproduced by brute force exactly for m=1 to 22 (F(2)=1 through
+F(23)=28,657). No mathematical error found — the most technically
+rigorous paper reviewed in this session.
 
-Dois bugs foram encontrados e corrigidos no PRÓPRIO script de
-verificação (não no paper): uma comparação de ciclos sem normalização
-de rotação consistente (Parte 5), e um erro de indexação off-by-one
-ao extrair (h₂,h₃,h₄) (Parte 9) — ver H-066 para detalhes.
+Two bugs were found and fixed in OUR OWN verification script (not in
+the paper): a cycle comparison without consistent rotation
+normalization (Part 5), and an off-by-one indexing error when
+extracting (h₂,h₃,h₄) (Part 9) — see H-066 for details.
 
-## Como reproduzir
+## How to reproduce
 
 ```
 python3 experiment.py
 ```
 
-Requer `numpy` (para autovalores na Parte 6; sem numpy, essa parte é
-pulada e não conta como falha). Roda em alguns segundos.
+Requires `numpy` (for eigenvalues in Part 6; without numpy, that part
+is skipped and doesn't count as a failure). Runs in a few seconds.

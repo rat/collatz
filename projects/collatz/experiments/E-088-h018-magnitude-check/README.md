@@ -1,27 +1,27 @@
-# E-088 — Testa se a obstrução de H-018 tem o mesmo confound de magnitude de H-024
+# E-088 — Tests whether H-018's obstruction has the same magnitude confound as H-024
 
-Hipótese relacionada: [`H-088-h018-branch-decay-not-magnitude-confounded.md`](../../hypotheses/H-088-h018-branch-decay-not-magnitude-confounded.md)
+Related hypothesis: [`H-088-h018-branch-decay-not-magnitude-confounded.md`](../../hypotheses/H-088-h018-branch-decay-not-magnitude-confounded.md)
 
-## O que foi feito
+## What was done
 
-O Fable, consultado sobre H-026, apontou uma terceira suspeita: a
-"taxa de decaimento entre galhos férteis" de H-018 (73×–680×) poderia
-ter o mesmo confound de magnitude que H-024/H-086 já corrigiram para
-D(v) bruto. Testamos diretamente usando 18 pares de galhos já
-decompostos (t=10,13,16,17): calculamos o termo trivial esperado
-w_{i+3}/w_i e verificamos se ele varia (o que permitiria confusão) ou
-é constante (o que não permite).
+The Fable, consulted about H-026, raised a third suspicion: H-018's
+"decay rate between fertile branches" (73×–680×) might have the same
+magnitude confound that H-024/H-086 already corrected for raw D(v). We
+tested this directly using 18 already-decomposed branch pairs
+(t=10,13,16,17): we computed the expected trivial term w_{i+3}/w_i and
+checked whether it varies (which would allow confounding) or is
+constant (which would not).
 
-## Resultado
+## Result
 
-w_{i+3}/w_i = 64 exatamente em todos os 18 pares (consequência
-algébrica de "3 posições" sempre multiplicar por 4³). Dividir por uma
-constante fixa não muda a dispersão — confirmado numericamente
-(desvio-padrão em log10 idêntico antes e depois, 0,5674 dex). A
-suspeita do Fable não se aplica aqui: reforça a conclusão original de
-H-018 em vez de exigir correção. Ver H-088 para a análise completa.
+w_{i+3}/w_i = 64 exactly across all 18 pairs (an algebraic consequence
+of "3 positions" always multiplying by 4³). Dividing by a fixed
+constant doesn't change the spread — confirmed numerically (identical
+log10 standard deviation before and after, 0.5674 dex). The Fable's
+suspicion doesn't apply here: it reinforces H-018's original conclusion
+rather than requiring a correction. See H-088 for the full analysis.
 
-## Reproduzir
+## Reproduce
 
 ```
 python3 experiment.py

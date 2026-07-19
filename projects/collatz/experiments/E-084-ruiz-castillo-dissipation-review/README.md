@@ -1,24 +1,24 @@
-# E-084 — Revisão de Ruiz Castillo, "Disipación Promedio..." (2026)
+# E-084 — Review of Ruiz Castillo, "Disipación Promedio..." (2026)
 
-Hipótese relacionada: [`H-084-ruiz-castillo-dissipation-review.md`](../../hypotheses/H-084-ruiz-castillo-dissipation-review.md)
+Related hypothesis: [`H-084-ruiz-castillo-dissipation-review.md`](../../hypotheses/H-084-ruiz-castillo-dissipation-review.md)
 
-## O que foi feito
+## What was done
 
-Oitavo paper da mesma série já revisada (ver
-`literature/ruiz-castillo-research-program.md`). Mesma quantidade
-clássica (deuda residual L_k(n)), revestida agora com dinâmica
-simbólica/teoria ergódica. Verificamos as três proposições centrais:
-interpretação multiplicativa, semiconjugação simbólica, classificação
-local do potencial dissipativo.
+The eighth paper in the same already-reviewed series (see
+`literature/ruiz-castillo-research-program.md`). The same classic
+quantity (residual debt L_k(n)), now dressed up with symbolic
+dynamics/ergodic theory. We verified the three central propositions:
+multiplicative interpretation, symbolic semiconjugacy, local
+classification of the dissipative potential.
 
-## Resultado
+## Result
 
-Tudo confirmado sem exceção. Uma tentativa própria de testar uma
-identidade que eu supus (não uma alegação do paper) falhou por estar
-formulada errada — corrigido, documentado em H-084. Ver H-084 para o
-veredito completo.
+Everything confirmed without exception. An identity we ourselves
+assumed to test (not a claim from the paper) failed because it was
+formulated incorrectly — fixed, documented in H-084. See H-084 for the
+full verdict.
 
-## Reproduzir
+## Reproduce
 
 ```
 python3 experiment.py

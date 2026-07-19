@@ -1,27 +1,25 @@
-# E-074 — Revisão de Ballesteros et al., "A Novel Image Encryption Scheme Based on Collatz Conjecture" (2018)
+# E-074 — Review of Ballesteros et al., "A Novel Image Encryption Scheme Based on Collatz Conjecture" (2018)
 
-Hipótese relacionada: [`H-074-ballesteros-image-encryption-review.md`](../../hypotheses/H-074-ballesteros-image-encryption-review.md)
+Related hypothesis: [`H-074-ballesteros-image-encryption-review.md`](../../hypotheses/H-074-ballesteros-image-encryption-review.md)
 
-## O que foi feito
+## What was done
 
-Verificamos a construção central do esquema de criptografia (item 104):
-os "códigos de Collatz" — codificação de comprimento variável derivada
-da órbita acelerada de cada valor de pixel — e a alegação de que a
-subsequência "11" nunca aparece dentro do corpo de um código (só como
-cabeçalho artificial), o que permite decodificação única de um fluxo
-concatenado.
+We verified the encryption scheme's central construction (item 104):
+"Collatz codes" — a variable-length encoding derived from each pixel
+value's accelerated orbit — and the claim that the substring "11" never
+appears within the body of a code (only as an artificial header),
+allowing unique decoding of a concatenated stream.
 
-## Resultado
+## Result
 
-Confirmado sem erros: exemplo do próprio paper reproduzido exatamente;
-corpo nunca contém "11" em nenhum dos 256 valores possíveis; os 256
-códigos completos são todos distintos; um fluxo de 1000 pixels
-concatenados (48.693 bits) tem exatamente uma decomposição válida
-(verificado via programação dinâmica). Ver H-074 para o veredito
-completo e duas correções de metodologia própria feitas antes de
-reportar qualquer conclusão.
+Confirmed with no errors: the paper's own example reproduced exactly;
+the body never contains "11" in any of the 256 possible values; the
+256 complete codes are all distinct; a stream of 1000 concatenated
+pixels (48,693 bits) has exactly one valid decomposition (verified via
+dynamic programming). See H-074 for the full verdict and two of our own
+methodology corrections made before reporting any conclusion.
 
-## Reproduzir
+## Reproduce
 
 ```
 python3 experiment.py

@@ -1,38 +1,37 @@
-# Papers próprios (resultado final)
+# Our own papers (final result)
 
-Diferente de `../literature/` (notas sobre papers de TERCEIROS que
-lemos e avaliamos), esta pasta guarda os papers que O PRÓPRIO
-ResearchOS produz — o resultado final a ser escrito/publicado a partir
-das hipóteses e experimentos acumulados.
+Unlike `../literature/` (notes on THIRD-PARTY papers we read and
+evaluate), this folder holds the papers that ResearchOS ITSELF
+produces — the final result to be written/published from the
+accumulated hypotheses and experiments.
 
-Cada paper tem sua própria subpasta `NN-titulo-curto/`, contendo pelo
-menos um `OUTLINE.md` (escopo, estrutura, hipóteses-fonte, status) e,
-quando a redação avançar, os arquivos de rascunho em si.
+Each paper has its own `NN-short-title/` subfolder, containing at
+least an `OUTLINE.md` (scope, structure, source hypotheses, status)
+and, as writing progresses, the draft files themselves.
 
-## Papers ativos/planejados
+## Active/planned papers
 
-- **`01-syracuse-qx1-endogenia/`** — o paper principal desta linha:
-  generalização qx+1 da medida de Syracuse de Tao, barreira de
-  endogenia, e a caracterização precisa (por 6+ vias independentes) do
-  ingrediente que falta para fechar densidade positiva/β=1/WCC. Escopo:
-  H-109 a H-128. **Rascunho completo em LaTeX** (`main.tex`/`main.pdf`,
-  inglês — padrão para submissão em periódicos) **e uma versão em
-  português** (`main-pt-br.tex`/`main-pt-br.pdf`, tradução completa
-  para o diretor científico conferir o conteúdo). **Sempre que um dos
-  dois for editado por pedido do diretor científico, editar o outro
-  também** — são a mesma fonte de verdade em dois idiomas, não podem
-  divergir.
-- **`02-critica-cumulativa-literatura/`** — paper cumulativo de
-  críticas aos papers da coleção do Google Scholar (alegações de prova
-  refutadas, erros encontrados). Ver `BACKLOG.md` item 8. **Não
-  iniciar a escrita sem pedido explícito do diretor científico** —
-  natureza diferente do paper 01 (cresce a cada item da coleção lido,
-  não tem um ponto de "fechamento" natural).
+- **`01-syracuse-qx1-endogenia/`** — this line's main paper: qx+1
+  generalization of Tao's Syracuse measure, the endogeny barrier, and
+  the precise characterization (via 6+ independent routes) of the
+  missing ingredient needed to close positive density/β=1/WCC. Scope:
+  H-109 through H-128. **Complete LaTeX draft** (`main.tex`/`main.pdf`,
+  English — standard for journal submission) **and a Portuguese
+  version** (`main-pt-br.tex`/`main-pt-br.pdf`, full translation for
+  the scientific director to review the content). **Whenever one of
+  the two is edited at the scientific director's request, edit the
+  other too** — they are the same source of truth in two languages,
+  they cannot diverge.
+- **`02-critica-cumulativa-literatura/`** — cumulative paper of
+  critiques of the papers in the Google Scholar collection (refuted
+  proof claims, errors found). See `BACKLOG.md` item 8. **Do not start
+  writing without an explicit request from the scientific director** —
+  different nature from paper 01 (grows with every item read from the
+  collection, has no natural "closing" point).
 
-## Convenção
+## Convention
 
-Um paper só ganha pasta aqui quando as hipóteses que o sustentam já
-convergiram o suficiente para valer a pena esboçar estrutura (não é
-para nascer junto com a primeira hipótese de uma linha). Não criar
-pasta para papers hipotéticos/futuros sem uma linha de investigação
-real por trás.
+A paper only gets a folder here once the hypotheses supporting it have
+converged enough to be worth sketching a structure (it shouldn't be
+born alongside a line's first hypothesis). Do not create a folder for
+hypothetical/future papers without a real investigation line behind them.

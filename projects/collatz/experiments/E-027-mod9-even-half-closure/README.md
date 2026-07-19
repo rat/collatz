@@ -1,44 +1,45 @@
-# E-027 — Corolário de H-007 que fecha a metade par de H-008
+# E-027 — H-007 corollary that closes H-008's even half
 
-Hipótese relacionada: [`H-027-mod6-corollary-closes-h008-even-half.md`](../../hypotheses/H-027-mod6-corollary-closes-h008-even-half.md)
+Related hypothesis: [`H-027-mod6-corollary-closes-h008-even-half.md`](../../hypotheses/H-027-mod6-corollary-closes-h008-even-half.md)
 
-Origem: tentativa de fechar a metade par de H-008 (N≡4 mod18), deixada
-pendente desde H-022 com o registro (impreciso, ver abaixo) de que estaria
-bloqueada por depender de passos acelerados.
+Origin: an attempt to close H-008's even half (N≡4 mod18), left pending
+since H-022 with the (imprecise, see below) note that it was blocked by
+depending on accelerated steps.
 
-## O que foi testado
+## What was tested
 
-Se N par com N/2 ≡ 2 (mod 3) — o que, após um único passo de halving,
-cai direto na classe já excluída por H-007 — fornece uma exclusão válida
-para N.
+Whether even N with N/2 ≡ 2 (mod 3) — which, after a single halving
+step, falls directly into the class already excluded by H-007 —
+provides a valid exclusion for N.
 
-## Correção durante o desenvolvimento
+## Correction during development
 
-A primeira versão do script parametrizava por j (N=18j+4, mirando
-especificamente mod9/mod18) e testava só 300k casos DESSA subclasse. Ao
-revisar a prova antes de reportar (consulta ao advisor), ficou claro que
-a derivação nunca usa mod9 — a condição real é só N≡4 mod6, uma classe
-3× mais ampla. Reescrito para testar a classe geral N=6k+4 (k=1..500.000).
+The first version of the script parametrized by j (N=18j+4, targeting
+mod9/mod18 specifically) and tested only 300k cases of THAT subclass.
+While reviewing the proof before reporting (consulting the advisor), it
+became clear the derivation never uses mod9 — the real condition is
+just N≡4 mod6, a class 3× broader. Rewritten to test the general class
+N=6k+4 (k=1..500,000).
 
-## Resultado
+## Result
 
-Zero exceções em 500.000 casos. Confirma: para todo N≡4 mod6, P=2k+1<N
-tem total_stopping_time(P) = total_stopping_time(N)+1. N nunca pode ser
-recordista.
+Zero exceptions in 500,000 cases. Confirms: for every N≡4 mod6,
+P=2k+1<N has total_stopping_time(P) = total_stopping_time(N)+1. N can
+never be a record holder.
 
-Reproduzir: `python3 experiment.py 500000`
+Reproduce: `python3 experiment.py 500000`
 
-## Avaliação honesta
+## Honest assessment
 
-Isto fecha H-008 completamente (a metade par é o subcaso k=3j deste fato
-mais geral), mas **não é um resultado novo independente** — é um
-corolário de uma linha de álgebra sobre H-007. A metade par de H-008
-nunca foi estruturalmente difícil; só parecia bloqueada porque H-022 a
-enquadrou em termos de passos acelerados (que de fato não alcançam N
-par diretamente), quando um único halving simples já resolve.
+This closes H-008 completely (the even half is the k=3j subcase of
+this more general fact), but it is **not an independent new result** —
+it's a corollary of a line of algebra about H-007. H-008's even half
+was never structurally hard; it only seemed blocked because H-022
+framed it in terms of accelerated steps (which indeed don't directly
+reach even N), when a single simple halving already resolves it.
 
-## Status de H-027 / H-008
+## Status of H-027 / H-008
 
-**H-027 confirmada.** **H-008 agora RESOLVIDA POR COMPLETO**: H-022
-(metade ímpar, técnica nova) + H-027 (metade par, corolário) juntas
-excluem toda a classe 4 mod9 de recordistas, com prova.
+**H-027 confirmed.** **H-008 is now FULLY RESOLVED**: H-022 (odd half,
+new technique) + H-027 (even half, corollary) together exclude the
+entire class 4 mod9 from record holders, with proof.

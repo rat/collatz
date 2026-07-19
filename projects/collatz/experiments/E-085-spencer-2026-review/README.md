@@ -1,40 +1,40 @@
-# E-085 — Revisão de Spencer, "Rooted Surjectivity from the Invariant E/O Refinement System" (2026)
+# E-085 — Review of Spencer, "Rooted Surjectivity from the Invariant E/O Refinement System" (2026)
 
-Hipótese relacionada: [`H-085-spencer-2026-review.md`](../../hypotheses/H-085-spencer-2026-review.md)
+Related hypothesis: [`H-085-spencer-2026-review.md`](../../hypotheses/H-085-spencer-2026-review.md)
 
-**ALEGAÇÃO DE PROVA COMPLETA — veredito diferenciado (não confirmada, não refutada computacionalmente).**
+**FULL-PROOF CLAIM — differentiated verdict (not computationally confirmed, not refuted).**
 
-## O que foi feito
+## What was done
 
-Mesmo autor do item 022 (já refutado com contraexemplo em H-081) —
-suspeita inicial era a mesma anatomia de erro ("classe residual
-ocupada" ≠ "inteiro específico atingido"). Construímos a árvore reversa
-real a partir de n=1 (grau infinito: múltiplos k admissíveis por nó,
-diferente da árvore de grau≤2 do item 022) e testamos cobertura de
-inteiros ímpares pequenos com orçamento computacional crescente.
+Same author as item 022 (already refuted with a counterexample in
+H-081) — our initial suspicion was the same error anatomy ("residue
+class occupied" ≠ "specific integer reached"). We built the real
+reverse tree starting from n=1 (infinite degree: multiple admissible k
+per node, unlike item 022's degree-≤2 tree) and tested coverage of
+small odd integers with growing computational budget.
 
-## O que encontramos (diferente da suspeita inicial)
+## What we found (different from the initial suspicion)
 
-Cobertura completa até 10.000 com orçamento adequado; os "faltantes"
-em rodadas com orçamento menor **convergem exatamente à raiz** quando
-seguidos sem limite de magnitude (confirmado individualmente para
-vários valores) — isso é o oposto do comportamento visto no item 022,
-onde o gap persistia e crescia independente do orçamento.
+Complete coverage up to 10,000 with adequate budget; the "missing"
+ones in smaller-budget rounds **converge exactly to the root** when
+followed with no magnitude limit (individually confirmed for several
+values) — this is the opposite of the behavior seen in item 022, where
+the gap persisted and grew regardless of budget.
 
-**Mas** identificamos uma lacuna de rigor genuína na demonstração
-escrita: o Teorema 14.1 argumenta sobre ocupação de *classes*
-residuais, e o Teorema 14.2 conclui algo mais forte sobre *elementos
-individuais* — essa passagem não é justificada explicitamente no texto.
+**But** we identified a genuine rigor gap in the written proof: Theorem
+14.1 argues about the occupancy of residue *classes*, and Theorem 14.2
+concludes something stronger about *individual elements* — this
+transition isn't explicitly justified in the text.
 
-## Resultado
+## Result
 
-Veredito honesto: a demonstração como escrita tem uma lacuna lógica
-real (não é uma prova válida como está), mas a evidência computacional
-disponível é consistente com a conclusão do paper, ao contrário do
-item 022 do mesmo autor. Ver H-085 para a análise completa, incluindo
-a autocorreção da suspeita inicial baseada em precedente.
+Honest verdict: the proof as written has a real logical gap (it isn't a
+valid proof as it stands), but the available computational evidence is
+consistent with the paper's conclusion, unlike the same author's item
+022. See H-085 for the full analysis, including the self-correction of
+our initial precedent-based suspicion.
 
-## Reproduzir
+## Reproduce
 
 ```
 python3 experiment.py

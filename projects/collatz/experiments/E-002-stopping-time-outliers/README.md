@@ -1,64 +1,70 @@
-# E-002 — Estrutura residual em outliers de stopping time
+# E-002 — Residual structure in stopping-time outliers
 
-Hipótese relacionada: [`H-002-stopping-time-outliers.md`](../../hypotheses/H-002-stopping-time-outliers.md)
+Related hypothesis: [`H-002-stopping-time-outliers.md`](../../hypotheses/H-002-stopping-time-outliers.md)
 
-## O que foi testado
+## What was tested
 
-Números com stopping time anormalmente alto para o tamanho ("outliers") — os top
-0.5% por `total_steps(n) / log2(n)` num intervalo — foram comparados a uma amostra
-típica do mesmo intervalo quanto a: (a) resíduo mod potências de 2 (4 a 64), (b)
-resíduo mod potências de 3 (3 a 27), (c) comprimento da corrida inicial de passos
-com valuação a_i=1 ("run1").
+Numbers with abnormally high stopping time for their size ("outliers"
+— the top 0.5% by `total_steps(n) / log2(n)` over an interval) were
+compared against a typical sample from the same interval on: (a)
+residue mod powers of 2 (4 to 64), (b) residue mod powers of 3 (3 to
+27), (c) length of the initial run of steps with valuation a_i=1
+("run1").
 
-`total_steps` = número de passos do mapa padrão (n/2 se par, 3n+1 se ímpar) até
-atingir 1, calculado de forma barata a partir da órbita acelerada.
+`total_steps` = number of steps of the standard map (n/2 if even, 3n+1
+if odd) until reaching 1, computed cheaply from the accelerated orbit.
 
-## Resultados (n até 2.000.000, top 0.5% = ~5.000 outliers, testado com 2 seeds)
+## Results (n up to 2,000,000, top 0.5% = ~5,000 outliers, tested with 2 seeds)
 
-- **Resíduo mod 4/8/16/32/64**: diferença enorme e extremamente significativa
-  (p < 10^-40) entre outliers e grupo típico.
-- **Resíduo mod 3/9/27**: nenhuma diferença significativa em nenhuma configuração
-  testada (p sempre > 0.05, mesmo sem correção para múltiplos testes).
-- **Corrida inicial de a_i=1**: outliers têm em média ~1.95 passos iniciais com
-  a=1, contra ~1.0 no grupo típico — quase o dobro.
+- **Residue mod 4/8/16/32/64**: huge and extremely significant
+  difference (p < 10^-40) between outliers and the typical group.
+- **Residue mod 3/9/27**: no significant difference in any tested
+  configuration (p always > 0.05, even without correction for multiple
+  testing).
+- **Initial run of a_i=1**: outliers average ~1.95 initial steps with
+  a=1, versus ~1.0 in the typical group — almost double.
 
-## Interpretação — por que o sinal mod-2^k NÃO é uma descoberta nova
+## Interpretation — why the mod-2^k signal is NOT a new finding
 
-O resíduo de n módulo 2^k determina (de forma essencially determinística) os
-primeiros valores da sequência de valuações a_1, a_2, ... até que a soma delas
-ultrapasse k — e vice-versa. Como um outlier é, por definição, um número cuja
-descida inicial é lenta (valuações pequenas por vários passos seguidos), ele
-**necessariamente** cai em classes de resíduo mod 2^k específicas. Ou seja: o
-teste de resíduo mod 2^k está essencialmente testando a mesma coisa que a
-definição de outlier já garante — é uma tautologia codificada de outra forma, não
-uma estrutura nova descoberta.
+The residue of n modulo 2^k determines (essentially deterministically)
+the first values of the valuation sequence a_1, a_2, ... until their
+sum exceeds k — and vice versa. Since an outlier is, by definition, a
+number whose initial descent is slow (small valuations over several
+consecutive steps), it **necessarily** falls into specific residue
+classes mod 2^k. In other words: the mod-2^k residue test is
+essentially testing the same thing the outlier definition already
+guarantees — it's a tautology encoded another way, not newly
+discovered structure.
 
-Para verificar isso, rodamos um controle: condicionar ambos os grupos ao **mesmo**
-comprimento de corrida inicial (`run1` fixo em 1 ou 2), removendo a explicação
-mais óbvia. Mesmo assim, mod 16/32/64 continuaram fortemente significativos
-(p < 10^-13) — o que mostra que a tautologia não se limita ao "run1": residuo mod
-2^k carrega informação sobre os valores *exatos* de a_2, a_3, ... (não só se são
-1 ou não), e essa informação continua mecanicamente ligada ao stopping time. Ou
-seja, o sinal mod-2^k é real, mas é **estrutura já conhecida e esperada** (a
-própria definição de stopping time via valuações), não uma descoberta.
+To verify this, we ran a control: conditioning both groups on the
+**same** initial run length (`run1` fixed at 1 or 2), removing the most
+obvious explanation. Even so, mod 16/32/64 remained strongly
+significant (p < 10^-13) — showing that the tautology isn't limited to
+"run1": residue mod 2^k carries information about the *exact* values
+of a_2, a_3, ... (not just whether they're 1 or not), and that
+information stays mechanically tied to stopping time. That is, the
+mod-2^k signal is real, but it is **already-known, expected structure**
+(the very definition of stopping time via valuations), not a discovery.
 
-## Resultado genuíno: ausência de estrutura mod-3^k
+## Genuine result: absence of mod-3^k structure
 
-O teste de resíduo mod 3/9/27 **não tem** essa relação determinística com a
-sequência de valuações (o "3" em 3n+1 entra de forma distinta do "2"). A ausência
-de qualquer sinal aqui — inclusive após condicionar em run1 — é um resultado
-negativo genuíno: outliers de stopping time não parecem ter nenhuma assinatura
-residual módulo potências de 3, na faixa e escala testadas.
+The residue test mod 3/9/27 **does not have** this deterministic
+relationship with the valuation sequence (the "3" in 3n+1 enters
+differently from the "2"). The absence of any signal here — including
+after conditioning on run1 — is a genuine negative result:
+stopping-time outliers don't seem to have any residual signature
+modulo powers of 3, in the tested range and scale.
 
-## Status de H-002
+## Status of H-002
 
-**Suportada apenas na parte tautológica** (estrutura mod-2^k, já esperada pela
-própria definição de stopping time) e **refutada na parte mais interessante**
-(nenhuma estrutura mod-3^k detectada). Não hà evidência de assinatura estrutural
-"nova" nos outliers além do que a definição de valuação já implica.
+**Supported only in the tautological part** (mod-2^k structure,
+already expected from the very definition of stopping time) and
+**refuted in the more interesting part** (no mod-3^k structure
+detected). No evidence of a "new" structural signature in outliers
+beyond what the valuation definition already implies.
 
-Próxima extensão possível (não prioritária agora): testar estruturas mais sutis
-que não sejam redutíveis a residuo mod 2^k — por exemplo, features baseadas na
-sequência completa de valuações normalizada por comprimento, ou comparação com
-os recordistas reais catalogados na literatura (Roosendaal) em vez de outliers
-definidos localmente na nossa amostra.
+Possible next extension (not a current priority): test subtler
+structures not reducible to residue mod 2^k — e.g., features based on
+the full valuation sequence normalized by length, or comparison
+against the real record-holders catalogued in the literature
+(Roosendaal) instead of outliers defined locally within our sample.

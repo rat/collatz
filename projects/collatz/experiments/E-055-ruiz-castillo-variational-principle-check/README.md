@@ -1,66 +1,66 @@
-# E-055 — Verificação do paper #020 (Ruiz Castillo, "Principio Variacional Residual")
+# E-055 — Verification of paper #020 (Ruiz Castillo, "Residual Variational Principle")
 
-## Objetivo
+## Goal
 
-Verificar "Principio Variacional Residual de Ruiz Castillo y
-formalismo termodinámico para la dinámica acelerada de la Conjetura de
-Collatz" (Juan Carlos Ruiz Castillo, 58 páginas). Sexto paper deste
-autor revisado na coleção (após item 001/H-039, item 008/H-050, item
-010/H-052, item 013/H-053, item 017/H-054). Propõe unificar deuda
-residual, drift residual, presión residual, entropía disipativa,
-grandes desviaciones e dimensión disipativa sob um único princípio
-variacional `P_RC(t) = sup_{μ∈M_RC}{H_RC(μ) − tD_RC(μ)}`. Não alega
-provar Collatz.
+Verify "Principio Variacional Residual de Ruiz Castillo y formalismo
+termodinámico para la dinámica acelerada de la Conjetura de Collatz"
+(Juan Carlos Ruiz Castillo, 58 pages). The sixth paper by this author
+reviewed in the collection (after item 001/H-039, item 008/H-050, item
+010/H-052, item 013/H-053, item 017/H-054). Proposes unifying residual
+debt, residual drift, residual pressure, dissipative entropy, large
+deviations, and dissipative dimension under a single variational
+principle `P_RC(t) = sup_{μ∈M_RC}{H_RC(μ) − tD_RC(μ)}`. Does not claim
+to prove Collatz.
 
-## Caráter do paper
+## Character of the paper
 
-Majoritariamente **análise convexa abstrata** (sup de funções afins é
-convexo, subgradientes, dualidade de Legendre–Fenchel) aplicada a
-`P_RC(t)` e `I_RC(x)` — fatos clássicos de livro-texto, corretamente
-derivados, mas sem conteúdo Collatz-específico adicional (M_RC e suas
-medidas nunca são construídas explicitamente, como no item 017/H-054).
+Mostly **abstract convex analysis** (sup of affine functions is convex,
+subgradients, Legendre–Fenchel duality) applied to `P_RC(t)` and
+`I_RC(x)` — classic textbook facts, correctly derived, but with no
+additional Collatz-specific content (M_RC and its measures are never
+explicitly constructed, as in item 017/H-054).
 
-## O que fizemos
+## What we did
 
-**Parte 1 — identidades Collatz-específicas concretas** (todas
-confirmadas, 0 falhas):
-1. Proposición 1.2 (interpretação multiplicativa da deuda residual:
-   2^{L_k(n)}=3^k/2^{A_k(n)}, e critério de sinal via `Fraction` exata).
-2. Proposición 2.5 / Corolario 2.6 (semiconjugação simbólica e
-   invariância hacia adelante).
-3. Proposición 3.3 (classificação local do potencial via a₀: a₀=1⟹φ<0,
-   a₀≥2⟹φ>0).
-4. Proposición 3.4 / Teorema 3.5 / Corolario 3.6 (soma ergódica e
-   identidade fundamental — a mesma de sempre, verificada mais uma vez
-   para este paper específico).
+**Part 1 — concrete Collatz-specific identities** (all confirmed, 0
+failures):
+1. Proposition 1.2 (multiplicative interpretation of residual debt:
+   2^{L_k(n)}=3^k/2^{A_k(n)}, and the sign criterion via exact
+   `Fraction`).
+2. Proposition 2.5 / Corollary 2.6 (symbolic semiconjugacy and
+   forward invariance).
+3. Proposition 3.3 (local classification of the potential via a₀:
+   a₀=1⟹φ<0, a₀≥2⟹φ>0).
+4. Proposition 3.4 / Theorem 3.5 / Corollary 3.6 (ergodic sum and
+   the fundamental identity — the same one as always, verified once
+   more for this specific paper).
 
-**Parte 2 — verificação toy (não Collatz-específica)** do aparato de
-análise convexa: geramos 20 retas afins aleatórias, definimos
-`P(t)=sup_i F_i(t)`, e confirmamos numericamente (200 pares
-`(t1,t2,λ)`) que a desigualdade de convexidade se sustenta — confirma
-que a Proposición 5.4/6.2 (sup de afins é convexo) foi corretamente
-aplicada.
+**Part 2 — toy verification (not Collatz-specific)** of the convex
+analysis apparatus: we generated 20 random affine lines, defined
+`P(t)=sup_i F_i(t)`, and numerically confirmed (200 pairs `(t1,t2,λ)`)
+that the convexity inequality holds — confirms that
+Proposition 5.4/6.2 (sup of affines is convex) was correctly applied.
 
-## Resultado
+## Result
 
-**Nenhum erro real encontrado.** Todas as identidades concretas são
-reescritas triviais e corretas. O aparato de análise convexa abstrata é
-matemática padrão corretamente aplicada. Onde a derivação é apenas
-formal/estrutural (Proposición 8.6, dualidade presión–tasa), o próprio
-texto admite isso explicitamente: *"Este razonamiento no constituye por
-sí solo una demostración completa del principio de grandes desviaciones
-para la dinámica determinista real de Collatz."* Todo resultado
-genuinamente em aberto (Conjetura 7.6 existência de medidas de
-equilíbrio, Conjetura 10.1 Triângulo Residual) é honestamente rotulado
-"Conjetura", não "Teorema"/"Proposición".
+**No real error found.** Every concrete identity is a trivial, correct
+rewrite. The abstract convex-analysis apparatus is standard mathematics
+correctly applied. Where the derivation is only formal/structural
+(Proposition 8.6, pressure–rate duality), the text itself explicitly
+admits it: *"Este razonamiento no constituye por sí solo una
+demostración completa del principio de grandes desviaciones para la
+dinámica determinista real de Collatz."* Every genuinely open result
+(Conjecture 7.6 existence of equilibrium measures, Conjecture 10.1
+Residual Triangle) is honestly labeled "Conjecture", not
+"Theorem"/"Proposition".
 
-Diferente do item 013 (H-053), sem inconsistências enunciado-vs-
-demonstração. Volta ao padrão "elementar mas correto" da maioria dos
-papers Ruiz Castillo revisados.
+Unlike item 013 (H-053), no statement-vs-proof inconsistencies. Returns
+to the "elementary but correct" pattern of most reviewed Ruiz Castillo
+papers.
 
-Ver `hypotheses/H-055-ruiz-castillo-variational-principle-review.md`.
+See `hypotheses/H-055-ruiz-castillo-variational-principle-review.md`.
 
-## Como rodar
+## How to run
 
 ```
 /home/rat/.venv/bin/python3 experiment.py

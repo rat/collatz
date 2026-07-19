@@ -1,52 +1,53 @@
-# E-038 — Busca de estrutura não-linear (MI) além de H-025
+# E-038 — Search for nonlinear structure (MI) beyond H-025
 
-Hipótese relacionada: [`H-038-nonlinear-mi-embedding-search.md`](../../hypotheses/H-038-nonlinear-mi-embedding-search.md)
+Related hypothesis: [`H-038-nonlinear-mi-embedding-search.md`](../../hypotheses/H-038-nonlinear-mi-embedding-search.md)
 
-## O que foi testado
+## What was tested
 
-Generalização honesta de "Project PHI" (ideia de IA externa, embedding
-rico + busca de estrutura): existe dependência **não-linear** (mutual
-information, não correlação tipo Pearson) entre features ricas de n
-(peso de Hamming, resíduos mod5/7/9/11, janelas de bits) e de
-m=(3n+1)/2^a, condicionando em a fixo, além do que H-025 (correlação
-linear bit-a-bit) já testou e refutou?
+Honest generalization of "Project PHI" (an external AI idea, rich
+embedding + structure search): is there **nonlinear** dependence
+(mutual information, not Pearson-style correlation) between rich
+features of n (Hamming weight, residues mod5/7/9/11, bit windows) and
+of m=(3n+1)/2^a, conditioning on fixed a, beyond what H-025 (linear
+bit-by-bit correlation) already tested and refuted?
 
-## Arquivos
+## Files
 
-- `experiment.py`: busca principal — MI entre 7 features de n × 6
-  features de m (incluindo a segunda valuação a2), condicionado em
-  a∈{1,...,6}, comparado contra null de embaralhamento (15 shuffles).
-- `control_check.py`: verificação do mecanismo — (1) confirma
-  `popcount(m)==popcount(3n+1)` exatamente; (2) compara a MI real do
-  Collatz contra transformações sintéticas de controle (5n+1, 7n+3,
-  9n+5, e a família 2^k+1 para k=1..6).
+- `experiment.py`: main search — MI between 7 features of n × 6
+  features of m (including the second valuation a2), conditioned on
+  a∈{1,...,6}, compared against a shuffle null (15 shuffles).
+- `control_check.py`: mechanism check — (1) confirms
+  `popcount(m)==popcount(3n+1)` exactly; (2) compares the real Collatz
+  MI against synthetic control transforms (5n+1, 7n+3, 9n+5, and the
+  family 2^k+1 for k=1..6).
 
-## Resultado
+## Result
 
-Encontrada dependência real e muito robusta (z-score até ~2448) entre
-peso de Hamming de n e de m, e entre janelas de bits e a segunda
-valuação a2 — algo que H-025 (só bit-a-bit) não teria capturado.
+Found a real, very robust dependence (z-score up to ~2448) between the
+Hamming weight of n and of m, and between bit windows and the second
+valuation a2 — something H-025 (bit-by-bit only) would not have
+captured.
 
-**Mas o experimento de controle mostra que isso é genérico, não
-específico do Collatz**: substituindo 3n+1 por 5n+1, 7n+3 ou 9n+5
-(nada a ver com Collatz), a MESMA classe de dependência aparece (MI
-não-nula, muito acima do null). Mecanismo: `popcount(m)` é sempre
-exatamente `popcount(3n+1)` (dividir por 2^a só remove zeros à
-direita), e a dependência entre `popcount(n)` e `popcount(3n+1)` é uma
-propriedade clássica de propagação de carry em multiplicação por ímpar
-+ soma — a mesma classe de mecanismo que H-025 já identificou, só vista
-de outro ângulo (estatística agregada em vez de pares de bits).
+**But the control experiment shows this is generic, not
+Collatz-specific**: replacing 3n+1 with 5n+1, 7n+3, or 9n+5 (unrelated
+to Collatz), the SAME class of dependence appears (nonzero MI, far
+above the null). Mechanism: `popcount(m)` is always exactly
+`popcount(3n+1)` (dividing by 2^a only removes trailing zeros), and the
+dependence between `popcount(n)` and `popcount(3n+1)` is a classic
+carry-propagation property of multiplication by an odd number plus
+addition — the same mechanism class H-025 already identified, just seen
+from a different angle (aggregate statistic instead of bit pairs).
 
-## Reproduzir
+## Reproduce
 
 ```
-python3 experiment.py [N_AMOSTRAS]     # busca principal (~20s para N=400000)
-python3 control_check.py               # verificação de mecanismo (~3s)
+python3 experiment.py [N_SAMPLES]     # main search (~20s for N=400000)
+python3 control_check.py              # mechanism check (~3s)
 ```
 
-## Status de H-038
+## Status of H-038
 
-**Refutada como estrutura nova** — achado real, mas mecanismo
-identificado e confirmado como genérico de aritmética binária, não
-específico de Collatz. Estende H-025 (método diferente, mesma
-conclusão de fundo), não o contradiz.
+**Refuted as new structure** — a real finding, but with a mechanism
+identified and confirmed as generic to binary arithmetic, not specific
+to Collatz. Extends H-025 (different method, same underlying
+conclusion), doesn't contradict it.

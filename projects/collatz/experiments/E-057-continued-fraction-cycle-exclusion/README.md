@@ -1,69 +1,68 @@
-# E-057 — Frações contínuas de log₂(3) e exclusão de ciclos
+# E-057 — Continued fractions of log₂(3) and cycle exclusion
 
-Hipótese relacionada: [`H-057-continued-fraction-cycle-exclusion.md`](../../hypotheses/H-057-continued-fraction-cycle-exclusion.md)
+Related hypothesis: [`H-057-continued-fraction-cycle-exclusion.md`](../../hypotheses/H-057-continued-fraction-cycle-exclusion.md)
 
-## Origem
+## Origin
 
-Candidato #1 da lista "candidatos ainda não implementados" do
-`BACKLOG.md` (seção 6): conectar a técnica clássica de exclusão de
-ciclos (Steiner/Simons/de Weger/Hercher, via frações contínuas de
-log₂(3)) com nosso próprio muro combinatório (H-009/H-034).
+Candidate #1 from the `BACKLOG.md` "not-yet-implemented candidates"
+list (section 6): connecting the classical cycle-exclusion technique
+(Steiner/Simons/de Weger/Hercher, via continued fractions of log₂(3))
+with our own combinatorial wall (H-009/H-034).
 
-## O que foi testado
+## What was tested
 
-1. **Fração contínua de log₂(3)** (45 termos) + convergentes plenos +
-   **semiconvergentes** (necessários porque este é um problema de
-   aproximação unilateral — precisamos `S > a·log₂(3)` estritamente,
-   não só `|S/a − log₂(3)|` pequeno; convergentes plenos sozinhos dão
-   uma lista esparsa demais, com saltos enormes entre `a=1,5,41,306,...`).
-2. **Checagem real de autoconsistência** (reaproveitando `compositions`/
-   `candidate_n0`/`check_self_consistency` de E-034, sem reimplementar)
-   nos candidatos `(a,S)` dentro do nosso alcance computacional
-   (`a=3,5,17`), no `S` exato do convergente/semiconvergente.
-3. **`n0_min` em forma fechada**: `(3^a−2^a)/(2^S−3^a)`, para a
-   composição `(1,1,...,1,S-a+1)` — confirmada por enumeração exaustiva
-   (a=3,5,17) como a que minimiza `n₀` entre todas as composições de
-   `S` em `a` partes.
-4. **Custo combinatório** `C(S-1,a-1)` para os candidatos além do nosso
-   alcance, até e além do bound atual da literatura (`a=91`, Hercher
-   2023, arXiv:2201.00406 — atualização de "a≤68" que estava desatualizado
-   em nossas notas, verificada via WebSearch/WebFetch antes de escrever
-   o código).
+1. **Continued fraction of log₂(3)** (45 terms) + full convergents +
+   **semiconvergents** (necessary because this is a one-sided
+   approximation problem — we need `S > a·log₂(3)` strictly, not just
+   small `|S/a − log₂(3)|`; full convergents alone give a list that's
+   too sparse, with huge jumps between `a=1,5,41,306,...`).
+2. **Real self-consistency check** (reusing `compositions`/
+   `candidate_n0`/`check_self_consistency` from E-034, without
+   reimplementing) on the `(a,S)` candidates within our computational
+   reach (`a=3,5,17`), at the exact `S` of the convergent/
+   semiconvergent.
+3. **Closed-form `n0_min`**: `(3^a−2^a)/(2^S−3^a)`, for the composition
+   `(1,1,...,1,S-a+1)` — confirmed by exhaustive enumeration (a=3,5,17)
+   as the one minimizing `n₀` among all compositions of `S` into `a`
+   parts.
+4. **Combinatorial cost** `C(S-1,a-1)` for candidates beyond our reach,
+   up to and beyond the literature's current bound (`a=91`, Hercher
+   2023, arXiv:2201.00406 — an update to "a≤68", which was outdated in
+   our notes, verified via WebSearch/WebFetch before writing the code).
 
-## Resultado
+## Result
 
-Nenhum ciclo novo. Para `a=3,5,17`: mais forte que "nenhum
-autoconsistente" — **nenhuma composição produz sequer um `n₀` inteiro
-positivo** (falha na própria condição de divisibilidade, para as 6 / 35
-/ 5.311.735 composições testadas). Subconjunto do que H-034 já cobria
-(mesmo `S`, dentro da janela `S_min..S_min+20`), não uma checagem
-adicional.
+No new cycle. For `a=3,5,17`: stronger than "none self-consistent" —
+**not a single composition produces even a positive integer `n₀`**
+(fails the divisibility condition itself, for the 6 / 35 / 5,311,735
+tested compositions). A subset of what H-034 already covered (same
+`S`, within the `S_min..S_min+20` window), not an additional check.
 
-Para `a=29,41`: fora do nosso alcance (`C(S-1,a-1)` ~10¹²/~10¹⁷), mas já
-excluídos por Simons & de Weger (2005, `a≤68`). Para `a=94` em diante:
-território aberto (além de Hercher 2023, `a≤91`) — não resolvido nem por
-nós nem, até onde verificamos, pela literatura.
+For `a=29,41`: beyond our reach (`C(S-1,a-1)` ~10¹²/~10¹⁷), but already
+excluded by Simons & de Weger (2005, `a≤68`). For `a=94` onward: open
+territory (beyond Hercher 2023, `a≤91`) — not resolved by us nor, as far
+as we've checked, by the literature.
 
-## Correção de interpretação (via `advisor()`, antes de finalizar)
+## Interpretation correction (via `advisor()`, before finalizing)
 
-A primeira versão deste experimento afirmava que **menor excesso
-`L(a,S)=S−a·log₂(3)` implica menor `n₀` possível**, e por isso rotulava
-`a=29,41` como os candidatos mais "perigosos". **Invertido**: para a
-composição minimizadora, `n0_min ≈ 1/(L·ln2)` — menor excesso implica
-`n0_min` **maior**. Verificado numericamente (Parte 2b do script):
-`n0_min` cresce de 3,8 (`a=3`) a ~1069 (`a=1636`) conforme `L` encolhe.
-Mas isso é só o mínimo sobre composições — o `n₀` de uma composição
-"ruim" (valuações grandes no início) para o mesmo par `(a=306,S=485)`
-chega a ~4,5×10²⁵, contra `n0_min≈978`. `L(a,S)` pequeno mede
-dificuldade **analítica** de exclusão (cotas de Baker), não o tamanho de
-um eventual ciclo. Ver `H-057` para a análise completa desta correção.
+The first version of this experiment claimed that **smaller excess
+`L(a,S)=S−a·log₂(3)` implies a smaller possible `n₀`**, and so labeled
+`a=29,41` as the "most dangerous" candidates. **Inverted**: for the
+minimizing composition, `n0_min ≈ 1/(L·ln2)` — smaller excess implies
+**larger** `n0_min`. Verified numerically (Part 2b of the script):
+`n0_min` grows from 3.8 (`a=3`) to ~1069 (`a=1636`) as `L` shrinks. But
+this is only the minimum over compositions — the `n₀` of a "bad"
+composition (large valuations at the start) for the same pair
+(a=306,S=485) reaches ~4.5×10²⁵, against `n0_min≈978`. Small `L(a,S)`
+measures **analytic** exclusion difficulty (Baker bounds), not the size
+of a potential cycle. See `H-057` for the full analysis of this
+correction.
 
-## Como reproduzir
+## How to reproduce
 
 ```
 python3 experiment.py
 ```
 
-Sem dependências além de `mpmath`. Roda em bem menos de um minuto
-(maior custo: checagem exaustiva de `a=17`, ~13s para 5.311.735
-composições).
+No dependencies beyond `mpmath`. Runs in well under a minute (biggest
+cost: the exhaustive check for `a=17`, ~13s for 5,311,735 compositions).

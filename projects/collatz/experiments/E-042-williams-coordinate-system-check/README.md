@@ -1,51 +1,51 @@
-# E-042 — Verificação do paper #014 (Williams, "A Coordinate System for Collatz Dynamics")
+# E-042 — Verification of paper #014 (Williams, "A Coordinate System for Collatz Dynamics")
 
-Hipótese relacionada: [`H-042-williams-coordinate-system-review.md`](../../hypotheses/H-042-williams-coordinate-system-review.md)
+Related hypothesis: [`H-042-williams-coordinate-system-review.md`](../../hypotheses/H-042-williams-coordinate-system-review.md)
 
-## O que foi testado
+## What was tested
 
-Paper de boa qualidade acadêmica (afiliação institucional real,
-literatura extensa, declaração honesta de uso de IA, código público no
-GitHub). Oito verificações no total (2 originais de 2026-07-14 + 6
-adicionadas em 2026-07-15, ao perceber — tarde — que este item já
-tinha sido revisado aqui):
+A paper of good academic quality (real institutional affiliation,
+extensive literature, honest AI-use disclosure, public code on GitHub).
+Eight checks in total (2 original from 2026-07-14 + 6 added on
+2026-07-15, upon realizing — late — that this item had already been
+reviewed here):
 
-- **Teorema 3.6** (dinâmica diagonal) — 20.000 casos aleatórios.
-- **Teorema 4.1** (Zero-Prime Rows) — exaustivo k=6,10,...,300 (74
-  linhas). Exceção k=2 confirmada. Controles fora do padrão têm primos.
-- **Teorema 2.13** (partição bijetora Z≥0→crown triangles) — n=0..200.000.
-- **Proposição 3.10** (transição de fronteira a=1) — 81 casos.
-- **Teorema 4.2** (contagem de posições "prime-admissible") — k=2..300.
-- **Proposição 6.2** (fórmula assintótica de contagem de cadeias).
-- **Observação 6.3** (linhas "acidentalmente" sem primos) — listas exatas.
-- **Referências OEIS** (Seção 5.2) — conferidas via `curl` em oeis.org.
+- **Theorem 3.6** (diagonal dynamics) — 20,000 random cases.
+- **Theorem 4.1** (Zero-Prime Rows) — exhaustive k=6,10,...,300 (74
+  rows). Exception k=2 confirmed. Off-pattern controls have primes.
+- **Theorem 2.13** (bijective partition Z≥0→crown triangles) —
+  n=0..200,000.
+- **Proposition 3.10** (boundary transition a=1) — 81 cases.
+- **Theorem 4.2** (count of "prime-admissible" positions) — k=2..300.
+- **Proposition 6.2** (asymptotic chain-count formula).
+- **Observation 6.3** ("accidentally" prime-free rows) — exact lists.
+- **OEIS references** (Section 5.2) — checked via `curl` on oeis.org.
 
-## Resultado
+## Result
 
-**Todos os teoremas confirmados sem exceção.** Dois erros de citação
-OEIS na Seção 5.2 (não afetam nenhuma prova): `A017557` citado para
-"crowns≡8 mod12" é na verdade `12n+3` (≡3 mod12) — a sequência correta
-é `A017617` (`12n+8`); e "primos em `L_1`=A005105" deveria ser "A005105
-sem o elemento 2" (diferença de um único elemento).
+**Every theorem confirmed without exception.** Two OEIS citation errors
+in Section 5.2 (don't affect any proof): `A017557` cited for "crowns≡8
+mod12" is actually `12n+3` (≡3 mod12) — the correct sequence is
+`A017617` (`12n+8`); and "primes in `L_1`=A005105" should be "A005105
+minus the element 2" (a single-element difference).
 
-## Nota de integridade — erro próprio corrigido antes de finalizar
+## Integrity note — our own error caught and fixed before finishing
 
-Uma primeira tentativa de verificar a Proposição 6.2 apontou
-(incorretamente) um "erro de fator 2", usando `T_c(k,0)` como elemento
-mínimo da linha `k`. Isso estava **errado — bug na verificação, não no
-paper**: o mínimo real está em `T_c(k,1)` (posição ímpar), confirmado
-contra o próprio Exemplo 2.9 do paper. `advisor()` apontou a
-inconsistência antes de qualquer conclusão errada ser escrita. Ver
-`H-042.md` para a lição registrada sobre ordem de suspeita ao
-investigar discrepâncias.
+A first attempt to verify Proposition 6.2 (incorrectly) flagged a
+"factor-2 error", using `T_c(k,0)` as row `k`'s minimum element. This
+was **wrong — a bug in the verification, not the paper**: the real
+minimum is at `T_c(k,1)` (odd position), confirmed against the paper's
+own Example 2.9. `advisor()` flagged the inconsistency before any
+wrong conclusion was written. See `H-042.md` for the recorded lesson on
+suspicion order when investigating discrepancies.
 
-## Reproduzir
+## Reproduce
 
-`python3 experiment.py` (~1,4s)
+`python3 experiment.py` (~1.4s)
 
 ## Status
 
-Revisão concluída — nenhum erro matemático encontrado (só dois erros
-de citação OEIS, isolados, não afetam nenhuma prova). Ponto de
-calibração importante para a crítica cumulativa (nem todo paper da
-coleção tem problemas).
+Review complete — no mathematical error found (only two isolated OEIS
+citation errors, not affecting any proof). An important calibration
+point for the cumulative critique (not every paper in the collection
+has problems).

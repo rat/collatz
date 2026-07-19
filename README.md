@@ -1,34 +1,34 @@
 # ResearchOS
 
-Laboratório de pesquisa científica assistida por IA. Estrutura mínima, pensada para
-crescer por necessidade real em vez de especificação antecipada.
+AI-assisted scientific research lab. Minimal structure, designed to grow by
+real need rather than upfront specification.
 
-Projeto ativo: [Collatz](projects/collatz/README.md).
+Active project: [Collatz](projects/collatz/README.md).
 
-## Estrutura
+## Structure
 
 ```
 ResearchOS/
-├── CLAUDE.md                 # instruções para o Claude Code
-├── ROADMAP.md                # prioridades gerais do laboratório
-├── protocols/                # processos leves (hipótese, experimento, busca literária, checkpoint)
-├── scripts/                  # utilitários (ex: checkpoint.sh)
+├── CLAUDE.md                 # instructions for Claude Code
+├── ROADMAP.md                # lab-wide priorities
+├── protocols/                # lightweight processes (hypothesis, experiment, literature search, checkpoint)
+├── scripts/                  # utilities (e.g. checkpoint.sh)
 └── projects/
-    └── collatz/               # primeira linha de pesquisa
-        ├── STATE.md           # memória: estado atual, hipóteses, próximos passos
+    └── collatz/               # first research line
+        ├── STATE.md           # memory: current state, hypotheses, next steps
         ├── hypotheses/
         ├── experiments/
-        ├── literature/        # notas sobre papers de TERCEIROS
-        ├── papers/            # papers PRÓPRIOS (resultado final a escrever/publicar)
+        ├── literature/        # notes on THIRD-PARTY papers
+        ├── papers/            # OUR OWN papers (final result to write/publish)
         └── logs/
 ```
 
-Uma nova linha de pesquisa é adicionada criando `projects/<nome>/` com a mesma
-estrutura interna (`STATE.md`, `hypotheses/`, `experiments/`, `literature/`, `logs/`).
-Não existe nada além de Collatz até que uma nova linha seja explicitamente iniciada.
+A new research line is added by creating `projects/<name>/` with the same
+internal structure (`STATE.md`, `hypotheses/`, `experiments/`, `literature/`, `logs/`).
+Nothing exists beyond Collatz until a new line is explicitly started.
 
-## Papéis
+## Roles
 
-- **Diretor científico** (você): define objetivos, prioridades e aprova resultados.
-- **Claude Code**: executa — cria/edita arquivos, roda experimentos, mantém o Git.
-- **Checkpoints**: toda sessão termina com commit + push (ver `protocols/checkpoint.md`).
+- **Scientific director** (you): sets goals, priorities, and approves results.
+- **Claude Code**: executes — creates/edits files, runs experiments, maintains Git.
+- **Checkpoints**: every session ends with a commit + push (see `protocols/checkpoint.md`).

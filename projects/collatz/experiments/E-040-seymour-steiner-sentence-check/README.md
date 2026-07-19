@@ -1,54 +1,54 @@
-# E-040 — Verificação do Teorema 5.1 do paper #004 (Seymour, Steiner Sentence Length)
+# E-040 — Verification of Theorem 5.1 from paper #004 (Seymour, Steiner Sentence Length)
 
-Hipótese relacionada: [`H-040-seymour-steiner-sentence-length-error.md`](../../hypotheses/H-040-seymour-steiner-sentence-length-error.md)
+Related hypothesis: [`H-040-seymour-steiner-sentence-length-error.md`](../../hypotheses/H-040-seymour-steiner-sentence-length-error.md)
 
-## O que foi testado
+## What was tested
 
-O paper #004 (`literature/papers/004_First-Principles-Derivation...pdf`)
-prova, com verificação formal alegada em Lean 4/Mathlib, que
-P(comprimento da sentença Steiner = k) = 3^(k-1)/4^k, e argumenta
-explicitamente contra o modelo "ingênuo" P(k)=(1/2)^k. Reimplementamos
-as definições exatas do paper (Def 1.2, 1.3, Teorema 2.1) do zero para
-verificar independentemente.
+Paper #004 (`literature/papers/004_First-Principles-Derivation...pdf`)
+proves, with a claimed formal verification in Lean 4/Mathlib, that
+P(Steiner sentence length = k) = 3^(k-1)/4^k, and explicitly argues
+against the "naive" model P(k)=(1/2)^k. We reimplemented the paper's
+exact definitions (Def 1.2, 1.3, Theorem 2.1) from scratch to verify
+independently.
 
-## Resultado
+## Result
 
-- **Teorema 2.1 (matriz de transição mod 8) — CONFIRMADO** exatamente,
-  por amostragem direta de 200.000 inteiros ímpares aleatórios.
-- **Teorema 5.1 (distribuição 3^(k-1)/4^k) — REFUTADO**. A simulação
-  direta (300.000 amostras, seguindo o protocolo exato do Apêndice B do
-  próprio paper) bate com **(1/2)^k** — exatamente o modelo "ingênuo"
-  que o paper argumenta ser incorreto — e **não** com 3^(k-1)/4^k.
-- **Contraexemplo concreto, aritmética exata** (sem aleatoriedade):
-  n=68567 (≡7 mod8) → S(n)=102851 (≡3) → S(S(n))=154277 (≡5). A
-  sequência de resíduos [7,3,5] casa com o regex `(7*3)?(1|5)` como
-  **uma única palavra Steiner**, terminando em 5 — ou seja, uma
-  sentença de comprimento 1 com b₀≡7, **não** b₀≡5. Isso contradiz
-  diretamente a prova do Teorema 5.1 do paper, que conta **apenas**
-  b₀≡5 como fonte de sentenças de comprimento 1.
+- **Theorem 2.1 (mod-8 transition matrix) — CONFIRMED** exactly, by
+  directly sampling 200,000 random odd integers.
+- **Theorem 5.1 (3^(k-1)/4^k distribution) — REFUTED**. Direct
+  simulation (300,000 samples, following the paper's own Appendix B
+  protocol exactly) matches **(1/2)^k** — exactly the "naive" model the
+  paper argues is incorrect — and **not** 3^(k-1)/4^k.
+- **Concrete counterexample, exact arithmetic** (no randomness): n=68567
+  (≡7 mod8) → S(n)=102851 (≡3) → S(S(n))=154277 (≡5). The residue
+  sequence [7,3,5] matches the regex `(7*3)?(1|5)` as **a single
+  Steiner word**, ending in 5 — i.e., a sentence of length 1 with
+  b₀≡7, **not** b₀≡5. This directly contradicts the paper's proof of
+  Theorem 5.1, which counts **only** b₀≡5 as the source of length-1
+  sentences.
 
-## Diagnóstico do erro (ver H-040 para detalhes completos)
+## Diagnosis of the error (see H-040 for full details)
 
-A recursão das Seções 3–5 do paper aplica a matriz de transição de UM
-PASSO de Syracuse (Teorema 2.1) como se fosse a transição
-entrada-a-entrada entre PALAVRAS consecutivas. Isso é válido para
-entradas 1 e 5 (que são sempre palavras de exatamente 1 passo), mas
-**não** para entradas 3 e 7 (que abrangem 2+ passos): `P[3][5]=1/2` e
-`P[7][3]` (seguido do passo 3→5) descrevem o **próprio terminal da
-palavra atual**, não a entrada de uma "próxima palavra". Ao tratar como
-se fosse sempre uma transição para a próxima palavra, o paper nunca
-"gasta" a massa de probabilidade que deveria fechar a sentença ali
-mesmo, subestimando a taxa real de fechamento (1/2 por palavra, não a
-taxa 1/4 implícita na fórmula 3^(k-1)/4^k).
+The recursion in Sections 3–5 of the paper applies Syracuse's
+ONE-STEP transition matrix (Theorem 2.1) as if it were the
+entry-to-entry transition between consecutive WORDS. This is valid for
+entries 1 and 5 (which are always exactly 1-step words), but **not**
+for entries 3 and 7 (which span 2+ steps): `P[3][5]=1/2` and `P[7][3]`
+(followed by the 3→5 step) describe the **very terminal of the current
+word**, not the entry of a "next word". By treating it as always a
+transition to the next word, the paper never "spends" the probability
+mass that should close the sentence right there, underestimating the
+real closing rate (1/2 per word, not the 1/4 rate implicit in the
+formula 3^(k-1)/4^k).
 
-## Reproduzir
+## Reproduce
 
-`python3 experiment.py` (~1s, sem dependências externas)
+`python3 experiment.py` (~1s, no external dependencies)
 
 ## Status
 
-Achado importante: o teorema central do paper parece estar incorreto,
-apesar da alegação de verificação formal em Lean 4/Mathlib. Não temos
-acesso ao código Lean para apontar a linha exata, mas a evidência
-(matriz de transição confirmada + contraexemplo de aritmética exata +
-simulação em larga escala) é forte e reproduzível.
+Important finding: the paper's central theorem appears to be incorrect,
+despite the claimed formal verification in Lean 4/Mathlib. We don't
+have access to the Lean code to pinpoint the exact line, but the
+evidence (confirmed transition matrix + exact-arithmetic counterexample
++ large-scale simulation) is strong and reproducible.

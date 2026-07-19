@@ -1,69 +1,69 @@
-# E-050 — Verificação do paper #008 (Ruiz Castillo, "Dissipative Bounds and Residual Decomposition")
+# E-050 — Verification of paper #008 (Ruiz Castillo, "Dissipative Bounds and Residual Decomposition")
 
-## Objetivo
+## Goal
 
-Verificar "Dissipative Bounds and Ruiz Castillo Residual Decomposition
-in the Accelerated Dynamics of the Collatz Conjecture" (Juan Carlos
-Ruiz Castillo, University of San Carlos of Guatemala, 44 páginas).
-Segundo paper deste autor revisado na coleção (o primeiro foi item 001,
-H-039). Não alega prova: "The present work does not claim to assert a
-final proof of the Collatz Conjecture."
+Verify "Dissipative Bounds and Ruiz Castillo Residual Decomposition in
+the Accelerated Dynamics of the Collatz Conjecture" (Juan Carlos Ruiz
+Castillo, University of San Carlos of Guatemala, 44 pages). The second
+paper by this author reviewed in the collection (the first was item
+001, H-039). Does not claim a proof: "The present work does not claim
+to assert a final proof of the Collatz Conjecture."
 
-## O que fizemos
+## What we did
 
-Verificamos computacionalmente todas as proposições/teoremas centrais:
+We computationally verified all central propositions/theorems:
 
-1. **Identidade afim exata** U^k(n)=(3^k n+B_k(n))/2^{A_k(n)} e fórmula
-   fechada de B_k(n) (Proposições 3.1/3.3): confirmadas exatamente para
-   44 valores de n × 6 valores de k.
-2. **Decomposição residual** U^k(n)=2^{L_k(n)}n+R_k(n) (Teorema 4.3):
-   confirmada.
-3. **Não-existência de equilíbrio exato** (Proposição 2.14): confirmada
-   (checagem de sanidade, já garantida por fatoração única).
-4. **Sensibilidade à ordem** (Proposição 5.5): confirmado que as
-   palavras (1,3) e (3,1) — mesma soma A₂=4 — dão R₂=5/16 e R₂=11/16
-   respectivamente, exatamente como o paper afirma.
-5. **Cota universal** R_k(n)≤(3/2)^k−1 (Proposição 7.1): confirmada.
-6. **Critério de descida** (Teorema 8.7): confirmado — com uma nota
-   importante abaixo.
+1. **Exact affine identity** U^k(n)=(3^k n+B_k(n))/2^{A_k(n)} and the
+   closed formula for B_k(n) (Propositions 3.1/3.3): confirmed exactly
+   for 44 values of n × 6 values of k.
+2. **Residual decomposition** U^k(n)=2^{L_k(n)}n+R_k(n) (Theorem 4.3):
+   confirmed.
+3. **Non-existence of exact equilibrium** (Proposition 2.14): confirmed
+   (a sanity check, already guaranteed by unique factorization).
+4. **Order sensitivity** (Proposition 5.5): confirmed that the words
+   (1,3) and (3,1) — same sum A₂=4 — give R₂=5/16 and R₂=11/16
+   respectively, exactly as the paper states.
+5. **Universal bound** R_k(n)≤(3/2)^k−1 (Proposition 7.1): confirmed.
+6. **Descent criterion** (Theorem 8.7): confirmed — with an important
+   note below.
 
-## Nota de integridade: falso positivo na primeira tentativa
+## Integrity note: false positive on the first attempt
 
-A primeira verificação do Teorema 8.7 usando `2**(k*log2(3)-A_k)` via
-ponto flutuante do Python encontrou 3 "falhas", todas em n=1 (o ponto
-fixo, onde U^k(1)=1 para todo k). Investigamos antes de reportar como
-erro: usando aritmética exata (`2^{L_k(n)} = 3^k/2^{A_k(n)}`, uma
-fração exata, evitando `log2(3)` em ponto flutuante), as 3 "falhas"
-desaparecem — eram um artefato de arredondamento bem no limiar da
-desigualdade (onde ambos os lados são exatamente iguais a n), não um
-erro do paper. O teorema está correto; o bug era no nosso código de
-verificação, corrigido antes de reportar.
+The first verification of Theorem 8.7 using `2**(k*log2(3)-A_k)` via
+Python floating point found 3 "failures", all at n=1 (the fixed point,
+where U^k(1)=1 for every k). We investigated before reporting it as an
+error: using exact arithmetic (`2^{L_k(n)} = 3^k/2^{A_k(n)}`, an exact
+fraction, avoiding floating-point `log2(3)`), the 3 "failures"
+disappear — they were a rounding artifact right at the inequality's
+threshold (where both sides exactly equal n), not an error in the
+paper. The theorem is correct; the bug was in our verification code,
+fixed before reporting.
 
-## Resultado
+## Result
 
-**Nenhum erro real encontrado.** O paper é matematicamente correto em
-tudo que verificamos, mas o conteúdo é inteiramente **elementar**: a
-"identidade afim exata" é o mesmo "desenrolar" padrão do mapa acelerado
-que aparece (com notação diferente) em vários outros papers já
-revisados (Fu-Liu-Wang E-044, Mohammed E-045), e as "cotas dissipativas"
-são séries geométricas elementares.
+**No real error found.** The paper is mathematically correct in
+everything we verified, but the content is entirely **elementary**: the
+"exact affine identity" is the same standard "unrolling" of the
+accelerated map that appears (under different notation) in several
+other already-reviewed papers (Fu-Liu-Wang E-044, Mohammed E-045), and
+the "dissipative bounds" are elementary geometric series.
 
-**Zero conteúdo numérico real**: ambas as figuras do paper são
-explicitamente rotuladas "conceptual... does not represent real
-computational data" — mesmo padrão do primeiro paper Ruiz Castillo
-(H-039: "zero conteúdo numérico, única figura explicitamente
-conceptual").
+**Zero real numerical content**: both of the paper's figures are
+explicitly labeled "conceptual... does not represent real computational
+data" — the same pattern as this author's first paper (H-039: "zero
+numerical content, the single figure explicitly conceptual").
 
-**Padrão de citação**: 4 referências externas reais (Lagarias ×2,
-Wirsching, Tao) e 12 autocitações do próprio Ruiz Castillo (75%
-autocitação) — a lista revela ~12 outros papers com títulos quase
-idênticos já escritos pelo mesmo autor sobre a mesma "decomposição
-residual", forte indício de que os demais papers Ruiz Castillo ainda
-na fila (itens 010, 013, 017, 020) seguirão o mesmo padrão.
+**Citation pattern**: 4 real external references (Lagarias ×2,
+Wirsching, Tao) and 12 self-citations by Ruiz Castillo himself (75%
+self-citation) — the list reveals ~12 other papers with nearly
+identical titles already written by the same author about the same
+"residual decomposition", a strong indication that the other Ruiz
+Castillo papers still in the queue (items 010, 013, 017, 020) will
+follow the same pattern.
 
-Ver `hypotheses/H-050-ruiz-castillo-dissipative-bounds-review.md`.
+See `hypotheses/H-050-ruiz-castillo-dissipative-bounds-review.md`.
 
-## Como rodar
+## How to run
 
 ```
 /home/rat/.venv/bin/python3 experiment.py

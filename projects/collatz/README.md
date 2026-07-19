@@ -1,13 +1,13 @@
-# Projeto: Conjectura de Collatz
+# Project: Collatz Conjecture
 
-Primeira linha de pesquisa do ResearchOS.
+ResearchOS's first research line.
 
-- `STATE.md` — memória viva: estado atual, hipóteses abertas, últimas descobertas.
-- `hypotheses/` — uma hipótese por arquivo (ver `protocols/new-hypothesis.md`).
-- `experiments/` — verificações computacionais reprodutíveis
-  (ver `protocols/new-experiment.md`).
-- `literature/` — notas sobre papers/abordagens já existentes na literatura (de
-  TERCEIROS).
-- `papers/` — papers PRÓPRIOS (resultado final a escrever/publicar), um por
-  subpasta (ver `papers/README.md`).
-- `logs/` — registro bruto de sessões, se necessário além do STATE.md.
+- `STATE.md` — living memory: current state, open hypotheses, latest findings.
+- `hypotheses/` — one hypothesis per file (see `protocols/new-hypothesis.md`).
+- `experiments/` — reproducible computational checks
+  (see `protocols/new-experiment.md`).
+- `literature/` — notes on approaches/papers already existing in the
+  literature (THIRD-PARTY).
+- `papers/` — OUR OWN papers (final result to write/publish), one per
+  subfolder (see `papers/README.md`).
+- `logs/` — raw session log, if needed beyond STATE.md.

@@ -1,61 +1,62 @@
-# E-043 — Verificação da "prova" CTUHSK (paper #016 da coleção)
+# E-043 — Verification of the "CTUHSK proof" (collection paper #016)
 
-## Objetivo
+## Goal
 
-Verificar de forma independente a alegação central do paper "Collatz-
+Independently verify the central claim of the paper "Collatz-
 Thwaites-Ulam-Hasse-Syracuse-Kakutani (CTUHSK) Theorem: Convergence of
 Collatz (3n+1) Sequence to the Trivial Cycle Proved" (KP Bikarnakatte /
-Dr. Keshava Prasad Halemane, engrxiv.org preprint, 35 páginas) — que
-alega uma prova completa da Conjectura de Collatz.
+Dr. Keshava Prasad Halemane, engrxiv.org preprint, 35 pages) — which
+claims a complete proof of the Collatz Conjecture.
 
-## Estrutura da "prova" no paper
+## Structure of the paper's "proof"
 
-1. **Condição necessária** (Seção 10.1): mostra que H^s (o componente do
-   framework H conectado ao nó-sink BEL(1), i.e. ao ciclo trivial
-   {4,2,1}) satisfaz os axiomas de Dedekind-Peano e portanto é
-   order-isomórfico a N.
-2. **Condição suficiente** (Seção 10.2): argumenta, por redução ao
-   absurdo, que não existem ciclos extras (H^∞) nem cadeias divergentes
-   (H^&) — ou seja, que H^s = H (domain exhaustion).
+1. **Necessary condition** (Section 10.1): shows that H^s (the
+   component of framework H connected to the sink node BEL(1), i.e. to
+   the trivial cycle {4,2,1}) satisfies the Dedekind-Peano axioms and is
+   therefore order-isomorphic to N.
+2. **Sufficient condition** (Section 10.2): argues, by contradiction,
+   that no extra cycles (H^∞) nor divergent chains (H^&) exist — i.e.,
+   that H^s = H (domain exhaustion).
 
-## O que fizemos
+## What we did
 
-- Reimplementamos as estruturas básicas do paper (mapa de Syracuse,
-  classificação mod 6 dos ímpares, fórmula de predecessores) e
-  confirmamos que os fatos estruturais preliminares (Eqn.7, 8, 9) estão
-  corretos: multiplicidade de 3 realmente não tem predecessor algum;
-  números do tipo (6m-1) realmente têm um predecessor válido
-  `(n·2^v - 1)/3` para todo expoente ímpar v.
-- Reproduzimos exatamente o exemplo numérico do próprio paper (k=2,
-  n=11, predecessor 7 via v=1) e confirmamos a aritmética.
-- **Achado central**: para n=11, existem infinitos predecessores válidos
-  (um por v ímpar: 7, 29, 117, 469, 1877, ...), mas o paper usa apenas o
-  de v=1 para "provar" que um ciclo hipotético contendo 11 como elemento
-  mínimo do tipo (6m-1) leva a uma contradição de minimalidade (pois
-  7<11). Isso não generaliza: para v≥3, o predecessor é MAIOR que 11
-  (29, 117, ...), e portanto não violaria minimalidade alguma. O paper
-  nunca argumenta por que o predecessor real, dentro do ciclo/cadeia
-  hipotético, teria que ser especificamente o de v=1.
-- Confirmamos algebricamente (não só para n=11) que isso é um padrão
-  geral: `pred(v=1) = (2n-1)/3 < n` e `pred(v=3) = (8n-1)/3 > n` para
-  todo n>0 do tipo (6m-1) — não é uma coincidência do exemplo escolhido
-  pelo paper, é uma propriedade algébrica de qualquer n dessa forma.
-- Confirmamos que a Seção 10.2.2 (cadeias divergentes H^&) usa "o mesmo
-  argumento" (palavras do próprio paper) e sofre exatamente da mesma
-  falha (testado com n=5, k=1).
+- Reimplemented the paper's basic structures (Syracuse map, mod-6
+  classification of odd numbers, predecessor formula) and confirmed
+  the preliminary structural facts (Eqn.7, 8, 9) are correct: multiples
+  of 3 indeed have no predecessor at all; numbers of type (6m-1) indeed
+  have a valid predecessor `(n·2^v - 1)/3` for every odd exponent v.
+- Reproduced exactly the paper's own numerical example (k=2, n=11,
+  predecessor 7 via v=1) and confirmed the arithmetic.
+- **Central finding**: for n=11, infinitely many valid predecessors
+  exist (one per odd v: 7, 29, 117, 469, 1877, ...), but the paper uses
+  only the v=1 one to "prove" that a hypothetical cycle containing 11
+  as the minimal element of type (6m-1) leads to a minimality
+  contradiction (since 7<11). This doesn't generalize: for v≥3, the
+  predecessor is LARGER than 11 (29, 117, ...), and so would violate no
+  minimality at all. The paper never argues why the actual predecessor,
+  within the hypothetical cycle/chain, would have to be specifically
+  the v=1 one.
+- Confirmed algebraically (not just for n=11) that this is a general
+  pattern: `pred(v=1) = (2n-1)/3 < n` and `pred(v=3) = (8n-1)/3 > n` for
+  every n>0 of type (6m-1) — not a coincidence of the example the paper
+  chose, it's an algebraic property of any n of that form.
+- Confirmed that Section 10.2.2 (divergent chains H^&) uses "the same
+  argument" (the paper's own words) and suffers from exactly the same
+  flaw (tested with n=5, k=1).
 
-## Resultado
+## Result
 
-**A "prova" tem um furo lógico decisivo na condição suficiente**, que é
-a única parte que carregaria conteúdo matemático real (a condição
-necessária é tautológica — H^s é definido como quem alcança o ciclo
-trivial). Ver `hypotheses/H-043-ctuhsk-halemane-proof-flaw.md` para a
-análise completa.
+**The "proof" has a decisive logical hole in the sufficient
+condition**, the only part that would carry real mathematical content
+(the necessary condition is tautological — H^s is defined as whatever
+reaches the trivial cycle). See
+`hypotheses/H-043-ctuhsk-halemane-proof-flaw.md` for the full analysis.
 
-## Como rodar
+## How to run
 
 ```
 /home/rat/.venv/bin/python3 experiment.py
 ```
 
-Sem dependências externas (usa apenas `fractions` da biblioteca padrão).
+No external dependencies (uses only the standard library's
+`fractions`).

@@ -1,27 +1,27 @@
-# E-032 — Frações contínuas de log₂(3) vs. anomalia de H-013
+# E-032 — Continued fractions of log₂(3) vs. the H-013 anomaly
 
-Hipótese relacionada: [`H-032-continued-fraction-h013-check.md`](../../hypotheses/H-032-continued-fraction-h013-check.md)
+Related hypothesis: [`H-032-continued-fraction-h013-check.md`](../../hypotheses/H-032-continued-fraction-h013-check.md)
 
-## O que foi testado
+## What was tested
 
-Se a qualidade da aproximação racional de log₂(3) (medida clássica via
-convergentes de fração contínua, a ferramenta usada em limites de
-comprimento de ciclo — Simons & de Weger) explica os pontos t onde a
-anomalia de densidade de H-013/H-018 ocorre (t=4/5, 7/8 anomalia; 10/11,
-13/14 inversão).
+Whether the quality of log₂(3)'s rational approximation (measured
+classically via continued-fraction convergents, the tool used in
+cycle-length bounds — Simons & de Weger) explains the t points where
+the H-013/H-018 density anomaly occurs (t=4/5, 7/8 anomaly; 10/11,
+13/14 inversion).
 
-## Resultado
+## Result
 
-Sem correlação. Pares do mesmo tipo (duas anomalias, ou duas inversões)
-mostram padrões opostos na distância de t·log₂(3) ao inteiro mais
-próximo — se houvesse mecanismo real, deveriam concordar.
+No correlation. Pairs of the same type (two anomalies, or two
+inversions) show opposite patterns in the distance of t·log₂(3) to the
+nearest integer — if there were a real mechanism, they should agree.
 
-Reproduzir: `python3 experiment.py`.
+Reproduce: `python3 experiment.py`.
 
-## Status de H-032
+## Status of H-032
 
-**Refutada** — resultado negativo honesto de uma ideia bem motivada
-(conexão real entre log₂(3) e o mecanismo de H-018, mas que não se
-sustenta empiricamente nesta forma). Consistente com H-024: a obstrução
-é 3-ádica (resíduos), não Arquimediana (proximidade numérica) — categorias
-de precisão diferentes.
+**Refuted** — an honest negative result for a well-motivated idea (a
+real connection between log₂(3) and H-018's mechanism, but one that
+doesn't hold up empirically in this form). Consistent with H-024: the
+obstruction is 3-adic (residues), not Archimedean (numerical
+closeness) — different precision categories.

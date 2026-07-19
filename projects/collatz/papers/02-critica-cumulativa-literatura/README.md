@@ -1,17 +1,17 @@
-# Paper cumulativo de críticas — NÃO INICIAR SEM PEDIDO EXPLÍCITO
+# Cumulative critique paper — DO NOT START WITHOUT EXPLICIT REQUEST
 
-Ver `BACKLOG.md` item 8 no diretório raiz do projeto Collatz.
+See `BACKLOG.md` item 8 in the Collatz project's root directory.
 
-Pedido original do diretor científico (2026-07-14): "salve como
-mencionei para nosso paper futuro de críticas aos papers atuais".
-Natureza diferente do paper 01 (`../01-syracuse-qx1-endogenia/`):
-cresce a cada item da coleção de `literature/papers/INDEX.md` que é
-lido e corrigido, não tem um ponto de "fechamento" natural — por isso
-fica deliberadamente por último e só começa a ser redigido quando
-pedido.
+Original request from the scientific director (2026-07-14): "save it
+as I mentioned for our future paper critiquing current papers."
+Different nature from paper 01 (`../01-syracuse-qx1-endogenia/`):
+it grows with every item from the `literature/papers/INDEX.md`
+collection that is read and corrected, it has no natural "closing"
+point — that's why it deliberately stays last and only starts being
+written when requested.
 
-Material já acumulado (alegações de prova refutadas, erros
-encontrados) está registrado item a item no próprio `BACKLOG.md` item 8
-e nas hipóteses individuais (H-039 em diante). Quando a redação deste
-paper começar, essa é a fonte a consolidar — não recomeçar a
-catalogação do zero.
+Material already accumulated (refuted proof claims, errors found) is
+recorded item by item in `BACKLOG.md` item 8 itself and in the
+individual hypotheses (H-039 onward). When writing this paper begins,
+that is the source to consolidate — do not restart the cataloging
+from scratch.

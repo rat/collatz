@@ -1,45 +1,47 @@
-# E-009 — Busca por ciclos não-triviais (força bruta, escala pequena)
+# E-009 — Search for non-trivial cycles (brute force, small scale)
 
-Hipótese relacionada: [`H-009-nontrivial-cycles.md`](../../hypotheses/H-009-nontrivial-cycles.md)
+Related hypothesis: [`H-009-nontrivial-cycles.md`](../../hypotheses/H-009-nontrivial-cycles.md)
 
-## O que foi testado
+## What was tested
 
-Pergunta do diretor científico: assim como inteiros negativos têm 3 ciclos
-conhecidos no mapa de Collatz estendido, existe um ciclo não-trivial análogo
-para inteiros positivos? Buscamos diretamente via a equação de ciclo (ver
-`hypotheses/H-009-nontrivial-cycles.md`), para número de subidas "a" de 1 até
-14, enumerando composições de S (soma das valuações) por força bruta.
+Question from the scientific director: just as negative integers have
+3 known cycles in the extended Collatz map, does an analogous
+non-trivial cycle exist for positive integers? We searched directly via
+the cycle equation (see `hypotheses/H-009-nontrivial-cycles.md`), for
+number of "up" steps "a" from 1 to 14, brute-force enumerating
+compositions of S (sum of valuations).
 
-## Resultado
+## Result
 
-Nenhum ciclo genuinamente novo encontrado para a de 1 a 14 (dentro da janela
-de busca coberta — algumas combinações (a,S) com contagem de composições
-acima de 3 milhões foram puladas por custo computacional, ver saída do
-script). Os únicos "ciclos" encontrados foram o ciclo trivial (n0=1)
-percorrido "a" vezes seguidas (b=(2,2,...,2)) — não são ciclos novos, são o
-mesmo ciclo 1→4→2→1 repetido.
+No genuinely new cycle found for a from 1 to 14 (within the covered
+search window — some (a,S) combinations with a composition count above
+3 million were skipped for computational cost, see the script's
+output). The only "cycles" found were the trivial cycle (n0=1)
+traversed "a" times in a row (b=(2,2,...,2)) — not new cycles, just the
+same 1→4→2→1 cycle repeated.
 
-Reproduzir: `python3 experiment.py 14 3000000` (~57s).
+Reproduce: `python3 experiment.py 14 3000000` (~57s).
 
-## Limitações honestas desta busca
+## Honest limitations of this search
 
-- É força bruta simples, não usa as técnicas de fração contínua que Simons &
-  de Weger (2005) usaram para provar rigorosamente que não há ciclo
-  não-trivial com até **68** subidas — um resultado muito mais forte que o
-  nosso.
-- Algumas combinações (a,S) com muitas composições possíveis foram puladas
-  (ver `skipped` na saída) — a busca não é 100% exaustiva para a maiores
-  dentro da janela testada, embora cubra as combinações mais prováveis
-  (S mais próximo do ótimo a·log₂3, que são as de menor contagem de
-  composições e mais prováveis de gerar um n0 pequeno).
-- Isso é uma **verificação própria, independente**, de um resultado já bem
-  estabelecido — não é uma descoberta nova. O valor é ter feito a checagem
-  nós mesmos, de forma reproduzível, e entender o mecanismo (equação de
-  ciclo via frações contínuas de log₂3) em vez de só citar a literatura.
+- It's simple brute force, not using the continued-fraction techniques
+  Simons & de Weger (2005) used to rigorously prove there is no
+  non-trivial cycle with up to **68** up-steps — a much stronger result
+  than ours.
+- Some (a,S) combinations with many possible compositions were skipped
+  (see `skipped` in the output) — the search isn't 100% exhaustive for
+  larger a within the tested window, though it covers the most likely
+  combinations (S closest to the optimum a·log₂3, which have the
+  fewest compositions and are most likely to yield a small n0).
+- This is an **independent, own verification** of an already
+  well-established result — not a new discovery. The value is having
+  done the check ourselves, reproducibly, and understanding the
+  mechanism (cycle equation via continued fractions of log₂3) rather
+  than just citing the literature.
 
-## Status de H-009
+## Status of H-009
 
-Consistente com a literatura (Steiner 1977, Simons 2005, Simons & de Weger
-2005): nenhum ciclo não-trivial encontrado na faixa testada. Não refuta nem
-prova a conjectura — apenas replica, em escala menor, um resultado já
-estabelecido rigorosamente por outros.
+Consistent with the literature (Steiner 1977, Simons 2005, Simons & de
+Weger 2005): no non-trivial cycle found in the tested range. Neither
+refutes nor proves the conjecture — merely replicates, at smaller
+scale, a result already rigorously established by others.

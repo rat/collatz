@@ -1,35 +1,35 @@
-# E-089 — Reteste corrigido de H-026 (K maior ajuda a prever G(v)?)
+# E-089 — Corrected retest of H-026 (does larger K help predict G(v)?)
 
-Hipótese relacionada: [`H-089-h026-corrected-K-does-help.md`](../../hypotheses/H-089-h026-corrected-K-does-help.md)
+Related hypothesis: [`H-089-h026-corrected-K-does-help.md`](../../hypotheses/H-089-h026-corrected-K-does-help.md)
 
-## O que foi feito
+## What was done
 
-H-026 original concluiu que fixar mais dígitos base-3 (K maior) não
-reduz a divergência da aproximação de memória finita. O modelo Fable
-mostrou por aritmética direta que essa conclusão estava contaminada
-pelo mesmo termo trivial de magnitude D(v)≈C/v identificado em H-086 —
-H-026 nunca testou a variável certa (G(v)=D(v)·v). Reimplementamos o
-teste medindo a **dispersão** de log₁₀(G) dentro de janelas de
-magnitude fixas e controladas, com múltiplas cadeias de resíduo
-independentes.
+The original H-026 concluded that fixing more base-3 digits (larger K)
+does not reduce the divergence of the finite-memory approximation. The
+Fable model showed by direct arithmetic that this conclusion was
+contaminated by the same trivial magnitude term D(v)≈C/v identified in
+H-086 — H-026 never tested the right variable (G(v)=D(v)·v). We
+reimplemented the test measuring the **spread** of log₁₀(G) within
+fixed, controlled magnitude windows, with multiple independent residue
+chains.
 
-## Bug encontrado e corrigido no caminho
+## Bug found and fixed along the way
 
-Uma primeira tentativa usou janelas de magnitude estreitas demais para
-K grande — o espaçamento mod 3^K excedia a largura da janela, forçando
-a amostragem a repetir o mesmo v (variância zero espúria). Corrigido
-verificando que a janela contém valores distintos suficientes antes de
-amostrar, e usando janelas mais largas.
+A first attempt used magnitude windows too narrow for large K — the
+mod 3^K spacing exceeded the window width, forcing the sampling to
+repeat the same v (spurious zero variance). Fixed by checking that the
+window contains enough distinct values before sampling, and using
+wider windows.
 
-## Resultado
+## Result
 
-Dispersão de log₁₀(G) cai monotonicamente com K: 0,2352 (K=2) → 0,1748
-(K=4) → 0,1444 (K=6) → 0,0936 (K=8) — consistente nas 3 janelas de
-magnitude testadas. **K maior reduz a incerteza sobre G(v)** — o
-oposto da conclusão original de H-026. Ver H-089 para a análise
-completa.
+The spread of log₁₀(G) drops monotonically with K: 0.2352 (K=2) →
+0.1748 (K=4) → 0.1444 (K=6) → 0.0936 (K=8) — consistent across the 3
+tested magnitude windows. **Larger K reduces the uncertainty about
+G(v)** — the opposite of H-026's original conclusion. See H-089 for the
+full analysis.
 
-## Reproduzir
+## Reproduce
 
 ```
 python3 experiment.py
