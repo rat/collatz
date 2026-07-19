@@ -75,12 +75,12 @@ para p≥1,7 essa razão já relaxou para o regime geométrico assintótico
 em k=8-11; para p≤1,6, incluindo o valor previsto, a razão **ainda está
 se movendo** — a assinatura clássica de "desaceleração crítica" perto
 de qualquer ponto crítico, não evidência de que a criticalidade esteja
-acima de 1,6. O transiente conhecido de q=5 (raiz complexa subdominante,
-decaimento k^-0,222) cai só ~7% entre k=8 e k=11; reduzi-lo pela metade
-exigiria k≈250 — impossível por enumeração exaustiva (custo 5^k).
-Tentativas de extrapolação (Aitken/Richardson) deram valores instáveis
-e não confiáveis (o transiente real é oscilatório de raiz complexa, não
-geométrico simples — quebra a premissa do extrapolador).
+acima de 1,6. O transiente conhecido de q=5 (decaimento k^-0,222) cai só
+~7% entre k=8 e k=11; reduzi-lo pela metade exigiria k≈250 — impossível
+por enumeração exaustiva (custo 5^k). Tentativas de extrapolação
+(Aitken/Richardson) deram valores instáveis e não confiáveis (o
+transiente parece oscilatório, não geométrico simples — quebra a
+premissa do extrapolador).
 
 **Veredito final (Fable + verificação própria)**: inconclusivo, não
 desconfirmatório. Não dá para distinguir, com este método, entre o
@@ -96,10 +96,27 @@ refuta. Ambas são muito mais informativas que a medição original
 subdimensionada. O texto do paper (main.tex/main-pt-br.tex, §3.3) foi
 reescrito para refletir isso honestamente — ver commit correspondente.
 Caminhos mais promissores para resolver isso de vez, se a linha for
-retomada: controle analítico sobre o espectro subdominante do operador
-de transferência, ou uma comparação pré-registrada tipo
-Clauset-Shalizi-Newman com orçamento muito maior que enumeração
-exaustiva.
+retomada: uma comparação pré-registrada tipo Clauset-Shalizi-Newman com
+orçamento muito maior que enumeração exaustiva, testando explicitamente
+contra um ajuste log-periódico (ver correção abaixo — a via do "espectro
+subdominante" foi fechada por E-105: não existe subdominante isolado a
+controlar).
+
+**Correção de terminologia (2026-07-19, ver H-129/E-105)**: a frase
+"raiz complexa subdominante do operador de transferência" que aparecia
+aqui e no restante do projeto estava errada. Uma consulta ao Fable
+resolveu a formalização correta do operador (par dual L_α/M_α agindo
+sobre Z_q) e mostrou, com verificação numérica exata em E-105, que M_α
+tem espectro EXATAMENTE {Λ,0} em qualquer nível de truncamento — gap
+espectral perfeito, sem nenhum autovalor subdominante isolado. O
+transiente k^-0,222 não é um fenômeno espectral linear; ele pertence à
+camada não-linear crítica (fase congelada = caso de fronteira de
+branching random walk / transformada de suavização), onde correções
+polinomiais em k são o comportamento esperado (Bramson, Aïdékon) e são
+compatíveis com log-periodicidade (efeito de reticulado, já que os
+pesos são potências de 2). Próximo passo real, se a linha for retomada:
+testar a cauda contra um ajuste log-periódico explícito
+x^-χ·(A+B·cos(2π log x/log 2 + φ)) em vez de lei de potência pura.
 
 ## Arquivos
 
@@ -127,13 +144,21 @@ python3 stage1_exact_moment_test.py    # ~15 min (k ate 11), usa ~10-15GB RAM no
 
 ## Próximos passos (se a linha for retomada)
 
-1. Controle analítico do espectro subdominante do operador de
-   transferência (a raiz complexa causando o transiente k^-0,222) —
-   resolveria a ambiguidade da Rodada 3 sem precisar de mais
-   profundidade computacional.
+1. ~~Controle analítico do espectro subdominante do operador de
+   transferência~~ — **fechado por E-105** (ver correção de terminologia
+   acima): não há autovalor subdominante isolado a controlar, o gap
+   espectral da camada linear é perfeito e comprovado. O que resta é
+   testar a hipótese log-periódica na camada não-linear (item novo
+   abaixo).
 2. Bateria estatística completa (CSN+Vuong pré-registrado) com amostra
    muito maior (10^5+ raízes) e headroom maior, se viável
    computacionalmente.
 3. Ver H-129 para uma frente teórica paralela (otimização ergódica)
    que pode dar uma caracterização exata do congelamento sem depender
    de estimadores numéricos.
+4. Testar explicitamente o ajuste log-periódico x^-χ·(A+B·cos(2π log
+   x/log 2 + φ)) contra a lei de potência pura, no teste de momento
+   exato ou na bateria estatística — hipótese levantada pelo Fable em
+   E-105 para explicar tanto o "transiente lento" quanto a oscilação
+   observada nas Rodadas 1-2 (efeito de reticulado: os pesos são
+   potências de 2).

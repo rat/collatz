@@ -67,7 +67,12 @@ que testavam).
 
 ## Próximos passos (se a linha for retomada)
 
-Análise espectral genuína do operador de transferência (Perron-Frobenius
-em Z/q^kZ) ou formalismo de Manneville-Pomeau/Sarig-Iommi para cadeias
-de Markov de alfabeto infinito — nenhum executado ainda, ambos de custo
-alto. Nada disso foi integrado ao paper.
+~~Análise espectral genuína do operador de transferência (Perron-
+Frobenius em Z/q^kZ) ou formalismo de Manneville-Pomeau/Sarig-Iommi
+para cadeias de Markov de alfabeto infinito~~ — **executado e fechado
+em [E-105](../E-105-transfer-operator-spectral-gap/README.md)
+(2026-07-19)**: o operador dual M_α tem gap espectral perfeito e
+comprovado (espectro exato {Λ,0}), Manneville-Pomeau/Sarig-Iommi não
+se aplica. O transiente k^-0,222 pertence a uma camada não-linear
+separada. Resta como via real: teste log-periódico da cauda (ver
+E-105/E-103). Nada disso foi integrado ao paper.

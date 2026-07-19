@@ -254,9 +254,90 @@ convergência quenched-anelado, mas isso ainda não foi verificado).
 
   **Status**: ainda aberta. Nem morta (a constante de Bramson e o
   framing termodinâmico continuam válidos e citáveis) nem confirmada
-  (a previsão numérica quantitativa de a* não se sustentou). Próximo
-  passo, se retomado: análise espectral genuína do operador de
-  transferência (Perron-Frobenius em Z/q^kZ) ou formalismo de
-  Manneville-Pomeau/Sarig-Iommi para cadeias de alfabeto infinito —
-  nenhum dos dois executado ainda, ambos de custo alto. Nada disso foi
-  integrado ao paper — permanece só nesta hipótese.
+  (a previsão numérica quantitativa de a* não se sustentou). Nada disso
+  foi integrado ao paper — permanece só nesta hipótese.
+
+- **2026-07-19 — Análise espectral do operador de transferência executada
+  (E-105): gap confirmado, via fechada, erro de terminologia corrigido.**
+
+  A pedido do diretor científico ("puxar o H-129 primeiro"), retomamos
+  exatamente o próximo passo listado acima: a análise espectral do
+  operador de transferência. Antes de programar, consultei o Fable
+  (via `Agent`/`model:"fable"`) com contexto completo — em particular
+  o Fato 2 já provado no paper (Exemplo ex:naive-fails: não existe
+  operador de estado finito de uma geração, pois a classe do filho mod
+  q^k depende do pai mod q^(k+1)) e a tensão entre "raiz complexa
+  subdominante" (decaimento geométrico oscilatório, exigiria gap com
+  autovalor isolado) vs. o k^-0,222 observado empiricamente (lei de
+  potência, assinatura clássica de AUSÊNCIA de gap).
+
+  **Resposta do Fable — resolve a tensão por camadas, não por escolher
+  um lado**:
+  1. O objeto certo não é L_α (Koopman ponderado filho→pai — esse é
+     exatamente o operador "level-raising" do Fato 2, não preserva
+     funções localmente constantes mod q^K). É o seu DUAL M_α
+     (pai→filho, via os mapas afins φ_a(w):=(qw+1)·2^-a, que são
+     definidos para TODO a≥1 sem restrição de admissibilidade — a
+     condição 2^a·φ_a(w)≡1 mod q vale automaticamente por construção).
+     M_α PRESERVA funções localmente constantes mod q^K exatamente
+     (baixa o nível em 1 a cada aplicação) — dualidade sob a medida de
+     Haar: M_α 1 = Λ·1 com Λ=q^α/(2^α−1), e a identidade de pressão
+     anelada já provada é exatamente "Haar é automedida de M_α*".
+  2. **M_α TEM gap espectral, e não é sutil**: cada ramo φ_a é
+     uniformemente expansor por fator exato q (métrica q-ádica),
+     distorção zero (ramos afins, pesos constantes por ramo) — as
+     hipóteses clássicas de Mauldin-Urbański/Sarig para IFS conforme de
+     alfabeto contável (que dão quasi-compacidade com gap) valem aqui
+     de forma quase trivial. Argumento mais forte, específico deste
+     operador: em Fourier por nível, M_α é estritamente triangular
+     inferior por nível (desce 1 nível por aplicação) — logo o espectro
+     de M_α restrito a qualquer LC_K (funções mod q^K) é EXATAMENTE
+     {Λ, 0}, autovalor Λ simples, resto nilpotente. NÃO existe
+     autovalor complexo subdominante isolado intrínseco. Manneville-
+     Pomeau/Sarig-Iommi (sem-gap) NÃO se aplica — não há ponto
+     parabólico possível com expansão uniforme exata.
+  3. O k^-0,222 é real e compatível com gap perfeito, porque vive numa
+     CAMADA DIFERENTE: não é a média anelada linear (essa tem gap), é
+     um funcional NÃO-LINEAR de Z_k (teste de momento em α perto do
+     índice de cauda) — e como já provamos que α_+ é sempre congelado,
+     esse teste está sentado exatamente no CASO DE FRONTEIRA da teoria
+     de branching random walk / transformada de suavização, onde
+     correções polinomiais em k (Bramson, Aïdékon — deslocamento
+     (3/2)log k, martingale derivativo normalizado por k^-1/2) são o
+     comportamento PADRÃO esperado, sem nenhuma implicação sobre o gap
+     da camada linear. Suspeito adicional: os pesos são potências de 2
+     (caso reticulado) — no caso reticulado a cauda é log-periódica
+     (Guivarc'h; Buraczewski-Damek-Mikosch), o que produziria exatamente
+     as oscilações sem convergência monotônica vistas em E-103. A
+     "raiz complexa subdominante" das notas antigas provavelmente veio
+     de uma análise de Mellin (polos complexos na mesma reta vertical
+     do polo dominante, causando oscilação log-periódica) mal registrada
+     com vocabulário espectral errado — real como fenômeno, errada como
+     descrição do operador.
+
+  **Verificação numérica** (`experiments/E-105-transfer-operator-spectral-gap/experiment_gap_check.py`,
+  q=5, α_+=1 e α_-=0,650919, K=2,3,4, aritmética exata para os índices
+  e ponto flutuante para os autovalores): confirma exatamente a
+  previsão — soma de linhas de M_α = Λ teórico em toda linha (casa
+  8+ dígitos), autovalor dominante = Λ, todos os demais autovalores
+  ≈0 (2e-8 em K=2, crescendo para 2e-4 em K=4 — ruído de não-
+  normalidade do bloco nilpotente crescente, EXATAMENTE o artefato que
+  o próprio Fable avisou que apareceria se eu tentasse ler isso como
+  "gap fechando conforme K cresce"; não fiz essa leitura errada porque
+  fui avisado antes de rodar).
+
+  **Terminologia corrigida** em H-109 e `experiments/E-103.../README.md`
+  e em `STATE.md`: a frase "raiz complexa subdominante do operador de
+  transferência" foi removida/anotada como erro nos três lugares.
+
+  **Consequência para H-129**: a via "análise espectral de Perron-
+  Frobenius" listada como próximo passo está FECHADA — não por falta
+  de recursos, mas porque a resposta é estruturalmente definitiva (gap
+  perfeito, provado) e não ajuda a resolver a Conjectura do índice de
+  cauda (que vive na camada errada). O formalismo de Manneville-
+  Pomeau/Sarig-Iommi também está descartado como caminho (não há
+  ausência de gap a explicar). **Status: ainda aberta.** Resta como via
+  real, não executada: testar a hipótese log-periódica da cauda
+  diretamente (ajuste x^-χ·(A+B·cos(2π log x/log 2 + φ)) contra os
+  dados de E-103) — ver `experiments/E-103.../README.md`, item 4 dos
+  próximos passos.

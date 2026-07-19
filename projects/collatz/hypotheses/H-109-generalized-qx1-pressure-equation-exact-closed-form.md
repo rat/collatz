@@ -275,12 +275,26 @@ p≥1,7 — sugeriria índice real >1,536 se lido ingenuamente. MAS: a razão
 entre incrementos sucessivos ainda não estabilizou para p≤1,6 em k=11
 (ao contrário de p≥1,7, já estável) — assinatura de "desaceleração
 crítica" perto de qualquer criticalidade, não evidência de índice mais
-alto. O transiente conhecido de q=5 (raiz complexa subdominante,
-k^-0,222) cai só ~7% entre k=8 e k=11; reduzi-lo pela metade exigiria
-k≈250, inalcançável por enumeração exaustiva (custo 5^k). Extrapolação
-Aitken/Richardson tentada e descartada (transiente é oscilatório de
-raiz complexa, não geométrico — quebra a premissa do método). Veredito
-final do Fable: **inconclusivo, não desconfirmatório**.
+alto. O transiente conhecido de q=5 (k^-0,222) cai só ~7% entre k=8 e
+k=11; reduzi-lo pela metade exigiria k≈250, inalcançável por enumeração
+exaustiva (custo 5^k). Extrapolação Aitken/Richardson tentada e
+descartada (transiente parece oscilatório, não geométrico simples —
+quebra a premissa do método). Veredito final do Fable: **inconclusivo,
+não desconfirmatório**.
+
+*Correção de terminologia (2026-07-19, ver H-129/E-105)*: a atribuição
+original deste transiente a uma "raiz complexa subdominante do operador
+de transferência" estava errada — confundia duas camadas distintas. O
+operador linear dual M_α (que preserva funções localmente constantes
+mod q^K exatamente) TEM gap espectral perfeito e comprovado (espectro
+exato {Λ,0}, sem nenhum autovalor subdominante isolado — ver E-105). O
+transiente k^-0,222 pertence à camada não-linear crítica (fase
+congelada, caso de fronteira de teoria de branching random walk/
+transformada de suavização), onde correções polinomiais em k são
+esperadas e não implicam ausência de gap na camada linear. É plausível
+que a oscilação observada seja um efeito de reticulado log-periódico
+(os pesos são potências de 2), não uma "raiz complexa" no sentido
+espectral.
 
 **Consequência para o paper**: §3.3 (Conjectura do índice de cauda)
 reescrita em `main.tex`/`main-pt-br.tex` para reportar as duas rodadas

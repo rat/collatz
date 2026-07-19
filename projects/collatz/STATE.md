@@ -1,6 +1,55 @@
 # Estado atual — Collatz
 
-Última atualização: 2026-07-18
+Última atualização: 2026-07-19
+
+## H-129: gap espectral do operador de transferência confirmado; erro de terminologia corrigido (E-105)
+
+A pedido do diretor científico ("puxar o H-129 primeiro"), consultamos
+o Fable sobre como formalizar corretamente o "operador de transferência"
+cujo espectro subdominante vinha sendo apontado (em H-109/E-103/H-129)
+como a causa do transiente k^-0,222 do teste de índice de cauda q=5.
+
+**Resultado da consulta**: existem dois operadores distintos aqui — o
+Koopman ponderado L_α (filho→pai; NÃO preserva funções localmente
+constantes mod q^K, é exatamente a impossibilidade de estado finito já
+provada no paper) e seu dual M_α (pai→filho, via φ_a(w)=(qw+1)·2^-a),
+que PRESERVA funções mod q^K exatamente. Argumento do Fable (expansão
+q-ádica uniforme por fator q, distorção zero por ramo): o espectro de
+M_α restrito a qualquer nível K é EXATAMENTE {Λ, 0} com Λ=q^α/(2^α−1) —
+gap espectral perfeito, sem nenhum autovalor subdominante isolado
+intrínseco. Portanto o mecanismo Manneville-Pomeau/sem-gap NÃO se
+aplica aqui (ao contrário do que H-129/E-104 cogitavam como próximo
+passo).
+
+**Verificação numérica** (`experiments/E-105-transfer-operator-spectral-gap/`,
+q=5, α_+=1 e α_-=0,650919, K=2,3,4): confirmado exatamente — soma de
+linhas de M_α = Λ em toda linha, autovalor dominante = Λ, todos os
+demais autovalores ≈0 (ruído numérico crescendo de 2e-8 a 2e-4 com K,
+efeito de não-normalidade do bloco nilpotente previsto pelo próprio
+Fable como armadilha — não um autovalor real "fechando o gap").
+
+**Onde fica o k^-0,222 então**: não na camada linear. Pertence à camada
+não-linear crítica (fase congelada = caso de fronteira de branching
+random walk / transformada de suavização — Bramson, Aïdékon), onde
+correções polinomiais em k são esperadas e coexistem com gap espectral
+perfeito na camada linear. Hipótese de trabalho nova (não testada):
+a oscilação é um efeito de reticulado log-periódico, já que os pesos
+são potências de 2 — próximo passo natural seria testar um ajuste
+x^-χ·(A+B·cos(2π log x/log 2 + φ)) em vez de lei de potência pura.
+
+**Terminologia corrigida** em H-109, E-103/README.md e aqui: a frase
+"raiz complexa subdominante do operador de transferência" foi removida/
+anotada como erro nos três lugares onde aparecia — não é um resultado
+que se sustenta com a formalização correta do operador.
+
+**Status de H-129**: permanece aberta. O achado de hoje fecha
+definitivamente a via "análise espectral do operador" que H-129/E-104
+listavam como próximo passo (não há gap para fechar — já está fechado,
+e não ajuda a resolver a Conjectura do índice de cauda, que é um
+fenômeno de camada não-linear). Resta como via real: formalismo de
+Manneville-Pomeau/Sarig-Iommi NÃO é necessário (motivo: o mecanismo que
+o justificaria — ausência de gap — foi descartado); e o teste
+log-periódico da cauda, ainda não executado.
 
 ## Índice de cauda q≥5: investigação fechada como inconclusiva (paper atualizado)
 
@@ -26,8 +75,9 @@ até k=11 (teto seguro de memória). M_k(1,0)=1,0 exato em todo k
 p≥1,7 — mas a razão entre incrementos sucessivos ainda não estabilizou
 para p≤1,6 (ao contrário de p≥1,7, já estável): assinatura de
 desaceleração crítica, não evidência de índice mais alto. O transiente
-conhecido de q=5 (raiz complexa subdominante, k^-0,222) cai só ~7%
-entre k=8 e k=11; k≈250 seria necessário para reduzi-lo pela metade —
+conhecido de q=5 (k^-0,222 — ver correção de terminologia de 2026-07-19
+abaixo, não é mais atribuído a uma "raiz complexa subdominante") cai só
+~7% entre k=8 e k=11; k≈250 seria necessário para reduzi-lo pela metade —
 inalcançável por enumeração exaustiva. **Veredito final: inconclusivo,
 não desconfirmatório** — parado aqui, sem Estágio 2 (Markov-modulado,
 ~12h), conforme a regra de decisão combinada com o advisor.
@@ -1626,9 +1676,16 @@ rotulagem off-by-one encontrado na Conjectura 10.4 de Pratiher 2026
   previsão numérica quantitativa (a* via fórmula tipo REM) pareceu
   bater inicialmente mas não resistiu a teste direto (Fable + advisor
   corrigiram um erro de processo antes de reportar como confirmado).
-  Nem morta, nem confirmada — próximo passo (análise espectral de
-  Perron-Frobenius, ou formalismo de Manneville-Pomeau/Sarig-Iommi) não
-  executado, custo alto. Não integrada ao paper. Ver
+  Atualização 2026-07-19 (E-105): a via "análise espectral de
+  Perron-Frobenius" foi executada e FECHADA — o operador dual M_α tem
+  gap espectral perfeito e comprovado (espectro exato {Λ,0}, verificado
+  numericamente), então o mecanismo Manneville-Pomeau/Sarig-Iommi (que
+  precisaria de ausência de gap) não se aplica; o transiente k^-0,222
+  pertence a uma camada não-linear crítica separada (ver seção acima),
+  não ao espectro do operador — corrigimos essa atribuição errada em
+  H-109/E-103 também. Nem morta, nem confirmada — resta como
+  via real o teste log-periódico da cauda (não executado). Não
+  integrada ao paper. Ver
   `hypotheses/H-129-q-adic-pole-analog-seymour.md`.
 - `H-127` — redução condicional da falha da WCC (Wirsching) a
   configurações de Bohr pós-wrap, via Littlewood-Offord/Halász. Status
