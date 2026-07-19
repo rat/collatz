@@ -2,6 +2,52 @@
 
 Última atualização: 2026-07-19
 
+## Auditoria externa do paper (pré-envio ao Igor): 3 correções aplicadas
+
+Diretor científico rodou uma auditoria sistemática externa do paper
+(matemática, referências, código) antes de enviar a Igor. Achados
+verificados de forma independente e triados:
+
+- **Falso**: a auditoria afirmou que o repositório
+  `github.com/faculdade/collatz-endogeny` "não aparece em nenhuma
+  busca" / parecia placeholder. Confirmado via `curl`/API do GitHub
+  que o repo existe, é público e está com o conteúdo certo — a busca
+  do auditor só não indexou ainda porque o push foi feito nesta mesma
+  sessão. Nada a corrigir.
+- **Correto e corrigido — Teorema 10.12 (identidade de Jensen)**: a
+  prova usa `p≥1/2` explicitamente, mas o enunciado não tinha essa
+  hipótese. Adicionada. Sem impacto downstream (aplicado em
+  $p_c\approx0{,}558\ge1/2$).
+- **Correto e corrigido, após consulta ao Fable — Teorema 3.6
+  ("Structural transition: density")**: rotulava como Teorema uma
+  afirmação (densidade positiva/nula da árvore reversa real) que para
+  q=3 é *literalmente* a Conjectura do Expoente de Crescimento de
+  Applegate–Lagarias (aberta desde 1995) e para q≥5 não tem prova para
+  a árvore aritmética — só para o modelo estocástico i.i.d. + suporte
+  empírico. O Fable apontou a inconsistência decisiva: o próprio paper
+  já usa esse critério para rebaixar a conjectura irmã do tail-index
+  (`conj:tail-index`) a Conjectura, então o Teorema 3.6 tinha que
+  seguir o mesmo padrão. Dividido em `thm:transition-model` (rigoroso,
+  só para o modelo i.i.d., via Biggins 1992) +
+  `conj:transition-arithmetic` (árvore real, conjectura, com a conexão
+  a Applegate–Lagarias tornada explícita — ganho de framing, não
+  fraqueza). Novo item (O8)/(A8) na lista de problemas abertos. Todas
+  as referências cruzadas no `main.tex`/`main-pt-br.tex` atualizadas.
+- Corrigido também: "fifteen-year-old dispute"/"disputa de quinze
+  anos" (Volkov 2006, KL 2010 — em 2026 são 16-20 anos, não 15) →
+  "long-standing"/"de longa data", para não ficar datado.
+- **Avaliado e mantido como estava** (discordância da auditoria):
+  Teorema 7.2 ("Regime 3 is a recognized open problem") é uma
+  afirmação de equivalência de dificuldade, não overclaim; Teoremas
+  6.1 e 9.4 (resultados empíricos) já se autodeclaram "empirical"/
+  "numerical test" no próprio título do teorema, sem informação
+  enganosa.
+
+PDFs recompilados limpos nas duas versões (main.pdf: 28→29 páginas;
+main-pt-br.pdf: 29→30 páginas). Nenhum código novo foi necessário —
+edições são só de enunciado/enquadramento, sem nova alegação
+computacional.
+
 ## Nota de rodapé sobre família de escala (E-103 Estágio 4) adicionada ao paper
 
 Diretor científico pediu avaliação de 3 achados da sessão como

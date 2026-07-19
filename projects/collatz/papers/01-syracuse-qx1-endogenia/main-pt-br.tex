@@ -58,13 +58,17 @@ um argumento de autômato finito para a mesma identidade que mostramos
 não estar bem posto. A raiz não trivial de $\rho_{\mathrm{ann}}(\alpha)=1$
 sofre uma transição estrutural em $q=5$: vale exatamente $\alpha^\ast=2$
 em $q=3$ e cai estritamente abaixo de $1$ para todo $q\ge5$,
-sinalizando uma mudança qualitativa de densidade natural positiva para
-densidade nula da árvore reversa. Mostramos, além disso, que as duas
-raízes dessa equação sempre ficam em lados opostos de uma transição de
-congelamento quenched/anelado no sentido de polímeros dirigidos em
-ambiente aleatório: a raiz menor está sempre não-congelada, então a
-identidade anelada se transfere rigorosamente para a função de
-contagem quenched real; a raiz maior está sempre congelada, então ela
+sinalizando conjecturalmente uma mudança qualitativa de densidade
+natural positiva para densidade nula da árvore reversa (em $q=3$,
+exatamente a clássica Conjectura do Expoente de Crescimento de
+Applegate--Lagarias). Mostramos, além disso, que as duas raízes dessa
+equação sempre ficam em lados opostos de uma transição de congelamento
+quenched/anelado no sentido de polímeros dirigidos em ambiente
+aleatório: a raiz menor está sempre não-congelada, então a identidade
+anelada se transfere rigorosamente para a função de contagem quenched
+do modelo de passeio aleatório ramificado i.i.d.\ correspondente, e,
+conjecturamos com forte apoio empírico, para a própria árvore
+aritmética; a raiz maior está sempre congelada, então ela
 não estabelece por si só o índice de cauda do fator de escala do
 martingale que governa o termo de correção sub-exponencial, fato que
 verificamos independentemente por cálculo exato. Em $q=3$ essa raiz
@@ -211,7 +215,7 @@ Wirsching2003}, apresentamos as seguintes contribuições.
   lacuna teórica de (ii) numa cota empírica quantitativa.
 \item \textbf{Um resultado empírico incondicional (\S\ref{sec:kl}).}
   Resolvemos, usando enumeração exata e extrapolação de Richardson, uma
-  disputa de quinze anos entre duas previsões concorrentes para o
+  disputa de longa data entre duas previsões concorrentes para o
   expoente de contagem de $5x+1$.
 \item \textbf{Um teste computacional direto da Weak Covering
   Conjecture (\S\ref{sec:wcc}).}
@@ -447,7 +451,7 @@ nenhuma assintótica específica de fase congelada, que não derivamos.
 A consequência, pela Proposição~\ref{prop:always-frozen}, é
 incondicional: o Teorema~\ref{thm:pressure}, embora exato, se
 transfere rigorosamente só para a metade de \emph{expoente de
-contagem} do Teorema~\ref{thm:transition} abaixo (a raiz menor
+contagem} do Teorema~\ref{thm:transition-model} abaixo (a raiz menor
 $\alpha_-(q)$, sempre não-congelada); ele nunca estabelece, para
 nenhum $q$, o índice de cauda do fator de escala do martingale $W_u$
 também alegado ali, já que a raiz maior $\alpha_+(q)$ que governaria
@@ -486,18 +490,45 @@ $\{\alpha_-,\alpha_+\}=\{1,2\}$ em $q=3$ mas
 $\{\alpha_-,\alpha_+\}=\{\alpha^\ast(q),1\}$ para $q\ge5$: a raiz
 trivial passa a ser a \emph{maior} das duas.
 
-\begin{theorem}[Transição estrutural: densidade]\label{thm:transition}
-Para $q=3$ a árvore reversa de $T_q$ tem densidade natural positiva
-(função de contagem $N_u(x)\sim x$); para todo $q\ge 5$ ímpar ela tem
-densidade natural nula, com $N_u(x)\sim W_u\cdot x^{\alpha_-(q)}$ para
-algum fator de escala aleatório $W_u$, $\alpha_-(q)<1$.
+\begin{theorem}[Transição estrutural: densidade, modelo i.i.d.]\label{thm:transition-model}
+Seja $N(x)$ a função de contagem populacional do modelo i.i.d.\ de
+passeio aleatório ramificado cuja pressão anelada é exatamente
+$\rho_{\mathrm{ann}}(\alpha)=q^{\alpha-1}/(2^\alpha-1)$
+(Teorema~\ref{thm:pressure}). Como $\alpha_-(q)$ é sempre não-congelada
+(Proposição~\ref{prop:always-frozen}), o crescimento quenched=anelado
+vale em toda a região não-congelada \cite{Biggins1992}, e quase
+certamente: $N(x)\sim x$ em $q=3$ (densidade positiva, já que
+$\alpha_-(3)=1$ exatamente); $N(x)\sim W_u\cdot x^{\alpha_-(q)}$ para
+algum fator de escala aleatório q.c.\ positivo $W_u$, para todo $q\ge5$
+ímpar ($\alpha_-(q)<1$).
 \end{theorem}
 
-Pela Proposição~\ref{prop:always-frozen}, $\alpha_-(q)$ é sempre
-não-congelada, então a identidade anelada do Teorema~\ref{thm:pressure}
-se transfere para a função de contagem quenched real, nesta raiz,
-consistente com a confirmação empírica direta abaixo e com a medição
-estatisticamente calibrada da \S\ref{sec:kl}.
+\begin{conjecture}[Transição estrutural: densidade, árvore aritmética]\label{conj:transition-arithmetic}
+A mesma dicotomia vale para a árvore reversa genuína de $T_q$ em si,
+não apenas para o modelo i.i.d.\ do Teorema~\ref{thm:transition-model}:
+para $q=3$ ela tem densidade natural positiva ($N_u(x)\sim x$); para
+todo $q\ge5$ ímpar ela tem densidade natural nula, com
+$N_u(x)\sim W_u\cdot x^{\alpha_-(q)}$. Em $q=3$ isto é, em particular,
+exatamente a Conjectura do Expoente de Crescimento de
+Applegate--Lagarias
+\cite{ApplegateLagarias1995I,ApplegateLagarias1995II} para a árvore
+reversa clássica de Collatz --- aberta desde 1995, cujo melhor
+resultado incondicional parcial permanece sendo a cota unilateral
+$\pi_a(x)\ge x^{0{,}84}$ de Krasikov--Lagarias
+\cite{KrasikovLagarias2003}. Nossa identidade de pressão reproduz essa
+conjectura como o caso $\alpha_-=1$ de uma única equação fechada,
+junto com seu análogo para $q\ge5$, em vez de resolvê-la.
+\end{conjecture}
+
+Enunciamos o Teorema~\ref{thm:transition-model} e a
+Conjectura~\ref{conj:transition-arithmetic} separadamente, em vez de
+como um único teorema sobre a árvore aritmética, precisamente porque o
+passo de um para o outro é exatamente o tipo de transferência que
+causou o erro corrigido nesta seção; a Observação~\ref{rem:transfer-basis}
+abaixo precisa o que está e o que não está apoiado em prova. Apoio
+empírico direto para a Conjectura~\ref{conj:transition-arithmetic} é
+dado na \S\ref{sec:kl-empirical} abaixo e pela medição estatisticamente
+calibrada da \S\ref{sec:kl}.
 
 \begin{remark}[No que essa "transferência" se apoia]\label{rem:transfer-basis}
 Somos precisos sobre o status dessa transferência, já que é exatamente
@@ -549,11 +580,14 @@ a conjectura a sério como previsão, ainda que, pela
 Observação~\ref{rem:transfer-basis}, a teoria só cubra rigorosamente o
 modelo estocástico, não nossa recursão aritmética.
 
-Enunciamos isso como conjectura, não como parte do
-Teorema~\ref{thm:transition}, precisamente porque a
+Enunciamos isso como conjectura separada tanto do
+Teorema~\ref{thm:transition-model} quanto da
+Conjectura~\ref{conj:transition-arithmetic} acima, precisamente porque a
 Proposição~\ref{prop:always-frozen} mostra que $\alpha_+(q)$ está
 \emph{sempre} congelada: a identidade de pressão anelada não a
-estabelece para nenhum $q$, e ela precisa se apoiar em evidência
+estabelece para nenhum $q$ --- nem mesmo no nível do modelo i.i.d.\ do
+Teorema~\ref{thm:transition-model}, cuja transferência do tipo Biggins
+só cobre a raiz não-congelada --- e ela precisa se apoiar em evidência
 externa ao Teorema~\ref{thm:pressure}. Em $q=3$ essa evidência é real e
 tripla: o estimador de Hill sobre amostras de árvores reais e a teoria
 de valores extremos sobre máximos de blocos (ambos de etapas anteriores
@@ -655,7 +689,7 @@ alcançado. Listamos a conjectura como problema em aberto explícito na
 \S\ref{sec:conclusion}, atualizado para refletir essa mudança.
 
 O drift médio $\log q - 2\log 2$ muda de sinal exatamente no limiar
-$q=5$ que separa os dois casos do Teorema~\ref{thm:transition}:
+$q=5$ que separa os dois casos da Conjectura~\ref{conj:transition-arithmetic}:
 negativo para $q=3$ (órbitas contraem em média), positivo para $q\ge5$
 (órbitas expandem em média). Isso não é coincidência ao lado do cálculo
 de congelamento da \S\ref{sec:freezing}: em $\alpha=1$ a entropia é
@@ -664,11 +698,12 @@ versus expansão de órbitas também decide se a raiz trivial $\alpha=1$
 está congelada.
 
 \subsection{Confirmação empírica em árvores reversas reais}
+\label{sec:kl-empirical}
 
 Enumeração independente por busca em profundidade das árvores reversas
 verdadeiras (não estendidas) para $q=5$ e $q=7$, seguindo a regra de
-admissibilidade exata da \S\ref{sec:setup}, confirma o
-Teorema~\ref{thm:transition} diretamente: inclinações de contagem por
+admissibilidade exata da \S\ref{sec:setup}, dá apoio empírico direto à
+Conjectura~\ref{conj:transition-arithmetic}: inclinações de contagem por
 década de $3$ raízes amostradas independentemente deram
 $\approx 0{,}62$--$0{,}66$ para $q=5$ (previsto $0{,}650919$) e
 $\approx 0{,}36$--$0{,}39$ para $q=7$ (previsto $0{,}373501$). Uma
@@ -1585,7 +1620,7 @@ inverte de sinal.
 \begin{theorem}[Identidade de Jensen e o déficit exato de orçamento de
 Fourier]\label{thm:jensen}
 Seja $Z=\sum_{g\ge1} w_g\, e(U_g)$, $U_g$ i.i.d.\ uniformes, $w_g =
-p(1-p)^{g-1}$ ($\sum_g w_g=1$). Então, exatamente,
+p(1-p)^{g-1}$ ($\sum_g w_g=1$), com $p\ge\tfrac12$. Então, exatamente,
 \begin{equation}\label{eq:jensen}
   \Lambda := \mathbb{E}\bigl[\log(1/|Z|)\bigr] = \log(1/p).
 \end{equation}
@@ -1609,9 +1644,10 @@ realização de $Z'$, e tomando a média sobre $Z'$ obtemos
 $\mathbb{E}[\log|Z|]=\log p$, i.e.\ \eqref{eq:jensen}.
 \end{proof}
 
-Aplicando o Teorema~\ref{thm:jensen} com $p=p_c=1/\gamma_c$ (o modelo
-inclinado que casa com a inclinação-limiar da Weak Covering
-Conjecture) obtemos $\Lambda = \log\gamma_c \approx 0{,}5834+O(c)$,
+Aplicando o Teorema~\ref{thm:jensen} com $p=p_c=1/\gamma_c\approx0{,}558$
+(o modelo inclinado que casa com a inclinação-limiar da Weak Covering
+Conjecture; note que $p_c\ge\tfrac12$, como o teorema exige) obtemos
+$\Lambda = \log\gamma_c \approx 0{,}5834+O(c)$,
 confirmado por Monte Carlo ($8\times10^6$ amostras: $0{,}58344\pm0{,}0005$),
 contra o valor $\log 3\approx 1{,}0986$ que seria necessário para
 excluir um buraco difuso por um argumento anelado de orçamento de
@@ -1806,7 +1842,7 @@ uma característica estrutural do problema em si.
 Terceiro, este pacote teórico convive com um resultado
 (Teorema~\ref{thm:kl}) cuja validade não depende de nada do
 enquadramento acima: uma medição empírica direta, falsificável, e
-estatisticamente calibrada, resolvendo uma disputa de quinze anos na
+estatisticamente calibrada, resolvendo uma disputa de longa data na
 literatura. Consideramos esta a contribuição mais independente de
 enquadramento do paper, e recomendamos que seja ponderada de acordo
 por um leitor avaliando a confiabilidade geral do paper.
@@ -1876,9 +1912,17 @@ forma mais limpa que conseguimos dar a eles.
   honestamente, a alegação com apoio mais fraco do paper; já não é,
   mas continua sendo a única que repousa sobre evidência estatística
   em vez de uma derivação fechada.
+\item \textbf{A transição de densidade na árvore aritmética genuína}
+  (Conjectura~\ref{conj:transition-arithmetic}): estabelecida aqui
+  apenas para o modelo i.i.d.\ de passeio aleatório ramificado
+  (Teorema~\ref{thm:transition-model}); em $q=3$ esta conjectura é, em
+  particular, exatamente a Conjectura do Expoente de Crescimento de
+  Applegate--Lagarias, aberta desde 1995, cujo melhor resultado
+  incondicional parcial permanece sendo a cota unilateral de
+  Krasikov--Lagarias \cite{KrasikovLagarias2003}.
 \end{enumerate}
 
-Qualquer progresso em qualquer um de (A1)--(A7) muito provavelmente se
+Qualquer progresso em qualquer um de (A1)--(A8) muito provavelmente se
 transferiria, dadas as identidades estruturais estabelecidas neste
 paper, para progresso em vários dos outros simultaneamente. Vemos esta
 convergência como o achado central do paper.

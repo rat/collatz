@@ -57,13 +57,17 @@ finite-automaton argument for the same identity that we show is not
 well posed. The nontrivial root of $\rho_{\mathrm{ann}}(\alpha)=1$
 undergoes a structural transition at $q=5$: it equals exactly
 $\alpha^\ast=2$ at $q=3$ and falls strictly below $1$ for every
-$q\ge5$, signalling a qualitative change from positive to zero natural
-density of the reverse tree. We show, moreover, that the two roots of
-this equation always sit on opposite sides of a quenched/annealed
-freezing transition in the sense of directed polymers in a random
-environment: the smaller root is always unfrozen, so the annealed
-identity transfers rigorously to the real, quenched counting function;
-the larger root is always frozen, so it does \emph{not} by itself
+$q\ge5$, conjecturally signalling a qualitative change from positive to
+zero natural density of the reverse tree (for $q=3$, exactly the
+classical Growth Exponent Conjecture of Applegate--Lagarias). We show,
+moreover, that the two roots of this equation always sit on opposite
+sides of a quenched/annealed freezing transition in the sense of
+directed polymers in a random environment: the smaller root is always
+unfrozen, so the annealed identity transfers rigorously to the
+quenched counting function of the matching i.i.d.\
+branching-random-walk model, and, we conjecture on strong empirical
+grounds, to the genuine arithmetic tree itself; the larger root is
+always frozen, so it does \emph{not} by itself
 establish the tail index of the martingale scale factor governing the
 sub-exponential correction term, a fact we verify independently by
 exact computation. At $q=3$ this larger root, $\alpha^\ast=2$, still
@@ -207,7 +211,7 @@ following contributions.
   theoretical gap of (ii) into a quantitative empirical bound.
 \item \textbf{An unconditional empirical result (\S\ref{sec:kl}).} We
   resolve, using exact enumeration and Richardson extrapolation, a
-  fifteen-year-old dispute between two competing predictions for the
+  long-standing dispute between two competing predictions for the
   $5x+1$ counting exponent.
 \item \textbf{A direct computational test of the Weak Covering
   Conjecture (\S\ref{sec:wcc}).}
@@ -442,7 +446,7 @@ asymptotic, which we have not derived.
 The consequence, by Proposition~\ref{prop:always-frozen}, is
 unconditional: Theorem~\ref{thm:pressure}, though exact, rigorously
 transfers only to the \emph{counting-exponent} half of
-Theorem~\ref{thm:transition} below (the smaller root $\alpha_-(q)$,
+Theorem~\ref{thm:transition-model} below (the smaller root $\alpha_-(q)$,
 always unfrozen); it never establishes, for any $q$, the tail index of
 the martingale scale factor $W_u$ also claimed there, since the larger
 root $\alpha_+(q)$ governing that claim is always frozen. We treat this
@@ -479,18 +483,44 @@ the two roots, we have $\{\alpha_-,\alpha_+\}=\{1,2\}$ at $q=3$ but
 $\{\alpha_-,\alpha_+\}=\{\alpha^\ast(q),1\}$ for $q\ge5$: the trivial
 root becomes the \emph{larger} of the two.
 
-\begin{theorem}[Structural transition: density]\label{thm:transition}
-For $q=3$ the reverse tree of $T_q$ has positive natural density
-(counting function $N_u(x)\sim x$); for every odd $q\ge 5$ it has
-natural density zero, with $N_u(x)\sim W_u\cdot x^{\alpha_-(q)}$ for
-some random scale factor $W_u$, $\alpha_-(q)<1$.
+\begin{theorem}[Structural transition: density, i.i.d.\ model]\label{thm:transition-model}
+Let $N(x)$ be the population counting function of the i.i.d.\
+branching-random-walk model whose annealed pressure is exactly
+$\rho_{\mathrm{ann}}(\alpha)=q^{\alpha-1}/(2^\alpha-1)$
+(Theorem~\ref{thm:pressure}). Since $\alpha_-(q)$ is always unfrozen
+(Proposition~\ref{prop:always-frozen}), quenched-equals-annealed growth
+holds throughout the unfrozen region \cite{Biggins1992}, and almost
+surely: $N(x)\sim x$ at $q=3$ (positive density, since $\alpha_-(3)=1$
+exactly); $N(x)\sim W_u\cdot x^{\alpha_-(q)}$ for some a.s.\ positive
+random scale factor $W_u$, for every odd $q\ge5$ ($\alpha_-(q)<1$).
 \end{theorem}
 
-By Proposition~\ref{prop:always-frozen}, $\alpha_-(q)$ is always
-unfrozen, so the annealed identity of Theorem~\ref{thm:pressure}
-transfers to the real, quenched counting function at this root,
-consistently with the direct empirical confirmation below and with the
-statistically calibrated measurement of \S\ref{sec:kl}.
+\begin{conjecture}[Structural transition: density, arithmetic tree]\label{conj:transition-arithmetic}
+The same dichotomy holds for the genuine reverse tree of $T_q$ itself,
+not merely for the i.i.d.\ model of
+Theorem~\ref{thm:transition-model}: for $q=3$ it has positive natural
+density ($N_u(x)\sim x$); for every odd $q\ge5$ it has natural density
+zero, with $N_u(x)\sim W_u\cdot x^{\alpha_-(q)}$. At $q=3$ this is, in
+particular, exactly the Growth Exponent Conjecture of
+Applegate--Lagarias
+\cite{ApplegateLagarias1995I,ApplegateLagarias1995II} for the classical
+Collatz reverse tree --- open since 1995, with the best unconditional
+partial result remaining the one-sided bound $\pi_a(x)\ge x^{0.84}$ of
+Krasikov--Lagarias \cite{KrasikovLagarias2003}. Our pressure identity
+reproduces this conjecture as the $\alpha_-=1$ case of a single
+closed-form equation, together with its $q\ge5$ analogue, rather than
+resolving it.
+\end{conjecture}
+
+We state Theorem~\ref{thm:transition-model} and
+Conjecture~\ref{conj:transition-arithmetic} separately, rather than as
+a single theorem about the arithmetic tree, precisely because the step
+from one to the other is exactly the kind of transfer that caused the
+error corrected in this section; Remark~\ref{rem:transfer-basis}
+below makes precise what does and does not rest on proof. Direct
+empirical support for Conjecture~\ref{conj:transition-arithmetic} is
+given in \S\ref{sec:kl-empirical} below and by the statistically
+calibrated measurement of \S\ref{sec:kl}.
 
 \begin{remark}[What ``transfers'' rests on]\label{rem:transfer-basis}
 We are precise about the status of this transfer, since it is exactly
@@ -540,11 +570,14 @@ seriously as a prediction, even though, per
 Remark~\ref{rem:transfer-basis}, the theory only rigorously covers the
 stochastic model, not our arithmetic recursion.
 
-We state this as a conjecture, not as part of
-Theorem~\ref{thm:transition}, precisely because
+We state this as a conjecture separate from both
+Theorem~\ref{thm:transition-model} and
+Conjecture~\ref{conj:transition-arithmetic} above, precisely because
 Proposition~\ref{prop:always-frozen} shows $\alpha_+(q)$ is
 \emph{always} frozen: the annealed pressure identity does not
-establish it for any $q$, and it must rest on evidence external to
+establish it for any $q$ --- not even at the level of the i.i.d.\ model
+of Theorem~\ref{thm:transition-model}, whose Biggins-type transfer only
+covers the unfrozen root --- and it must rest on evidence external to
 Theorem~\ref{thm:pressure}. At $q=3$ that evidence is real and
 threefold: the Hill estimator on real-tree samples and extreme-value
 theory on block maxima (both from earlier stages of this project) give
@@ -639,7 +672,7 @@ problem in \S\ref{sec:conclusion}, updated to reflect this shift.
 
 The mean drift $\log q - 2\log 2$ changes sign exactly at the
 threshold $q=5$ separating the two cases of
-Theorem~\ref{thm:transition}: negative for $q=3$ (orbits contract on
+Conjecture~\ref{conj:transition-arithmetic}: negative for $q=3$ (orbits contract on
 average), positive for $q\ge 5$ (orbits expand on average). This is not
 a coincidence alongside the freezing computation of
 \S\ref{sec:freezing}: at $\alpha=1$ the entropy is exactly
@@ -648,10 +681,12 @@ expansion of orbits also decides whether the trivial root $\alpha=1$
 is frozen.
 
 \subsection{Empirical confirmation on real reverse trees}
+\label{sec:kl-empirical}
 
 Independent depth-first enumeration of the true (not extended) reverse
 trees for $q=5$ and $q=7$, following the exact admissibility rule of
-\S\ref{sec:setup}, confirms Theorem~\ref{thm:transition} directly:
+\S\ref{sec:setup}, provides direct empirical support for
+Conjecture~\ref{conj:transition-arithmetic}:
 counting slopes per decade of $3$ independently sampled roots gave
 $\approx 0.62$--$0.66$ for $q=5$ (predicted $0.650919$) and
 $\approx 0.36$--$0.39$ for $q=7$ (predicted $0.373501$). A more careful,
@@ -1537,7 +1572,7 @@ technique does not merely degrade, it inverts sign.
 \begin{theorem}[Jensen identity and the exact Fourier-budget deficit]
 \label{thm:jensen}
 Let $Z=\sum_{g\ge1} w_g\, e(U_g)$, $U_g$ i.i.d.\ uniform, $w_g =
-p(1-p)^{g-1}$ ($\sum_g w_g=1$). Then, exactly,
+p(1-p)^{g-1}$ ($\sum_g w_g=1$), with $p\ge\tfrac12$. Then, exactly,
 \begin{equation}\label{eq:jensen}
   \Lambda := \mathbb{E}\bigl[\log(1/|Z|)\bigr] = \log(1/p).
 \end{equation}
@@ -1561,8 +1596,9 @@ realization of $Z'$, and averaging over $Z'$ gives
 $\mathbb{E}[\log|Z|]=\log p$, i.e.\ \eqref{eq:jensen}.
 \end{proof}
 
-Applying Theorem~\ref{thm:jensen} with $p=p_c=1/\gamma_c$ (the tilted
-model matching the Weak Covering Conjecture's threshold slope) gives
+Applying Theorem~\ref{thm:jensen} with $p=p_c=1/\gamma_c\approx0.558$
+(the tilted model matching the Weak Covering Conjecture's threshold
+slope; note $p_c\ge\tfrac12$, as the theorem requires) gives
 $\Lambda = \log\gamma_c \approx 0.5834+O(c)$, confirmed by Monte Carlo
 ($8\times10^6$ samples: $0.58344\pm0.0005$), against the value
 $\log 3\approx 1.0986$ that would be needed to exclude a diffuse hole
@@ -1754,7 +1790,7 @@ itself.
 Third, this theoretical package sits alongside a result
 (Theorem~\ref{thm:kl}) whose validity does not depend on any of the
 above framing at all: a direct, falsifiable, statistically calibrated
-empirical measurement resolving a fifteen-year-old dispute in the
+empirical measurement resolving a long-standing dispute in the
 literature. We consider this the single most framing-independent
 contribution of the paper, and recommend it be weighted accordingly
 by a reader assessing the paper's overall reliability.
@@ -1820,9 +1856,17 @@ cleanest form we have been able to give them.
   was, honestly, the weakest-supported claim in the paper; it no
   longer is, but it remains the only one resting on statistical
   evidence rather than a closed derivation.
+\item \textbf{The density transition on the genuine arithmetic tree}
+  (Conjecture~\ref{conj:transition-arithmetic}): established here only
+  for the matching i.i.d.\ branching-random-walk model
+  (Theorem~\ref{thm:transition-model}); for $q=3$ this conjecture is,
+  in particular, exactly the Growth Exponent Conjecture of
+  Applegate--Lagarias, open since 1995, of which the best
+  unconditional partial result remains the one-sided bound of
+  Krasikov--Lagarias \cite{KrasikovLagarias2003}.
 \end{enumerate}
 
-Any progress on any one of (O1)--(O7) would very likely transfer, given
+Any progress on any one of (O1)--(O8) would very likely transfer, given
 the structural identities established in this paper, to progress on
 several of the others simultaneously. We regard this convergence as
 the paper's central finding.
