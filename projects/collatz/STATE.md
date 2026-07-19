@@ -2,137 +2,81 @@
 
 Última atualização: 2026-07-19
 
-## Conjectura do índice de cauda (q=5): amostra 20x maior muda o quadro de inconclusivo para fortemente favorável (E-103 Estágio 6)
+## H-129 — status final da sessão de 2026-07-19 (consolidado)
 
-Continuação do esforço de fechar H-129: gerei 100.000 raízes (vs. 5.000
-nas rodadas anteriores), paralelizado (12 processos, ~73 min), mesmos
-4 headrooms (10⁵-10⁸). Resultado qualitativamente diferente de tudo
-antes: **GPD mostra platô de limiar limpo pela primeira vez** (ξ
-estável 0,63-0,68 em TODOS os 9 níveis de limiar e 4 headrooms,
-previsto 0,6509); Huisman muito estável (1,545, IC95% cobrindo o
-previsto, idêntico nos 4 headrooms); CSN+Vuong "indistinguível" nos 4
-headrooms (a rodada anterior favorecia lognormal em 3/4 casos).
+Sessão inteira dedicada a H-129 a pedido explícito do diretor
+científico ("puxar o H-129 primeiro", depois "tente fechar a H-129
+usando todos os recursos disponíveis"). Sequência completa de achados,
+do primeiro ao último:
 
-Duas calibrações de sanidade (pedidas pelo advisor antes de qualquer
-conclusão): (1) nulo sintético (Pareto exato, κ=1,536290, n=100.000) —
-Huisman deu quase o mesmo valor que nos dados reais, confirma
-calibração do estimador; GPD no sintético também "oscila" nos limiares
-altos, mostrando que isso é ruído amostral normal, não má
-especificação; (2) invariância a θ' (recalculado com θ errado de
-propósito) — todos os números da bateria saíram idênticos, descarta
-circularidade na definição de W.
+1. **Gap espectral do operador de transferência — FECHADO, PROVADO**
+   (E-105). Consulta ao Fable formalizou o operador certo (dual M_α,
+   pai→filho, distinto do Koopman L_α já provado impossível como
+   estado finito): espectro de M_α é EXATAMENTE {Λ,0} em qualquer nível
+   de truncamento — gap perfeito, sem autovalor subdominante isolado.
+   Verificado numericamente (q=5 e q=7). O mecanismo Manneville-Pomeau/
+   Sarig-Iommi (sem-gap) NÃO se aplica. Corrigida em H-109/E-103/paper
+   a frase antiga errada "raiz complexa subdominante".
+2. **Hipótese log-periódica para o transiente k^-0,222 — TESTADA,
+   NÃO SUPORTADA** (E-103 Estágio 2). Fable derivou o período teórico
+   antes do teste: sistema é não-aritmético (log₂5 irracional,
+   dicotomia de Goldie) — sem log-periodicidade assintótica esperada.
+   Periodograma pré-registrado confirmou: potência no nível de ruído
+   em todos os 4 headrooms.
+3. **Checagem de oscilação no eixo k — sem sinal, dados insuficientes
+   para mais** (E-103 Estágio 3). Razão de incrementos de M_k(p)
+   monotônica em k=5..11 (só 5-7 pontos, teto de memória 5^k). Uma
+   tentativa de ajuste para localizar a origem de "0,222" foi feita e
+   descartada por sub-poder (revisão do advisor). Origem de "0,222"
+   segue sem localização.
+4. **Pergunta LITERAL de H-129 (análogo do polo de Seymour) — FECHADA,
+   REFUTADA.** Já estava resolvida desde 2026-07-18 (mecanismos
+   categoricamente distintos); só precisava ser reconhecida como tal.
+5. **Família de escala exata por tipo de resíduo do raiz — CONFIRMADA,
+   mas não testa κ** (E-103 Estágio 4). Previsão do Fable
+   (W_i =_d 2^(−a₀(i)θ)·W\*) bate com 2-9% de desvio em 4 headrooms
+   independentes e 3 níveis de cauda. Revelou que κ cancela
+   algebricamente nesse tipo de teste — confirma θ e a estrutura
+   multi-tipo, não o índice de cauda.
+6. **Tentativa de usar (5) para melhorar o teste de κ — sem ganho**
+   (E-103 Estágio 5). Pool reescalado deu o mesmo padrão de sempre
+   (consistente, não confirmatório); um sinal aparente de "lognormal"
+   foi identificado como artefato de limiar caindo no corpo da
+   distribuição, não na cauda.
+7. **Amostra 20x maior (100.000 raízes) — evidência do índice de
+   cauda passa de INCONCLUSIVA para FORTEMENTE FAVORÁVEL** (E-103
+   Estágio 6, o resultado mais forte da sessão). GPD com platô de
+   limiar limpo pela primeira vez em toda a investigação (ξ≈0,65 em
+   todos os 9 limiares e 4 headrooms); Huisman muito estável cobrindo
+   o previsto 1,536290; Vuong deixa de favorecer lognormal (era 3/4
+   casos antes). Duas calibrações de sanidade (nulo sintético Pareto
+   exato; invariância a um θ' deliberadamente errado) não revelaram
+   artefato. **NÃO é confirmação/fechamento**: Vuong deu não-rejeição,
+   não "lei de potência vence"; e W provadamente ainda não convergiu
+   (mediana cai monotonicamente com o headroom mesmo com índice de
+   cauda estável). Refletido no paper (`main.tex`/`main-pt-br.tex`,
+   §3.3 e item O7 da conclusão, recompilados).
 
-**Veredito honesto**: NÃO é confirmação nem fechamento — Vuong foi para
-"indistinguível" (não "lei de potência vence"), e W provadamente ainda
-não convergiu (mediana cai monotonicamente com o headroom, mesmo com
-índice de cauda estável). Mas a evidência passa de INCONCLUSIVA para
-FORTEMENTE FAVORÁVEL a κ=1,536290 — exatamente o padrão que o próprio
-paper (§3.3) propôs como necessário para decidir a questão. Ver
-`hypotheses/H-129-q-adic-pole-analog-seymour.md` e
-`experiments/E-103-tail-index-q5-rigorous-test/README.md` (seção
-"Estágio 6") para o registro completo.
+**Status final: H-129 permanece aberta**, mas em estado muito mais
+claro que no início da sessão — a pergunta original tem resposta
+(refutada), o mecanismo espectral está provado (gap perfeito), duas
+hipóteses candidatas para o transiente k^-0,222 foram eliminadas
+(log-periodicidade, oscilação em k), um resultado estrutural novo e
+real foi estabelecido (família de escala por tipo), e a Conjectura do
+índice de cauda — o núcleo que resta — tem agora a evidência mais
+forte já reunida, embora ainda não seja uma prova. Único fio solto sem
+ação identificada: a origem numérica de "0,222" nunca foi localizada.
+Ver `hypotheses/H-129-q-adic-pole-analog-seymour.md` para o registro
+completo (inclui dois erros de processo autocorrigidos com
+advisor+Fable antes de reportar como confirmados) e
+`experiments/E-103-tail-index-q5-rigorous-test/README.md` (Estágios
+2-6) e `experiments/E-105-transfer-operator-spectral-gap/README.md`.
 
-## H-129: esforço final para fechar — pergunta literal fechada/refutada, achado estrutural novo confirmado, índice de cauda continua aberto
-
-Pedido explícito do diretor científico: tentar fechar H-129 usando
-todos os recursos disponíveis (computação, busca, Fable). Resultado
-em três partes:
-
-**(a) A pergunta LITERAL de H-129** (existe análogo exato do polo −1/3
-de Seymour para a árvore reversa qx+1?) — **FECHADA, REFUTADA**. Já
-estava resolvida desde 2026-07-18 (mecanismos categoricamente
-distintos: perda uniforme de 1 dígito vs. blow-up raro localizado de
-valuação) — só precisava ser reconhecida como fechada.
-
-**(b) Achado novo, testado e CONFIRMADO**: família de escala exata por
-tipo de resíduo do raiz, W_i =_d 2^(−a₀(i)θ)·W\* (mesma distribuição
-para todo tipo, só reescalada). Testado nos dados já coletados
-(reconstrução determinística das raízes, sem refazer DFS) — bate com
-2-9% de desvio em 4 headrooms independentes e 3 níveis de cauda,
-estável ao longo de 4 ordens de grandeza. Consulta ao Fable revelou que
-esse teste, apesar de real e confirmado, **não testa κ** (o índice de
-cauda) — κ cancela algebricamente na razão de quantis prevista. Escopo
-exato: confirma θ e a decomposição multi-tipo, não κ.
-
-**(c) Tentativa de usar (b) para fechar o índice de cauda — não
-ajudou**: pool reescalado pelos fatores de (b), mesma bateria de 4
-estimadores. Huisman ~1,50 (IC95% cobre o previsto 1,536, estável),
-GI ~1,57 — consistente, não confirmatório (mesmo padrão de sempre);
-GPD continua instável. Um sinal aparente de "lognormal favorecida" em
-3/4 headrooms no CSN+Vuong é artefato de o limiar ótimo cair no CORPO
-da distribuição (n_tail~40% da amostra, não é teste de cauda) — o
-único headroom com cauda genuína deu "indistinguível", não lognormal.
-
-**Veredito final**: H-129 fecha parcialmente (pergunta original
-respondida) e ganha um resultado estrutural novo e real (família de
-escala), mas o núcleo quantitativo (índice de cauda κ, mecanismo de
-congelamento completo) continua em aberto — com a obstrução exata agora
-identificada (5000 amostras não alcançam profundidade de cauda
-suficiente; o teste de razão de quantis é κ-invariante por construção,
-não adianta insistir nessa via específica). Ver
-`hypotheses/H-129-q-adic-pole-analog-seymour.md` para o registro
-completo.
-
-## H-129: gap espectral do operador de transferência confirmado; erro de terminologia corrigido (E-105)
-
-A pedido do diretor científico ("puxar o H-129 primeiro"), consultamos
-o Fable sobre como formalizar corretamente o "operador de transferência"
-cujo espectro subdominante vinha sendo apontado (em H-109/E-103/H-129)
-como a causa do transiente k^-0,222 do teste de índice de cauda q=5.
-
-**Resultado da consulta**: existem dois operadores distintos aqui — o
-Koopman ponderado L_α (filho→pai; NÃO preserva funções localmente
-constantes mod q^K, é exatamente a impossibilidade de estado finito já
-provada no paper) e seu dual M_α (pai→filho, via φ_a(w)=(qw+1)·2^-a),
-que PRESERVA funções mod q^K exatamente. Argumento do Fable (expansão
-q-ádica uniforme por fator q, distorção zero por ramo): o espectro de
-M_α restrito a qualquer nível K é EXATAMENTE {Λ, 0} com Λ=q^α/(2^α−1) —
-gap espectral perfeito, sem nenhum autovalor subdominante isolado
-intrínseco. Portanto o mecanismo Manneville-Pomeau/sem-gap NÃO se
-aplica aqui (ao contrário do que H-129/E-104 cogitavam como próximo
-passo).
-
-**Verificação numérica** (`experiments/E-105-transfer-operator-spectral-gap/`,
-q=5, α_+=1 e α_-=0,650919, K=2,3,4): confirmado exatamente — soma de
-linhas de M_α = Λ em toda linha, autovalor dominante = Λ, todos os
-demais autovalores ≈0 (ruído numérico crescendo de 2e-8 a 2e-4 com K,
-efeito de não-normalidade do bloco nilpotente previsto pelo próprio
-Fable como armadilha — não um autovalor real "fechando o gap").
-
-**Onde fica o k^-0,222 então**: não na camada linear. Pertence à camada
-não-linear crítica (fase congelada = caso de fronteira de branching
-random walk / transformada de suavização — Bramson, Aïdékon), onde
-correções polinomiais em k são esperadas e coexistem com gap espectral
-perfeito na camada linear.
-
-**Terminologia corrigida** em H-109, E-103/README.md, no paper
-(`main.tex`/`main-pt-br.tex`, §3.3, recompilado) e aqui: a frase "raiz
-complexa subdominante do operador de transferência" foi removida/
-anotada como erro em todos os lugares onde aparecia — não é um
-resultado que se sustenta com a formalização correta do operador.
-
-**Atualização (mesmo dia, continuação) — hipótese log-periódica também
-testada e FECHADA como não suportada** (E-103 Estágio 2): a hipótese de
-trabalho ("a oscilação é efeito de reticulado log-periódico, pesos são
-potências de 2") foi levada ao Fable para derivação teórica ANTES de
-testar. Resultado: o sistema é NÃO-ARITMÉTICO (deslocamento log₂5 é
-irracional, dicotomia de Goldie) — sem log-periodicidade assintótica
-esperada. Teste pré-registrado (periodograma de Lomb-Scargle nos 2
-períodos derivados, não ajustados aos dados) confirmou: potência no
-nível de ruído em todos os 4 headrooms testados. Teoria e dado
-concordam — negativo limpo, não coincidência.
-
-**Status de H-129**: permanece aberta. O achado de hoje fecha
-definitivamente DUAS vias candidatas que H-129/E-104/E-105 listavam
-como explicação do transiente k^-0,222: (1) "análise espectral do
-operador" (não há gap para fechar — já está fechado, gap perfeito
-provado) e (2) log-periodicidade da cauda (testada, não suportada,
-consistente com a teoria). Nenhuma das duas EXPLICA o transiente — só
-eliminam duas hipóteses específicas; a origem continua em aberto. Resta
-como via real, não executada: testar o transiente diretamente no eixo
-onde ele foi observado (M_k(p) vs. profundidade k, não a cauda de W_v
-em x) — ver `experiments/E-103-tail-index-q5-rigorous-test/README.md`,
-item 5 dos próximos passos.
+**Próximos passos concretos, se a linha for retomada**: (a) headroom
+maior que 10⁸ na amostra de 100k, se o custo de DFS por raiz permitir;
+(b) localizar a derivação original de "0,222" (busca, não cálculo); (c)
+avançar H-127 (Etapa 6, promover `lambda_mc.py` a experimento formal) —
+não tocada nesta sessão, ver "Hipóteses abertas" abaixo.
 
 ## Índice de cauda q≥5: investigação fechada como inconclusiva (paper atualizado)
 
