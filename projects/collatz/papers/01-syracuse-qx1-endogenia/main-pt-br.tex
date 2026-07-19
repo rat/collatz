@@ -601,9 +601,13 @@ letra --- mas a razão entre incrementos sucessivos ainda não
 estabilizou para $p\le1{,}6$ em $k=11$ (ao contrário de $p\ge1{,}7$,
 onde já estabilizou), a assinatura clássica de um sistema ainda
 relaxando em direção ao seu expoente assintótico, não um que já o
-atingiu. Dada a taxa de convergência lenta já estabelecida para $q=5$
-(uma raiz complexa subdominante dando decaimento $k^{-0{,}222}$,
-\S\ref{sec:freezing}), o transiente decai só cerca de $7\%$ entre
+atingiu. Dada a taxa de convergência lenta já observada para $q=5$
+(decaimento $k^{-0{,}222}$ no teste de momento --- não um efeito do
+espectro do operador de transferência linear, que verificamos depois
+ser exatamente $\{\Lambda,0\}$ em qualquer nível de truncamento, ou
+seja, um gap espectral perfeito, sem autovalor subdominante isolado; a
+origem do transiente pertence a uma camada não-linear crítica distinta
+e permanece em aberto), o transiente decai só cerca de $7\%$ entre
 $k=8$ e $k=11$; reduzi-lo à metade exigiria $k\approx250$, muito além
 do que a enumeração exaustiva sobre $5^k$ resíduos alcança. Portanto
 não conseguimos distinguir, a partir desses dados, entre
@@ -616,11 +620,14 @@ Conjectura~\ref{conj:tail-index} para $q\ge5$ e nenhuma a refuta; ambas
 são mais informativas que a medição original subdimensionada, e ambas
 apontam para a mesma conclusão honesta: esta é uma questão estatística
 mais difícil que o caso $q=3$ já resolvido na \S\ref{sec:regimes}, e
-resolvê-la provavelmente exigirá ou um controle analítico sobre o
-espectro subdominante do operador de transferência, ou uma comparação
-pré-registrada contra modelos alternativos de cauda com um orçamento
+resolvê-la provavelmente exigirá uma comparação pré-registrada contra
+modelos alternativos de cauda (em particular um ajuste log-periódico,
+já que os pesos dos ramos são potências de $2$) com um orçamento
 computacional muito maior do que a enumeração populacional exaustiva
-permite. Listamos isso como problema em aberto explícito na
+permite; um controle analítico sobre o espectro do operador de
+transferência linear, uma vez obtido, revelou-se não relevante para
+esta questão, pois o transiente vive numa camada não-linear separada.
+Listamos isso como problema em aberto explícito na
 \S\ref{sec:conclusion}.
 
 O drift médio $\log q - 2\log 2$ muda de sinal exatamente no limiar

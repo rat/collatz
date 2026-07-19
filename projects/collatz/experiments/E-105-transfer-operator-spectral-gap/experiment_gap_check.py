@@ -62,11 +62,16 @@ def report(q, alpha, K, a_max=200):
     print()
 
 if __name__ == "__main__":
-    q = 5
-    alpha_plus = 1.0
-    alpha_minus = 0.6509190247
-
-    for alpha, label in [(alpha_plus, "alpha_+ (congelada)"), (alpha_minus, "alpha_- (nao-congelada)")]:
+    print("### q=5 ###")
+    for alpha, label in [(1.0, "alpha_+ (congelada)"), (0.6509190247, "alpha_- (nao-congelada)")]:
         print(f"=== {label} ===")
         for K in [2, 3, 4]:
-            report(q, alpha, K)
+            report(5, alpha, K)
+
+    # q=7: 2 nao e raiz primitiva mod 7 (ord_7(2)=3, <2>={1,2,4}) -- caso
+    # estruturalmente diferente sinalizado pelo Fable. Confirma que o
+    # espectro {Lambda,0} nao depende de 2 ser raiz primitiva mod q.
+    print("### q=7 (2 nao e raiz primitiva mod 7 -- caso estrutural distinto) ###")
+    print("=== alpha_+ (congelada) ===")
+    for K in [2, 3]:
+        report(7, 1.0, K)

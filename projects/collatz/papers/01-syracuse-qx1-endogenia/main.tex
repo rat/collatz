@@ -588,9 +588,13 @@ predicted $1.536$ if taken at face value --- but the ratio of
 successive increments has not yet stabilized for $p\le1.6$ at $k=11$
 (unlike $p\ge1.7$, where it has), the classic signature of a system
 still relaxing toward its asymptotic exponent rather than one that has
-reached it. Given the previously established slow convergence rate for
-$q=5$ (a subdominant complex root giving $k^{-0.222}$ decay,
-\S\ref{sec:freezing}), the transient decays by only about $7\%$ between
+reached it. Given the previously observed slow convergence rate for
+$q=5$ ($k^{-0.222}$ decay in the moment test --- not an effect of the
+linear transfer operator's spectrum, which we later verified to be
+exactly $\{\Lambda,0\}$ at every truncation level, i.e. a perfect
+spectral gap with no isolated subdominant eigenvalue; the transient's
+origin lies in a separate, nonlinear critical layer and remains open),
+the transient decays by only about $7\%$ between
 $k=8$ and $k=11$; halving it would require $k\approx250$, far beyond
 what exhaustive enumeration over $5^k$ residues can reach. We therefore
 cannot distinguish, from this data, between $\theta=1.536$ lying just
@@ -603,10 +607,13 @@ for $q\ge5$ and neither refutes it; both are more informative than the
 original under-powered measurement, and both point to the same honest
 conclusion: this is a harder statistical question than the $q=3$ case
 already settled in \S\ref{sec:regimes}, and resolving it will likely
-require either an analytic handle on the transfer operator's
-subdominant spectrum or a pre-registered comparison against alternative
-tail models on a much larger computational budget than exhaustive
-population enumeration allows. We list it as an explicit open problem
+require a pre-registered comparison against alternative tail models
+(in particular a log-periodic fit, given that the branch weights are
+powers of $2$) on a much larger computational budget than exhaustive
+population enumeration allows; an analytic handle on the linear
+transfer operator's spectrum, once obtained, turned out not to bear on
+this question, since the transient lives in a separate nonlinear
+layer. We list it as an explicit open problem
 in \S\ref{sec:conclusion}.
 
 The mean drift $\log q - 2\log 2$ changes sign exactly at the
