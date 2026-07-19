@@ -1614,7 +1614,39 @@ rotulagem off-by-one encontrado na Conjectura 10.4 de Pratiher 2026
 
 ## Hipóteses abertas
 
-(nenhuma no momento — ver "Próximos passos" para candidatas)
+- `H-129` — análogo q-ádico do polo −1/3 de Seymour para a árvore reversa
+  qx+1, atacando o "congelamento" quenched-vs-anelado da equação de
+  pressão (§3.2 do paper) via otimização ergódica/formalismo
+  termodinâmico a zero. A transcrição literal do teorema de rigidez de
+  Seymour não se aplica (mecanismo diferente: nosso "problema de um
+  dígito" é universal, o dele é localizado num polo). Achado real mas
+  não decisivo: a constante de Bramson B=3/2 aparece exatamente (fato
+  citável); a dinâmica gulosa nos resíduos recupera o ciclo real mais
+  simples de q=5 e q=7, mas não os ciclos secundários de q=5; uma
+  previsão numérica quantitativa (a* via fórmula tipo REM) pareceu
+  bater inicialmente mas não resistiu a teste direto (Fable + advisor
+  corrigiram um erro de processo antes de reportar como confirmado).
+  Nem morta, nem confirmada — próximo passo (análise espectral de
+  Perron-Frobenius, ou formalismo de Manneville-Pomeau/Sarig-Iommi) não
+  executado, custo alto. Não integrada ao paper. Ver
+  `hypotheses/H-129-q-adic-pole-analog-seymour.md`.
+- `H-127` — redução condicional da falha da WCC (Wirsching) a
+  configurações de Bohr pós-wrap, via Littlewood-Offord/Halász. Status
+  do próprio arquivo diz "em revisão", mas a zeladoria bibliográfica
+  (8 de 9 referências verificadas contra o texto primário) foi
+  encerrada em 2026-07-18 e a conclusão matemática está estabelecida:
+  é uma redução real mas condicional (implicação, não equivalência) que
+  NÃO recupera a WCC plena — inclui um resultado negativo próprio
+  (Proposição C: a técnica falha por um fator exato, não por
+  fraqueza de estimativa). Convergência com H-110/H-112/H-114/H-124/
+  H-126: todas apontam para o mesmo ingrediente faltante, nunca provado.
+  Recomendação registrada para o paper (3 peças: Lema B, Proposição C,
+  Lema 0), mas ainda não integrada. Ver
+  `hypotheses/H-127-reducao-z-number-dicotomia-espectral-wcc.md`.
+
+(Ver também "Questões em aberto" abaixo para H-008, mais antiga e de
+natureza diferente — sem prova nem refutação, não uma investigação
+ativa no momento; e "Próximos passos" para candidatas não iniciadas.)
 
 ## Hipóteses confirmadas
 
