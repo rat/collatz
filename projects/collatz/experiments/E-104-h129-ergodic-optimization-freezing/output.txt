@@ -1,0 +1,81 @@
+--- q=3 alpha=2.000000 (congelada (alpha_+)) u0_seed=1 ---
+  k=  1  a_k=  2  Z_k=6.000000e-01  p_greedy=0.9375  memo=        1  tempo=0.00s
+  k=  2  a_k=  2  Z_k=4.219780e-01  p_greedy=0.7498168945312502  memo=        4  tempo=0.00s
+  k=  3  a_k=  2  Z_k=2.413035e-01  p_greedy=0.7375713406688358  memo=       13  tempo=0.00s
+  k=  4  a_k=  2  Z_k=1.441276e-01  p_greedy=0.6946131926940858  memo=       27  tempo=0.00s
+  k=  5  a_k=  2  Z_k=9.989193e-02  p_greedy=0.5637443984641713  memo=       54  tempo=0.00s
+  k=  6  a_k=  2  Z_k=6.694477e-02  p_greedy=0.47317142994909456  memo=      132  tempo=0.00s
+  k=  7  a_k=  2  Z_k=3.956216e-02  p_greedy=0.45037859495273486  memo=      258  tempo=0.00s
+  k=  8  a_k=  2  Z_k=2.335080e-02  p_greedy=0.4292185325492558  memo=      518  tempo=0.00s
+  k=  9  a_k=  2  Z_k=1.378104e-02  p_greedy=0.40909176227254807  memo=     1109  tempo=0.00s
+  k= 10  a_k=  2  Z_k=8.309487e-03  p_greedy=0.3816374985827732  memo=     2222  tempo=0.01s
+  k= 11  a_k=  2  Z_k=5.338243e-03  p_greedy=0.33415615261239806  memo=     4652  tempo=0.01s
+  k= 12  a_k=  2  Z_k=3.154976e-03  p_greedy=0.3180344833309084  memo=    10196  tempo=0.02s
+  k= 13  a_k=  2  Z_k=1.918383e-03  p_greedy=0.2942100180080885  memo=    20351  tempo=0.04s
+  k= 14  a_k=  2  Z_k=1.189769e-03  p_greedy=0.2668411375942131  memo=    41956  tempo=0.10s
+  k= 15  a_k=  2  Z_k=8.228083e-04  p_greedy=0.21703973379265135  memo=    92902  tempo=0.23s
+  k= 16  a_k=  2  Z_k=5.268222e-04  p_greedy=0.19067613878858805  memo=   186084  tempo=0.45s
+  k= 17  a_k=  2  Z_k=3.684985e-04  p_greedy=0.1533370929348833  memo=   380587  tempo=0.97s
+  k= 18  a_k=  2  Z_k=2.760428e-04  p_greedy=0.11514074789828453  memo=   847427  tempo=2.47s
+  k= 19  a_k=  2  Z_k=1.843621e-04  p_greedy=0.09697424495258504  memo=  1695379  tempo=4.91s
+  k= 20  a_k=  2  Z_k=1.341490e-04  p_greedy=0.07496581139720414  memo=  3462928  tempo=10.56s
+
+--- q=3 alpha=1.000000 (nao-congelada (alpha_-)) u0_seed=1 ---
+  k=  1  a_k=  2  Z_k=1.000000e+00  p_greedy=0.75  memo=        1  tempo=0.00s
+  k=  2  a_k=  2  Z_k=1.142857e+00  p_greedy=0.4921875  memo=        4  tempo=0.00s
+  k=  3  a_k=  2  Z_k=9.920692e-01  p_greedy=0.42524754723837216  memo=       13  tempo=0.00s
+  k=  4  a_k=  2  Z_k=9.276274e-01  p_greedy=0.3410919711285912  memo=       40  tempo=0.00s
+  k=  5  a_k=  2  Z_k=9.643015e-01  p_greedy=0.24608972920820493  memo=       67  tempo=0.00s
+  k=  6  a_k=  2  Z_k=9.554200e-01  p_greedy=0.18628301818483273  memo=      148  tempo=0.00s
+  k=  7  a_k=  2  Z_k=8.603595e-01  p_greedy=0.15514897165014768  memo=      361  tempo=0.00s
+  k=  8  a_k=  2  Z_k=7.745767e-01  p_greedy=0.12924855611216687  memo=      745  tempo=0.00s
+  k=  9  a_k=  2  Z_k=6.967549e-01  p_greedy=0.10776341022294067  memo=     1566  tempo=0.01s
+  k= 10  a_k=  2  Z_k=6.374567e-01  p_greedy=0.08834093209192777  memo=     3756  tempo=0.02s
+  k= 11  a_k=  2  Z_k=5.914192e-01  p_greedy=0.07141319430162807  memo=     8811  tempo=0.05s
+  k= 12  a_k=  2  Z_k=5.373651e-01  p_greedy=0.058947542620528745  memo=    17378  tempo=0.08s
+  k= 13  a_k=  2  Z_k=5.001466e-01  p_greedy=0.04750060418870143  memo=    38147  tempo=0.20s
+  k= 14  a_k=  2  Z_k=4.732384e-01  p_greedy=0.03765110147400021  memo=    93794  tempo=0.53s
+  k= 15  a_k=  2  Z_k=4.588597e-01  p_greedy=0.029123195652711962  memo=   202018  tempo=1.09s
+  k= 16  a_k=  2  Z_k=4.351643e-01  p_greedy=0.02303175056557294  memo=   411575  tempo=2.16s
+  k= 17  a_k=  2  Z_k=4.207935e-01  p_greedy=0.01786374275392545  memo=   954322  tempo=5.76s
+  k= 18  a_k=  2  Z_k=4.104530e-01  p_greedy=0.013735335415171945  memo=  2284956  tempo=15.13s
+  k= 19  a_k=  2  Z_k=3.965497e-01  p_greedy=0.010662678999436048  memo=  4692834  tempo=28.54s
+  k= 20  a_k=  2  Z_k=3.866111e-01  p_greedy=0.008202588344673035  memo=  9913296  tempo=66.25s
+
+--- q=5 alpha=1.000000 (congelada (alpha_+)) u0_seed=1 ---
+  k=  1  a_k=  4  Z_k=3.333333e-01  p_greedy=0.9375000000000002  memo=        1  tempo=0.00s
+  k=  2  a_k=  1  Z_k=8.415230e-01  p_greedy=0.9283762678490483  memo=        6  tempo=0.00s
+  k=  3  a_k=  4  Z_k=3.443008e-01  p_greedy=0.7090911769667203  memo=       19  tempo=0.00s
+  k=  4  a_k=  1  Z_k=6.718600e-01  p_greedy=0.9084505050684966  memo=       45  tempo=0.00s
+  k=  5  a_k=  4  Z_k=2.780434e-01  p_greedy=0.6859894210312104  memo=      149  tempo=0.00s
+  k=  6  a_k=  1  Z_k=5.286281e-01  p_greedy=0.9020275964838609  memo=      310  tempo=0.00s
+  k=  7  a_k=  4  Z_k=2.235396e-01  p_greedy=0.6666004811360599  memo=      874  tempo=0.00s
+  k=  8  a_k=  1  Z_k=4.187136e-01  p_greedy=0.8896989549632138  memo=     2319  tempo=0.01s
+  k=  9  a_k=  4  Z_k=1.834005e-01  p_greedy=0.6347601428650573  memo=     5756  tempo=0.03s
+  k= 10  a_k=  1  Z_k=3.327590e-01  p_greedy=0.8746219801530531  memo=    17236  tempo=0.09s
+  k= 11  a_k=  4  Z_k=1.501998e-01  p_greedy=0.6055231723172461  memo=    39128  tempo=0.18s
+  k= 12  a_k=  1  Z_k=2.614667e-01  p_greedy=0.8696086403916258  memo=   114404  tempo=0.64s
+  k= 13  a_k=  4  Z_k=1.180719e-01  p_greedy=0.6017880785188872  memo=   286986  tempo=1.50s
+  k= 14  a_k=  1  Z_k=2.048607e-01  p_greedy=0.8671047180931098  memo=   717508  tempo=3.90s
+  k= 15  a_k=  4  Z_k=9.286939e-02  p_greedy=0.5977335368142289  memo=  2113618  tempo=13.15s
+  k= 16  a_k=  1  Z_k=1.607491e-01  p_greedy=0.8633196167017961  memo=  4828332  tempo=26.71s
+
+--- q=5 alpha=0.650919 (nao-congelada (alpha_-)) u0_seed=1 ---
+  k=  1  a_k=  4  Z_k=5.613734e-01  p_greedy=0.8354810766919952  memo=        1  tempo=0.00s
+  k=  2  a_k=  1  Z_k=1.082102e+00  p_greedy=0.7869491555225265  memo=        6  tempo=0.00s
+  k=  3  a_k=  4  Z_k=7.841215e-01  p_greedy=0.5093544996052013  memo=       21  tempo=0.00s
+  k=  4  a_k=  1  Z_k=1.038358e+00  p_greedy=0.6983659268736756  memo=       47  tempo=0.00s
+  k=  5  a_k=  4  Z_k=7.607558e-01  p_greedy=0.44706766194726816  memo=      161  tempo=0.00s
+  k=  6  a_k=  1  Z_k=9.511108e-01  p_greedy=0.649253037502243  memo=      328  tempo=0.00s
+  k=  7  a_k=  4  Z_k=7.345552e-01  p_greedy=0.39428394905874115  memo=      952  tempo=0.01s
+  k=  8  a_k=  1  Z_k=8.931081e-01  p_greedy=0.5887841700423427  memo=     2614  tempo=0.02s
+  k=  9  a_k=  4  Z_k=7.176296e-01  p_greedy=0.3436752361833914  memo=     6275  tempo=0.03s
+  k= 10  a_k=  1  Z_k=8.384562e-01  p_greedy=0.5340658337219971  memo=    19470  tempo=0.12s
+  k= 11  a_k=  4  Z_k=6.964684e-01  p_greedy=0.30155201178062807  memo=    45425  tempo=0.23s
+  k= 12  a_k=  1  Z_k=7.659339e-01  p_greedy=0.4978504418049901  memo=   126155  tempo=0.73s
+  k= 13  a_k=  4  Z_k=6.360953e-01  p_greedy=0.28116191861080103  memo=   352965  tempo=2.11s
+  k= 14  a_k=  1  Z_k=6.942002e-01  p_greedy=0.46775723788577334  memo=   828082  tempo=4.66s
+  k= 15  a_k=  4  Z_k=5.830691e-01  p_greedy=0.26120028100740555  memo=  2555179  tempo=17.45s
+  k= 16  a_k=  1  Z_k=6.361029e-01  p_greedy=0.43470326506585627  memo=  6120166  tempo=37.42s
+
+Resultados salvos em greedy_concentration_results.json

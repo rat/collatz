@@ -186,3 +186,77 @@ convergência quenched-anelado, mas isso ainda não foi verificado).
   secundários de q=5 escapam do ramo guloso) fica em aberto, não
   executado nesta sessão (fora do escopo do que foi pedido — a
   investigação foi pausada aqui para consolidar e reportar).
+
+- 2026-07-19: retomada por pedido explícito do diretor científico
+  ("vamos seguir com h-129"). Executado o teste de otimização ergódica
+  propriamente dito — ver `experiments/E-104-h129-ergodic-optimization-freezing/`.
+
+  **Teste 1 — concentração da medida de Gibbs quenched na trajetória
+  gulosa**: calculei p_greedy(k) = P_quenched(seguir sempre o ramo
+  guloso nos k primeiros passos), reusando a DP exata Z_k já validada,
+  para q=3 e q=5, nas raízes α₊ (congelada) e α₋ (não-congelada), até
+  k=20/16. Observação inicial: em q=5 congelada, p_greedy parecia
+  desacelerar para quase-platô (taxa de decaimento caindo ~100x),
+  sugerindo concentração — mas o Fable, com um **argumento exato**
+  (Z_k(α;u₀) ≥ peso_guloso(k), válido para todo k já que todos os
+  pesos são positivos), mostrou que a taxa própria do caminho guloso
+  (L_guloso, média temporal exata sobre seu ciclo) é muito mais
+  negativa que a taxa real A(α) em AMBOS os casos — ou seja, p_greedy→0
+  eventualmente em toda fase, o platô observado é artefato
+  pré-assintótico (o mesmo crossover k≈407 já conhecido de H-109,
+  muito além do k=16 alcançável). **Não há concentração genuína no
+  caminho guloso** — conclusão revisada, não confirma a hipótese
+  original do Teste 1.
+
+  **Achado colateral real (mas ver correção abaixo)**: no caminho,
+  o Fable notou que A(α)/α = P(α_c)/α_c é CONSTANTE (fato exato, da
+  fórmula já estabelecida em H-109), e que B(α_c)=3α_c/(2α_c)=3/2 é
+  literalmente a constante de Bramson de máximos de branching random
+  walk — conexão real com a literatura de extremos de BRW (Bramson
+  1978), citável independente do resto. Isso levou a definir
+  a*=(log q − P(α_c)/α_c)/log 2 como candidato a "⟨a⟩ ótimo teórico"
+  (a*(q=3)≈1,64; a*(q=5)≈2,36; a*(q=7)≈3,09).
+
+  **Confirmação inicial (empolgante, depois revertida)**: calculei
+  ⟨a⟩ = média de v2(qx+1) sobre TODOS os ciclos reais conhecidos de
+  q=3,5,7 (força bruta). Os DOIS ciclos secundários de q=5 (que
+  escapavam da dinâmica gulosa) deram ⟨a⟩=7/3≈2,333 — a 1,3% do
+  a*=2,362 previsto, mais perto que o ciclo guloso (2,5, erro 5,8%).
+  Reportei isso ao diretor científico como achado forte antes de
+  verificar mais a fundo — **erro de processo**, ver correção abaixo.
+
+  **CORREÇÃO (advisor + Fable, mesma rodada)**: a fórmula de a* não é
+  uma previsão testada — é, na melhor hipótese, um LIMITE SUPERIOR não
+  verificado (a_min≤a*), não uma igualdade. A igualdade exigiria uma
+  fórmula de congelamento tipo REM/cascata i.i.d. que nunca foi
+  demonstrada NEM testada para este subshift determinístico específico
+  (que pode até exigir o formalismo termodinâmico de cadeias de Markov
+  de alfabeto infinito — Manneville-Pomeau, Sarig/Iommi — em vez de
+  REM). Teste direto que o Fable rodou (A(α)/α calculado via DP,
+  SEM o atalho anelado, para 3 raízes reais de q=5, α até 32): **não
+  reproduziu a*=2,362 em nenhuma das três raízes** (deu 2,636, 2,4545,
+  2,4545) e mostrou oscilação instável ao variar k — sinal de
+  convergência não estabelecida, mesmo problema de transiente lento já
+  visto em toda esta investigação. Terceiro ponto de dados (q=7, único
+  ciclo conhecido ⟨a⟩=3,0 vs a*(7)=3,0914, erro 2,96%) refutou a
+  hipótese alternativa (razão α₊/α_c prever a qualidade do ajuste) —
+  não é monotônica entre os 3 q's testados.
+
+  **Veredito final honesto**: a concordância numérica de a* com os
+  ciclos catalogados de q=5/q=7 deve ser registrada como **evidência
+  anedótica fraca, não confirmação**, de uma conjectura em aberto sem
+  mecanismo verificado por trás. O que sobrevive como sólido: a
+  constante de Bramson B=3/2 (fato exato, citável por si só) e o
+  framing geral de otimização ergódica/formalismo termodinâmico como
+  a lente teórica certa (mais correta que REM/vidro de spin) — mas
+  SEM a previsão quantitativa de a*, que não resistiu a verificação
+  direta.
+
+  **Status**: ainda aberta. Nem morta (a constante de Bramson e o
+  framing termodinâmico continuam válidos e citáveis) nem confirmada
+  (a previsão numérica quantitativa de a* não se sustentou). Próximo
+  passo, se retomado: análise espectral genuína do operador de
+  transferência (Perron-Frobenius em Z/q^kZ) ou formalismo de
+  Manneville-Pomeau/Sarig-Iommi para cadeias de alfabeto infinito —
+  nenhum dos dois executado ainda, ambos de custo alto. Nada disso foi
+  integrado ao paper — permanece só nesta hipótese.
