@@ -2,6 +2,47 @@
 
 Última atualização: 2026-07-19
 
+## H-129: esforço final para fechar — pergunta literal fechada/refutada, achado estrutural novo confirmado, índice de cauda continua aberto
+
+Pedido explícito do diretor científico: tentar fechar H-129 usando
+todos os recursos disponíveis (computação, busca, Fable). Resultado
+em três partes:
+
+**(a) A pergunta LITERAL de H-129** (existe análogo exato do polo −1/3
+de Seymour para a árvore reversa qx+1?) — **FECHADA, REFUTADA**. Já
+estava resolvida desde 2026-07-18 (mecanismos categoricamente
+distintos: perda uniforme de 1 dígito vs. blow-up raro localizado de
+valuação) — só precisava ser reconhecida como fechada.
+
+**(b) Achado novo, testado e CONFIRMADO**: família de escala exata por
+tipo de resíduo do raiz, W_i =_d 2^(−a₀(i)θ)·W\* (mesma distribuição
+para todo tipo, só reescalada). Testado nos dados já coletados
+(reconstrução determinística das raízes, sem refazer DFS) — bate com
+2-9% de desvio em 4 headrooms independentes e 3 níveis de cauda,
+estável ao longo de 4 ordens de grandeza. Consulta ao Fable revelou que
+esse teste, apesar de real e confirmado, **não testa κ** (o índice de
+cauda) — κ cancela algebricamente na razão de quantis prevista. Escopo
+exato: confirma θ e a decomposição multi-tipo, não κ.
+
+**(c) Tentativa de usar (b) para fechar o índice de cauda — não
+ajudou**: pool reescalado pelos fatores de (b), mesma bateria de 4
+estimadores. Huisman ~1,50 (IC95% cobre o previsto 1,536, estável),
+GI ~1,57 — consistente, não confirmatório (mesmo padrão de sempre);
+GPD continua instável. Um sinal aparente de "lognormal favorecida" em
+3/4 headrooms no CSN+Vuong é artefato de o limiar ótimo cair no CORPO
+da distribuição (n_tail~40% da amostra, não é teste de cauda) — o
+único headroom com cauda genuína deu "indistinguível", não lognormal.
+
+**Veredito final**: H-129 fecha parcialmente (pergunta original
+respondida) e ganha um resultado estrutural novo e real (família de
+escala), mas o núcleo quantitativo (índice de cauda κ, mecanismo de
+congelamento completo) continua em aberto — com a obstrução exata agora
+identificada (5000 amostras não alcançam profundidade de cauda
+suficiente; o teste de razão de quantis é κ-invariante por construção,
+não adianta insistir nessa via específica). Ver
+`hypotheses/H-129-q-adic-pole-analog-seymour.md` para o registro
+completo.
+
 ## H-129: gap espectral do operador de transferência confirmado; erro de terminologia corrigido (E-105)
 
 A pedido do diretor científico ("puxar o H-129 primeiro"), consultamos
@@ -1676,37 +1717,32 @@ rotulagem off-by-one encontrado na Conjectura 10.4 de Pratiher 2026
 
 ## Hipóteses abertas
 
-- `H-129` — análogo q-ádico do polo −1/3 de Seymour para a árvore reversa
-  qx+1, atacando o "congelamento" quenched-vs-anelado da equação de
-  pressão (§3.2 do paper) via otimização ergódica/formalismo
-  termodinâmico a zero. A transcrição literal do teorema de rigidez de
-  Seymour não se aplica (mecanismo diferente: nosso "problema de um
-  dígito" é universal, o dele é localizado num polo). Achado real mas
-  não decisivo: a constante de Bramson B=3/2 aparece exatamente (fato
-  citável); a dinâmica gulosa nos resíduos recupera o ciclo real mais
-  simples de q=5 e q=7, mas não os ciclos secundários de q=5; uma
-  previsão numérica quantitativa (a* via fórmula tipo REM) pareceu
-  bater inicialmente mas não resistiu a teste direto (Fable + advisor
-  corrigiram um erro de processo antes de reportar como confirmado).
-  Atualização 2026-07-19 (E-105): a via "análise espectral de
-  Perron-Frobenius" foi executada e FECHADA — o operador dual M_α tem
-  gap espectral perfeito e comprovado (espectro exato {Λ,0}, verificado
-  numericamente), então o mecanismo Manneville-Pomeau/Sarig-Iommi (que
-  precisaria de ausência de gap) não se aplica; o transiente k^-0,222
-  pertence a uma camada não-linear crítica separada (ver seção acima),
-  não ao espectro do operador — corrigimos essa atribuição errada em
-  H-109/E-103 também. Continuação mesmo dia (E-103 Estágio 2): a
-  hipótese log-periódica levantada para essa camada também foi testada
-  e FECHADA como não suportada (derivação do Fable: caso não-aritmético,
-  log₂5 irracional, sem periodicidade assintótica esperada; teste
-  pré-registrado confirmou potência no nível de ruído). Checagem leve
-  no eixo k (M_k(p) vs. profundidade, dados da Rodada 3): sem oscilação
-  visível, mas só 5-7 pontos existem (teto de memória 5^k) — não dá
-  para localizar "0,222" nem medir decaimento de amplitude com esses
-  dados; uma tentativa de ajuste foi feita e descartada por
-  sub-poder (ver H-129/E-103 para os detalhes). Nem morta, nem
-  confirmada — a origem de "0,222" segue sem localização. Não
-  integrada ao paper. Ver `hypotheses/H-129-q-adic-pole-analog-seymour.md`.
+- `H-129` — originalmente: existe análogo q-ádico do polo −1/3 de
+  Seymour para a árvore reversa qx+1? **Essa pergunta literal está
+  FECHADA, REFUTADA** (mecanismos categoricamente distintos: perda
+  uniforme de 1 dígito vs. blow-up raro localizado de valuação). A
+  investigação evoluiu para atacar o "congelamento" quenched-vs-anelado
+  da equação de pressão (§3.2 do paper) via otimização ergódica —
+  aqui SIM continua aberta. Achados sólidos ao longo da sessão: a
+  constante de Bramson B=3/2 aparece exatamente (citável por si só);
+  gap espectral do operador de transferência linear provado e
+  verificado numericamente (E-105, espectro exato {Λ,0}); hipótese
+  log-periódica para o transiente k^-0,222 testada e não suportada
+  (E-103 Estágio 2, consistente com derivação teórica de
+  não-aritmeticidade); família de escala exata por tipo de resíduo do
+  raiz confirmada (E-103 Estágio 4, W_i=2^(−a₀(i)θ)·W* — mas não testa
+  κ, cancela algebricamente). O que NÃO se sustentou: a previsão
+  numérica a* (erro de processo corrigido antes de reportar); usar a
+  família de escala para melhorar o teste de κ (Estágio 5, sem ganho).
+  **Núcleo que permanece aberto**: o índice de cauda κ=α₊/α₋=1,536290
+  continua consistente com os dados, mas não confirmado — obstrução
+  exata identificada (5000 amostras não alcançam profundidade de cauda
+  suficiente; testes de razão de quantis são κ-invariantes por
+  construção). Origem numérica de "0,222" também segue sem localização.
+  Nada disso integrado ao paper. Ver
+  `hypotheses/H-129-q-adic-pole-analog-seymour.md` para o registro
+  completo (inclui dois erros de processo autocorrigidos com
+  advisor+Fable antes de reportar como confirmados).
 - `H-127` — redução condicional da falha da WCC (Wirsching) a
   configurações de Bohr pós-wrap, via Littlewood-Offord/Halász. Status
   do próprio arquivo diz "em revisão", mas a zeladoria bibliográfica

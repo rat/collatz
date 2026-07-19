@@ -384,3 +384,69 @@ convergência quenched-anelado, mas isso ainda não foi verificado).
   Achado colateral não testado: κ=α₊/α₋ recuperado por um argumento de
   matriz média de posto 1 no modelo idealizado multi-tipo — não escapa
   a ressalva quenched-vs-anelado já honesta do paper (rem:transfer-basis).
+
+- **2026-07-19 (mesma sessão, esforço final) — pedido explícito do
+  diretor científico para tentar fechar H-129 usando todos os recursos
+  disponíveis (computação, busca, Fable). Resultado: um sub-item fecha
+  de vez, um achado novo real e confirmado, o item central continua
+  aberto — com a obstrução exata agora identificada.**
+
+  **(a) A pergunta LITERAL de H-129 (existe análogo exato do polo
+  −1/3 de Seymour?) — FECHADA, REFUTADA.** Isso já estava estabelecido
+  desde 2026-07-18 (ver acima): são dois mecanismos categoricamente
+  distintos (perda uniforme de 1 dígito vs. blow-up raro localizado de
+  valuação). Confirmado nesta revisão, sem necessidade de trabalho
+  novo — só reconhecer que a pergunta original já tinha resposta.
+
+  **(b) Achado novo, testado e CONFIRMADO — família de escala exata
+  por tipo de resíduo do raiz**: a previsão colateral do Fable (E-105/
+  H-129 anterior) de constantes C_i por tipo (i=u0 mod 5, a₀=(4,3,1,2))
+  foi testada nos dados já coletados (`stage4_type_constants_check.py`,
+  5000 raízes, 4 headrooms, partição por tipo reconstruída
+  deterministicamente sem refazer o DFS). Resultado: razões de quantis
+  x_i/x_1 batem com a previsão (2-9% de desvio) em TODOS os 4 headrooms
+  independentes e 3 níveis de cauda — estabilidade notável (ex.
+  x₃/x₁≈4,06-4,12 em 4 ordens de grandeza de headroom). Consulta ao
+  Fable confirmou a tradução E revelou um ponto crucial: κ se CANCELA
+  algebricamente na razão de quantis prevista, (C_i/C_j)^(1/κ) =
+  2^((a₀(j)−a₀(i))θ) — este teste confirma a família de escala exata
+  **W_i =_d 2^(−a₀(i)θ)·W\*** (mesma distribuição W* para todo tipo,
+  só reescalada) e rejeita a alternativa "C_i entra linearmente"
+  (previria x₃/x₁=8, medido 4,06-4,12), mas **não testa κ** — o
+  expoente de cauda em si. Escopo exato: confirma θ e a decomposição
+  multi-tipo, não o índice de cauda; exato só no modelo idealizado (os
+  desvios sistemáticos de 2-9% medem onde a árvore real diverge da
+  hipótese de resíduo-filho uniforme i.i.d.).
+
+  **(c) Tentativa de usar (b) para reforçar o teste de κ — não
+  melhorou o quadro**: reescalei as 5000 amostras pelo fator previsto
+  2^(a₀(tipo)θ) e rodei a bateria completa de 4 estimadores no pool
+  reescalado (`stage5_rescaled_pool_battery.py`), na expectativa de que
+  remover a mistura de escalas desse um teste mais limpo de κ. Não deu:
+  Huisman (bias-corrected Hill) ficou em ~1,50 (IC 95% [1,38;1,63],
+  cobre o previsto 1,536, estável nos 4 headrooms) e Gabaix-Ibragimov em
+  ~1,57 — **consistente com κ=1,536, não confirmatório**; GPD continua
+  sem platô de limiar limpo (ξ cai de 0,56 a 0,38 conforme o limiar
+  sobe) — mesmo padrão não-discriminante das rodadas anteriores. O CSN+
+  Vuong pareceu piorar (favorece lognormal com p<0,001 em 3 dos 4
+  headrooms) mas isso é ARTEFATO, não sinal real: nesses 3 casos o
+  x_min ótimo por KS caiu para dentro do CORPO da distribuição (n_tail
+  ~2000, ~40% da amostra) — não é um teste de cauda. O único headroom
+  onde CSN pegou uma cauda genuína (H=10⁵, x_min=95, n_tail=112) deu
+  "indistinguível" (p=0,93), não lognormal — a "prova" de que o sinal
+  anterior era artefato de corpo, não de cauda. Lognormal global também
+  já está descartada de outra forma: M_k(p) diverge para p≥1,7
+  (Rodada 3, Estágio 1) — lognormal tem todos os momentos finitos,
+  incompatível com um momento populacional exato divergente.
+
+  **Veredito final desta sessão sobre H-129**: (a) fechada/refutada;
+  (b) achado novo real, confirmado, mas de escopo limitado (θ e
+  estrutura multi-tipo, não κ); (c) o índice de cauda κ continua
+  **consistente com 1,536290, não confirmado** — mesmo obstáculo de
+  sempre (5000 amostras não alcançam profundidade de cauda suficiente
+  para decidir, e o teste de razão de quantis é κ-invariante por
+  construção, não adianta insistir nessa via). **Status: continua
+  aberta** — mas agora com a pergunta original respondida, um resultado
+  estrutural novo estabelecido, e a obstrução exata ao fechamento
+  completo (o índice de cauda quenched) precisamente identificada em
+  vez de vaga.

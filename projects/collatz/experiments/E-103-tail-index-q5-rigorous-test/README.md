@@ -181,15 +181,56 @@ derivação original, ou estender k além do teto de memória de 5^k (uma
 formulação nova, não um ajuste de script) — nenhum dos dois é uma ação
 imediata.
 
-**Achado colateral (não testado, registrar para o futuro)**: a
-derivação do Fable recupera κ=α₊/α₋=1/α₋=1,536290 por um argumento de
-matriz média de posto 1 (as 4 progressões de tipo particionam todos os
-a, então o autovalor de Perron quenched coincide com a soma anelada —
-d=4 não altera κ). Isso é uma derivação no modelo idealizado
-multi-tipo/i.i.d., NÃO uma prova para a recursão aritmética real — não
-escapa a ressalva já honesta do paper (Observação rem:transfer-basis).
-Previsão colateral falsificável, não executada: pesos relativos por
-tipo C_i ∝ 2^(−a₀(i)θκ), i.e. (2⁻⁴,2⁻³,2⁻¹,2⁻²) para tipos (1,2,3,4).
+## Estágio 4 (2026-07-19) — família de escala por tipo de resíduo: CONFIRMADA (mas não testa κ)
+
+A previsão colateral do Fable (pesos relativos por tipo C_i ∝
+2^(−a₀(i)θκ), i.e. (2⁻⁴,2⁻³,2⁻¹,2⁻²) para tipos u0 mod 5 = 1,2,3,4)
+foi testada, não deixada para depois. Reconstruí a lista de raízes
+(mesma seed, sem refazer o DFS) para recuperar o tipo de cada amostra
+de W_v já coletada, e comparei razões de quantis condicionais x_i/x_1
+(top30%/20%/10%) contra a previsão (C_i/C_1)^(1/κ), κ=α₊/α₋=1,536290.
+
+**Resultado**: bate muito bem (2-9% de desvio) em TODOS os 4 headrooms
+independentes e 3 níveis de cauda, com notável estabilidade cruzada
+(ex. x₃/x₁≈4,06-4,12 ao longo de 4 ordens de grandeza de headroom —
+não parece ruído). Consultei o Fable para confirmar a tradução, e ele
+revelou um ponto crucial que eu não tinha visto: **κ se cancela
+algebricamente** nessa razão — (C_i/C_j)^(1/κ) = 2^((a₀(j)−a₀(i))θ),
+independente de κ. Ou seja, este teste confirma a **família de escala
+exata W_i =_d 2^(−a₀(i)θ)·W\*** (mesma distribuição para todo tipo de
+resíduo, só reescalada por θ e a₀) e rejeita a alternativa "C_i entra
+linearmente" (previria x₃/x₁=8; medido 4,06-4,12) — mas **não testa o
+índice de cauda κ em si**. Escopo exato: confirma θ e a decomposição
+multi-tipo, não κ; e é exato só no modelo idealizado (resíduos
+sistemáticos de 2-9% medem onde a árvore real diverge da hipótese de
+resíduo-filho uniforme i.i.d.).
+
+## Estágio 5 (2026-07-19) — pool reescalado por tipo: não melhora o teste de κ
+
+Tentativa de usar a família de escala do Estágio 4 para um teste mais
+limpo de κ: reescalei as 5000 amostras pelo fator previsto 2^(a₀(tipo)θ)
+e rodei a mesma bateria de 4 estimadores (Estágio/Rodada 2) no pool
+reescalado. **Não melhorou**: Huisman ficou em ~1,50 (IC95%
+[1,38;1,63], cobre 1,536, estável nos 4 headrooms) e Gabaix-Ibragimov
+em ~1,57 — consistente com κ=1,536, não confirmatório (mesmo padrão de
+sempre); GPD continua sem platô de limiar limpo. O CSN+Vuong pareceu
+piorar (lognormal favorecida com p<0,001 em 3 dos 4 headrooms), mas
+isso é ARTEFATO: nesses 3 casos o x_min ótimo por KS caiu para dentro
+do CORPO da distribuição (n_tail~2000, ~40% da amostra, não é teste de
+cauda). O único headroom com cauda genuína por CSN (H=10⁵, x_min=95,
+n_tail=112) deu "indistinguível" (p=0,93), não lognormal — evidência de
+que o sinal "lognormal" nos outros 3 é artefato de corpo, não de cauda.
+Lognormal global já está descartada de outra forma: M_k(p) diverge
+para p≥1,7 (Rodada 3) — lognormal tem todos os momentos finitos,
+incompatível com um momento exato divergente.
+
+**Veredito consolidado dos Estágios 4-5**: um achado estrutural novo e
+real (família de escala por tipo), mas de escopo limitado — não
+resolve nem aproxima a resolução da Conjectura do índice de cauda. κ
+continua **consistente com 1,536290, não confirmado**: mesmo obstáculo
+de sempre (5000 amostras não alcançam profundidade de cauda suficiente
+para decidir), agora com a razão precisa por que o teste de razão de
+quantis não pode ajudar (é κ-invariante por construção).
 
 ## Arquivos
 
@@ -206,6 +247,10 @@ tipo C_i ∝ 2^(−a₀(i)θκ), i.e. (2⁻⁴,2⁻³,2⁻¹,2⁻²) para tipos 
 - `stage2_periodogram_results.json` — resultados do Estágio 2 (4 headrooms).
 - `stage3_k_axis_check.py` — checagem de monotonicidade no eixo k (sem
   ajuste citável — ver seção "Checagem complementar no eixo k" acima).
+- `stage4_type_constants_check.py` / `stage4_type_constants_results.json`
+  — Estágio 4 (família de escala por tipo, confirmada).
+- `stage5_rescaled_pool_battery.py` / `stage5_rescaled_pool_results.json`
+  — Estágio 5 (pool reescalado, não melhora o teste de κ).
 
 Mirror público (código idêntico, adaptado para autocontido):
 `collatz-endogeny/sec3-pressure-equation/` (`full_battery.py`,
@@ -218,6 +263,9 @@ python3 experiment_tail_index_q5.py    # ~20 min, Rodada 1
 python3 full_battery.py                # ~25 min, Rodada 2 (precisa das amostras brutas — ver rerun_save_raw.py)
 python3 stage1_exact_moment_test.py    # ~15 min (k ate 11), usa ~10-15GB RAM no pico
 python3 stage2_periodogram.py          # segundos, precisa das amostras brutas (rerun_save_raw.py)
+python3 stage3_k_axis_check.py         # segundos, usa stage1_moment_results.json
+python3 stage4_type_constants_check.py # ~1 min, reconstroi raizes + amostras brutas
+python3 stage5_rescaled_pool_battery.py # ~2 min, idem
 ```
 
 ## Próximos passos (se a linha for retomada)
@@ -232,8 +280,12 @@ python3 stage2_periodogram.py          # segundos, precisa das amostras brutas (
    Ver seção acima.
 3. Bateria estatística completa (CSN+Vuong pré-registrado) com amostra
    muito maior (10^5+ raízes) e headroom maior, se viável
-   computacionalmente — ainda não feito, e as duas vias acima fechadas
-   não o tornam menos necessário.
+   computacionalmente — ainda não feito, e nenhum dos achados desta
+   sessão (Estágios 2-5) o torna menos necessário. Este continua sendo
+   o único caminho concreto identificado para de fato pressionar o
+   índice de cauda κ, dado que o teste de razão de quantis (Estágio 4)
+   é κ-invariante por construção e o pool reescalado (Estágio 5) não
+   melhorou o poder do teste.
 4. Ver H-129 para uma frente teórica paralela (otimização ergódica)
    que pode dar uma caracterização exata do congelamento sem depender
    de estimadores numéricos.
@@ -245,7 +297,8 @@ python3 stage2_periodogram.py          # segundos, precisa das amostras brutas (
    que resta, não executado**: localizar a derivação original de
    "0,222" (busca, não cálculo novo) ou estender k além do teto atual
    (formulação nova, custo alto).
-6. Previsão colateral falsificável do Estágio 2 (não executada): pesos
-   relativos por tipo de resíduo mod 5, C_i ∝ 2^(−a₀(i)θκ) =
-   (2⁻⁴,2⁻³,2⁻¹,2⁻²) para tipos (1,2,3,4) — checável nos mesmos dados
-   de W_v já coletados, separando por tipo de raiz.
+6. ~~Previsão colateral falsificável (pesos por tipo de resíduo)~~ —
+   **feita, Estágio 4 (2026-07-19)**: CONFIRMADA (família de escala
+   exata por tipo), mas mostrou não testar κ (cancela algebricamente).
+   Tentativa de usar isso para melhorar o teste de κ (Estágio 5) também
+   feita — não ajudou. Ver seções acima.
