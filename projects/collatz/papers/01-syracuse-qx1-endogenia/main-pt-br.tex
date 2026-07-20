@@ -35,7 +35,7 @@
 
 \title{A Generalização $qx+1$ da Medida de Syracuse de Tao:\\
 Uma Equação de Pressão em Forma Fechada, uma Barreira de Endogenia,\\
-e sua Caracterização Convergente por Sete Vias Independentes}
+e sua Caracterização Convergente por Cinco Vocabulários Independentes}
 
 \author{Renato Augusto Tavares~{\small\href{mailto:dr.renatotavares@gmail.com}{\textcolor{black}{\faEnvelope}}}~\orcidlink{0009-0002-0196-3311}\\
 \normalsize Universidade Federal de Goiás}
@@ -86,17 +86,20 @@ $G = W\cdot Y$, com $Y$ um fator limitado arbitrário invariante ao
 longo da árvore, satisfazem a mesma recursão de ponto fixo que a
 solução canônica (``endógena'') $W$ e são estatisticamente
 indistinguíveis dela por qualquer observável que consigamos testar.
-Mostramos, por seis vias tecnicamente não relacionadas, que fechar
-essa lacuna equivale a uma única afirmação aritmética ainda em aberto:
-a Weak Covering Conjecture de Wirsching de 1998 \cite{Wirsching1998},
-a conjectura $\beta=1$ de Tao de 2020 \cite{Tao2020} (que mostramos ser
-literalmente o mesmo objeto algébrico da Weak Covering Conjecture),
+Mostramos, por quatro vocabulários metodologicamente independentes (a
+própria endogenia contando como o primeiro), que fechar essa lacuna
+equivale a uma única afirmação aritmética ainda em aberto: a Weak
+Covering Conjecture de Wirsching de 1998 \cite{Wirsching1998} e a
+conjectura $\beta=1$ de Tao de 2020 \cite{Tao2020} (que mostramos ser
+literalmente o mesmo objeto algébrico, portanto contadas uma vez),
 uma equação funcional para um análogo explícito em base $3$ da função
 de Fabius que aparece no paper de Wirsching de 2003
 \cite{Wirsching2003}, e dois lemas candidatos sugeridos como próximos
 passos naturais pela técnica bivariada de decaimento de Fourier de Tao
-\cite{Tao2022,Tao2011}, ambos executados até o fim e ambos falhando
-pelo \emph{mesmo} ingrediente faltante: um produz um teorema de
+\cite{Tao2022,Tao2011} (também contados uma vez, já que ambos
+compartilham a mesma decomposição de Fourier de segundo momento), ambos
+executados até o fim e ambos falhando pelo \emph{mesmo} ingrediente
+faltante: um produz um teorema de
 estrutura genuíno em forma fechada junto com uma redução condicional
 cuja hipótese (integrabilidade quadrática da densidade de Syracuse em
 $\mathbb{Z}_3$) refutamos por um cálculo recursivo exato; o outro
@@ -119,8 +122,10 @@ precisão dentro da teoria mais ampla de decaimento de Fourier para
 medidas autossimilares e autoconformais \cite{BakerBanaji2026,
 Bremont}, e mostra que ela é estruturalmente inacessível a esse
 ferramental por causa da rigidez dos subgrupos fechados de
-$\mathbb{Z}_3^\times$. Argumentamos que essa convergência de sete
-formulações independentes e tecnicamente não relacionadas sobre a
+$\mathbb{Z}_3^\times$. Argumentamos que essa convergência de cinco vocabulários
+metodologicamente independentes e tecnicamente não relacionados ---
+duas de cujas coincidências par-a-par são, elas mesmas, identidades
+provadas, não analogias, e são contadas uma vez cada --- sobre a
 mesma afirmação não provada é, por si só, evidência significativa de
 que a obstrução é uma característica genuína do problema, não um
 artefato de um método isolado, e enunciamos com precisão o que resta
@@ -233,9 +238,9 @@ Wirsching2003}, apresentamos as seguintes contribuições.
   Mostramos que a barreira é estruturalmente inacessível à teoria geral
   de decaimento de Fourier para medidas autossimilares, por uma razão
   aritmética precisa (rigidez dos subgrupos fechados de
-  $\mathbb{Z}_3^\times$), e identificamos uma sétima formulação
-  independente, puramente combinatória, da mesma obstrução em trabalho
-  muito recente \cite{Chang2026}.
+  $\mathbb{Z}_3^\times$), e identificamos um quinto vocabulário
+  independente, puramente combinatório, para a mesma obstrução em
+  trabalho muito recente \cite{Chang2026}.
 \end{enumerate}
 
 Enquadramos este paper deliberadamente não como uma tentativa de prova
@@ -459,11 +464,22 @@ genuína entre crescimento quenched e anelado: em $q=3$, $u_0=1$ --- um
 ciclo genuíno de período um da dinâmica de resíduos, já que $w_2(1)=1$
 exatamente --- $Z_k(2;1)^{1/k}$ mostra oscilação com razão de média
 geométrica bem abaixo da taxa anelada $\rho_{\mathrm{ann}}(2)=1$; em
-$q=5$, $Z_k(1;u_0)^{1/k}$ em várias raízes $u_0\in\{1,2,3,4\}$
-igualmente falha em acompanhar $\rho_{\mathrm{ann}}(1)=1$. Relatamos
-isso como confirmação qualitativa de congelamento (quenched
-estritamente abaixo do anelado), não como um ajuste quantitativo a
-nenhuma assintótica específica de fase congelada, que não derivamos.
+$q=5$, $Z_k(1;u_0)^{1/k}$ nas raízes $u_0\in\{1,2,3,4\}$
+igualmente falha em acompanhar $\rho_{\mathrm{ann}}(1)=1$. Sinalizamos,
+em vez de esconder, uma limitação desta checagem específica: cada uma
+dessas raízes está sobre, ou alimenta diretamente, o ciclo trivial do
+próprio mapa de menor ramo admissível ($1\leftrightarrow3$ para $q=5$,
+exatamente como $u_0=1$ para $q=3$), então a divergência observada
+aqui tem uma explicação por recorrência determinística disponível além
+do mecanismo de entropia da Proposição~\ref{prop:always-frozen}, e não
+amostra por si só o ambiente genérico (não periódico) sobre o qual a
+afirmação quenched realmente versa. Relatamos isso, portanto, como uma
+ilustração do congelamento numa classe especial e facilmente computável
+de raízes, não como confirmação num ambiente genérico; a
+\S\ref{sec:kl-empirical} abaixo e a medição estatisticamente calibrada
+da \S\ref{sec:kl} --- ambas amostrando muitas raízes deliberadamente
+longe de qualquer ciclo curto conhecido --- carregam a evidência real
+de ambiente genérico.
 
 A consequência, pela Proposição~\ref{prop:always-frozen}, é
 incondicional: o Teorema~\ref{thm:pressure}, embora exato, se
@@ -515,41 +531,50 @@ $\rho_{\mathrm{ann}}(\alpha)=q^{\alpha-1}/(2^\alpha-1)$
 (Proposição~\ref{prop:always-frozen}), $\log N(x)/\log x\to\alpha_-(q)$
 quase certamente, para todo $q\ge3$ ímpar \cite{Biggins1992}: expoente
 $1$ (crescimento linear) em $q=3$; expoente $\alpha_-(q)<1$ para todo
-$q\ge5$. No nível mais fino do teorema de renovação de
-Crump--Mode--Jagers para processos de ramificação gerais
-\cite{Nerman1981} (cuja hipótese não-reticulada vale aqui, já que
-$\log q/\log2$ é irracional para todo $q\ge3$), a assíntota mais fina
-vale uniformemente, \emph{inclusive} em $q=3$: $N(x)\sim W\cdot
-x^{\alpha_-(q)}$ quase certamente, para algum fator de escala aleatório
-$W$ q.c.\ positivo e não-degenerado --- não uma constante
-determinística em nenhum $q$, já que a lei de reprodução subjacente
-tem variância genuína. (O teorema de Nerman é enunciado para processos
-pontuais em $[0,\infty)$; nossos deslocamentos de ramificação incluem
-valores negativos, e.g.\ $2/3<1$ em $q=3$, já que um filho pode ser
-numericamente menor que seu pai, então a afirmação mais fina se aplica
-aqui só via a extensão padrão a medidas de reprodução gerais, não
-necessariamente unilaterais, cujas hipóteses não verificamos em
-detalhe.)
+$q\ge5$.
 \end{theorem}
+
+\begin{proposition}[Assíntota mais fina, condicional]\label{prop:transition-fine}
+Condicional à extensão padrão do teorema de renovação de
+Crump--Mode--Jagers \cite{Nerman1981} a medidas de reprodução gerais,
+não necessariamente unilaterais --- cujas hipóteses não verificamos em
+detalhe aqui, dado que nossos deslocamentos de ramificação incluem
+valores negativos (e.g.\ $2/3<1$ em $q=3$, já que um filho pode ser
+numericamente menor que seu pai) --- a assíntota mais fina
+$N(x)\sim W\cdot x^{\alpha_-(q)}$ vale quase certamente, uniformemente e
+\emph{inclusive} em $q=3$, para um fator de escala aleatório $W$ q.c.\
+positivo e não-degenerado (não uma constante determinística em nenhum
+$q$, já que a lei de reprodução subjacente tem variância genuína). A
+própria hipótese não-reticulada de \cite{Nerman1981} vale aqui, já que
+$\log q/\log2$ é irracional para todo $q\ge3$.
+\end{proposition}
 
 \begin{conjecture}[Transição estrutural: densidade, árvore aritmética]\label{conj:transition-arithmetic}
 A mesma dicotomia vale para a árvore reversa genuína de $T_q$ em si,
-não apenas para o modelo i.i.d.\ do Teorema~\ref{thm:transition-model}:
-para $q=3$ ela tem densidade natural positiva ($N_u(x)\sim x$); para
+não apenas para o modelo i.i.d.\ do Teorema~\ref{thm:transition-model}
+e da Proposição~\ref{prop:transition-fine}: para $q=3$ ela tem
+densidade natural positiva ($N_u(x)\sim x$); para
 todo $q\ge5$ ímpar ela tem densidade natural nula, com
-$N_u(x)\sim W_u\cdot x^{\alpha_-(q)}$. Em $q=3$ isto é, em particular,
-exatamente a Conjectura do Expoente de Crescimento de
+$N_u(x)\sim W_u\cdot x^{\alpha_-(q)}$. Em $q=3$ isto \emph{implica, e
+refina estritamente}, a Conjectura do Expoente de Crescimento de
+Kontorovich--Lagarias \cite{KontorovichLagarias2009} e
 Applegate--Lagarias
 \cite{ApplegateLagarias1995I,ApplegateLagarias1995II} para a árvore
-reversa clássica de Collatz --- aberta desde 1995, cujo melhor
-resultado incondicional parcial permanece sendo a cota unilateral
-$\pi_a(x)\ge x^{0{,}84}$ de Krasikov--Lagarias
-\cite{KrasikovLagarias2003}. Nossa identidade de pressão reproduz essa
-conjectura como o caso $\alpha_-=1$ de uma única equação fechada,
-junto com seu análogo para $q\ge5$, em vez de resolvê-la.
+reversa clássica de Collatz, que afirma apenas o expoente
+$\pi_a(x)=x^{1+o(1)}$, não uma constante assintótica específica ---
+aberta desde 1995, cujo melhor resultado incondicional parcial
+permanece sendo a cota unilateral $\pi_a(x)\ge x^{0{,}84}$ de
+Krasikov--Lagarias \cite{KrasikovLagarias2003}. Nossa identidade de
+pressão reproduz a afirmação de expoente-$1$ dessa conjectura como o
+caso $\alpha_-=1$ de uma única equação fechada, junto com seu análogo
+para $q\ge5$, em vez de resolvê-la; a alegação adicional de uma
+constante limite específica é conteúdo extra da
+Conjectura~\ref{conj:transition-arithmetic} além da conjectura
+clássica.
 \end{conjecture}
 
-Enunciamos o Teorema~\ref{thm:transition-model} e a
+Enunciamos o Teorema~\ref{thm:transition-model}, a
+Proposição~\ref{prop:transition-fine}, e a
 Conjectura~\ref{conj:transition-arithmetic} separadamente, em vez de
 como um único teorema sobre a árvore aritmética, precisamente porque o
 passo de um para o outro é exatamente o tipo de transferência que
@@ -566,10 +591,11 @@ genuíno i.i.d.\ de passeio aleatório ramificado que a identidade
 anelada do Teorema~\ref{thm:pressure} descreve, quenched=anelado em
 toda a região não-congelada é um resultado clássico e rigoroso
 \cite{Biggins1992}. Para nossa recursão aritmética, nenhum teorema
-análogo é conhecido por nós: a lacuna é a mesma já identificada no
-Teorema~\ref{thm:barrier} (quase-independência de dígitos frescos entre
-subárvores irmãs, aqui numa forma quantitativa de grandes desvios em
-vez de qualitativa), e o resultado aritmético genuíno mais próximo na
+análogo é conhecido por nós: a lacuna é a mesma já identificada perto
+do Teorema~\ref{thm:barrier} (Observação~\ref{rem:barrier-reading}:
+quase-independência de dígitos frescos entre subárvores irmãs, aqui
+numa forma quantitativa de grandes desvios em vez de qualitativa), e o
+resultado aritmético genuíno mais próximo na
 literatura é uma cota unilateral de densidade de
 Applegate--Lagarias \cite{ApplegateLagarias1995I,ApplegateLagarias1995II},
 depois refinada por Krasikov--Lagarias \cite{KrasikovLagarias2003} (já
@@ -878,34 +904,47 @@ forçada, por dois mecanismos clássicos:
   arquimediana sob a hipótese i.i.d.\ completa.
 \end{enumerate}
 
-\begin{theorem}[Enunciado preciso da barreira]\label{thm:barrier}
-Qualquer argumento que use apenas \textup{(i)} a recursão exata de
-pesos da árvore reversa e \textup{(ii)} estatísticas dos dígitos
-$3$-ádicos fatora através do modelo de transformação de suavização,
-que admite soluções não-endógenas (fatores de gauge harmônicos) com
-piso de variância condicional estritamente positivo em toda resolução,
-estatisticamente indistinguíveis da solução endógena por pressão,
-índice de cauda, ou qualquer marginal que testamos. O ingrediente
-faltante que fecha a lacuna \emph{no modelo idealizado} --- e que resta
-transferir para o cenário aritmético --- é a quase-independência,
-entre subárvores irmãs, dos dígitos $3$-ádicos frescos dos
-inteiros-folha, junto com equidistribuição da fase arquimediana ao
-longo dos caminhos. O análogo rigoroso conhecido, na direção forward, é
-o decaimento de Fourier das variáveis de Syracuse de Tao
-(Proposição~\ref{prop:tao117}); a versão árvore-reversa/densidade
-permanece aberta e \emph{não} é implicada por ele.
+\begin{theorem}[A recursão não força endogenia]\label{thm:barrier}
+O modelo de transformação de suavização associado à recursão exata de
+pesos da árvore reversa admite soluções não-endógenas (fatores de
+gauge harmônicos, Proposição~\ref{prop:gauge}; a obstrução $2$-ádica é
+excluída pelo Lema~\ref{lem:2adic}) com piso de variância condicional
+$\sigma_Y>0$ estritamente positivo em toda resolução, estatisticamente
+indistinguíveis da solução endógena por pressão, índice de cauda, ou
+qualquer marginal que testamos. Consequentemente, a recursão exata de
+pesos junto com as estatísticas dos dígitos $3$-ádicos não força, por
+si só, a dispersão residual de gauge a se anular.
 \end{theorem}
 
-Enfatizamos o status epistêmico das duas metades do
-Teorema~\ref{thm:barrier}: o resultado de classificação (a) pode ser
-enunciado incondicionalmente como ``maquinaria padrão sob [hipóteses],
-verificação detalhada pendente'', em vez de um teorema que
-re-derivamos independentemente contra nosso setup exato; a exclusão
-$2$-ádica (Lema~\ref{lem:2adic}) e a construção de gauge
-(Proposição~\ref{prop:gauge}) são totalmente rigorosas e verificadas
-independentemente. Nunca afirmamos que a dispersão residual de gauge
-$\sigma_Y$ se anula para o objeto aritmético verdadeiro; só que a
-recursão sozinha não pode forçar isso.
+\begin{remark}[Leitura de barreira, e status epistêmico]\label{rem:barrier-reading}
+Informalmente isso delimita uma classe de argumentos: não conhecemos
+nenhum argumento que use apenas \textup{(i)} a recursão exata de pesos
+e \textup{(ii)} estatísticas dos dígitos $3$-ádicos que não fatore
+através deste modelo de transformação de suavização, e portanto nenhum
+que possa distinguir a solução endógena da não-endógena. Nós \emph{não}
+formalizamos ``usa apenas (i) e (ii)'' como uma classe precisa de
+técnicas (em contraste com barreiras de relativização ou natural
+proofs em teoria da complexidade), então isso é uma delimitação
+heurística de abordagens conhecidas, não um teorema formal de
+impossibilidade. A exclusão $2$-ádica (Lema~\ref{lem:2adic}) e a
+construção de gauge (Proposição~\ref{prop:gauge}) sobre as quais o
+Teorema~\ref{thm:barrier} se apoia são totalmente rigorosas e
+verificadas independentemente; a alegação de classificação acima (que
+qualquer tal argumento fatora através do modelo de transformação de
+suavização) pode ser enunciada incondicionalmente como ``maquinaria
+padrão sob [hipóteses], verificação detalhada pendente'', em vez de
+independentemente re-derivada contra nosso setup exato. Nunca afirmamos
+que a dispersão residual de gauge $\sigma_Y$ se anula para o objeto
+aritmético verdadeiro; só que a recursão sozinha não pode forçar isso.
+O ingrediente faltante que fecha a lacuna \emph{no modelo idealizado}
+--- e que resta transferir para o cenário aritmético --- é a
+quase-independência, entre subárvores irmãs, dos dígitos $3$-ádicos
+frescos dos inteiros-folha, junto com equidistribuição da fase
+arquimediana ao longo dos caminhos. O análogo rigoroso conhecido, na
+direção forward, é o decaimento de Fourier das variáveis de Syracuse
+de Tao (Proposição~\ref{prop:tao117}); a versão árvore-reversa/densidade
+permanece aberta e \emph{não} é implicada por ele.
+\end{remark}
 
 \subsection{Regime preciso do expoente de cauda}
 \label{sec:endogeny-addendum}
@@ -992,12 +1031,24 @@ replicadas, $\rho\in\{0,0{,}05,0{,}1,0{,}2\}$) dá:
 O excesso (real $-$ sintético) converge monotonicamente a zero com o
 aumento da profundidade de truncamento, o sinal oposto ao que um
 acoplamento aritmético positivo genuíno produziria, reforçando em vez
-de apenas deixar de contradizer a conclusão. Nenhum acoplamento
-aritmético positivo entre subárvores irmãs foi detectado; o
-acoplamento efetivo é limitado a aproximadamente $6\%$ do acoplamento
-máximo explorado no controle sintético. A equação~\eqref{eq:rho-eff}
-converte a lacuna puramente teórica do Teorema~\ref{thm:barrier} numa
-cota empírica quantitativa e falsificável do seu tamanho.
+de apenas deixar de contradizer a conclusão. Declaramos o escopo desta
+cota com precisão: nenhum acoplamento da forma funcional específica
+explorada pelo Braço~2 (replicação de família inteira dos
+\emph{conteúdos} de subárvore em intensidade $\rho$) foi detectado na
+árvore real além de $\rho_{\mathrm{eff}}\lesssim0{,}06$ da intensidade
+máxima dessa família. Isso não é, por si só, uma cota sobre toda forma
+concebível de acoplamento; em particular não limita diretamente a
+correlação exata, grosseira, dependente de $\Delta$, de par da
+Proposição~\ref{prop:exact-endogeny} abaixo, que tem uma forma
+funcional diferente (um coeficiente de correlação fixo numa
+$\sigma$-álgebra grosseira, não uma intensidade ajustável sobre o
+conteúdo completo da subárvore) e não é necessariamente bem
+representada pela curva de calibração do Braço~2; veja a
+Observação~\ref{rem:calibration-consistency} para o porquê de os dois
+resultados serem, mesmo assim, consistentes em vez de estarem em
+tensão. A equação~\eqref{eq:rho-eff} converte a lacuna puramente
+teórica do Teorema~\ref{thm:barrier} numa cota empírica quantitativa e
+falsificável do seu tamanho, para esta família de acoplamentos.
 
 \section{Um resultado empírico incondicional: resolvendo a disputa
 Kontorovich--Lagarias vs.\ Volkov para $5x+1$}
@@ -1278,9 +1329,10 @@ uma hipótese aritmética.
   $\log 3/\log 2$ via a inclinação $\log 9/\log 2$.
 \end{enumerate}
 
-\begin{theorem}[O regime 3 é um problema aberto reconhecido]
+\begin{theorem}[O regime 3 é ao menos tão difícil quanto problemas abertos reconhecidos]
 \label{thm:regime3}
-O regime 3 acima é equivalente, em dificuldade, a (i) correlações de
+O regime 3 acima é um caso especial de, e na generalidade necessária
+aqui é ao menos tão difícil quanto, cada um de: (i) correlações de
 funções digitais nas bases $2$ e $3$ \cite{Spiegelhofer2021}, (ii)
 rigidez efetiva para estruturas $\times 2,\times 3$-invariantes no
 sentido de Furstenberg (o par $(w_1,w_2)$ é $v$ observado através de
@@ -1502,6 +1554,51 @@ $L^2(\mathbb{Z}_3)$): a covariância fina, descontada da componente
 grosseira exata, seria então $\le K_\infty - K_{\ell_0}\to 0$,
 uniformemente em $m,D,\Delta$.
 
+\begin{remark}[Consistência com a calibração da \S\ref{sec:calibration}]
+\label{rem:calibration-consistency}
+A Proposição~\ref{prop:exact-endogeny} e o resultado nulo
+$\rho_{\mathrm{eff}}\lesssim 0{,}06$ da \S\ref{sec:calibration} medem
+objetos diferentes e não conflitam, embora o ponto mereça ser explícito.
+A Proposição~\ref{prop:exact-endogeny} concerne ao \emph{coeficiente de
+correlação} da projeção grosseira ($\ell=1$, mod $3$) de um \emph{único}
+par de irmãos: exato, não-nulo, e independente de $D$. A
+\S\ref{sec:calibration} mede, em vez disso, a variância residual
+\emph{relativa} de contagens populacionais inteiras completas,
+agregadas sobre toda a árvore em truncamento grande. A covariância
+grosseira $C_{\mathrm{exato}}(\ell_0;\Delta)$ acima é finita e
+independente de $D$, enquanto as médias agregadas $\mathbb{E}[Z_i]$
+crescem exponencialmente com a profundidade de truncamento; logo sua
+contribuição normalizada
+$C_{\mathrm{exato}}/(\mathbb{E}[Z_1]\mathbb{E}[Z_2])\to 0$ conforme a
+profundidade cresce. Uma correlação grosseira por-par exatamente
+persistente contribui, portanto, uma fração \emph{evanescente} da
+variância agregada --- real, mas abaixo do limiar de detecção do
+experimento de calibração --- e a \emph{taxa} dessa diluição é
+plausivelmente o próprio sinal observado: o excesso da
+\S\ref{sec:calibration} converge monotonicamente a zero com a
+profundidade de truncamento, exatamente como um $C_{\mathrm{exato}}$
+fixo diluído por variância crescendo exponencialmente produziria.
+Separadamente, a refutação da hipótese $L^2$ abaixo
+(Teorema~\ref{thm:l2-refutation}) é a falha de uma \emph{cota
+superior} sobre a covariância fina ($K_\infty=\infty$ torna a cota
+acima vazia), não uma prova de que a covariância fina é de fato
+grande; a \S\ref{sec:calibration} mede diretamente o acoplamento fino
+que essa cota deixa sem controle, e o encontra pequeno. Por fim, os
+pesos geométricos de ramo $q\cdot 2^{-a}$ concentram massa em gaps
+$\Delta$ pequenos, predominantemente no caso $\Delta\not\equiv
+0\pmod 6$ (correlação grosseira $-1/2$) em vez de $\Delta\equiv
+0\pmod 6$ (correlação grosseira $+1$), então a contribuição grosseira
+líquida é plausivelmente \emph{negativa} --- consistente com, embora
+paremos aquém de afirmar que prevemos, o sinal negativo observado do
+excesso residual na \S\ref{sec:calibration}. As duas seções são,
+portanto, complementares em vez de estarem em tensão:
+o Teorema~\ref{thm:barrier} e a Proposição~\ref{prop:exact-endogeny}
+estabelecem que a recursão \emph{não pode forçar} a decorrelação entre
+irmãos (a estrutura grosseira por-par sobrevive em toda profundidade),
+enquanto a \S\ref{sec:calibration} estabelece que o resíduo agregado
+real é, mesmo assim, empiricamente pequeno.
+\end{remark}
+
 \begin{theorem}[Refutação computacional da hipótese $L^2$]
 \label{thm:l2-refutation}
 $K_\ell$ foi calculado exatamente via a recursão
@@ -1702,8 +1799,12 @@ tipo usado em \cite{Tao2011} pode excluí-la. Este ramo --- inacessível
 a métodos $\ell^1$ pelo Teorema~\ref{thm:propC} --- é exatamente o
 ramo identificado como o núcleo de $\beta=1$
 (\S\ref{sec:triangulation}) e da condição $L^2$ refutada
-(Teorema~\ref{thm:l2-refutation}): uma \emph{quarta e quinta}
-articulação independente do mesmo ingrediente faltante.
+(Teorema~\ref{thm:l2-refutation}): uma articulação adicional, dentro
+do mesmo vocabulário de Fourier de segundo momento que a condição
+$L^2$ (ambas decompõem via a soma de caracteres
+$\Cov\propto\sum_\xi S_1(\xi)S_2(\xi)^\ast$ da \S\ref{sec:regimes}), do
+mesmo ingrediente faltante --- não uma quarta ou quinta via
+metodologicamente independente por si só.
 \end{theorem}
 
 Enfatizamos o enquadramento correto, consistente com as fragilidades
@@ -1797,7 +1898,7 @@ existe do lado $3$-ádico --- o que corta contra o cenário difuso tanto
 quanto a favor. Citamos o Teorema~\ref{thm:no-transfer} com essa
 disanalogia declarada explicitamente.
 
-\subsection{Uma sétima formulação independente, testada empiricamente}
+\subsection{Um quinto vocabulário independente, testado empiricamente}
 
 Trabalho independente muito recente \cite{Chang2026} reduz a
 conjectura de Collatz, por uma rota puramente combinatória sem
@@ -1827,13 +1928,18 @@ Interpretamos o platô do ensemble como artefato de agregar muitas
 única longa como suporte empírico qualificado à conjectura de
 \cite{Chang2026}, na escala testada.
 
-Isto dá uma sétima articulação, tecnicamente não relacionada, do mesmo
-ingrediente faltante: equidistribuição/balanço de resíduos ao longo da
-órbita verdadeira, aparecendo independentemente em endogenia
-(\S\ref{sec:endogeny}), na Weak Covering Conjecture (\S\ref{sec:wcc}),
-em $\beta=1$ (\S\ref{sec:triangulation}), na condição $L^2$
-(\S\ref{sec:lemmas}), na dicotomia espectral (\S\ref{sec:lemmas}), e
-agora numa reformulação puramente combinatória.
+Isto dá um quinto vocabulário, tecnicamente não relacionado, para o
+mesmo ingrediente faltante: equidistribuição/balanço de resíduos ao
+longo da órbita verdadeira, aparecendo independentemente via a rota de
+transformação de suavização/endogenia (\S\ref{sec:endogeny}), a
+contagem de entropia compartilhada pela Weak Covering Conjecture e por
+$\beta=1$ (\S\ref{sec:wcc}, \S\ref{sec:triangulation} --- provadas o
+mesmo objeto algébrico pela Proposição~\ref{prop:beta-wcc}, portanto
+contadas uma vez), a equação funcional de Wirsching de 2003
+(\S\ref{sec:triangulation}), a análise de Fourier de segundo momento
+compartilhada pela condição $L^2$ e pela dicotomia espectral da
+Proposição~C (\S\ref{sec:lemmas}, igualmente contadas uma vez), e agora
+uma reformulação puramente combinatória.
 
 \section{Discussão: por que uma barreira precisamente caracterizada é
 uma contribuição genuína}
@@ -1860,22 +1966,37 @@ obstrução --- mostrar não apenas que uma abordagem falha, mas
 uma forma reconhecida e citável de contribuição matemática,
 independente de a conjectura subjacente ser eventualmente resolvida.
 
-Segundo, esses resultados não estão isolados: convergem, por sete
-rotas tecnicamente não relacionadas (endogenia, a Weak Covering
-Conjecture, $\beta=1$, a equação funcional de Wirsching de 2003, a
-condição $L^2$, a dicotomia espectral da Proposição~C, e a
-reformulação puramente combinatória de \cite{Chang2026}), no que
-parece ser uma única afirmação aritmética subjacente: alguma forma de
-equidistribuição ou quase-independência de dígitos $3$-ádicos ao longo
-da dinâmica inteira verdadeira e determinística, não apenas ao longo
-de um modelo i.i.d.\ idealizado. Uma barreira visível só de um ângulo
-é candidata natural a ser artefato da técnica específica daquele
-ângulo; uma barreira que recorre, essencialmente na mesma forma, em
-sete vocabulários técnicos independentes (somas de caracteres,
-transformações de suavização, uma equação funcional real, a identidade
-de Jensen, uma classificação de medidas autossimilares, e contagem
-elementar de resíduos) é evidência muito melhor de que a obstrução é
-uma característica estrutural do problema em si.
+Segundo, esses resultados não estão isolados: a mesma afirmação
+aritmética subjacente --- alguma forma de equidistribuição ou
+quase-independência de dígitos $3$-ádicos ao longo da dinâmica inteira
+verdadeira e determinística, não apenas ao longo de um modelo i.i.d.\
+idealizado --- é o cerne alcançado por cinco vocabulários
+metodologicamente independentes: (1) a rota de transformação de
+suavização/endogenia (\S\ref{sec:endogeny}); (2) a contagem de entropia
+compartilhada pela Weak Covering Conjecture de Wirsching e por
+$\beta=1$ de Tao, que a Proposição~\ref{prop:beta-wcc} mostra ser o
+\emph{mesmo objeto algébrico}; (3) a equação funcional real de
+Wirsching de 2003 e sua densidade de Fabius (\S\ref{sec:triangulation});
+(4) a análise de Fourier de segundo momento subjacente tanto à condição
+$L^2$ quanto à dicotomia espectral da Proposição~C
+(\S\ref{sec:lemmas}), que compartilham a decomposição comum de
+caracteres $\Cov\propto\sum_\xi S_1(\xi)S_2(\xi)^\ast$; e (5) a
+reformulação puramente combinatória de balanço de resíduos de
+\cite{Chang2026}. Contamos cinco em vez de sete deliberadamente: dois
+dos vínculos par-a-par não são analogias, mas \emph{identidades
+provadas} --- $\beta=1\cong$ WCC (Proposição~\ref{prop:beta-wcc}) e a
+origem comum de segundo momento dos ramos $L^2$ e dicotomia-espectral
+--- e contamos cada par uma vez. Que dois vocabulários possam ser
+\emph{provados} como um único objeto é, por si só, evidência mais forte
+de que a obstrução é uma única característica estrutural do problema
+do que uma analogia solta seria. Uma barreira visível só de um ângulo é
+candidata a artefato daquela técnica; uma barreira alcançada por cinco
+vocabulários independentes (pontos fixos de processo de ramificação,
+contagem de cobertura/entropia inteira, uma equação funcional real,
+somas de caracteres de segundo momento, e contagem elementar de
+resíduos), duas de cujas coincidências par-a-par são teoremas, é
+evidência muito melhor de que a obstrução é uma característica
+estrutural do problema em si.
 
 Terceiro, este pacote teórico convive com um resultado
 (Resultado Empírico~\ref{thm:kl}) cuja validade não depende de nada do
@@ -1891,8 +2012,8 @@ como um relato de fracasso, mas como um mapa preciso de onde uma linha
 de ataque específica, natural e tecnicamente rica --- o programa da
 medida de Syracuse de Tao, generalizado para $qx+1$ --- esbarra numa
 parede, junto com uma quantificação exata do tamanho e da forma dessa
-parede a partir de sete ângulos independentes, e um resultado empírico
-duro e incondicional obtido no caminho.
+parede a partir de cinco ângulos independentes, e um resultado
+empírico duro e incondicional obtido no caminho.
 
 \section{Conclusão e direções em aberto}
 \label{sec:conclusion}
@@ -1902,7 +2023,8 @@ forma mais limpa que conseguimos dar a eles.
 
 \begin{enumerate}[label=(A\arabic*)]
 \item \textbf{Quase-independência de dígitos $3$-ádicos frescos entre
-  subárvores irmãs} (Teorema~\ref{thm:barrier}): a afirmação
+  subárvores irmãs} (Teorema~\ref{thm:barrier},
+  Observação~\ref{rem:barrier-reading}): a afirmação
   aritmética cujo análogo idealizado (i.i.d.) é demonstrável via
   classificação de transformações de suavização e rigidez de
   Choquet--Deny.
@@ -1953,11 +2075,13 @@ forma mais limpa que conseguimos dar a eles.
 \item \textbf{A transição de densidade na árvore aritmética genuína}
   (Conjectura~\ref{conj:transition-arithmetic}): estabelecida aqui
   apenas para o modelo i.i.d.\ de passeio aleatório ramificado
-  (Teorema~\ref{thm:transition-model}); em $q=3$ esta conjectura é, em
-  particular, exatamente a Conjectura do Expoente de Crescimento de
-  Applegate--Lagarias, aberta desde 1995, cujo melhor resultado
-  incondicional parcial permanece sendo a cota unilateral de
-  Krasikov--Lagarias \cite{KrasikovLagarias2003}.
+  (Teorema~\ref{thm:transition-model}, e, condicionalmente,
+  Proposição~\ref{prop:transition-fine}); em $q=3$ esta conjectura
+  implica, e refina estritamente, a Conjectura do Expoente de
+  Crescimento de Kontorovich--Lagarias e Applegate--Lagarias, aberta
+  desde 1995, cujo melhor resultado incondicional parcial permanece
+  sendo a cota unilateral de Krasikov--Lagarias
+  \cite{KrasikovLagarias2003}.
 \end{enumerate}
 
 Qualquer progresso em qualquer um de (A1)--(A8) muito provavelmente se

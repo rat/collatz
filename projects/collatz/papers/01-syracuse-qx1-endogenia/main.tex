@@ -34,7 +34,7 @@
 
 \title{The $qx+1$ Generalization of Tao's Syracuse Measure:\\
 A Closed-Form Pressure Equation, an Endogeny Barrier,\\
-and Its Convergent Characterization Across Seven Independent Routes}
+and Its Convergent Characterization Across Five Independent Vocabularies}
 
 \author{Renato Augusto Tavares~{\small\href{mailto:dr.renatotavares@gmail.com}{\textcolor{black}{\faEnvelope}}}~\orcidlink{0009-0002-0196-3311}\\
 \normalsize Universidade Federal de Goiás}
@@ -83,17 +83,20 @@ structure of the tree: solutions of the form $G = W\cdot Y$, with $Y$
 an arbitrary bounded factor invariant along the tree, solve the same
 fixed-point recursion as the canonical (``endogenous'') solution $W$
 and are statistically indistinguishable from it by every observable we
-are able to test. We show, by six technically unrelated routes, that
-closing this gap is equivalent to one and the same unresolved
-arithmetic statement: Wirsching's 1998 Weak Covering Conjecture
-\cite{Wirsching1998}, Tao's 2020 $\beta=1$ conjecture \cite{Tao2020}
-(which we show is literally the same algebraic object as the Weak
-Covering Conjecture), a functional equation for an explicit base-$3$
+are able to test. We show, by four methodologically independent
+vocabularies (endogeny itself counting as the first), that closing
+this gap is equivalent to one and the same unresolved arithmetic
+statement: Wirsching's 1998 Weak Covering Conjecture
+\cite{Wirsching1998} and Tao's 2020 $\beta=1$ conjecture
+\cite{Tao2020} (which we show is literally the same algebraic object,
+hence counted once), a functional equation for an explicit base-$3$
 analogue of the Fabius function arising in Wirsching's 2003 paper
 \cite{Wirsching2003}, and two candidate lemmas suggested as natural
 next steps by Tao's bivariate Fourier-decay technique
-\cite{Tao2022,Tao2011}, both of which we execute to completion and
-both of which fail through the \emph{same} missing ingredient: one
+\cite{Tao2022,Tao2011} (also counted once, since both share the same
+second-moment Fourier decomposition), both of which we execute to
+completion and both of which fail through the \emph{same} missing
+ingredient: one
 yields a genuine closed-form structure theorem together with a
 conditional reduction whose hypothesis (square-integrability of the
 Syracuse density on $\mathbb{Z}_3$) we refute by an exact recursive
@@ -115,11 +118,13 @@ the barrier precisely within the wider theory of Fourier decay for
 self-similar and self-conformal measures \cite{BakerBanaji2026,
 Bremont}, and shows it is structurally inaccessible to that toolkit
 because of the rigidity of closed subgroups of $\mathbb{Z}_3^\times$.
-We argue that this convergence of seven independent and technically
-unrelated formulations onto the same unproven statement is itself
-significant evidence that the obstruction is a genuine feature of the
-problem rather than an artifact of any single method, and we state
-precisely what remains to be proved.
+We argue that this convergence of five methodologically independent
+and technically unrelated vocabularies onto the same unproven
+statement --- two of whose pairwise coincidences are themselves
+proved identities, not analogies, and are counted once each --- is
+itself significant evidence that the obstruction is a genuine feature
+of the problem rather than an artifact of any single method, and we
+state precisely what remains to be proved.
 \end{abstract}
 
 \tableofcontents
@@ -229,8 +234,8 @@ following contributions.
   (\S\ref{sec:context}).} We show the barrier is structurally
   inaccessible to the general theory of Fourier decay for self-similar
   measures, for a precise arithmetic reason (rigidity of closed
-  subgroups of $\mathbb{Z}_3^\times$), and we identify a seventh,
-  purely combinatorial, independent formulation of the same
+  subgroups of $\mathbb{Z}_3^\times$), and we identify a fifth,
+  purely combinatorial, independent vocabulary for the same
   obstruction in very recent work \cite{Chang2026}.
 \end{enumerate}
 
@@ -454,11 +459,21 @@ divergence of quenched from annealed growth: at $q=3$, $u_0=1$ --- a
 genuine period-one cycle of the residue dynamics, since $w_2(1)=1$
 exactly --- $Z_k(2;1)^{1/k}$ shows an oscillation with geometric-mean
 ratio well below the annealed rate $\rho_{\mathrm{ann}}(2)=1$; at
-$q=5$, $Z_k(1;u_0)^{1/k}$ at several roots $u_0\in\{1,2,3,4\}$ likewise
-fails to track $\rho_{\mathrm{ann}}(1)=1$. We report these as
-qualitative confirmation of freezing (quenched strictly below annealed)
-rather than as a quantitative match to any specific frozen-phase
-asymptotic, which we have not derived.
+$q=5$, $Z_k(1;u_0)^{1/k}$ at the roots $u_0\in\{1,2,3,4\}$ likewise
+fails to track $\rho_{\mathrm{ann}}(1)=1$. We flag, rather than
+obscure, a limitation of this specific check: every one of these
+roots lies on or feeds directly into the smallest-admissible-branch
+map's own trivial cycle ($1\leftrightarrow3$ for $q=5$, exactly as
+$u_0=1$ does for $q=3$), so the divergence observed here has a
+deterministic-recurrence explanation available in addition to the
+entropy mechanism of Proposition~\ref{prop:always-frozen}, and does
+not by itself sample the generic (non-periodic) environment that the
+quenched statement is really about. We therefore report this as an
+illustration of freezing at a special, easily-computed class of
+roots, not as a confirmation at a generic one; \S\ref{sec:kl-empirical}
+below and the statistically calibrated measurement of \S\ref{sec:kl}
+--- both averaging over many roots sampled well away from any known
+short cycle --- carry the actual generic-environment evidence.
 
 The consequence, by Proposition~\ref{prop:always-frozen}, is
 unconditional: Theorem~\ref{thm:pressure}, though exact, rigorously
@@ -508,40 +523,46 @@ $\rho_{\mathrm{ann}}(\alpha)=q^{\alpha-1}/(2^\alpha-1)$
 (Proposition~\ref{prop:always-frozen}), $\log N(x)/\log x\to\alpha_-(q)$
 almost surely, for every odd $q\ge3$ \cite{Biggins1992}: exponent $1$
 (linear growth) at $q=3$; exponent $\alpha_-(q)<1$ for every $q\ge5$.
-At the finer level of the Crump--Mode--Jagers renewal theorem for
-general branching processes \cite{Nerman1981} (whose non-lattice
-hypothesis holds here, since $\log q/\log2$ is irrational for every
-$q\ge3$), the sharper asymptotic holds uniformly, \emph{including} at
-$q=3$: $N(x)\sim W\cdot x^{\alpha_-(q)}$ almost surely, for some a.s.\
-positive, non-degenerate random scale factor $W$ --- not a
-deterministic constant at any $q$, since the underlying reproduction
-law has genuine variance. (Nerman's theorem is stated for point
-processes on $[0,\infty)$; our branching displacements include negative
-values, e.g.\ $2/3<1$ at $q=3$, since a child can be numerically
-smaller than its parent, so the finer statement applies here only via
-the standard extension to general, not necessarily one-sided,
-reproduction measures, whose hypotheses we have not verified in
-detail.)
 \end{theorem}
+
+\begin{proposition}[Finer asymptotic, conditional]\label{prop:transition-fine}
+Conditional on the standard extension of the Crump--Mode--Jagers
+renewal theorem \cite{Nerman1981} to general, not necessarily
+one-sided, reproduction measures --- whose hypotheses we do not verify
+in detail here, our branching displacements including negative values
+(e.g.\ $2/3<1$ at $q=3$, since a child can be numerically smaller than
+its parent) --- the sharper asymptotic $N(x)\sim W\cdot x^{\alpha_-(q)}$
+holds almost surely, uniformly and \emph{including} at $q=3$, for an
+almost surely positive, non-degenerate random scale factor $W$ (not a
+deterministic constant at any $q$, since the underlying reproduction law
+has genuine variance). The non-lattice hypothesis of \cite{Nerman1981}
+itself holds here, since $\log q/\log2$ is irrational for every $q\ge3$.
+\end{proposition}
 
 \begin{conjecture}[Structural transition: density, arithmetic tree]\label{conj:transition-arithmetic}
 The same dichotomy holds for the genuine reverse tree of $T_q$ itself,
-not merely for the i.i.d.\ model of
-Theorem~\ref{thm:transition-model}: for $q=3$ it has positive natural
+not merely for the i.i.d.\ model of Theorem~\ref{thm:transition-model}
+and Proposition~\ref{prop:transition-fine}: for $q=3$ it has positive natural
 density ($N_u(x)\sim x$); for every odd $q\ge5$ it has natural density
-zero, with $N_u(x)\sim W_u\cdot x^{\alpha_-(q)}$. At $q=3$ this is, in
-particular, exactly the Growth Exponent Conjecture of
+zero, with $N_u(x)\sim W_u\cdot x^{\alpha_-(q)}$. At $q=3$ this
+\emph{implies, and strictly refines}, the Growth Exponent Conjecture of
+Kontorovich--Lagarias \cite{KontorovichLagarias2009} and
 Applegate--Lagarias
 \cite{ApplegateLagarias1995I,ApplegateLagarias1995II} for the classical
-Collatz reverse tree --- open since 1995, with the best unconditional
-partial result remaining the one-sided bound $\pi_a(x)\ge x^{0.84}$ of
-Krasikov--Lagarias \cite{KrasikovLagarias2003}. Our pressure identity
-reproduces this conjecture as the $\alpha_-=1$ case of a single
-closed-form equation, together with its $q\ge5$ analogue, rather than
-resolving it.
+Collatz reverse tree, which asserts only the exponent
+$\pi_a(x)=x^{1+o(1)}$, not a specific asymptotic constant --- open
+since 1995, with the best unconditional partial result remaining the
+one-sided bound $\pi_a(x)\ge x^{0.84}$ of Krasikov--Lagarias
+\cite{KrasikovLagarias2003}. Our pressure identity reproduces the
+exponent-$1$ statement of this conjecture as the $\alpha_-=1$ case of
+a single closed-form equation, together with its $q\ge5$ analogue,
+rather than resolving it; the further claim of a specific limiting
+constant is additional content of Conjecture~\ref{conj:transition-arithmetic}
+beyond the classical conjecture.
 \end{conjecture}
 
-We state Theorem~\ref{thm:transition-model} and
+We state Theorem~\ref{thm:transition-model},
+Proposition~\ref{prop:transition-fine}, and
 Conjecture~\ref{conj:transition-arithmetic} separately, rather than as
 a single theorem about the arithmetic tree, precisely because the step
 from one to the other is exactly the kind of transfer that caused the
@@ -558,10 +579,11 @@ the genuine i.i.d.\ branching-random-walk model that the annealed
 identity of Theorem~\ref{thm:pressure} describes, quenched-equals-annealed
 growth throughout the unfrozen region is a rigorous, classical result
 \cite{Biggins1992}. For our arithmetic recursion, no analogous theorem
-is known to us: the gap is the same one already identified in
-Theorem~\ref{thm:barrier} (near-independence of fresh digits across
-sibling subtrees, here in a quantitative large-deviations form rather
-than a qualitative one), and the closest genuine arithmetic result in
+is known to us: the gap is the same one already identified around
+Theorem~\ref{thm:barrier} (Remark~\ref{rem:barrier-reading}:
+near-independence of fresh digits across sibling subtrees, here in a
+quantitative large-deviations form rather than a qualitative one), and
+the closest genuine arithmetic result in
 the literature is a one-sided density bound of Applegate--Lagarias
 \cite{ApplegateLagarias1995I,ApplegateLagarias1995II}, later sharpened
 by Krasikov--Lagarias \cite{KrasikovLagarias2003} (already cited in
@@ -858,34 +880,48 @@ classical mechanisms:
   the full i.i.d.\ hypothesis.
 \end{enumerate}
 
-\begin{theorem}[Precise statement of the barrier]\label{thm:barrier}
-Any argument using only \textup{(i)} the exact weight recursion of the
-reverse tree and \textup{(ii)} statistics of the $3$-adic digits
-factors through the smoothing-transform model, which admits
-non-endogenous solutions (harmonic gauge factors) with strictly
-positive conditional-variance floor at every resolution, statistically
-indistinguishable from the endogenous solution by pressure, tail
-index, or any marginal we have tested. The missing ingredient that
-closes the gap \emph{in the idealized model} --- and which remains to
-be transferred to the arithmetic setting --- is near-independence,
-across sibling subtrees, of the fresh $3$-adic digits of the leaf
-integers, together with equidistribution of the Archimedean phase
-along paths. The known rigorous analogue, in the forward direction, is
-the Fourier decay of Tao's Syracuse variables
-(Proposition~\ref{prop:tao117}); the reverse-tree/density version
-remains open and is \emph{not} implied by it.
+\begin{theorem}[The recursion does not force endogeny]\label{thm:barrier}
+The smoothing-transform model associated with the exact weight
+recursion of the reverse tree admits non-endogenous solutions (harmonic
+gauge factors, Proposition~\ref{prop:gauge}; the $2$-adic obstruction is
+excluded by Lemma~\ref{lem:2adic}) with a strictly positive
+conditional-variance floor $\sigma_Y>0$ at every resolution,
+statistically indistinguishable from the endogenous solution by
+pressure, tail index, or any marginal we have tested. Consequently the
+exact weight recursion together with the statistics of the $3$-adic
+digits does not by itself force the residual gauge dispersion to
+vanish.
 \end{theorem}
 
-We stress the epistemic status of the two halves of
-Theorem~\ref{thm:barrier}: the classification result (a) can be stated
-unconditionally as ``standard machinery under [hypotheses], detailed
-verification pending'' rather than as a theorem we have independently
-re-derived against our exact setup; the $2$-adic exclusion
+\begin{remark}[Barrier reading, and epistemic status]\label{rem:barrier-reading}
+Informally this delimits a class of arguments: we are aware of no
+argument using only \textup{(i)} the exact weight recursion and
+\textup{(ii)} statistics of the $3$-adic digits that does not factor
+through this smoothing-transform model, and hence none that can
+distinguish the endogenous from the non-endogenous solution. We do
+\emph{not} formalize ``uses only (i) and (ii)'' as a precise class of
+techniques (in contrast to relativization or natural-proofs barriers in
+complexity theory), so this is a heuristic delineation of known
+approaches, not a formal impossibility theorem. The $2$-adic exclusion
 (Lemma~\ref{lem:2adic}) and the gauge construction
-(Proposition~\ref{prop:gauge}) are fully rigorous and independently
-verified. We never assert that the residual gauge dispersion
-$\sigma_Y$ vanishes for the true arithmetic object; only that the
-recursion alone cannot force it to.
+(Proposition~\ref{prop:gauge}) that Theorem~\ref{thm:barrier} rests on
+are fully rigorous and independently verified; the classification claim
+above (that any such argument factors through the smoothing-transform
+model) can be stated unconditionally as ``standard machinery under
+[hypotheses], detailed verification pending'' rather than as
+independently re-derived against our exact setup. We never assert that
+the residual gauge dispersion $\sigma_Y$ vanishes for the true
+arithmetic object; only that the recursion alone cannot force it to.
+The missing ingredient that closes the gap \emph{in the idealized
+model} --- and which remains to be transferred to the arithmetic
+setting --- is near-independence, across sibling subtrees, of the
+fresh $3$-adic digits of the leaf integers, together with
+equidistribution of the Archimedean phase along paths. The known
+rigorous analogue, in the forward direction, is the Fourier decay of
+Tao's Syracuse variables (Proposition~\ref{prop:tao117}); the
+reverse-tree/density version remains open and is \emph{not} implied by
+it.
+\end{remark}
 
 \subsection{Precise regime of the tail exponent}
 \label{sec:endogeny-addendum}
@@ -968,12 +1004,23 @@ gives:
 The excess (real $-$ synthetic) converges monotonically to zero with
 increasing truncation depth, the opposite sign from what a genuine
 positive arithmetic coupling would produce, reinforcing rather than
-merely failing to contradict the conclusion. No positive arithmetic
-coupling between sibling subtrees was detected; the effective coupling
-is bounded at roughly $6\%$ of the maximum coupling explored in the
-synthetic control. Equation~\eqref{eq:rho-eff} converts the purely
-theoretical gap of Theorem~\ref{thm:barrier} into a quantitative,
-falsifiable empirical bound on its size.
+merely failing to contradict the conclusion. We state the scope of
+this bound precisely: no coupling of the specific functional form
+explored by Arm~2 (whole-family replication of subtree \emph{contents}
+at intensity $\rho$) was detected in the real tree beyond
+$\rho_{\mathrm{eff}}\lesssim0.06$ of that family's maximum intensity.
+This is not, by itself, a bound on every conceivable form of coupling;
+in particular it does not directly bound the exact, coarse,
+$\Delta$-dependent pair correlation of
+Proposition~\ref{prop:exact-endogeny} below, which has a different
+functional form (a fixed correlation coefficient on a coarse
+$\sigma$-algebra, not a tunable intensity on full subtree content) and
+is not necessarily well-represented by Arm~2's calibration curve; see
+Remark~\ref{rem:calibration-consistency} for why the two results are
+nonetheless consistent rather than in tension. Equation~\eqref{eq:rho-eff}
+converts the purely theoretical gap of Theorem~\ref{thm:barrier} into a
+quantitative, falsifiable empirical bound on its size, for this family
+of couplings.
 
 \section{An unconditional empirical result: resolving the
 Kontorovich--Lagarias vs.\ Volkov dispute for $5x+1$}
@@ -1247,16 +1294,16 @@ arithmetic hypothesis.
   $\log 9/\log 2$.
 \end{enumerate}
 
-\begin{theorem}[Regime 3 is a recognized open problem]\label{thm:regime3}
-Regime 3 above is equivalent, in difficulty, to (i) correlations of
-digital functions in bases $2$ and $3$
-\cite{Spiegelhofer2021}, (ii) effective rigidity for $\times 2,\times
-3$-invariant structures in the sense of Furstenberg (the pair
-$(w_1,w_2)$ is $v$ observed through two elements of the affine
-semigroup generated by $x\mapsto(2^ax-1)/3$), open in the generality
-required here, and (iii) exponential Fourier decay for $3$-adic
-self-similar measures of Breuillard--Varjú type, known only in special
-algebraic cases. None of these furnishes a usable tool today.
+\begin{theorem}[Regime 3 is at least as hard as recognized open problems]\label{thm:regime3}
+Regime 3 above is a special case of, and in the generality required
+here is at least as hard as, each of: (i) correlations of digital
+functions in bases $2$ and $3$ \cite{Spiegelhofer2021}, (ii) effective
+rigidity for $\times 2,\times 3$-invariant structures in the sense of
+Furstenberg (the pair $(w_1,w_2)$ is $v$ observed through two elements
+of the affine semigroup generated by $x\mapsto(2^ax-1)/3$), open in the
+generality required here, and (iii) exponential Fourier decay for
+$3$-adic self-similar measures of Breuillard--Varjú type, known only in
+special algebraic cases. None of these furnishes a usable tool today.
 \end{theorem}
 
 \section{Triangulation: three independent formulations of the same
@@ -1459,6 +1506,49 @@ $L^2(\mathbb{Z}_3)$): the fine covariance, net of the exact coarse
 component, would then be $\le K_\infty - K_{\ell_0}\to 0$, uniformly in
 $m,D,\Delta$.
 
+\begin{remark}[Consistency with the calibration of \S\ref{sec:calibration}]
+\label{rem:calibration-consistency}
+Proposition~\ref{prop:exact-endogeny} and the null result
+$\rho_{\mathrm{eff}}\lesssim 0.06$ of \S\ref{sec:calibration} measure
+different objects and do not conflict, though the point is worth making
+explicit. Proposition~\ref{prop:exact-endogeny} concerns the
+\emph{correlation coefficient} of the coarse ($\ell=1$, mod $3$)
+projection of a \emph{single} sibling pair: exact, nonzero, and
+$D$-independent. \S\ref{sec:calibration} measures instead the
+\emph{relative} residual variance of full integer population counts,
+aggregated over the whole tree at large truncation. The coarse
+covariance $C_{\mathrm{exact}}(\ell_0;\Delta)$ above is finite and
+$D$-independent, while the aggregate means $\mathbb{E}[Z_i]$ grow
+exponentially with truncation depth; hence its normalized contribution
+$C_{\mathrm{exact}}/(\mathbb{E}[Z_1]\mathbb{E}[Z_2])\to 0$ as depth
+increases. A per-pair coarse correlation that is exactly persistent
+therefore contributes a vanishing \emph{fraction} of the aggregate
+variance --- real, but below the detection threshold of the
+calibration experiment --- and the \emph{rate} of that dilution is
+plausibly the observed signal: the excess of \S\ref{sec:calibration}
+decays monotonically to zero with truncation depth, as a fixed
+$C_{\mathrm{exact}}$ diluted by exponentially growing variance would.
+Separately, the refutation of the $L^2$ hypothesis below
+(Theorem~\ref{thm:l2-refutation}) is the failure of an \emph{upper
+bound} on the fine covariance ($K_\infty=\infty$ makes the bound above
+vacuous), not a proof that the fine covariance is in fact large;
+\S\ref{sec:calibration} measures directly the fine coupling this bound
+leaves uncontrolled, and finds it small. Finally, the geometric branch
+weights $q\cdot 2^{-a}$ concentrate on small gaps $\Delta$,
+predominantly in the case $\Delta\not\equiv 0\pmod 6$ (coarse
+correlation $-1/2$) rather than $\Delta\equiv 0\pmod 6$ (coarse
+correlation $+1$), so the net coarse contribution is plausibly
+\emph{negative} --- consistent with, though we stop short of claiming
+to predict, the observed negative sign of the residual excess in
+\S\ref{sec:calibration}. The two sections are therefore complementary
+rather than in tension: Theorem~\ref{thm:barrier} and
+Proposition~\ref{prop:exact-endogeny} establish that the recursion
+\emph{cannot force} sibling decorrelation (the per-pair coarse
+structure survives at every depth), while \S\ref{sec:calibration}
+establishes that the actual aggregate residual is nonetheless
+empirically small.
+\end{remark}
+
 \begin{theorem}[Computational refutation of the $L^2$ hypothesis]
 \label{thm:l2-refutation}
 $K_\ell$ was computed exactly via the recursion
@@ -1653,8 +1743,11 @@ Littlewood--Offord/Riesz-product counting argument of the kind used in
 $\ell^1$ methods by Theorem~\ref{thm:propC} --- is exactly the branch
 identified as the core of $\beta=1$ (\S\ref{sec:triangulation}) and of
 the refuted $L^2$ condition (Theorem~\ref{thm:l2-refutation}): a
-\emph{fourth and fifth} independent articulation of the same missing
-ingredient.
+further articulation, within the same second-moment Fourier vocabulary
+as the $L^2$ condition (both decompose via the character sum
+$\Cov\propto\sum_\xi S_1(\xi)S_2(\xi)^\ast$ of
+\S\ref{sec:regimes}), of the same missing ingredient --- not a
+methodologically independent fourth or fifth route in its own right.
 \end{theorem}
 
 We emphasize the correct framing, consistent with the fragilities
@@ -1746,7 +1839,7 @@ Diophantine approximation) simply does not exist on the $3$-adic side
 --- which cuts against the diffuse scenario as much as for it. We cite
 Theorem~\ref{thm:no-transfer} with this disanalogy stated explicitly.
 
-\subsection{A seventh independent formulation, empirically tested}
+\subsection{A fifth independent vocabulary, empirically tested}
 
 Very recent independent work \cite{Chang2026} reduces the Collatz
 conjecture, by a purely combinatorial route with no Fourier analysis
@@ -1774,13 +1867,17 @@ an artifact of aggregating many short, finite, similarly-phased
 orbits, and the single-long-orbit result as qualified empirical support
 for the conjecture of \cite{Chang2026}, on the scale tested.
 
-This gives a seventh, technically unrelated, articulation of the same
+This gives a fifth, technically unrelated, vocabulary for the same
 missing ingredient: equidistribution/balance of residues along the
-true orbit, appearing independently in endogeny (\S\ref{sec:endogeny}),
-the Weak Covering Conjecture (\S\ref{sec:wcc}), $\beta=1$
-(\S\ref{sec:triangulation}), the $L^2$ condition
-(\S\ref{sec:lemmas}), the spectral dichotomy (\S\ref{sec:lemmas}), and
-now a purely combinatorial reformulation.
+true orbit, appearing independently via the smoothing-transform/
+endogeny route (\S\ref{sec:endogeny}), the entropy count shared by the
+Weak Covering Conjecture and $\beta=1$ (\S\ref{sec:wcc},
+\S\ref{sec:triangulation} --- proved to be the same algebraic object by
+Proposition~\ref{prop:beta-wcc}, hence counted once), Wirsching's 2003
+functional equation (\S\ref{sec:triangulation}), the second-moment
+Fourier analysis shared by the $L^2$ condition and the spectral
+dichotomy of Proposition~C (\S\ref{sec:lemmas}, likewise counted once),
+and now a purely combinatorial reformulation.
 
 \section{Discussion: why a precisely characterized barrier is a
 genuine contribution}
@@ -1807,22 +1904,35 @@ obstruction --- showing not merely that an approach fails, but
 recognized and citable form of mathematical contribution, independent
 of whether the underlying conjecture is eventually resolved.
 
-Second, these results do not stand alone: they converge, by seven
-technically unrelated routes (endogeny, the Weak Covering Conjecture,
-$\beta=1$, Wirsching's 2003 functional equation, the $L^2$ condition,
-the spectral dichotomy of Proposition~C, and the purely combinatorial
-reformulation of \cite{Chang2026}), on what appears to be a single
-underlying arithmetic statement: some form of equidistribution or
+Second, these results do not stand alone: the same underlying
+arithmetic statement --- some form of equidistribution or
 near-independence of $3$-adic digits along the true, deterministic
-integer dynamics, not merely along an idealized i.i.d.\ model. A
-barrier that is only visible from one angle is a natural candidate for
-being an artifact of that angle's specific technique; a barrier that
-recurs, in essentially the same form, across seven independent
-technical vocabularies (character sums, smoothing transforms, a real
-functional equation, Jensen's identity, a self-similar-measure
-classification, and elementary residue counting) is much better
-evidence that the obstruction is a structural feature of the problem
-itself.
+integer dynamics, not merely along an idealized i.i.d.\ model --- is
+the crux reached by five methodologically independent vocabularies:
+(1) the smoothing-transform/endogeny route (\S\ref{sec:endogeny}); (2)
+the entropy count shared by Wirsching's Weak Covering Conjecture and
+Tao's $\beta=1$, which Proposition~\ref{prop:beta-wcc} shows to be the
+\emph{same algebraic object}; (3) Wirsching's 2003 real functional
+equation and its Fabius density (\S\ref{sec:triangulation}); (4) the
+second-moment Fourier analysis underlying both the $L^2$ condition and
+the spectral dichotomy of Proposition~C (\S\ref{sec:lemmas}), which
+share the common character decomposition
+$\Cov\propto\sum_\xi S_1(\xi)S_2(\xi)^\ast$; and (5) the purely
+combinatorial residue-balance reformulation of \cite{Chang2026}. We
+count five rather than seven deliberately: two of the pairwise
+linkages are not analogies but \emph{proved identities} ---
+$\beta=1\cong$~WCC (Proposition~\ref{prop:beta-wcc}) and the common
+second-moment origin of the $L^2$ and spectral-dichotomy branches ---
+and we count each such pair once. That two vocabularies can be
+\emph{proved} to be one object is itself stronger evidence that the
+obstruction is a single structural feature of the problem than a loose
+analogy would be. A barrier visible from only one angle is a candidate
+artifact of that technique; a barrier reached by five independent
+vocabularies (branching-process fixed points, integer
+covering/entropy counting, a real functional equation, second-moment
+character sums, and elementary residue counting), two of whose pairwise
+coincidences are theorems, is much better evidence that the obstruction
+is a structural feature of the problem itself.
 
 Third, this theoretical package sits alongside a result
 (Empirical Result~\ref{thm:kl}) whose validity does not depend on any of the
@@ -1837,7 +1947,7 @@ proof of any part of the Collatz conjecture, nor as a report of
 failure, but as a precise map of where a specific, natural,
 technically rich line of attack --- Tao's Syracuse-measure program,
 generalized to $qx+1$ --- runs into a wall, together with an exact
-quantification of the size and shape of that wall from seven
+quantification of the size and shape of that wall from five
 independent angles, and one hard, unconditional empirical result
 obtained along the way.
 
@@ -1849,9 +1959,10 @@ cleanest form we have been able to give them.
 
 \begin{enumerate}[label=(O\arabic*)]
 \item \textbf{Near-independence of fresh $3$-adic digits across
-  sibling subtrees} (Theorem~\ref{thm:barrier}): the arithmetic
-  statement whose idealized (i.i.d.) analogue is provable via
-  smoothing-transform classification and Choquet--Deny rigidity.
+  sibling subtrees} (Theorem~\ref{thm:barrier},
+  Remark~\ref{rem:barrier-reading}): the arithmetic statement whose
+  idealized (i.i.d.) analogue is provable via smoothing-transform
+  classification and Choquet--Deny rigidity.
 \item \textbf{Wirsching's Weak Covering Conjecture} (Conjecture~\ref{conj:wcc}),
   equivalently (Proposition~\ref{prop:beta-wcc}) Tao's $\beta=1$
   (\S\ref{sec:triangulation}), open since 1998 and 2020 respectively.
@@ -1896,11 +2007,12 @@ cleanest form we have been able to give them.
 \item \textbf{The density transition on the genuine arithmetic tree}
   (Conjecture~\ref{conj:transition-arithmetic}): established here only
   for the matching i.i.d.\ branching-random-walk model
-  (Theorem~\ref{thm:transition-model}); for $q=3$ this conjecture is,
-  in particular, exactly the Growth Exponent Conjecture of
-  Applegate--Lagarias, open since 1995, of which the best
-  unconditional partial result remains the one-sided bound of
-  Krasikov--Lagarias \cite{KrasikovLagarias2003}.
+  (Theorem~\ref{thm:transition-model}, and, conditionally,
+  Proposition~\ref{prop:transition-fine}); for $q=3$ this conjecture
+  implies, and strictly refines, the Growth Exponent Conjecture of
+  Kontorovich--Lagarias and Applegate--Lagarias, open since 1995, of
+  which the best unconditional partial result remains the one-sided
+  bound of Krasikov--Lagarias \cite{KrasikovLagarias2003}.
 \end{enumerate}
 
 Any progress on any one of (O1)--(O8) would very likely transfer, given

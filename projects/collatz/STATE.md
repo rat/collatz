@@ -1,6 +1,70 @@
 # Estado atual — Collatz
 
-Última atualização: 2026-07-19
+Última atualização: 2026-07-20
+
+## Quarta rodada de auditoria: 4 defeitos lógicos estruturais corrigidos (Fable indisponível, Opus consultado)
+
+Uma quarta auditoria (focada em estrutura lógica, não aritmética) achou
+7 problemas, ranqueados por gravidade. A consulta ao Fable falhou por
+limite de sessão (reset 3:30am); diretor científico pediu para
+consultar o Opus no lugar. Itens 1-4 (os "defeitos lógicos reais",
+segundo a auditoria) foram decididos com o Opus; itens 5 e 7 resolvidos
+sozinho, com verificação computacional própria.
+
+- **Item 1 (o mais grave): tensão §5 (calibração, ρ_eff≲0.06, "nenhum
+  acoplamento detectado") vs. Proposição 10.2 (correlação grosseira
+  exata ±1/-1/2, provada, persistente).** Veredito do Opus: NÃO é
+  contradição, é lacuna de exposição — as duas seções medem objetos
+  diferentes (correlação de par único em precisão grosseira vs.
+  variância agregada de contagens reais) e a correlação grosseira,
+  embora exata e persistente por par, é diluída a uma fração
+  evanescente da variância agregada conforme a profundidade cresce
+  (exatamente a taxa do sinal observado). Adicionado um Remark
+  (`rem:calibration-consistency`) explicando a ponte, nos dois idiomas.
+- **Item 2: dupla contagem no argumento de "sete rotas
+  independentes".** Procedente parcialmente: WCC≅β=1 é identidade
+  provada (não analogia), e a condição L² + dicotomia espectral de
+  Prop C partem da mesma decomposição de Fourier de segundo momento —
+  confirmei isso eu mesmo relendo §8.2. Recontado 7→5 vocabulários
+  genuinamente distintos, propagado por todo o paper: título, resumo,
+  lista de contribuições da introdução, `thm:propC`, a subseção de
+  Chang (agora "quinto vocabulário"), e o parágrafo principal da
+  Discussão — em ambos os idiomas.
+- **Item 3: teoremas de "barreira" sem classe de argumentos
+  formalizada** (`thm:barrier`, `thm:regime3`). Veredito: o problema é
+  a precisão do enunciado, não o rótulo do ambiente (ao contrário do
+  caso `empirical` da rodada anterior). `thm:barrier` dividido em
+  Teorema (só o que é rigoroso: gauge + exclusão 2-ádica) + Observação
+  `rem:barrier-reading` (a leitura informal de barreira, com aviso
+  epistêmico explícito de que "usa apenas (i),(ii)" não é uma classe
+  formalizada). `thm:regime3` reformulado de "equivalente em
+  dificuldade" para uma redução direcional precisa ("é ao menos tão
+  difícil quanto"). `thm:no-transfer` mantido intacto (cada item já é
+  verificável).
+- **Item 4: hipótese não verificada dentro do corpo de um Teorema**
+  (a extensão de Nerman em `thm:transition-model`). Confirmado como
+  problema de rigor real. Dividido em Teorema (só Biggins, log N/log x
+  → α, sem cláusula não verificada) + Proposição condicional nomeada
+  `prop:transition-fine` (a assíntota fina via Nerman, com a hipótese
+  não verificada explicitamente isolada como a condição da proposição).
+- **Item 5 (resolvido sozinho, com verificação computacional)**:
+  confirmei em Python que TODAS as 4 raízes usadas no teste de
+  congelamento de q=5 (não só a de q=3) tocam o ciclo trivial {1,3} do
+  mapa T5. Reescrito o parágrafo para declarar isso e apontar para onde
+  está a evidência genuína de ambiente genérico.
+- **Item 6 (ligado ao item 1): ρ_eff≲0.06 é relativo à família de
+  acoplamento do Braço 2, não a toda forma de acoplamento.** Escopo
+  declarado explicitamente em §5, com referência cruzada ao Remark do
+  item 1.
+- **Item 7 (resolvido sozinho)**: Conjectura 3.7 (q=3) "implica e
+  refina estritamente" a Growth Exponent Conjecture (que afirma só o
+  expoente, x^(1+o(1))), não é "exatamente" ela — nossa conjectura
+  afirma também uma constante assintótica específica.
+
+PDFs recompilados limpos nas duas versões (main.pdf: 30→31 páginas;
+main-pt-br.pdf: 31→32 páginas). Escopo desta rodada foi maior que as
+três anteriores — tocou título, resumo, introdução, 3 seções internas,
+a Discussão, e a Conclusão.
 
 ## Terceira rodada de auditoria externa: erro matemático real na §2 + 2 correções menores
 
