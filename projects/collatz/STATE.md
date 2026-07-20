@@ -79,9 +79,20 @@ entradas da bibliografia contra `INDEX.md`/H-arquivos/fontes primárias:
   alegação de veículo específico, mantido só "preprint, 2026".
 - Getachew: adicionado volume "12(1)", confirmado em `INDEX.md`.
 Ambos os `.tex` recompilados limpos após as correções, bibliografia
-final (página 7) reinspecionada visualmente. **Ainda não revisado pelo
-diretor científico** — próximo passo natural é ele ler e dar feedback,
-como no paper 01.
+final (página 7) reinspecionada visualmente.
+
+Segunda passada do `advisor()` pegou mais um problema: a Metodologia
+prometia que o detalhe técnico completo de cada caso estava "nos
+arquivos de caso individuais referenciados na Seção 3" — mas a Seção 3
+só cita os papers criticados (`\cite{Getachew2025}` etc.), nunca os
+H-arquivos internos, que além disso vivem no ResearchOS privado, não no
+`collatz-endogeny` público (não faz sentido um paper público apontar
+para um repo privado). Corrigido: a frase agora diz que o detalhe foi
+"registrado durante esta revisão em notas de trabalho internas", sem
+prometer um locator que não existe. Recompilado limpo nas duas versões.
+
+**Ainda não revisado pelo diretor científico** — próximo passo natural
+é ele ler e dar feedback, como no paper 01.
 
 ## H-130 entrou no paper como nota de rodapé compacta
 
