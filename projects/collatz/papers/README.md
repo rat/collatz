@@ -28,6 +28,12 @@ and, as writing progresses, the draft files themselves.
   writing without an explicit request from the scientific director** —
   different nature from paper 01 (grows with every item read from the
   collection, has no natural "closing" point).
+- **`03-alegacoes-de-prova-refutadas/`** — narrower, closable sibling of
+  02: catalogs *only* claims of a complete proof (or disproof) of the
+  Collatz conjecture (12 cases as of 2026-07-20, all already reviewed
+  in depth, none valid), with a taxonomy of the recurring error
+  patterns. Started 2026-07-20 at the scientific director's explicit
+  request; absorbs `BACKLOG.md` item 5 (Santos 2018). See `OUTLINE.md`.
 
 ## Convention
 

@@ -281,22 +281,15 @@ Processo contínuo — toda alegação de prova recebida (ex: PDFs, links) deve
 ser lida e catalogada em `literature/unverified-proof-claims.md`, seguindo o
 padrão já estabelecido.
 
-## 5. Escrever um paper curto apontando os erros do PDF de Santos (2018) — PENDENTE
+## 5. Escrever um paper curto apontando os erros do PDF de Santos (2018) — ABSORVIDO no item 9 (2026-07-20)
 
-Pedido do diretor científico em 2026-07-13. Transformar a análise já feita em
-`literature/unverified-proof-claims.md` (o furo lógico na Seção 2.6: assume
-uma sequência fixa de passos para K>30 e generaliza ilegitimamente) num
-manuscrito curto e formal — algo publicável como nota/comentário crítico, não
-apenas uma entrada de catálogo interna. Estrutura sugerida:
-1. Resumo da alegação do artigo original.
-2. Reconstrução formal do argumento da Seção 2.6.
-3. Contra-exemplo ou demonstração explícita do gap lógico (por que a
-   generalização de "um K específico" para "todo K" não se sustenta — falta
-   de limite sobre sequências adversárias de movimentos crescentes).
-4. Conexão com o "obstáculo estrutural" que nenhuma tentativa de prova
-   conhecida resolve (`literature/overview-and-known-results.md`).
-Ainda não iniciado — próxima sessão pode começar por aqui se o diretor
-científico priorizar.
+Pedido do diretor científico em 2026-07-13. Em 2026-07-20 o diretor pediu o
+início do "paper sobre erros dos papers ao tentar provar a conjectura" —
+escopo confirmado como o catálogo de alegações de prova/refutação completa
+(ver item 9 abaixo, `papers/03-alegacoes-de-prova-refutadas/OUTLINE.md`).
+Santos 2018 é um dos 12 casos desse catálogo; não precisa de paper solo
+separado. Este item fica registrado apenas como histórico do pedido
+original.
 
 ## 7. Escrever um paper curto apontando o erro de rotulagem de Pratiher (2026) — PENDENTE
 
@@ -599,3 +592,15 @@ que lemos e corrigimos um por um. Material já acumulado:
 Continuar adicionando aqui (ou num arquivo dedicado, se a lista crescer
 muito) conforme processarmos os próximos itens da coleção. Ver memória
 `feedback_santos_pdf_paper_timing.md`.
+
+## 9. Escrever paper catalogando alegações de prova/refutação completa da conjectura — EM ANDAMENTO (iniciado 2026-07-20)
+
+Pedido do diretor científico em 2026-07-20 ("vamos iniciar o paper sobre
+erros dos papers ao tentar provar a conjectura?"). Escopo confirmado por
+pergunta direta: apenas os casos que alegam prova (ou refutação) *completa*
+da conjectura — não qualquer paper Collatz-adjacente da coleção (isso
+continua sendo o item 8, que segue `PENDENTE`). Diferente do item 8, este é
+um catálogo fechável: 12 casos já revisados a fundo hoje, todos com erro
+real localizado, nenhum válido. Absorve o item 5 (Santos 2018). Ver
+`papers/03-alegacoes-de-prova-refutadas/OUTLINE.md` para a estrutura
+completa e a lista dos 12 casos com taxonomia dos padrões de erro.

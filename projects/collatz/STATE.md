@@ -2,6 +2,28 @@
 
 Última atualização: 2026-07-20
 
+## Iniciado paper 03: catálogo de alegações de prova/refutação completa
+
+Pedido do diretor científico: "vamos iniciar o paper sobre erros dos papers
+ao tentar provar a conjectura?". Havia ambiguidade real de escopo entre 3
+itens do BACKLOG (5, 7, 8) — perguntei diretamente e o diretor confirmou:
+**apenas alegações de prova/refutação completa**, não qualquer paper
+Collatz-adjacente (isso continua sendo o item 8, aberto, não iniciado) nem
+o erro de rotulagem do Pratiher (item 7, categoria diferente — fica de
+fora). Levantamento (BACKLOG.md item 8, `literature/unverified-proof-claims.md`,
+`literature/papers/INDEX.md`) encontrou **12 casos** já revisados a fundo:
+Getachew/H-079, Spencer×2/H-081+H-085, Santos 2018, Halemane(CTUHSK)/H-043,
+Mohammed/H-045, Boyle/H-065, Roif/H-096, Yun/H-068, Tynski/H-093, disputa
+Syzdykov×2/H-094+H-098 (+ nota crítica Lafontaine & Cheong), Barghout/H-116
+— nenhum é prova válida. Criado `papers/03-alegacoes-de-prova-refutadas/`
+com `OUTLINE.md`: estrutura em 5 seções, com uma **taxonomia de 7 padrões
+de erro recorrentes** (A-G) como contribuição central, não só a lista de
+casos. Absorve o item 5 (Santos) — atualizado no BACKLOG.md. Item 9 novo
+no BACKLOG.md registra o paper como "em andamento". Duas decisões deixadas
+em aberto no OUTLINE.md para o diretor: idioma (dual EN/PT-BR como o paper
+01, ou só um) e nível de formalidade (nota curta vs. paper completo por
+caso). Nenhuma redação do corpo do paper começou ainda — só a estrutura.
+
 ## H-130 entrou no paper como nota de rodapé compacta
 
 Diretor científico perguntou se H-130/H-126 agregariam valor ao paper.
