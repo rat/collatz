@@ -16,13 +16,30 @@ Getachew/H-079, Spencer×2/H-081+H-085, Santos 2018, Halemane(CTUHSK)/H-043,
 Mohammed/H-045, Boyle/H-065, Roif/H-096, Yun/H-068, Tynski/H-093, disputa
 Syzdykov×2/H-094+H-098 (+ nota crítica Lafontaine & Cheong), Barghout/H-116
 — nenhum é prova válida. Criado `papers/03-alegacoes-de-prova-refutadas/`
-com `OUTLINE.md`: estrutura em 5 seções, com uma **taxonomia de 7 padrões
-de erro recorrentes** (A-G) como contribuição central, não só a lista de
-casos. Absorve o item 5 (Santos) — atualizado no BACKLOG.md. Item 9 novo
-no BACKLOG.md registra o paper como "em andamento". Duas decisões deixadas
-em aberto no OUTLINE.md para o diretor: idioma (dual EN/PT-BR como o paper
-01, ou só um) e nível de formalidade (nota curta vs. paper completo por
-caso). Nenhuma redação do corpo do paper começou ainda — só a estrutura.
+com `OUTLINE.md`. Perguntei ao diretor as duas decisões em aberto:
+confirmado **dual EN/PT-BR** (mesmo padrão do paper 01) e **paper
+completo com casos resumidos** (aparato formal concentrado na taxonomia,
+cada caso ~1 parágrafo remetendo ao H-arquivo).
+
+Antes de escrever qualquer LaTeX, `advisor()` apontou um ponto cego real:
+a taxonomia inicial (7 categorias) foi montada só a partir de título +
+1 linha de status dos 6 casos que eu ainda não tinha lido na íntegra
+(Boyle/H-065, Roif/H-096, Yun/H-068, Tynski/H-093, cluster
+Syzdykov/H-094+H-098, Barghout/H-116) — e não sobrevivia ao teste
+(Boyle não se encaixava em nenhuma categoria). Lendo os 6 arquivos
+completos: a taxonomia caiu de 7 para **5 categorias**, e uma delas
+passou a concentrar 5 dos 12 casos — Mohammed/H-045, Boyle/H-065,
+Tynski/H-093, cluster Syzdykov, Barghout/H-116 são todos a MESMA
+falácia (propriedade agregada/média/assintótica confundida com garantia
+determinística sobre uma trajetória individual), disfarçada por
+aparatos formais completamente diferentes (Baker, heurística de
+passeio aleatório, Lyapunov 2-ádico, notação Big-O, densidade
+estática). Achado confirmado nos próprios H-arquivos: H-093, H-095 e
+H-116 já se citavam mutuamente como "a mesma falácia recorrente" antes
+mesmo deste paper existir — não é uma categorização imposta de fora.
+Isso vira a tese central do paper, mais forte que a versão inicial.
+`OUTLINE.md` atualizado com a taxonomia corrigida. Nenhuma redação do
+corpo do paper (LaTeX) começou ainda — só a estrutura.
 
 ## H-130 entrou no paper como nota de rodapé compacta
 
