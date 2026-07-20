@@ -165,3 +165,20 @@ agora, seria trabalho novo, não fechamento de ponta.
 - 2026-07-17: hipótese criada; refutação do esboço e teorema de
   estrutura formalizados via consulta ao Fable; hipótese L² do Lema 2′
   testada e refutada em E-100 (K_ℓ diverge linearmente até ℓ=17).
+- 2026-07-20: predição falsificável (iii) da seção "Veredito final"
+  perseguida (não mais "não perseguida agora"). Uma auditoria externa
+  do paper apontou tensão aparente entre a Prop. 2 (correlação
+  grosseira exata, persistente) e a calibração empírica de H-110
+  (ρ_eff≲0,06, "nenhum acoplamento detectado"). Opus consultado propôs
+  reconciliação por diluição (a correlação de par é exata mas
+  contribui fração evanescente da variância agregada que cresce
+  exponencialmente) e sugeriu computar a soma ponderada por Δ para
+  verificar o sinal previsto (negativo). **E-108**: sob a medida
+  natural de seleção de par pelo produto dos pesos de ramo (a mesma do
+  Lema 1), E[Corr] = -3/7 exato (P(Δ≡0 mod 6)=1/21, P(Δ≢0 mod 6)=20/21) —
+  confirma o sinal negativo previsto, com magnitude não-trivial. Não é
+  prova de que a calibração de H-110 mede exatamente esta quantidade
+  (o Braço 2 usa uma família de acoplamento funcionalmente diferente),
+  mas fortalece a plausibilidade da reconciliação por diluição já
+  registrada no paper (`rem:calibration-consistency`). Ver
+  `experiments/E-108-delta-weighted-coarse-correlation/`.

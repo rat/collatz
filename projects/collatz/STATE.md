@@ -2,6 +2,58 @@
 
 Última atualização: 2026-07-20
 
+## Quatro pontas de pesquisa abertas pela auditoria, testadas nesta sessão
+
+Depois da 4ª rodada de auditoria, diretor científico perguntou se as
+correções abriram margem para pesquisa nova. Identifiquei 4 pontas
+concretas e testei todas, na ordem escolhida (mais barata primeiro).
+Fable ficou indisponível no meio do processo (confirmado pelo diretor
+científico — ver `feedback_fable_unavailable_use_opus.md` na memória);
+uma chamada isolada ainda funcionou (usada para o item 2), mas Opus é
+agora o substituto padrão para julgamento matemático externo.
+
+- **Item 1 (resolvido, resultado exato novo)**: a soma ponderada por Δ
+  da correlação grosseira de H-126/Prop.2, sob a medida natural de
+  segundo momento (peso ∝ 2^-a_i·2^-a_j), dá **E[Corr] = -3/7 exato**
+  (P(Δ≡0 mod6)=1/21, P(Δ≢0 mod6)=20/21) — confirma o sinal negativo
+  previsto para a reconciliação com a calibração de H-110, com
+  magnitude não-trivial. Novo experimento `E-108`, mirrorado em
+  `collatz-endogeny/sec4-endogeny-barrier/`. O Remark do paper
+  (`rem:calibration-consistency`) atualizado para citar o valor exato
+  em vez de só "plausivelmente negativo". H-126 atualizada.
+- **Item 2 (resolvido, citação melhorada)**: busca dirigida + Fable
+  (única chamada que funcionou) confirmaram que não existe extensão
+  pronta de Nerman (1981) para reprodução bilateral que dê N(x)~Wx^α;
+  a distinção entre "renovação de contagem cumulativa" e "cauda de
+  equação de ponto fixo" é real (confirmada via fetch dos PDFs de
+  Jelenković-Olvera-Cravioto 2012 e Alsmeyer-Biggins-Meiners 2012).
+  Veredito: não rebaixar para Conjectura (não há evidência contra o
+  enunciado, só uma lacuna técnica real com ferramentas padrão
+  disponíveis) — reescrita a Proposição condicional (`prop:transition-fine`)
+  citando a maquinaria vizinha certa em vez de "estendendo Nerman"
+  vagamente, e um preprint recente (Villemonais–Zalduendo 2025,
+  arXiv:2512.07653) registrado como pista a verificar, não como
+  resolução confirmada.
+- **Item 3 (nova hipótese aberta)**: a esterilidade extra da árvore
+  reversa quando 2 não é raiz primitiva mod q (achado da correção da
+  §2) conecta à Conjectura da Raiz Primitiva de Artin — tabela para
+  q=3..61 mostra que mesmo q primos às vezes falham (q=7,17,23,31,...),
+  com q=31 como caso extremo (25/30 resíduos estéreis). Registrada como
+  `H-130`, aberta — não afeta o Teorema 3.3, mas levanta pergunta sobre
+  se a esterilidade extra introduz estrutura por coset de ⟨2⟩ na
+  constante W_u. Nenhum experimento formal ainda, só exploração
+  numérica preliminar.
+- **Item 4 (fechado, negativo mas registrado)**: busca dirigida não
+  achou redução conhecida na direção reversa do Regime 3 (nem
+  Spiegelhofer⟹decaimento de Fourier, nem o inverso). Consistente com
+  o veredito já registrado em H-115 há 7 rodadas ("não perseguir mais
+  por analogia"). A reformulação unidirecional do paper ("ao menos tão
+  difícil quanto") já é a alegação mais forte defensável — não precisa
+  de mudança adicional. H-115 atualizada com o adendo.
+
+PDFs recompilados limpos (main.pdf: 31 páginas; main-pt-br.pdf: 32→33
+páginas).
+
 ## Quarta rodada de auditoria: 4 defeitos lógicos estruturais corrigidos (Fable indisponível, Opus consultado)
 
 Uma quarta auditoria (focada em estrutura lógica, não aritmética) achou
@@ -2013,6 +2065,17 @@ rotulagem off-by-one encontrado na Conjectura 10.4 de Pratiher 2026
   `hypotheses/H-129-q-adic-pole-analog-seymour.md` para o registro
   completo (inclui dois erros de processo autocorrigidos com
   advisor+Fable antes de reportar como confirmados).
+- `H-130` (nova, 2026-07-20) — a árvore reversa de qx+1 tem
+  esterilidade extra (além de u≡0) quando 2 não é raiz primitiva mod q
+  (ex.: q=7, ord₇(2)=3<φ(7)=6) — achado durante a correção da §2 do
+  paper (auditoria, 3ª rodada). Conecta à Conjectura da Raiz Primitiva
+  de Artin (tabela para q=3..61: mesmo entre q primos, 2 nem sempre é
+  primitivo — q=7,17,23,31,41,43,47 são contraexemplos na faixa
+  testada; q=31 é o caso extremo, 25/30 dos resíduos estéreis). Não
+  afeta o Teorema 3.3 (confirmado). Pergunta aberta: a esterilidade
+  extra só reescala W_u, ou introduz estrutura por coset de ⟨2⟩? Só
+  exploração numérica preliminar feita, nenhum experimento formal
+  ainda. Ver `hypotheses/H-130-esterilidade-extra-2-nao-raiz-primitiva.md`.
 - `H-127` — redução condicional da falha da WCC (Wirsching) a
   configurações de Bohr pós-wrap, via Littlewood-Offord/Halász. Status
   do próprio arquivo diz "em revisão". Zeladoria bibliográfica (8 de 9

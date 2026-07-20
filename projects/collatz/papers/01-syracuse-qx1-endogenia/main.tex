@@ -526,17 +526,35 @@ almost surely, for every odd $q\ge3$ \cite{Biggins1992}: exponent $1$
 \end{theorem}
 
 \begin{proposition}[Finer asymptotic, conditional]\label{prop:transition-fine}
-Conditional on the standard extension of the Crump--Mode--Jagers
-renewal theorem \cite{Nerman1981} to general, not necessarily
-one-sided, reproduction measures --- whose hypotheses we do not verify
-in detail here, our branching displacements including negative values
-(e.g.\ $2/3<1$ at $q=3$, since a child can be numerically smaller than
-its parent) --- the sharper asymptotic $N(x)\sim W\cdot x^{\alpha_-(q)}$
-holds almost surely, uniformly and \emph{including} at $q=3$, for an
-almost surely positive, non-degenerate random scale factor $W$ (not a
-deterministic constant at any $q$, since the underlying reproduction law
-has genuine variance). The non-lattice hypothesis of \cite{Nerman1981}
-itself holds here, since $\log q/\log2$ is irrational for every $q\ge3$.
+Conditional on a renewal-type refinement, from the counting-function
+level (not merely the exponent) to the sharper asymptotic
+$N(x)\sim W\cdot x^{\alpha_-(q)}$, holding almost surely and uniformly,
+\emph{including} at $q=3$, for an almost surely positive, non-degenerate
+random scale factor $W$ (not a deterministic constant at any $q$, since
+the underlying reproduction law has genuine variance). A directed
+literature search found the neighboring machinery but not this exact
+statement ready-made: the classical Crump--Mode--Jagers renewal theorem
+\cite{Nerman1981} is stated for one-sided ($[0,\infty)$) reproduction
+point processes, while our branching displacements include negative
+values (e.g.\ $2/3<1$ at $q=3$, since a child can be numerically
+smaller than its parent); the branching-random-walk martingale theory
+that is natively two-sided \cite{Biggins1992} gives convergence
+generation-by-generation, not a renewal law summed over all generations;
+and the implicit renewal theory for weighted trees with general
+(two-sided) weights \cite{Goldie1991,JelenkovicOlveraCravioto2012,
+AlsmeyerBigginsMeiners2012} resolves the \emph{tail} of the fixed-point
+equation for $W$ itself, not the cumulative counting law for $N(x)$ ---
+a related but distinct question. We expect the present statement to
+follow from combining this machinery (spine decomposition and
+exponential tilting for a two-sided one-dimensional random walk,
+exactly as already used for the tail-of-$W$ results just cited) but we
+have not carried out that adaptation, nor located it already written in
+this exact form; a very recent preprint \cite{VillemonaisZalduendo2025}
+extends branching-process convergence laws to general type spaces
+without geometric rescaling and may already contain it, but we have not
+verified this. The non-lattice hypothesis that any such extension of
+\cite{Nerman1981} would need holds here regardless, since $\log
+q/\log2$ is irrational for every $q\ge3$.
 \end{proposition}
 
 \begin{conjecture}[Structural transition: density, arithmetic tree]\label{conj:transition-arithmetic}
@@ -1534,13 +1552,22 @@ bound} on the fine covariance ($K_\infty=\infty$ makes the bound above
 vacuous), not a proof that the fine covariance is in fact large;
 \S\ref{sec:calibration} measures directly the fine coupling this bound
 leaves uncontrolled, and finds it small. Finally, the geometric branch
-weights $q\cdot 2^{-a}$ concentrate on small gaps $\Delta$,
-predominantly in the case $\Delta\not\equiv 0\pmod 6$ (coarse
-correlation $-1/2$) rather than $\Delta\equiv 0\pmod 6$ (coarse
-correlation $+1$), so the net coarse contribution is plausibly
-\emph{negative} --- consistent with, though we stop short of claiming
-to predict, the observed negative sign of the residual excess in
-\S\ref{sec:calibration}. The two sections are therefore complementary
+weights $q\cdot 2^{-a}$ concentrate on small gaps $\Delta$: weighting
+pairs of branches by their natural second-moment mass
+$2^{-a_i}\cdot2^{-a_j}$ (the same weighting entering $\Cov$ above),
+$\Delta=2k$ has probability $3\cdot4^{-k}$, giving $\Pr[\Delta\equiv
+0\!\!\pmod6]=1/21$ against $\Pr[\Delta\not\equiv0\!\!\pmod6]=20/21$
+exactly, so the mean coarse correlation under this natural weighting is
+exactly $\mathbb{E}[\Corr]=\tfrac{1}{21}(+1)+\tfrac{20}{21}(-\tfrac12)=
+-\tfrac37$ (verified in
+\texttt{collatz-endogeny/sec4-endogeny-barrier/}) --- confirming,
+under this specific weighting, that the net coarse contribution is
+\emph{negative} and non-negligible in sign, consistent with, though we
+stop short of claiming to fully derive, the observed negative sign of
+the residual excess in \S\ref{sec:calibration}. (This does not by
+itself establish that the calibration experiment's Arm~2 coupling
+family is weighted this same way; see the scoping remark in
+\S\ref{sec:calibration}.) The two sections are therefore complementary
 rather than in tension: Theorem~\ref{thm:barrier} and
 Proposition~\ref{prop:exact-endogeny} establish that the recursion
 \emph{cannot force} sibling decorrelation (the per-pair coarse
@@ -2131,6 +2158,15 @@ computation is a known source of silent error.
 \bibitem{AlsmeyerBigginsMeiners2012} G.\ Alsmeyer, J.\ D.\ Biggins, and
   M.\ Meiners, \emph{The functional equation of the smoothing
   transform}, Annals of Probability \textbf{40}(5) (2012), 2069--2105.
+
+\bibitem{JelenkovicOlveraCravioto2012} P.\ R.\ Jelenkovi\'c and
+  M.\ Olvera-Cravioto, \emph{Implicit renewal theorem for trees with
+  general weights}, Stochastic Processes and their Applications
+  \textbf{122}(9) (2012), 3209--3238.
+
+\bibitem{VillemonaisZalduendo2025} D.\ Villemonais and N.\ Zalduendo,
+  \emph{Convergence of weighted branching processes}, arXiv:2512.07653
+  (2025).
 
 \bibitem{KoleskoMentemeier2015} K.\ Kolesko and S.\ Mentemeier,
   \emph{Fixed points of the multivariate smoothing transform: the

@@ -535,18 +535,37 @@ $q\ge5$.
 \end{theorem}
 
 \begin{proposition}[Assíntota mais fina, condicional]\label{prop:transition-fine}
-Condicional à extensão padrão do teorema de renovação de
-Crump--Mode--Jagers \cite{Nerman1981} a medidas de reprodução gerais,
-não necessariamente unilaterais --- cujas hipóteses não verificamos em
-detalhe aqui, dado que nossos deslocamentos de ramificação incluem
+Condicional a um refinamento do tipo renovação, do nível da função de
+contagem (não apenas o expoente) para a assíntota mais fina
+$N(x)\sim W\cdot x^{\alpha_-(q)}$, valendo quase certamente e
+uniformemente, \emph{inclusive} em $q=3$, para um fator de escala
+aleatório $W$ q.c.\ positivo e não-degenerado (não uma constante
+determinística em nenhum $q$, já que a lei de reprodução subjacente
+tem variância genuína). Uma busca literária dirigida achou a
+maquinaria vizinha, mas não este enunciado exato pronto: o clássico
+teorema de renovação de Crump--Mode--Jagers \cite{Nerman1981} é
+enunciado para processos de pontos de reprodução unilaterais
+($[0,\infty)$), enquanto nossos deslocamentos de ramificação incluem
 valores negativos (e.g.\ $2/3<1$ em $q=3$, já que um filho pode ser
-numericamente menor que seu pai) --- a assíntota mais fina
-$N(x)\sim W\cdot x^{\alpha_-(q)}$ vale quase certamente, uniformemente e
-\emph{inclusive} em $q=3$, para um fator de escala aleatório $W$ q.c.\
-positivo e não-degenerado (não uma constante determinística em nenhum
-$q$, já que a lei de reprodução subjacente tem variância genuína). A
-própria hipótese não-reticulada de \cite{Nerman1981} vale aqui, já que
-$\log q/\log2$ é irracional para todo $q\ge3$.
+numericamente menor que seu pai); a teoria de martingale de passeio
+aleatório ramificado, nativamente bilateral \cite{Biggins1992}, dá
+convergência geração-por-geração, não uma lei de renovação somada
+sobre todas as gerações; e a teoria de renovação implícita para
+árvores ponderadas com pesos gerais (bilaterais)
+\cite{Goldie1991,JelenkovicOlveraCravioto2012,AlsmeyerBigginsMeiners2012}
+resolve a \emph{cauda} da equação de ponto fixo para o próprio $W$, não
+a lei de contagem cumulativa para $N(x)$ --- uma pergunta relacionada
+mas distinta. Esperamos que o enunciado presente siga de combinar essa
+maquinaria (decomposição de espinha e basculamento exponencial para um
+passeio aleatório unidimensional bilateral, exatamente como já usado
+nos resultados de cauda-de-$W$ citados) mas não realizamos essa
+adaptação, nem a localizamos já escrita exatamente nesta forma; um
+preprint muito recente \cite{VillemonaisZalduendo2025} estende leis de
+convergência de processos de ramificação a espaços de tipo gerais sem
+reescala geométrica e pode já contê-la, mas não verificamos isso. A
+hipótese não-reticulada que qualquer extensão de \cite{Nerman1981}
+precisaria vale aqui de todo modo, já que $\log q/\log2$ é irracional
+para todo $q\ge3$.
 \end{proposition}
 
 \begin{conjecture}[Transição estrutural: densidade, árvore aritmética]\label{conj:transition-arithmetic}
@@ -1585,12 +1604,22 @@ acima vazia), não uma prova de que a covariância fina é de fato
 grande; a \S\ref{sec:calibration} mede diretamente o acoplamento fino
 que essa cota deixa sem controle, e o encontra pequeno. Por fim, os
 pesos geométricos de ramo $q\cdot 2^{-a}$ concentram massa em gaps
-$\Delta$ pequenos, predominantemente no caso $\Delta\not\equiv
-0\pmod 6$ (correlação grosseira $-1/2$) em vez de $\Delta\equiv
-0\pmod 6$ (correlação grosseira $+1$), então a contribuição grosseira
-líquida é plausivelmente \emph{negativa} --- consistente com, embora
-paremos aquém de afirmar que prevemos, o sinal negativo observado do
-excesso residual na \S\ref{sec:calibration}. As duas seções são,
+$\Delta$ pequenos: ponderando pares de ramos por sua massa natural de
+segundo momento $2^{-a_i}\cdot2^{-a_j}$ (a mesma ponderação que entra
+no $\Cov$ acima), $\Delta=2k$ tem probabilidade $3\cdot4^{-k}$, dando
+$\Pr[\Delta\equiv0\!\!\pmod6]=1/21$ contra
+$\Pr[\Delta\not\equiv0\!\!\pmod6]=20/21$ exatamente, então a
+correlação grosseira média sob esta ponderação natural é exatamente
+$\mathbb{E}[\Corr]=\tfrac{1}{21}(+1)+\tfrac{20}{21}(-\tfrac12)=-\tfrac37$
+(verificado em \texttt{collatz-endogeny/sec4-endogeny-barrier/}) ---
+confirmando, sob esta ponderação específica, que a contribuição
+grosseira líquida é \emph{negativa} e não-desprezível em módulo,
+consistente com, embora paremos aquém de afirmar que derivamos
+completamente, o sinal negativo observado do excesso residual na
+\S\ref{sec:calibration}. (Isso não estabelece, por si só, que a família
+de acoplamento do Braço~2 do experimento de calibração é ponderada da
+mesma forma; veja a observação de escopo na \S\ref{sec:calibration}.)
+As duas seções são,
 portanto, complementares em vez de estarem em tensão:
 o Teorema~\ref{thm:barrier} e a Proposição~\ref{prop:exact-endogeny}
 estabelecem que a recursão \emph{não pode forçar} a decorrelação entre
@@ -2206,6 +2235,15 @@ não validado é uma fonte conhecida de erro silencioso.
 \bibitem{AlsmeyerBigginsMeiners2012} G.\ Alsmeyer, J.\ D.\ Biggins, and
   M.\ Meiners, \emph{The functional equation of the smoothing
   transform}, Annals of Probability \textbf{40}(5) (2012), 2069--2105.
+
+\bibitem{JelenkovicOlveraCravioto2012} P.\ R.\ Jelenkovi\'c and
+  M.\ Olvera-Cravioto, \emph{Implicit renewal theorem for trees with
+  general weights}, Stochastic Processes and their Applications
+  \textbf{122}(9) (2012), 3209--3238.
+
+\bibitem{VillemonaisZalduendo2025} D.\ Villemonais and N.\ Zalduendo,
+  \emph{Convergence of weighted branching processes}, arXiv:2512.07653
+  (2025).
 
 \bibitem{KoleskoMentemeier2015} K.\ Kolesko and S.\ Mentemeier,
   \emph{Fixed points of the multivariate smoothing transform: the

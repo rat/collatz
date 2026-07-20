@@ -207,6 +207,28 @@ de H-126; Prop. C de H-127) — ambos citáveis por si mesmos.
 começar a escrever o paper (escopo H-109 a H-127, conforme já
 decidido).
 
+## Adendo (2026-07-20): checagem da direção reversa da redução do regime 3
+
+Terceira auditoria do paper apontou que "equivalente em dificuldade"
+(thm:regime3) não é uma relação matemática definida, e o paper foi
+corrigido para uma redução unidirecional precisa ("Regime 3 é ao menos
+tão difícil quanto [Spiegelhofer / rigidez de Furstenberg /
+Breuillard–Varjú]"). Isso deixou em aberto, explicitamente, se a
+implicação reversa vale (o que fecharia uma equivalência de verdade).
+Busca literária dirigida (WebSearch) não achou nenhuma redução
+conhecida na direção reversa — nem um resultado que derive decaimento
+de Fourier exponencial 3-ádico a partir de correlações de dígitos
+base 2/3 tipo Spiegelhofer, nem o inverso. Isso é consistente com o
+veredito já registrado nesta hipótese há 7 rodadas: "não perseguir
+mais o regime 3 por analogia — a resposta já é conhecida (território
+sem ferramenta hoje)". A direção reversa permanece genuinamente aberta
+— não é uma lacuna de busca bibliográfica, seria trabalho matemático
+novo (uma prova de redução de verdade), fora do escopo de uma
+auditoria de correção de texto. A reformulação unidirecional do paper
+("ao menos tão difícil quanto") é, portanto, a mais forte alegação
+defensável no estado atual do conhecimento — não uma perda de rigor,
+mas o reflexo exato do que é conhecido.
+
 ## Referências
 
 - H-110/H-111 — a barreira de endogenia e sua calibração empírica.
