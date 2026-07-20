@@ -643,7 +643,18 @@ $W_i\stackrel{d}{=}2^{-a_0(i)\theta}\cdot W^*$ for a common $W^*$,
 i.e.\ residue class only rescales $W_u$, it does not change its shape.
 Verified on $5000$ sampled roots across four headroom levels, with
 quantile ratios matching this prediction to within $2$--$9\%$; exact
-only in the idealized i.i.d.\ model, as in Remark~\ref{rem:transfer-basis}.}
+only in the idealized i.i.d.\ model, as in Remark~\ref{rem:transfer-basis}.
+The same relation survives unchanged when $2$ is not a primitive root
+mod $q$ (the extra sterile classes of \S\ref{sec:setup}): restricted
+to the surviving types $\langle2\rangle$, the multitype pressure
+matrix is rank $1$, and its Perron eigenvalue collapses, by a
+$d$-independent cancellation ($a_0$ a bijection
+$\langle2\rangle\to\{1,\ldots,d\}$), to exactly $q^{s-1}/(2^s-1)$ ---
+the same pressure equation --- so both the exponent and the
+scale-family direction survive intact; verified for $q=7,15$ to
+$1$--$4\%$. (Whether $2$ is a primitive root mod $q$ is, for prime
+$q$, governed by Artin's primitive root conjecture, open in general
+but proved conditionally on GRH by \cite{Hooley1967}.)}
 the tail-index equation $\mathbb{E}[\sum_i A_i^s]=1$ becomes,
 for our weights, $q^{\alpha_-s-1}=2^{\alpha_- s}-1$, solved exactly by
 $s=\alpha_+/\alpha_-$. This is further reason to take the conjecture
@@ -2208,6 +2219,10 @@ computation is a known source of silent error.
 \bibitem{KrasikovLagarias2003} I.\ Krasikov and J.\ C.\ Lagarias,
   \emph{Bounds for the $3x+1$ problem using difference inequalities},
   Acta Arithmetica \textbf{109} (2003), 237--258.
+
+\bibitem{Hooley1967} C.\ Hooley, \emph{On Artin's conjecture}, Journal
+  f\"ur die reine und angewandte Mathematik \textbf{225} (1967),
+  209--220.
 
 \bibitem{Biggins1992} J.\ D.\ Biggins, \emph{Uniform convergence of
   martingales in the branching random walk}, Annals of Probability

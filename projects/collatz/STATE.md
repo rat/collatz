@@ -2,6 +2,21 @@
 
 Última atualização: 2026-07-20
 
+## H-130 entrou no paper como nota de rodapé compacta
+
+Diretor científico perguntou se H-130/H-126 agregariam valor ao paper.
+H-126 já estava incorporada (Remark de ortogonalidade, rodada
+anterior). Para H-130, ofereci 3 opções (nota compacta / subseção
+completa / não incluir agora); escolhida: **nota compacta**. Estendida
+a nota de rodapé já existente sobre a família de escala (E-103
+Estágio 4, §3, discussão da Conjectura do índice de cauda) com 2-3
+frases sobre o colapso de posto 1 e a menção a Artin (com citação real,
+Hooley 1967, verificada). `E-109` mirrorado em
+`collatz-endogeny/sec3-pressure-equation/` (`experiment_type_rescaling_sterility.py`
++ `tree_lib_sterility.py`), com seção de resultado nos dois READMEs.
+PDFs recompilados limpos (main.pdf: 31 páginas; main-pt-br.pdf: 33
+páginas — nota coube no espaço já existente, sem página nova).
+
 ## H-130 resolvida (a favor da opção (i)) — cálculo de autovalor de posto 1
 
 Pedido "tente resolver as hipóteses em aberto" (após 2 confirmações
