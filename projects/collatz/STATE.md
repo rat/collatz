@@ -54,9 +54,34 @@ páginas mais densas e da bibliografia. Um erro real pego nessa
 inspeção: quebra de linha no meio do nome hifenizado
 "Collatz-Thwaites-Ulam-Hasse-Syracuse-Kakutani" (item bibliográfico do
 Halemane/CTUHSK) inseria um espaço espúrio depois de "Ulam-" — corrigido
-nos dois arquivos, recompilado, confirmado visualmente. **Ainda não
-revisado pelo diretor científico** — próximo passo natural é ele ler e
-dar feedback, como no paper 01.
+nos dois arquivos, recompilado, confirmado visualmente. **Auditoria bibliográfica pós-`advisor()`**: antes de considerar o
+rascunho pronto, `advisor()` pegou um problema real e específico do
+gênero deste paper (uma nota sobre erros de precisão alheia não pode
+ter erros de precisão próprios): o "Article ID 6814378" do Barghout e o
+ano "2025" do Halemane tinham sido escritos sem fonte verificada em
+nenhum arquivo do projeto (mesmo que corretos por acaso). Auditei as 16
+entradas da bibliografia contra `INDEX.md`/H-arquivos/fontes primárias:
+- Barghout: Article ID 6814378 **confirmado real** via WebSearch+DOI
+  (10.1155/2019/6814378, Wiley) — adicionado o DOI como link.
+- Halemane: ano 2025 e autoria "Keshava Prasad Halemane" **confirmados
+  via WebFetch direto na página do engrxiv** (postado 2025-12-21,
+  atualizado 2026-07-10) — resolve também uma discrepância interna
+  (`INDEX.md` tinha "KP Bikarnakatte", provavelmente erro de scraping
+  do Google Scholar; o nome completo lido do PDF, "Halemane", é a fonte
+  mais confiável e agora está confirmado externamente).
+- Mohammed: ano estava **fabricado como "2024"** sem fonte nenhuma —
+  corrigido para 2026 (`INDEX.md`: "A Mohammed - 2026 -
+  researchgate.net"), afiliação também precisada ("Faculty of Science,
+  Kafr El-Sheikh University", de H-045).
+- Syzdykov (item 092, réplica): veículo tinha um conflito real entre as
+  próprias fontes do projeto (`INDEX.md` diz "cambridge.org", H-094 diz
+  "ResearchGate") — sem verificação externa conclusiva, removida a
+  alegação de veículo específico, mantido só "preprint, 2026".
+- Getachew: adicionado volume "12(1)", confirmado em `INDEX.md`.
+Ambos os `.tex` recompilados limpos após as correções, bibliografia
+final (página 7) reinspecionada visualmente. **Ainda não revisado pelo
+diretor científico** — próximo passo natural é ele ler e dar feedback,
+como no paper 01.
 
 ## H-130 entrou no paper como nota de rodapé compacta
 
