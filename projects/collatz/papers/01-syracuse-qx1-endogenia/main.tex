@@ -686,7 +686,7 @@ independent routes, and report both honestly rather than stopping at
 whichever gave the more favorable number.
 
 First, a substantially larger statistical test (5000 roots, four
-headroom levels up to $10^8$; \texttt{collatz-endogeny/sec3-pressure-equation})
+headroom levels up to $10^8$; \texttt{collatz-endogeny/\allowbreak sec3-pressure-equation})
 applied a battery of four estimators (a rank-size regression with the
 Gabaix--Ibragimov finite-sample correction; a bias-corrected Hill
 estimator following Huisman et al.; a generalized-Pareto threshold-stability
@@ -704,8 +704,7 @@ $\approx2.2$ at the narrowest) rather than settling near any single
 value --- consistent with a slowly-converging pre-asymptotic regime in
 which no estimator at this sample size can be treated as decisive.
 
-Second, we tested the conjecture by an exact, non-statistical route
-(\texttt{collatz-endogeny/sec3-pressure-equation/exact\_moment\_test.py}):
+Second, we tested the conjecture by an exact, non-statistical route:
 the same depth-$k$ recursion $Z_k(\theta;u)$ used to verify the
 frozen-phase growth law above (with $\theta=\alpha_-(5)$) was evaluated
 over the \emph{entire} population of residues $u\bmod 5^k$ (not a
@@ -713,7 +712,8 @@ sample), for $k$ up to $11$ ($5^{11}\approx4.9\times10^7$ residues; a
 sanity check --- that the population mean of $Z_k(\theta;u)$ equals
 exactly $1$ for every $k$, forced by Theorem~\ref{thm:pressure} at
 $\alpha=\theta$ --- passed to floating-point precision, confirming the
-implementation). If $W_u=\lim_k Z_k(\theta;u)$ has tail index
+implementation; \texttt{collatz-endogeny/\allowbreak sec3-pressure-equation}).
+If $W_u=\lim_k Z_k(\theta;u)$ has tail index
 $\iota$, the population moment $M_k(p)=\mathrm{mean}_u\,Z_k(\theta;u)^p$
 should saturate in $k$ for $p<\iota$ and diverge for $p>\iota$.
 The data show saturating behavior throughout $p\le1.6$ and diverging
@@ -1598,7 +1598,7 @@ $\Delta=2k$ has probability $3\cdot4^{-k}$, giving $\Pr[\Delta\equiv
 exactly, so the mean coarse correlation under this natural weighting is
 exactly $\mathbb{E}[\Corr]=\tfrac{1}{21}(+1)+\tfrac{20}{21}(-\tfrac12)=
 -\tfrac37$ (verified in
-\texttt{collatz-endogeny/sec10-l2-refutation-and-jensen/}), consistent with the
+\texttt{collatz-endogeny/\allowbreak sec10-l2-refutation-and-jensen/}), consistent with the
 observed negative sign of the residual excess in
 \S\ref{sec:calibration}, though (per the structural point above) no
 such quantitative match is actually required to reconcile the two
