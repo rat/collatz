@@ -118,3 +118,18 @@ constante de escala muito menor, ou variância anômala) do que os casos
   rodada de auditoria do paper. Exploração numérica preliminar feita
   (tabela acima); nenhum experimento formal (E-XXX) ainda — aberta
   para retomada futura.
+- 2026-07-20 (mesma sessão, continuação — `E-109`): testado o passo 2
+  do "como testar" acima — a família de escala por tipo
+  ($W_i\sim2^{-a_0(i)\theta}W^*$, já confirmada para q=5 em E-103
+  Estágio 4) sobrevive entre os 3 tipos não-estéreis de q=7
+  ($\langle2\rangle=\{1,2,4\}$, $a_0$: 3,2,1) apesar da esterilidade
+  extra em $\{3,5,6\}$? **Sim**: com 5000 raízes por tipo (headroom
+  $10^7$), todas as 3 razões $W_i/W_j$ batem com a previsão a 2–4%
+  (mesma faixa de precisão do achado original para q=5). q=31 (caso
+  mais extremo da tabela) foi descartado como inviável — $\theta_{31}
+  \approx0{,}0552$ exigiria $H\sim10^{36}$ para amostra razoável.
+  **Conclusão parcial**: evidência a favor da opção (i) do enunciado —
+  a esterilidade extra parece só remover os tipos que não sobrevivem,
+  sem introduzir estrutura nova entre os que sobrevivem. Não é prova
+  geral (um só q testado). Ver
+  `experiments/E-109-h130-sterility-scale-family-q7/`.

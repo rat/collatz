@@ -2,6 +2,49 @@
 
 Última atualização: 2026-07-20
 
+## Dois testes adicionais (pedido: "testar ambos, um por vez"), um deles rendendo a melhor resolução do item 1 até agora
+
+Depois do quase-erro de reticulado (autocorrigido), diretor científico
+pediu para testar mais duas pontas: o passo 2 de H-130 (q=7) e o
+seguimento do item 1 (braço de calibração dependente de Δ).
+
+- **H-130, passo 2 (`E-109`)**: a família de escala por tipo
+  ($W_i\sim2^{-a_0(i)\theta}W^*$, já confirmada para q=5 em E-103
+  Estágio 4) sobrevive entre os 3 tipos não-estéreis de q=7
+  ($\langle2\rangle=\{1,2,4\}$) apesar da esterilidade extra em
+  $\{3,5,6\}$? **Sim** — 5000 raízes por tipo, todas as razões
+  $W_i/W_j$ batem com a previsão a 2–4% (mesma faixa de precisão do
+  achado original para q=5). q=31 (caso mais extremo de H-130) foi
+  descartado como inviável ($\theta\approx0{,}0552$ exigiria
+  $H\sim10^{36}$).
+- **Item 1, seguimento (`E-110`) — resultado melhor do que o esperado**:
+  ao tentar construir um braço de calibração com acoplamento
+  dependente de Δ, descobri algo mais forte: no próprio simulador de
+  H-111, o TIPO do filho (`(rho_phase+k)%3`, exatamente Z_i em
+  precisão ℓ=1 da Prop.2) é função determinística só da fase da raiz e
+  do índice do ramo, **independente do parâmetro ρ** que o Braço 2
+  varia (testado em 2000 seeds, 0 divergências) — e essa estrutura
+  determinística reproduz a correlação exata +1/-1/2 de Prop.2 até a
+  4ª casa decimal. **Isso substitui a "diluição" como resolução
+  primária**: a correlação grosseira e o acoplamento medido por ρ_eff
+  não competem porque medem eixos ortogonais (resíduo determinístico
+  vs. conteúdo/magnitude aleatório) — ρ_eff≲0,06 nunca poderia ter
+  detectado nem deixado de detectar a correlação de Prop.2. O Remark
+  do paper (`rem:calibration-consistency`) foi reescrito para liderar
+  com esse argumento estrutural, mantendo a diluição e o E-108 (-3/7)
+  como pontos secundários.
+
+**Correção de bookkeeping**: a citação do E-108 no paper apontava para
+`collatz-endogeny/sec4-endogeny-barrier/`, mas a Proposição que ele
+verifica (Prop. 2, "Endogenia grosseira exata") vive na §10 do paper,
+não na §4. Corrigido nos dois idiomas; `delta_weighted_correlation.py`
+movido para `sec10-l2-refutation-and-jensen/` no mirror; `E-110`
+(`verify_orthogonality.py`) colocado em `sec5-rho-eff-control-experiment/`
+(onde o simulador que ele testa realmente vive).
+
+PDFs recompilados limpos (main.pdf: 31 páginas; main-pt-br.pdf: 33
+páginas).
+
 ## Quase-erro autocorrigido: reticulado vs. coset na Proposição condicional (prop:transition-fine)
 
 Ao perguntar "existe algo mais a testar?", verifiquei por conta própria

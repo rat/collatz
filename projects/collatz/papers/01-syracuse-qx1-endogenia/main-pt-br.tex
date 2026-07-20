@@ -1068,16 +1068,15 @@ explorada pelo Braço~2 (replicação de família inteira dos
 \emph{conteúdos} de subárvore em intensidade $\rho$) foi detectado na
 árvore real além de $\rho_{\mathrm{eff}}\lesssim0{,}06$ da intensidade
 máxima dessa família. Isso não é, por si só, uma cota sobre toda forma
-concebível de acoplamento; em particular não limita diretamente a
-correlação exata, grosseira, dependente de $\Delta$, de par da
-Proposição~\ref{prop:exact-endogeny} abaixo, que tem uma forma
-funcional diferente (um coeficiente de correlação fixo numa
-$\sigma$-álgebra grosseira, não uma intensidade ajustável sobre o
-conteúdo completo da subárvore) e não é necessariamente bem
-representada pela curva de calibração do Braço~2; veja a
-Observação~\ref{rem:calibration-consistency} para o porquê de os dois
-resultados serem, mesmo assim, consistentes em vez de estarem em
-tensão. A equação~\eqref{eq:rho-eff} converte a lacuna puramente
+concebível de acoplamento; em particular não limita a correlação
+exata, grosseira, dependente de $\Delta$, de par da
+Proposição~\ref{prop:exact-endogeny} abaixo, que vive num eixo
+disjunto (resíduo da raiz, não conteúdo da subárvore) já presente
+identicamente, por construção, no próprio Braço~1 --- então não é uma
+forma de acoplamento que esta calibração poderia ter detectado ou
+deixado de detectar. Veja a Observação~\ref{rem:calibration-consistency}
+para o argumento estrutural verificado. A equação~\eqref{eq:rho-eff}
+converte a lacuna puramente
 teórica do Teorema~\ref{thm:barrier} numa cota empírica quantitativa e
 falsificável do seu tamanho, para esta família de acoplamentos.
 
@@ -1590,29 +1589,44 @@ uniformemente em $m,D,\Delta$.
 A Proposição~\ref{prop:exact-endogeny} e o resultado nulo
 $\rho_{\mathrm{eff}}\lesssim 0{,}06$ da \S\ref{sec:calibration} medem
 objetos diferentes e não conflitam, embora o ponto mereça ser explícito.
-A Proposição~\ref{prop:exact-endogeny} concerne ao \emph{coeficiente de
-correlação} da projeção grosseira ($\ell=1$, mod $3$) de um \emph{único}
-par de irmãos: exato, não-nulo, e independente de $D$. A
-\S\ref{sec:calibration} mede, em vez disso, a variância residual
-\emph{relativa} de contagens populacionais inteiras completas,
-agregadas sobre toda a árvore em truncamento grande. A covariância
-grosseira $C_{\mathrm{exato}}(\ell_0;\Delta)$ acima é finita e
-independente de $D$, enquanto as médias agregadas $\mathbb{E}[Z_i]$
-crescem exponencialmente com a profundidade de truncamento; logo sua
+A razão mais nítida é estrutural, não meramente quantitativa: no
+modelo sintético subjacente aos Braços~1 e~2 da \S\ref{sec:calibration},
+o tipo de um filho (seu resíduo mod $3$ --- exatamente o objeto
+$Z_i$ em $\ell=1$ da Proposição~\ref{prop:exact-endogeny}) é calculado
+como função determinística só da fase da raiz e do índice do ramo,
+reproduzindo a estrutura cíclica real de admissibilidade (validada
+contra inteiros verdadeiros), e é inteiramente independente da
+intensidade de acoplamento $\rho$ que o Braço~2 varia: conferimos isso
+diretamente no código do simulador (2000 sementes,
+$\rho\in\{0,0{,}3,0{,}7,1\}$, zero divergências na sequência de tipos
+resultante), e confirmamos que essa estrutura determinística de tipo
+reproduz a correlação exata da Proposição~\ref{prop:exact-endogeny}
+($+1$ para $\Delta\equiv0\pmod6$, $-1/2$ caso contrário) até a quarta
+casa decimal. Em outras palavras, a correlação grosseira já está
+presente, identicamente, no Braço~1 ($\rho=0$, o nulo "sem
+acoplamento") tanto quanto na árvore real; $\rho$ governa, em vez
+disso, um eixo disjunto --- se o \emph{conteúdo} das subárvores irmãs
+(a aleatoriedade fresca que define o \emph{tamanho} de cada subárvore)
+é compartilhado, não se seus resíduos de raiz são correlacionados. A
+cota $\rho_{\mathrm{eff}}\lesssim0{,}06$ não poderia, portanto, ter
+detectado, nem deixado de detectar, a correlação da
+Proposição~\ref{prop:exact-endogeny} em primeiro lugar: essa
+correlação nunca foi uma forma de acoplamento que a hipótese nula da
+calibração remove. Uma razão secundária, quantitativa, reforça isso:
+mesmo concedendo peso total à correlação grosseira, sua contribuição
+para a variância \emph{agregada} que a calibração mede é diluída. A
+covariância $C_{\mathrm{exato}}(\ell_0;\Delta)$ da
+Proposição~\ref{prop:exact-endogeny} é finita e independente de $D$,
+enquanto as médias agregadas $\mathbb{E}[Z_i]$ crescem
+exponencialmente com a profundidade de truncamento, então sua
 contribuição normalizada
-$C_{\mathrm{exato}}/(\mathbb{E}[Z_1]\mathbb{E}[Z_2])\to 0$ conforme a
-profundidade cresce. Uma correlação grosseira por-par exatamente
-persistente contribui, portanto, uma fração \emph{evanescente} da
-variância agregada --- real, mas abaixo do limiar de detecção do
-experimento de calibração --- e a \emph{taxa} dessa diluição é
-plausivelmente o próprio sinal observado: o excesso da
-\S\ref{sec:calibration} converge monotonicamente a zero com a
-profundidade de truncamento, exatamente como um $C_{\mathrm{exato}}$
-fixo diluído por variância crescendo exponencialmente produziria.
-Separadamente, a refutação da hipótese $L^2$ abaixo
-(Teorema~\ref{thm:l2-refutation}) é a falha de uma \emph{cota
-superior} sobre a covariância fina ($K_\infty=\infty$ torna a cota
-acima vazia), não uma prova de que a covariância fina é de fato
+$C_{\mathrm{exato}}/(\mathbb{E}[Z_1]\mathbb{E}[Z_2])\to0$ conforme a
+profundidade cresce --- consistente com o excesso da
+\S\ref{sec:calibration} decaindo monotonicamente a zero com a
+profundidade de truncamento. Separadamente, a refutação da hipótese
+$L^2$ abaixo (Teorema~\ref{thm:l2-refutation}) é a falha de uma
+\emph{cota superior} sobre a covariância fina ($K_\infty=\infty$ torna
+a cota acima vazia), não uma prova de que a covariância fina é de fato
 grande; a \S\ref{sec:calibration} mede diretamente o acoplamento fino
 que essa cota deixa sem controle, e o encontra pequeno. Por fim, os
 pesos geométricos de ramo $q\cdot 2^{-a}$ concentram massa em gaps
@@ -1623,21 +1637,19 @@ $\Pr[\Delta\equiv0\!\!\pmod6]=1/21$ contra
 $\Pr[\Delta\not\equiv0\!\!\pmod6]=20/21$ exatamente, então a
 correlação grosseira média sob esta ponderação natural é exatamente
 $\mathbb{E}[\Corr]=\tfrac{1}{21}(+1)+\tfrac{20}{21}(-\tfrac12)=-\tfrac37$
-(verificado em \texttt{collatz-endogeny/sec4-endogeny-barrier/}) ---
-confirmando, sob esta ponderação específica, que a contribuição
-grosseira líquida é \emph{negativa} e não-desprezível em módulo,
-consistente com, embora paremos aquém de afirmar que derivamos
-completamente, o sinal negativo observado do excesso residual na
-\S\ref{sec:calibration}. (Isso não estabelece, por si só, que a família
-de acoplamento do Braço~2 do experimento de calibração é ponderada da
-mesma forma; veja a observação de escopo na \S\ref{sec:calibration}.)
-As duas seções são,
-portanto, complementares em vez de estarem em tensão:
-o Teorema~\ref{thm:barrier} e a Proposição~\ref{prop:exact-endogeny}
-estabelecem que a recursão \emph{não pode forçar} a decorrelação entre
-irmãos (a estrutura grosseira por-par sobrevive em toda profundidade),
-enquanto a \S\ref{sec:calibration} estabelece que o resíduo agregado
-real é, mesmo assim, empiricamente pequeno.
+(verificado em \texttt{collatz-endogeny/sec10-l2-refutation-and-jensen/}),
+consistente com o sinal negativo observado do excesso residual na
+\S\ref{sec:calibration}, embora (pelo ponto estrutural acima) nenhuma
+correspondência quantitativa desse tipo seja de fato necessária para
+reconciliar os dois resultados. As duas seções são, portanto,
+complementares em vez de estarem em tensão: o Teorema~\ref{thm:barrier}
+e a Proposição~\ref{prop:exact-endogeny} estabelecem que a recursão
+\emph{não pode forçar} a decorrelação entre irmãos (a estrutura
+grosseira por-par sobrevive em toda profundidade, em qualquer modelo
+que respeite a regra de admissibilidade verdadeira), enquanto a
+\S\ref{sec:calibration} estabelece que o resíduo agregado real, no
+eixo ortogonal do conteúdo das subárvores, é mesmo assim
+empiricamente pequeno.
 \end{remark}
 
 \begin{theorem}[Refutação computacional da hipótese $L^2$]

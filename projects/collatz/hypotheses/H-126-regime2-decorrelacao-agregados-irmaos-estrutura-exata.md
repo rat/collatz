@@ -182,3 +182,24 @@ agora, seria trabalho novo, não fechamento de ponta.
   mas fortalece a plausibilidade da reconciliação por diluição já
   registrada no paper (`rem:calibration-consistency`). Ver
   `experiments/E-108-delta-weighted-coarse-correlation/`.
+- 2026-07-20 (mesma sessão, continuação — `E-110`): resolução MAIS
+  FORTE encontrada, indo além da diluição. Verifiquei diretamente no
+  código do simulador de H-111
+  (`experiment_synthetic_core.py`) que `child_type = (rho_phase+k)%3`
+  (o resíduo mod 3 do filho — exatamente Z_i em precisão ℓ=1 da
+  Prop.2) é função determinística só da fase da raiz e do índice do
+  ramo, **nunca do parâmetro `rho`** (a intensidade de acoplamento que
+  o Braço 2 varia). Testado em 2000 seeds com ρ∈{0,0.3,0.7,1.0}: 0
+  divergências na sequência de tipos. E a correlação de tipo do
+  simulador reproduz exatamente +1/-1/2 de Prop.2 (até a 4ª casa
+  decimal). **Conclusão**: a correlação grosseira de Prop.2 e o
+  acoplamento medido por ρ_eff são eixos ortogonais, não a mesma coisa
+  em escalas diferentes — ρ varia o conteúdo/magnitude das subárvores,
+  a Prop.2 é sobre o resíduo mod 3 (determinístico, presente
+  identicamente em TODOS os braços, real ou sintético). A cota
+  ρ_eff≲0,06 nunca poderia ter detectado nem deixado de detectar a
+  correlação de Prop.2 — ela pertence a um eixo que o experimento não
+  varia. Isso substitui a diluição como explicação primária no paper
+  (`rem:calibration-consistency` atualizado); a diluição (E-108)
+  permanece válida como ponto secundário. Ver
+  `experiments/E-110-calibration-type-structure-orthogonal-to-coarse-corr/`.

@@ -1040,14 +1040,13 @@ explored by Arm~2 (whole-family replication of subtree \emph{contents}
 at intensity $\rho$) was detected in the real tree beyond
 $\rho_{\mathrm{eff}}\lesssim0.06$ of that family's maximum intensity.
 This is not, by itself, a bound on every conceivable form of coupling;
-in particular it does not directly bound the exact, coarse,
-$\Delta$-dependent pair correlation of
-Proposition~\ref{prop:exact-endogeny} below, which has a different
-functional form (a fixed correlation coefficient on a coarse
-$\sigma$-algebra, not a tunable intensity on full subtree content) and
-is not necessarily well-represented by Arm~2's calibration curve; see
-Remark~\ref{rem:calibration-consistency} for why the two results are
-nonetheless consistent rather than in tension. Equation~\eqref{eq:rho-eff}
+in particular it does not bound the exact, coarse, $\Delta$-dependent
+pair correlation of Proposition~\ref{prop:exact-endogeny} below, which
+lives on a disjoint axis (root residue, not subtree content) already
+present identically, by construction, in Arm~1 itself --- so it is not
+a form of coupling this calibration could have detected or missed. See
+Remark~\ref{rem:calibration-consistency} for the verified structural
+argument. Equation~\eqref{eq:rho-eff}
 converts the purely theoretical gap of Theorem~\ref{thm:barrier} into a
 quantitative, falsifiable empirical bound on its size, for this family
 of couplings.
@@ -1541,24 +1540,40 @@ $m,D,\Delta$.
 Proposition~\ref{prop:exact-endogeny} and the null result
 $\rho_{\mathrm{eff}}\lesssim 0.06$ of \S\ref{sec:calibration} measure
 different objects and do not conflict, though the point is worth making
-explicit. Proposition~\ref{prop:exact-endogeny} concerns the
-\emph{correlation coefficient} of the coarse ($\ell=1$, mod $3$)
-projection of a \emph{single} sibling pair: exact, nonzero, and
-$D$-independent. \S\ref{sec:calibration} measures instead the
-\emph{relative} residual variance of full integer population counts,
-aggregated over the whole tree at large truncation. The coarse
-covariance $C_{\mathrm{exact}}(\ell_0;\Delta)$ above is finite and
-$D$-independent, while the aggregate means $\mathbb{E}[Z_i]$ grow
-exponentially with truncation depth; hence its normalized contribution
-$C_{\mathrm{exact}}/(\mathbb{E}[Z_1]\mathbb{E}[Z_2])\to 0$ as depth
-increases. A per-pair coarse correlation that is exactly persistent
-therefore contributes a vanishing \emph{fraction} of the aggregate
-variance --- real, but below the detection threshold of the
-calibration experiment --- and the \emph{rate} of that dilution is
-plausibly the observed signal: the excess of \S\ref{sec:calibration}
-decays monotonically to zero with truncation depth, as a fixed
-$C_{\mathrm{exact}}$ diluted by exponentially growing variance would.
-Separately, the refutation of the $L^2$ hypothesis below
+explicit. The sharpest reason is structural, not merely quantitative:
+in the synthetic model underlying \S\ref{sec:calibration}'s Arm~1 and
+Arm~2, a child's type (its residue mod $3$ --- exactly the
+$\ell=1$ object $Z_i$ of Proposition~\ref{prop:exact-endogeny}) is
+computed as a deterministic function of the root's phase and the
+branch index alone, reproducing the true cyclic admissibility
+structure (validated against real integers), and is entirely
+independent of the coupling intensity $\rho$ that Arm~2 varies: we
+checked this directly in the simulator's code (2000 seeds,
+$\rho\in\{0,0.3,0.7,1\}$, zero divergence in the resulting type
+sequence), and confirmed that this deterministic type structure
+reproduces the exact correlation of
+Proposition~\ref{prop:exact-endogeny} ($+1$ for
+$\Delta\equiv0\pmod6$, $-1/2$ otherwise) to four decimal places. In
+other words, the coarse correlation is already present, identically,
+in Arm~1 ($\rho=0$, the ``no coupling'' null) as it is in the real
+tree; $\rho$ instead governs a disjoint axis --- whether sibling
+subtrees' \emph{content} (the fresh randomness setting each subtree's
+\emph{size}) is shared, not whether their root residues are
+correlated. The bound $\rho_{\mathrm{eff}}\lesssim0.06$ therefore could
+not have detected, or failed to detect,
+Proposition~\ref{prop:exact-endogeny}'s correlation in the first
+place: that correlation was never a form of coupling the calibration's
+null hypothesis removes. A secondary, quantitative reason reinforces
+this: even granting the coarse correlation full weight, its
+contribution to the \emph{aggregate} variance the calibration measures
+is diluted. Proposition~\ref{prop:exact-endogeny}'s covariance
+$C_{\mathrm{exact}}(\ell_0;\Delta)$ is finite and $D$-independent,
+while the aggregate means $\mathbb{E}[Z_i]$ grow exponentially with
+truncation depth, so its normalized contribution
+$C_{\mathrm{exact}}/(\mathbb{E}[Z_1]\mathbb{E}[Z_2])\to0$ as depth
+increases --- consistent with the excess of \S\ref{sec:calibration}
+decaying monotonically to zero with truncation depth. Separately, the
+refutation of the $L^2$ hypothesis below
 (Theorem~\ref{thm:l2-refutation}) is the failure of an \emph{upper
 bound} on the fine covariance ($K_\infty=\infty$ makes the bound above
 vacuous), not a proof that the fine covariance is in fact large;
@@ -1572,20 +1587,18 @@ $\Delta=2k$ has probability $3\cdot4^{-k}$, giving $\Pr[\Delta\equiv
 exactly, so the mean coarse correlation under this natural weighting is
 exactly $\mathbb{E}[\Corr]=\tfrac{1}{21}(+1)+\tfrac{20}{21}(-\tfrac12)=
 -\tfrac37$ (verified in
-\texttt{collatz-endogeny/sec4-endogeny-barrier/}) --- confirming,
-under this specific weighting, that the net coarse contribution is
-\emph{negative} and non-negligible in sign, consistent with, though we
-stop short of claiming to fully derive, the observed negative sign of
-the residual excess in \S\ref{sec:calibration}. (This does not by
-itself establish that the calibration experiment's Arm~2 coupling
-family is weighted this same way; see the scoping remark in
-\S\ref{sec:calibration}.) The two sections are therefore complementary
-rather than in tension: Theorem~\ref{thm:barrier} and
+\texttt{collatz-endogeny/sec10-l2-refutation-and-jensen/}), consistent with the
+observed negative sign of the residual excess in
+\S\ref{sec:calibration}, though (per the structural point above) no
+such quantitative match is actually required to reconcile the two
+results. The two sections are therefore complementary rather than in
+tension: Theorem~\ref{thm:barrier} and
 Proposition~\ref{prop:exact-endogeny} establish that the recursion
 \emph{cannot force} sibling decorrelation (the per-pair coarse
-structure survives at every depth), while \S\ref{sec:calibration}
-establishes that the actual aggregate residual is nonetheless
-empirically small.
+structure survives at every depth, in every model that respects the
+true admissibility rule), while \S\ref{sec:calibration} establishes
+that the actual aggregate residual, on the orthogonal axis of subtree
+\emph{content}, is nonetheless empirically small.
 \end{remark}
 
 \begin{theorem}[Computational refutation of the $L^2$ hypothesis]
