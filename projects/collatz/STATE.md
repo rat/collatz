@@ -2,6 +2,63 @@
 
 Última atualização: 2026-07-19
 
+## Terceira rodada de auditoria externa: erro matemático real na §2 + 2 correções menores
+
+Uma terceira auditoria (rederivação analítica + reimplementação
+computacional independente de tudo verificável) confirmou o núcleo
+matemático como sólido, mas achou um erro real na §2 e duas
+correções bibliográficas/terminológicas menores:
+
+- **Erro real, corrigido — admissibilidade na §2**: o texto afirmava
+  "existe um único a₀(u) com 2^a₀(u) u ≡ 1 (mod q)" para todo u
+  coprimo com q. Falso quando 2 não é raiz primitiva mod q: para q=7,
+  ord₇(2)=3 < φ(7)=6, e verifiquei eu mesmo (Python) que u≡3,5,6
+  (mod 7) não têm expoente admissível algum — são estéreis também,
+  não só u≡0. **Boa notícia**: o código real usado para gerar os
+  números de q=7 (`E-097-qx1-empirical-gate/empirical_qx1_tree.py`,
+  linha 38-39) já tratava isso corretamente (`if a0 is None: continue
+  # classe sem filhos (r fora de <2>)`) — o erro era só na prosa da
+  §2, nenhum resultado numérico precisa ser refeito. Também confirmei
+  que a prova do Teorema 3.3 (identidade de pressão) não depende da
+  alegação errada — ela usa a bijeção na direção reversa (sequência
+  de expoentes → raiz única), nunca a existência de a₀(u) para todo
+  u. Reescrito o parágrafo da §2 para descrever a condição correta
+  (⟨2⟩ ≤ (Z/qZ)˟, sterility fora do subgrupo), citando explicitamente
+  q=7 como exemplo e explicando por que Teorema 3.3 e a enumeração de
+  §6.2 não são afetados.
+- **Referência bibliográfica errada, corrigida**: a citação de Halász
+  apontava para o paper de 1971 sobre valores médios de funções
+  multiplicativas (com uma ressalva no Agradecimento admitindo não
+  ter sido possível verificar a fonte), mas a ferramenta realmente
+  usada no paper (Proposição do déficit de Halász, §10/lemmas) é a
+  estimativa de função de concentração — Halász (1977), Periodica
+  Mathematica Hungarica 8, 197-211. Verifiquei via WebSearch que este
+  paper existe exatamente com esse título/volume/páginas (DOI
+  10.1007/BF02018403). Bibitem e Agradecimento corrigidos nos dois
+  idiomas.
+- **Terminologia**: "Richardson extrapolation" (4 ocorrências em cada
+  idioma) renomeado para "Aitken Δ² extrapolation", consistente com o
+  método realmente descrito no texto (§6.3 já dizia "Aitken's Δ²
+  extrapolation" numa passagem, as outras 4 diziam "Richardson"
+  inconsistentemente). Não mexi no repositório collatz-endogeny (o
+  script `experiment_gate_richardson.py` e seus READMEs mantêm o nome
+  "Richardson" — decisão deliberada de não renomear arquivo/histórico
+  git por uma nomenclatura cosmética; o comentário do próprio script
+  já esclarece "Richardson (Aitken Delta^2)").
+- **Confirmado correto** (nesta auditoria, sem correção necessária):
+  Teorema 3.3, Proposição 3.5, raízes/limiares, Lema 4.2, Proposições
+  8.1/10.2/11.1, Teorema 10.12, recursões de §9.3/§10.1, tabela j*,
+  aritmética de §6, e a fidelidade das citações a Kontorovich-Lagarias,
+  Baker-Banaji e Chang (2026) — auditor rederivou/recomputou tudo de
+  forma independente (sem usar nosso código) e bateu em todos os
+  casos verificáveis em tempo razoável.
+- **Repositório**: não foi contestado desta vez — a auditoria confirma
+  que existe, é público, e a estrutura de pastas corresponde
+  seção a seção às alegações do paper.
+
+PDFs recompilados limpos (main.pdf: 29 páginas; main-pt-br.pdf: 30→31
+páginas).
+
 ## Segunda rodada de auditoria externa: 9 correções adicionais aplicadas
 
 Uma segunda auditoria (verificação linha a linha da primeira rodada de

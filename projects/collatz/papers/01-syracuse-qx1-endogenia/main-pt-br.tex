@@ -107,7 +107,7 @@ Riesz tem uma folga intrínseca de orçamento de Fourier $\ell^1$ de um
 fator $\approx 1{,}88$ no regime que importa. Complementamos esse
 pacote teórico com um resultado puramente empírico e totalmente
 independente: implementando a árvore reversa exata do mapa $5x+1$ e
-aplicando extrapolação de Richardson a uma sequência de medições em
+aplicando extrapolação de Aitken $\Delta^2$ a uma sequência de medições em
 janelas encaixadas, resolvemos uma disputa antiga entre duas previsões
 concorrentes para o expoente de contagem de $5x+1$
 (Kontorovich--Lagarias \cite{KontorovichLagarias2009} contra um modelo
@@ -215,7 +215,7 @@ Wirsching2003}, apresentamos as seguintes contribuições.
   acoplamento aritmético efetivo entre subárvores irmãs, convertendo a
   lacuna teórica de (ii) numa cota empírica quantitativa.
 \item \textbf{Um resultado empírico incondicional (\S\ref{sec:kl}).}
-  Resolvemos, usando enumeração exata e extrapolação de Richardson, uma
+  Resolvemos, usando enumeração exata e extrapolação de Aitken $\Delta^2$, uma
   disputa de longa data entre duas previsões concorrentes para o
   expoente de contagem de $5x+1$.
 \item \textbf{Um teste computacional direto da Weak Covering
@@ -262,12 +262,28 @@ sempre que é inteiro, já que um numerador ímpar dividido exatamente por
 um denominador ímpar dá um quociente ímpar. Escrevendo
 $d:=\OpOrd_q(2)$ para a ordem multiplicativa de $2$ módulo $q$, a
 admissibilidade de $a$ para um dado pai $u$ depende só de $u\bmod q$:
-existe um único resíduo $a_0(u)\in\{1,\dots,d\}$ com
-$2^{a_0(u)}u\equiv 1\pmod q$, e os expoentes admissíveis são exatamente
-$a\equiv a_0(u)\pmod d$. Nós com $u\equiv 0\pmod q$ são
-\emph{estéreis} (sem filhos admissíveis); para $q=3$ isso recupera o
-fato conhecido de que múltiplos de $3$ têm subárvores reversas
-triviais.
+\emph{se} algum $a_0(u)\in\{1,\dots,d\}$ satisfaz
+$2^{a_0(u)}u\equiv 1\pmod q$, ele é único, e os expoentes admissíveis
+são exatamente $a\equiv a_0(u)\pmod d$. Esse $a_0(u)$ existe exatamente
+quando $u\bmod q$ está no subgrupo
+$\langle2\rangle\le(\mathbb{Z}/q\mathbb{Z})^\times$ gerado por $2$; nós
+com $u\equiv 0\pmod q$, e, mais geralmente, nós cujo resíduo mod $q$
+cai fora de $\langle2\rangle$, são \emph{estéreis} (sem filhos
+admissíveis). Quando $2$ é raiz primitiva mod $q$ (como em $q=3,5,9$,
+todos usados numericamente adiante), $\langle2\rangle$ é todo o
+$(\mathbb{Z}/q\mathbb{Z})^\times$ e $u\equiv 0\pmod q$ é a única classe
+estéril; para $q=3$ isso recupera o fato conhecido de que múltiplos de
+$3$ têm subárvores reversas triviais. Em geral, porém, $d=\OpOrd_q(2)$
+pode ser um divisor próprio de $\varphi(q)$: em $q=7$, $d=3<\varphi(7)=6$
+e $\langle2\rangle=\{1,2,4\}$, então $u\equiv 3,5,6\pmod7$ também são
+estéreis, não só $u\equiv 0$. Isso não afeta a identidade de pressão do
+Teorema~\ref{thm:pressure} abaixo (cuja prova, via
+Lema~\ref{lem:fibre-bijection}, funciona na direção reversa --- de uma
+sequência de expoentes irrestrita para sua raiz única --- e nunca
+invoca a existência de $a_0(u)$ para todo $u$), nem a enumeração
+numérica da \S\ref{sec:kl-empirical}, cuja implementação já exclui
+exatamente essas classes; é uma correção só a esta descrição
+estrutural.
 
 Nesta árvore estudamos o funcional populacional linear $G$ que
 satisfaz a recursão de ponto fixo
@@ -1061,13 +1077,13 @@ monotonicamente na última década testada
 de $0{,}6509$ monotonicamente sem tê-lo alcançado --- a assinatura de
 \emph{pré-assintótica de janela fixa} (a janela ainda não é
 ``profunda o suficiente''), não de viés de truncamento não corrigido
-(já tratado pela extrapolação de Richardson acima).
+(já tratado pela extrapolação de Aitken $\Delta^2$ acima).
 
 \begin{empirical}[Resolução empírica da disputa Kontorovich--Lagarias
 vs.\ Volkov]\label{thm:kl}
 O expoente de contagem da árvore reversa de $5x+1$, medido por
 enumeração exata com correção de truncamento por extrapolação de
-Richardson, é $0{,}639$ (IC 95\% $[0{,}633,0{,}645]$). Isso exclui a
+Aitken $\Delta^2$, é $0{,}639$ (IC 95\% $[0{,}633,0{,}645]$). Isso exclui a
 previsão concorrente de Volkov ($0{,}678$) com alta confiança e é
 consistente com a previsão de Kontorovich--Lagarias ($0{,}650919$) a
 menos de um efeito de pré-assintótica de janela finita, medido e
@@ -1968,14 +1984,16 @@ como rodar, e o resultado esperado.
 
 Esta pesquisa contou com o auxílio de sistemas de IA, utilizados para
 apoio à revisão da literatura, análise matemática, experimentação
-numérica e preparação do manuscrito. A referência a Halász
-\cite{Halasz1977} não pôde ser verificada diretamente, pois o trabalho
-original de 1971 não foi localizado; apenas sua errata de 1972 foi
-encontrada. Por essa razão, a citação é mantida com a devida ressalva
-quanto à impossibilidade de consulta à fonte primária. Seguimos, nesta
-divulgação, o que acreditamos ser a melhor prática na pequena
-literatura existente sobre contribuições assistidas por IA a este
-problema específico.
+numérica e preparação do manuscrito. Uma versão anterior deste paper
+citava, para a estimativa de função de concentração realmente usada na
+\S\ref{sec:lemmas} (Proposição~\ref{prop:halasz-deficit}), o artigo de
+Halász de 1971 sobre valores médios de funções aritméticas
+multiplicativas --- o artigo errado do mesmo autor. Após verificação
+adicional, a citação \cite{Halasz1977} foi corrigida para a estimativa
+de função de concentração de Halász de 1977, que é o resultado que o
+argumento de fato invoca. Seguimos, nesta divulgação, o que acreditamos
+ser a melhor prática na pequena literatura existente sobre
+contribuições assistidas por IA a este problema específico.
 
 \appendix
 
@@ -2138,10 +2156,10 @@ não validado é uma fonte conhecida de erro silencioso.
 \bibitem{Chang2026} E.\ Y.\ Chang, \emph{A structural reduction of the
   Collatz conjecture to one-bit orbit mixing}, arXiv:2603.25753, 2026.
 
-\bibitem{Halasz1977} G.\ Hal\'asz, \emph{On the distribution of
-  additive and the mean values of multiplicative arithmetic
-  functions}, Studia Scientiarum Mathematicarum Hungarica \textbf{6}
-  (1971), 211--233.
+\bibitem{Halasz1977} G.\ Hal\'asz, \emph{Estimates for the
+  concentration function of combinatorial number theory and
+  probability}, Periodica Mathematica Hungarica \textbf{8}(3--4)
+  (1977), 197--211.
 
 \bibitem{TaoVu2009} T.\ Tao and V.\ Vu, \emph{Inverse Littlewood--Offord
   theorems and the condition number of random discrete matrices},
