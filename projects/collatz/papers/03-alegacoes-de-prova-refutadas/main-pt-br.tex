@@ -1,0 +1,486 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[brazilian]{babel}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\usepackage{orcidlink}
+\usepackage{fontawesome5}
+
+\newtheorem{claim}{Afirmação}[section]
+
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\NN}{\mathbb{N}}
+
+\title{Erros em Alegações de Prova (ou Refutação) Completa\\
+da Conjectura de Collatz: Catálogo e Taxonomia\\
+de Doze Casos}
+
+\author{Renato Augusto Tavares~{\small\href{mailto:dr.renatotavares@gmail.com}{\textcolor{black}{\faEnvelope}}}~\orcidlink{0009-0002-0196-3311}\\
+\normalsize Universidade Federal de Goiás}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+A Conjectura de Collatz atrai um volume incomum de alegações de prova e
+refutação completas, majoritariamente veiculadas em servidores de
+preprint e canais de baixo escrutínio, não em periódicos de matemática
+com revisão por pares. Relatamos aqui uma revisão sistemática de doze
+dessas alegações, encontradas ao longo de um levantamento bibliográfico
+mais amplo, cada uma lida na íntegra, reconstruída de forma
+independente e verificada computacionalmente sempre que a alegação
+admite um teste numérico. Nenhuma das doze é uma prova ou refutação
+válida. A contribuição desta nota não é a contagem em si, mas uma
+taxonomia de como elas falham: duas categorias respondem por dez dos
+doze casos (raciocínio circular que embute a conclusão da conjectura
+numa definição ou premissa, três casos; generalização ilegítima de uma
+única sequência adversária escolhida à mão para todas as sequências,
+dois casos), e uma única falácia recorrente --- tratar uma propriedade
+agregada, média ou assintótica como uma garantia determinística e
+pontual para uma trajetória específica --- responde sozinha por cinco
+casos, disfarçada respectivamente pelo Teorema de Baker, por uma
+heurística de passeio aleatório, por um argumento de Lyapunov 2-ádico,
+pela notação Big-O e pela densidade 2-ádica estática. Os dois casos
+restantes são um erro elementar sem relação com a dificuldade real da
+conjectura, e uma lacuna de rigor genuína que, ao contrário de seu
+análogo mais próximo no catálogo, não produziu contraexemplo
+computacional. Dez dos doze fracassos convergem, por rotas
+superficialmente não relacionadas, para o mesmo obstáculo estrutural
+que nenhum método conhecido resolve: a impossibilidade de limitar
+sequências adversárias de passos crescentes sem, em algum ponto, supor
+exatamente o que se quer provar.
+\end{abstract}
+
+\section{Introdução}
+\label{sec:intro}
+
+A Conjectura de Collatz está aberta há quase noventa anos, e seu
+enunciado é simples o bastante para atrair um número incomum de
+alegações de solução completa vindas de fora da comunidade de teóricos
+dos números profissionais. Quase todas circulam por repositórios de
+preprint, sites pessoais ou periódicos sem reputação estabelecida em
+matemática pura, não por canais com revisão por pares especializada.
+Nenhuma foi aceita pela comunidade matemática. Isso não é, por si só,
+evidência de que uma alegação específica esteja errada --- mas
+estabelece o prior correto: uma alegação de prova (ou refutação)
+completa de um problema tão resistente, vinda de um canal sem revisão
+por pares especializada, deve ser lida com a hipótese de trabalho de
+que contém um buraco real, provavelmente exatamente no ponto em que o
+``obstáculo estrutural'' conhecido da conjectura precisaria ser
+superado (a impossibilidade, com qualquer método conhecido hoje, de
+limitar o quão longa pode ser uma sequência adversária de passos
+crescentes --- ver \cite{LagariasSurvey} para o relato padrão de por
+que isso é difícil).
+
+Esta nota cataloga doze dessas alegações, encontradas ao longo de um
+levantamento bibliográfico mais amplo conduzido paralelamente a um
+programa de pesquisa não relacionado sobre uma generalização $qx+1$ da
+medida de Syracuse de Tao \cite{Tao2022}. Cada alegação foi lida na
+íntegra, seu argumento central reconstruído de forma independente, e
+verificada computacionalmente sempre que admite um teste numérico;
+vários dos julgamentos mais delicados também foram cruzados com um
+revisor matemático independente baseado em modelo de linguagem. Nenhuma
+das doze sobrevive ao escrutínio como prova ou refutação válida.
+
+O ponto desta nota não é o fato simples de que doze alegações amadoras
+estão erradas --- isso seria pouco notável e pouco interessante por si
+só. O ponto é \emph{como} elas falham. A Seção~\ref{sec:taxonomy} agrupa
+os doze casos em cinco categorias pela forma de seu erro central, com
+um resumo breve de cada caso; três categorias, cobrindo dez casos,
+convergem para o mesmo obstáculo estrutural por rotas que parecem, à
+primeira vista, inteiramente não relacionadas entre si. A
+Seção~\ref{sec:discussion} discute o que essa convergência sugere sobre
+por que a conjectura resiste a esses estilos particulares de ataque, e
+o que as duas exceções ao padrão revelam por contraste. A
+Seção~\ref{sec:conclusion} conclui.
+
+Para deixar claro o que esta nota \emph{não} é: não é uma alegação
+sobre a competência ou a boa-fé dos autores, vários dos quais são
+explícitos e cuidadosos sobre os limites de seus próprios argumentos em
+outras partes do mesmo texto (rotulando corretamente um passo em aberto
+como ``conjectura'', não ``teorema'', por exemplo). O foco em todo o
+texto é estritamente o conteúdo matemático do erro específico
+identificado em cada caso.
+
+\section{Metodologia}
+\label{sec:methodology}
+
+Cada uma das doze alegações foi: (i) lida na íntegra, não apenas
+resumo e conclusão; (ii) reconstruída como uma cadeia explícita de
+premissas e inferências, de modo a isolar exatamente o passo que carrega
+o peso lógico de ``prova'' ou ``refuta''; (iii) verificada
+computacionalmente sempre que a alegação, ou o passo suspeito de ser o
+buraco, admite um teste numérico --- seja por reimplementação direta da
+identidade alegada, seja pela construção de um contraexemplo dirigido;
+e (iv), nos poucos casos em que o julgamento matemático envolvido era
+sutil o bastante para justificar uma segunda opinião, cruzada com um
+revisor independente baseado em modelo de linguagem, sem acesso prévio
+à nossa própria conclusão de trabalho. O detalhe técnico completo de
+cada caso --- o argumento reconstruído exato, a verificação
+computacional e, quando aplicável, o código-fonte --- fica nos arquivos
+de caso individuais referenciados na Seção~\ref{sec:taxonomy}; esta
+nota resume esse material, não o reproduz.
+
+\section{Taxonomia dos padrões de erro recorrentes}
+\label{sec:taxonomy}
+
+Uma primeira tentativa desta taxonomia, montada apenas a partir do
+título e de uma linha de status de cada caso, propôs sete categorias.
+Ela não sobreviveu ao contato com os textos completos: um caso (Boyle,
+\S\ref{sec:catC}) não se encaixava em nenhuma das sete, e a leitura
+integral dos casos restantes mostrou que ele, junto com mais quatro,
+era na verdade o mesmo erro vestido em aparato formal não relacionado.
+A taxonomia abaixo reflete a leitura completa e tem cinco categorias,
+uma das quais --- Seção~\ref{sec:catC} --- responde sozinha por cinco
+dos doze casos.
+
+\subsection{Categoria A: raciocínio circular}
+\label{sec:catA}
+
+O objeto central do argumento, ou seu passo central, só está bem
+definido ou é válido sob a suposição de que a conjectura já vale --- de
+modo que a ``prova'' não estabelece a terminação, apenas a reafirma em
+outra notação. Três casos:
+
+\textbf{Getachew (2025)} \cite{Getachew2025} constrói uma árvore reversa
+do mapa de Collatz e define uma relação ``pai'' que se revela, termo a
+termo, idêntica ao próprio mapa direto de Collatz
+($\mathrm{pai}(m) = m/2$ para $m$ par, $3m+1$ para $m$ ímpar). O
+Lema~4.3 do paper, ``todo caminho de volta à raiz é finito'', é então
+logicamente equivalente à própria conjectura, não uma consequência da
+aciclicidade da árvore e da unicidade do pai, como se alega:
+aciclicidade e pai único garantem que um caminho nunca repete nem
+bifurca, nunca que seja finito. O teorema de cobertura do paper
+(Teorema~5.1) falha por um motivo paralelo: prova uma decomposição
+aritmética universal (número ímpar vezes potência de 2) que
+confirmamos computacionalmente nunca usar de fato a regra de
+ramificação.
+
+\textbf{Spencer (2025a)} \cite{Spencer2025a} constrói uma árvore reversa
+diferente, indexada por classes residuais módulo $2\cdot 3^J$, com um
+argumento de contador ternário parcialmente formalizado em Lean. Prova
+corretamente que toda classe residual primitiva está ``ocupada'' em
+toda escala finita $J$ --- mas seu Teorema~15.3 conclui então que todo
+inteiro específico tem um endereço reverso finito, um passo nunca
+justificado: ``resíduo ocupado'' não implica ``valor exato atingido''.
+Confirmamos essa lacuna diretamente: a classe residual de $n=27$ está
+ocupada na árvore real construída até profundidade 6 e 8, mas apenas
+por representantes da ordem de $10^6$--$10^8$, nunca pelo próprio 27.
+
+\textbf{Yun (2026)} \cite{Yun2026} contém três argumentos circulares
+independentes, cada um dos quais, sozinho, já invalida a alegação do
+paper. Sua ``função de posto'' central
+$r(x) := \min\{n \in \NN : f^{(n)}(x) = 1\}$ só está definida para
+valores de $x$ cuja órbita já atinge 1 --- se alguma órbita nunca
+atingisse 1, exatamente a possibilidade que a conjectura precisa
+excluir, $r(x)$ simplesmente não existiria, de modo que o argumento de
+descida bem-fundada construído sobre ela já pressupõe sua conclusão.
+Confirmamos isso aplicando a mesma construção a $g(x)=2x$, um mapa que
+provadamente diverge para todo $x>0$: a função de posto análoga fica
+indefinida para os 18 valores testados, exatamente como aconteceria com
+$f$ se alguma órbita não atingisse 1. Separadamente, o argumento de
+exclusão de ciclos do paper (Teorema~6.1) afirma que ``o único ponto
+fixo conhecido é $x=1$'' como se isso excluísse outros ciclos, e seu
+argumento de ``compressão informacional'' (\S5, \S9.2.3) é um non
+sequitur sobre cardinalidades de conjuntos infinitos, compatível com
+qualquer comportamento de longo prazo, não especificamente com a
+convergência a 1.
+
+\subsection{Categoria B: generalização ilegítima de uma única sequência}
+\label{sec:catB}
+
+O argumento mostra, corretamente, que uma sequência específica e
+escolhida à mão de passos crescentes e decrescentes tem certa
+propriedade, e então estende a conclusão para todas as sequências sem
+limitar o quão longa uma sequência adversária de passos crescentes
+poderia ser --- exatamente o passo que o obstáculo estrutural torna
+difícil. Dois casos:
+
+\textbf{Santos (2018)} \cite{Santos2018} introduz uma notação binária de
+``movimentos''/``reduções fortes'' equivalente à sequência ordinária de
+valuações 2-ádicas de uma órbita de Collatz. Seu argumento central
+(\S2.6) escolhe um $K>30$ hipotético, \emph{assume uma sequência fixa e
+específica} de passos (dois movimentos crescentes seguidos de três
+decrescentes, com divisores escolhidos à mão), mostra algebricamente
+que $K$ decresce ao longo \emph{daquela sequência particular}, e então
+generaliza isso para todo $K>30$ sem nunca mostrar que sequências
+adversárias de passos crescentes não podem ser arbitrariamente longas.
+
+\textbf{Halemane (2025), o teorema CTUHSK} \cite{Halemane2025}
+reformula a árvore reversa padrão com notação nova
+(Binary-Exponential-Ladders, operadores $D^\#/U^\#$), mas não acrescenta
+nada estruturalmente novo. Sua condição necessária é uma tautologia (o
+conjunto \emph{definido} como quem alcança o ciclo trivial de fato
+alcança o ciclo trivial); sua condição suficiente, que carrega o peso
+real de excluir ciclos extras e cadeias divergentes, tem um furo
+decisivo: o argumento de redução ao absurdo (\S10.2.1) assume que o
+predecessor de um elemento mínimo de um ciclo hipotético é dado pela
+fórmula do paper com expoente $v=1$ especificamente, quando essa
+fórmula tem de fato infinitas soluções válidas, uma por expoente ímpar
+$v=1,3,5,\dots$; apenas $v=1$ dá um valor menor (violando a
+minimalidade suposta), enquanto todo $v\ge 3$ dá um valor maior, sem
+gerar contradição alguma. Confirmamos computacionalmente que isso é um
+padrão algébrico geral, não um acidente do exemplo numérico escolhido
+pelo paper.
+
+\subsection{Categoria C: propriedade agregada ou assintótica confundida com garantia determinística e pontual}
+\label{sec:catC}
+
+Esta categoria é o achado empírico central do paper. Cinco argumentos
+superficialmente não relacionados --- construídos, respectivamente,
+sobre o Teorema de Baker, a heurística clássica de passeio aleatório,
+uma cota de Lyapunov 2-ádica, a notação assintótica Big-O e a
+densidade 2-ádica estática --- cometem, na verdade, o erro idêntico:
+uma propriedade que só vale como média, expectativa de ensemble ou cota
+assintótica é substituída, sem justificativa, por uma garantia que
+precisaria valer deterministicamente, em todo ponto, ao longo de uma
+trajetória específica. Três dos cinco documentos-fonte abaixo já se
+citam mutuamente quanto a esse padrão exato, independentemente deste
+catálogo, o que sugere que se trata de um atrator natural para
+tentativas de prova de Collatz, não um artefato da nossa classificação.
+
+\textbf{Mohammed} \cite{Mohammed2024} constrói um sieve de densidade
+geométrica correto e exclui corretamente 1-ciclos, então tenta excluir
+ciclos não-triviais via o Teorema de Baker sobre formas lineares em
+logaritmos. A equação de ciclo de fato força $M/P \to \log_2 3$ para um
+ciclo real e autoconsistente com elementos grandes --- mas o paper
+substitui $M \approx 2P$, a expectativa \emph{ergódica, média} para um
+inteiro ímpar genérico (já conhecida neste projeto como fato de
+referência, não como restrição de ciclo), produzindo uma checagem que
+não restringe nada.
+
+\textbf{Boyle (2026)} \cite{Boyle2026} deriva, via a heurística padrão
+de passeio aleatório, que a fração média de ensemble de passos pares ao
+longo de órbitas de Collatz é $2/3$ --- válida, na melhor das
+hipóteses, como média sobre muitos valores iniciais $n$ aleatórios ---
+e então substitui essa constante diretamente numa equação (Lema~4.2)
+sobre uma trajetória hipotética específica e fixa, derivando uma
+``contradição'' que depende inteiramente dessa substituição ilegítima.
+Confirmamos computacionalmente que, mesmo entre órbitas conhecidas por
+convergir, a fração de passos pares realizada por cada trajetória
+individual varia substancialmente ao redor de $2/3$ (média 0,677,
+desvio-padrão 0,031 sobre 3000 trajetórias amostradas) --- é uma
+estatística agregada, não uma restrição sobre qualquer órbita
+individual.
+
+\textbf{Tynski (2026)} \cite{Tynski2026} constrói um aparato formal
+extenso e majoritariamente correto (álgebra de Clifford, um traço
+explícito, identidades de exclusão de ciclo já estabelecidas) em torno
+de um ``teorema mestre'' que unifica a Hipótese de Riemann e a
+Conjectura de Collatz, mas a exclusão de órbitas divergentes repousa
+inteiramente sobre um axioma que afirma uma cota de Lyapunov
+\emph{determinística}
+$\log_2 n_m \le \log_2 n_0 - m\delta + C\sqrt m$ para uma constante
+universal $C$, justificada de forma circular (o texto deriva o
+decréscimo necessário ``uma vez que $A_m/m > \log_2 3$ seja forçado'',
+exatamente a propriedade que estaria sendo argumentada) e sustentada
+apenas por verificação numérica até $n_0 \le 3\times 10^4$. Testamos a
+alegação diretamente além dessa faixa: o $C$ mínimo necessário já
+excede a cota universal alegada de 5 para sementes
+$10^4 \le n_0 < 10^9$ (pior caso 5,08), e recordistas conhecidos de
+atraso longo exigem $C$ até 8,34 --- uma refutação computacional
+direta, não apenas ausência de prova.
+
+\textbf{A disputa Syzdykov (2025--2026)}
+\cite{Syzdykov2025,Syzdykov2026,LafontaineCheong2026} é uma troca de
+três textos, não uma única alegação. A nota original \cite{Syzdykov2025}
+afirma $O(f(n)) \le n$ para a função de Collatz $f$, substitui
+$n = 2^m-1$, e declara $O(f(2^m-1)) \approx 3^m > 2^m - 1$ uma
+contradição que refutaria a conjectura. Lafontaine \& Cheong
+\cite{LafontaineCheong2026} identificam corretamente o erro categorial:
+$O(\cdot)$ denota um conjunto de funções, não um escalar, de modo que
+$O(f(n)) \le n$ não é bem-formado; e mesmo sob uma leitura pontual
+caridosa, uma cota assintótica (``para algum $C,n_0$, para todo
+$n \ge n_0$'') não licencia conclusão alguma sobre o valor exato de um
+$n$ específico --- a mesma confusão entre uma cota existencial e
+agregada e uma cota pontual e determinística vista nos outros quatro
+casos desta categoria. A réplica de Syzdykov \cite{Syzdykov2026} não
+rebate esse ponto; redefine $O(f(n))$ a posteriori para significar um
+comprimento de órbita escalar e reafirma a conclusão original como
+``já provada''.
+
+\textbf{Barghout (2019)} \cite{Barghout2019} prova corretamente, por
+indução elementar, que a valuação 2-ádica de inteiros pares (ou de
+valores gerados por $3n+1$) segue um padrão de densidade fixo e
+determinístico --- um fato estático sobre o \emph{conjunto} de inteiros
+pares, não sobre nenhuma órbita específica. Seu argumento de
+convergência então importa essa densidade estática como se fosse a
+\emph{estatística de visitas} de uma órbita dinâmica específica,
+assumindo implicitamente que a órbita equidistribui --- exatamente o
+conteúdo não provado da conjectura, não uma consequência dos lemas de
+densidade. Confirmamos por simulação direta que órbitas individuais
+(por exemplo, $n=9663$) podem crescer a cerca de 2800 vezes seu valor
+inicial antes de eventualmente decrescer, ilustrando concretamente por
+que um argumento ``em média'' não restringe nenhuma trajetória
+individual.
+
+\subsection{Categoria D: um erro elementar sem relação com o obstáculo estrutural}
+\label{sec:catD}
+
+\textbf{Roif (2026)} \cite{Roif2026} constrói um espaço topológico de
+três pontos $S=\{0,2,1\}$, reinterpreta o inteiro 2 como um
+``recipiente vazio'' $\{\}$, e prova um lema afirmando que todo
+subconjunto dos inteiros positivos com densidade assintótica zero deve
+ser vazio. Isso é falso como fato matemático geral e é o único erro do
+catálogo sem relação com a dificuldade real da conjectura: densidade
+zero não implica finitude, muito menos vazio. O conjunto dos quadrados
+perfeitos, ou das potências de 2, tem densidade zero e é claramente
+infinito. Esse único erro elementar derruba todo o argumento de
+fechamento do paper (seu Teorema~9.1 e Corolário~9.2, que de outra
+forma completariam a prova), independentemente do restante do aparato
+formal (identidades próximas de álgebra de Clifford, uma função de onda
+tipo Lyapunov), que é uma reformulação correta, mas por si só
+insuficiente, de resultados já padrão na literatura.
+
+\subsection{Categoria E: uma lacuna de rigor genuína sem contraexemplo computacional}
+\label{sec:catE}
+
+\textbf{Spencer (2026)} \cite{Spencer2025b}, do mesmo autor do caso da
+Categoria A na \S\ref{sec:catA}, usa uma árvore reversa diferente (grau
+infinito, via o inverso do mapa acelerado). Diferente de seu paper
+irmão, construir a árvore real e testar cobertura até $10\,000$ não
+encontrou \emph{nenhuma} lacuna na prática --- aparentes falhas de
+cobertura em orçamentos computacionais menores convergiam exatamente à
+raiz quando checadas sem limite de magnitude. Ainda assim, identificamos
+uma lacuna genuína no argumento escrito: o Teorema~14.1 prova ocupação
+de \emph{classes} residuais, e o Teorema~14.2 conclui ocupação de
+\emph{elementos} individuais sem justificar a passagem --- a mesma forma
+lógica do caso da Categoria A, mas que, até agora, não se manifestou
+como falha real sob busca computacional. Essa distinção importa: nem
+toda lacuna numa tentativa de prova de Collatz é igualmente fatal, mesmo
+dentro de argumentos intimamente relacionados do mesmo autor.
+
+\section{Discussão}
+\label{sec:discussion}
+
+Dez dos doze casos --- todos das Categorias A, B e C --- falham, por
+rotas que parecem não relacionadas à primeira vista, exatamente no
+mesmo ponto: nenhum deles estabelece uma cota genuína sobre o quão
+longa pode ser uma sequência adversária de passos crescentes, o
+obstáculo estrutural que nenhum método conhecido resolve. A
+Categoria~C sozinha responde por cinco dos dez, e é a parte mais
+marcante do padrão: o mesmo erro conceitual --- substituir uma
+propriedade agregada, média ou assintótica por uma garantia pontual e
+determinística --- sobrevive vestido em cinco vocabulários formais não
+relacionados (teoria dos números elementar via o Teorema de Baker, a
+heurística clássica de passeio aleatório, uma cota de Lyapunov
+2-ádica, a notação assintótica Big-O e a densidade 2-ádica estática).
+Isso não é um artefato da nossa própria classificação: três dos cinco
+documentos-fonte já se citam mutuamente, e dois deles citam
+explicitamente a heurística de passeio aleatório, como instâncias da
+mesma confusão, independentemente deste catálogo.
+
+Os dois casos fora desse padrão são informativos por contraste. O erro
+de Roif (Categoria D) é um engano isolado e elementar, sem relação com
+a dificuldade real da conjectura --- um lembrete de que nem todo erro
+numa tentativa de prova de Collatz é evidência sobre \emph{por que} a
+conjectura é difícil, alguns simplesmente estão errados por motivos
+não relacionados. O segundo paper de Spencer (Categoria E) mostra a
+lição oposta: uma forma lógica idêntica a um fracasso da Categoria A
+(ocupação de classe residual confundida com ocupação de elemento
+individual) pode, num caso, não se manifestar como contraexemplo
+computacional real --- reforçando que a taxonomia classifica a
+\emph{estrutura} do argumento, não sua gravidade, e que lacunas
+estruturalmente semelhantes nem sempre são igualmente fatais.
+
+Notamos, por fim, que a coleção mais ampla de papers relacionados a
+Collatz levantada junto com esses doze (fora do escopo desta nota)
+contém muitos papers que não alegam prova completa alguma, e que são
+cuidadosos em rotular passos em aberto como conjecturais. Os doze casos
+aqui foram selecionados precisamente por fazerem a alegação forte; a
+taxonomia acima não deve ser lida como sugerindo que papers de alegação
+de prova são típicos da literatura mais ampla sobre a conjectura.
+
+\section{Conclusão}
+\label{sec:conclusion}
+
+As doze alegações revisadas de prova ou refutação completa da
+Conjectura de Collatz falham sob escrutínio independente, e nenhuma
+está perto de ser válida. O valor deste catálogo não é a contagem, mas
+a concentração: metade dos doze casos, apesar de usar vocabulários
+matemáticos inteiramente diferentes, comete o erro idêntico de
+confundir uma propriedade agregada ou assintótica com uma garantia
+determinística e pontual, e mais três cometem um de dois erros
+intimamente relacionados (circularidade, generalização ilegítima de
+uma única sequência) que convergem para o mesmo obstáculo estrutural
+conhecido. Essa regularidade é, em si, uma pequena evidência sobre por
+que a conjectura resiste a ataques elementares: os modos de fracasso
+não são diversos, eles se repetem.
+
+\section*{Agradecimentos}
+
+Partes da verificação descrita nesta nota (reconstrução de casos,
+checagens computacionais e cruzamento de julgamentos matemáticos mais
+sutis) foram realizadas com o auxílio de Claude (modelos das famílias
+Claude 4 e 5, Anthropic), usado como assistente de pesquisa sob a
+direção e revisão do autor.
+
+\begin{thebibliography}{99}
+
+\bibitem{LagariasSurvey} J.\ C.\ Lagarias (ed.), \emph{The Ultimate
+  Challenge: The $3x+1$ Problem}, American Mathematical Society, 2010.
+
+\bibitem{Tao2022} T.\ Tao, \emph{Almost all orbits of the Collatz map
+  attain almost bounded values}, Forum of Mathematics, Pi \textbf{10}
+  (2022), e12.
+
+\bibitem{Getachew2025} E.\ S.\ Getachew, \emph{Unfolding the Collatz
+  Tree: An Indirect Structural Proof}, Research in Mathematics
+  (Taylor \& Francis), 2025.
+
+\bibitem{Spencer2025a} M.\ E.\ Spencer, \emph{Finite Block Exhaustion
+  and Rooted Occupancy in the Inverse Collatz System: A No-Alternative
+  Proof via Ternary Counters, Primitive Carry, and Forced Thread
+  Displacement}, academia.edu preprint, 2025.
+
+\bibitem{Spencer2025b} M.\ E.\ Spencer, \emph{Rooted Surjectivity from
+  the Invariant E/O Refinement System}, academia.edu preprint, 2026.
+
+\bibitem{Santos2018} O.\ de O.\ Santos, \emph{Proving the Collatz
+  Conjecture with Binaries Numbers}, Pure and Applied Mathematics
+  Journal \textbf{7}(5) (2018), Science Publishing Group.
+
+\bibitem{Halemane2025} K.\ P.\ Halemane, \emph{Collatz-Thwaites-Ulam-Hasse-Syracuse-Kakutani
+  (CTUHSK) Theorem: Convergence of Collatz ($3n+1$) Sequence to the
+  Trivial Cycle Proved}, engrXiv preprint, 2025.
+
+\bibitem{Mohammed2024} A.\ Mohammed, \emph{Structural Analysis, Dynamic
+  Density Sieve, and Logarithmic Contraction of Collatz Sequences},
+  preprint, Kafr El-Sheikh University, 2024.
+
+\bibitem{Boyle2026} D.\ G.\ Boyle, \emph{The Collatz Conjecture is
+  True}, rxiverse.org preprint, 2026.
+
+\bibitem{Roif2026} A.\ Roif, \emph{On the Convergence of the Collatz
+  Function via Galois Fields, Topological Duality, and Lyapunov Wave
+  Analysis}, academia.edu preprint, v4, 2026.
+
+\bibitem{Yun2026} Y.\ H.\ Yun, \emph{A Structural Proof of the Collatz
+  Conjecture via Non-Repeating Trajectory and Recursive Decay}, OSF
+  preprint, Zero Theoretical Physics Lab, 2026.
+
+\bibitem{Tynski2026} K.\ Tynski, \emph{A Common Proof of the Riemann
+  Hypothesis and the Collatz Conjecture}, academia.edu preprint, 2026.
+
+\bibitem{Syzdykov2025} M.\ Syzdykov, \emph{Disproof of Collatz
+  Conjecture by Using O-notation}, ResearchGate preprint, 2025.
+
+\bibitem{Syzdykov2026} M.\ Syzdykov, \emph{Continued Disproof Sentence
+  towards Collatz Conjecture}, ResearchGate preprint, 2026.
+
+\bibitem{LafontaineCheong2026} M.\ Lafontaine e G.\ Cheong, \emph{A
+  Note on a Claimed Disproof of the Collatz Conjecture}, ResearchGate
+  preprint, 2026.
+
+\bibitem{Barghout2019} K.\ Barghout, \emph{On the Probabilistic Proof
+  of the Convergence of the Collatz Conjecture}, Journal of Probability
+  and Statistics (Hindawi) \textbf{2019}, Article ID 6814378.
+
+\end{thebibliography}
+
+\end{document}

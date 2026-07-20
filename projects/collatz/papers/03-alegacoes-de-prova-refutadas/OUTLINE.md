@@ -1,9 +1,13 @@
 # OUTLINE — Alegações de prova (ou refutação) completa da Conjectura de Collatz: catálogo e taxonomia dos erros
 
-Status: rascunho de estrutura, ainda não escrito. Aberto por pedido explícito
-do diretor científico em 2026-07-20 ("vamos iniciar o paper sobre erros dos
-papers ao tentar provar a conjectura?"), com escopo confirmado via pergunta
-direta no mesmo dia (ver decisão abaixo).
+Status: **rascunho completo escrito** (`main.tex`/`main.pdf`, 7 páginas;
+`main-pt-br.tex`/`main-pt-br.pdf`, 7 páginas; ambos compilam limpos, sem
+avisos de overfull/undefined, verificados por inspeção visual via
+`pdftoppm`). Aberto por pedido explícito do diretor científico em
+2026-07-20 ("vamos iniciar o paper sobre erros dos papers ao tentar
+provar a conjectura?"), com escopo confirmado via pergunta direta no
+mesmo dia (ver decisão abaixo). Ainda não revisado pelo diretor
+científico.
 
 ## Escopo (decisão 2026-07-20)
 

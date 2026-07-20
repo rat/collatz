@@ -1,0 +1,470 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\usepackage{orcidlink}
+\usepackage{fontawesome5}
+
+\newtheorem{claim}{Claim}[section]
+
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\NN}{\mathbb{N}}
+
+\title{Errors in Claimed Complete Proofs (and Disproofs)\\
+of the Collatz Conjecture: A Catalog and Taxonomy\\
+of Twelve Cases}
+
+\author{Renato Augusto Tavares~{\small\href{mailto:dr.renatotavares@gmail.com}{\textcolor{black}{\faEnvelope}}}~\orcidlink{0009-0002-0196-3311}\\
+\normalsize Universidade Federal de Goiás}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+The Collatz conjecture attracts an unusually large volume of claimed
+complete proofs and disproofs, mostly circulated through preprint
+servers and low-scrutiny venues rather than peer-reviewed mathematics
+journals. We report a systematic review of twelve such claims
+encountered during a broader literature survey, each read in full,
+independently reconstructed, and checked computationally wherever the
+claim admits a numerical test. None of the twelve is a valid proof or
+disproof. The contribution of this note is not the count itself but a
+taxonomy of the ways they fail: two categories account for ten of the
+twelve cases (circular reasoning that smuggles the conjecture's
+conclusion into a definition or premise, three cases; illegitimate
+generalization from one hand-picked adversarial sequence to all
+sequences, two cases), and a single recurring fallacy --- treating an
+aggregate, average, or asymptotic property as a deterministic,
+pointwise guarantee for one specific trajectory --- accounts for five
+cases by itself, disguised in turn by Baker's theorem, a random-walk
+heuristic, a 2-adic Lyapunov argument, Big-O notation, and static
+2-adic density. The remaining two cases are an elementary error
+unrelated to the conjecture's real difficulty, and a genuine rigor gap
+that, unlike its closest analogue in the catalog, produced no
+computational counterexample. Ten of twelve failures converge, by
+superficially unrelated routes, on the same structural obstruction that
+no known method resolves: the impossibility of bounding adversarial
+runs of increasing steps without, at some point, assuming what is to be
+proved.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:intro}
+
+The Collatz conjecture has been open for close to ninety years, and
+its statement is simple enough that it draws an unusually large number
+of claimed complete solutions from outside the community of
+professional number theorists. Almost all of them are circulated
+through preprint repositories, personal websites, or journals with no
+established reputation in pure mathematics, rather than peer-reviewed
+venues with specialist referees. None has been accepted by the
+mathematical community. This is not, by itself, evidence that any
+particular claim is wrong --- but it sets the correct prior: a claimed
+complete proof (or disproof) of a problem this resistant, from a venue
+without specialist peer review, should be read with the working
+assumption that it contains a genuine gap, most likely at exactly the
+point where the known ``structural obstruction'' to the conjecture
+would have to be overcome (the impossibility, with any method known
+today, of bounding how long an adversarial run of increasing steps can
+be --- see \cite{LagariasSurvey} for the standard account of why this
+is hard).
+
+This note catalogs twelve such claims, encountered over the course of
+a broader literature survey conducted alongside an unrelated research
+program on a $qx+1$ generalization of Tao's Syracuse measure
+\cite{Tao2022}. Each claim was read in full, its central argument
+reconstructed independently, and checked computationally wherever it
+admits a numerical test; several of the more delicate judgment calls
+were also cross-checked against an independent large-language-model
+mathematical reviewer. None of the twelve survives scrutiny as a valid
+proof or disproof.
+
+The point of this note is not the bare fact that twelve amateur claims
+are wrong --- that would be unremarkable and uninteresting on its own.
+The point is \emph{how} they fail. Section~\ref{sec:taxonomy} groups
+the twelve cases into five categories by the shape of their central
+error, together with a brief summary of each case; three categories,
+covering ten cases, converge on the same structural obstruction from
+routes that look, on the surface, entirely unrelated to one another.
+Section~\ref{sec:discussion} discusses what this convergence suggests
+about why the conjecture resists these particular styles of attack,
+and what the two exceptions to the pattern reveal by contrast.
+Section~\ref{sec:conclusion} concludes.
+
+To be clear about what this note is \emph{not}: it is not a claim
+about the authors' competence or good faith, several of whom are
+explicit and careful about the limits of their own arguments elsewhere
+in the same text (correctly labeling an open step a ``conjecture''
+rather than a ``theorem'', for instance). The focus throughout is
+strictly the mathematical content of the specific error identified in
+each case.
+
+\section{Methodology}
+\label{sec:methodology}
+
+Each of the twelve claims was: (i) read in full, not just abstract and
+conclusion; (ii) reconstructed as an explicit chain of premises and
+inferences, so that the exact step carrying the logical weight of
+``proves'' or ``disproves'' could be isolated; (iii) checked
+computationally whenever the claim, or the step suspected to be the
+gap, admits a numerical test --- either by direct reimplementation of
+the claimed identity, or by constructing a targeted counterexample; and
+(iv), in the handful of cases where the mathematical judgment involved
+was subtle enough to warrant a second opinion, cross-checked against an
+independent large-language-model reviewer with no access to our own
+working conclusion in advance. Full technical detail for every case ---
+the exact reconstructed argument, the computational check, and where
+applicable the source code --- is kept in individual case files
+referenced in Section~\ref{sec:taxonomy}; this note summarizes rather
+than reproduces that material.
+
+\section{Taxonomy of recurring error patterns}
+\label{sec:taxonomy}
+
+An initial pass at this taxonomy, built only from each case's title and
+a one-line status summary, proposed seven categories. It did not
+survive contact with the full texts: one case (Boyle, \S\ref{sec:catC})
+fit none of the seven, and reading the remaining cases in full showed
+that it, together with four others, was in fact the same error dressed
+in unrelated formal apparatus. The taxonomy below reflects the full
+reading and has five categories, one of which --- Section
+\ref{sec:catC} --- accounts for five of the twelve cases by itself.
+
+\subsection{Category A: circular reasoning}
+\label{sec:catA}
+
+The argument's central object, or its central step, is well-defined or
+valid only under the assumption that the conjecture already holds ---
+so the ``proof'' does not establish termination, it merely restates it
+in different notation. Three cases:
+
+\textbf{Getachew (2025)} \cite{Getachew2025} constructs a reverse tree
+of the Collatz map and defines a ``parent'' relation that turns out to
+be, term for term, identical to the forward Collatz map itself
+(\(\mathrm{parent}(m) = m/2\) for even \(m\), \(3m+1\) for odd \(m\)).
+The paper's Lemma~4.3, ``every path back to the root is finite,'' is
+then logically equivalent to the conjecture itself, not a consequence
+of the tree's acyclicity and unique-parent structure as claimed:
+acyclicity and a unique parent guarantee that a path never repeats or
+branches, never that it is finite. The paper's covering theorem
+(Theorem~5.1) fails for a parallel reason: it proves a universal
+arithmetic decomposition (odd number times a power of two) that we
+confirmed computationally never actually uses the branching rule.
+
+\textbf{Spencer (2025a)} \cite{Spencer2025a} builds a different reverse
+tree, indexed by residue classes modulo \(2\cdot 3^J\), with a
+ternary-counter argument partially formalized in Lean. It correctly
+proves that every primitive residue class is ``occupied'' at every
+finite scale \(J\) --- but its Theorem~15.3 then concludes that every
+specific integer has a finite reverse address, a step never justified:
+``residue occupied'' does not imply ``exact value reached.'' We
+confirmed this gap directly: the residue class of \(n=27\) is occupied
+in the real tree built to depths 6 and 8, but only by representatives
+on the order of \(10^6\)--\(10^8\), never by 27 itself.
+
+\textbf{Yun (2026)} \cite{Yun2026} contains three independent circular
+arguments, any one of which alone invalidates the paper's claim. Its
+central ``rank function'' \(r(x) := \min\{n \in \NN : f^{(n)}(x) = 1\}\)
+is defined only for values of \(x\) whose orbit already reaches 1 ---
+if some orbit never reached 1, exactly the possibility the conjecture
+needs to exclude, \(r(x)\) would simply not exist, so the well-founded
+descent argument built on it presupposes its conclusion. We confirmed
+this by applying the identical construction to \(g(x)=2x\), a map that
+provably diverges for every \(x>0\): the analogous rank function is
+undefined for all 18 tested values, exactly as it would be for \(f\) if
+some orbit failed to reach 1. Separately, the paper's cycle-exclusion
+argument (Theorem~6.1) asserts that ``the only known fixed point is
+\(x=1\)'' as if this excluded other cycles, and its ``informational
+compression'' argument (\S5, \S9.2.3) is a non sequitur about
+cardinalities of infinite sets that is compatible with any long-run
+behavior, not specifically convergence to 1.
+
+\subsection{Category B: illegitimate generalization from a single sequence}
+\label{sec:catB}
+
+The argument shows, correctly, that one specific hand-picked sequence
+of increasing and decreasing steps has a certain property, then
+extends the conclusion to all sequences without bounding how long an
+adversarial run of increasing steps could be --- exactly the step the
+structural obstruction makes hard. Two cases:
+
+\textbf{Santos (2018)} \cite{Santos2018} introduces a binary
+``moves''/``strong reductions'' notation equivalent to the ordinary
+2-adic valuation sequence of a Collatz orbit. Its core argument
+(\S2.6) picks a hypothetical \(K>30\), \emph{assumes a specific fixed
+sequence} of steps (two increasing moves followed by three decreasing
+ones, with hand-chosen divisors), shows algebraically that \(K\)
+decreases along \emph{that particular sequence}, and then generalizes
+this to every \(K>30\) without ever showing that adversarial sequences
+of increasing steps cannot be made arbitrarily long.
+
+\textbf{Halemane (2025), the CTUHSK theorem} \cite{Halemane2025}
+reformulates the standard reverse tree with new notation
+(Binary-Exponential-Ladders, operators \(D^\#/U^\#\)) but adds nothing
+structurally new. Its necessary condition is a tautology (the set
+\emph{defined} as reaching the trivial cycle does reach the trivial
+cycle); its sufficient condition, which carries the real weight of
+excluding extra cycles and divergent chains, has a decisive hole: the
+reductio argument (\S10.2.1) assumes the predecessor of a minimal
+element of a hypothetical cycle is given by the paper's formula with
+exponent \(v=1\) specifically, when that formula in fact has infinitely
+many valid solutions, one per odd exponent \(v=1,3,5,\dots\); only
+\(v=1\) yields a smaller value (violating the assumed minimality),
+while every \(v\ge 3\) yields a larger one, generating no contradiction
+at all. We confirmed computationally that this is a general algebraic
+pattern, not an artifact of the paper's chosen numerical example.
+
+\subsection{Category C: an aggregate or asymptotic property mistaken for a deterministic, pointwise guarantee}
+\label{sec:catC}
+
+This category is the paper's central empirical finding. Five
+superficially unrelated arguments --- built respectively on Baker's
+theorem, the classical random-walk heuristic, a 2-adic Lyapunov bound,
+Big-O asymptotic notation, and static 2-adic density --- turn out to
+commit the identical error: a property that holds only as an average,
+an ensemble expectation, or an asymptotic bound is substituted, without
+justification, for a guarantee that must hold deterministically, at
+every point, along one specific trajectory. Three of the five papers
+below cross-reference this exact pattern in each other, independently
+of this catalog, which suggests it is a natural attractor for
+Collatz-proof attempts rather than an artifact of our classification.
+
+\textbf{Mohammed} \cite{Mohammed2024} builds a correct geometric density
+sieve and correctly excludes 1-cycles, then attempts to exclude
+nontrivial cycles via Baker's theorem on linear forms in logarithms.
+The cycle equation genuinely forces \(M/P \to \log_2 3\) for a real,
+self-consistent cycle with large elements --- but the paper substitutes
+\(M \approx 2P\), the \emph{ergodic, average} expectation for a generic
+odd integer (already known in this project as a baseline fact, not a
+cycle constraint), producing a check that constrains nothing.
+
+\textbf{Boyle (2026)} \cite{Boyle2026} derives, via the standard
+random-walk heuristic, that the ensemble-average fraction of even steps
+along Collatz orbits is \(2/3\) --- valid, at best, as an average over
+many random starting values \(n\) --- and then substitutes this
+constant directly into an equation (Lemma~4.2) about one specific,
+fixed, hypothetical divergent trajectory, deriving a ``contradiction''
+that depends entirely on this illegitimate substitution. We confirmed
+computationally that even among orbits known to converge, the fraction
+of even steps realized by any one individual trajectory varies
+substantially around \(2/3\) (mean 0.677, standard deviation 0.031 over
+3000 sampled trajectories) --- it is an aggregate statistic, not a
+constraint on any single orbit.
+
+\textbf{Tynski (2026)} \cite{Tynski2026} builds an extensive and mostly
+correct formal apparatus (Clifford algebra, an explicit trace,
+established cycle-exclusion identities) around a ``master theorem''
+unifying the Riemann hypothesis and the Collatz conjecture, but the
+exclusion of divergent orbits rests entirely on an axiom asserting a
+\emph{deterministic} Lyapunov bound
+\(\log_2 n_m \le \log_2 n_0 - m\delta + C\sqrt m\) for a universal
+constant \(C\), justified circularly (the text derives the needed
+decay ``once \(A_m/m > \log_2 3\) is forced,'' the very property being
+argued for) and supported only by numerical verification up to
+\(n_0 \le 3\times 10^4\). We tested the claim directly beyond that
+range: the minimal \(C\) required already exceeds the claimed universal
+bound of 5 for seeds \(10^4 \le n_0 < 10^9\) (worst case 5.08), and
+known long-delay record-holders require \(C\) up to 8.34 --- a direct
+computational refutation, not merely an absence of proof.
+
+\textbf{The Syzdykov dispute (2025--2026)} \cite{Syzdykov2025,Syzdykov2026,LafontaineCheong2026}
+is a three-paper exchange rather than a single claim. The original note
+\cite{Syzdykov2025} asserts \(O(f(n)) \le n\) for the Collatz function
+\(f\), substitutes \(n = 2^m-1\), and declares
+\(O(f(2^m-1)) \approx 3^m > 2^m - 1\) a contradiction refuting the
+conjecture. Lafontaine \& Cheong \cite{LafontaineCheong2026} correctly
+identify the category error: \(O(\cdot)\) denotes a set of functions,
+not a scalar, so \(O(f(n)) \le n\) is not well-formed; and even under a
+charitable pointwise reading, an asymptotic bound (``for some \(C,n_0\),
+for all \(n \ge n_0\)'') licenses no conclusion about the exact value of
+one specific \(n\) --- the same confusion of an existential, aggregate
+bound with a pointwise, deterministic one seen in the other four cases
+in this category. Syzdykov's reply \cite{Syzdykov2026} does not engage
+this point; it redefines \(O(f(n))\) after the fact to mean a scalar
+orbit length and reasserts the original conclusion as ``already
+proved.''
+
+\textbf{Barghout (2019)} \cite{Barghout2019} correctly proves, by
+elementary induction, that the 2-adic valuation of even integers (or of
+values produced by \(3n+1\)) follows a fixed, deterministic density
+pattern --- a static fact about the \emph{set} of even integers, not
+about any specific orbit. Its convergence argument then imports this
+static density as if it were the \emph{visit statistic} of one specific
+dynamical orbit, implicitly assuming the orbit equidistributes ---
+precisely the unproved content of the conjecture, not a consequence of
+the density lemmas. We confirmed by direct simulation that individual
+orbits (e.g., \(n=9663\)) can grow to roughly 2800 times their starting
+value before eventually decreasing, illustrating concretely why an
+``on-average'' argument constrains no single trajectory.
+
+\subsection{Category D: an elementary error unrelated to the structural obstruction}
+\label{sec:catD}
+
+\textbf{Roif (2026)} \cite{Roif2026} constructs a three-point
+topological space \(S=\{0,2,1\}\), reinterprets the integer 2 as an
+``empty container'' \(\{\}\), and proves a lemma asserting that any
+subset of the positive integers with asymptotic density zero must be
+empty. This is false as a general mathematical fact and is the only
+error in the catalog with no connection to the conjecture's real
+difficulty: density zero does not imply finiteness, let alone
+emptiness. The set of perfect squares, or of powers of 2, has density
+zero and is plainly infinite. This single elementary error collapses
+the paper's entire closing argument (its Theorem~9.1 and
+Corollary~9.2, which would otherwise complete the proof), independent
+of the remaining formal apparatus (Clifford-adjacent identities, a
+Lyapunov-style wave function), which is a correct but by-itself
+insufficient restatement of results already standard in the
+literature.
+
+\subsection{Category E: a genuine rigor gap without a computational counterexample}
+\label{sec:catE}
+
+\textbf{Spencer (2026)} \cite{Spencer2025b}, by the same author as the
+Category A case in \S\ref{sec:catA}, uses a different reverse tree
+(infinite-degree, via the inverse of the accelerated map). Unlike its
+companion paper, building the real tree and testing coverage up to
+\(10{,}000\) found \emph{no} gap in practice --- apparent coverage
+failures at smaller computational budgets converged exactly to the
+root once checked without a magnitude cutoff. We nonetheless identified
+a genuine gap in the written argument: Theorem~14.1 proves occupation
+of residue \emph{classes}, and Theorem~14.2 concludes occupation of
+individual \emph{elements} without justifying the step --- the same
+logical shape as the Category A case, but one that, so far, has not
+manifested as an actual failure under computational search. This
+distinction matters: not every gap in a Collatz proof attempt is
+equally fatal, even within the same author's closely related
+arguments.
+
+\section{Discussion}
+\label{sec:discussion}
+
+Ten of the twelve cases --- all of Categories A, B, and C --- fail, by
+routes that look unrelated on the surface, at exactly the same point:
+none of them establishes a genuine bound on how long an adversarial run
+of increasing steps can be, the structural obstruction that no known
+method resolves. Category C alone accounts for five of the ten, and is
+the most striking part of the pattern: the same conceptual error ---
+substituting an aggregate, average, or asymptotic property for a
+pointwise, deterministic guarantee --- survives being dressed in five
+unrelated formal vocabularies (elementary number theory via Baker's
+theorem, the classical random-walk heuristic, a 2-adic Lyapunov bound,
+Big-O asymptotic notation, and static 2-adic density). This is not an
+artifact of our own classification: three of the five source documents
+already cross-reference each other, and two of them cross-reference the
+random-walk heuristic explicitly, as instances of the same confusion,
+independently of this catalog.
+
+The two cases outside this pattern are informative by contrast. Roif's
+error (Category D) is an isolated, elementary mistake with no bearing
+on the conjecture's actual difficulty --- a reminder that not every
+error in a Collatz proof attempt is evidence about \emph{why} the
+conjecture is hard, some are simply wrong for unrelated reasons.
+Spencer's second paper (Category E) shows the opposite lesson: an
+identical logical shape to a Category A failure (residue-class
+occupation conflated with individual-element occupation) can, in one
+instance, fail to manifest as an actual computational counterexample
+--- underscoring that the taxonomy classifies argument \emph{structure},
+not severity, and that structurally similar gaps are not always equally
+fatal.
+
+We note, finally, that the broader collection of Collatz-related papers
+surveyed alongside these twelve (outside the scope of this note)
+contains many papers that make no claim of a complete proof at all, and
+that are careful to label open steps as conjectural. The twelve cases
+here were selected precisely because they make the strong claim; the
+taxonomy above should not be read as suggesting that claimed-proof
+papers are typical of the wider literature on the conjecture.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+All twelve reviewed claims of a complete proof or disproof of the
+Collatz conjecture fail under independent scrutiny, and none is close
+to valid. The value of this catalog is not the count but the
+concentration: half of the twelve cases, despite using entirely
+different mathematical vocabularies, commit the identical error of
+mistaking an aggregate or asymptotic property for a deterministic,
+pointwise guarantee, and three more commit one of two closely related
+errors (circularity, illegitimate generalization from a single
+sequence) that converge on the same known structural obstruction. This
+regularity is itself a small piece of evidence about why the conjecture
+resists elementary attack: the failure modes are not diverse, they
+repeat.
+
+\section*{Acknowledgments}
+
+Parts of the verification described in this note (case reconstruction,
+computational checks, and cross-checking of subtle mathematical
+judgment calls) were carried out with the assistance of Claude (models
+in the Claude 4 and 5 families, Anthropic), used as a research
+assistant under the direction and review of the author.
+
+\begin{thebibliography}{99}
+
+\bibitem{LagariasSurvey} J.\ C.\ Lagarias (ed.), \emph{The Ultimate
+  Challenge: The $3x+1$ Problem}, American Mathematical Society, 2010.
+
+\bibitem{Tao2022} T.\ Tao, \emph{Almost all orbits of the Collatz map
+  attain almost bounded values}, Forum of Mathematics, Pi \textbf{10}
+  (2022), e12.
+
+\bibitem{Getachew2025} E.\ S.\ Getachew, \emph{Unfolding the Collatz
+  Tree: An Indirect Structural Proof}, Research in Mathematics
+  (Taylor \& Francis), 2025.
+
+\bibitem{Spencer2025a} M.\ E.\ Spencer, \emph{Finite Block Exhaustion
+  and Rooted Occupancy in the Inverse Collatz System: A No-Alternative
+  Proof via Ternary Counters, Primitive Carry, and Forced Thread
+  Displacement}, academia.edu preprint, 2025.
+
+\bibitem{Spencer2025b} M.\ E.\ Spencer, \emph{Rooted Surjectivity from
+  the Invariant E/O Refinement System}, academia.edu preprint, 2026.
+
+\bibitem{Santos2018} O.\ de O.\ Santos, \emph{Proving the Collatz
+  Conjecture with Binaries Numbers}, Pure and Applied Mathematics
+  Journal \textbf{7}(5) (2018), Science Publishing Group.
+
+\bibitem{Halemane2025} K.\ P.\ Halemane, \emph{Collatz-Thwaites-Ulam-Hasse-Syracuse-Kakutani
+  (CTUHSK) Theorem: Convergence of Collatz ($3n+1$) Sequence to the
+  Trivial Cycle Proved}, engrXiv preprint, 2025.
+
+\bibitem{Mohammed2024} A.\ Mohammed, \emph{Structural Analysis, Dynamic
+  Density Sieve, and Logarithmic Contraction of Collatz Sequences},
+  preprint, Kafr El-Sheikh University, 2024.
+
+\bibitem{Boyle2026} D.\ G.\ Boyle, \emph{The Collatz Conjecture is
+  True}, rxiverse.org preprint, 2026.
+
+\bibitem{Roif2026} A.\ Roif, \emph{On the Convergence of the Collatz
+  Function via Galois Fields, Topological Duality, and Lyapunov Wave
+  Analysis}, academia.edu preprint, v4, 2026.
+
+\bibitem{Yun2026} Y.\ H.\ Yun, \emph{A Structural Proof of the Collatz
+  Conjecture via Non-Repeating Trajectory and Recursive Decay}, OSF
+  preprint, Zero Theoretical Physics Lab, 2026.
+
+\bibitem{Tynski2026} K.\ Tynski, \emph{A Common Proof of the Riemann
+  Hypothesis and the Collatz Conjecture}, academia.edu preprint, 2026.
+
+\bibitem{Syzdykov2025} M.\ Syzdykov, \emph{Disproof of Collatz
+  Conjecture by Using O-notation}, ResearchGate preprint, 2025.
+
+\bibitem{Syzdykov2026} M.\ Syzdykov, \emph{Continued Disproof Sentence
+  towards Collatz Conjecture}, ResearchGate preprint, 2026.
+
+\bibitem{LafontaineCheong2026} M.\ Lafontaine and G.\ Cheong, \emph{A
+  Note on a Claimed Disproof of the Collatz Conjecture}, ResearchGate
+  preprint, 2026.
+
+\bibitem{Barghout2019} K.\ Barghout, \emph{On the Probabilistic Proof
+  of the Convergence of the Collatz Conjecture}, Journal of Probability
+  and Statistics (Hindawi) \textbf{2019}, Article ID 6814378.
+
+\end{thebibliography}
+
+\end{document}

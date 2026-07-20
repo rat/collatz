@@ -38,8 +38,25 @@ estática). Achado confirmado nos próprios H-arquivos: H-093, H-095 e
 H-116 já se citavam mutuamente como "a mesma falácia recorrente" antes
 mesmo deste paper existir — não é uma categorização imposta de fora.
 Isso vira a tese central do paper, mais forte que a versão inicial.
-`OUTLINE.md` atualizado com a taxonomia corrigida. Nenhuma redação do
-corpo do paper (LaTeX) começou ainda — só a estrutura.
+`OUTLINE.md` atualizado com a taxonomia corrigida.
+
+**Rascunho completo escrito e compilado** (mesmo dia): `main.tex`/
+`main.pdf` (inglês, 7 páginas) e `main-pt-br.tex`/`main-pt-br.pdf`
+(português, 7 páginas), preâmbulo/estilo reaproveitados do paper 01,
+bibliografia manual (`thebibliography`, sem `.bib`/bibtex, igual ao
+paper 01). Estrutura: Introdução, Metodologia, Taxonomia (5 categorias
+A-E com os 12 casos resumidos dentro de cada uma, sem seção separada de
+"estudos de caso" — fundido para evitar repetição em relação ao
+OUTLINE.md), Discussão, Conclusão, Agradecimentos (disclosure de uso de
+IA), 16 referências. Compilação limpa nas duas versões (0 avisos de
+overfull/undefined) confirmada por `pdftoppm` + inspeção visual das
+páginas mais densas e da bibliografia. Um erro real pego nessa
+inspeção: quebra de linha no meio do nome hifenizado
+"Collatz-Thwaites-Ulam-Hasse-Syracuse-Kakutani" (item bibliográfico do
+Halemane/CTUHSK) inseria um espaço espúrio depois de "Ulam-" — corrigido
+nos dois arquivos, recompilado, confirmado visualmente. **Ainda não
+revisado pelo diretor científico** — próximo passo natural é ele ler e
+dar feedback, como no paper 01.
 
 ## H-130 entrou no paper como nota de rodapé compacta
 

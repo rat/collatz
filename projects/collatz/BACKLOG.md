@@ -593,7 +593,7 @@ Continuar adicionando aqui (ou num arquivo dedicado, se a lista crescer
 muito) conforme processarmos os próximos itens da coleção. Ver memória
 `feedback_santos_pdf_paper_timing.md`.
 
-## 9. Escrever paper catalogando alegações de prova/refutação completa da conjectura — EM ANDAMENTO (iniciado 2026-07-20)
+## 9. Escrever paper catalogando alegações de prova/refutação completa da conjectura — RASCUNHO COMPLETO (2026-07-20), aguardando revisão do diretor
 
 Pedido do diretor científico em 2026-07-20 ("vamos iniciar o paper sobre
 erros dos papers ao tentar provar a conjectura?"). Escopo confirmado por
