@@ -2,6 +2,36 @@
 
 Última atualização: 2026-07-20
 
+## H-130 resolvida (a favor da opção (i)) — cálculo de autovalor de posto 1
+
+Pedido "tente resolver as hipóteses em aberto" (após 2 confirmações
+empíricas, q=7 e q=15, para a família de escala por tipo). Consulta ao
+Opus (máximo esforço) entregou o argumento analítico que faltava: a
+matriz média multitipo do smoothing transform, restrita aos tipos
+férteis ($\langle2\rangle$), é de **posto 1**. O autovalor de
+Perron-Frobenius dessa matriz restrita colapsa, por um cancelamento
+$d$-independente ($a_0$ é bijeção $\langle2\rangle\to\{1,\ldots,d\}$),
+para exatamente $\rho(s)=q^{s-1}/(2^s-1)$ — **a mesma equação de
+pressão do Teorema 3.3**, independente de quantos tipos extras são
+estéreis. **Verifiquei a álgebra por conta própria** (o fator
+$(1-2^{-ds})$ cancela mesmo, re-derivei à mão) antes de aceitar.
+Consequência: expoente θ e a direção do autovetor
+$C_i\propto2^{-a_0(i)\theta}$ sobrevivem intactos à esterilidade
+extra — exatamente a opção (i). A opção (ii) (estrutura por coset) foi
+descartada estruturalmente, não só empiricamente: só existe UM coset
+fértil (o próprio $\langle2\rangle$); os demais são inteiramente
+estéreis, então "comparar cosets" não tem conteúdo.
+
+**O que ficou de fora (ressalva, não invalida o veredito)**: o
+posto-1 é exato no MODELO i.i.d.; para a árvore aritmética real, ainda
+depende da mesma hipótese de equidistribuição já registrada como
+lacuna padrão do projeto (`rem:transfer-basis`) — não é uma lacuna
+nova, específica de H-130. H-130 agora está com status "resolvida a
+favor da opção (i)" no arquivo, com a seção "Resolução" documentando
+o argumento completo em três camadas (expoente provado; razão de
+escala exata no modelo + empírica em 3 casos; forma/W* comum exata no
+modelo + empírica de cauda em q=5).
+
 ## Dois testes adicionais (pedido: "testar ambos, um por vez"), um deles rendendo a melhor resolução do item 1 até agora
 
 Depois do quase-erro de reticulado (autocorrigido), diretor científico

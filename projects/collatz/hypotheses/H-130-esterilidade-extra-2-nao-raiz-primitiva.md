@@ -1,7 +1,11 @@
 # H-130 — Esterilidade extra na árvore reversa de qx+1 quando 2 não é raiz primitiva mod q
 
-Status: aberta
+Status: resolvida a favor da opção (i) — nível modelo (exato) + confirmação
+empírica q=5 e q=7; expoente θ agora provado por duas rotas independentes.
+Ressalva aritmética padrão (`rem:transfer-basis`) permanece, não é específica
+de H-130. Ver "Resolução" abaixo.
 Criada em: 2026-07-20
+Resolvida em: 2026-07-20 (julgamento de máximo esforço, Opus + advisor)
 
 ## Origem
 
@@ -133,3 +137,93 @@ constante de escala muito menor, ou variância anômala) do que os casos
   sem introduzir estrutura nova entre os que sobrevivem. Não é prova
   geral (um só q testado). Ver
   `experiments/E-109-h130-sterility-scale-family-q7/`.
+- 2026-07-20 (mesma sessão, segundo caso): estendido `E-109` para
+  também testar q=15 (composto, $\ord_{15}(2)=4<\varphi(15)=8$,
+  $\langle2\rangle=\{1,2,4,8\}$, 4 de 8 resíduos coprimos
+  não-estéreis) — um caso estruturalmente diferente de q=7 (composto
+  em vez de primo, mais tipos). Com 3000 raízes por tipo (headroom
+  $10^8$, $\theta=0{,}131006$), todas as 6 razões $W_i/W_j$ batem a
+  1–4%. **Duas confirmações empíricas independentes agora, com
+  estruturas distintas (q primo e q composto).**
+- 2026-07-20 (mesma sessão, fechamento): resolução analítica registrada
+  (seção "Resolução" abaixo). O passo que faltava — um argumento, não só
+  a repetição empírica — veio do cálculo do autovalor de posto 1
+  (cancelamento $d$-independente), verificado numericamente para
+  $q=3,5,7,9,15,17,21,31,33$.
+
+## Resolução (2026-07-20) — a favor da opção (i)
+
+**Núcleo analítico (cálculo do autovalor de posto 1).**
+A matriz média multitipo do smoothing transform, restrita aos tipos
+*férteis* $i\in\langle2\rangle$, é de **posto 1**:
+$M(s)_{ij}=\tfrac1q\,c_i(s)$ com
+$c_i(s)=\sum_{k\ge0}\bigl(q\,2^{-(a_0(i)+kd)}\bigr)^s
+      = q^{s}\,2^{-a_0(i)s}/(1-2^{-ds})$.
+Posto 1 = *a lei do tipo do filho independe do tipo do pai* (o "input de
+equidistribuição"; ver ressalva). O autovalor de Perron–Frobenius de uma
+matriz de posto 1 $r_i s_j$ é $\sum_i r_i s_i$, então
+$$\rho(s)=\tfrac1q\sum_{i\in\langle2\rangle}c_i(s)
+        =\frac{q^{s-1}}{1-2^{-ds}}\sum_{i\in\langle2\rangle}2^{-a_0(i)s}.$$
+Como $a_0$ é **bijeção** $\langle2\rangle\to\{1,\dots,d\}$,
+$\sum_i 2^{-a_0(i)s}=\sum_{m=1}^{d}2^{-ms}=2^{-s}\tfrac{1-2^{-ds}}{1-2^{-s}}$,
+e o fator $(1-2^{-ds})$ **cancela**:
+$$\rho(s)=\frac{q^{s-1}}{2^{s}-1}\qquad\text{— independente de }d.$$
+Logo $\rho(\theta)=1 \iff q^{\theta-1}=2^{\theta}-1$, que é **exatamente a
+equação de pressão do Teorema 3.3**. Verificado numericamente (mpmath, 30
+díg.) para $q=3,5,7,9,15,17,21,31,33$ (primos, potências e compostos):
+$|\rho_{\text{posto-1}}-\rho_{\text{fechado}}|\lesssim10^{-30}$, resíduo
+de pressão $=0$.
+
+**Consequências (respondendo o enunciado).**
+- Autovetor direito de PF: $C_i\propto c_i\propto 2^{-a_0(i)\theta}$ — a
+  família de escala por tipo, idêntica em forma para todo $q$.
+- A esterilidade extra ($d<\varphi(q)$) só **remove** os tipos estéreis.
+  A matriz restrita aos sobreviventes continua de posto 1 e o cancelamento
+  é $d$-independente, então **expoente $\theta$ E direção do autovetor
+  sobrevivem intactos** — conteúdo exato da opção (i).
+- Ponto fino (por que "restringir a posto 1" sozinho não basta): uma
+  restrição ingênua a um sub-bloco baixaria o autovalor de PF e **não**
+  daria θ-invariância; é o *cancelamento $d$-independente* que garante
+  $\rho(\theta)=1$ para todo $q$. Autovalor ≠ autovetor (mesma família do
+  quase-erro coset-vs-subgrupo registrado no STATE).
+
+**Opção (ii) descartada estruturalmente.** Fértil $\iff$ resíduo
+$\in\langle2\rangle$: existe **um único coset fértil** (o próprio
+subgrupo). Os cosets não-triviais são *inteiramente* estéreis e não têm
+assíntota própria — a leitura de "camadas de coset com comportamento
+distinto" da opção (ii) é vazia. Corolário: q=5, q=7 e q=15 testam só a
+escada *dentro* de $\langle2\rangle$ (comparação inter-coset é vácua); as
+confirmações devem ser lidas como "cosets estéreis alhures não perturbam
+a escada sobrevivente" = exatamente a opção (i).
+
+**Distribuição completa (Claim B).** No modelo i.i.d. do smoothing
+transform: posto 1 ⟹ tipo do filho independe do pai ⟹ tipo ao longo da
+espinha é i.i.d. após a raiz ⟹ $W_i\stackrel{d}{=}c_i\,W^*$ com $W^*$
+**comum** resolvendo uma SFPE de tipo único. Exato no modelo; para a
+árvore aritmética real é a lacuna padrão `rem:transfer-basis`, não um
+problema aberto específico de esterilidade.
+
+**Evidência empírica (três casos independentes).** q=5 (E-103 Estágio 4):
+razões de quantil em 3 níveis de cauda (30/20/10%) todas batendo o mesmo
+$c_i/c_j$ — a *constância entre níveis* é evidência de invariância de
+FORMA de cauda, não só de escala. q=7 e q=15 (E-109): média/mediana/
+geomean (só escala), q primo e q composto. Precisão 1–9%, consistente com
+desvio de amostra finita.
+
+**Ressalva (não bloqueia o veredito).** Tudo é exato no modelo i.i.d.; o
+posto-1 da árvore aritmética real é a hipótese de *equidistribuição* (os
+filhos equidistribuem sobre $\langle2\rangle$ independente do tipo do
+pai). O espalhamento mod $q^2$ do Example 3.1 é o **mecanismo** que
+fornece essa equidistribuição (equidistribuição tipo Weyl, não autômato
+finito), não um defeito — o argumento não depende de estrutura de Markov
+finita, só de auto-similaridade estatística + equidistribuição. É a mesma
+lacuna modelo-vs-aritmética de todo o projeto, não específica de H-130.
+
+**Veredito de registro.** RESOLVIDA a favor da opção (i), em três camadas:
+(a) expoente $\theta=\alpha_-$ — **provado**, agora por duas rotas
+independentes (bijeção reversa do Teorema 3.3 + cancelamento de autovalor
+de posto 1); (b) razão de escala por tipo $C_i\propto2^{-a_0(i)\theta}$ —
+exata no modelo + empírica q=5,7,15; (c) forma / $W^*$ comum — exata no
+modelo + empírica de cauda q=5. Opção (ii) descartada estruturalmente.
+**Não alegar** "prova analítica geral para a recursão aritmética" — isso
+permanece sob a ressalva `rem:transfer-basis` padrão do projeto.
