@@ -2,6 +2,43 @@
 
 Última atualização: 2026-07-20
 
+## Quase-erro autocorrigido: reticulado vs. coset na Proposição condicional (prop:transition-fine)
+
+Ao perguntar "existe algo mais a testar?", verifiquei por conta própria
+(Python) a estrutura de deslocamentos do passeio aleatório ramificado
+usado em `prop:transition-fine` e cheguei a uma conclusão ERRADA: que
+o processo seria reticulado (span log2), contradizendo a frase já
+escrita no paper ("hipótese não-reticulada vale já que log(q)/log(2) é
+irracional"). Ia "corrigir" o paper baseado nisso.
+
+**O erro era meu, não do paper.** Consultei o Opus (máximo esforço)
+antes de agir, e ele identificou o deslize com precisão: confundi
+"os deslocamentos estão contidos num único coset do reticulado log(2)ℤ"
+(verdade) com "o processo é aritmético/reticulado" (falso) — a
+definição de Feller de aritmeticidade é sobre o MENOR SUBGRUPO FECHADO
+gerado pelos deslocamentos (que passa pela origem), não sobre estar
+contido num coset qualquer. Aqui esse subgrupo é
+log(q)ℤ+log(2)ℤ — denso em ℝ porque log(q)/log(2) é irracional. O
+texto original estava certo; a irracionalidade É o fato operante.
+
+Confirmado também que isso é totalmente consistente (não em tensão)
+com a análise diferente já feita em H-129/E-103 Estágio 2 (dicotomia
+aritmético/não-aritmético de Goldie para os multiplicadores A_a^θ na
+cauda de W, um objeto distinto de N(x) mas que consome a mesma
+irracionalidade log(q)/log(2) como input).
+
+**Ação**: Opus fortaleceu a justificativa no paper (nos dois idiomas)
+para blindar contra um revisor que cometesse o mesmo deslize
+coset-vs-subgrupo — sem remover nem enfraquecer nenhuma alegação.
+PDFs recompilados limpos (31/33 páginas).
+
+**Lição**: ao "verificar" uma alegação matemática já escrita, não
+bastava reproduzir um cálculo parcial (a estrutura de coset) e concluir
+— era preciso checar a definição exata do critério relevante (aqui,
+aritmeticidade de Feller) antes de declarar contradição. Bom sinal:
+não apliquei a "correção" sem antes consultar o Opus, mesmo com alta
+confiança na própria derivação.
+
 ## Quatro pontas de pesquisa abertas pela auditoria, testadas nesta sessão
 
 Depois da 4ª rodada de auditoria, diretor científico perguntou se as
