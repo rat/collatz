@@ -22,12 +22,14 @@ and, as writing progresses, the draft files themselves.
   the two is edited at the scientific director's request, edit the
   other too** — they are the same source of truth in two languages,
   they cannot diverge.
-- **`02-critica-cumulativa-literatura/`** — cumulative paper of
-  critiques of the papers in the Google Scholar collection (refuted
-  proof claims, errors found). See `BACKLOG.md` item 8. **Do not start
-  writing without an explicit request from the scientific director** —
-  different nature from paper 01 (grows with every item read from the
-  collection, has no natural "closing" point).
+- **`02-critica-cumulativa-literatura/`** — cumulative, explicitly
+  running/incomplete survey of the Collatz-adjacent literature that
+  does NOT claim a complete proof (16 items consolidated as of
+  2026-07-20, out of a much larger surveyed collection). See
+  `BACKLOG.md` item 8 and `OUTLINE.md`. Started 2026-07-20 at the
+  scientific director's explicit request ("pode iniciar"). Grows with
+  every further item processed — no natural "closing" point, unlike
+  paper 01 or 03.
 - **`03-alegacoes-de-prova-refutadas/`** — narrower, closable sibling of
   02: catalogs *only* claims of a complete proof (or disproof) of the
   Collatz conjecture (12 cases as of 2026-07-20, all already reviewed

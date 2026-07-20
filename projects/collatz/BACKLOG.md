@@ -307,7 +307,18 @@ escrever quando o diretor científico pedir explicitamente, por último
 — junto com o item 5 (ver memória `feedback_santos_pdf_paper_timing.md`
 no sistema de memória do Claude).
 
-## 8. Escrever um paper cumulativo de críticas aos papers da coleção do Google Scholar — PENDENTE, ABERTO (cresce a cada item lido)
+## 8. Escrever um paper cumulativo de críticas aos papers da coleção do Google Scholar — v1 ESCRITA (2026-07-20), ABERTO (cresce a cada item lido)
+
+Iniciado por pedido explícito do diretor científico em 2026-07-20
+("pode iniciar"). v1 do paper vive em
+`papers/02-critica-cumulativa-literatura/` (`main.tex`/`main-pt-br.tex`,
+compilados, 7 páginas cada) e consolida os 16 itens abaixo já escritos
+com detalhe (001-010, 013, 014, 017, 019, 020, 026 — excluindo 011 e
+016, que são alegações de prova completa e foram para o paper 03). Os
+itens ainda não escritos (ver `OUTLINE.md` do paper 02 para a lista
+completa dos ~21 lidos mas não consolidados, mais o restante da
+coleção) continuam pendentes para uma v2 futura — este item permanece
+"ABERTO" por natureza, sem ponto de fechamento.
 
 Pedido do diretor científico em 2026-07-14 ("salve como mencionei para
 nosso paper futuro de críticas aos papers atuais"), mesmo padrão de

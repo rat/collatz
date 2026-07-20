@@ -1,0 +1,472 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[brazilian]{babel}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\usepackage{orcidlink}
+\usepackage{fontawesome5}
+
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\NN}{\mathbb{N}}
+
+\title{Honestidade de Escopo na Literatura Adjacente a Collatz:\\
+Uma Calibração Contínua Contra Alegações de Prova Completa}
+
+\author{Renato Augusto Tavares~{\small\href{mailto:dr.renatotavares@gmail.com}{\textcolor{black}{\faEnvelope}}}~\orcidlink{0009-0002-0196-3311}\\
+\normalsize Universidade Federal de Goiás}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Uma nota irmã deste levantamento cataloga doze alegações de prova ou
+refutação completa da Conjectura de Collatz, todas inválidas. Esta nota
+se volta a uma população diferente: dezesseis papers, encontrados no
+mesmo levantamento bibliográfico mais amplo, que não fazem tal alegação
+--- resultados sobre estruturas adjacentes a Collatz, heurísticas ou
+estatísticas parciais. Lidos na íntegra e verificados computacionalmente
+quando possível, esse conjunto se comporta de forma muito diferente do
+conjunto de alegações de prova. O eixo que os distingue não é a taxa de
+erro, mas a honestidade de escopo: sem exceção conhecida nesta amostra,
+esses papers rotulam corretamente uma conjectura como conjectura e um
+teorema como teorema, em contraste nítido com o overclaim sistemático
+que define o catálogo irmão. Erros genuínos ocorrem --- dois num
+programa de sete papers de um único autor prolífico, um num resultado
+autônomo por outro lado cuidadoso --- mas se distribuem de forma
+diferente: os erros do autor prolífico são ambos inconsistências entre
+enunciado e demonstração, contidas a uma única seção cada; o erro do
+resultado autônomo está no seu teorema titular. Esta nota é
+explicitamente um documento parcial e contínuo: consolida dezesseis
+itens revisados em profundidade até agora, de uma coleção levantada
+muito maior, e é estruturada para crescer conforme mais itens forem
+processados.
+\end{abstract}
+
+\section{Introdução}
+\label{sec:intro}
+
+Uma nota irmã, \emph{Errors in Claimed Complete Proofs (and Disproofs)
+of the Collatz Conjecture}, cataloga doze alegações de solução completa
+da conjectura, encontradas ao longo de um levantamento bibliográfico
+mais amplo, e mostra que as doze falham --- a maioria pelo mesmo
+punhado de erros recorrentes. Aquela população é incomum: todo item
+nela alega explicitamente resolver a conjectura, uma alegação forte que
+convida escrutínio forte.
+
+Esta nota é sobre o restante do levantamento: papers que estudam
+estruturas adjacentes a Collatz --- reformulações da dinâmica
+acelerada, modelos estatísticos de comportamento de órbita,
+propriedades combinatórias de sequências de paridade, sistemas de
+coordenadas para o espaço de estados --- sem alegar provar ou refutar a
+própria conjectura. É uma população muito maior e mais heterogênea que
+o conjunto de alegações de prova, e esta nota não tenta cobri-la
+inteira: nesta versão, consolida dezesseis itens que foram lidos na
+íntegra e revisados em profundidade, de um conjunto consideravelmente
+maior encontrado no levantamento. É escrita como um documento contínuo,
+com expectativa de crescer conforme mais da coleção levantada for
+processada em sessões futuras, não como um censo terminado.
+
+A pergunta que esta nota faz sobre os dezesseis itens que cobre não é
+principalmente `estão corretos' --- a maioria está, e correção em
+matemática elementar ou padrão aplicada com competência não é
+surpreendente. A pergunta mais informativa, e a que permite a esta nota
+funcionar como ponto de calibração contra o catálogo irmão, é
+honestidade de escopo: o paper alega só o que estabelece? A
+Seção~\ref{sec:rc} examina o bloco coerente mais amplo desta amostra,
+um programa de sete papers de um único autor aplicando um conceito
+clássico de teoria ergódica por paper à mesma quantidade subjacente. A
+Seção~\ref{sec:others} cobre os nove itens restantes, independentes
+entre si e do programa da Seção~\ref{sec:rc}. A Seção~\ref{sec:discussion}
+traça o contraste com o catálogo irmão e afirma o que a contenção de
+erro generaliza e o que não generaliza. A Seção~\ref{sec:conclusion}
+conclui.
+
+\section{Metodologia}
+\label{sec:methodology}
+
+Cada item foi lido na íntegra, e suas alegações concretas e
+verificáveis --- identidades, fórmulas fechadas, teoremas com enunciado
+explícito --- foram verificadas computacionalmente de forma
+independente sempre que admitiam um teste numérico. Onde um paper
+distingue resultados provados de conjecturais, essa rotulagem foi
+conferida contra o que a própria demonstração do paper de fato
+estabelece, não aceita pelo valor de face. Nos poucos casos em que o
+julgamento envolvido era sutil, a análise foi cruzada com um revisor
+independente baseado em modelo de linguagem. Como no catálogo irmão,
+toda alegação específica feita abaixo sobre um paper nomeado remonta a
+esse processo de revisão, não a uma paráfrase dele; o detalhe técnico
+completo de cada item foi registrado durante a revisão em notas de
+trabalho internas e é resumido, não reproduzido, aqui.
+
+\section{O programa Ruiz Castillo}
+\label{sec:rc}
+
+Sete papers de Juan Carlos Ruiz Castillo (ScD., Universidad de San
+Carlos de Guatemala) aparecem nesta amostra, cada um aplicando um
+conceito clássico de teoria ergódica ou de grandes desvios --- pressão,
+uma `geometria' residual, cotas dissipativas, um teorema central do
+limite, um operador de transferência, medidas de Gibbs, um princípio
+variacional, uma função de tasa de grandes desvios --- à mesma
+quantidade elementar: o drift residual $L_k(n) = k\log_2 3 - A_k(n)$,
+onde $A_k(n)$ é a soma das primeiras $k$ valuações 2-ádicas ao longo do
+mapa acelerado de Collatz $U(n) = (3n+1)/2^{v_2(3n+1)}$ --- o drift
+padrão da equação de ciclo, já usado em outras partes deste programa de
+pesquisa. Nenhum dos sete alega provar a Conjectura de Collatz; cada um
+diz isso explicitamente. A apresentação é fortemente repetitiva ao
+longo da série (quadros decorativos recorrentes redesenhando a mesma
+cadeia conceitual, taxas de autocitação de 75--100\% revelando da ordem
+de 19--20 títulos quase idênticos do mesmo autor), mas o rigor formal
+subjacente é notavelmente estável: cinco dos sete papers não contêm
+nenhum erro que encontramos, e os dois erros genuínos encontrados estão
+ambos contidos a uma única seção e não afetam as conclusões
+posteriores dos próprios papers.
+
+\textbf{Geometría Residual} \cite{RuizCastillo2026a} aplica o
+formalismo termodinâmico padrão (pressão como supremo sobre medidas
+invariantes, uma segunda derivada tipo métrica de Fisher) ao drift
+residual, corretamente e sem alegar provar Collatz. O mesmo fato
+trivial --- convexidade implica segunda derivada não-negativa --- é
+apresentado como cinco resultados nomeados separadamente ao longo do
+paper, emoldurado por dez quadros decorativos redesenhando a mesma
+cadeia conceitual, sem nenhum conteúdo numérico em lugar nenhum (ambas
+as figuras são explicitamente rotuladas `conceptual') e 100\% de
+autocitação (13 de 13 referências). Calculamos explicitamente, em forma
+fechada, a quantidade que o paper deixa abstrata: sob o modelo i.i.d.
+padrão já usado neste programa de pesquisa, $\Lambda(t) = t(1-\log_2 3)
+- \log(2-e^t)$, cuja segunda derivada diverge quando $t \to \log 2^-$
+--- uma característica genuína, ainda que incidental, que o paper nunca
+calcula porque nunca deriva $\Lambda(t)$ explicitamente.
+
+\textbf{Dissipative Bounds} \cite{RuizCastillo2026b}, o segundo paper
+deste autor nesta amostra, repete o padrão: identidades elementares
+corretas (um `desenrolar' afim exato do mapa acelerado, uma cota de
+dissipação universal), sem conteúdo numérico, e autocitação de 75\%
+(12 de 16 referências), com a própria lista de autocitação revelando
+mais cerca de uma dúzia de títulos quase idênticos do mesmo autor sobre
+a mesma `decomposição residual.'
+
+\textbf{Teorema Central del Límite Residual} \cite{RuizCastillo2026c}
+rotula sua alegação central com honestidade: o título diz `Teorema',
+mas o resultado é enunciado no corpo como `Conjetura 4.2', com cinco
+hipóteses explícitas não estabelecidas (existência de uma medida de
+Gibbs residual, ergodicidade, um espaço funcional adequado, uma brecha
+espectral, variância residual positiva), e a própria conclusão do paper
+afirma claramente que esse arcabouço não prova a Conjectura de Collatz.
+Testamos a previsão observável da conjectura --- normalidade
+assintótica das flutuações do drift residual --- diretamente em órbitas
+reais de Collatz (não no modelo i.i.d. abstrato): a variância se
+estabiliza perto de 2, a assimetria tende a 0 e a curtose tende a 3
+conforme a janela cresce, um resultado que o próprio paper nunca testa
+numericamente.
+
+\textbf{Operador de Transferencia Residual} \cite{RuizCastillo2026d}
+contém o primeiro erro genuíno deste programa. Sua Proposición 5.3
+alega $\lim_{t\to\infty} L_t(1) = 0$; sua própria demonstração deriva a
+forma fechada $L_t(1) = e^{(\log_2 3 - 1)t}/(1-e^{-t})$ e observa
+corretamente que isso `cresce exponencialmente quando $t\to\infty$',
+imediatamente seguido pelo símbolo de fim de demonstração, sem que a
+alegação `$=0$' seja corrigida. Confirmamos numericamente que $L_t(1)$
+cresce de 2,84 em $t=1$ para cerca de $6,4\times 10^{50}$ em $t=200$,
+estritamente crescente ao longo de toda a faixa --- o oposto exato do
+limite alegado. Isso é uma inconsistência entre enunciado e
+demonstração, não um erro de cálculo: a própria demonstração deriva o
+assintótico correto, e o texto ao redor usa esse assintótico correto
+para motivar a normalização da seção seguinte. O erro está confinado a
+um cálculo preliminar da Seção 5; nenhum resultado posterior
+explicitamente conjectural (Seções 6--8, sobre o operador de
+transferência restrito) depende dele.
+
+\textbf{Medidas de Gibbs Residuales} \cite{RuizCastillo2026e} e
+\textbf{Principio Variacional Residual} \cite{RuizCastillo2026f} voltam
+ao padrão sem erro: reafirmações corretas da mesma identidade central,
+aparato clássico de análise convexa (supremos de funções afins,
+dualidade de Legendre--Fenchel) corretamente aplicado, e todo resultado
+aberto honestamente rotulado `Conjetura', nunca `Teorema' ou
+`Proposición'.
+
+\textbf{Grandes Desviaciones Residuales} \cite{RuizCastillo2026g}
+contém o segundo erro genuíno deste programa, estruturalmente
+semelhante em tipo ao primeiro, mas localizado de forma diferente: sua
+Definición 3.1 define uma função de tasa $I_{\mathrm{RC}}(x)$ via o
+evento de cauda unilateral $\{L_k/k \ge x\}$, e sua Proposición 3.4
+(Seção 3, já provada) mostra corretamente que essa função de tasa
+unilateral é não-decrescente. Sua Seção 7, porém, inteiramente
+conjectural --- Figura 1, Conjetura 7.3 e Conjetura 7.5, mutuamente
+consistentes entre si --- descreve uma função de tasa de Cramér
+clássica e bilateral, positiva nos dois lados de seu zero único,
+contradizendo a monotonicidade já estabelecida na Seção 3. Confirmamos
+a contradição por três rotas independentes (a fórmula padrão de
+grandes desvios unilateral, simulação Monte Carlo e um cálculo exato
+Binomial Negativo para $k$ pequeno), todas concordando que a tasa
+unilateral correta é identicamente zero abaixo do drift típico, não só
+num ponto. Como no caso anterior, o erro é uma inconsistência de uma
+seção conjectural com uma proposição já provada mais cedo no mesmo
+texto, não um engano aritmético, e está confinado à Seção 7; a
+conclusão do paper (Seção 8) não depende da forma específica de
+$I_{\mathrm{RC}}$.
+
+\section{Nove papers independentes}
+\label{sec:others}
+
+Os nove itens restantes desta amostra não compartilham autoria nem,
+além de estruturas adjacentes a Collatz, muito assunto entre si.
+
+\textbf{Adnan \& Dar} \cite{AdnanDar2026} estendem a regra $3n+1$ a
+decimais em $(0,1)$ definindo `paridade' via o último dígito
+significativo de um número, concluindo divergência universal. Todos os
+exemplos trabalhados no paper conferem aritmeticamente, mas a
+construção é conceitualmente mal-posta: `último dígito significativo'
+não está definido para nenhum decimal com expansão infinita (uma
+exceção de medida zero na leitura ingênua, mas que exclui $1/3$, $1/7$
+e todo irracional), e mesmo restrita a decimais finitos a divergência é
+um artefato trivial de um termo $+1$ não normalizado, não um análogo
+estrutural do mecanismo real de Collatz (onde $3n+1$ é sempre par para
+$n$ ímpar por construção). Não é uma alegação de prova sobre a
+conjectura original e não pertence ao catálogo irmão.
+
+\textbf{Gilbert} \cite{Gilbert2026} constrói uma conjugação explícita
+entre o grafo podado de Collatz e os inteiros não-nulos, codificando a
+classe residual descartada mod 3 via sinal, negando explicitamente
+qualquer prova da conjectura. Todo teorema que checamos --- a própria
+conjugação, o pruning de múltiplos de 3, o mapa acelerado, a fórmula de
+contagem de pais e uma conexão com a sequência OEIS A254046 --- vale
+exatamente. Nenhum erro encontrado.
+
+\textbf{Seymour (Steiner Sentence Length)} \cite{Seymour2026a} deriva
+uma matriz de probabilidades de transição de um passo entre resíduos
+mod 8 (Teorema 2.1), que confirmamos correta, e a usa para derivar uma
+distribuição de forma fechada alegada para o comprimento de `sentenças
+Steiner', $3^{k-1}/4^k$ (Teorema 5.1), rejeitando a alternativa ingênua
+$(1/2)^k$ via um teste $\chi^2$ reportado. Nossa reimplementação
+independente das próprias definições do paper dá o resultado oposto:
+a simulação bate com $(1/2)^k$, e um contraexemplo aritmético exato
+($n=68567$) mostra uma sentença de comprimento 1 cujo resíduo de
+entrada é 7 --- um caso que a demonstração do Teorema 5.1 nunca
+contempla (só conta sentenças cuja \emph{primeira} palavra já fecha,
+deixando de fora silenciosamente palavras com entrada 3 ou 7 que podem
+fechar já no primeiro passo). Reportamos isso com cautela real: o paper
+alega uma formalização completa em Lean 4/Mathlib sem \texttt{sorry}, e
+não temos acesso a esse arquivo de formalização; é possível que a prova
+Lean verifique corretamente uma definição que diverge sutilmente do
+enunciado em prosa, caso em que o problema estaria na tradução
+prosa-para-formalização, não na própria prova formal. Com base
+estritamente nas definições como escritas no paper, porém, tanto um
+contraexemplo exato quanto uma simulação em larga escala discordam do
+resultado central.
+
+\textbf{Seymour (Regular Expression Language)} \cite{Seymour2026b}, um
+`working paper' explicitamente rotulado como tal pelo mesmo autor,
+separa teoremas provados de conjecturas ao longo de todo o texto. Dois
+resultados centrais (Proposición 3.1 sobre a aritmética do circuito
+Steiner, Teorema 3.6 sobre comprimento de corridas) conferiram
+exatamente em teste de larga escala. Um erro pequeno e contido:
+Corolario 2.2 alega que um resíduo de saída mod 24 depende da paridade
+de uma variável auxiliar $t$; o teste mostra que o valor alegado só
+vale quando $t$ é par, e o resíduo real é a mesma constante
+independentemente da paridade de $t$, contradizendo a alegação do
+próprio paper de que o mapa $t \mapsto (3t+1)/2$ preserva paridade
+(falso em geral). Esse corolário não consta na própria lista do paper
+de resultados provados, e o erro não afeta a conjectura central do
+working paper, que decorre quase imediatamente do já verificado Teorema
+2.1 do paper companheiro.
+
+\textbf{Anthony} \cite{Anthony2026} constrói um aparato formal elaborado
+(equação P de Riemann, monodromia, identidades hipergeométricas) em
+torno de uma reformulação de dois campos da dinâmica de Collatz via a
+coordenada de Möbius $\Phi(n) = 1/(n+1)$. Toda alegação verificável ---
+a reformulação de Möbius, um teorema excluindo a persistência
+indefinida do regime $v_2(3n+1)=1$, e várias identidades padrão da
+função digamma --- conferiu exatamente. O paper é incomumente cuidadoso
+ao longo de todo o texto em separar teoremas provados de analogias
+estruturais (explicitamente: `this is an analogy of form, not of
+kind') e de resultados condicionais cujas condições não estão
+estabelecidas, e corrige, dentro do próprio texto, uma alegação
+anterior equivocada de uma versão prévia da mesma linha de pesquisa.
+
+\textbf{Hikawa} \cite{Hikawa2026} estuda estruturas combinatórias
+finitas de vetores de paridade, independentemente de a Conjectura de
+Collatz ser verdadeira ou falsa --- uma ressalva que o paper repete em
+quase toda seção. Ambos os teoremas centrais que testamos (uma bijeção
+explícita entre classes de vetores, e uma propriedade de rigidez da
+valuação 2-ádica de um termo de correção) valeram exatamente por força
+bruta, incluindo o próprio caso de exceção declarado pelo paper.
+
+\textbf{Olgac} \cite{Olgac2026} é uma nota de três páginas conectando
+duas alegações anteriores não catalogadas do mesmo autor, uma sobre
+Collatz e outra alegando uma prova completa da Conjectura de Goldbach
+(fora do escopo deste levantamento). Seu único conteúdo específico de
+Collatz é uma tautologia (ramos raiz-disjuntos da árvore reversa,
+consequência imediata da fatoração única) em vez de um resultado
+genuíno; o restante da nota não é enunciado com precisão matemática
+suficiente para avaliar como correto ou incorreto.
+
+\textbf{Williams} \cite{Williams2026} organiza os inteiros positivos por
+sua fatoração 3-suave e estuda a dinâmica de Collatz como um fluxo
+diagonal determinístico dentro dessa organização. Todo teorema que
+testamos --- uma identidade da dinâmica diagonal, um teorema sobre
+linhas livres de primos, uma partição bijetora, uma contagem
+assintótica de posições admissíveis --- valeu exatamente. Dois erros
+pequenos e autocontidos em citações OEIS foram encontrados (um número
+de sequência que não bate com a propriedade citada, uma descrição
+com erro de um elemento), nenhum afetando qualquer prova do paper. O
+paper separa teoremas provados de observações computacionais e
+problemas em aberto explícitos ao longo de todo o texto, e declara seu
+uso de IA generativa (para rascunho e formatação, com verificação
+humana integral declarada).
+
+\textbf{Fu, Liu \& Wang} \cite{FuLiuWang2026} propõem um mecanismo de
+processo de Poisson explicando uma estatística tipo Gama previamente
+observada para comprimentos de órbita de Collatz. Toda alegação
+verificável --- a esperança e a variância da valuação 2-ádica, uma
+aproximação de forma fechada ligando comprimento de órbita a um valor
+inicial, e a álgebra de uma condição de fechamento de ciclo --- valeu
+exatamente. O paper é explícito, corretamente e em contraste com a
+tentativa de prova falha revisada no catálogo irmão sob o mesmo estilo
+geral de argumento, que sua obstrução assintótica de fechamento de
+ciclo não é uma prova de que nenhum ciclo não-trivial existe.
+
+\section{Discussão}
+\label{sec:discussion}
+
+O contraste que se mantém em toda esta amostra, sem exceção conhecida,
+é a honestidade de escopo: nenhum destes dezesseis papers veste uma
+conjectura de roupa de prova da própria Conjectura de Collatz, mesmo
+onde a matemática subjacente é elementar e fortemente repetida (o
+programa Ruiz Castillo) e mesmo onde um resultado central é
+provavelmente errado (o paper de sentenças Steiner do Seymour). Esse é
+o eixo em que esta população difere dos doze casos do catálogo irmão,
+onde todo item sem exceção faz a alegação forte e todo item sem exceção
+falha em sustentá-la. Taxa de erro não é o traço que distingue aqui ---
+ambas as populações contêm erros reais --- overclaim é.
+
+Contenção de erro é uma observação mais estreita, mas verdadeira, só
+que vale sobre o programa Ruiz Castillo especificamente, não como
+propriedade desta população como um todo. Os dois erros genuínos
+daquele programa têm a mesma forma (uma alegação conjectural ou
+preliminar inconsistente com um enunciado já estabelecido em outro
+lugar do mesmo texto, não um deslize aritmético) e ambos estão
+confinados a uma única seção, deixando intocado o material posterior e
+explicitamente conjectural do paper. O paper de sentenças Steiner do
+Seymour é o contraponto nítido: seu erro está no Teorema 5.1 titular, o
+resultado central alegado do paper, não num lema periférico. O fato
+interessante não é que erros nesta literatura sejam contidos --- em
+geral não são --- mas que o programa de autor único mais prolífico
+desta amostra erra de forma consistentemente contida, enquanto o
+resultado autônomo mais afiado da amostra erra em seu centro. Essa
+diferença é um fato sobre como autores específicos erram, não uma
+generalização sobre a população.
+
+Notamos, por fim, que a cobertura deste capítulo é parcial por
+construção: dezesseis itens revisados em profundidade aqui, extraídos
+de uma coleção levantada consideravelmente maior que inclui tanto mais
+papers adjacentes a Collatz ainda não processados quanto um corpo
+separado de literatura de referência estabelecida (o teorema de quase-
+todas-as-órbitas de Tao, o modelo estocástico de Kontorovich--Lagarias
+e semelhantes) que é citado ao longo deste programa de pesquisa mas
+nunca foi alvo deste tipo de revisão. Espera-se que revisões futuras
+desta nota acrescentem mais itens conforme forem processados; a
+estrutura acima --- uma seção por autor ou programa coerente,
+parágrafos individuais por item independente --- é pensada para
+acomodar esse crescimento sem exigir reorganização.
+
+\section{Conclusão}
+\label{sec:conclusion}
+
+Dezesseis papers adjacentes a Collatz, nenhum alegando provar ou
+refutar a conjectura, revisados na íntegra: nove não contêm nenhum erro
+que encontramos; quatro contêm um erro pequeno e contido (dois no
+programa Ruiz Castillo, um num working paper do Seymour, um par de
+deslizes só de citação no Williams); um --- o paper de sentenças
+Steiner do Seymour --- tem um erro provável no seu teorema central e
+titular, não num detalhe periférico; e dois não fazem nenhuma alegação
+avaliável diretamente como correta ou incorreta (a construção de Adnan
+\& Dar é conceitualmente mal definida; o único conteúdo específico de
+Collatz do Olgac é tautológico). Nos dezesseis, a distinção
+teorema-vs-conjectura é mantida com um rigor que o catálogo irmão de
+alegações de prova deste levantamento nunca mostra. Esse contraste ---
+honestidade de escopo, não taxa de erro --- é o ponto de calibração
+desta nota, e espera-se que ele se aprofunde, não mude de natureza,
+conforme mais da coleção levantada for acrescentada em revisões
+futuras.
+
+\section*{Agradecimentos}
+
+Partes da verificação descrita nesta nota (reconstrução de casos,
+checagens computacionais e cruzamento de julgamentos matemáticos mais
+sutis) foram realizadas com o auxílio de Claude (modelos das famílias
+Claude 4 e 5, Anthropic), usado como assistente de pesquisa sob a
+direção e revisão do autor.
+
+\begin{thebibliography}{99}
+
+\bibitem{RuizCastillo2026a} J.\ C.\ Ruiz Castillo, \emph{Geometría
+  Residual de Ruiz Castillo para la dinámica acelerada de la Conjetura
+  de Collatz}, Zenodo, DOI 10.5281/zenodo.21271452, 2026.
+
+\bibitem{RuizCastillo2026b} J.\ C.\ Ruiz Castillo, \emph{Dissipative
+  Bounds and Ruiz Castillo Residual Decomposition in the Accelerated
+  Dynamics of the Collatz Conjecture}, ResearchGate preprint.
+
+\bibitem{RuizCastillo2026c} J.\ C.\ Ruiz Castillo, \emph{Teorema Central
+  del Límite Residual de Ruiz Castillo para la dinámica acelerada de la
+  Conjetura de Collatz}, ResearchGate preprint.
+
+\bibitem{RuizCastillo2026d} J.\ C.\ Ruiz Castillo, \emph{Operador de
+  Transferencia Residual de Ruiz Castillo y estructura espectral en la
+  dinámica acelerada de la Conjetura de Collatz}, ResearchGate preprint.
+
+\bibitem{RuizCastillo2026e} J.\ C.\ Ruiz Castillo, \emph{Medidas de
+  Gibbs Residuales de Ruiz Castillo y estados de equilibrio en la
+  dinámica acelerada de la Conjetura de Collatz}, ResearchGate preprint.
+
+\bibitem{RuizCastillo2026f} J.\ C.\ Ruiz Castillo, \emph{Principio
+  Variacional Residual de Ruiz Castillo y formalismo termodinámico para
+  la dinámica acelerada de la Conjetura de Collatz}, ResearchGate
+  preprint, 2026.
+
+\bibitem{RuizCastillo2026g} J.\ C.\ Ruiz Castillo, \emph{Grandes
+  Desviaciones Residuales de Ruiz Castillo en la dinámica acelerada de
+  la Conjetura de Collatz}, Zenodo, DOI 10.5281/zenodo.20767811, 2026.
+
+\bibitem{AdnanDar2026} J.\ Adnan e S.\ A.\ Dar, \emph{Behavior of a
+  Decimal-Parity-Based $3n+1$ Mapping}, Global Journal of Pure and
+  Applied Mathematics, 2026.
+
+\bibitem{Gilbert2026} J.\ S.\ Gilbert, \emph{A Collatz-Equivalent Map on
+  the Nonzero Integers}, Preprints.org, DOI
+  10.20944/preprints202607.0575.v1, 2026.
+
+\bibitem{Seymour2026a} J.\ Seymour, \emph{First-Principles Derivation of
+  the Steiner Sentence Length Distribution}, wildducktheories.com
+  preprint, 2026.
+
+\bibitem{Seymour2026b} J.\ Seymour, \emph{A Regular Expression Language
+  for the Collatz Graph}, wildducktheories.com working paper, 2026.
+
+\bibitem{Anthony2026} M.\ M.\ Anthony, \emph{A Two-Field Propagation
+  Model for the Collatz Map: A Möbius Reformulation, Monodromy
+  Structure, and a 2-adic Non-Expansion Theorem}, ResearchGate
+  preprint, 2026.
+
+\bibitem{Hikawa2026} K.\ Hikawa, \emph{Finite-Dimensional Combinatorial
+  and Arithmetic Structures of Parity Vectors for the Accelerated
+  Collatz Map}, ResearchGate preprint.
+
+\bibitem{Olgac2026} E.\ Olgac, \emph{Technical Note: Structural Dualism
+  in Integer Architectures}, ResearchGate preprint.
+
+\bibitem{Williams2026} J.\ Williams, \emph{A Coordinate System for
+  Collatz Dynamics}, arXiv:2607.01718, 2026.
+
+\bibitem{FuLiuWang2026} W.\ Fu, X.\ Liu, e Y.\ Wang, \emph{Emergence of
+  Gamma-Type Upward-Phase Statistics in the Collatz Map: An Effective
+  Poisson Process Mechanism}, arXiv:2606.26811, 2026.
+
+\end{thebibliography}
+
+\end{document}

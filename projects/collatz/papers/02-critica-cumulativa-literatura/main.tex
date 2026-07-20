@@ -1,0 +1,459 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\usepackage{orcidlink}
+\usepackage{fontawesome5}
+
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\NN}{\mathbb{N}}
+
+\title{Scope Honesty in the Collatz-Adjacent Literature:\\
+A Running Calibration Against Complete-Proof Claims}
+
+\author{Renato Augusto Tavares~{\small\href{mailto:dr.renatotavares@gmail.com}{\textcolor{black}{\faEnvelope}}}~\orcidlink{0009-0002-0196-3311}\\
+\normalsize Universidade Federal de Goiás}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+A companion note to this survey catalogs twelve claims of a complete
+proof or disproof of the Collatz conjecture, all of them invalid. This
+note turns to a different population: sixteen papers, encountered in
+the same broader literature survey, that make no such claim --- results
+about Collatz-adjacent structures, heuristics, or partial statistics.
+Read in full and checked computationally where possible, this
+population behaves very differently from the proof-claim set. The
+distinguishing axis is not error rate but scope honesty: with no known
+exception in this sample, these papers correctly label a conjecture a
+conjecture and a theorem a theorem, in sharp contrast to the systematic
+overclaiming that defines the companion catalog. Genuine errors do
+occur --- two in a seven-paper program by a single prolific author, one
+in an otherwise careful standalone result --- but they cluster
+differently: the prolific author's errors are both statement-versus-proof
+inconsistencies contained to a single section each, while the
+standalone result's error sits in its titular theorem. This note is
+explicitly a partial, running document: it consolidates sixteen items
+reviewed in depth so far, out of a much larger surveyed collection, and
+is structured to grow as more items are processed.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:intro}
+
+A companion note, \emph{Errors in Claimed Complete Proofs (and
+Disproofs) of the Collatz Conjecture}, catalogs twelve claims of a
+complete solution to the conjecture, encountered during a broader
+literature survey, and shows that all twelve fail --- most by the same
+handful of recurring errors. That population is unusual: every item in
+it explicitly claims to settle the conjecture, a strong claim that
+invites strong scrutiny.
+
+This note is about the rest of the survey: papers that study
+Collatz-adjacent structures --- accelerated-dynamics reformulations,
+statistical models of orbit behavior, combinatorial properties of
+parity sequences, coordinate systems for the state space --- without
+claiming to prove or disprove the conjecture itself. This is a much
+larger and more heterogeneous population than the proof-claim set, and
+this note does not attempt to cover all of it: as of this version, it
+consolidates sixteen items that have been read in full and reviewed in
+depth, out of a considerably larger set encountered in the survey. It
+is written as a running document, expected to grow as more of the
+surveyed collection is processed in later sessions, not as a finished
+census.
+
+The question this note asks of the sixteen items it covers is not
+primarily ``are they correct'' --- most are, and correctness in
+elementary or standard mathematics applied competently is not
+surprising. The more informative question, and the one that lets this
+note function as a calibration point against the companion catalog, is
+scope honesty: does the paper claim only what it establishes? Section
+\ref{sec:rc} examines the largest coherent block in this sample, a
+seven-paper program by a single author applying one classical
+ergodic-theory concept per paper to the same underlying quantity.
+Section \ref{sec:others} covers the remaining nine items, independent
+of one another and of the program in Section \ref{sec:rc}. Section
+\ref{sec:discussion} draws out the contrast with the companion catalog
+and states what containment of error does and does not generalize to.
+Section \ref{sec:conclusion} concludes.
+
+\section{Methodology}
+\label{sec:methodology}
+
+Each item was read in full and its concrete, checkable claims ---
+identities, closed-form formulas, theorems with an explicit statement
+--- were independently verified computationally wherever they admit a
+numerical test. Where a paper distinguishes proved results from
+conjectural ones, that labeling was checked against what the paper's
+own proof actually establishes, not taken at face value. In the
+handful of cases where the judgment involved was subtle, the analysis
+was cross-checked against an independent large-language-model reviewer.
+As in the companion catalog, every specific claim made below about a
+named paper traces to this review process, not to a paraphrase of it;
+full technical detail for each item was recorded during review in
+internal working notes and is summarized, not reproduced, here.
+
+\section{The Ruiz Castillo program}
+\label{sec:rc}
+
+Seven papers by Juan Carlos Ruiz Castillo (ScD., Universidad de San
+Carlos de Guatemala) appear in this sample, each applying one classical
+concept from ergodic theory or large-deviations theory --- pressure,
+a residual ``geometry,'' dissipative bounds, a central limit theorem,
+a transfer operator, Gibbs measures, a variational principle, a
+large-deviations rate function --- to the same elementary quantity:
+the residual drift $L_k(n) = k\log_2 3 - A_k(n)$, where $A_k(n)$ is the
+sum of the first $k$ 2-adic valuations along the accelerated Collatz
+map $U(n) = (3n+1)/2^{v_2(3n+1)}$ --- the standard cycle-equation drift
+already used elsewhere in this research program. None of the seven
+claims to prove the Collatz conjecture; each says so explicitly. The
+presentation is heavily repetitive across the series (recurring
+decorative call-out boxes restating the same conceptual chain,
+self-citation rates of 75--100\% revealing on the order of 19--20
+near-identical titles by the same author), but the underlying formal
+rigor is notably stable: five of the seven papers contain no error we
+could find, and the two genuine errors found are both contained to a
+single section and do not affect the papers' own later conclusions.
+
+\textbf{Geometría Residual} \cite{RuizCastillo2026a} applies standard
+thermodynamic formalism (pressure as a supremum over invariant
+measures, a Fisher-metric second derivative) to the residual drift,
+correctly and without claiming to prove Collatz. The same trivial fact
+--- convexity implies a nonnegative second derivative --- is presented
+as five separately named results across the paper, framed by ten
+decorative call-out boxes restating the same conceptual chain, with no
+numerical content anywhere (both figures are explicitly labeled
+``conceptual'') and 100\% self-citation (13 of 13 references). We
+computed explicitly, in closed form, the quantity the paper leaves
+abstract: under the standard i.i.d.\ model already used in this
+research program, $\Lambda(t) = t(1-\log_2 3) - \log(2-e^t)$, whose
+second derivative diverges as $t \to \log 2^-$ --- a genuine, if
+incidental, feature the paper never computes because it never derives
+$\Lambda(t)$ explicitly.
+
+\textbf{Dissipative Bounds} \cite{RuizCastillo2026b}, the same author's
+second paper in this sample, repeats the pattern: correct elementary
+identities (an exact affine unrolling of the accelerated map, a
+universal dissipation bound), no numerical content, and self-citation
+at 75\% (12 of 16 references), with the self-citation list itself
+revealing roughly a dozen further near-identical titles by the same
+author on the same ``residual decomposition.''
+
+\textbf{Teorema Central del Límite Residual} \cite{RuizCastillo2026c}
+labels its central claim honestly: the title says ``Teorema,'' but the
+result is stated in the body as ``Conjetura 4.2,'' with five explicit
+unestablished hypotheses (existence of a residual Gibbs measure,
+ergodicity, a suitable function space, a spectral gap, positive
+residual variance), and the paper's own conclusion states plainly that
+this framework does not prove the Collatz conjecture. We tested the
+conjecture's observable prediction --- asymptotic normality of the
+residual drift's fluctuations --- directly on real Collatz orbits
+(not the abstract i.i.d.\ model): variance stabilizes near 2, skewness
+toward 0, and kurtosis toward 3 as the window length grows, a result
+the paper itself never tests numerically.
+
+\textbf{Operador de Transferencia Residual} \cite{RuizCastillo2026d}
+contains this program's first genuine error. Its Proposición 5.3
+claims $\lim_{t\to\infty} L_t(1) = 0$; its own proof derives the closed
+form $L_t(1) = e^{(\log_2 3 - 1)t}/(1-e^{-t})$ and correctly observes
+that this ``grows exponentially as $t\to\infty$,'' immediately followed
+by the proof's closing mark with the ``$=0$'' claim never corrected. We
+confirmed numerically that $L_t(1)$ grows from 2.84 at $t=1$ to
+roughly $6.4\times 10^{50}$ at $t=200$, strictly increasing throughout
+--- the opposite of the stated limit. This is a statement-versus-proof
+inconsistency, not a computational error: the proof itself derives the
+correct asymptotic and the surrounding text uses that correct
+asymptotic to motivate the next section's normalization. The error is
+confined to a preliminary calculation in Section 5; no later,
+explicitly conjectural result (Sections 6--8, on the restricted
+transfer operator) depends on it.
+
+\textbf{Medidas de Gibbs Residuales} \cite{RuizCastillo2026e} and
+\textbf{Principio Variacional Residual} \cite{RuizCastillo2026f} return
+to the error-free pattern: correct restatements of the same core
+identity, classical convex-analysis apparatus (suprema of affine
+functions, Legendre--Fenchel duality) correctly applied, and every open
+result honestly labeled ``Conjetura,'' never ``Teorema'' or
+``Proposición.''
+
+\textbf{Grandes Desviaciones Residuales} \cite{RuizCastillo2026g}
+contains this program's second genuine error, structurally similar in
+kind to the first but located differently: its Definición 3.1 defines
+a rate function $I_{\mathrm{RC}}(x)$ via the one-sided tail event
+$\{L_k/k \ge x\}$, and its already-proved Proposición 3.4 (Section 3)
+correctly shows this one-sided rate function is nondecreasing. Its
+conjectural Section 7, however --- Figura 1, Conjetura 7.3, and
+Conjetura 7.5, mutually consistent with one another --- describes a
+two-sided, classical Cramér rate function, positive on both sides of
+its unique zero, contradicting the monotonicity already established in
+Section 3. We confirmed the contradiction by three independent routes
+(the standard one-sided large-deviations formula, Monte Carlo
+simulation, and an exact small-$k$ negative-binomial calculation), all
+agreeing that the correct one-sided rate is identically zero below the
+typical drift, not merely at one point. As with the previous case, the
+error is a conjectural section's inconsistency with an already-proved
+proposition earlier in the same text, not an arithmetic mistake, and is
+confined to Section 7; the paper's conclusion (Section 8) does not rely
+on the specific form of $I_{\mathrm{RC}}$.
+
+\section{Nine independent papers}
+\label{sec:others}
+
+The remaining nine items in this sample share no authorship and little
+subject matter beyond Collatz-adjacent structures.
+
+\textbf{Adnan \& Dar} \cite{AdnanDar2026} extend the $3n+1$ rule to
+decimals in $(0,1)$ by defining ``parity'' via a number's last
+significant decimal digit, concluding universal divergence. All worked
+examples in the paper check out arithmetically, but the construction is
+conceptually ill-posed: ``last significant digit'' is undefined for any
+decimal with an infinite expansion (a measure-zero exception in the
+naive reading, but one that excludes $1/3$, $1/7$, and every
+irrational), and even restricted to finite decimals the divergence is a
+trivial artifact of an unnormalized $+1$ term, not a structural analogue
+of the real Collatz mechanism (where $3n+1$ is always even for odd $n$
+by construction). This is not a proof claim about the original
+conjecture and does not belong in the companion catalog.
+
+\textbf{Gilbert} \cite{Gilbert2026} constructs an explicit conjugation
+between the pruned Collatz graph and the nonzero integers, encoding the
+discarded residue class mod 3 via sign, explicitly disclaiming any
+proof of the conjecture. Every theorem we checked --- the conjugation
+itself, pruning of multiples of 3, the accelerated map, the parent-count
+formula, and a connection to OEIS sequence A254046 --- holds exactly.
+No error found.
+
+\textbf{Seymour (Steiner Sentence Length)} \cite{Seymour2026a} derives a
+matrix of one-step transition probabilities among residues mod 8
+(Theorem 2.1), which we confirmed correct, and uses it to derive a
+claimed closed-form distribution for ``Steiner sentence'' length,
+$3^{k-1}/4^k$ (Theorem 5.1), rejecting the naive alternative $(1/2)^k$
+via a reported $\chi^2$ test. Our independent reimplementation of the
+paper's own definitions gives the opposite result: simulation matches
+$(1/2)^k$, and an exact arithmetic counterexample ($n=68567$) shows a
+sentence of length 1 whose entry residue is 7, a case the paper's proof
+of Theorem 5.1 never accounts for (it only counts sentences whose
+\emph{first} word already closes, silently missing words with entry 3
+or 7 that can close on their first step). We report this with real
+caution: the paper claims a complete Lean 4/Mathlib formalization with
+no \texttt{sorry}, and we do not have access to that formalization
+file; it is possible the Lean proof correctly verifies a definition
+that diverges subtly from the prose statement, in which case the gap
+would be in the prose-to-formalization translation rather than in the
+formal proof itself. Based strictly on the definitions as written in
+the paper, however, both an exact counterexample and a large-scale
+simulation disagree with the central result.
+
+\textbf{Seymour (Regular Expression Language)} \cite{Seymour2026b}, an
+explicitly labeled working paper by the same author, separates proved
+theorems from conjectures throughout. Two central results (Proposición
+3.1 on Steiner-circuit arithmetic, Teorema 3.6 on run lengths) checked
+out exactly in large-scale testing. One small, contained error: Corolario
+2.2 claims an exit residue mod 24 depends on the parity of an auxiliary
+variable $t$; testing shows the claimed value holds only when $t$ is
+even, and the true residue is the same constant regardless of $t$'s
+parity, contradicting the paper's own claim that the map $t \mapsto
+(3t+1)/2$ preserves parity (false in general). This corollary is not
+listed among the paper's own summary of proved results, and the error
+does not affect the working paper's central conjecture, which follows
+almost immediately from the already-verified Theorem 2.1 of the
+companion paper.
+
+\textbf{Anthony} \cite{Anthony2026} builds an elaborate formal apparatus
+(Riemann P-equation, monodromy, hypergeometric identities) around a
+two-field reformulation of Collatz dynamics via the Möbius coordinate
+$\Phi(n) = 1/(n+1)$. Every checkable claim --- the Möbius
+reformulation, a theorem excluding indefinite persistence of the
+$v_2(3n+1)=1$ regime, and several standard digamma-function identities
+--- checked out exactly. The paper is unusually careful throughout to
+separate proved theorems from structural analogies (explicitly: ``this
+is an analogy of form, not of kind'') and from conditional results
+whose conditions are not established, and it corrects, within its own
+text, an earlier erroneous claim from a prior version of the same
+research line.
+
+\textbf{Hikawa} \cite{Hikawa2026} studies finite combinatorial
+structures of parity vectors, independent of whether the Collatz
+conjecture is true or false --- a caveat the paper repeats in nearly
+every section. Both central theorems we tested (an explicit bijection
+between vector classes, and a rigidity property of a correction term's
+2-adic valuation) held exactly by brute force, including the paper's
+own stated exception case.
+
+\textbf{Olgac} \cite{Olgac2026} is a three-page note connecting two
+earlier, uncataloged claims by the same author, one about Collatz and
+one claiming a complete proof of the Goldbach conjecture (outside this
+survey's scope). Its only Collatz-specific content is a tautology
+(root-disjoint branches of the reverse tree, an immediate consequence
+of unique factorization) rather than a genuine result; the remainder of
+the note is not stated with enough mathematical precision to evaluate
+as correct or incorrect.
+
+\textbf{Williams} \cite{Williams2026} organizes the positive integers by
+their 3-smooth factorization and studies Collatz dynamics as a
+deterministic diagonal flow within that organization. Every theorem we
+tested --- a diagonal-dynamics identity, a theorem on prime-free rows,
+a bijective partition, an asymptotic count of admissible positions ---
+held exactly. Two small, self-contained errors in OEIS citations were
+found (one sequence number that does not match the cited property, one
+off-by-one description), neither affecting any proof in the paper. The
+paper separates proved theorems from computational observations and
+explicit open problems throughout, and discloses its use of generative
+AI (for drafting and formatting, with declared full human
+verification).
+
+\textbf{Fu, Liu \& Wang} \cite{FuLiuWang2026} propose a Poisson-process
+mechanism explaining a previously observed Gamma-type statistic for
+Collatz orbit lengths. Every checkable claim --- the expectation and
+variance of the 2-adic valuation, a closed-form approximation linking
+orbit length to a starting value, and the algebra of a cycle-closure
+condition --- held exactly. The paper is explicit, correctly and in
+contrast to the flawed proof attempt reviewed in the companion catalog
+under the same general argument style, that its asymptotic
+cycle-closure obstruction is not a proof that no nontrivial cycle
+exists.
+
+\section{Discussion}
+\label{sec:discussion}
+
+The contrast that holds across this entire sample, with no known
+exception, is scope honesty: not one of these sixteen papers dresses a
+conjecture as a proof of the Collatz conjecture itself, even where the
+underlying mathematics is elementary and heavily repeated (the Ruiz
+Castillo program) and even where a central result is probably wrong
+(Seymour's Steiner sentence paper). This is the axis on which this
+population differs from the companion catalog's twelve cases, where
+every single item makes the strong claim and every single item fails to
+support it. Error rate is not the distinguishing feature here --- both
+populations contain real errors --- overclaiming is.
+
+Containment of error is a narrower, true observation, but it holds
+about the Ruiz Castillo program specifically, not as a property of this
+population as a whole. Both of that program's genuine errors are the
+same shape (a conjectural or preliminary claim inconsistent with an
+already-established statement elsewhere in the same text, not an
+arithmetic slip) and both are confined to a single section, leaving the
+paper's later, explicitly conjectural material untouched. Seymour's
+Steiner sentence paper is the sharp counterpoint: its error sits in the
+titular Theorem 5.1, the paper's central claimed result, not a
+peripheral lemma. The interesting fact is not that errors in this
+literature are contained --- they are not, in general --- but that the
+most prolific single-author program in this sample errs in a
+consistently contained way, while the sharpest standalone result in the
+sample errs at its center. That difference is a fact about how
+particular authors err, not a generalization about the population.
+
+We note, finally, that this chapter's coverage is partial by
+construction: sixteen items reviewed in depth here, drawn from a
+considerably larger surveyed collection that includes both further
+unprocessed Collatz-adjacent papers and a separate body of established
+reference literature (Tao's almost-all-orbits theorem, the
+Kontorovich--Lagarias stochastic model, and similar) that is cited
+throughout this research program but was never a target of this kind of
+review. Future revisions of this note are expected to add further
+items as they are processed; the structure above --- one section per
+coherent author or program, individual paragraphs per independent item
+--- is meant to accommodate that growth without requiring
+reorganization.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+Sixteen Collatz-adjacent papers, none claiming to prove or disprove the
+conjecture, reviewed in full: nine contain no error we could find; four
+contain a small, contained error (two in the Ruiz Castillo program, one
+in a Seymour working paper, one a pair of citation-only slips in
+Williams); one --- Seymour's Steiner sentence paper --- has a likely
+error in its central, titular theorem rather than a peripheral one; and
+two make no claim evaluable as straightforwardly correct or incorrect
+(Adnan \& Dar's construction is conceptually ill-defined; Olgac's only
+Collatz-specific content is tautological). Across all sixteen, the
+theorem-versus-conjecture distinction is maintained with a rigor this
+survey's
+companion catalog of proof claims never shows. That contrast --- scope
+honesty, not error rate --- is this note's calibration point, and it is
+expected to sharpen, not change in kind, as more of the surveyed
+collection is added in later revisions.
+
+\section*{Acknowledgments}
+
+Parts of the verification described in this note (case reconstruction,
+computational checks, and cross-checking of subtle mathematical
+judgment calls) were carried out with the assistance of Claude (models
+in the Claude 4 and 5 families, Anthropic), used as a research
+assistant under the direction and review of the author.
+
+\begin{thebibliography}{99}
+
+\bibitem{RuizCastillo2026a} J.\ C.\ Ruiz Castillo, \emph{Geometría
+  Residual de Ruiz Castillo para la dinámica acelerada de la Conjetura
+  de Collatz}, Zenodo, DOI 10.5281/zenodo.21271452, 2026.
+
+\bibitem{RuizCastillo2026b} J.\ C.\ Ruiz Castillo, \emph{Dissipative
+  Bounds and Ruiz Castillo Residual Decomposition in the Accelerated
+  Dynamics of the Collatz Conjecture}, ResearchGate preprint.
+
+\bibitem{RuizCastillo2026c} J.\ C.\ Ruiz Castillo, \emph{Teorema Central
+  del Límite Residual de Ruiz Castillo para la dinámica acelerada de la
+  Conjetura de Collatz}, ResearchGate preprint.
+
+\bibitem{RuizCastillo2026d} J.\ C.\ Ruiz Castillo, \emph{Operador de
+  Transferencia Residual de Ruiz Castillo y estructura espectral en la
+  dinámica acelerada de la Conjetura de Collatz}, ResearchGate preprint.
+
+\bibitem{RuizCastillo2026e} J.\ C.\ Ruiz Castillo, \emph{Medidas de
+  Gibbs Residuales de Ruiz Castillo y estados de equilibrio en la
+  dinámica acelerada de la Conjetura de Collatz}, ResearchGate preprint.
+
+\bibitem{RuizCastillo2026f} J.\ C.\ Ruiz Castillo, \emph{Principio
+  Variacional Residual de Ruiz Castillo y formalismo termodinámico para
+  la dinámica acelerada de la Conjetura de Collatz}, ResearchGate
+  preprint, 2026.
+
+\bibitem{RuizCastillo2026g} J.\ C.\ Ruiz Castillo, \emph{Grandes
+  Desviaciones Residuales de Ruiz Castillo en la dinámica acelerada de
+  la Conjetura de Collatz}, Zenodo, DOI 10.5281/zenodo.20767811, 2026.
+
+\bibitem{AdnanDar2026} J.\ Adnan and S.\ A.\ Dar, \emph{Behavior of a
+  Decimal-Parity-Based $3n+1$ Mapping}, Global Journal of Pure and
+  Applied Mathematics, 2026.
+
+\bibitem{Gilbert2026} J.\ S.\ Gilbert, \emph{A Collatz-Equivalent Map on
+  the Nonzero Integers}, Preprints.org, DOI
+  10.20944/preprints202607.0575.v1, 2026.
+
+\bibitem{Seymour2026a} J.\ Seymour, \emph{First-Principles Derivation of
+  the Steiner Sentence Length Distribution}, wildducktheories.com
+  preprint, 2026.
+
+\bibitem{Seymour2026b} J.\ Seymour, \emph{A Regular Expression Language
+  for the Collatz Graph}, wildducktheories.com working paper, 2026.
+
+\bibitem{Anthony2026} M.\ M.\ Anthony, \emph{A Two-Field Propagation
+  Model for the Collatz Map: A Möbius Reformulation, Monodromy
+  Structure, and a 2-adic Non-Expansion Theorem}, ResearchGate
+  preprint, 2026.
+
+\bibitem{Hikawa2026} K.\ Hikawa, \emph{Finite-Dimensional Combinatorial
+  and Arithmetic Structures of Parity Vectors for the Accelerated
+  Collatz Map}, ResearchGate preprint.
+
+\bibitem{Olgac2026} E.\ Olgac, \emph{Technical Note: Structural Dualism
+  in Integer Architectures}, ResearchGate preprint.
+
+\bibitem{Williams2026} J.\ Williams, \emph{A Coordinate System for
+  Collatz Dynamics}, arXiv:2607.01718, 2026.
+
+\bibitem{FuLiuWang2026} W.\ Fu, X.\ Liu, and Y.\ Wang, \emph{Emergence of
+  Gamma-Type Upward-Phase Statistics in the Collatz Map: An Effective
+  Poisson Process Mechanism}, arXiv:2606.26811, 2026.
+
+\end{thebibliography}
+
+\end{document}

@@ -2,6 +2,77 @@
 
 Última atualização: 2026-07-20
 
+## Iniciado paper 02 (v1): crítica cumulativa, honestidade de escopo
+
+Depois de fechar o paper 03, o diretor perguntou se a crítica
+cumulativa da literatura (item 8 do BACKLOG) ficaria junto ou separada
+— respondido que fica separada por natureza (03 é fechável/12 casos;
+02 é aberto por design, cresce a cada item). Pedido "pode iniciar".
+
+Antes de escrever, li os 16 H-arquivos completos dos itens já
+resumidos no BACKLOG (001-010, 013, 014, 017, 019, 020, 026 — excluindo
+011/016, que são alegações de prova completa, já no paper 03) — mesma
+lição do paper 03 aplicada preventivamente desta vez: nunca citar
+alegação específica sobre autor vivo a partir de paráfrase do
+BACKLOG.md, só do H-arquivo primário. Descoberta de escala: a coleção
+tem 97 itens catalogados, 81 já lidos — bem mais do que os ~26 itens
+com resumo escrito. V1 cobre só os 16 já detalhados; ~21 lidos-mas-não-
+escritos e o resto ficam para uma v2 futura, declarado explicitamente
+no paper (documento vivo, não fingindo cobertura completa).
+
+`advisor()` pegou uma contradição real na tese inicial antes da
+redação: eu tinha escrito, para a coleção inteira, "os erros reais são
+sempre contidos, nunca no ponto que decidiria a conjectura" — mas o
+item 004 (Seymour, Steiner Sentence) contradiz isso: o erro ali está no
+Teorema 5.1, o resultado titular do próprio paper, não um detalhe
+periférico. Corrigido: o eixo de contraste certo com o paper 03 é
+**honestidade de escopo** (nenhum dos 16 veste conjectura de teorema
+provado, ao contrário dos 13 casos do 03, que todos overclaimam) —
+"contenção de erro" vira uma observação só sobre o programa Ruiz
+Castillo especificamente (2 erros em 7 papers, ambos inconsistência
+enunciado-vs-demonstração, ambos contidos a uma seção), com o item 004
+como contraponto nítido (erro no centro, não na periferia) em vez de
+contradizer a generalização.
+
+**Achado central da v1**: o programa Ruiz Castillo (7 papers do mesmo
+autor, Juan Carlos Ruiz Castillo, ScD., Universidad de San Carlos de
+Guatemala) aplica um conceito clássico de teoria ergódica/grandes
+desvios por paper à mesma quantidade elementar (drift residual
+L_k(n)=k·log₂3−A_k(n)), com autocitação de 75-100% e apresentação
+fortemente decorativa/repetitiva, mas rigor formal notavelmente
+estável: 5/7 sem erro, 2/7 com erro real (ambos "enunciado contradiz a
+própria demonstração/resultado já provado", não erro de cálculo,
+ambos contidos a uma seção). Os outros 9 papers (autores independentes)
+mostram o mesmo padrão de honestidade quase universal — uma exceção de
+peso real (Seymour, Steiner Sentence: distribuição correta parece ser
+(1/2)^k, não 3^(k-1)/4^k alegado, com contraexemplo aritmético exato
+n=68567, reportado com cautela epistêmica dado que o paper alega
+verificação Lean não acessível a nós).
+
+`main.tex`/`main-pt-br.tex` escritos, compilados limpos (7 páginas
+cada). Dois bugs de hifenização (`versus-\nproof`, `-versus-\nconjecture`
+quebrando com espaço espúrio, mesmo padrão já visto no paper 03) e um
+lote de aspas retas na versão PT-BR (convertidas para a convenção
+`` `...' `` do documento via script, mesma lição do paper 01/03) —
+todos encontrados por inspeção visual via `pdftoppm` e corrigidos.
+Bibliografia auditada linha a linha contra `INDEX.md`/H-arquivos antes
+de fechar — nenhum ano impresso sem fonte primária (RC papers 008, 010,
+013, 017 e Hikawa/Olgac ficam sem ano, porque nenhuma fonte do projeto
+o estabelece).
+
+Segunda passada do `advisor()` pegou a Conclusão com uma contagem
+errada de três formas ao mesmo tempo: somava 17 não 16, "catorze sem
+erro" contradizia o próprio corpo do texto (que documenta erro em RC
+013/026, Seymour 004/005, Williams — 5 papers com erro, não 2), e
+apagava justamente o Seymour 004 (o contraponto que sustenta a tese
+central "contenção é do RC especificamente, não da população"). Contagem
+correta e agora consistente com o corpo: 9 sem erro, 4 com erro pequeno
+contido (RC×2, Seymour Regex, Williams), 1 com erro central/titular
+(Seymour Steiner — o contraponto), 2 não avaliáveis como certo/errado
+(Adnan&Dar mal definido, Olgac tautológico). 9+4+1+2=16. Corrigido nos
+dois arquivos, recompilado limpo. **Ainda não revisado pelo diretor
+científico.**
+
 ## Iniciado paper 03: catálogo de alegações de prova/refutação completa
 
 Pedido do diretor científico: "vamos iniciar o paper sobre erros dos papers
