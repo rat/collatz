@@ -1,6 +1,61 @@
 # Estado atual — Collatz
 
-Última atualização: 2026-07-20
+Última atualização: 2026-07-21
+
+## Quinta rodada de auditoria do paper 01 (última checagem pré-publicação): 4 achados, todos no resumo
+
+Pedido do diretor científico: revisão profunda do paper 01 em busca de
+erros lógicos, de tradução e de referências, como última checagem antes
+de publicar (mesmo padrão já aplicado aos papers 02 e 03). Diferença
+desta rodada: as 4 auditorias anteriores (ver seções abaixo) já haviam
+varrido a matemática do corpo do texto a fundo; fiz uma leitura completa
+própria do `main.tex` (2308 linhas) e não reabri nenhum resultado já
+verificado (pressão, congelamento, contagem de vocabulários) — escopo
+deliberadamente restrito a consistência resumo-vs-corpo, tradução e
+bibliografia, com `advisor()` consultado antes de editar. Todos os 4
+achados reais estavam no resumo (abstract), nunca no corpo — o mesmo
+padrão já visto nos papers 02 e 03 (resumo escrito/revisado numa fase
+anterior à correção que afetou o corpo, nunca repropagado):
+
+- **Conjectura do índice de cauda, q≥5**: o resumo dizia "conjectura
+  explícita e fracamente sustentada", mas a Conclusão (item O7) já
+  registrava que o apoio para $q=5$ foi "substancialmente fortalecido"
+  por um teste estatístico de amostra $20\times$ maior (platô de GPD
+  limpo, Vuong não rejeita mais) — "esta era, honestamente, a alegação
+  mais fraca do paper; já não é". Corrigido para distinguir $q=5$
+  (agora fortalecida, ainda não provada) de $q\ge7$ (ainda fracamente
+  sustentada) — não um "flip" cego de fraca para forte.
+- **Conjectura do Expoente de Crescimento (q=3)**: o resumo dizia que a
+  transição em $q=3$ é "exatamente" a conjectura clássica de
+  Applegate--Lagarias; o corpo e a Conclusão (item O8) já diziam
+  corretamente "implica e refina estritamente" (nossa conjectura também
+  fixa a constante limite, não só o expoente) e atribuíam a
+  Kontorovich--Lagarias e Applegate--Lagarias, não só ao segundo.
+  Resumo alinhado ao corpo nos dois pontos.
+- **Quinto vocabulário nunca nomeado no resumo**: o resumo enumera
+  explicitamente "quatro" vocabulários e depois afirma "cinco" sem
+  nunca apresentar o quinto — a frase final ("busca literária
+  dirigida...") descreve só o resultado de não-transferência
+  (Baker--Banaji/Brémont/rigidez), que é negativo/de contexto, não o
+  quinto vocabulário real (a redução combinatória de Chang 2026,
+  creditada como quinto item (viii) da Introdução e na Discussão).
+  Adicionada uma cláusula nomeando Chang explicitamente.
+- **Bibitem órfão**: `FlattoLagariasPollington1995` estava na
+  bibliografia (uma das referências verificadas na auditoria de
+  literatura de H-127) mas nunca citada no corpo de nenhum dos dois
+  idiomas. Adicionada ao lado de Erdős/Lagarias em §10.2 (mesma família
+  de partes fracionárias), onde topicamente pertence.
+
+As 4 correções foram aplicadas nos dois idiomas (`main.tex`/
+`main-pt-br.tex`). Checagem bidirecional de vazamento de idioma (grep
+por conectores em inglês no PT-BR e por palavras em português no EN,
+excluindo a bibliografia) não achou nenhum vazamento novo. Bibliografia
+reauditada (chaves `\cite`/`\bibitem` diff limpo nos dois idiomas,
+zero órfãs após a correção) e referências cruzadas (`\ref`/`\label`)
+sem furo. Recompilado limpo nas duas versões (main.pdf: 31 páginas;
+main-pt-br.pdf: 33 páginas — mesmos avisos de Overfull pré-existentes,
+confirmados idênticos ao original via recompilação em paralelo, nenhum
+novo introduzido). **Ainda não revisado pelo diretor científico.**
 
 ## Iniciado paper 02 (v1): crítica cumulativa, honestidade de escopo
 
