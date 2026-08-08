@@ -2,6 +2,20 @@
 
 Última atualização: 2026-08-08
 
+## H-132 fechada: citação a Liu (2000) conferida contra o original
+
+O diretor científico trouxe os três PDFs (arquivados em
+`literature/papers/145` a `147`). O Teorema 2.2 de Liu (2000, p. 270)
+bate exatamente com o que H-132 alegava: as quatro condições traduzidas
+para a notação de pressão deste projeto correspondem letra por letra às
+hipóteses do teorema, e Chen-de Raphélis-Ma (arXiv:2408.05538, p. 2,
+2024) enunciam as mesmas quatro hipóteses e atribuem a mesma fórmula de
+cauda ao mesmo teorema, de forma independente. Jelenkovic-Olvera-Cravioto
+(2012) trata só da recursão aditiva, confirmando que H-132 a citou
+apenas como referência tangencial, não como base do argumento. H-132
+volta a "fechada-confirmada". A nota de pendência em `thm:iid-tail`
+(`main.tex`) foi removida.
+
 ## Nota de processo (2026-08-08): incorporação verificada do lote H-131 a H-160
 
 O lote de hipóteses H-131 a H-160, os experimentos E-111 a E-128 e a

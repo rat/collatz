@@ -1,22 +1,42 @@
 # H-132: índice de cauda no modelo iid por renovação de martingala aditiva
 
-Status: aberta; pendente de verificação de citação primária
+Status: fechada-confirmada; citação primária conferida
 
 Criada: 2026-08-07
 
-## Pendência (2026-08-08)
+## Verificação contra as fontes primárias (2026-08-08)
 
-A prova depende inteiramente de invocar o Teorema 2.2 de Q. Liu (2000)
-como caixa-preta, mais o uso de Jelenkovic-Olvera-Cravioto (2012) e
-Chen-de Raphélis-Ma (arXiv:2408.05538) para justificar as hipóteses do
-teorema. Nenhuma dessas três fontes está em `literature/`. O E-112
-confirma numericamente que o problema satisfaz quatro condições, mas
-essas condições são a paráfrase do Codex do que o Teorema 2.2 exige,
-não uma conferência contra o artigo original. Isso é exatamente o tipo
-de citação por paráfrase que a Regra 11 do CLAUDE.md proíbe, e o
-`main.tex` já cita `\cite{Liu2000}` publicamente. Rebaixada de
-"fechada-confirmada" para "aberta" até que as três fontes primárias
-sejam obtidas e a atribuição seja checada contra o texto real.
+As três fontes foram obtidas e arquivadas em
+`literature/papers/145` a `147` (ver `literature/papers/INDEX.md`).
+
+O Teorema 2.2 de Liu (2000, p. 270) diz, textualmente: supondo que para
+algum `chi>1`, `E[sum A_i^chi]=1`, `E[sum A_i^chi log+ A_i]<infinity` e
+`E[(sum A_i)^chi]<infinity`, se a cascata é não reticulada então
+`lim x^chi P(Z>x)` existe e é estritamente positivo e finito. As quatro
+condições listadas abaixo em "Resultado" traduzem essas hipóteses para
+a notação de pressão deste projeto: a condição 2 (`kappa>1`,
+`psi(kappa)=0`) é exatamente `E[sum A_i^chi]=1` com `chi=kappa`, via
+`A_i=rho_ann(theta)^(-1) exp(-theta B_i)` e `psi(s)=log rho_ann(theta s)`;
+a condição 4 é a definição de "não reticulada" do artigo; a condição 3
+segue porque `rho_ann` é racional em `2^t`, logo analítica sem polos em
+qualquer vizinhança compacta de `[1,kappa]`, o que dá finitude de todos
+os momentos ali; a condição 1 é o pré-requisito de não degenerescência
+do Teorema 2.0 do mesmo artigo, necessário antes de aplicar o Teorema 2.2.
+
+Confirmação independente: Chen, de Raphélis e Ma (arXiv:2408.05538,
+p. 2) enunciam as mesmas quatro hipóteses (lá chamadas Assumption 1-4)
+e atribuem a mesma fórmula de cauda `P(W_infinity>=x)~C_0 x^(-kappa)`
+diretamente ao Teorema 2.2 de [Liu00], na mesma correspondência.
+
+Jelenkovic e Olvera-Cravioto (2012, abstract) confirmam a caracterização
+de H-132: o artigo trata da recursão aditiva `R=sum C_i R_i+Q` com
+pesos reais quaisquer, generalização de um resultado anterior dos
+mesmos autores para pesos não negativos; não é sobre o caso homogêneo
+puro relevante aqui, consistente com "não foi usada sozinha para
+justificar o caso homogêneo" abaixo.
+
+Nenhuma discrepância encontrada. Restaurada de "aberta" para
+"fechada-confirmada".
 
 ## Pergunta
 
