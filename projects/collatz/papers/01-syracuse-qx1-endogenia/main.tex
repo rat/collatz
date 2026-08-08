@@ -502,7 +502,9 @@ an $L^p$ contraction, which gives the uniform bound.
 For $q=3$ and $\alpha=1$, Theorem~\ref{thm:lp-collision} at $p=2$
 gives exactly the collision statistic $K_k$ used in
 \S\ref{sec:lemmas}. Thus the former $L^2$ sufficient condition is one
-member of a complete family of weighted collision criteria. These are
+member of a complete family of weighted collision criteria (finite-level
+spectrum computed in \texttt{collatz-endogeny/\allowbreak
+sec3-pressure-equation}). These are
 averaged concentration conditions. They do not control the smallest
 cylinder mass required by the worst-residue problem $\beta=1$.
 
@@ -809,6 +811,10 @@ $\theta\log q$; it is dense because $\log q/\log2$ is irrational.
 Thus the renewal law is non-arithmetic and has a constant, positive
 tail coefficient.
 \end{proof}
+
+The four hypotheses above were checked numerically for
+$q=3,5,7,9,15$ in \texttt{collatz-endogeny/\allowbreak
+sec3-pressure-equation}.
 
 This is the classical smoothing-transform result for the stochastic
 model. Its transfer to the coherent $q$-adic root environment is
@@ -1504,6 +1510,9 @@ mutual information equals the entropy of a uniform $3^s$-point
 variable, namely $s\log3$.
 \end{proof}
 
+Both identities were checked numerically in
+\texttt{collatz-endogeny/\allowbreak sec8-fresh-digit-coupling}.
+
 Consequently, ``apply Proposition~\ref{prop:tao117} twice, assuming
 conditional independence given the ancestor'' is not merely circular:
 it is false as stated, at any precision.
@@ -1596,7 +1605,9 @@ representation alone gives
  =3^{-(1/2+\log_3 2)\ell+o(\ell)}.
 \]
 This yields only $\beta\le 1/2+\log_3 2=1.1309\ldots$, rather than
-$\beta=1$. The entropy implication previously asserted here is invalid.
+$\beta=1$ (identity and bound checked against brute force in
+\texttt{collatz-endogeny/\allowbreak sec9-wcc-beta-bridge}). The
+entropy implication previously asserted here is invalid.
 The missing statement is a weighted covering estimate reaching the
 typical cost window: the total geometric multiplicity must be within a
 subexponential factor of its mean uniformly over residues. Our
@@ -1646,6 +1657,9 @@ average. The fixed positive factor between this average and
 $3^{-\ell}$ is absorbed by $o(\ell)$. Direct substitution of
 $s_\ast$ gives the stated constants.
 \end{proof}
+
+The finite-level rate and bound are computed in
+\texttt{collatz-endogeny/\allowbreak sec9-wcc-beta-bridge}.
 
 Theorem~\ref{thm:wcc-large-deviation} sharpens the distinction between
 O2 and O3. Multiplicity within the WCC budget can improve the
@@ -1732,7 +1746,9 @@ the implication as Conjecture~1 \cite[Sections~1--2]{Wirsching2003}.
 The annotated Collatz bibliography also lists the three implications
 in that paper as conjectures \cite{LagariasBibliographyII}. The proof
 above supplies the generating-function cancellation and the
-convolution-tail estimate for the first implication.
+convolution-tail estimate for the first implication. The generating-function
+identity is checked coefficient by coefficient in
+\texttt{collatz-endogeny/\allowbreak sec9-wirsching-conjecture1}.
 \end{remark}
 
 The second conjecture remains open. The most concrete sufficient
@@ -2182,6 +2198,10 @@ Syracuse distribution, and a real functional equation. The support
 identity and the canonical decomposition
 \eqref{eq:microcanonical} are exact. The required microcanonical
 multiplicity estimate and Wirsching's Conjecture~2 remain unresolved.
+All the finite-level computations in this subsection, from
+Theorem~\ref{thm:microcanonical} through
+Empirical Result~\ref{thm:microcanonical-fourier}, are in
+\texttt{collatz-endogeny/\allowbreak sec9-wirsching-2003-conjecture3}.
 
 \section{Two candidate lemmas, executed to completion}
 \label{sec:lemmas}
@@ -2382,6 +2402,10 @@ $1.0804$, and $1.1681$. Growth slows markedly below $p=2$ and increases
 above it on this range. The data do not establish boundedness or
 divergence for any $p$.
 \end{empirical}
+
+Both empirical results above, and the Monte Carlo validation of the
+recursion, are in \texttt{collatz-endogeny/\allowbreak
+sec10-l2-refutation-and-jensen}.
 
 \begin{remark}[Connection to a conjectural tail exponent]
 If the limiting Syracuse density exists and satisfies
@@ -2665,6 +2689,14 @@ $\cos(2\pi m/M)>1/4$. Thus the unresolved $q=3$ part of O7 is a
 balance between low and high frequencies of the preceding law in
 logarithmic order. The uniform lower bound is only $3/5$, so the
 exponential argument for $q\ge5$ does not apply.
+
+Proposition~\ref{prop:primitive-hole},
+Proposition~\ref{prop:primitive-fibre-energy},
+Theorem~\ref{thm:multiscale-parseval}, and
+Theorem~\ref{thm:logarithmic-collision} above are all verified in
+\texttt{collatz-endogeny/\allowbreak sec10-primitive-spectral-analysis},
+including the general-$q$ case for
+$q=7,11,13,17,19$.
 
 \begin{definition}[Primitive spectral concentration
 $SC_{\rm prim}(\varepsilon)$]
