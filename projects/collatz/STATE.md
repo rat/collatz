@@ -74,15 +74,30 @@ entre dígitos novos de subárvores irmãs após remover os modos afins
 grosseiros de H-150. Independência par a par já foi refutada por
 H-150; o alvo correto é cancelamento após agregação.
 
-## H-158/E-127: massa do pior cilindro na lei de Syracuse (em andamento)
+## H-158/E-127/E-130: massa do pior cilindro na lei de Syracuse (em andamento)
 
 Mede se `3^ell c_ell = exp(-o(ell))` para `c_ell` a menor massa entre
 resíduos não múltiplos de 3. H-131 e H-148 já mostram que WCC sozinha,
 mesmo com distribuição ideal, não decide isso. Cálculo direto estendido
-até `ell=15` sem o DP de custo mínimo: `beta_eff` decresce de 1.222938
-(`ell=12`) a 1.189390 (`ell=15`), com ajuste descritivo
-`3^ell c_ell ~ ell^(-0.773)` no intervalo `6<=ell<=15` — compatível com
+até `ell=18` sem o DP de custo mínimo: `beta_eff` decresce de 1.222938
+(`ell=12`) a 1.162241 (`ell=18`), com ajuste descritivo
+`3^ell c_ell ~ exp(-1.084099)*ell^(-0.744288)` no intervalo `6<=ell<=18`
+(o expoente mudou de `0.773` para `0.744` ao incluir três níveis a
+mais, mostrando que o ajuste é sensível ao intervalo) — compatível com
 perda subexponencial, mas não conclusivo.
+
+E-130 decompôs `c_ell` por faixa de custo (a coordenada `s` da série
+geométrica da recursão sem memória, não a variável de custo do DP de
+E-111). Comparado aos resíduos de massa mediana e máxima, o resíduo de
+massa mínima precisa consistentemente de mais bandas de custo (`s` até
+9-11 para 99% da massa, contra `s=0` sozinho já bastando para o resíduo
+de massa máxima a partir de `ell=5`), sem tendência com `ell` no
+intervalo testado (2 a 15). Achado descritivo: o déficit do pior
+resíduo não vem de um caminho único dominante.
+
+Passos 1-3 dos "próximos testes" da hipótese estão feitos. Passo 4 (uma
+desigualdade recursiva subexponencial para o mínimo) é a questão de
+pesquisa real e continua aberta.
 
 ## H-157/E-126: renormalização logarítmica q-ádica prova crescimento exponencial de K para q>=5
 
