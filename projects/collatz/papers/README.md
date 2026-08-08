@@ -13,15 +13,18 @@ and, as writing progresses, the draft files themselves.
 
 - **`01-syracuse-qx1-endogenia/`** — this line's main paper: qx+1
   generalization of Tao's Syracuse measure, the endogeny barrier, and
-  the precise characterization (via 6+ independent routes) of the
-  missing ingredient needed to close positive density/β=1/WCC. Scope:
-  H-109 through H-128. **Complete LaTeX draft** (`main.tex`/`main.pdf`,
-  English — standard for journal submission) **and a Portuguese
-  version** (`main-pt-br.tex`/`main-pt-br.pdf`, full translation for
-  the scientific director to review the content). **Whenever one of
-  the two is edited at the scientific director's request, edit the
-  other too** — they are the same source of truth in two languages,
-  they cannot diverge.
+  the precise characterization (via 8 tracked open directions, O1-O8)
+  of the missing ingredient needed to close positive density/β=1/WCC.
+  Scope: H-109 through H-160 (see `OUTLINE.md` for the full
+  section-by-section map). **Complete LaTeX draft** (`main.tex`,
+  English, compiles to 45 pages). The Portuguese review version
+  (`main-pt-br.tex`/`.pdf`) and the English PDF were removed while the
+  H-131-160 batch was incorporated and are regenerated only on the
+  scientific director's explicit request, not automatically alongside
+  `main.tex` edits, until that request is made. Once regenerated,
+  **whenever one is edited at the scientific director's request, edit
+  the other too** — they are the same source of truth in two
+  languages, they cannot diverge.
 - **`02-critica-cumulativa-literatura/`** — cumulative, explicitly
   running/incomplete survey of the Collatz-adjacent literature that
   does NOT claim a complete proof (16 items consolidated as of
