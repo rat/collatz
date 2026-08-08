@@ -34,7 +34,7 @@
 
 \title{The $qx+1$ Generalization of Tao's Syracuse Measure:\\
 A Closed-Form Pressure Equation, an Endogeny Barrier,\\
-and Its Convergent Characterization Across Five Independent Vocabularies}
+and Complementary Viewpoints on the Arithmetic Obstruction}
 
 \author{Renato Augusto Tavares~{\small\href{mailto:dr.renatotavares@gmail.com}{\textcolor{black}{\faEnvelope}}}~\orcidlink{0009-0002-0196-3311}\\
 \normalsize Universidade Federal de Goiás\\
@@ -59,11 +59,10 @@ finite-automaton argument for the same identity that we show is not
 well posed. The nontrivial root of $\rho_{\mathrm{ann}}(\alpha)=1$
 undergoes a structural transition at $q=5$: it equals exactly
 $\alpha^\ast=2$ at $q=3$ and falls strictly below $1$ for every
-$q\ge5$, conjecturally signalling a qualitative change from positive to
-zero natural density of the reverse tree (for $q=3$, implying and
-strictly refining the classical Growth Exponent Conjecture of
-Kontorovich--Lagarias and Applegate--Lagarias, since our conjecture also
-fixes the limiting constant, not merely the exponent). We show,
+$q\ge5$, conjecturally signalling a transition from exponent one to a
+strictly sublinear counting exponent. For $q=3$ this is the classical
+Growth Exponent Conjecture of Kontorovich--Lagarias and
+Applegate--Lagarias. We show,
 moreover, that the two roots of this equation always sit on opposite
 sides of a quenched/annealed freezing transition in the sense of
 directed polymers in a random environment: the smaller root is always
@@ -71,14 +70,17 @@ unfrozen, so the annealed identity transfers rigorously to the
 quenched counting function of the matching i.i.d.\
 branching-random-walk model, and, we conjecture on strong empirical
 grounds, to the genuine arithmetic tree itself; the larger root is
-always frozen, so it does \emph{not} by itself
-establish the tail index of the martingale scale factor governing the
-sub-exponential correction term, a fact we verify independently by
-exact computation. At $q=3$ this larger root, $\alpha^\ast=2$, still
-matches the tail exponent established empirically (independently of
-the pressure argument) by three separate methods in earlier work on
-the classical Collatz map; for $q\ge5$ the analogous claim is left as
-an explicit conjecture, now substantially strengthened by a large-sample
+always frozen, so the pressure identity alone does not establish the
+tail index of the density martingale. We prove that the corresponding
+tilted $q$-adic measure is singular at every frozen root by an entropy
+identity and a fractional-moment estimate. We prove the tail index for the
+matching i.i.d. model by an implicit renewal theorem. For the coherent
+$q$-adic environment, we prove martingale convergence and identify the
+limit with the density of the absolutely continuous component; absolute
+continuity and the tail remain conjectural. At $q=3$ the predicted index
+$\alpha^\ast=2$ matches three empirical measurements in earlier work
+on the classical Collatz map; for $q\ge5$ the arithmetic claim is
+strengthened by a large-sample
 statistical test at $q=5$ (though still not proved), and still only
 weakly supported for $q\ge7$. We then identify and
 formally characterize an \emph{endogeny barrier}, in the technical
@@ -88,50 +90,49 @@ structure of the tree: solutions of the form $G = W\cdot Y$, with $Y$
 an arbitrary bounded factor invariant along the tree, solve the same
 fixed-point recursion as the canonical (``endogenous'') solution $W$
 and are statistically indistinguishable from it by every observable we
-are able to test. We show, by four methodologically independent
-vocabularies (endogeny itself counting as the first), that closing
-this gap is equivalent to one and the same unresolved arithmetic
-statement: Wirsching's 1998 Weak Covering Conjecture
-\cite{Wirsching1998} and Tao's 2020 $\beta=1$ conjecture
-\cite{Tao2020} (which we show is literally the same algebraic object,
-hence counted once), a functional equation for an explicit base-$3$
+are able to test. We study the gap through four complementary
+vocabularies (endogeny itself counting as the first). Closing
+this gap leads to a small collection of unresolved arithmetic
+statements: Wirsching's 1998 Weak Covering Conjecture
+\cite{Wirsching1998}, Tao's weighted $\beta=1$ conjecture
+\cite{Tao2020}, a functional equation for an explicit base-$3$
 analogue of the Fabius function arising in Wirsching's 2003 paper
 \cite{Wirsching2003}, and two candidate lemmas suggested as natural
 next steps by Tao's bivariate Fourier-decay technique
-\cite{Tao2022,Tao2011} (also counted once, since both share the same
-second-moment Fourier decomposition), both of which we execute to
-completion and both of which fail through the \emph{same} missing
-ingredient: one
+\cite{Tao2022,Tao2011}, whose primitive Fourier energy is the exact
+level increment of the $L^2$ collision mass. A diagonalization in
+discrete-logarithm coordinates proves exponential collision growth for
+every odd prime $q\ge5$ whose order of $2$ lifts maximally, and reduces
+the critical case $q=3$ to an explicit signed spectral balance. We
+express the Syracuse law exactly as a geometric
+mixture of Wirsching's fixed-cost generators. This proves that his
+target uniform multiplicity condition implies Tao's $\beta=1$
+cylinder estimate. The first Fourier route
 yields a genuine closed-form structure theorem together with a
 conditional reduction whose hypothesis (square-integrability of the
-Syracuse density on $\mathbb{Z}_3$) we refute by an exact recursive
-computation; the other yields a genuine but strictly weaker conditional
-dichotomy together with an exact negative result, via Jensen's
-formula, showing that the relevant Littlewood--Offord/Riesz-product
-machinery has an intrinsic $\ell^1$ Fourier-budget slack of a factor
-$\approx 1.88$ in the regime that matters. We complement this
+Syracuse density on $\mathbb{Z}_3$) is tested by an exact finite-level
+recursion and shows sustained linear growth through level $17$. The
+other leaves a frequency-stability step open and gives
+an exact Jensen calculation showing slack by a factor $\approx1.88$ in
+one annealed $\ell^1$ Fourier budget. We complement this
 theoretical package with a fully independent, purely empirical result:
 implementing the exact reverse tree of the $5x+1$ map and applying
 Aitken $\Delta^2$ extrapolation to a sequence of nested-window measurements,
-we resolve a standing dispute between two competing predictions for
+we compare two competing predictions for
 the $5x+1$ counting exponent (Kontorovich--Lagarias
 \cite{KontorovichLagarias2009} versus a competing stochastic model due
 to Volkov, both discussed in \cite{KontorovichLagarias2009}), measuring
-$0.639$ ($95\%$ CI $[0.633,0.645]$) and decisively excluding the
-competing value $0.678$. Finally, a directed literature search situates
+$0.639$ (bootstrap interval $[0.633,0.645]$). The remaining monotone
+finite-window drift prevents this interval from deciding between the
+two asymptotic predictions. Finally, a directed literature search situates
 the barrier precisely within the wider theory of Fourier decay for
 self-similar and self-conformal measures \cite{BakerBanaji2026,
-Bremont}, showing it is structurally inaccessible to that toolkit
-because of the rigidity of closed subgroups of $\mathbb{Z}_3^\times$,
-and identifies a fifth, purely combinatorial and independently
-testable, vocabulary for the same obstruction in very recent work
-\cite{Chang2026}. We argue that this convergence of five methodologically independent
-and technically unrelated vocabularies onto the same unproven
-statement --- two of whose pairwise coincidences are themselves
-proved identities, not analogies, and are counted once each --- is
-itself significant evidence that the obstruction is a genuine feature
-of the problem rather than an artifact of any single method, and we
-state precisely what remains to be proved.
+Bremont}, showing why three standard mechanisms do not directly apply
+to this rigid $3$-adic system,
+and compares the resulting obstruction with a recent fixed-modulus
+orbit statistic \cite{Chang2026}. We distinguish exact identities,
+conditional reductions, and analogies, and state the remaining
+estimates separately.
 \end{abstract}
 
 \noindent\textbf{Keywords:} Collatz conjecture; $qx+1$ map; Syracuse random variable;
@@ -218,36 +219,35 @@ following contributions.
   exhibit an explicit family of \emph{non-endogenous} solutions to the
   tree's fixed-point recursion, prove they are statistically
   indistinguishable from the canonical one by pressure, tail index, or
-  linear regression against the limiting measure, and identify exactly
-  which extra hypothesis (near-independence of fresh $3$-adic digits
-  across sibling subtrees) is needed to rule them out.
+  linear regression against the limiting measure. We identify the
+  missing arithmetic input as cancellation of centered fine-frequency
+  correlations after averaging over path pairs; pairwise independence
+  is impossible.
 \item \textbf{An empirical bound on the residual coupling
   (\S\ref{sec:calibration}).} A three-arm control experiment gives
   $\rho_{\mathrm{eff}} \lesssim 0.06$ (95\% CI) for the effective
   arithmetic coupling between sibling subtrees, converting the
   theoretical gap of (ii) into a quantitative empirical bound.
-\item \textbf{An unconditional empirical result (\S\ref{sec:kl}).} We
-  resolve, using exact enumeration and Aitken $\Delta^2$ extrapolation, a
-  long-standing dispute between two competing predictions for the
-  $5x+1$ counting exponent.
+\item \textbf{A finite-window empirical result (\S\ref{sec:kl}).} Exact
+  enumeration and Aitken $\Delta^2$ extrapolation compare two predictions
+  for the $5x+1$ counting exponent, while retaining a visible
+  pre-asymptotic window bias.
 \item \textbf{A direct computational test of the Weak Covering
   Conjecture (\S\ref{sec:wcc}).}
 \item \textbf{Three convergent regimes of precision for Tao's bivariate
   extension (\S\ref{sec:regimes}), and triangulation with two further
-  independent formulations of the same obstruction
+  complementary formulations of the arithmetic obstruction
   (\S\ref{sec:triangulation}).}
-\item \textbf{Two candidate lemmas, executed to completion
-  (\S\ref{sec:lemmas}).} Both fail through the same missing ingredient,
-  yielding along the way a genuine structure theorem, a computational
-  refutation of a natural sufficient condition, and an exact negative
-  result via Jensen's formula.
+\item \textbf{Two candidate routes (\S\ref{sec:lemmas}).} The first
+  yields a structural obstruction and a finite-level test of a natural
+  sufficient condition.
+  The second leaves an explicit frequency-stability step open and gives
+  an exact Jensen calculation for one annealed Fourier budget.
 \item \textbf{A literature-theoretic contextualization
-  (\S\ref{sec:context}).} We show the barrier is structurally
-  inaccessible to the general theory of Fourier decay for self-similar
-  measures, for a precise arithmetic reason (rigidity of closed
-  subgroups of $\mathbb{Z}_3^\times$), and we identify a fifth,
-  purely combinatorial, independent vocabulary for the same
-  obstruction in very recent work \cite{Chang2026}.
+  (\S\ref{sec:context}).} We show why three standard methods from the
+  theory of Fourier decay for self-similar measures do not transfer
+  directly. We also test a recent fixed-modulus orbit statistic
+  \cite{Chang2026}, without treating it as a proved reduction.
 \end{enumerate}
 
 We deliberately frame this paper not as an attempted proof of any part
@@ -295,6 +295,14 @@ root --- and never invokes existence of $a_0(u)$ for every $u$), nor
 the numerical enumeration of \S\ref{sec:kl-empirical}, whose
 implementation already excludes exactly these classes; it is a
 correction to this structural description only.
+
+We count distinct integer labels rather than path occurrences. Define
+\[
+ N_u(x):=\#\{n\le x:n\text{ odd and }T_q^k(n)=u
+                    \text{ for some }k\ge0\}.
+\]
+This convention removes repetitions caused by cycles. In particular,
+$N_u(x)\le\lceil x/2\rceil$.
 
 On this tree we study the linear population functional $G$ satisfying
 the fixed-point recursion
@@ -405,6 +413,135 @@ branching process). Thus $\alpha=1$ is always a root of
 \eqref{eq:pressure-eq}.
 \end{remark}
 
+\begin{theorem}[$q$-adic density martingale]\label{thm:qadic-martingale}
+Let $\alpha$ be either positive root of \eqref{eq:pressure-eq}, and let
+$U$ be Haar-uniform on $\mathbb Z_q$.
+Then
+\[
+ M_k^{(\alpha)}(U):=Z_k(\alpha;U\bmod q^k)
+\]
+is a nonnegative martingale of mean one for the filtration generated by
+$U\bmod q^k$. Consequently $M_k$ converges almost surely to a finite
+limit $W_{q,\alpha}$. If $\mu_\alpha$ is the projective law of the tilted
+Syracuse sums and
+$\mu_\alpha=f_{q,\alpha}\,m_q+\mu_{\mathrm s}$ is its Lebesgue decomposition
+with respect to Haar measure $m_q$, then
+\[
+ W_{q,\alpha}=f_{q,\alpha}(U)\qquad m_q\text{-almost surely}.
+\]
+In particular, $W_{q,\alpha}$ is nonzero with positive probability
+exactly when $\mu_\alpha$ has a nonzero absolutely continuous component,
+and $\mathbb E W_{q,\alpha}=1$ exactly when $\mu_\alpha\ll m_q$.
+\end{theorem}
+
+\begin{proof}
+At a pressure root, the numbers
+\[
+ p_\alpha(a):=q^{\alpha-1}2^{-\alpha a},\qquad a\ge1,
+\]
+sum to one. For independent digits with this law, let
+\[
+ F_k=\sum_{i=1}^k q^{i-1}2^{-S_i}\pmod {q^k},
+ \qquad S_i=a_1+\cdots+a_i.
+\]
+The fibre identity gives
+\[
+ Z_k(\alpha;u)=q^k\Pr(F_k=u).
+\]
+Also $F_{k+1}\equiv F_k\pmod {q^k}$, since their difference is
+$q^k2^{-S_{k+1}}$. Thus the laws of $F_k$ form a projectively
+consistent family. Conditional on $U\equiv u\pmod {q^k}$,
+\[
+ \mathbb E[M_{k+1}\mid U\bmod q^k=u]
+ =\frac1q\sum_{v\equiv u\ (q^k)}q^{k+1}\Pr(F_{k+1}=v)
+ =q^k\Pr(F_k=u)=M_k(u).
+\]
+The nonnegative martingale convergence theorem gives the limit. The
+functions $M_k$ are the Radon--Nikodym derivatives of the restrictions
+of $\mu_\alpha$ to the cylinder sigma-algebras relative to the
+corresponding restrictions of $m_q$. Martingale differentiation of the
+Lebesgue decomposition identifies their almost-sure limit with
+$d(\mu_\alpha)_{\mathrm{ac}}/dm_q$. Its integral is the total mass of
+the absolutely continuous part, which proves the final assertions.
+\end{proof}
+
+\begin{theorem}[$L^p$ collision criterion]\label{thm:lp-collision}
+Let $\alpha$ be a pressure root, let $p>1$, let $\mu_{\alpha,k}$ be the
+law of $F_k$ modulo $q^k$, and
+let $M_k^{(\alpha)}=q^k\mu_{\alpha,k}$ be its density relative to
+uniform measure on $\mathbb Z/q^k\mathbb Z$. Then
+\begin{equation}\label{eq:lp-collision}
+ \lVert M_k^{(\alpha)}\rVert_p^p
+ =q^{k(p-1)}\sum_{u\bmod q^k}\mu_{\alpha,k}(u)^p.
+\end{equation}
+The projective measure $\mu_\alpha$ has a density in $L^p(\mathbb Z_q)$
+if and only if the right-hand side is bounded uniformly in $k$. If $p$
+is an integer, the sum in \eqref{eq:lp-collision} is the probability
+that $p$ independent tilted Syracuse sums agree modulo $q^k$.
+\end{theorem}
+
+\begin{proof}
+Uniform measure assigns mass $q^{-k}$ to each residue, so
+\[
+ \lVert M_k^{(\alpha)}\rVert_p^p
+ =q^{-k}\sum_u\bigl(q^k\mu_{\alpha,k}(u)\bigr)^p,
+\]
+which is \eqref{eq:lp-collision}. For integer $p$, expanding the
+probability of equality of $p$ independent copies gives the collision
+interpretation.
+
+If the quantities in \eqref{eq:lp-collision} are uniformly bounded,
+the martingale $M_k^{(\alpha)}$ converges in $L^p$. Its limit has integral
+one and is the density of the projective measure on every cylinder, so
+$\mu_\alpha$ is absolutely continuous with an $L^p$ density. Conversely,
+if $d\mu_\alpha=f\,dm_q$ with $f\in L^p$, then
+$M_k^{(\alpha)}=\mathbb E[f\mid U\bmod q^k]$. Conditional expectation is
+an $L^p$ contraction, which gives the uniform bound.
+\end{proof}
+
+For $q=3$ and $\alpha=1$, Theorem~\ref{thm:lp-collision} at $p=2$
+gives exactly the collision statistic $K_k$ used in
+\S\ref{sec:lemmas}. Thus the former $L^2$ sufficient condition is one
+member of a complete family of weighted collision criteria. These are
+averaged concentration conditions. They do not control the smallest
+cylinder mass required by the worst-residue problem $\beta=1$.
+
+\begin{theorem}[Singularity at the frozen root]
+\label{thm:frozen-singular}
+Let $\alpha=\alpha_+(q)$. Then
+\[
+ M_k^{(\alpha)}(U)\longrightarrow0
+ \qquad m_q\text{-almost surely},
+\]
+and the tilted Syracuse measure $\mu_\alpha$ is singular with respect
+to Haar measure.
+\end{theorem}
+
+\begin{proof}
+Write $r=2^{-\alpha}$. The digit law is
+$p_\alpha(a)=(1-r)r^{a-1}$, so its entropy is
+\[
+ H(p_\alpha)=-\log(1-r)-\frac{r}{1-r}\log r.
+\]
+At a pressure root, direct differentiation gives
+\[
+ H(p_\alpha)-\log q
+ =-\alpha P'(\alpha)=s(\alpha).
+\]
+The larger root is frozen, hence $H(p_\alpha)<\log q$. For $0<t<1$,
+subadditivity of $x^t$ and the representation
+$M_k^{(\alpha)}(u)=q^k\sum_{F_k=u}\prod_i p_\alpha(a_i)$ give
+\[
+ \mathbb E_{m_q}\bigl[(M_k^{(\alpha)})^t\bigr]
+ \le\left(q^{t-1}\sum_{a\ge1}p_\alpha(a)^t\right)^k.
+\]
+The logarithmic derivative of the factor in parentheses at $t=1$ is
+$\log q-H(p_\alpha)>0$. It is therefore less than one for some
+$t<1$ sufficiently close to one. The fractional moment tends to zero,
+so the almost-sure martingale limit is zero. Theorem~\ref{thm:qadic-martingale}
+then identifies the absolutely continuous component as zero.
+\end{proof}
+
 \subsection{Quenched vs.\ annealed: a freezing transition}
 \label{sec:freezing}
 
@@ -486,15 +623,11 @@ below and the statistically calibrated measurement of \S\ref{sec:kl}
 --- both averaging over many roots sampled well away from any known
 short cycle --- carry the actual generic-environment evidence.
 
-The consequence, by Proposition~\ref{prop:always-frozen}, is
-unconditional: Theorem~\ref{thm:pressure}, though exact, rigorously
-transfers only to the \emph{counting-exponent} half of
-Theorem~\ref{thm:transition-model} below (the smaller root $\alpha_-(q)$,
-always unfrozen); it never establishes, for any $q$, the tail index of
-the martingale scale factor $W_u$ also claimed there, since the larger
-root $\alpha_+(q)$ governing that claim is always frozen. We treat this
-honestly as Conjecture~\ref{conj:tail-index} below, rather than as a
-further consequence of Theorem~\ref{thm:pressure}.
+The pressure identity transfers to the counting exponent of the i.i.d.
+model at the unfrozen root $\alpha_-(q)$. It does not by itself prove a
+tail law. Theorem~\ref{thm:iid-tail} obtains the i.i.d. tail by implicit
+renewal, while Conjecture~\ref{conj:tail-index} states the separate
+claim for a coherent Haar-random $q$-adic root environment.
 
 \subsection{The structural transition at $q=5$}
 
@@ -526,7 +659,7 @@ the two roots, we have $\{\alpha_-,\alpha_+\}=\{1,2\}$ at $q=3$ but
 $\{\alpha_-,\alpha_+\}=\{\alpha^\ast(q),1\}$ for $q\ge5$: the trivial
 root becomes the \emph{larger} of the two.
 
-\begin{theorem}[Structural transition: density, i.i.d.\ model]\label{thm:transition-model}
+\begin{theorem}[Structural transition: exponent, i.i.d.\ model]\label{thm:transition-model}
 Let $N(x)$ be the population counting function of the i.i.d.\
 branching-random-walk model whose annealed pressure is exactly
 $\rho_{\mathrm{ann}}(\alpha)=q^{\alpha-1}/(2^\alpha-1)$
@@ -580,26 +713,24 @@ periodic correction would appear; the irrationality is therefore the
 operative fact, not an irrelevant one.
 \end{proposition}
 
-\begin{conjecture}[Structural transition: density, arithmetic tree]\label{conj:transition-arithmetic}
-The same dichotomy holds for the genuine reverse tree of $T_q$ itself,
-not merely for the i.i.d.\ model of Theorem~\ref{thm:transition-model}
-and Proposition~\ref{prop:transition-fine}: for $q=3$ it has positive natural
-density ($N_u(x)\sim x$); for every odd $q\ge5$ it has natural density
-zero, with $N_u(x)\sim W_u\cdot x^{\alpha_-(q)}$. At $q=3$ this
-\emph{implies, and strictly refines}, the Growth Exponent Conjecture of
+\begin{conjecture}[Structural transition: exponent, arithmetic tree]\label{conj:transition-arithmetic}
+For every admissible root $u$, the genuine reverse tree of $T_q$
+satisfies
+\[
+ N_u(x)=x^{\alpha_-(q)+o(1)}.
+\]
+Thus the exponent is $1$ for $q=3$ and is strictly below $1$ for every
+odd $q\ge5$. At $q=3$ this is the Growth Exponent Conjecture of
 Kontorovich--Lagarias \cite{KontorovichLagarias2009} and
 Applegate--Lagarias
 \cite{ApplegateLagarias1995I,ApplegateLagarias1995II} for the classical
-Collatz reverse tree, which asserts only the exponent
-$\pi_a(x)=x^{1+o(1)}$, not a specific asymptotic constant --- open
+Collatz reverse tree, namely $\pi_a(x)=x^{1+o(1)}$, open
 since 1995, with the best unconditional partial result remaining the
 one-sided bound $\pi_a(x)\ge x^{0.84}$ of Krasikov--Lagarias
 \cite{KrasikovLagarias2003}. Our pressure identity reproduces the
 exponent-$1$ statement of this conjecture as the $\alpha_-=1$ case of
 a single closed-form equation, together with its $q\ge5$ analogue,
-rather than resolving it; the further claim of a specific limiting
-constant is additional content of Conjecture~\ref{conj:transition-arithmetic}
-beyond the classical conjecture.
+rather than resolving it.
 \end{conjecture}
 
 We state Theorem~\ref{thm:transition-model},
@@ -622,8 +753,8 @@ growth throughout the unfrozen region is a rigorous, classical result
 \cite{Biggins1992}. For our arithmetic recursion, no analogous theorem
 is known to us: the gap is the same one already identified around
 Theorem~\ref{thm:barrier} (Remark~\ref{rem:barrier-reading}:
-near-independence of fresh digits across sibling subtrees, here in a
-quantitative large-deviations form rather than a qualitative one), and
+cancellation of centered fine-frequency correlations after path
+averaging, here in a quantitative large-deviations form), and
 the closest genuine arithmetic result in
 the literature is a one-sided density bound of Applegate--Lagarias
 \cite{ApplegateLagarias1995I,ApplegateLagarias1995II}, later sharpened
@@ -637,21 +768,67 @@ stochastic-model theorem's rigor bleed by association into the
 arithmetic claim.
 \end{remark}
 
-\begin{conjecture}[Tail index of the scale factor]\label{conj:tail-index}
-$W_u$ has a regularly varying tail of index $\alpha_+(q)/\alpha_-(q)$,
-where $\alpha_+(q)$ is the larger root of \eqref{eq:pressure-eq}
+\begin{conjecture}[Density and tail of the tilted Syracuse measure]
+\label{conj:tail-index}
+Let $U$ be Haar-uniform on $\mathbb Z_q$, and read
+$Z_k(\alpha_-(q);U)$ through its residue modulo $q^k$. The sequence
+has the limit $W_q:=W_{q,\alpha_-(q)}$ of
+Theorem~\ref{thm:qadic-martingale}. The tilted
+measure is absolutely continuous, its density $W_q$ is non-degenerate,
+and
+\[
+ \Pr(W_q>x)=x^{-\alpha_+(q)/\alpha_-(q)+o(1)}.
+\]
+Here $\alpha_+(q)$ is the larger root of \eqref{eq:pressure-eq}
 ($\alpha_+(3)=2$; $\alpha_+(q)=1$ for every $q\ge5$).
 \end{conjecture}
 
-This is exactly the exponent predicted by the classical theory of
-fixed points of the (multitype) smoothing transform
-\cite{Guivarch1990,Liu2000,Mentemeier2016} for the genuine stochastic
-model:\footnote{A related structural prediction of the multitype model,
+\begin{theorem}[Tail index in the i.i.d. model]\label{thm:iid-tail}
+For the additive martingale at parameter $\alpha_-(q)$ in the matching
+i.i.d. branching model,
+\[
+ \Pr(W_\infty>x)\sim C_q x^{-\alpha_+(q)/\alpha_-(q)}
+ \qquad (x\to\infty)
+\]
+for a constant $C_q>0$.
+\end{theorem}
+
+\begin{proof}
+Apply the implicit renewal theorem for generalized multiplicative
+cascades \cite{Liu2000}. With $\theta=\alpha_-(q)$, its logarithmic
+moment function is
+\[
+ \psi(s)=\log\rho_{\mathrm{ann}}(\theta s).
+\]
+It vanishes at $s=1$ and next at
+$\kappa=\alpha_+(q)/\alpha_-(q)$, while $\psi'(1)<0$ because the smaller
+root is unfrozen. The geometric offspring ladders give all moments
+needed in a neighborhood of $\kappa$. The closed subgroup generated by
+the logarithmic weights is generated by $\theta\log2$ and
+$\theta\log q$; it is dense because $\log q/\log2$ is irrational.
+Thus the renewal law is non-arithmetic and has a constant, positive
+tail coefficient.
+\end{proof}
+
+\begin{remark}
+The proof above applies \cite{Liu2000} to the present weights and
+checks the stated hypotheses of that theorem for our parameters
+(Appendix, verification script), but the citation itself has not yet
+been checked against the primary source. Treat
+Theorem~\ref{thm:iid-tail} as pending that check.
+\end{remark}
+
+This is the classical smoothing-transform result for the stochastic
+model. Its transfer to the coherent $q$-adic root environment is
+Conjecture~\ref{conj:tail-index}, since the arithmetic subtrees are not
+independent.\footnote{A related
+structural prediction of the multitype model,
 confirmed empirically for $q=5$: conditioning on the root's residue
 class $i=u_0\bmod q$ (with $a_0(i)$ the smallest admissible branch
 exponent for class $i$), the scale factor satisfies
 $W_i\stackrel{d}{=}2^{-a_0(i)\theta}\cdot W^*$ for a common $W^*$,
-i.e.\ residue class only rescales $W_u$, it does not change its shape.
+i.e.\ residue class only rescales the candidate limit, it does not
+change its shape.
 Verified on $5000$ sampled roots across four headroom levels, with
 quantile ratios matching this prediction to within $2$--$9\%$; exact
 only in the idealized i.i.d.\ model, as in Remark~\ref{rem:transfer-basis}.
@@ -677,17 +854,18 @@ We state this as a conjecture separate from both
 Theorem~\ref{thm:transition-model} and
 Conjecture~\ref{conj:transition-arithmetic} above, precisely because
 Proposition~\ref{prop:always-frozen} shows $\alpha_+(q)$ is
-\emph{always} frozen: the annealed pressure identity does not
-establish it for any $q$ --- not even at the level of the i.i.d.\ model
-of Theorem~\ref{thm:transition-model}, whose Biggins-type transfer only
-covers the unfrozen root --- and it must rest on evidence external to
+\emph{always} frozen, so the annealed pressure identity alone does not
+establish the tail. Theorem~\ref{thm:iid-tail} obtains it by implicit
+renewal at the unfrozen martingale normalization. Its arithmetic
+counterpart still requires evidence external to
 Theorem~\ref{thm:pressure}. At $q=3$ that evidence is real and
 threefold: the Hill estimator on real-tree samples and extreme-value
 theory on block maxima (both from earlier stages of this project) give
 $\alpha\approx2$ independently of the pressure argument, and the
 counting-exponent confirmation below adds a third, related line of
 support. For $q\ge5$ the corresponding evidence is markedly weaker: an
-early Hill-estimator measurement of the tail of $W_u$ for $q=5$ (600
+early Hill-estimator measurement of finite-depth root scale factors for
+$q=5$ (600
 roots, agreement to two decimal places with the predicted
 $1.536\ldots$) was later shown, over the course of this project, to be
 statistically non-confirmatory at that sample size (the estimator's
@@ -724,7 +902,7 @@ sanity check --- that the population mean of $Z_k(\theta;u)$ equals
 exactly $1$ for every $k$, forced by Theorem~\ref{thm:pressure} at
 $\alpha=\theta$ --- passed to floating-point precision, confirming the
 implementation; \texttt{collatz-endogeny/\allowbreak sec3-pressure-equation}).
-If $W_u=\lim_k Z_k(\theta;u)$ has tail index
+If $W_q=\lim_k Z_k(\theta;U)$ has tail index
 $\iota$, the population moment $M_k(p)=\mathrm{mean}_u\,Z_k(\theta;u)^p$
 should saturate in $k$ for $p<\iota$ and diverge for $p>\iota$.
 The data show saturating behavior throughout $p\le1.6$ and diverging
@@ -751,8 +929,8 @@ Taken together, neither route confirms Conjecture~\ref{conj:tail-index}
 for $q\ge5$ and neither refutes it; both are more informative than the
 original under-powered measurement, and both point to the same honest
 conclusion: this is a harder statistical question than the $q=3$ case,
-already settled by the independent Hill/EVT measurements noted in
-\S\ref{sec:pressure}. We have since pursued exactly
+which has stronger finite-level support from the independent Hill/EVT
+measurements noted in \S\ref{sec:pressure}. We have since pursued exactly
 the two follow-ups this pointed to. A pre-registered log-periodic fit
 (motivated by the branch weights being powers of $2$) was tested against
 a period derived analytically, not fitted: the relevant renewal-theoretic
@@ -966,9 +1144,11 @@ the residual gauge dispersion $\sigma_Y$ vanishes for the true
 arithmetic object; only that the recursion alone cannot force it to.
 The missing ingredient that closes the gap \emph{in the idealized
 model} --- and which remains to be transferred to the arithmetic
-setting --- is near-independence, across sibling subtrees, of the
-fresh $3$-adic digits of the leaf integers, together with
-equidistribution of the Archimedean phase along paths. The known
+setting --- is cancellation of the centered fine-frequency covariance
+after independently averaging the two path indices, together with
+equidistribution of the Archimedean phase along paths. Literal
+near-independence of paired leaf digits is false by
+Theorem~\ref{thm:fresh-digit-coupling}. The known
 rigorous analogue, in the forward direction, is the Fourier decay of
 Tao's Syracuse variables (Proposition~\ref{prop:tao117}); the
 reverse-tree/density version remains open and is \emph{not} implied by
@@ -1073,12 +1253,12 @@ converts the purely theoretical gap of Theorem~\ref{thm:barrier} into a
 quantitative, falsifiable empirical bound on its size, for this family
 of couplings.
 
-\section{An unconditional empirical result: resolving the
-Kontorovich--Lagarias vs.\ Volkov dispute for $5x+1$}
+\section{A finite-window comparison of the Kontorovich--Lagarias and
+Volkov predictions for $5x+1$}
 \label{sec:kl}
 
-Independently of the theoretical program above, we report a fully
-unconditional empirical result of direct interest.
+Independently of the theoretical program above, we report an exact
+finite enumeration with a statistical extrapolation.
 
 \subsection{The dispute}
 
@@ -1133,14 +1313,14 @@ genuine, extrapolable truncation bias, not noise.
 Aitken's $\Delta^2$ extrapolation of this sequence to infinite
 truncation gives
 \begin{equation}\label{eq:kl-result}
-  \hat\eta_5 = 0.639, \qquad 95\%\ \text{CI (bootstrap over roots)} =
+  \hat\eta_5 = 0.639, \qquad 95\%\ \text{bootstrap interval, fixed window} =
   [0.633,\, 0.645].
 \end{equation}
-This excludes Volkov's prediction ($0.678$) with an ample margin (more
-than ten standard errors). The small residual gap to the
-Kontorovich--Lagarias value ($0.650919$, about $0.012$ above our upper
-confidence bound) has a specific, diagnosable signature rather than
-being an unexplained discrepancy: the slope-per-decade panel
+The bootstrap interval measures variation between sampled roots after
+the truncation extrapolation. It does not include the remaining bias
+from the fixed measurement window and therefore cannot exclude either
+asymptotic prediction. That bias has a visible signature: the
+slope-per-decade panel
 \emph{within} the fixed measurement window ($10^4\!\to\!10^5$ through
 $10^7\!\to\!10^8$) is still monotonically rising at the last decade
 tested ($0.6021\to0.6296\to0.6432\to0.6460$, no plateau), approaching
@@ -1149,14 +1329,16 @@ $0.6509$ monotonically without having reached it --- the signature of
 enough''), not of uncorrected truncation bias (already handled by the
 Aitken $\Delta^2$ extrapolation above).
 
-\begin{empirical}[Empirical resolution of the Kontorovich--Lagarias vs.\
-Volkov dispute]\label{thm:kl}
-The $5x+1$ reverse-tree counting exponent, measured by exact
-enumeration with Aitken-$\Delta^2$-extrapolated truncation correction, is
-$0.639$ (95\% CI $[0.633,0.645]$). This excludes the competing Volkov
-prediction ($0.678$) with high confidence and is consistent with the
-Kontorovich--Lagarias prediction ($0.650919$) up to a measured and
-explained finite-window pre-asymptotic effect.
+\begin{empirical}[Finite-window comparison of two exponent predictions]
+\label{thm:kl}
+The fixed-window estimator of the $5x+1$ reverse-tree counting exponent,
+computed by exact enumeration with Aitken-$\Delta^2$-extrapolated
+truncation correction, is
+$0.639$ (bootstrap interval $[0.633,0.645]$). The sequence of local
+slopes rises monotonically toward the Kontorovich--Lagarias prediction
+$0.650919$ on the available windows. Since it has not stabilized, the
+experiment does not provide a calibrated confidence interval for the
+asymptotic exponent and does not exclude the Volkov prediction.
 \end{empirical}
 
 This result stands entirely on its own, independent of the theoretical
@@ -1257,7 +1439,7 @@ approach.
 \begin{empirical}[Direct computational test of the Weak Covering
 Conjecture]\label{thm:wcc}
 $j^\ast(\ell)$ exists and is finite for all $\ell\le 20$ (the first
-direct computational test, to our knowledge, of the exact object of
+direct computation here of the exact object of
 Conjecture~\ref{conj:wcc}). The excess $e(\ell)$ qualitatively favors
 unbounded slow growth over stabilization (two independent statistics,
 $\Delta\mathrm{AIC}$ and plateau frequency, in the same direction but
@@ -1302,6 +1484,34 @@ line of resonant frequencies where the correlation has modulus exactly
 $1$.
 \end{proposition}
 
+\begin{theorem}[Maximal coupling of fresh digits]
+\label{thm:fresh-digit-coupling}
+Fix a pair of paths and condition their leaf values modulo $3^r$.
+If the free arithmetic parameter is uniform over the $3^s$ compatible
+lifts modulo $3^{r+s}$, let $X_s,Y_s$ denote the next $s$ base-$3$
+digits of the two leaves. Then both marginals are uniform and
+\[
+ d_{\rm TV}\bigl(\mathcal L(X_s,Y_s),
+     \mathcal L(X_s)\otimes\mathcal L(Y_s)\bigr)=1-3^{-s},
+ \qquad
+ I(X_s;Y_s)=s\log3.
+\]
+Thus fresh digit blocks of a fixed leaf pair become maximally, rather
+than weakly, dependent as $s\to\infty$.
+\end{theorem}
+
+\begin{proof}
+By Proposition~\ref{prop:fixed-pair}, after the coarse class is fixed
+the two leaves are affine functions of one lift parameter, and both
+multipliers are units modulo $3^s$. The map from the fresh block of the
+first leaf to that of the second is therefore a permutation of
+$3^s$ points. The joint law is uniform on its graph, while the product
+law is uniform on all $3^{2s}$ pairs. Direct summation gives total
+variation $1-3^{-s}$. Since one block determines the other, their
+mutual information equals the entropy of a uniform $3^s$-point
+variable, namely $s\log3$.
+\end{proof}
+
 Consequently, ``apply Proposition~\ref{prop:tao117} twice, assuming
 conditional independence given the ancestor'' is not merely circular:
 it is false as stated, at any precision.
@@ -1337,32 +1547,30 @@ arithmetic hypothesis.
   (\S\ref{sec:lemmas}).
 \item \textbf{$\ell \asymp c\cdot D$} (where the endogeny barrier, the
   fresh digits, and Wirsching's Weak Covering Conjecture all live):
-  this requires \emph{exponential} (power-saving), $\xi$-uniform
-  Fourier decay; Proposition~\ref{prop:tao117} gives only
+  this requires exponential control of the linear-precision
+  frequency tail after sublinear-conductor modes have been separated;
+  Proposition~\ref{prop:tao117} gives only
   super-polynomial decay, and Tao's Section~7 method structurally
   cannot give more, because the losses in the black-set argument are
   tied to Diophantine properties of $\log 3/\log 2$ via the slope
   $\log 9/\log 2$.
 \end{enumerate}
 
-\begin{theorem}[Regime 3 is at least as hard as recognized open problems]\label{thm:regime3}
-Regime 3 above is a special case of, and in the generality required
-here is at least as hard as, each of: (i) correlations of digital
-functions in bases $2$ and $3$ \cite{Spiegelhofer2021}, (ii) effective
-rigidity for $\times 2,\times 3$-invariant structures in the sense of
-Furstenberg (the pair $(w_1,w_2)$ is $v$ observed through two elements
-of the affine semigroup generated by $x\mapsto(2^ax-1)/3$), open in the
-generality required here, and (iii) exponential Fourier decay for
-$3$-adic self-similar measures of Breuillard--Varjú type, known only in
-special algebraic cases. None of these furnishes a usable tool today.
-\end{theorem}
+\begin{remark}[Nearby open theories]\label{thm:regime3}
+Regime 3 has features in common with correlations of digital functions
+in bases $2$ and $3$ \cite{Spiegelhofer2021}, effective rigidity for
+$\times2,\times3$ actions, and Fourier decay for self-similar measures.
+We do not prove a reduction to or from any of these problems. The target
+used below is an exponential bound for the linear-precision part of the
+conditioned character sums $S_i(\xi)$, with sublinear-conductor modes
+treated through Theorem~\ref{thm:sublinear-precision-ensemble}.
+\end{remark}
 
-\section{Triangulation: three independent formulations of the same
+\section{Triangulation: connections among three formulations of the
 obstruction}
 \label{sec:triangulation}
 
-\subsection{$\beta=1$ (Tao 2020) is the Weak Covering Conjecture
-(Wirsching 1998)}
+\subsection{$\beta=1$ (Tao 2020) and a weighted covering problem}
 
 Tao \cite{Tao2020} defines $c_n := \inf_{b\in\mathbb{Z}/3^n\mathbb{Z},\,
 3\nmid b} \Pr(\mathrm{Syrac}(\mathbb{Z}/3^n\mathbb{Z})=b)$ and proposes
@@ -1372,26 +1580,88 @@ $\beta=1$ implies Collatz density $\gg x^{1-o(1)}$ (almost total), and
 noting that the best known unconditional bound is Krasikov--Lagarias'
 $\gamma=0.84$ \cite{KrasikovLagarias2003}.
 
-\begin{proposition}[Structural identity]\label{prop:beta-wcc}
+\begin{proposition}[Support identity and geometric cost]\label{prop:beta-wcc}
 After a unit twist, Tao's Syracuse random variable and Wirsching's sets
 $R_{j,k}$ are the same algebraic object (sums of powers of $2$ and $3$
-with strictly decreasing exponents). Consequently, Conjecture~\ref{conj:wcc}
-(sub-exponential $K(\ell)$) implies $\beta=1$ (an exact entropy count:
-$j=\log_4 3\cdot \ell + o(\ell)$ gives $c_\ell \gtrsim
-3^{-\ell(1+o(1))}$); conversely $\beta=1$ alone gives only an
-exponentially weakened form of Conjecture~\ref{conj:wcc}. The two are
-sibling formulations on the same exact entropy scale --- the threshold
-$\log_4 3\approx 0.7925$ of \S\ref{sec:wcc} is the same identity
-$4^j$ vs.\ $3^\ell$ on both sides, not a coincidence.
+with strictly decreasing exponents). Let $B_\ell(z)$ be the least total
+geometric cost $a_1+\cdots+a_\ell$ of a Syracuse tuple representing
+$z\pmod {3^\ell}$, and let $j^\ast(\ell)$ be the least $j$ for which
+$R_{\ell-1,j}$ covers every admissible residue. Then
+\[
+  \max_z B_\ell(z)=\ell+j^\ast(\ell).
+\]
+More specifically, tuples of cost at most $\ell+j$ are in bijection,
+after multiplication by $2^{\ell+j}$, with $R_{\ell-1,j}$ modulo
+$3^\ell$.
 \end{proposition}
 
-\begin{corollary}\label{cor:e-ell-beta}
-The excess $e(\ell)=j^\ast(\ell)-\log_4 3\cdot \ell$ measured in
-\S\ref{sec:wcc} is literally the $o(n)$ term of $\beta=1$
-($c_\ell\gtrsim 3^{-\ell}\cdot 4^{-e(\ell)}$): our qualitative reading
-of $e(\ell)$ (sub-linear growth favored) is direct computational
-evidence in favor of $\beta=1$, not merely of Conjecture~\ref{conj:wcc}.
-\end{corollary}
+Ordinary covering controls the cheapest representation of each residue,
+whereas $c_\ell$ sums the geometric weights of all its representations.
+At the WCC threshold $j^\ast(\ell)=\log_4(3)\ell+o(\ell)$, the cheapest
+representation alone gives
+\[
+ c_\ell\ge 2^{-\ell-j^\ast(\ell)}
+ =3^{-(1/2+\log_3 2)\ell+o(\ell)}.
+\]
+This yields only $\beta\le 1/2+\log_3 2=1.1309\ldots$, rather than
+$\beta=1$. The entropy implication previously asserted here is invalid.
+The missing statement is a weighted covering estimate reaching the
+typical cost window: the total geometric multiplicity must be within a
+subexponential factor of its mean uniformly over residues. Our
+computation of $j^\ast(\ell)$ tests WCC, but does not by itself test
+this weighted assertion.
+
+\begin{theorem}[Large-deviation barrier at the WCC cost]
+\label{thm:wcc-large-deviation}
+Let $A_1,\ldots,A_\ell$ be independent with
+$\Pr(A_i=m)=2^{-m}$ for $m\ge1$, and put $B_\ell=\sum_iA_i$. For
+$1<s<2$,
+\begin{equation}\label{eq:wcc-rate}
+ \Pr(B_\ell\le s\ell)
+ =\exp\{-I(s)\ell+o(\ell)\},
+ \qquad
+ I(s)=s\log2+(s-1)\log(s-1)-s\log s>0.
+\end{equation}
+Let $\mu_\ell^{(\le s)}$ be the subprobability Syracuse measure formed
+from tuples with $B_\ell\le s\ell$. Then, with the minimum over unit
+residues,
+\[
+ \min_a\mu_\ell^{(\le s)}(a)
+ \le 3^{-\ell}\exp\{-I(s)\ell+o(\ell)\}.
+\]
+At $s_\ast=1+\log_4 3$, the rate is
+$I(s_\ast)=0.0120393866\ldots$, and the corresponding exponent relative
+to base $3$ is
+\[
+ 1+\frac{I(s_\ast)}{\log3}=1.0109587219\ldots>1.
+\]
+Thus even perfect weighted equidistribution inside the critical WCC
+cost slice cannot establish $\beta=1$.
+\end{theorem}
+
+\begin{proof}
+The exact negative-binomial formula is
+\[
+ \Pr(B_\ell=m)={m-1\choose\ell-1}2^{-m},\qquad m\ge\ell.
+\]
+For $m<2\ell-2$ these masses increase with $m$. Hence the logarithm of
+their sum through $\lfloor s\ell\rfloor$ differs from the logarithm of
+the final term by at most $O(\log\ell)$. Stirling's formula applied to
+that term gives \eqref{eq:wcc-rate}. The total mass of
+$\mu_\ell^{(\le s)}$ is the probability in \eqref{eq:wcc-rate}. Its
+minimum over the $2\cdot3^{\ell-1}$ unit residues is at most its
+average. The fixed positive factor between this average and
+$3^{-\ell}$ is absorbed by $o(\ell)$. Direct substitution of
+$s_\ast$ gives the stated constants.
+\end{proof}
+
+Theorem~\ref{thm:wcc-large-deviation} sharpens the distinction between
+O2 and O3. Multiplicity within the WCC budget can improve the
+single-representation exponent $1.1309\ldots$ only as far as the
+average truncated exponent $1.01096\ldots$. A route to $\beta=1$ must
+reach costs $B_\ell=2\ell-o(\ell)$, where the cost law has
+subexponential mass. This is the central microcanonical regime of
+Theorem~\ref{thm:microcanonical}.
 
 Tao's $2020$ approach also shows that the endogeny/decorrelation route
 of \S\ref{sec:endogeny} is not the only path: it replaces
@@ -1428,10 +1698,55 @@ $\|f_n-\varphi\|_1\le 2^{-n+1}\|f_1-f_0\|_1$.
 \end{proposition}
 
 Wirsching's chain of implications reduces uniform positive predecessor
-density to a sequence of three conjectures, the most concrete of which
-(Conjecture~3, an inequality on $\liminf \varphi(z_\ell)/\varphi_0(z_\ell)$
-along sequences in the central-limit window $|\ell-k_\ell|\le
-\delta\sqrt\ell$) we tested numerically.
+density to three proposed steps. The first has an elementary proof.
+
+\begin{theorem}[Wirsching's Conjecture 1]\label{thm:wirsching-conj1}
+In the notation of \cite{Wirsching2003}, condition $(?2)$ implies
+condition $(?1)$, with a possibly smaller central-limit window.
+\end{theorem}
+
+\begin{proof}
+Put $c_0=1$ and $c_j=2\cdot3^{j-1}$ for $j\ge1$. If $q_\ell(k)$ counts
+the bounded urn distributions defining $\bar g_\ell(k)$, then
+\[
+ \sum_{k\ge0}q_\ell(k)z^k
+ =\prod_{j=0}^\ell\frac{1-z^{c_j}}{1-z},\qquad
+ \sum_{m\ge0}p_\ell(m)z^m
+ =\prod_{j=0}^\ell(1-z^{c_j})^{-1}.
+\]
+Since $q_\ell(k)=2\cdot3^{\ell-1}\bar g_\ell(k)$ and
+$\bar e_\ell=p_\ell*\bar g_\ell$, cancellation gives
+\[
+ \bar e_\ell(k)=\frac{1}{2\cdot3^{\ell-1}}
+                 {k+\ell\choose\ell}.
+\]
+The unrestricted partition count for the coins $1,2,6,18,\ldots$ is
+at most $\exp(C\log^2(m+2))$. Also
+\[
+ \frac{{k-m+\ell\choose\ell}}{{k+\ell\choose\ell}}
+ \le \left(\frac{k}{k+\ell}\right)^m.
+\]
+Uniformly for $|k-\ell|\le\delta\sqrt\ell$, the part of the convolution
+with $m\ge\eta\sqrt\ell$ is
+$\exp(-c\sqrt\ell+O(\log^2\ell))$. Choose
+$\delta+\eta<\delta_1$. On the remaining terms $j=k-m$ lies in the
+window of $(?2)$, and positivity transfers its lower bound from
+$g_\ell/\bar g_\ell$ to $e_\ell/\bar e_\ell$.
+\end{proof}
+
+\begin{remark}[Relation to the source]\label{rem:wirsching-conj1-source}
+Wirsching records the two convolution identities used above and states
+the implication as Conjecture~1 \cite[Sections~1--2]{Wirsching2003}.
+The annotated Collatz bibliography also lists the three implications
+in that paper as conjectures \cite{LagariasBibliographyII}. The proof
+above supplies the generating-function cancellation and the
+convolution-tail estimate for the first implication.
+\end{remark}
+
+The second conjecture remains open. The most concrete sufficient
+condition above it is Conjecture~3, an asymptotic assertion on
+$\varphi(z_\ell)/\varphi_0(z_\ell)$ along the central-limit window
+$|\ell-k_\ell|\le\delta\sqrt\ell$, which we tested numerically.
 
 \subsection{Certified numerical test of Wirsching's Conjecture 3}
 
@@ -1461,16 +1776,420 @@ consistent with a finite limit $L=-0.619\pm0.001\,(\mathrm{stat})$,
 with a tail-shape systematic uncertainty of $\pm 0.015$, giving
 $c=e^L\approx 0.538$ (honest range $0.53$--$0.55$), best fit by a
 tail term $0.79/\sqrt\ell$; no log-periodic modulation is detected.
-This supports Conjecture~3 (Wirsching's most concrete conjecture in
-the chain) with certified numerical error, on the tested range;
-Conjectures~1 and~2 above it remain open.
+This supports Conjecture~3 with certified numerical error on the tested
+range. Conjecture~2 remains open; Theorem~\ref{thm:wirsching-conj1}
+settles Conjecture~1 independently of this computation.
+\end{empirical}
+
+\begin{theorem}[Microcanonical decomposition]\label{thm:microcanonical}
+Let $g_\ell(k,a)$ be Wirsching's generator, let
+$c_i=2\cdot3^i$, and let $\mu_\ell$ be the Syracuse law modulo
+$3^\ell$. For every unit residue $a$,
+\begin{equation}\label{eq:microcanonical}
+ \mu_\ell(a)=
+ \left(\prod_{i=0}^{\ell-1}\frac{1}{2(1-2^{-c_i})}\right)
+ \sum_{k=0}^{3^\ell-\ell-1}2^{-k}g_\ell(k,a).
+\end{equation}
+Suppose there are $\delta,\eta>0$ such that, for all sufficiently large
+$\ell$, every unit $a$, and every integer
+$|k-\ell|\le\delta\sqrt\ell$,
+\[
+ g_\ell(k,a)\ge\eta\,\overline g_\ell(k),
+ \qquad
+ \overline g_\ell(k)=\frac{1}{2\cdot3^{\ell-1}}
+ \sum_{b\in(\mathbb Z/3^\ell\mathbb Z)^\times}g_\ell(k,b).
+\]
+Then $\mu_\ell(a)\ge C_{\delta,\eta}3^{-\ell}$ uniformly in $a$ and
+$\ell$. In particular, condition $(?3)$ of \cite{Wirsching2003}
+implies the cylinder lower bound required by $\beta=1$.
+\end{theorem}
+
+\begin{proof}
+At recursion level $i$, multiplication by $2$ has order
+$c_i=2\cdot3^i$ modulo $3^{i+1}$. If $A_i$ has the geometric law
+$\Pr(A_i=m)=2^{-m}$, then $J_i=A_i-1\bmod c_i$ satisfies
+\[
+ \Pr(J_i=j)=\frac{2^{-(j+1)}}{1-2^{-c_i}},
+ \qquad 0\le j<c_i.
+\]
+Folding each exponent independently by the applicable order leaves the
+Syracuse residue unchanged. Wirsching's recursion for $g_\ell$ counts
+the folded vectors with $\sum_iJ_i=k$. Multiplying their probabilities
+gives \eqref{eq:microcanonical}.
+
+Put $K_\ell=\sum_{i<\ell}J_i$. The summands are independent and are
+uniformly dominated by an untruncated geometric variable. Direct
+summation gives
+$\mathbb E K_\ell=\ell+O(1)$ and
+$\operatorname{Var}K_\ell=2\ell+O(1)$. The Lindeberg central limit
+theorem therefore gives
+\[
+ \Pr(|K_\ell-\ell|\le\delta\sqrt\ell)
+ \longrightarrow 2\Phi(\delta/\sqrt2)-1>0.
+\]
+Sum \eqref{eq:microcanonical} over the central values of $k$ and use
+the assumed lower bound. Since there are $2\cdot3^{\ell-1}$ unit
+residues, this yields
+\[
+ \mu_\ell(a)\ge
+ \frac{\eta}{2\cdot3^{\ell-1}}
+ \Pr(|K_\ell-\ell|\le\delta\sqrt\ell)
+ \ge C_{\delta,\eta}3^{-\ell}.
+\]
+\end{proof}
+
+\begin{proposition}[Conditional local-limit bridge]
+\label{prop:complex-deconditioning}
+Set
+\[
+ G_{\ell,a}(z)=\sum_k g_\ell(k,a)z^k,\qquad
+ \overline G_\ell(z)=\frac{1}{2\cdot3^{\ell-1}}\sum_aG_{\ell,a}(z).
+\]
+Define the conditional cost laws
+\[
+ Q_{\ell,a}(k)=\frac{2^{-k}g_\ell(k,a)}{G_{\ell,a}(1/2)},
+ \qquad
+ \overline Q_\ell(k)=
+ \frac{2^{-k}\overline g_\ell(k)}{\overline G_\ell(1/2)}.
+\]
+Then the exact identity
+\begin{equation}\label{eq:deconditioning}
+ \frac{g_\ell(k,a)}{\overline g_\ell(k)}
+ =
+ \frac{G_{\ell,a}(1/2)}{\overline G_\ell(1/2)}
+ \frac{Q_{\ell,a}(k)}{\overline Q_\ell(k)}
+\end{equation}
+holds. Fix $\delta>0$. If, uniformly in unit $a$ and
+$|k-\ell|\le\delta\sqrt\ell$,
+\[
+ \frac{G_{\ell,a}(1/2)}{\overline G_\ell(1/2)}\ge\eta>0,
+ \qquad
+ Q_{\ell,a}(k)\ge c_\delta\ell^{-1/2},
+\]
+then condition $(?3)$ holds.
+\end{proposition}
+
+\begin{proof}
+Identity \eqref{eq:deconditioning} follows by cancellation. Under the
+folded geometric law in the proof of Theorem~\ref{thm:microcanonical},
+$\overline Q_\ell$ is the law of $K_\ell$.
+The summands have uniformly bounded exponential moments,
+mean sum $\ell+O(1)$, and variance $2\ell+O(1)$. Their lattice local
+central limit theorem gives, uniformly in the stated window,
+\[
+ \overline Q_\ell(k)\asymp_\delta\ell^{-1/2}.
+\]
+The two assumed lower bounds and \eqref{eq:deconditioning} now give a
+positive uniform lower bound for
+$g_\ell(k,a)/\overline g_\ell(k)$.
+\end{proof}
+
+The first factor in \eqref{eq:deconditioning} is the canonical Syracuse
+mass relative to its mean. The conjecture $\beta=1$ gives only a
+subexponential lower bound for this factor; the proposition assumes a
+constant lower bound. The second factor is a local limit theorem after
+conditioning on the residue. Its Fourier representation is
+\[
+ Q_{\ell,a}(k)=\frac{1}{2\pi}\int_{-\pi}^{\pi}
+ e^{-ikt}\frac{G_{\ell,a}(e^{it}/2)}{G_{\ell,a}(1/2)}\,dt.
+\]
+Thus O3 requires phase control of the conditional cost law in addition
+to the real-axis information in O2.
+
+\begin{remark}[Local limit theorems for operator cocycles]
+Spectral local limit theorems exist for random expanding dynamics
+\cite{DragicevicEtAl2018} and for time-dependent expanding systems
+\cite{Hafouta2020}. Their hypotheses include a twisted operator
+cocycle acting on a fixed Banach space, a uniform spectral or
+Ruelle--Perron--Frobenius gap near zero, and an aperiodicity estimate
+away from zero. These hypotheses would give the phase control in
+Proposition~\ref{prop:complex-deconditioning}. They have not been
+verified for Wirsching's $S_\ell$. Theorem~3 of
+\cite{Wirsching2003} gives strong convergence on fixed
+equicontinuous families, while the densities used here acquire
+resolution $3^{-\ell}$. Thus the available local limit theorems do not
+remove the growing-resolution obstruction of H-134.
+\end{remark}
+
+\begin{theorem}[Equivalence of ensembles at fixed precision]
+\label{thm:fixed-precision-ensemble}
+For a unit residue $a$ put
+\[
+ p_{\ell,k}(a)=\frac{g_\ell(k,a)}{\sum_b g_\ell(k,b)}.
+\]
+Fix $r\ge1$ and $\delta>0$. Uniformly over integers
+$|k-\ell|\le\delta\sqrt\ell$, the projection of $p_{\ell,k}$ modulo
+$3^r$ converges in total variation to the Syracuse law $\mu_r$ as
+$\ell\to\infty$.
+\end{theorem}
+
+\begin{proof}
+Under the canonical weights in Theorem~\ref{thm:microcanonical}, the
+folded costs $J_0,\ldots,J_{\ell-1}$ are independent and
+$p_{\ell,k}$ is the law of the resulting residue conditional on
+$K_\ell=\sum_iJ_i=k$. Fix the terminal block of $r$ costs. For each
+fixed value $\mathbf j$ of that block, with coordinate sum
+$s(\mathbf j)$, independence gives
+\[
+ \Pr(\mathbf J=\mathbf j\mid K_\ell=k)
+ =\Pr(\mathbf J=\mathbf j)
+   \frac{\Pr(K_{\ell-r}=k-s(\mathbf j))}
+        {\Pr(K_\ell=k)}.
+\]
+The lattice local central limit theorem used in
+Proposition~\ref{prop:complex-deconditioning} makes the ratio tend to
+one, uniformly in the stated window, for every fixed $\mathbf j$.
+The geometric domination of the coordinates makes the block tails
+uniformly summable. Splitting at block sum $o(\sqrt\ell)$ and applying
+the same local estimate there extends the convergence to total
+variation on the whole block.
+
+The terminal $r$ folded costs determine the final residue modulo
+$3^r$. At a terminal stage whose original cap is $C$, reduction to the
+cap $d=2\cdot3^i$ required at precision $r$ is exact because $d\mid C$
+and
+\[
+ \sum_{\substack{0\le j<C\\j\equiv s\ ({\rm mod}\ d)}}
+ \frac{2^{-(j+1)}}{1-2^{-C}}
+ =\frac{2^{-(s+1)}}{1-2^{-d}},\qquad 0\le s<d.
+\]
+The reduced block therefore has exactly the canonical folded-geometric
+law defining $\mu_r$. Total variation cannot increase under the
+deterministic map from the block to its residue, which proves the
+claim.
+\end{proof}
+
+\begin{theorem}[Equivalence of ensembles at sublinear precision]
+\label{thm:sublinear-precision-ensemble}
+Let $r=r_\ell$ be an integer sequence with $1\le r\le\ell$ and
+$r=o(\ell)$. Fix $\delta>0$. Uniformly over integers
+$|k-\ell|\le\delta\sqrt\ell$, the projection of $p_{\ell,k}$ modulo
+$3^r$ has total-variation distance $o(1)$ from $\mu_r$.
+\end{theorem}
+
+\begin{proof}
+It remains to treat $r\to\infty$, since bounded subsequences follow
+from Theorem~\ref{thm:fixed-precision-ensemble}. Split the canonical
+cost as $K_\ell=R_{\ell,r}+B_{\ell,r}$, where $B_{\ell,r}$ is the sum
+of the terminal $r$ folded costs. The Radon derivative of the law of
+the terminal block conditional on $K_\ell=k$, relative to its
+unconditioned law, is
+\begin{equation}\label{eq:block-radon}
+ D_{\ell,r}(B_{\ell,r})
+ =\frac{\Pr(R_{\ell,r}=k-B_{\ell,r})}
+        {\Pr(K_\ell=k)}.
+\end{equation}
+Choose $h_\ell\to\infty$ slowly enough that
+$h_\ell\sqrt{r/\ell}\to0$. Uniform exponential moments give
+\[
+ \Pr\bigl(|B_{\ell,r}-\mathbb EB_{\ell,r}|>
+                 h_\ell\sqrt r\bigr)=o(1).
+\]
+On the complementary event, removing the block changes the centered
+local-CLT coordinate by $o(1)$ and changes the variance by a relative
+$o(1)$. The uniform lattice local central limit theorem for the folded
+geometric triangular array therefore gives
+$D_{\ell,r}(B_{\ell,r})=1+o(1)$ uniformly there. Since
+$\Pr(K_\ell=k)\gg_\delta\ell^{-1/2}$ in the central window, while the
+standard concentration bound for lattice sums with uniformly bounded
+exponential moments gives
+$\sup_m\Pr(R_{\ell,r}=m)\ll(\ell-r)^{-1/2}$. Hence
+$D_{\ell,r}\ll_\delta1$ on its whole support. Truncation of the
+exceptional set now gives
+$\mathbb E|D_{\ell,r}-1|=o(1)$. This is twice the total-variation
+distance between the conditioned and unconditioned terminal blocks.
+Their deterministic residue maps cannot increase that distance. The
+cap-reduction identity in the proof of
+Theorem~\ref{thm:fixed-precision-ensemble} shows that the unconditioned
+residue has law exactly $\mu_r$.
+\end{proof}
+
+\begin{theorem}[Linear-block nonequivalence]\label{thm:linear-block-nonequivalence}
+Let $\mathbf B_{\ell,r}=(J_{\ell-r},\ldots,J_{\ell-1})$ be the
+terminal block of folded costs and let
+$S_{\ell,r}=\sum_{i=\ell-r}^{\ell-1}J_i$. Suppose that
+\[
+ \frac r\ell\longrightarrow\rho\in(0,1),\qquad
+ \frac{k_\ell-\ell}{\sqrt\ell}\longrightarrow u.
+\]
+Then
+\begin{align*}
+ &d_{\rm TV}\bigl(
+   \mathcal L(\mathbf B_{\ell,r}\mid K_\ell=k_\ell),
+   \mathcal L(\mathbf B_{\ell,r})\bigr)\\
+ &\quad=d_{\rm TV}\bigl(
+   \mathcal L(S_{\ell,r}\mid K_\ell=k_\ell),
+   \mathcal L(S_{\ell,r})\bigr)\\
+ &\quad\longrightarrow
+ d_{\rm TV}\bigl(
+   \mathcal N(\rho u,2\rho(1-\rho)),
+   \mathcal N(0,2\rho)\bigr)>0,
+\end{align*}
+where the second parameter of $\mathcal N$ is the variance. In fact,
+the first equality holds without the $o(1)$ at every finite level.
+For $u=0$, the limit equals
+\[
+ 2\left[
+ \Phi\left(\sqrt{\frac{-\log(1-\rho)}{\rho}}\right)
+ -\Phi\left(\sqrt{\frac{-(1-\rho)\log(1-\rho)}{\rho}}\right)
+ \right].
+\]
+\end{theorem}
+
+\begin{proof}
+Write $R_{\ell,r}=K_\ell-S_{\ell,r}$. Relative to the
+unconditioned block law, the conditioned law has density
+\[
+ \frac{\Pr(R_{\ell,r}=k_\ell-S_{\ell,r})}
+      {\Pr(K_\ell=k_\ell)}.
+\]
+This density is a function of $S_{\ell,r}$ alone. Taking its absolute
+deviation from one proves the finite-level equality of the two total
+variation distances.
+
+The folded costs have uniformly bounded exponential moments. Their
+means and variances differ from $1$ and $2$, respectively, by summable
+errors. The lattice local central limit theorem, applied separately to
+$S_{\ell,r}$ and $R_{\ell,r}$, gives the unconditioned limit
+$\mathcal N(0,2\rho)$ for
+$(S_{\ell,r}-r)/\sqrt\ell$. After conditioning, its limiting density is
+\[
+ x\longmapsto
+ \frac{\phi_{0,2\rho}(x)\phi_{0,2(1-\rho)}(u-x)}
+      {\phi_{0,2}(u)}
+ =\phi_{\rho u,2\rho(1-\rho)}(x).
+\]
+Uniform exponential tails promote the local convergence to convergence
+in total variation. The two limiting variances are different, so the
+distance is positive. When $u=0$, the two centered Gaussian densities
+cross at
+$|x|=\sqrt{-2(1-\rho)\log(1-\rho)}$; integration on the central
+interval gives the displayed formula.
+\end{proof}
+
+Theorem~\ref{thm:linear-block-nonequivalence} shows that the condition
+$r=o(\ell)$ in Theorem~\ref{thm:sublinear-precision-ensemble} is sharp
+for the latent cost vectors. It does not prove nonequivalence after
+projection modulo $3^r$: the residue map can discard the block sum,
+and total variation can decrease under that projection. The
+linear-precision residue and Fourier problems remain open.
+
+\begin{theorem}[Full-precision likelihood domination]
+\label{thm:ensemble-divergence}
+Let $p_{\ell,k}^{(r)}$ be the projection of $p_{\ell,k}$ modulo $3^r$,
+where $1\le r\le\ell$. For every set
+$E\subseteq\mathbb Z/3^r\mathbb Z$,
+\begin{equation}\label{eq:ensemble-domination}
+ p_{\ell,k}^{(r)}(E)
+ \le \Pr(K_\ell=k)^{-1}\mu_r(E).
+\end{equation}
+Consequently
+\[
+ D_{\rm KL}(p_{\ell,k}^{(r)}\Vert\mu_r)
+ \le D_\infty(p_{\ell,k}^{(r)}\Vert\mu_r)
+ \le-\log\Pr(K_\ell=k).
+\]
+Uniformly for $|k-\ell|\le\delta\sqrt\ell$, the last quantity is
+$\frac12\log\ell+O_\delta(1)$.
+\end{theorem}
+
+\begin{proof}
+On the canonical folded-cost space, the microcanonical law is the
+conditional law given $K_\ell=k$. Hence, for the inverse image
+$\widetilde E$ of $E$ under the residue map,
+\[
+ \Pr(\widetilde E\mid K_\ell=k)
+ \le\frac{\Pr(\widetilde E)}{\Pr(K_\ell=k)}.
+\]
+The unconditioned residue modulo $3^r$ has law $\mu_r$, by the same cap
+reduction used in Theorem~\ref{thm:fixed-precision-ensemble}. This proves
+\eqref{eq:ensemble-domination}. It is the asserted bound on the
+essential likelihood ratio, and relative entropy is bounded by its
+logarithm. The lattice local central limit theorem gives
+$\Pr(K_\ell=k)\asymp_\delta\ell^{-1/2}$ in the central window.
+\end{proof}
+
+Theorem~\ref{thm:ensemble-divergence} applies at full precision, but its
+direction is insufficient for condition $(?3)$. It proves that the
+relative entropy per digit vanishes and rules out an exponential
+likelihood separation from the canonical ensemble. O3 asks for a lower
+bound on every residue, so the unresolved part is the lower tail of the
+likelihood ratio.
+
+For $r=o(\ell)$ and $\xi_0\in\mathbb Z/3^r\mathbb Z$, the theorem gives
+\begin{equation}\label{eq:fixed-conductor-fourier}
+ \widehat p_{\ell,k}(3^{\ell-r}\xi_0)
+ =\widehat\mu_r(\xi_0)+o(1),
+\end{equation}
+uniformly in $\xi_0$ and in the central cost window.
+Thus the fixed-cost law does not approach Haar at fixed precision.
+Fixed-conductor modes may persist. For example, $\mu_1$ assigns masses
+$1/3$ and $2/3$ to the two units modulo $3$, so its nontrivial Fourier
+coefficient has modulus $1/\sqrt3$. Any Fourier estimate relevant to
+O4 must separate these exact coarse modes and control frequencies whose
+conductor is comparable with $\ell$.
+
+\begin{empirical}[Fixed-precision projection test]
+\label{thm:fixed-precision-finite}
+We projected the exact fixed-cost tables onto $3^r$, for $r=1,2,3$,
+and compared them in total variation with $\mu_r$ obtained from the
+independent Syracuse recursion. At $\ell=12$ and $k=\ell$, the
+distances were $0.02050$, $0.04024$, and $0.06228$. At
+$k=\ell+\lfloor\sqrt\ell\rfloor$, they were $0.04310$, $0.07902$,
+and $0.12677$. The distances decrease over the computed levels. This
+finite test checks the implementation and is not used in the proof.
+At full precision and $\ell=13$, the distances were $0.25195$ at
+$k=\ell$ and $0.26078$ at
+$k=\ell+\lfloor\sqrt\ell\rfloor$. The corresponding precision-one
+values were $0.01885$ and $0.04003$. These full-precision values do not
+determine an asymptotic limit.
+\end{empirical}
+
+\begin{empirical}[Finite microcanonical coverage]\label{thm:microcanonical-finite}
+We computed the multiplicities $g_\ell(k,a)$ exactly through
+$\ell=12$, checking at every level that their residue sum equals the
+independent bounded-composition count. At $\ell=12$, the fractions of
+unit residues reached at
+$k=\ell-\lfloor\sqrt\ell\rfloor,\ell,
+\ell+\lfloor\sqrt\ell\rfloor$ are respectively
+$0.2735$, $0.8074$, and $0.9973$. The minimum multiplicity is still
+zero in all three cases. A separate Boolean recursion extends the
+support calculation through $\ell=16$. At that level the central and
+upper-window coverage fractions are $0.9194$ and $0.99999972$, while
+the first fixed cost covering every residue equals $\ell+5$ for each
+$10\le\ell\le16$. These values neither prove nor refute the uniform
+asymptotic lower bound.
+\end{empirical}
+
+\begin{empirical}[Fourier budget for fixed-cost multiplicities]
+\label{thm:microcanonical-fourier}
+For $p_{\ell,k}(a)=g_\ell(k,a)/\sum_b g_\ell(k,b)$, additive Fourier
+inversion gives
+\[
+ \min_a\frac{p_{\ell,k}(a)}{1/(2\cdot3^{\ell-1})}
+ \ge 1-\frac23\sum_\xi
+ |\widehat p_{\ell,k}(\xi)-\widehat u_\ell(\xi)|.
+\]
+At the central cost $k=\ell$, the spectral sum grows from $12.11$ at
+$\ell=4$ to $293.29$ at $\ell=12$ and is dominated by primitive
+frequencies. At $k=\ell+\lfloor\sqrt\ell\rfloor$, it grows from $7.61$
+to $122.63$. At $\ell=12$, the largest individual discrepancy is
+$0.339$ at central cost and $0.280$ in the upper window, while the
+largest primitive discrepancies are $0.0246$ and $0.00682$. Thus the
+largest coefficients retain a coarse component even as each primitive
+coefficient becomes smaller. The resulting lower bounds are negative
+throughout. This
+does not disprove uniform positivity; it shows that termwise absolute
+summation of the finite Fourier series does not establish it on this
+range.
 \end{empirical}
 
 Together, Empirical Results~\ref{thm:wcc} and~\ref{thm:conjecture3} and
-Proposition~\ref{prop:beta-wcc} give three independent formal ``guises'' ---
-integer counting (Wirsching 1998), Fourier characters (Tao 2020), a
-real functional equation (Wirsching 2003) --- of the same critical
-window, none resolved.
+Proposition~\ref{prop:beta-wcc} connect integer covering, the weighted
+Syracuse distribution, and a real functional equation. The support
+identity and the canonical decomposition
+\eqref{eq:microcanonical} are exact. The required microcanonical
+multiplicity estimate and Wirsching's Conjecture~2 remain unresolved.
 
 \section{Two candidate lemmas, executed to completion}
 \label{sec:lemmas}
@@ -1479,11 +2198,11 @@ Sections~\ref{sec:regimes}--\ref{sec:triangulation} identify two
 natural next steps: a ``regime-2 lemma'' (decorrelation of subtree
 aggregates at logarithmic precision) and a ``Z-number reduction lemma''
 (formalizing the analogy with Littlewood--Offord/Bohr-set methods from
-\cite{Tao2011}). We executed both to completion; neither survives as
-originally sketched, but both yield genuine, citable results.
+\cite{Tao2011}). The first yields an exact obstruction and a finite
+test. The second retains an open frequency-stability step.
 
-\subsection{The regime-2 lemma: refutation, structure theorem, and a
-computational refutation of its natural sufficient condition}
+\subsection{The regime-2 lemma: structure theorem and a finite test of
+its natural sufficient condition}
 
 The originally sketched budget, $|\rho(\xi)|\le C_A D^{-A}$
 \emph{uniformly in $\xi$}, contradicts Proposition~\ref{prop:tao123}
@@ -1595,12 +2314,10 @@ truncation depth, so its normalized contribution
 $C_{\mathrm{exact}}/(\mathbb{E}[Z_1]\mathbb{E}[Z_2])\to0$ as depth
 increases --- consistent with the excess of \S\ref{sec:calibration}
 decaying monotonically to zero with truncation depth. Separately, the
-refutation of the $L^2$ hypothesis below
-(Theorem~\ref{thm:l2-refutation}) is the failure of an \emph{upper
-bound} on the fine covariance ($K_\infty=\infty$ makes the bound above
-vacuous), not a proof that the fine covariance is in fact large;
-\S\ref{sec:calibration} measures directly the fine coupling this bound
-leaves uncontrolled, and finds it small. Finally, the geometric branch
+finite-level $L^2$ computation below
+(Empirical Result~\ref{thm:l2-finite}) tests an upper-bound route,
+not the fine covariance itself; \S\ref{sec:calibration} measures the
+fine coupling directly and finds it small. Finally, the geometric branch
 weights $q\cdot 2^{-a}$ concentrate on small gaps $\Delta$: weighting
 pairs of branches by their natural second-moment mass
 $2^{-a_i}\cdot2^{-a_j}$ (the same weighting entering $\Cov$ above),
@@ -1623,8 +2340,8 @@ that the actual aggregate residual, on the orthogonal axis of subtree
 \emph{content}, is nonetheless empirically small.
 \end{remark}
 
-\begin{theorem}[Computational refutation of the $L^2$ hypothesis]
-\label{thm:l2-refutation}
+\begin{empirical}[Finite-level growth of the $L^2$ statistic]
+\label{thm:l2-finite}
 $K_\ell$ was computed exactly via the recursion
 \begin{equation}\label{eq:mu-recursion}
   \mu_n(y) = \tfrac12\,\nu(2y\bmod 3^n) + \tfrac12\,\mu_n(2y\bmod 3^n),
@@ -1636,9 +2353,9 @@ for every $n$). For $\ell=1,\dots,17$, $K_\ell$ grows cleanly and
 consistently \emph{linearly}, with increments converging monotonically
 to $\approx 0.47$, with no sign of saturation ($K_1=5/3$ exactly,
 matching a hand computation from $\Pr(\mathrm{Syrac}_1=1)=1/3$,
-$\Pr(\mathrm{Syrac}_1=2)=2/3$). Hence $K_\infty=\infty$: the $L^2$
-hypothesis fails.
-\end{theorem}
+$\Pr(\mathrm{Syrac}_1=2)=2/3$). These finite data are evidence against
+boundedness, but do not prove $K_\infty=\infty$.
+\end{empirical}
 
 \begin{proof}[Derivation of the recursion~\eqref{eq:mu-recursion}]
 By Proposition~\ref{prop:tao123}, $F_n(a) =
@@ -1661,30 +2378,38 @@ bin-by-bin: maximum discrepancy $0.000311$ ($\ell=3$) and $0.000213$
 ($\ell=4$), both within the expected Monte Carlo noise
 ($\approx 1/\sqrt{N}\approx 0.000577$).
 
-\begin{remark}[Connection to the tail exponent]
-$H$-104 (an earlier stage of this project) measured a tail exponent
-$\alpha\approx 2$ for subtree-population ratios --- exactly the
-critical exponent of the $L^2$ condition ($\alpha>2\Rightarrow
-K_\infty<\infty$; $\alpha<2\Rightarrow K_\ell$ diverges polynomially;
-$\alpha=2$ is the borderline case). Theorem~\ref{thm:l2-refutation}'s
-clean linear growth is consistent with $\alpha$ slightly below $2$, or
-exactly at the threshold with a logarithmic correction.
+\begin{empirical}[Finite-level $L^p$ collision spectrum]
+\label{thm:lp-spectrum}
+We evaluated \eqref{eq:lp-collision} for the Syracuse law at
+$p\in\{1.1,1.25,1.5,1.75,1.9,2,2.1,2.5\}$ and $k\le14$, using the same
+recursion and checks as Empirical Result~\ref{thm:l2-finite}. At $k=14$,
+the values for $p=1.1,1.5,1.9,2,2.1,2.5$ were respectively
+$1.129$, $2.186$, $5.771$, $7.743$, $10.603$, and $45.211$. Their last
+consecutive ratios were $1.0017$, $1.0161$, $1.0512$, $1.0647$,
+$1.0804$, and $1.1681$. Growth slows markedly below $p=2$ and increases
+above it on this range. The data do not establish boundedness or
+divergence for any $p$.
+\end{empirical}
+
+\begin{remark}[Connection to a conjectural tail exponent]
+If the limiting Syracuse density exists and satisfies
+$\Pr(f(U)>x)\sim Cx^{-2}$, then its $p$th moment is finite for $p<2$ and
+infinite for $p\ge2$. The finite-level pattern in Empirical
+Result~\ref{thm:lp-spectrum} is compatible with this threshold. It does
+not prove the existence of the density, the tail asymptotic, or the
+moment behavior at infinite level.
 \end{remark}
 
-\begin{corollary}[A ladder of ``flatness'' for the Syracuse measure]
-\label{cor:flatness-ladder}
-$L^1$ (proved, Tao's Prop.~1.14: $\mathrm{Osc}_{m,n}\ll_A m^{-A}$,
-giving total-variation approximability by absolutely continuous
-measures) $\;\succ\;$ $L^2$ (refuted here, Theorem~\ref{thm:l2-refutation})
-$\;\succ\;$ $L^\infty/\beta=1$ (\S\ref{sec:triangulation}, open) ---
-neither comparable to nor implied by $L^2$, but living on the same
-``beyond total-variation'' floor of the ladder.
-\end{corollary}
+\begin{remark}[Flatness questions for the Syracuse measure]
+Tao's oscillation estimate, boundedness of $K_\infty$, and the
+$L^\infty$-type conjecture $\beta=1$ are distinct statements. The
+finite computation above does not settle the $L^2$ statement or either
+of the other two.
+\end{remark}
 
 The regime-2 lemma is thus not an easier stepping stone toward
 Regime~3: it is a sibling of it, sharing the same missing ingredient,
-now with a direct computational refutation of the natural sufficient
-condition rather than mere silence.
+now with finite evidence against the natural sufficient condition.
 
 \subsection{The Z-number reduction: a conditional dichotomy and an
 exact negative result}
@@ -1732,38 +2457,281 @@ non-trivial post-wrap regime, by structural slack coming from the
 $4^j$ vs.\ $3^\ell$ entropy accounting.
 \end{lemma}
 
-\begin{definition}[Spectral concentration $SC(\varepsilon)$]
+\begin{proposition}[Coarse modes and the sharp primitive hole barrier]
+\label{prop:primitive-hole}
+Let $N=3^\ell$, let $U=(\mathbb Z/N\mathbb Z)^\times$, and suppose
+$\mu$ is any probability measure supported on $U$. Then
+\[
+ |\widehat\mu(N/3)|\ge\frac12.
+\]
+For $\ell\ge2$, fix $a\in U$ and let $u_a$ be uniform on
+$U\setminus\{a\}$. This measure has a support hole, but for every
+primitive additive frequency $3\nmid\xi$,
+\[
+ |\widehat u_a(\xi)|=\frac{1}{2\cdot3^{\ell-1}-1}.
+\]
+There are also probability measures with support holes for which every
+primitive coefficient is zero.
+\end{proposition}
+
+\begin{proof}
+At frequency $N/3$, the coefficient is
+$p e(1/3)+(1-p)e(2/3)$, where $p$ is the mass in the residue class
+$1\pmod3$. Its real part is $-1/2$, proving the first bound. For
+primitive $\xi$, the Ramanujan sum over all units modulo $3^\ell$ is
+zero when $\ell\ge2$. Removing $a$ leaves
+\[
+ \widehat u_a(\xi)=-\frac{e(\xi a/N)}{|U|-1},
+\]
+which proves the second assertion.
+For the last assertion, take any probability measure on the units
+modulo $3^{\ell-1}$ whose support is not full and lift it uniformly to
+each of the three residues above every point. For $3\nmid\xi$, summing
+the character over a fibre contributes
+$1+e(\xi/3)+e(2\xi/3)=0$.
+\end{proof}
+
+\begin{proposition}[Primitive energy is fresh-fibre imbalance]
+\label{prop:primitive-fibre-energy}
+Let $\mu$ be a probability measure on $\mathbb Z/3^\ell\mathbb Z$.
+For $b\bmod 3^{\ell-1}$ put
+\[
+ x_t(b)=\mu(b+t3^{\ell-1}),\qquad t=0,1,2.
+\]
+Then
+\begin{equation}\label{eq:primitive-fibre-energy}
+ \sum_{3\nmid\xi}|\widehat\mu(\xi)|^2
+ =3^{\ell-1}\sum_b\bigl((x_0-x_1)^2+(x_1-x_2)^2+(x_2-x_0)^2\bigr).
+\end{equation}
+Thus all primitive coefficients vanish if and only if $\mu$ is the
+uniform lift of its marginal modulo $3^{\ell-1}$. If
+$\mu(x)=n_x/T$ for nonnegative integer counts and at least one fibre is
+not uniform, then
+\[
+ \max_{3\nmid\xi}|\widehat\mu(\xi)|\ge\frac1T.
+\]
+For $\ell\ge2$, this bound is attained by the uniform law on all units
+except one.
+\end{proposition}
+
+\begin{proof}
+Parseval at level $\ell$ gives
+\[
+ \sum_\xi|\widehat\mu(\xi)|^2=3^\ell\sum_x\mu(x)^2.
+\]
+The nonprimitive coefficient at $\xi=3\eta$ is the coefficient at
+$\eta$ of the marginal
+$m(b)=x_0(b)+x_1(b)+x_2(b)$. Subtracting Parseval for that marginal
+gives
+\[
+ 3^{\ell-1}\sum_b
+ \left(3\sum_{t=0}^2x_t(b)^2-m(b)^2\right),
+\]
+which is the right side of \eqref{eq:primitive-fibre-energy}. If an
+integer fibre is nonuniform, the sum of its three squared pairwise
+differences is at least two. There are $2\cdot3^{\ell-1}$ primitive
+frequencies, so their maximum squared modulus is at least $T^{-2}$.
+The final equality case follows from
+Proposition~\ref{prop:primitive-hole}.
+\end{proof}
+
+The identity also shows that projective compatibility does not repair
+the support-hole implication. Start with a non-full law at some coarse
+level and lift it uniformly through every subsequent three-point
+fibre. The resulting laws are projectively consistent and non-full,
+but every new primitive spectrum is zero. Primitive concentration
+measures imbalance of the newest digit, rather than inherited support
+failure.
+
+\begin{theorem}[Multiscale Parseval decomposition]
+\label{thm:multiscale-parseval}
+Let $(\mu_r)_{r\ge0}$ be compatible probability laws modulo $3^r$,
+with $\mu_0$ the point mass on the trivial group. Define
+\[
+ K_r=3^r\sum_x\mu_r(x)^2,\qquad
+ E_r=\sum_{3\nmid\xi}|\widehat\mu_r(\xi)|^2.
+\]
+Then
+\begin{equation}\label{eq:multiscale-parseval}
+ K_r-K_{r-1}=E_r,\qquad
+ K_\ell=1+\sum_{r=1}^\ell E_r.
+\end{equation}
+If the laws are the projections of a probability measure $\mu$ on
+$\mathbb Z_3$, then $\mu$ has an $L^2$ density with respect to Haar
+measure if and only if
+\[
+ \sum_{r\ge1}E_r<\infty.
+\]
+\end{theorem}
+
+\begin{proof}
+Parseval identifies $K_r$ with the sum of
+$|\widehat\mu_r(\xi)|^2$ over all characters modulo $3^r$. The
+characters with $3\mid\xi$ are the pullbacks of the characters modulo
+$3^{r-1}$. Compatibility identifies their coefficients with those of
+$\mu_{r-1}$, so their total contribution is $K_{r-1}$. The remaining
+characters are primitive and contribute $E_r$. This proves
+\eqref{eq:multiscale-parseval} by subtraction and iteration.
+
+The level-$r$ density relative to Haar measure is the conditional
+density martingale of $\mu$, and its squared $L^2$ norm is $K_r$.
+Boundedness of these norms is equivalent to $L^2$ martingale
+convergence. The limit is an $L^2$ density for $\mu$. Conversely, if
+$\mu$ has an $L^2$ density, the level densities are its conditional
+expectations and have bounded $L^2$ norms. Equation
+\eqref{eq:multiscale-parseval} completes the equivalence.
+\end{proof}
+
+Theorem~\ref{thm:multiscale-parseval} identifies the precise overlap
+between O5 and the $L^2$ branch of O7. Proposition
+\ref{prop:primitive-fibre-energy} describes the increment created by
+the newest digit, while $K_\ell$ is the accumulated energy through
+level $\ell$. The identity neither selects the largest primitive
+coefficient at one level nor aligns frequencies across levels, so it
+does not prove Conjecture~\ref{lem:B}.
+
+For the $q$-adic Syracuse laws at the geometric weight $\alpha=1$, the
+one-level collision admits a second diagonalization. It uses Fourier
+analysis after ordering the preceding law by a discrete logarithm,
+rather than additive Fourier analysis on the residue group.
+
+\begin{theorem}[$q$-adic logarithmic collision renormalization]
+\label{thm:logarithmic-collision}
+Let $q$ be an odd prime, put $d=\ord_q(2)$, and suppose that
+$v_q(2^d-1)=1$. Let $\mu_{q,\ell}$ be the Syracuse law modulo
+$q^\ell$ with digit probabilities $\Pr(a)=2^{-a}$, and define
+\[
+ K_{q,\ell}=q^\ell\sum_x\mu_{q,\ell}(x)^2.
+\]
+For $M=q^{\ell-1}$, put
+\[
+ a_j=\mu_{q,\ell-1}\left(\frac{2^{dj}-1}{q}\bmod M\right),\qquad
+ A_m=\sum_{j=0}^{M-1}a_j e^{-2\pi i m j/M}.
+\]
+Then, for every $\ell\ge1$,
+\begin{equation}\label{eq:logarithmic-collision}
+ K_{q,\ell}=\sum_{m=0}^{M-1}
+ \frac{q(4^d-1)|A_m|^2}
+ {3(4^d+1-2^{d+1}\cos(2\pi m/M))}.
+\end{equation}
+In particular, with
+\[
+ c_{q,d}=\frac{q(2^d-1)}{3(2^d+1)},\qquad
+ C_{q,d}=\frac{q(2^d+1)}{3(2^d-1)},
+\]
+one has
+\begin{equation}\label{eq:logarithmic-bounds}
+ c_{q,d}K_{q,\ell-1}\le K_{q,\ell}
+ \le C_{q,d}K_{q,\ell-1}.
+\end{equation}
+For $q\ge5$, $c_{q,d}\ge35/27>1$. Hence
+$K_{q,\ell}\ge c_{q,d}^{\ell}$, and the projective Syracuse law has
+no $L^2$ density on $\mathbb Z_q$.
+\end{theorem}
+
+\begin{proof}
+The lifting assumption gives $\ord_{q^\ell}(2)=dM$. Write
+$y_k=2^k\bmod q^\ell$, $x_k=\mu_{q,\ell}(y_k)$, and let
+$n_k$ be the mass at $y_k$ of the law of $1+qF_{\ell-1}$. The Syracuse
+recursion gives
+\[
+ x_k=\frac12 n_{k+1}+\frac12x_{k+1},
+\]
+with indices modulo $dM$. Also, $n_{dj}=a_j$, and $n_k=0$ when
+$d\nmid k$. The map $j\mapsto(2^{dj}-1)/q\bmod M$ is a permutation:
+equality of two outputs modulo $M$ is equivalent to equality of the
+corresponding powers modulo $q^\ell$, where $2^d$ has order $M$.
+
+Set $u_j=x_{dj}$. A block of $d$ recursion steps gives
+\[
+ u_j=2^{-d}(a_{j+1}+u_{j+1}),\qquad
+ x_{dj+r}=2^r u_j\quad(0\le r<d).
+\]
+Hence $\sum_kx_k^2=(4^d-1)\sum_ju_j^2/3$. At frequency
+$z=e^{2\pi i m/M}$, the circular filter from $a$ to $u$ has multiplier
+$z/(2^d-z)$, whose squared modulus is
+$(4^d+1-2^{d+1}\cos(2\pi m/M))^{-1}$. Parseval and $q^\ell=qM$ prove
+\eqref{eq:logarithmic-collision}. Another application of Parseval gives
+$K_{q,\ell-1}=\sum_m|A_m|^2$. The minimum and maximum of the multiplier
+occur at cosine $-1$ and $1$, respectively, which proves
+\eqref{eq:logarithmic-bounds}. If $q\ge5$, then $d\ge3$, so
+$c_{q,d}\ge(5/3)(7/9)=35/27$.
+\end{proof}
+
+For $q=3$, one has $d=2$, and \eqref{eq:logarithmic-collision} reduces
+to
+\[
+ K_\ell=\sum_m\frac{15}{17-8\cos(2\pi m/M)}|A_m|^2.
+\]
+Together with Theorem~\ref{thm:multiscale-parseval}, this gives
+\[
+ E_\ell=\sum_m
+ \left(\frac{15}{17-8\cos(2\pi m/M)}-1\right)|A_m|^2.
+\]
+The signed multiplier is positive exactly when
+$\cos(2\pi m/M)>1/4$. Thus the unresolved $q=3$ part of O7 is a
+balance between low and high frequencies of the preceding law in
+logarithmic order. The uniform lower bound is only $3/5$, so the
+exponential argument for $q\ge5$ does not apply.
+
+\begin{definition}[Primitive spectral concentration
+$SC_{\rm prim}(\varepsilon)$]
 $\mu_{\ell,j}$ (the law of $Y=\sum R\bmod 3^\ell$) satisfies
-$SC(\varepsilon)$ if there is $\xi\not\equiv 0\bmod 3^\ell$ with
+$SC_{\rm prim}(\varepsilon)$ if there is $\xi$ with $3\nmid\xi$ and
 $|\hat\mu_{\ell,j}(\xi)|\ge 3^{-\varepsilon\ell}$.
 \end{definition}
 
-\begin{lemma}[Conditional reduction]\label{lem:B}
-For $c>0$ and $\varepsilon<\varepsilon_0(c)$ there exist
-$\delta(\varepsilon,c)<1/2$, $\eta(\varepsilon,c)<1$ such that: failure
-at scale $(\ell,c)$ together with $SC(\varepsilon)$ implies existence
-of a $(\gamma_c,\delta,\eta)$-diagonal configuration of depth
-$s\ge(1-O(\varepsilon))\ell$. Contrapositively: absence of diagonal
-configurations of slope $\gamma_c$ at large depth implies any failure
-of the Weak Covering Conjecture, if it exists, is spectrally
-\emph{diffuse} ($SC(\varepsilon)$ fails for every $\varepsilon$).
-\end{lemma}
+Allowing every nonzero frequency would make the condition automatic by
+Proposition~\ref{prop:primitive-hole}. The primitive restriction is also
+required by the diagonal configuration. The same proposition shows
+that a support hole alone cannot imply $SC_{\rm prim}(\varepsilon)$ for
+any fixed $\varepsilon<1$, or even force a nonzero primitive
+coefficient.
 
-The proof (a six-step argument: Fourier-inversion lower bound on
-$\sum|\hat\mu(\xi)|$, transfer to a tilted i.i.d.\ model at parameter
-$p_c=1/\gamma_c$, extraction of alternable parallelepipeds via the
-Riesz-product device of \cite{Tao2011}, Halász's theorem, a routine
-scale descent, and an upgrade from a diagonal configuration to a
-continuous segment) is complete except for the last step, which
-requires stability of the relevant frequency $\xi$ under
-$j'\mapsto j'+1$ across scales --- plausible but not established, and
-declared as an open gap rather than glossed over.
+\begin{definition}[Chained configuration]
+A chained configuration of length $L$ has a primitive frequency $\xi$,
+an interval $I$ of $L$ consecutive scales, and exponents $a_t$ for
+$t\in I$ satisfying
+\[
+ |a_t-\gamma t|\le t^{2/3},\qquad
+ \|\xi2^{a_t}/3^t\|<\delta,\qquad
+ |a_{t+1}-a_t|\le C.
+\]
+The constants $\delta<1/2$ and $C$ do not depend on $L$.
+\end{definition}
+
+\begin{conjecture}[Primitive chained concentration target]
+\label{lem:B}
+For fixed $c>0$ and sufficiently small $\varepsilon>0$, failure at
+scale $(\ell,c)$ together with $SC_{\rm prim}(\varepsilon)$ forces a
+chained configuration at slope $\gamma_c$ whose length
+$L=L_\ell$ satisfies $L/\log\ell\to\infty$.
+\end{conjecture}
+
+The unchained diagonal condition above does not control how the
+exponents at adjacent scales fit together and is insufficient for this
+target. The Riesz-product and Halász route supplies good bases on a set
+whose mass may be exponentially small when the Fourier coefficient is
+$3^{-\varepsilon\ell}$; with fixed $\varepsilon$, the available
+intra-scale argument yields only bounded chains. The alternative
+recursion in $j$ is a convex Pascal mixture and does not keep a
+concentrating frequency fixed. Neither route proves
+Conjecture~\ref{lem:B}, which is not used elsewhere in the paper.
+Proposition~\ref{prop:primitive-fibre-energy} supplies an exact
+intermediate quantity: a proof from support data must first produce
+quantitative fresh-fibre imbalance at consecutive scales, and must then
+align the resulting primitive frequencies into one chain.
 
 \subsection{Proposition C: an exact wall of constants}
 
-\begin{proposition}[Halász deficit]\label{prop:halasz-deficit}
-Unconditionally, Halász's theorem gives only $\tau\ge 3^{-\ell}$, not
-$SC(\varepsilon)$, yielding a budget $\sum\|\cdot\|^2\le 0.549\ell$
+\begin{proposition}[Unrestricted Halász deficit]\label{prop:halasz-deficit}
+The Fourier-inversion argument for a support hole gives a coefficient
+of scale at least $3^{-\ell}$ at some nonzero frequency, but that
+frequency may be coarse and cannot be used in the diagonal
+configuration. No primitive lower bound follows from a hole, by
+Proposition~\ref{prop:primitive-hole}. Even if a primitive coefficient
+of size $3^{-\ell}$ is added as a hypothesis, Halász's theorem yields
+the budget $\sum\|\cdot\|^2\le 0.549\ell$
 against a required ceiling of $0.25\ell$ ($\delta=1/2$, $d=\ell$
 generators): a deficit of a factor $\ge 2.2$, rising to $\approx 7$ at
 a realistic generator density $\rho\approx 0.3$. In Tao's original 2011
@@ -1810,27 +2778,28 @@ $\approx 1.88$. The annealed criterion would only invert at
 $\gamma=3$ ($j\ge 2\ell$), far above the regime of the conjecture
 ($j^\ast(\ell)/\ell\approx1.2$, Empirical Result~\ref{thm:wcc}).
 
-\begin{theorem}[Proposition C: self-consistency of a diffuse hole]
+\begin{proposition}[Annealed budget for a diffuse hole]
 \label{thm:propC}
-A spectrally diffuse failure of the Weak Covering Conjecture satisfies
-the annealed $\ell^1$ Fourier budget with slack $\approx 1.88$; no
-Littlewood--Offord/Riesz-product counting argument of the kind used in
-\cite{Tao2011} can exclude it. This branch --- inaccessible to
-$\ell^1$ methods by Theorem~\ref{thm:propC} --- is exactly the branch
-identified as the core of $\beta=1$ (\S\ref{sec:triangulation}) and of
-the refuted $L^2$ condition (Theorem~\ref{thm:l2-refutation}): a
+A primitively spectrally diffuse failure of the Weak Covering Conjecture is
+compatible with the specific annealed $\ell^1$ Fourier budget above,
+with slack $\approx 1.88$. That budget therefore does not exclude such
+a failure. This branch is the one
+identified alongside $\beta=1$ (\S\ref{sec:triangulation}) and the
+finite-level $L^2$ growth (Empirical Result~\ref{thm:l2-finite}): a
 further articulation, within the same second-moment Fourier vocabulary
-as the $L^2$ condition (both decompose via the character sum
+as the $L^2$ condition. Theorem~\ref{thm:multiscale-parseval} identifies
+their exact telescoping relation, while both enter the covariance sum
 $\Cov\propto\sum_\xi S_1(\xi)S_2(\xi)^\ast$ of
 \S\ref{sec:regimes}), of the same missing ingredient --- not a
 methodologically independent fourth or fifth route in its own right.
-\end{theorem}
+\end{proposition}
 
 We emphasize the correct framing, consistent with the fragilities
 listed above: this is a reduction of the spectrally \emph{concentrated}
-branch to the Erdős--Lagarias--Furstenberg family, together with a
-proof that the spectrally \emph{diffuse} branch is inaccessible to
-$\ell^1$ Littlewood--Offord methods --- not a reduction of the Weak
+branch to the Erdős--Lagarias--Furstenberg family, conditional on the
+open stability step, together with a calculation showing that one
+annealed $\ell^1$ budget does not exclude the diffuse branch. It is not
+a reduction of the Weak
 Covering Conjecture to the classical Z-number problem, which
 Theorem~\ref{thm:propC} and the discussion above show would be
 imprecise.
@@ -1915,19 +2884,24 @@ Diophantine approximation) simply does not exist on the $3$-adic side
 --- which cuts against the diffuse scenario as much as for it. We cite
 Theorem~\ref{thm:no-transfer} with this disanalogy stated explicitly.
 
-\subsection{A fifth independent vocabulary, empirically tested}
+\subsection{A related fixed-modulus proposal}
 
-Very recent independent work \cite{Chang2026} reduces the Collatz
-conjecture, by a purely combinatorial route with no Fourier analysis
-whatsoever, to a residue-balance condition along a sparse subsequence
-of the true (not ensemble) orbit: writing $X_t := \mathbb{1}[n_t\equiv1
-\bmod 4]$ for the compressed odd-to-odd orbit and identifying
-``burst-ending times'' (the last index of a maximal run of $X_t=1$),
-that work proves a Map Balance Theorem (the map-level bias between
-gap-length classes is exactly $\pm1$, for every $K\ge5$) and reduces
-the conjecture, in the dominant residue class, to a claim that the
-fraction of burst-endings landing in one of two residues mod $32$
-stays bounded near $1/2$ along the orbit.
+Chang \cite{Chang2026} studies the compressed odd-to-odd orbit through
+$X_t=\mathbb{1}[n_t\equiv1\pmod4]$ and the last index of each maximal
+run of $X_t=1$. Its Map Balance Theorem gives a map-level discrepancy
+of one between two gap classes. The remaining proposed condition asks
+for a bound, with an unspecified threshold $\delta_{\max}$, on the
+imbalance between residues $9$ and $25$ modulo $32$ at those times.
+
+The claimed implication to Collatz is not self-contained in
+\cite{Chang2026}: the threshold is delegated to a block-TV budget in a
+companion work. The current version of that companion work
+\cite{ChangCompanion2026} instead gives a conditional implication from
+equidistribution at growing moduli, together with uniform control of
+unbounded gap tails. Fixed-modulus balance does not supply those stated
+hypotheses. We therefore use the modulo-$32$ statement only as a related
+empirical diagnostic, not as a reduction or as an open problem of this
+paper.
 
 We tested this condition directly on real orbits. An ensemble of many
 moderate orbits ($2$--$5\times10^4$ roots, $20$--$50$ bits) shows the
@@ -1938,22 +2912,9 @@ orbit (a random $16000$-bit start, $38395$ compressed steps, $4761$
 relevant burst-endings) --- shows the deviation tracking the
 $1/\sqrt{i}$ statistical-noise curve closely, with no systematic trend,
 ending at a deviation of $0.00053$. Five further orbits from $500$ to
-$8000$ bits show the same pattern. We interpret the ensemble plateau as
-an artifact of aggregating many short, finite, similarly-phased
-orbits, and the single-long-orbit result as qualified empirical support
-for the conjecture of \cite{Chang2026}, on the scale tested.
-
-This gives a fifth, technically unrelated, vocabulary for the same
-missing ingredient: equidistribution/balance of residues along the
-true orbit, appearing independently via the smoothing-transform/
-endogeny route (\S\ref{sec:endogeny}), the entropy count shared by the
-Weak Covering Conjecture and $\beta=1$ (\S\ref{sec:wcc},
-\S\ref{sec:triangulation} --- proved to be the same algebraic object by
-Proposition~\ref{prop:beta-wcc}, hence counted once), Wirsching's 2003
-functional equation (\S\ref{sec:triangulation}), the second-moment
-Fourier analysis shared by the $L^2$ condition and the spectral
-dichotomy of Proposition~C (\S\ref{sec:lemmas}, likewise counted once),
-and now a purely combinatorial reformulation.
+$8000$ bits show the same pattern. These measurements concern only the
+fixed-modulus statistic. They do not test growing-modulus
+equidistribution or uniform integrability of gap lengths.
 
 \section{Discussion: why a precisely characterized barrier is a
 genuine contribution}
@@ -1970,8 +2931,9 @@ First, the outcome of executing both candidate lemmas was not
 silence: it was two independent, rigorous negative/structural results,
 each of which pins down \emph{precisely} why a natural approach fails
 --- Proposition~\ref{prop:exact-endogeny}'s exact closed-form
-persistence of coarse correlation; Theorem~\ref{thm:l2-refutation}'s
-direct computational refutation of a specific sufficient condition;
+persistence of coarse correlation; Empirical
+Result~\ref{thm:l2-finite}'s finite-level test of a specific
+sufficient condition;
 Theorem~\ref{thm:jensen}'s exact identity quantifying, to a specific
 constant factor ($\approx1.88$), why a whole family of Fourier-analytic
 techniques cannot close the gap. Precisely characterizing an
@@ -1980,40 +2942,35 @@ obstruction --- showing not merely that an approach fails, but
 recognized and citable form of mathematical contribution, independent
 of whether the underlying conjecture is eventually resolved.
 
-Second, these results do not stand alone: the same underlying
+Second, these results do not stand alone: a related underlying
 arithmetic statement --- some form of equidistribution or
 near-independence of $3$-adic digits along the true, deterministic
 integer dynamics, not merely along an idealized i.i.d.\ model --- is
-the crux reached by five methodologically independent vocabularies:
+the crux reached by four complementary vocabularies:
 (1) the smoothing-transform/endogeny route (\S\ref{sec:endogeny}); (2)
-the entropy count shared by Wirsching's Weak Covering Conjecture and
-Tao's $\beta=1$, which Proposition~\ref{prop:beta-wcc} shows to be the
-\emph{same algebraic object}; (3) Wirsching's 2003 real functional
+the support identity between Wirsching's Weak Covering Conjecture and
+Tao's weighted $\beta=1$ problem in Proposition~\ref{prop:beta-wcc};
+(3) Wirsching's 2003 real functional
 equation and its Fabius density (\S\ref{sec:triangulation}); (4) the
 second-moment Fourier analysis underlying both the $L^2$ condition and
 the spectral dichotomy of Proposition~C (\S\ref{sec:lemmas}), which
 share the common character decomposition
-$\Cov\propto\sum_\xi S_1(\xi)S_2(\xi)^\ast$; and (5) the purely
-combinatorial residue-balance reformulation of \cite{Chang2026}. We
-count five rather than seven deliberately: two of the pairwise
-linkages are not analogies but \emph{proved identities} ---
-$\beta=1\cong$~WCC (Proposition~\ref{prop:beta-wcc}) and the common
-second-moment origin of the $L^2$ and spectral-dichotomy branches ---
-and we count each such pair once. That two vocabularies can be
-\emph{proved} to be one object is itself stronger evidence that the
-obstruction is a single structural feature of the problem than a loose
-analogy would be. A barrier visible from only one angle is a candidate
-artifact of that technique; a barrier reached by five independent
+$\Cov\propto\sum_\xi S_1(\xi)S_2(\xi)^\ast$ and the exact
+multiscale identity of Theorem~\ref{thm:multiscale-parseval}. The WCC
+and $\beta=1$ formulations share an exact support and cost identity,
+but differ by geometric multiplicity. The $L^2$ and spectral-dichotomy
+branches share the same second-moment character decomposition. A
+barrier visible from only one angle is a candidate
+artifact of that technique; a barrier reached by four complementary
 vocabularies (branching-process fixed points, integer
 covering/entropy counting, a real functional equation, second-moment
-character sums, and elementary residue counting), two of whose pairwise
-coincidences are theorems, is much better evidence that the obstruction
+character sums, and elementary residue counting) is evidence that the obstruction
 is a structural feature of the problem itself.
 
 Third, this theoretical package sits alongside a result
 (Empirical Result~\ref{thm:kl}) whose validity does not depend on any of the
 above framing at all: a direct, falsifiable, statistically calibrated
-empirical measurement resolving a long-standing dispute in the
+finite-window measurement comparing two predictions in the
 literature. We consider this the single most framing-independent
 contribution of the paper, and recommend it be weighted accordingly
 by a reader assessing the paper's overall reliability.
@@ -2023,44 +2980,83 @@ proof of any part of the Collatz conjecture, nor as a report of
 failure, but as a precise map of where a specific, natural,
 technically rich line of attack --- Tao's Syracuse-measure program,
 generalized to $qx+1$ --- runs into a wall, together with an exact
-quantification of the size and shape of that wall from five
-independent angles, and one hard, unconditional empirical result
+quantification of the size and shape of that wall from several
+angles, and one exact finite-window empirical result
 obtained along the way.
 
 \section{Conclusion and open directions}
 \label{sec:conclusion}
 
-We summarize the concrete open problems this paper leaves in the
-cleanest form we have been able to give them.
+We summarize the eight tracked points. O6 is an audit closure; the
+other seven contain open mathematical statements.
 
 \begin{enumerate}[label=(O\arabic*)]
-\item \textbf{Near-independence of fresh $3$-adic digits across
-  sibling subtrees} (Theorem~\ref{thm:barrier},
-  Remark~\ref{rem:barrier-reading}): the arithmetic statement whose
-  idealized (i.i.d.) analogue is provable via smoothing-transform
-  classification and Choquet--Deny rigidity.
+\item \textbf{Cancellation of centered fine-frequency correlations
+  across sibling subtree aggregates} (Theorem~\ref{thm:barrier},
+  Remark~\ref{rem:barrier-reading}). Pairwise fresh-digit independence
+  is impossible: Theorem~\ref{thm:fresh-digit-coupling} gives total
+  variation $1-3^{-s}$ and mutual information $s\log3$ for every fixed
+  path pair. The open arithmetic statement concerns cancellation only
+  after independent averaging over the two path indices and removal of
+  the exact coarse affine modes.
 \item \textbf{Wirsching's Weak Covering Conjecture} (Conjecture~\ref{conj:wcc}),
-  equivalently (Proposition~\ref{prop:beta-wcc}) Tao's $\beta=1$
-  (\S\ref{sec:triangulation}), open since 1998 and 2020 respectively.
-\item \textbf{Wirsching's Conjectures 1 and 2} (\S\ref{sec:triangulation}),
-  above the numerically-tested Conjecture~3, of the same
-  central-limit-window difficulty.
-\item \textbf{Exponential, $\xi$-uniform Fourier decay for the
-  Syracuse measure at depth $\ell\asymp D$} (\S\ref{sec:regimes},
-  Regime~3), equivalent to recognized open problems in effective
-  $\times2,\times3$ rigidity and Fourier decay of self-similar
-  $3$-adic measures.
-\item \textbf{Exclusion of spectrally diffuse Weak Covering
-  Conjecture failures} (Theorem~\ref{thm:propC}), shown here to be
-  inaccessible to $\ell^1$ Littlewood--Offord methods, leaving genuinely
-  new technique as the only route.
-\item \textbf{Chang's residue-balance conjecture} \cite{Chang2026}
-  (\S\ref{sec:context}), supported empirically here on a single very
-  long orbit, unproved.
-\item \textbf{The tail index of the martingale scale factor}
-  (Conjecture~\ref{conj:tail-index}), for every $q\ge5$: unlike the
-  $q=3$ case, this still has no rigorous derivation (the relevant root
-  is always frozen, Proposition~\ref{prop:always-frozen}). Empirical
+  and the stronger weighted covering estimate needed for Tao's
+  $\beta=1$ (\S\ref{sec:triangulation}). Proposition~\ref{prop:beta-wcc}
+  identifies their common support. Theorem~\ref{thm:wcc-large-deviation}
+  proves that even ideal multiplicity inside the WCC cost slice remains
+  exponentially insufficient; the weighted estimate must reach the
+  typical cost window.
+\item \textbf{Wirsching's Conjecture 2} (\S\ref{sec:triangulation}),
+  above the numerically tested Conjecture~3. Conjecture~1 is proved in
+  Theorem~\ref{thm:wirsching-conj1}. Theorem~\ref{thm:microcanonical}
+  proves that its target condition $(?3)$ implies the weighted
+  cylinder estimate in O2. Proposition~\ref{prop:complex-deconditioning}
+  identifies the conditional local limit theorem needed to pass from
+  canonical weights to fixed cost. Theorem~\ref{thm:ensemble-divergence}
+  shows that their likelihood gap is at most polynomial at every
+  precision, but in the direction opposite to the required lower bound.
+\item \textbf{Exponential control of the fine-frequency tail at depth
+  $\ell\asymp D$} (\S\ref{sec:regimes}, Regime~3), after separating
+  sublinear-conductor modes. Theorem~\ref{thm:sublinear-precision-ensemble}
+  proves that those modes are approximated by the corresponding
+  coefficients of $\mu_r$. Fixed-conductor coefficients need not
+  decay. Theorem~\ref{thm:linear-block-nonequivalence} shows that
+  equivalence already fails at linear scale for the underlying cost
+  vectors, although this separation need not survive the residue map.
+  The remaining linear-precision estimate is the input
+  required by the second-moment route; Remark~\ref{thm:regime3}
+  records nearby open theories without claiming an equivalence.
+\item \textbf{Exclusion of primitively spectrally diffuse Weak Covering
+  Conjecture failures}. Proposition~\ref{prop:primitive-hole} proves
+  that a support hole alone need not produce any primitive Fourier
+  coefficient. Proposition~\ref{prop:primitive-fibre-energy}
+  identifies primitive Fourier energy exactly with imbalance among the
+  three fresh children of each residue. Projective compatibility and
+  inherited holes still allow zero primitive spectrum.
+  Proposition~\ref{thm:propC} shows that the
+  annealed $\ell^1$ budget tested here has insufficient strength; it
+  does not rule out other $\ell^1$ arguments.
+\item \textbf{Fixed-modulus residue balance, audit closed}
+  (\S\ref{sec:context}). The statistic proposed in \cite{Chang2026}
+  was tested here, but its claimed implication depends on an unspecified
+  threshold and on a companion framework whose current sufficient
+  hypothesis uses growing moduli and tail control
+  \cite{ChangCompanion2026}. It is not counted as an open problem of
+  this paper.
+\item \textbf{Absolute continuity and the tail index of the tilted
+  Syracuse density} in the coherent $q$-adic root environment
+  (Conjecture~\ref{conj:tail-index}), for every odd $q\ge3$.
+  Theorem~\ref{thm:lp-collision} characterizes its $L^p$ form by
+  normalized collision probabilities. At $p=2$,
+  Theorem~\ref{thm:multiscale-parseval} identifies bounded collision
+  mass with summability of the primitive energies from O5. The matching
+  identity in Theorem~\ref{thm:logarithmic-collision} gives exponential
+  collision growth for the nonexceptional primes $q\ge5$ and expresses
+  the remaining $q=3$ increment as an explicit low-versus-high spectral
+  balance. It does not yet give a uniform sign margin at $q=3$. The matching
+  i.i.d. statement is
+  Theorem~\ref{thm:iid-tail}; its arithmetic transfer remains open.
+  Empirical
   support, however, has substantially strengthened since the original
   under-powered measurement: a $20\times$ larger sample ($10^5$ roots,
   the pre-registered comparison called for above) produced, for the
@@ -2074,19 +3070,16 @@ cleanest form we have been able to give them.
   normalization exponent) found no artifact behind this shift. We
   regard the conjecture as now strongly supported for $q=5$, though
   not proved: the Vuong test yields non-rejection rather than
-  confirmation, and the underlying martingale is provably still
-  pre-asymptotic at the headroom reached (its median continues to
-  drift with headroom even as the estimated tail index does not). This
-  was, honestly, the weakest-supported claim in the paper; it no
-  longer is, but it remains the only one resting on statistical
-  evidence rather than a closed derivation.
-\item \textbf{The density transition on the genuine arithmetic tree}
+  confirmation, and the finite-depth factors remain pre-asymptotic at
+  the headroom reached (their median continues to
+  drift with headroom even as the estimated tail index does not).
+\item \textbf{The exponent transition on the genuine arithmetic tree}
   (Conjecture~\ref{conj:transition-arithmetic}): established here only
   for the matching i.i.d.\ branching-random-walk model
   (Theorem~\ref{thm:transition-model}, and, conditionally,
-  Proposition~\ref{prop:transition-fine}); for $q=3$ this conjecture
-  implies, and strictly refines, the Growth Exponent Conjecture of
-  Kontorovich--Lagarias and Applegate--Lagarias, open since 1995, of
+  Proposition~\ref{prop:transition-fine}); for $q=3$ this is the
+  Growth Exponent Conjecture of Kontorovich--Lagarias and
+  Applegate--Lagarias, open since 1995, of
   which the best unconditional partial result remains the one-sided
   bound of Krasikov--Lagarias \cite{KrasikovLagarias2003}.
 \end{enumerate}
@@ -2098,17 +3091,25 @@ the paper's central finding.
 
 \section*{Data Availability Statement}
 
-Every computational result reported in this paper --- the pressure and
-freezing computations of \S\ref{sec:pressure}, the residual-coupling
-control experiment of \S\ref{sec:calibration}, the Kontorovich--Lagarias
-vs.\ Volkov gate of \S\ref{sec:kl}, the Weak Covering Conjecture test of
-\S\ref{sec:wcc}, the Wirsching (2003) Conjecture~3 test and the $L^2$/Jensen
-computations of \S\ref{sec:triangulation}--\S\ref{sec:lemmas}, and the
-Chang residue-balance test of \S\ref{sec:context} --- has an
-accompanying, independently runnable script, organized by section, at
-\url{https://github.com/faculdade/collatz-endogeny}. Each subfolder of
-that repository has its own README stating what it verifies, how to
-run it, and the expected output.
+Public verification scripts for the pressure and freezing computations
+of \S\ref{sec:pressure}, the residual-coupling experiment of
+\S\ref{sec:calibration}, the Kontorovich--Lagarias vs.\ Volkov gate of
+\S\ref{sec:kl}, the Weak Covering Conjecture test of \S\ref{sec:wcc},
+the Wirsching Conjecture~3 test, the original $K_\ell$/Jensen
+computations, and the Chang residue-balance test are organized by
+section at \url{https://github.com/faculdade/collatz-endogeny}. The
+  public archive does not yet contain the checks for
+  Theorem~\ref{thm:wcc-large-deviation} and
+  Theorems~\ref{thm:fresh-digit-coupling} and
+  \ref{thm:linear-block-nonequivalence},
+Propositions~\ref{prop:primitive-hole} and
+\ref{prop:primitive-fibre-energy},
+Theorems~\ref{thm:multiscale-parseval} and
+\ref{thm:logarithmic-collision}, or the calculations in Empirical
+Results~\ref{thm:lp-spectrum}, \ref{thm:microcanonical-finite},
+\ref{thm:microcanonical-fourier}, and \ref{thm:fixed-precision-finite}.
+Depositing and re-running those
+scripts in the archive is a release requirement for this draft.
 
 \section*{Conflict of Interest}
 
@@ -2139,12 +3140,83 @@ computation is a known source of silent error.
 \item \emph{Weak Covering Conjecture DP} (\S\ref{sec:wcc}): validated
   against an independently computed reference table for
   $\ell=1,\dots,7$ and a hand-checked point ($\ell=2,j=2$).
-\item \emph{$K_\ell$ recursion} (Theorem~\ref{thm:l2-refutation}): the
+\item \emph{WCC large-deviation barrier}
+  (Theorem~\ref{thm:wcc-large-deviation}): the exact negative-binomial
+  tail was evaluated in log space through $\ell=1000$ and compared
+  with the closed-form rate $I(1+\log_4 3)$. The computation is a
+  check on the constants; the proof uses the exact mass formula and
+  Stirling's formula.
+\item \emph{Primitive Fourier hole barrier}
+  (Proposition~\ref{prop:primitive-hole}): direct character sums through
+  $\ell=8$ reproduce $1/(2\cdot3^{\ell-1}-1)$ for every primitive
+  coefficient of the one-hole unit law. They also give zero, up to
+  floating-point error below $6\times10^{-13}$, for every primitive
+  coefficient of a non-full law lifted uniformly from the preceding
+  modulus.
+\item \emph{Primitive fibre energy}
+  (Proposition~\ref{prop:primitive-fibre-energy}): random integer count
+  vectors through $\ell=8$ satisfy \eqref{eq:primitive-fibre-energy}
+  with absolute discrepancy below $3\times10^{-16}$. Uniform lifts
+  give zero primitive energy at every tested level. The computation
+  also checks the sharp integer-count bound $1/T$.
+\item \emph{Multiscale Parseval decomposition}
+  (Theorem~\ref{thm:multiscale-parseval}): the increment identity and
+  its telescoping sum were checked through $\ell=12$ for the Syracuse
+  laws and for an independent compatible sequence of Dirichlet
+  refinements. The largest absolute discrepancy was below
+  $6\times10^{-14}$.
+\item \emph{Logarithmic collision renormalization}
+  (Theorem~\ref{thm:logarithmic-collision}): the collision mass from
+  the original Syracuse recursion was compared with the independently
+  evaluated spectral multiplier through $\ell=12$ at $q=3$, and
+  through $\ell=5$ at $q=3,5,7,11,13,17,19$. These primes include
+  several multiplicative orders and cases where $2$ is not a primitive
+  root. The largest absolute discrepancy in the general test was below
+  $2\times10^{-12}$ for collision masses as large as $10^4$; the
+  logarithmic ordering was checked to be a permutation at every level.
+\item \emph{Fresh-digit affine coupling}
+  (Theorem~\ref{thm:fresh-digit-coupling}): exact enumeration for
+  sibling gaps $2,4,8$, coarse precisions $1,2,3$, and fresh blocks
+  through six digits reproduces $1-3^{-s}$ in total variation and
+  $s\log3$ in mutual information. This also checks the orientation of
+  the affine residue map and its carries.
+\item \emph{$K_\ell$ recursion} (Empirical Result~\ref{thm:l2-finite}): the
   only initially available check was the hard-coded base case
   ($K_1=5/3$), which does not exercise the recursive machinery; we
   additionally validated the full distribution $\mu_\ell$, bin by bin,
   against direct Monte Carlo sampling of the primary definition
   \eqref{eq:syracuse-def} at $\ell=3,4$, within Monte Carlo noise.
+\item \emph{$L^p$ collision spectrum}
+  (Empirical Result~\ref{thm:lp-spectrum}): its $p=2$ column was
+  compared level by level with the independently maintained
+  $K_\ell$ recursion, agreeing to floating-point precision.
+\item \emph{Microcanonical multiplicities}
+  (Empirical Results~\ref{thm:microcanonical-finite} and
+  \ref{thm:microcanonical-fourier}): residue sums were checked against
+  independent bounded-composition coefficients at every level. The
+  canonical mixture \eqref{eq:microcanonical} was compared bin by bin
+  with the Syracuse recursion through $\ell=4$, with maximum
+  discrepancy $2.1\times10^{-17}$. A count-valued implementation
+  through $\ell=12$ and a Boolean implementation through $\ell=16$
+  produced identical support thresholds on their common range.
+\item \emph{Fixed-precision ensemble projection}
+  (Empirical Result~\ref{thm:fixed-precision-finite}): each count row
+  was projected directly modulo $3^r$ and compared in total variation
+  with $\mu_r$ from the independently maintained Syracuse recursion.
+  The comparison was run for every $r\le3$ and $r\le\ell\le12$ at the
+  central and upper-window costs, then through full precision at
+  $\ell=13$. At every level the code also checks the pointwise
+  domination in Theorem~\ref{thm:ensemble-divergence}, using the exact
+  bounded-composition count and folded-cost normalization.
+\item \emph{Linear-block nonequivalence}
+  (Theorem~\ref{thm:linear-block-nonequivalence}): exact folded-cost
+  coefficients through $\ell=1000$ converge to the stated Gaussian
+  total-variation limits. For $\rho=1/4,1/2,3/4$ and $u=0$, the limits
+  are $0.0694909$, $0.1660641$, and $0.3226746$; the finite values at
+  $\ell=1000$ are $0.0699624$, $0.1668085$, and $0.3241100$.
+  Both finite distributions are normalized independently. The
+  computation checks the constants; the proof uses the lattice local
+  central limit theorem.
 \item \emph{Jensen-identity Monte Carlo} (Theorem~\ref{thm:jensen}):
   the identity is exact and independent of simulation; the Monte Carlo
   estimate ($8\times10^6$ samples) serves only as a sanity check on
@@ -2180,9 +3252,25 @@ computation is a known source of silent error.
   Generated by the $3n+1$ Function}, Lecture Notes in Mathematics
   \textbf{1681}, Springer, 1998.
 
-\bibitem{Wirsching2003} G.\ J.\ Wirsching, \emph{On positive predecessor
-  density in $3n+1$ dynamics}, Discrete and Continuous Dynamical
-  Systems \textbf{9}(3) (2003), 771--787.
+\bibitem{Wirsching2003} G.\ J.\ Wirsching, \emph{On the problem of
+  positive predecessor density in $3n+1$ dynamics}, Discrete and
+  Continuous Dynamical Systems \textbf{9}(3) (2003), 771--787.
+  DOI: 10.3934/dcds.2003.9.771.
+
+\bibitem{LagariasBibliographyII} J.\ C.\ Lagarias, \emph{The $3x+1$
+  problem: an annotated bibliography, II (2000--2009)},
+  arXiv:math/0608208v6, 2012.
+
+\bibitem{DragicevicEtAl2018} D.\ Dragi\v{c}evi\'c, G.\ Froyland,
+  C.\ Gonz\'alez-Tokman, and S.\ Vaienti, \emph{A spectral approach
+  for quenched limit theorems for random expanding dynamical systems},
+  Communications in Mathematical Physics \textbf{360}(3) (2018),
+  1121--1187. DOI: 10.1007/s00220-017-3083-7.
+
+\bibitem{Hafouta2020} Y.\ Hafouta, \emph{Limit theorems for some
+  time-dependent expanding dynamical systems}, Nonlinearity
+  \textbf{33} (2020), 6421--6460.
+  DOI: 10.1088/1361-6544/aba5e7.
 
 \bibitem{KontorovichLagarias2009} A.\ V.\ Kontorovich and J.\ C.\
   Lagarias, \emph{Stochastic models for the $3x+1$ and $5x+1$
@@ -2253,17 +3341,9 @@ computation is a known source of silent error.
   inequalities}, Mathematics of Computation \textbf{64} (1995),
   427--438.
 
-\bibitem{Guivarch1990} Y.\ Guivarc'h, \emph{Sur une extension de la
-  notion de loi semi-stable}, Annales de l'Institut Henri Poincaré
-  Probabilités et Statistiques \textbf{26} (1990), 261--285.
-
 \bibitem{Liu2000} Q.\ Liu, \emph{On generalized multiplicative
   cascades}, Stochastic Processes and their Applications
   \textbf{86}(2) (2000), 263--286.
-
-\bibitem{Mentemeier2016} S.\ Mentemeier, \emph{The fixed points of the
-  multivariate smoothing transform}, Probability Theory and Related
-  Fields \textbf{164}(1--2) (2016), 401--458.
 
 \bibitem{BakerBanaji2026} S.\ Baker and A.\ Banaji, \emph{Self-similar
   and self-conformal measures with slow Fourier decay},
@@ -2291,6 +3371,9 @@ computation is a known source of silent error.
 
 \bibitem{Chang2026} E.\ Y.\ Chang, \emph{A structural reduction of the
   Collatz conjecture to one-bit orbit mixing}, arXiv:2603.25753, 2026.
+
+\bibitem{ChangCompanion2026} E.\ Y.\ Chang, \emph{Exploring Collatz
+  dynamics with human--LLM collaboration}, arXiv:2603.11066, 2026.
 
 \bibitem{Halasz1977} G.\ Hal\'asz, \emph{Estimates for the
   concentration function of combinatorial number theory and
