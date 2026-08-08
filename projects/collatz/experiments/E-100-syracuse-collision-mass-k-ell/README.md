@@ -31,17 +31,14 @@ floating point).
 
 ## Result
 
-K_ℓ does NOT saturate — it grows cleanly and consistently linearly up
+K_ℓ does not saturate on the tested range: it grows consistently linearly up
 to ℓ=17 (the practical limit tested), with increments ΔK_ℓ converging
 monotonically to ≈0.47 (from 0.476 at ℓ=2 to 0.472 at ℓ=17, with no
-sign of reversal). **The L² hypothesis (K_∞<∞) FAILS** — a direct
-empirical refutation, not merely "open". This kills the Fable's
-conditional Lemma 2' via the same wall as regime 3: the "regime-2
-lemma" isn't an easier step than regime 3, it's its sibling, and now
-with computational evidence that the extra condition that would save
-it is false. See H-126 for the full analysis and the structure theorem
-that survives (the exact coarse component, Prop. 2 — that part is
-positive and proven).
+sign of reversal). This is finite evidence against the L² hypothesis
+`K_∞<∞`, not a proof of divergence. A bounded monotone sequence can
+display this behavior over any prescribed finite initial range. See
+H-140 for the status correction and H-126 for the exact coarse
+component that survives independently of the asymptotic question.
 
 Sanity check: K_1 = 5/3 exact (computed by hand from
 P(Syrac_1=1)=1/3, P(Syrac_1=2)=2/3 — matches the script, error <1e-10).

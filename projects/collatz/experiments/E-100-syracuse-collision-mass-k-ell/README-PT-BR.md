@@ -32,17 +32,14 @@ flutuante).
 
 ## Resultado
 
-K_ℓ NÃO satura — cresce de forma limpa e consistentemente linear até
+K_ℓ não satura no intervalo testado: cresce de forma aproximadamente linear até
 ℓ=17 (o limite prático testado), com incrementos ΔK_ℓ convergindo
 monotonamente para ≈0,47 (de 0,476 em ℓ=2 a 0,472 em ℓ=17, sem sinal
-de reversão). **A hipótese L² (K_∞<∞) FALHA** — refutação empírica
-direta, não apenas "em aberto". Isso mata o Lema 2' condicional do
-Fable pela mesma parede do regime 3: o "lema do regime 2" não é um
-degrau mais fácil que o regime 3, é irmão dele, e agora com evidência
-computacional de que a condição extra que o salvaria é falsa. Ver
-H-126 para a análise completa e o teorema de estrutura que sobrevive
-(a componente grosseira exata, Prop. 2 — essa parte é positiva e
-demonstrada).
+de reversão). Isso é evidência finita contra a hipótese L², não uma
+prova de que `K_∞=∞`. Uma sequência monótona limitada pode imitar esse
+comportamento em qualquer intervalo inicial finito. Ver H-140 para a
+correção de status. Ver H-126 para a componente grosseira exata, que
+independe da questão assintótica.
 
 Checagem de sanidade: K_1 = 5/3 exato (calculado à mão a partir de
 P(Syrac_1=1)=1/3, P(Syrac_1=2)=2/3 — bate com o script, erro <1e-10).

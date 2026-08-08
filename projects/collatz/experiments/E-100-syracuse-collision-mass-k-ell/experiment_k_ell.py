@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """
-Checagem rapida (pre-escrita, pedida pelo advisor antes de formalizar o
-Lema 2' de H-126): a medida de Syracuse de Tao satisfaz K_inf < infinito
-(f em L^2(Z_3)) ou K_ell diverge?
+Checagem finita (pre-escrita, pedida pelo advisor antes de formalizar o
+Lema 2' de H-126): como se comporta K_ell nos niveis ell <= 17?
+
+Nenhum intervalo finito decide se K_inf e' finito. A saida deste script
+serve apenas como evidencia numerica; ver H-140 para a correcao de status.
 
 K_ell := 3^ell * sum_y p_ell(y)^2 = 3^ell * P(Syrac_ell = Syrac'_ell)
 para copias independentes.
@@ -79,7 +81,7 @@ def main():
 
     print("\n=== Diagnostico ===")
     print("Se K_ell estabiliza/satura -> Hipotese L2 (K_inf<inf) suportada -> Lema 2' de H-126 tem conteudo.")
-    print("Se K_ell cresce ~linear em ell -> L2 falha -> Lema 2' e vacuo (mesma parede do regime 3).")
+    print("Se K_ell cresce no intervalo testado -> evidencia finita contra L2; nao prova divergencia.")
     ells = np.array([r[0] for r in results[-6:]])
     Ks = np.array([r[1] for r in results[-6:]])
     # ajuste log-log tosco para ver se K cresce como ell^p
