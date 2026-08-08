@@ -2,6 +2,25 @@
 
 Última atualização: 2026-08-08
 
+## E-129: agregação sobre o gap de irmãos não restaura independência (H-159 continua aberta)
+
+Testada a rota ingênua para H-159: promediar a lei conjunta de dígitos
+frescos (E-120) sobre a medida de ramificação natural do gap `Delta`
+entre irmãos (`P(Delta=2k)=3*4^-k`, de E-108) e medir distância TV e
+informação mútua da lei agregada contra o produto de suas marginais.
+Não aproxima: em `fresh=6`, TV de um par com `delta` fixo é `0.998628`,
+agregada (`k_max=16`) ainda é `0.992193`. Verificado antes de aceitar o
+número que a lei de `delta` fixo não depende de qual resíduo `x0` é
+usado como referência.
+
+Isso não refuta H-159: TV e informação mútua são métricas erradas para
+essa pergunta (dominadas pela estrutura de suporte determinística de um
+`delta` fixo, não pelo cancelamento que a renovação implícita
+realmente precisa em um momento ou coeficiente de Fourier/Mellin), e o
+experimento só cobre um par de irmãos, não a árvore inteira. Descarta a
+rota específica "promediar isoladamente sobre `Delta`" e restringe o
+alvo remanescente a um funcional de momento/Fourier.
+
 ## H-132 fechada: citação a Liu (2000) conferida contra o original
 
 O diretor científico trouxe os três PDFs (arquivados em
