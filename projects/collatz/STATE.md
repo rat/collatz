@@ -1,6 +1,446 @@
 # Estado atual — Collatz
 
-Última atualização: 2026-07-21
+Última atualização: 2026-08-08
+
+## Nota de processo (2026-08-08): incorporação verificada do lote H-131 a H-160
+
+O lote de hipóteses H-131 a H-160, os experimentos E-111 a E-128 e a
+reescrita de `main.tex` foram produzidos numa sessão que não commitou
+nada, não documentou aqui as deleções de `CLAUDE.md` (nunca commitado
+na versão anterior), `OUTLINE.md`, `main-pt-br.tex/pdf` e `main.pdf`, e
+não registrou consulta a um modelo externo mais forte em nenhum dos 30
+arquivos novos. As entradas de H-156 a H-160 também estavam ausentes
+deste arquivo; foram adicionadas agora, retroativamente.
+
+Cada uma das 30 hipóteses foi lida, sua matemática checada (várias
+rederivadas independentemente à mão, uma conferida linha a linha contra
+o PDF primário de Wirsching 2003) e cada experimento associado foi
+executado. 29 de 30 passaram e foram incorporadas. A exceção é H-132:
+sua prova depende do Teorema 2.2 de Q. Liu (2000) como caixa-preta, e
+essa fonte (mais Jelenkovic-Olvera-Cravioto 2012 e Chen-de Raphélis-Ma
+arXiv:2408.05538) não está em `literature/`. Rebaixada para aberta até
+a citação ser conferida contra o texto original; o teorema
+correspondente em `main.tex` (`thm:iid-tail`) foi marcado com uma nota
+explícita dessa pendência.
+
+## H-160/E-128: refutada a mistura relativa na janela central de Wirsching
+
+A condição suficiente proposta em H-134 (defeito relativo tendendo a
+zero) é falsa já na projeção módulo 3: sob custo crítico `lambda=1`, a
+paridade do incremento mais novo converge para `P(par)=2/3`,
+`P(ímpar)=1/3` em vez de Haar `1/2,1/2`, dando distância de variação
+total residual `1/6`. A Conjectura 2 de Wirsching precisa de uma
+normalização pelo perfil grosseiro correto ou de um limite inferior
+mais fraco, não de convergência para Haar.
+
+## H-159: transferência da cauda iid para a árvore aritmética (aberta)
+
+Alvo isolado de H-132: estender o teorema de cauda do modelo iid para o
+funcional da árvore reversa aritmética real, controlando a dependência
+entre dígitos novos de subárvores irmãs após remover os modos afins
+grosseiros de H-150. Independência par a par já foi refutada por
+H-150; o alvo correto é cancelamento após agregação.
+
+## H-158/E-127: massa do pior cilindro na lei de Syracuse (em andamento)
+
+Mede se `3^ell c_ell = exp(-o(ell))` para `c_ell` a menor massa entre
+resíduos não múltiplos de 3. H-131 e H-148 já mostram que WCC sozinha,
+mesmo com distribuição ideal, não decide isso. Cálculo direto estendido
+até `ell=15` sem o DP de custo mínimo: `beta_eff` decresce de 1.222938
+(`ell=12`) a 1.189390 (`ell=15`), com ajuste descritivo
+`3^ell c_ell ~ ell^(-0.773)` no intervalo `6<=ell<=15` — compatível com
+perda subexponencial, mas não conclusivo.
+
+## H-157/E-126: renormalização logarítmica q-ádica prova crescimento exponencial de K para q>=5
+
+Generaliza H-156 para primo `q` ímpar qualquer com `d=ord_q(2)` e
+`v_q(2^d-1)=1`. A mesma diagonalização em coordenada de logaritmo
+discreto dá `K_(q,ell) = sum_m W_(q,d)(2 pi m/M) |A_m|^2`, com o
+multiplicador limitado entre `c_(q,d)=q(2^d-1)/(3(2^d+1))` e
+`C_(q,d)=q(2^d+1)/(3(2^d-1))`. Para todo `q>=5`, `d>=3` é automático
+(pois `q` não pode dividir `2^1-1` nem `2^2-1=3`), e `c_(q,d)>=35/27>1`
+no pior caso `(q,d)=(5,3)`. Logo `K_(q,ell)>=(35/27)^ell`: a lei de
+Syracuse generalizada não tem densidade L2 para `q>=5`. Para `q=3` o
+multiplicador tem ínfimo `3/5<1` e o argumento não se aplica; o caso
+crítico continua reduzido ao balanço espectral de H-156. Verificado
+contra a recursão direta de E-100 para `q=3,5,7,11,13,17,19` até
+`ell=5`, erro máximo abaixo de `2e-12`.
+
+## H-156/E-125: renormalização exata da colisão em ordem logarítmica
+
+Reordenando a lei de Syracuse pela coordenada de logaritmo discreto
+(`4` gera o grupo de unidades mod `3^(ell-1)`), a recursão de colisão
+se diagonaliza exatamente:
+`K_ell = sum_m [15/(17-8cos(2 pi m/M))] |A_m|^2`, com `M=3^(ell-1)`.
+Isso reescreve o crescimento de `K_ell` como um balanço espectral
+explícito entre modos com `cos>1/4` (peso positivo no incremento) e os
+demais. Verificado contra a recursão direta de E-100 até `ell=12`, erro
+absoluto máximo abaixo de `3e-15`. Não decide, por si só, a divergência
+de `K_ell`.
+
+## H-155/E-124: Parseval multiescala identifica exatamente O5 com O7 em L2
+
+Para leis compatíveis, `K_ell-K_(ell-1)` é exatamente a soma de
+`|muhat_ell(xi)|^2` sobre frequências primitivas. Portanto
+`K_ell=1+sum_(r<=ell)E_r`, e uma medida 3-ádica tem densidade L2 se, e
+somente se, `sum_r E_r<infinity`. O5 é a versão incremental por dígito
+novo; O7 é a versão cumulativa. A identidade não seleciona a maior
+frequência nem encadeia frequências entre escalas. O resultado entrou
+em `main.tex` como `thm:multiscale-parseval`. E-124 verificou as leis de
+Syracuse e refinamentos aleatórios compatíveis até `ell=12`, com erro
+abaixo de `6e-14`.
+
+## H-154/E-123: energia primitiva é desequilíbrio nas fibras novas
+
+Parseval em dois níveis dá a identidade exata
+`sum_(3 não divide xi)|muhat(xi)|^2 = 3^(ell-1) sum_b[(x0-x1)^2+
+(x1-x2)^2+(x2-x0)^2]`. Logo o espectro primitivo zera exatamente para
+levantamentos uniformes da marginal. Existem cadeias projetivamente
+consistentes, não plenas e com todo novo espectro primitivo nulo. Para
+contagens inteiras de total `T`, uma única fibra não uniforme força
+`max|muhat(xi)|>=1/T`, cota atingida pelo exemplo de um buraco. O5 fica
+reduzido a produzir desequilíbrio quantitativo de dígitos novos em
+escalas consecutivas e alinhar suas frequências. O resultado entrou em
+`main.tex` como `prop:primitive-fibre-energy`; E-123 verifica a
+identidade até `ell=8`.
+
+## H-153/E-122: não equivalência de blocos na escala linear
+
+Se `r/ell->rho` em `(0,1)` e `(k-ell)/sqrt(ell)->u`, a soma do bloco
+terminal, na escala `sqrt(ell)`, converge a `N(0,2rho)` no ensemble
+canônico e a `N(rho*u,2rho(1-rho))` depois de condicionar
+`K_ell=k`. Como o derivado do bloco condicionado depende apenas dessa
+soma, a distância TV dos vetores coincide com a das somas e converge à
+distância positiva entre essas duas gaussianas. Isso prova que
+`r=o(ell)` em H-146 é afiado para os vetores de custo. A projeção
+residual pode apagar a soma, logo O4 na precisão linear permanece
+aberto. E-122 confirma os limites até `ell=1000`; o teorema entrou em
+`main.tex` como `thm:linear-block-nonequivalence`.
+
+## H-152/E-121: refutado o candidato de buraco central `2^(-1)`
+
+O padrão exato de E-115 sugeria
+`g_ell(ell,2^(-1) mod 3^ell)=0` para todo `ell`. Uma recursão booleana
+direcionada, equivalente à equação (2.1) de Wirsching e sem construir a
+tabela completa, confirmou o buraco até `ell=21`, mas encontrou suporte
+central em `ell=22`. A família permanece alcançável em todos os níveis
+testados até 60. H-152 foi fechada-refutada e não entrou no paper.
+Ver `experiments/E-121-wirsching-central-support/`.
+
+## H-151: auditoria dirigida de novidade Wirsching-Syracuse
+
+Comparação concluída em 2026-08-07 contra Wirsching (2003), Tao
+(arXiv:1909.03562) e a bibliografia anotada de Lagarias. Wirsching
+registra as identidades de convolução, mas deixa `(?2)=>(?1)` como
+Conjectura 1; a fonte não contém o cancelamento gerador nem a estimativa
+de cauda de H-133. Tao não formula a decomposição microcanônica com os
+geradores de Wirsching. Buscas dirigidas não localizaram precedentes
+para H-143 a H-148, mas ausência em busca não estabelece prioridade.
+O paper recebeu uma nota de calibração e a referência de Wirsching foi
+corrigida. Detalhes em
+`hypotheses/H-151-auditoria-novidade-wirsching-syracuse.md`.
+
+## H-150/E-120: dígitos frescos de folhas irmãs têm acoplamento máximo
+
+Para qualquer par fixo de caminhos, os valores das folhas são funções
+afins do mesmo parâmetro 3-ádico, com multiplicadores unitários. Depois
+de condicionar os primeiros r dígitos, os próximos s dígitos de cada
+marginal são uniformes, mas a lei conjunta vive no gráfico de uma
+permutação. Exatamente, TV=1-3^(-s) e a informação mútua é s log 3.
+
+Assim, a antiga formulação de O1 como quase-independência literal de
+dígitos frescos entre pares é impossível. O alvo correto é agregado:
+promediar sobre índices de caminhos independentes, retirar os modos
+afins grosseiros exatos e provar cancelamento da soma diagonal centrada
+restante. E-120 verifica as identidades e o tratamento dos carries.
+
+## H-149/E-119: O5 corrigido para frequências primitivas
+
+A antiga definição SC(epsilon) aceitava toda frequência não nula. Como
+as leis relevantes vivem nos unitários módulo 3^ell, o coeficiente na
+frequência 3^(ell-1) tem módulo pelo menos 1/2 para qualquer lei. Logo
+SC era automático, enquanto a configuração diagonal exigia 3 não
+dividir xi. A redução misturava duas classes de frequências.
+
+O5 foi corrigido para SC_prim, com 3 não dividindo xi. Há uma barreira
+ótima: a lei uniforme em todos os unitários exceto um tem um buraco de
+suporte, mas cada coeficiente primitivo vale exatamente
+1/(2*3^(ell-1)-1). Portanto falha de cobertura abstrata não implica
+SC_prim(epsilon) para epsilon<1. Mais forte, uma lei não plena levantada
+uniformemente de módulo 3^(ell-1) tem todos os coeficientes primitivos
+nulos. O antigo passo tau>=3^-ell podia selecionar um modo grosseiro e
+não alimentava a configuração diagonal. E-119 verifica as identidades
+até ell=8; a prova usa somas de caracteres exatas.
+
+A conclusão diagonal anterior também não encadeava expoentes entre
+escalas e era insuficiente. Ela foi substituída por um alvo aberto de
+segmento consecutivo com comprimento L/log(ell) tendendo a infinito.
+As rotas de Riesz/Halász e da recursão de Pascal não provam esse alvo.
+
+## H-148/E-118: barreira de grande desvio da WCC para beta=1
+
+O orçamento crítico da WCC tem inclinação de custo
+s*=1+log_4(3)=1,79248, abaixo da média canônica 2. A massa de todas as
+representações com B<=s*ell é
+exp(-I(s*)ell+o(ell)), com I(s*)=0,0120393866. Mesmo se essa massa fosse
+perfeitamente uniforme, seu mínimo teria expoente beta no máximo
+alcançável 1+I/log(3)=1,01095872, ainda estritamente acima de 1.
+
+Portanto a possibilidade deixada em H-131 foi fechada: multiplicidade
+dentro do próprio orçamento WCC não recupera todo o déficit. Qualquer
+ponte para beta=1 precisa controlar representações até a janela típica
+B=2ell-o(ell), exatamente onde entram as multiplicidades centrais de
+H-143/H-144. E-118 confirma numericamente a taxa negativa-binomial
+derivada em forma fechada.
+
+## H-147/E-117: dominação microcanônica em precisão total
+
+Para todo r<=ell, a projeção da lei de custo fixo é dominada pela lei
+canônica mu_r com razão de verossimilhança no máximo
+P(K_ell=k)^(-1). Na janela central, o TCL local dá uma perda somente
+O_delta(sqrt(ell)). As divergências de Rényi-infinito e KL são no
+máximo (1/2)log ell+O_delta(1), inclusive em precisão total.
+
+Isso localiza a lacuna O2--O3: não existe uma separação exponencial de
+entropia entre os ensembles, mas a desigualdade é no sentido oposto ao
+limite inferior pontual exigido por (?3). A cauda inferior da razão de
+verossimilhança continua aberta.
+
+E-117 foi executado também em precisão completa. Em ell=13, a distância
+de variação total para r=ell é 0,25195 no custo central e 0,26078 na
+janela superior; em r=1 é 0,01885 e 0,04003. Os dados finitos não
+decidem o limite linear.
+
+## H-146: equivalência de ensembles até precisão sublinear
+
+H-145 foi estendida de r fixo para toda sequência r_ell=o(ell),
+uniformemente em |k-ell|<=delta sqrt(ell). A derivada da lei do bloco
+terminal condicionada ao custo total é a razão
+P(R=k-B)/P(K=k). Concentração exponencial de B e um TCL local uniforme
+fazem essa razão tender a um fora de um conjunto de probabilidade
+evanescente. A projeção não condicionada do bloco é exatamente
+mu_(r_ell).
+
+A consequência vale simultaneamente para todos os caracteres de
+condutor no máximo r_ell. Portanto O4 foi reduzido novamente: não há
+mais regime grosseiro desconhecido em escala sublinear. O problema de
+Fourier restante começa quando o condutor é comparável com ell.
+
+## H-145/E-117: equivalência de ensembles em precisão 3-ádica fixa
+
+Para todo r fixo e uniformemente na janela
+|k-ell| <= delta sqrt(ell), a projeção módulo 3^r da lei
+microcanônica g_ell(k,a)/sum_b g_ell(k,b) converge em variação total
+para a lei de Syracuse canônica mu_r. A prova condiciona a soma dos
+custos dobrados, aplica um TCL local uniforme depois de retirar um
+bloco terminal fixo e usa que esse bloco determina o resíduo na
+precisão fixa.
+
+Logo os coeficientes de Fourier de condutor fixo convergem para os de
+mu_r e em geral não desaparecem. O4 foi corrigido: decaimento uniforme
+em toda frequência não trivial é impossível. H-146 estende o resultado
+a todo r=o(ell); a escala linear continua aberta.
+
+E-117 verificou a convergência até ell=12 e r=3 contra a recursão
+independente de E-100. Em ell=12 e k=ell, as distâncias de variação
+total são 0,02050, 0,04024 e 0,06228 para r=1,2,3.
+
+## H-144/E-116: TCL local condicionado para descondicionar O2 em O3
+
+Foi provada a identidade exata que fatora g_ell(k,a)/bar g_ell(k) no
+produto de duas razões: a massa canônica do resíduo em relação à média
+e a probabilidade local do custo condicionada ao resíduo em relação à
+probabilidade local não condicionada. A segunda satisfaz um TCL local
+no denominador. Assim, uma cota canônica constante e um TCL local
+uniforme condicionado implicam (?3). Beta=1 fornece apenas uma cota
+subexponencial para o primeiro fator.
+
+Uma primeira versão comparava G_(ell,a) diretamente com bar G em todo
+o círculo complexo. A crítica mostrou que essa hipótese, embora
+suficiente, era estéril por causa do viés grosseiro mod 3. Ela foi
+substituída pela formulação condicionada correta.
+
+E-116 testou a rota mais simples por soma L1 de Fourier. No custo
+central, o orçamento cresce de 12,11 em ell=4 para 293,29 em ell=12,
+dominado por frequências primitivas. A desigualdade triangular não
+prova positividade uniforme nesse intervalo.
+
+Busca bibliográfica: os TCLs locais de Dragičević et al. (2018) e
+Hafouta (2020) exigem cociclos torcidos quase compactos ou estabilidade
+Ruelle-Perron-Frobenius uniforme em um espaço regular fixo, além de
+aperiodicidade. Essas hipóteses não seguem da convergência forte de
+Wirsching, pois a resolução de g_(ell-1) cresce com ell.
+
+## H-143/E-115: ponte microcanônica exata entre O3 e O2
+
+A medida de Syracuse módulo 3^ell é exatamente a mistura geométrica
+dos geradores de Wirsching g_ell(k,a). Dobrar cada expoente pela ordem
+c_i=2*3^i dá a identidade registrada em H-143. Um TCL para a soma dos
+custos dobrados mostra que a condição (?3), uniforme em
+k=ell+O(sqrt(ell)), implica mu_ell(a) maior que C*3^(-ell)
+uniformemente. Portanto o alvo da Conjectura 2 implica diretamente a
+estimativa de cilindro beta=1 de O2.
+
+E-115 calculou as multiplicidades por custo até ell=12. Na janela
+superior k=ell+floor(sqrt(ell)), 99,73% dos resíduos já são atingidos,
+mas o mínimo ainda é zero. O resultado finito não decide a conjectura.
+
+## H-142: O7 também inclui q=3
+
+A conclusão restringia O7 a q maior ou igual a 5, mas a conjectura no
+corpo inclui todo q ímpar maior ou igual a 3. Em q=3, a raiz menor é 1
+e a lei inclinada é a medida de Syracuse ordinária. Medições Hill/EVT
+não resolvem sua continuidade absoluta. A conclusão e uma frase que
+chamava o caso q=3 de resolvido foram corrigidas.
+
+## H-141/E-114: critério Lp exato por colisões
+
+Para toda raiz de pressão e todo p maior que 1, foi provado
+||M_k||_p^p = q^(k(p-1)) sum_u mu_k(u)^p. A medida projetiva tem
+densidade em Lp se e somente se esses momentos são uniformemente
+limitados. Para p inteiro, a soma é uma probabilidade de colisão de p
+cópias. E-114 calculou o espectro finito até k=14: o crescimento
+desacelera abaixo de p=2 e acelera acima de p=2, sem decidir o limite.
+O resultado entrou como Teorema thm:lp-collision.
+
+O repositório principal confirmado pelo diretor científico é
+https://github.com/rat/collatz. As verificações públicas do paper 01
+devem ser espelhadas em https://github.com/faculdade/collatz-endogeny
+antes de o paper ser considerado pronto.
+
+## H-140: a refutação L2 era apenas evidência finita
+
+Valores de `K_ell` até `ell=17` não provam `K_infinity=infinity`. O
+martingale de H-138 prova monotonicidade dos segundos momentos, mas não
+divergência. O antigo teorema foi convertido em resultado empírico e
+todas as consequências que chamavam L2 de refutado foram removidas.
+
+## H-139: raiz congelada produz medida singular
+
+Foi provada a identidade `H(p_alpha)-log(q)=s(alpha)`. Na raiz maior,
+o déficit de entropia permite escolher `t<1` com
+`E[M_k^t]<=R(t)^k`, `R(t)<1`. Logo o martingale de densidade tende a
+zero Haar-quase certamente e a medida inclinada é singular. Na raiz
+menor o sinal se inverte; o obstáculo para obter momentos acima de um é
+a multiplicidade ponderada de colisões de H-131. O resultado entrou
+como Teorema `thm:frozen-singular`.
+
+## H-138: existência do limite q-ádico de O7 provada
+
+Na raiz menor, `Z_k(alpha_-;U mod q^k)` é a densidade, em relação a
+Haar, da lei projetiva da soma de Syracuse inclinada. A consistência
+`F_(k+1)=F_k mod q^k` prova que essas densidades formam um martingale
+não negativo de média um. Logo existe um limite finito quase certamente.
+O7 agora pergunta apenas pela não degenerescência e pela cauda desse
+limite. O resultado entrou como Teorema `thm:qadic-martingale`.
+
+Rodada crítica: o limite é a derivada de Radon--Nikodym da parte
+absolutamente contínua da medida inclinada em relação a Haar. Assim, O7
+é agora um problema de absoluta continuidade e cauda da densidade, com
+ligação direta ao problema ponderado de O2.
+
+## H-137: O8 corrigido para uma transição de expoente
+
+`N_u(x)~x` era impossível porque `N_u` conta apenas inteiros ímpares.
+As fontes clássicas conjecturam `log N_u(x)/log x -> 1`, sem constante
+assintótica e sem densidade positiva. O8 agora afirma
+`N_u(x)=x^(alpha_-(q)+o(1))`. A seção KL--Volkov também foi rebaixada:
+o bootstrap não inclui o viés de janela ainda visível, portanto a
+medição não exclui valores assintóticos. O7 foi reformulado em um
+ambiente coerente com raiz Haar-uniforme, pois o antigo `W_u` dependia
+da assíntota removida.
+
+## H-136: O6 não é uma redução autocontida
+
+As versões primárias atuais de arXiv:2603.25753 e arXiv:2603.11066 foram
+comparadas. A condição módulo 32 depende de um `delta_max` não
+especificado e de um orçamento que não aparece na formulação atual do
+paper companheiro. Este exige equidistribuição em módulos crescentes e
+controle uniforme das caudas de gaps. E-102 mede somente o estatístico
+módulo 32. `main.tex` agora o apresenta como diagnóstico externo, não
+como redução nem como problema aberto. A posição O6 foi mantida apenas
+para preservar a numeração histórica O1-O8.
+
+## H-135: status lógico de O4 e O5 corrigido
+
+A auditoria encontrou um teorema sem redução formal e um lema cujo
+último passo era explicitamente aberto. `main.tex` agora trata a relação
+de O4 com outras teorias como contexto, formula `lem:B` como conjectura
+de estabilidade espectral e limita `thm:propC` ao orçamento annealed
+realmente calculado. O4 e O5 permanecem abertos, agora sem sobrealegações.
+
+## H-134: Conjectura 2 de Wirsching reduzida a mistura relativa
+
+A recursão normalizada é `f_ell=S_ell f_(ell-1)`. A prova do Teorema 3
+de Wirsching aproxima `S_ell` por `S_infty` em resolução `3^(-r)`, mas
+exige `2r<=ell-1`. As densidades aritméticas podem oscilar na resolução
+`3^(-(ell-1))`. Na janela extrema, uma cota absoluta também não basta,
+pois o perfil médio tende a zero. H-134 isola a estimativa relativa de
+quadratura que implicaria `(?3)`. Ela é a versão de operador da mistura
+de dígitos frescos de O1.
+
+## H-133/E-113: prova da Conjectura 1 de Wirsching
+
+A convolução `ebar_ell=p_ell*gbar_ell` tem função geradora exatamente
+`(1-z)^(-ell-1)/(2*3^(ell-1))`: os fatores de moedas de `p_ell`
+cancelam as restrições de capacidade que definem `gbar_ell`. O peso da
+convolução com deslocamento `m>=eta*sqrt(ell)` é
+`exp(-c*sqrt(ell)+O(log^2 ell))`. Portanto uma cota uniforme para
+`g_ell/gbar_ell` na janela CLT transfere para `e_ell/ebar_ell` numa
+janela ligeiramente menor. Isso prova a Conjectura 1 de Wirsching
+(2003). `E-113` confere a identidade coeficiente a coeficiente em casos
+finitos. A Conjectura 2 permanece como o elo aberto de O3.
+
+Rodada crítica concluída em 2026-08-07. A equação binomial foi conferida
+contra a fórmula (1.4) da fonte, a majorante de partições e a razão
+binomial foram auditadas, e o quantificador sequencial foi tratado por
+subsequência ruim. A prova entrou em `papers/01-syracuse-qx1-endogenia/main.tex`
+como Teorema `thm:wirsching-conj1`. O paper compila em duas passadas sem
+referências indefinidas.
+
+## H-132/E-112: O7 resolvido no modelo iid, transferência aritmética aberta
+
+`H-132` separa as duas versões do problema do índice de cauda. Para a
+martingala aditiva do modelo iid, o teorema de Liu, na formulação auditada por
+Chen, de Raphélis e Ma, dá
+`P(W_infinity>x) ~ C_q x^(-alpha_plus/alpha_minus)` com `C_q>0`. As hipóteses
+reduzem à equação de pressão fechada, ao sinal na raiz menor, à soma geométrica
+dos pesos e à irracionalidade de `log(q)/log(2)`. `E-112` verifica a parte
+algébrica. O congelamento da raiz maior não bloqueia esse teorema de cauda.
+
+A afirmação para uma raiz da árvore aritmética continua aberta e depende do
+mesmo mecanismo de independência ou mistura entre subárvores de O1. O paper 01
+agora contém o Teorema `thm:iid-tail` e mantém separadamente a conjectura
+para a árvore aritmética.
+
+## H-131/E-111: corrigida a escala da alegada ponte WCC para beta=1
+
+Retomada do paper 01 em 2026-08-07. A Proposição `prop:beta-wcc` foi
+auditada diretamente contra a definição primária da variável de Syracuse.
+A identidade dos suportes com as somas mistas de Wirsching permanece
+correta, mas cobertura não ponderada não implica automaticamente a massa
+geométrica que define `c_ell`.
+
+Foi provada a identidade exata
+
+`max_z B_ell(z) = ell + j*(ell)`,
+
+onde `B_ell(z)` é o menor custo geométrico de uma tupla de Syracuse que
+representa `z`. A prova é uma bijeção entre tuplas de custo
+`B<=ell+j` e `2^(-(ell+j)) R_{ell-1,j}`. E-111 confirmou a identidade
+para `ell=1..12` após quatro validações DP versus força bruta.
+
+Consequência: mesmo WCC na escala `j*=log_4(3)ell+o(ell)` dá, por uma
+única representação, apenas `beta<=1.130929...`, não `beta=1`. A
+contagem de entropia anterior estava incorreta e foi substituída no
+paper 01 pela identidade exata de custo e pela formulação ponderada que
+falta provar.
+
+A distribuição ponderada completa foi calculada por uma segunda recursão,
+validada por `c_1=1/3` e `c_2=2/63`. O expoente efetivo cai até
+`beta_eff(12)=1.222938`, compatível com beta=1 e mostrando ganho real de
+multiplicidade. Permanece aberto provar que essa multiplicidade é
+subexponencialmente próxima da média no pior resíduo. Ver H-131 e E-111.
 
 ## Quinta rodada de auditoria do paper 01 (última checagem pré-publicação): 4 achados, todos no resumo
 
