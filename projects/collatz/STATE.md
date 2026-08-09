@@ -2,6 +2,44 @@
 
 Última atualização: 2026-08-08
 
+## H-158 passo 4 / H-161 nova: tentativa da desigualdade recursiva
+
+Consulta a modelo mais forte (Fable, Regra 11b) sobre o passo 4 de
+H-158 (desigualdade recursiva subexponencial para `c_ell`). Cada
+alegação verificada de forma independente antes de aceitar (Regra 8c).
+
+Confirmado por nós (rederivado do zero, não só lendo o script da
+consulta): a recursão `mu_ell(y) = 1/2 nu(2y) + 1/2 mu_ell(2y)` admite
+reindexação exata via o mapa afim `A(k)=4k+1 (mod 3^(ell-1))`, um único
+ciclo cobrindo `Z/3^(ell-1)Z`, dando `c_ell = (1/4) min_k G(k)` com
+`G(k)=sum_j 4^-j mu_(ell-1)(A^j(k))`. Disso seguem duas cotas
+elementares confirmadas por nós: `c_ell >= c_(ell-1)/16` (`beta<=
+2.523719`) e, no pior caso de fase, `c_ell >= (5/63) c_(ell-1)`
+(`beta<=2.306270`, corrigindo um arredondamento da consulta original).
+
+Argumento adversarial (esboço, não rederivado linha a linha por nós)
+sugere que NENHUMA desigualdade escalar (só `c_(ell-1)`) pode fazer
+melhor que ~essa mesma cota — responderia ao passo 4 como formulado:
+uma recursão puramente escalar não pode provar `beta=1`, é preciso
+informação posicional sobre a órbita de `A`.
+
+A consulta propôs uma reformulação (beta_eff->1 sse arcos deficientes
+ao longo de `A` são o(ell), a limiares que encolhem exponencialmente) e
+alegou suporte empírico de que esses arcos "não crescem". Essa alegação
+específica NÃO se sustentou na primeira checagem (o script da consulta
+usava limiares fixos, não exponenciais, e uma das colunas realmente
+cresce). Refeita a medição com limiar correto e linha de base de
+arranjo aleatório: agora HÁ sinal real (arco observado abaixo da linha
+de base, decrescente em um dos dois limiares testados), mas o
+intervalo (`ell=8` a `18`) é curto demais para extrapolar. O veredito
+da consulta ("beta_eff->1 é verdadeiro") foi descartado como julgamento
+heurístico de um único modelo, não registrado como achado.
+
+Reformulação registrada como hipótese própria, H-161 (`in-progress`),
+separada de H-158 por não ser auditoria computacional (Regra 8e). H-158
+continua `em andamento`; passo 4 permanece sem solução, agora com uma
+pergunta mais concreta em seu lugar.
+
 ## E-129: agregação sobre o gap de irmãos não restaura independência (H-159 continua aberta)
 
 Testada a rota ingênua para H-159: promediar a lei conjunta de dígitos
