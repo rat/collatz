@@ -384,7 +384,17 @@ ell   razão=pair/(d1*d2)   theta implícito (base d1)
 12         0.100                  3.81
 14         0.024                  4.56
 16        0.0015                  5.91
+18       ~0.00000                 8.80    <- só 2 acertos, ver nota abaixo
 ```
+
+**Nota sobre `ell=18`**: contando acertos exatos por tipo de par,
+`ell=18` tem só 2 acertos no total (0 no Tipo (1,2), 2 no Tipo (2,1)),
+contra ~86 milhões de pares candidatos. Uma razão calculada com 2
+acertos não é uma medição de nada, é o retrato de um único par
+observado expresso como fração. O ponto de `ell=18` é consistente com
+a tendência continuar, mas não fornece evidência real disso — em
+`eps=0.1` o limiar já esgota o sinal utilizável por volta desse nível,
+mesmo com o baseline corrigido.
 
 A razão corrigida é próxima da versão poolada e cai um pouco MAIS
 rápido, não menos: consertar o artefato de pooling não explicou o

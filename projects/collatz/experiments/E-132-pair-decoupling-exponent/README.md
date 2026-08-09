@@ -21,7 +21,7 @@ re-verified: the union bound forces no pair below
 Run:
 
 ```sh
-python3 pair_decoupling.py --levels 8 10 12 14 16 --eps 0.1
+python3 pair_decoupling.py --levels 8 10 12 14 16 18 --eps 0.1
 ```
 
 ## Why a fixed threshold is the wrong test (again)
@@ -59,7 +59,7 @@ product baseline `E[d(phase_a)*d(phase_b)]`.
 
 ## Result (corrected)
 
-At `eps=0.1`, `ell=8..16`, pooled over both pair types:
+At `eps=0.1`, `ell=8..18`, pooled over both pair types:
 
 ```text
 ell   ratio=pair(x)/(d1*d2)   implied theta (if pair ~ d1^theta)
@@ -68,6 +68,7 @@ ell   ratio=pair(x)/(d1*d2)   implied theta (if pair ~ d1^theta)
 12         0.100                    3.81
 14         0.024                    4.56
 16         0.0015                   5.91
+18       ~0.00000                   8.80    <- 2 hits total, see below: not a measurement
 ```
 
 The `d1(x) = d2(2x)` bookkeeping check passes exactly (to the printed
@@ -89,12 +90,22 @@ ell   ratio (1,2)   hits (1,2)   ratio (2,1)   hits (2,1)
 12       0.100         588           0.101         596
 14       0.020         619           0.028         861
 16       0.0008        104           0.0023        310
+18        0             0           ~0              2
 ```
 
 Both types show the same qualitative pattern (falling ratio, no sign
 of leveling off) at comparable magnitude and with comparable hit
-counts, so the pooled result is not an artifact of one type
-dominating the other.
+counts through `ell=16`, so the pooled result up to there is not an
+artifact of one type dominating the other. **`ell=18` does not extend
+this**: total hits collapse to 2 (both in type `(2,1)`, none in type
+`(1,2)`), out of roughly 86 million candidate pairs. A ratio computed
+from 2 hits is not a measurement of anything, it is what a single
+observed pair looks like once expressed as a fraction. The pooled
+`ell=18` row (`pair(x)=7.74e-9`, implied `theta=8.8`) reported by the
+main table above must be read the same way: consistent with the
+trend continuing, but supplying no actual evidence for it. Pushing
+`eps=0.1` further in `ell` runs out of usable signal before it
+confirms or refutes anything.
 
 ## What this does not show
 
