@@ -40,13 +40,52 @@ Expected result: exact match (relative difference at machine precision)
 between the direct recursion (E-111's `weighted_bridge.py`) and the
 orbit-formula reconstruction, at every level and every sampled residue.
 
+## `max_mass_growth.py`: how large can a single point mass get?
+
+The direction of the reformulation that would let a long deficient arc
+*refute* `beta_eff -> 1` needs a bound on the maximum point mass
+`M_ell = max_u mu_ell(u)` (equivalently `N_max = 3^ell M_ell`), to
+control the part of the window sum beyond an observed short arc. A
+one-line induction on the recursion gives `M_ell <= (2/3) M_(ell-1)`
+(only half the terms contribute, by parity, each at most
+`M_(ell-1)`), hence `M_ell <= (2/3)^ell`, i.e. `N_max <= 2^ell`
+always — proved and checked by assertion in this script. The *actual*
+growth is tighter: the ratio `N_max(ell)/N_max(ell-1)` converges to
+exactly `1.5` by `ell~10`, i.e. `N_max ~ C*(3/2)^ell`, better than the
+proved bound but still exponential, not bounded. This is why the
+"long arc implies beta doesn't -> 1" direction does not close for the
+arc lengths actually observed (see H-161 and `deficient_arc_scan.py`
+below): even the sharper empirical rate requires arcs of length
+`~0.29*ell` to make the tail negligible, and the observed arcs (3-5)
+fall below that threshold from `ell~14` onward.
+
+Run:
+
+```sh
+python3 max_mass_growth.py --max-level 16
+```
+
 ## `deficient_arc_scan.py`: does the deficiency cluster along the orbit?
 
-From the identity above, `beta_eff(ell) -> 1` is equivalent (elementary
-consequence of the identity, not independently re-derived line by line
-here) to: for every `eps>0`, the longest run of consecutive positions
-along the `A`-orbit with normalized mass `N_ell(u) = 3^ell mu_ell(u) <=
-exp(-eps*ell)` has length `o(ell)`.
+From the identity above, ONE direction of the natural reformulation is
+elementary and proved with no extra hypothesis: if no arc of length
+`Theta(ell)` exists in `{N_ell <= exp(-eps*ell)}` for any `eps>0`, then
+`beta_eff(ell) -> 1` (take the contrapositive: if `beta_eff` does not
+tend to 1, the argmin's window sum has a term-by-term bound that
+directly produces such an arc). The converse ("`beta_eff->1` implies no
+long arc") is NOT established by this argument alone; it needs the
+`N_max` bound above to control the window sum beyond a short arc, and
+neither the proved `2^ell` bound nor the sharper empirical `(3/2)^ell`
+rate closes it at the arc lengths actually observed. So this
+reformulation is currently a proved sufficient condition, not a proved
+equivalence — see H-161 for the full derivation and where exactly it
+does and does not close.
+
+The proved direction is still the one that matters for interpreting
+this measurement: for every `eps>0`, does the longest run of
+consecutive positions along the `A`-orbit with normalized mass
+`N_ell(u) = 3^ell mu_ell(u) <= exp(-eps*ell)` grow, stay bounded, or
+shrink?
 
 Testing this needs a threshold that shrinks with `ell`. A first attempt
 used FIXED thresholds (0.2, 0.3, 0.5) and found the longest run growing
@@ -62,19 +101,25 @@ positions, `p` = the level's own observed fraction below threshold).
 Run:
 
 ```sh
-python3 deficient_arc_scan.py --min-level 8 --max-level 18 --eps-list 0.1 0.2
+python3 deficient_arc_scan.py --min-level 8 --max-level 19 --eps-list 0.1 0.2
 ```
 
 Expected result: at `eps=0.1`, the observed longest run (5,5,5,5,5,5,
-4,4,4,4,3 for `ell=8..18`) stays below the random-arrangement baseline
-throughout, and decreases over the tested range while the baseline
-rises then plateaus (6.89 to 8.13 to 7.87). At `eps=0.2`, the observed
-run is 2 wherever the threshold is met at all, again at or below
-baseline (baseline falls toward 0 as the fraction below threshold
-collapses to zero by `ell=16`). This is evidence of anti-clustering
-(not merely absence of clustering) of the deficient positions along
-the `A`-orbit, but the tested range (`ell=8` to `18`, 11 points) is far
-too short to extrapolate an asymptotic conclusion. See H-161.
+4,4,4,4,3,2 for `ell=8..19`) stays below the random-arrangement
+baseline throughout, and decreases over the tested range while the
+baseline rises then plateaus (6.89 to 8.13 to 7.71). At `eps=0.2`, the
+observed run is 2 wherever the threshold is met at all, again at or
+below baseline (baseline falls toward 0 as the fraction below
+threshold collapses to zero by `ell=16`). This is evidence of
+anti-clustering (not merely absence of clustering) of the deficient
+positions along the `A`-orbit, but the tested range (`ell=8` to `19`,
+12 points) is far too short to extrapolate an asymptotic conclusion,
+and even a confirmed asymptotic trend would only feed the proved
+direction above (shrinking arcs support `beta_eff->1`), not prove it
+outright. `ell=20` was not reached: the full-array method here needs
+close to 90GB at that level, near this machine's safe ceiling; going
+further needs an implementation that does not materialize the whole
+`3^ell`-length law. See H-161.
 
 ## Cross-check
 
