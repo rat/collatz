@@ -103,6 +103,29 @@ significa que a formulação "sse" da consulta original estava incorreta
 e que "arco curto" não é (ainda) um critério equivalente, só suficiente
 por um lado.
 
+## Reformulação mais afiada da faixa em aberto (2026-08-09)
+
+`W(k) := G(k)/mu_(ell-1)`-normalizado satisfaz, por reindexação direta
+da soma geométrica (verificado numericamente: `W(k) = N(k) + (1/4)
+W(A(k))` bate exatamente contra a recursão de referência em vários
+`k`), a identidade exata
+
+```text
+W(k) = N(k) + (1/4) W(A(k))
+```
+
+Logo, após um arco deficiente de comprimento `m` a partir de `k0`
+(isto é, `N(k0),...,N(A^(m-1) k0)` todos pequenos), a cauda que falta
+controlar é EXATAMENTE `4^-m * W(A^m k0)` — nem mais, nem menos. Isso
+reduz toda a faixa em aberto de (B) a uma única pergunta: **`W` pode
+ser exponencialmente grande justamente na posição logo depois de um
+arco deficiente terminar?** Sabemos que `max_k W(k) >= N_max ~
+(3/2)^ell` (valores grandes de `W` existem em algum lugar da órbita);
+o que não sabemos é se esses valores grandes podem ficar adjacentes a
+um arco deficiente — se puderem, a volta da equivalência é falsa nessa
+faixa (haveria arco curto sem `beta_eff->1`); se não puderem (por
+algum motivo estrutural), a volta fecha na faixa toda.
+
 ## Por que isso importa
 
 Se verdadeiro, reduz a pergunta original (limite de uma sequência
