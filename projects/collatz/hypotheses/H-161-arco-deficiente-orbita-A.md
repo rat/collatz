@@ -254,3 +254,148 @@ esbarrou no teto seguro de memória desta máquina em `ell=19-20`
 implementação que não materialize a lei inteira (rastrear só a órbita
 de `A` a partir de um `k` candidato, recursivamente, sem o array
 completo de tamanho `3^ell`), não simplesmente mais RAM.
+
+## Segunda consulta (2026-08-09): reduz a faixa aberta a uma pergunta sobre pares
+
+Nova consulta (Fable, Regra 11b), com o contexto totalmente corrigido
+(a "sse" errada, o bug do arco, os números certos) e duas perguntas
+concretas: (1) a identidade `W(k)=N(k)+(1/4)W(A(k))` reduz toda a
+faixa aberta de (B) a "pode `W` ficar exponencialmente grande logo na
+posição seguinte a um arco deficiente terminar?"; (2) uma tentativa de
+prova real de anti-concentração conjunta em pares consecutivos
+(`m=2`). Cada alegação verificada de forma independente antes de
+aceitar (Regra 8c); desta vez TUDO que foi verificado passou —
+nenhuma correção necessária, ao contrário das duas rodadas anteriores.
+
+### Identidades novas, provadas e verificadas numericamente (a ~1e-14, código escrito do zero)
+
+- **F1** (consequência direta de definições já estabelecidas):
+  `N_ell(y) = 3*2^-t0(y)*W(k0(y))`. Cada ponto `k0` da órbita tem
+  exatamente dois "filhos" `y`, com valores `(3/2)W(k0)` e `(3/4)W(k0)`.
+- **F3** (indução de uma linha na própria recursão sem memória):
+  `N_ell(2y) <= 2 N_ell(y)` SEMPRE, com igualdade exata quando `y==1
+  mod 3`. Verificado: 0 violações em 2029 amostras aleatórias; a
+  igualdade em `y==1 mod 3` bate a `<1e-9` em todos os casos testados.
+  Consequência usada em Q1 abaixo: `N_ell(2^s y) <= 2^s N_ell(y)`.
+- **F4** (consistência marginal entre níveis, pushforward): a soma das
+  3 massas "filhas" de `u` no nível `ell` é exatamente `mu_(ell-1)(u)`.
+  Verificado exatamente (erro `~1e-19`).
+- **F2** (a estrutura por trás da pergunta de pares — a mais elaborada,
+  verificada em 30+30 amostras com erro relativo `~1e-16`): na
+  sequência contraída às unidades, pares consecutivos vêm em dois
+  tipos, ambos redutíveis a um par de valores de `W` no nível
+  `ell-2` ligados por um mapa afim explícito:
+  - Tipo (1,2) (`k==1 mod 3`, par com `A(k)`): `N(k)=(3/4)W''(a)`,
+    `N(A(k))=(3/2)W''(b)`, com `b = 2a+1 (mod 3^(ell-2))`. Confirmado
+    exatamente.
+  - Tipo (2,1) (`k'==2 mod 3`, par com `A²(k')`, pulando a
+    não-unidade): `N(k')=(3/2)W''(b)`, `N(A²(k'))=(3/4)W''(a''')`, com
+    `a''' = 32b+17 (mod 3^(ell-2))`. Confirmado exatamente.
+
+### Questão 1: `W` pode ficar grande logo depois de um arco deficiente?
+
+**Exclusão provada (sem deslocamento aditivo, o resgate é impossível):**
+`A^m(k) = 4^m k + (4^m-1)/3` (fórmula fechada, indução trivial). Se o
+deslocamento aditivo não existisse, F3 daria `N(4^m k0) <= 4^m N(k0)
+<= 4^m exp(-eps*ell)` — um fator `exp(eps*ell)` ABAIXO do necessário
+para resgatar `W(A^m k0)`. Ou seja: a pequenez de `N` se propaga
+exatamente ao longo de retas multiplicativas (potências de 2), mas a
+janela do arco lê ao longo de uma reta multiplicativa DESLOCADA
+aditivamente por `(4^m-1)/3`. Isso identifica a faixa aberta como um
+problema tipo soma-produto em `Z/3^ell`, não uma questão vaga — e
+explica por que um argumento espectral "soft" sozinho não fecha.
+
+Sem essa exclusão, nada mais foi provado: um argumento de contagem por
+entropia (heurístico, não uma prova) sugere que em escala `m=O(1)`
+adjacência de `W` grande a um valor pequeno NÃO é proibida e pode até
+ser comum; só em escala `m=Theta(ell)` (a que quebraria `beta_eff->1`)
+a heurística pesa contra. Ambos os lados continuam sem prova.
+
+### Questão 2: anti-concentração em pares consecutivos (`m=2`)
+
+**Correção necessária no nosso próprio enunciado original**: pedir
+`P(N(k)<=x` e `N(A(k))<=x)` sobre `k` unidade qualquer é trivialmente
+falso, porque `A(k)` pode ser não-unidade (`N=0` de graça) para
+`k==2 mod 3`. O enunciado certo é sobre pares de unidades CONSECUTIVAS
+na sequência contraída (cobrindo os dois tipos de F2) — o mesmo
+cuidado de contração já usado no conserto do bug do arco.
+
+**Teorema condicional, rederivado e confirmado por nós (não só aceito
+da consulta):** se existem `kappa>0`, `C<infinito` com
+
+```text
+P(par consecutivo, ambos <= x) <= C*x^(2*kappa)   para x >= exp(-c0*ell)
+```
+
+com `c0 >= log(3)/(2*kappa)` (condição de escopo: o piso da união
+precisa estar dentro do intervalo onde a cota vale), então
+`beta_eff <= 1 + 1/(2*kappa) + o(1)`, incondicionalmente. Rederivação:
+cota de união sobre os `~3^(ell-1)` pares força zero pares abaixo de
+`x* ~ 3^(-ell/(2*kappa))`; se nenhum par tem os dois valores `<=x*`,
+então para todo `k`, ou `N(k)>x*` (daí `W(k)>=N(k)>x*`) ou `N(k)<=x*`
+e o próximo par força `N` da próxima unidade `>x*`, contribuindo pelo
+menos `x*/16` a `W(k)` (peso mínimo `4^-2` no pior caso, distância 2
+no Tipo (2,1)) — em ambos os casos `W(k)>=x*/16` para todo `k`, logo
+`3^ell c_ell = (3/4)min_k W(k) >= (3/16)x*`, dando o resultado.
+Calibração: a cota escalar já registrada acima (`beta<=2.523719`, via
+`c_ell>=c_(ell-1)/16`) corresponde a este mecanismo sem nenhuma
+informação de par; QUALQUER `kappa` constante provado já melhora essa
+cota (`kappa=0.4` já daria `beta<=2.25`, incondicional e novo).
+
+**O que falta provar**: só a direção difícil do teorema condicional
+acima — a própria desigualdade de par. A direção fácil (par implica
+controle em nível `ell`, "sanduíche") foi verificada como consequência
+direta de F1 e da recursão de `W`; a direção difícil (desacoplamento
+genuíno) não tem argumento algébrico exato disponível (as janelas de
+`k` e do "próximo" ponto só coincidem exatamente por 1 nível; além
+disso, ficam genericamente disjuntas, mas "genericamente disjuntas"
+não é uma prova de independência). Um programa concreto (não fechado)
+foi esboçado via somas de Weyl 3-ádicas no tempo de órbita explícito
+`tau(u) = log(1+3u)/log(4)` (3-adicamente convergente), com uma
+checagem de não-degenerescência da fase que se sustenta algebricamente
+mas não foi verificada por nós além da conferência da álgebra em si.
+
+### E-132: medição direta do expoente de descorrelação — sinal forte
+
+Medido `pair(x)/d(x)^2` (`d` = cauda marginal, `pair` = cauda conjunta
+do par) a limiar ESCALADO `exp(-eps*ell)` (limiar fixo mistura o
+efeito de correlação com a mudança de raridade — a mesma armadilha já
+corrigida no arco). Em `eps=0.1`, `ell=8` a `16`:
+
+```text
+ell   razão=pair/d²   theta implícito (se pair~d^theta)
+ 8       0.336               2.90
+10       0.205               3.13
+12       0.084               3.54
+14       0.019               4.16
+16       0.001               5.26
+```
+
+(contagens de acerto entre 129 e 1480, caindo a 414 em `ell=16` — não
+é ruído de amostra única). A razão cai bem abaixo de 1 e continua
+caindo; o `theta` implícito não converge a uma constante, CRESCE. Um
+`theta` fixo já daria o teorema condicional acima com folga (qualquer
+`theta>1` já é útil); um `theta` crescente sugeriria descorrelação
+ainda mais forte que a Hipótese (D) pedia. Mas 5 pontos até `ell=16`
+não bastam para distinguir "expoente genuinamente crescente" de
+"aproximação lenta a um expoente maior fixo" de "efeito de alcance
+finito que não persiste" — é o sinal quantitativo mais forte desta
+linha de investigação até agora, não uma prova de taxa nenhuma. Ver
+`projects/collatz/experiments/E-132-pair-decoupling-exponent/`.
+
+### Avaliação e próximos passos
+
+Nenhum erro nas identidades básicas desta rodada (ao contrário das
+duas rodadas anteriores, tudo verificado passou de primeira). Provado
+nesta rodada: F1, F3, F4, F2 (os dois tipos), a exclusão sem-
+deslocamento de Q1, o teorema condicional par->beta. Heurístico, não
+provado: a plausibilidade de Q2 ser verdadeira, o programa de Weyl, a
+leitura de Q1 em escala `Theta(ell)`. Aberto: a desigualdade de par em
+si (o conteúdo real de Q2), que E-132 agora tem evidência empírica
+forte a favor. Próximos passos concretos, nenhum tentado ainda: medir
+o expoente separadamente por tipo de par (Tipo (1,2) vs (2,1)); medir
+em mais níveis e valores de `eps` para ver se `theta` estabiliza;
+tentar a indução de Weyl esboçada acima usando a estrutura de cilindro
+de F4 (cilindros de profundidade `L` em `u` correspondem a progressões
+aritméticas de módulo `3^L` em tempo de órbita — a ponte que falta
+entre a álgebra e as somas de Weyl).

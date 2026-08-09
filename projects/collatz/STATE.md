@@ -1,6 +1,30 @@
 # Estado atual — Collatz
 
-Última atualização: 2026-08-08
+Última atualização: 2026-08-09
+
+## H-161: segunda consulta reduz a faixa aberta a uma pergunta sobre pares; sinal forte em E-132
+
+Segunda consulta a modelo mais forte (Fable) sobre H-161, com contexto
+totalmente corrigido. Desta vez nenhuma alegação verificada precisou de
+correção (ao contrário das duas rodadas anteriores). Provado e
+verificado numericamente: a identidade `W(k)=N(k)+(1/4)W(A(k))` reduz
+toda a faixa em aberto da direção (B) a uma pergunta única (`W` pode
+ficar grande logo depois de um arco deficiente terminar?); uma
+exclusão do mecanismo mais ingênuo de resgate (sem deslocamento
+aditivo é impossível, por F3); e um teorema condicional — se a cauda
+conjunta de pares consecutivos de unidades decai como `x^(2*kappa)`
+até `x~exp(-c0*ell)` com `c0` grande o bastante, então
+`beta_eff<=1+1/(2*kappa)+o(1)` incondicionalmente, melhorando a cota
+escalar já conhecida (`beta<=2.523719`) para qualquer `kappa` provado.
+
+E-132 (novo) mediu diretamente esse expoente de pares com limiar
+escalado corretamente (a mesma armadilha de limiar fixo já corrigida
+no arco): o expoente implícito não converge, CRESCE com `ell` (2.90 a
+5.26 entre `ell=8` e `16`, com centenas a milhares de acertos por
+nível, não ruído de amostra pequena) — sinal mais forte já visto nesta
+linha, mas só 5 pontos, não decide se é taxa genuinamente crescente ou
+efeito de alcance curto. A desigualdade de par em si continua sem
+prova.
 
 ## H-158 passo 4 / H-161: identidade de órbita afim, direção A provada, direção B parcial
 
