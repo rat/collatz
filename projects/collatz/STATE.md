@@ -19,12 +19,24 @@ escalar já conhecida (`beta<=2.523719`) para qualquer `kappa` provado.
 
 E-132 (novo) mediu diretamente esse expoente de pares com limiar
 escalado corretamente (a mesma armadilha de limiar fixo já corrigida
-no arco): o expoente implícito não converge, CRESCE com `ell` (2.90 a
-5.26 entre `ell=8` e `16`, com centenas a milhares de acertos por
-nível, não ruído de amostra pequena) — sinal mais forte já visto nesta
-linha, mas só 5 pontos, não decide se é taxa genuinamente crescente ou
-efeito de alcance curto. A desigualdade de par em si continua sem
-prova.
+no arco). **Correção (Regra 11b, segunda escalada, 2026-08-09):** a
+primeira versão do script comparava a cauda conjunta contra um `d(x)²`
+poolado sobre as duas fases mod 3 do par, mas F1 mostra que as duas
+fases têm marginais diferentes (`N=(3/2)W` vs `N=(3/4)W`) — a mesma
+forma de bug já vista duas vezes (limiar fixo; inflação por
+não-unidade no arco), desta vez na própria medição, não na consulta.
+Corrigido calculando `d1(x)`/`d2(x)` por fase e comparando contra
+`d1*d2`; checagem gratuita `d1(x)=d2(2x)` (forçada por F1) bate exato
+em todos os níveis. O sinal sobrevive à correção e cai um pouco mais
+rápido, não menos (razão 0.379→0.0015 entre `ell=8` e `16`, `theta`
+implícito 3.05→5.91), e persiste igualmente nos dois tipos de par
+medidos separadamente (Tipo (1,2) e (2,1), acertos de 57 a 861). O
+expoente implícito não converge, CRESCE com `ell` — sinal mais forte
+já visto nesta linha, mas ainda poucos pontos (`ell<=16`, `ell=18` em
+processamento), não decide se é taxa genuinamente crescente ou efeito
+de alcance curto; o limiar testado (`eps=0.1`) fica no grosso da
+cauda, não na cauda profunda que o teorema condicional exige. A
+desigualdade de par em si continua sem prova.
 
 ## H-158 passo 4 / H-161: identidade de órbita afim, direção A provada, direção B parcial
 

@@ -355,46 +355,85 @@ foi esboçado via somas de Weyl 3-ádicas no tempo de órbita explícito
 checagem de não-degenerescência da fase que se sustenta algebricamente
 mas não foi verificada por nós além da conferência da álgebra em si.
 
-### E-132: medição direta do expoente de descorrelação — sinal forte
+### E-132: medição direta do expoente de descorrelação — sinal forte (corrigido)
 
-Medido `pair(x)/d(x)^2` (`d` = cauda marginal, `pair` = cauda conjunta
-do par) a limiar ESCALADO `exp(-eps*ell)` (limiar fixo mistura o
-efeito de correlação com a mudança de raridade — a mesma armadilha já
-corrigida no arco). Em `eps=0.1`, `ell=8` a `16`:
+Medido `pair(x)/d(x)^2` a limiar ESCALADO `exp(-eps*ell)` (limiar fixo
+mistura o efeito de correlação com a mudança de raridade — a mesma
+armadilha já corrigida no arco). A primeira versão usava um `d(x)`
+único, poolado sobre as duas fases do par.
+
+**Correção (2026-08-09, segunda escalada Regra 11b):** F1 mostra que os
+dois membros de todo par consecutivo têm marginais DIFERENTES
+(`N=(3/2)W` na fase 2, `N=(3/4)W` na fase 1, e a sequência contraída
+alterna fase 1,2,1,2,... estritamente). Comparar a cauda conjunta
+contra um `d(x)^2` poolado não é a linha de base de independência
+correta: por AM-GM, `d1*d2 <= ((d1+d2)/2)^2` sempre que `d1!=d2`, então
+o pooling empurra o denominador de "independência" para cima e a razão
+aparente para baixo, mecanicamente — o mesmo formato de erro já visto
+duas vezes nesta sessão (limiar fixo; inflação por não-unidades no
+arco). Detectado antes de aceitar os números. Corrigido calculando
+`d1(x)` e `d2(x)` por fase separadamente, com checagem gratuita
+`d1(x)=d2(2x)` (forçada por F1, bate exatamente em todos os níveis
+testados) e comparando contra a linha de base correta
+`E[d(fase_a)*d(fase_b)]`.
 
 ```text
-ell   razão=pair/d²   theta implícito (se pair~d^theta)
- 8       0.336               2.90
-10       0.205               3.13
-12       0.084               3.54
-14       0.019               4.16
-16       0.001               5.26
+ell   razão=pair/(d1*d2)   theta implícito (base d1)
+ 8         0.379                  3.05
+10         0.237                  3.32
+12         0.100                  3.81
+14         0.024                  4.56
+16        0.0015                  5.91
 ```
 
-(contagens de acerto entre 129 e 1480, caindo a 414 em `ell=16` — não
-é ruído de amostra única). A razão cai bem abaixo de 1 e continua
-caindo; o `theta` implícito não converge a uma constante, CRESCE. Um
-`theta` fixo já daria o teorema condicional acima com folga (qualquer
-`theta>1` já é útil); um `theta` crescente sugeriria descorrelação
-ainda mais forte que a Hipótese (D) pedia. Mas 5 pontos até `ell=16`
-não bastam para distinguir "expoente genuinamente crescente" de
-"aproximação lenta a um expoente maior fixo" de "efeito de alcance
-finito que não persiste" — é o sinal quantitativo mais forte desta
-linha de investigação até agora, não uma prova de taxa nenhuma. Ver
-`projects/collatz/experiments/E-132-pair-decoupling-exponent/`.
+A razão corrigida é próxima da versão poolada e cai um pouco MAIS
+rápido, não menos: consertar o artefato de pooling não explicou o
+sinal, ao contrário do que seria a expectativa natural para esse
+formato de viés. Separado por tipo de par (ambos contra a mesma linha
+de base `d1*d2`):
+
+```text
+ell   razão (1,2)   acertos (1,2)   razão (2,1)   acertos (2,1)
+ 8      0.423            72            0.335           57
+10      0.268           275            0.205          210
+12      0.100           588            0.101          596
+14      0.020           619            0.028          861
+16     0.0008           104           0.0023          310
+```
+
+Os dois tipos mostram o mesmo padrão qualitativo (razão caindo, sem
+sinal de estabilizar), com contagens de acerto comparáveis — o
+resultado poolado não é artefato de um tipo dominar o outro.
+
+A razão cai bem abaixo de 1 e continua caindo; o `theta` implícito não
+converge a uma constante, CRESCE. Um `theta` fixo já daria o teorema
+condicional acima com folga (qualquer `theta>1` já é útil); um `theta`
+crescente sugeriria descorrelação ainda mais forte que a Hipótese (D)
+pedia. Mas 5 pontos até `ell=16` não bastam para distinguir "expoente
+genuinamente crescente" de "aproximação lenta a um expoente maior
+fixo" de "efeito de alcance finito que não persiste"; além disso, em
+`eps=0.1` o limiar testado (`d1(x)` entre 0.40 e 0.19) fica no grosso
+da cauda, não na cauda profunda que o teorema exige
+(`x ~ exp(-c0 ell)` com `c0>=log(3)/(2 kappa)`), e empurrar `eps` mais
+fundo esbarra na mesma parede do arco (o limiar cai abaixo do menor
+`N` observado por volta de `ell~14`). É o sinal quantitativo mais
+forte desta linha de investigação até agora, não uma prova de taxa
+nenhuma. Ver `projects/collatz/experiments/E-132-pair-decoupling-exponent/`.
 
 ### Avaliação e próximos passos
 
 Nenhum erro nas identidades básicas desta rodada (ao contrário das
-duas rodadas anteriores, tudo verificado passou de primeira). Provado
-nesta rodada: F1, F3, F4, F2 (os dois tipos), a exclusão sem-
+duas rodadas anteriores, tudo verificado passou de primeira) — mas a
+própria medição de E-132 teve um bug de mesma família (marginais
+poolados incorretamente), corrigido antes de ser aceita, ver acima.
+Provado nesta rodada: F1, F3, F4, F2 (os dois tipos), a exclusão sem-
 deslocamento de Q1, o teorema condicional par->beta. Heurístico, não
 provado: a plausibilidade de Q2 ser verdadeira, o programa de Weyl, a
 leitura de Q1 em escala `Theta(ell)`. Aberto: a desigualdade de par em
-si (o conteúdo real de Q2), que E-132 agora tem evidência empírica
-forte a favor. Próximos passos concretos, nenhum tentado ainda: medir
-o expoente separadamente por tipo de par (Tipo (1,2) vs (2,1)); medir
-em mais níveis e valores de `eps` para ver se `theta` estabiliza;
+si (o conteúdo real de Q2), que E-132 (já corrigido, separado por tipo
+de par) tem evidência empírica forte a favor. Próximos passos
+concretos, nenhum tentado ainda: medir em mais níveis (`ell=18` em
+andamento) e mais valores de `eps` para ver se `theta` estabiliza;
 tentar a indução de Weyl esboçada acima usando a estrutura de cilindro
 de F4 (cilindros de profundidade `L` em `u` correspondem a progressões
 aritméticas de módulo `3^L` em tempo de órbita — a ponte que falta

@@ -33,31 +33,68 @@ arc lengths). This script uses `x = exp(-eps*ell)`, which shrinks
 with `ell`, so the comparison is between events of comparable rarity
 at each level.
 
-## Result
+## Correction (Rule 11b escalation, 2026-08-09): the first version pooled two different marginals
 
-At `eps=0.1`, `ell=8..16`:
+The first version of this script computed `ratio = pair(x)/d(x)^2`
+against a single pooled marginal `d(x)`. This is wrong: F1 (H-161)
+shows the two positions of every consecutive-unit pair sit at
+different phases mod 3 with genuinely different distributions
+(`N = (3/2)*W` at phase 2, `N = (3/4)*W` at phase 1), and the
+contracted unit sequence strictly alternates phase 1, 2, 1, 2, ...
+Comparing the joint tail against a pooled marginal squared is not the
+correct independence baseline: by AM-GM, `d1*d2 <= ((d1+d2)/2)^2` for
+any `d1 != d2`, so pooling mechanically pushes the "independence"
+denominator up and the apparent ratio down, inflating the appearance
+of anti-clustering. This is the same failure shape as two earlier bugs
+in this session (fixed-threshold comparison in an earlier draft of
+this script's own trap, and the non-unit inflation bug in E-131's
+`deficient_arc_scan.py`): a statistic pooled over a population with
+real internal structure.
+
+Caught via a second Rule 11b escalation before the numbers below were
+trusted. The fix: compute `d1(x)` and `d2(x)` for each phase
+separately, verify the free identity `d1(x) = d2(2*x)` (forced by F1)
+as a bookkeeping check, and compare `pair(x)` against the correct
+product baseline `E[d(phase_a)*d(phase_b)]`.
+
+## Result (corrected)
+
+At `eps=0.1`, `ell=8..16`, pooled over both pair types:
 
 ```text
-ell   ratio=pair(x)/d(x)^2   implied theta (if pair ~ d^theta)
- 8         0.336                    2.90
-10         0.205                    3.13
-12         0.084                    3.54
-14         0.019                    4.16
-16         0.001                    5.26
+ell   ratio=pair(x)/(d1*d2)   implied theta (if pair ~ d1^theta)
+ 8         0.379                    3.05
+10         0.237                    3.32
+12         0.100                    3.81
+14         0.024                    4.56
+16         0.0015                   5.91
 ```
 
-(hit counts for the pair statistic range from 129 to 1480, dropping
-to 414 at `ell=16`; not single-observation noise.) The ratio falls
-far below 1 and keeps falling, and the implied exponent `theta`
-(assuming a fixed power-law form `pair(x) ~ d(x)^theta`) is not
-converging to a constant — it grows from 2.90 to 5.26 over the tested
-range. A constant `theta` would already give the conditional result
-above with room to spare (any `theta > 1` is unconditionally useful,
-and even `theta` near 2, i.e. full independence, was the original
-hoped-for target). A GROWING `theta` means the joint tail decays
-faster than any single fixed power of the marginal tail: a stronger
-anti-clustering signal than what the m=2 hypothesis in H-161 asked
-for.
+The `d1(x) = d2(2x)` bookkeeping check passes exactly (to the printed
+precision) at every level, confirming the phase algebra. The corrected
+ratio is close to the pooled version's numbers and falls slightly
+*faster*, not slower: fixing the marginal-mismatch artifact did not
+explain away the signal, contrary to the natural expectation that a
+pooling bug this shape usually inflates an effect. The anti-clustering
+finding survives the correction.
+
+Split by pair type (`(1,2)`: `k==1 mod 3` stepping via `A`; `(2,1)`:
+`k==2 mod 3` stepping via `A^2`, skipping the non-unit), both compared
+against the same product baseline `d1*d2`:
+
+```text
+ell   ratio (1,2)   hits (1,2)   ratio (2,1)   hits (2,1)
+ 8       0.423          72           0.335          57
+10       0.268         275           0.205         210
+12       0.100         588           0.101         596
+14       0.020         619           0.028         861
+16       0.0008        104           0.0023        310
+```
+
+Both types show the same qualitative pattern (falling ratio, no sign
+of leveling off) at comparable magnitude and with comparable hit
+counts, so the pooled result is not an artifact of one type
+dominating the other.
 
 ## What this does not show
 
@@ -65,9 +102,15 @@ Five points at `ell<=16` cannot distinguish "a genuinely growing
 exponent" from "approaching some larger fixed exponent slowly" from
 "a finite-range effect that will not persist." This is evidence, not
 a proof of any rate, and the theorem in H-161 needs the bound to hold
-uniformly down to `x ~ exp(-c0*ell)` for a FIXED `c0` — a growing
-`theta` estimated only at one threshold and one growing `ell` does
-not by itself establish that. It is still the strongest quantitative
-signal so far in this line of investigation, and worth extending
-(more levels, more `eps` values, checking the two pair types
-separately) before attempting to turn it into a proof.
+uniformly down to `x ~ exp(-c0*ell)` for a FIXED `c0` with
+`c0 >= log(3)/(2*kappa)`. At `eps=0.1`, `d1(x)` ranges from about 0.40
+(`ell=8`) to 0.19 (`ell=16`): this probes the bulk of the tail, not a
+deep tail, so a growing `theta` measured only here does not by itself
+establish the uniform bound the theorem needs. Pushing `eps` much
+higher runs into the same wall as E-131's arc scan: by `ell~14` the
+threshold falls below the smallest observed `N` value and the
+statistic loses all hits (see E-131's README, `eps=0.2` column). This
+is still the strongest quantitative signal so far in this line of
+investigation, and worth extending (more levels, an explicit rate fit,
+the Weyl-sum induction program sketched in H-161) before attempting to
+turn it into a proof.
