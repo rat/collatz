@@ -2,11 +2,13 @@
 
 Última atualização: 2026-08-08
 
-## H-158 passo 4 / H-161 nova: tentativa da desigualdade recursiva
+## H-158 passo 4 / H-161: identidade de órbita afim, direção A provada, direção B parcial
 
 Consulta a modelo mais forte (Fable, Regra 11b) sobre o passo 4 de
 H-158 (desigualdade recursiva subexponencial para `c_ell`). Cada
-alegação verificada de forma independente antes de aceitar (Regra 8c).
+alegação verificada de forma independente antes de aceitar (Regra 8c);
+duas rodadas de correção foram necessárias, ver H-161 para o histórico
+completo.
 
 Confirmado por nós (rederivado do zero, não só lendo o script da
 consulta): a recursão `mu_ell(y) = 1/2 nu(2y) + 1/2 mu_ell(2y)` admite
@@ -16,24 +18,36 @@ ciclo cobrindo `Z/3^(ell-1)Z`, dando `c_ell = (1/4) min_k G(k)` com
 elementares confirmadas por nós: `c_ell >= c_(ell-1)/16` (`beta<=
 2.523719`) e, no pior caso de fase, `c_ell >= (5/63) c_(ell-1)`
 (`beta<=2.306270`, corrigindo um arredondamento da consulta original).
+Argumento adversarial (esboço, não rederivado linha a linha) sugere que
+nenhuma desigualdade escalar (só `c_(ell-1)`) pode fazer muito melhor
+que isso: responde ao passo 4 como formulado, uma recursão puramente
+escalar não basta, é preciso informação posicional sobre a órbita de
+`A`.
 
-Argumento adversarial (esboço, não rederivado linha a linha por nós)
-sugere que NENHUMA desigualdade escalar (só `c_(ell-1)`) pode fazer
-melhor que ~essa mesma cota — responderia ao passo 4 como formulado:
-uma recursão puramente escalar não pode provar `beta=1`, é preciso
-informação posicional sobre a órbita de `A`.
+A consulta propôs uma reformulação (beta_eff->1 "sse" arcos deficientes
+ao longo de `A`, a limiares `exp(-eps*ell)`, são `o(ell)`). Rederivada
+linha a linha (H-161), a "sse" está ERRADA: só a direção "nenhum arco
+cresce implica beta_eff->1" é elementar e fecha sem hipótese extra. A
+volta ("beta_eff->1 implica nenhum arco cresce") exige controlar
+`max_u mu_(ell-1)(u)`; provamos `N_max <= 2^ell` sempre (indução de uma
+linha), o que fecha a volta para arcos de comprimento `>=0.5*ell`; a
+taxa real medida de `N_max` (`~(3/2)^ell`, não provada) desce esse
+limiar a `>=0.29*ell`. A faixa intermediária continua aberta, e é
+justamente onde caem os arcos observados a partir de `ell~14`.
 
-A consulta propôs uma reformulação (beta_eff->1 sse arcos deficientes
-ao longo de `A` são o(ell), a limiares que encolhem exponencialmente) e
-alegou suporte empírico de que esses arcos "não crescem". Essa alegação
-específica NÃO se sustentou na primeira checagem (o script da consulta
-usava limiares fixos, não exponenciais, e uma das colunas realmente
-cresce). Refeita a medição com limiar correto e linha de base de
-arranjo aleatório: agora HÁ sinal real (arco observado abaixo da linha
-de base, decrescente em um dos dois limiares testados), mas o
-intervalo (`ell=8` a `18`) é curto demais para extrapolar. O veredito
-da consulta ("beta_eff->1 é verdadeiro") foi descartado como julgamento
-heurístico de um único modelo, não registrado como achado.
+Duas rodadas de correção na medição empírica em si: (1) o script da
+consulta usava limiares FIXOS, não `exp(-eps*ell)`, invalidando a
+alegação de "arcos não crescem"; (2) o script corrigido ainda tinha um
+bug (posições não-unidade, sempre com massa zero, contavam como
+"deficientes" de graça e infla­vam o arco medido sem inflar a fração
+usada na linha de base). Corrigidos ambos. Números finais (`eps=0.1`,
+`ell=8` a `18`): arco cai de 3 (`ell=8-13`) para 2 (`ell=14-18`),
+abaixo da linha de base de arranjo aleatório em todo o intervalo —
+sinal real de anti-aglomeração, mas 11 pontos não bastam para
+extrapolar, e mesmo que se confirme só prova a direção (A), não fecha
+a volta pela faixa intermediária ainda aberta. O veredito da consulta
+("beta_eff->1 é verdadeiro") foi descartado como julgamento heurístico
+de um único modelo, não registrado como achado.
 
 Reformulação registrada como hipótese própria, H-161 (`in-progress`),
 separada de H-158 por não ser auditoria computacional (Regra 8e). H-158
