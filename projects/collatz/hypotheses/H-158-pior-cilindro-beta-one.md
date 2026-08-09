@@ -150,23 +150,25 @@ uma hipótese de descorrelação (não conspiração da cauda inferior de
 de suporte empírico ("arcos deficientes não crescem com `ell`") não
 se sustentou na primeira checagem: o script usado testava limiares
 FIXOS (0.2, 0.3, 0.5), não o limiar `exp(-eps*ell)` que a própria
-reformulação exige. A um limiar fixo, a fração de posições abaixo dele
-CRESCE com `ell` (verificado: de 0.179 em `ell=8` a 0.204 em
-`ell=14`), então mesmo um arranjo i.i.d. aleatório das mesmas
-frequências produziria um maior-arco crescendo como `log(N)/log(1/p)`,
-linear em `ell` — e de fato a coluna de limiar 0.5 cresce claramente
-(5,5,5,8,8,11,11 em `ell=8..14`), contradizendo a alegação de "achado
-plano" da consulta. As colunas de limiar mais estrito (0.2, 0.3)
-crescem mais devagar (3→5 e 2→4), mas 7 pontos não bastam para
-distinguir `O(1)`, `O(log ell)` ou algo pior. Refeita a medição com o
-limiar correto (`exp(-eps*ell)`) e uma linha de base de arranjo
-aleatório explícita (`ell=8` a `18`): o arco observado fica abaixo da
-linha de base aleatória na quase totalidade dos níveis e, em
-`eps=0.1`, diminui (5→3) enquanto a linha de base sobe e estabiliza
-(6.89→8.13→7.87) — sinal de anti-aglomeração real, não só ausência de
-aglomeração, mas o intervalo (11 pontos) é curto demais para
-extrapolar. Ver H-161 para a reformulação, o critério de teste correto
-e a tabela completa.
+reformulação exige, e (achado nosso, numa segunda rodada de checagem)
+media o arco sobre a órbita inteira em vez de só sobre as posições-
+unidade, deixando posições não-unidade (sempre "deficientes" por
+`mu=0`) emendar arcos de graça — dois defeitos independentes na mesma
+medição exploratória, ambos corrigidos depois. A um limiar fixo, a
+fração de posições abaixo dele CRESCE com `ell` (verificado: de 0.179
+em `ell=8` a 0.204 em `ell=14`), então mesmo um arranjo i.i.d.
+aleatório das mesmas frequências produziria um maior-arco crescendo
+como `log(N)/log(1/p)`, linear em `ell`, contradizendo a alegação de
+"achado plano" da consulta por si só, independente do segundo defeito.
+Refeita a medição com o limiar correto (`exp(-eps*ell)`) e a
+população correta (só unidades) contra uma linha de base de arranjo
+aleatório explícita (`ell=8` a `18`, `eps=0.1`, a única faixa com
+sinal suficiente): o arco observado fica abaixo da linha de base
+aleatória em todo o intervalo e não cresce, caindo de 3 (`ell=8..13`)
+para 2 (`ell=14..18`) — sinal de anti-aglomeração real, não só
+ausência de aglomeração, mas o intervalo (11 pontos) é curto demais
+para extrapolar. Ver H-161 para a reformulação, o critério de teste
+correto e a tabela completa.
 
 **Não registrado como achado, por falta de sustentação:** o veredito
 da consulta de que "`beta_eff -> 1` é verdadeiro" foi descartado. É o

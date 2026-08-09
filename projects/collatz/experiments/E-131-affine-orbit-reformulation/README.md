@@ -56,8 +56,12 @@ proved bound but still exponential, not bounded. This is why the
 "long arc implies beta doesn't -> 1" direction does not close for the
 arc lengths actually observed (see H-161 and `deficient_arc_scan.py`
 below): even the sharper empirical rate requires arcs of length
-`~0.29*ell` to make the tail negligible, and the observed arcs (3-5)
-fall below that threshold from `ell~14` onward.
+`~0.29*ell` to make the tail negligible, and the observed arcs (2-3)
+fall below that threshold from `ell~14` onward. The proved `2^ell`
+bound alone (no empirical rate needed) already closes this direction
+for arcs of length `>=~0.5*ell`, so what remains genuinely open is a
+narrow band of arc lengths, not the whole direction — see H-161 for
+the precise statement.
 
 Run:
 
@@ -93,28 +97,43 @@ with `ell` — but this does not test the claim: at a fixed threshold,
 the fraction of positions below it grows with `ell` on its own, so an
 i.i.d. random arrangement of the same per-level frequencies would show
 a growing longest run purely from more trials, with no clustering
-signal at all. This script uses the threshold the claim actually needs
-(`exp(-eps*ell)`) and reports the observed longest run against the
-random-arrangement baseline `log(N)/log(1/p)` (`N` = number of unit
-positions, `p` = the level's own observed fraction below threshold).
+signal at all.
+
+A second bug, independent of the threshold issue, was caught and fixed
+in this script: `longest_run` originally ran over the full `A`-orbit,
+where one position in three is a non-unit with `mu` identically 0 —
+always "deficient" for free. That let non-unit positions bridge
+together unit positions that were not actually a real run, inflating
+the observed run length without inflating the `p` (fraction) it was
+being compared against. The fix contracts the orbit to its unit-only
+subsequence, in orbit order, before measuring runs, matching the
+population `p` is computed over.
+
+This script uses the threshold the claim actually needs
+(`exp(-eps*ell)`), on the correct (unit-only) population, and reports
+the observed longest run against the random-arrangement baseline
+`log(N)/log(1/p)` (`N` = number of unit positions, `p` = the level's
+own observed fraction below threshold).
 
 Run:
 
 ```sh
-python3 deficient_arc_scan.py --min-level 8 --max-level 19 --eps-list 0.1 0.2
+python3 deficient_arc_scan.py --min-level 8 --max-level 18 --eps-list 0.1 0.2
 ```
 
-Expected result: at `eps=0.1`, the observed longest run (5,5,5,5,5,5,
-4,4,4,4,3,2 for `ell=8..19`) stays below the random-arrangement
-baseline throughout, and decreases over the tested range while the
-baseline rises then plateaus (6.89 to 8.13 to 7.71). At `eps=0.2`, the
-observed run is 2 wherever the threshold is met at all, again at or
-below baseline (baseline falls toward 0 as the fraction below
-threshold collapses to zero by `ell=16`). This is evidence of
-anti-clustering (not merely absence of clustering) of the deficient
-positions along the `A`-orbit, but the tested range (`ell=8` to `19`,
-12 points) is far too short to extrapolate an asymptotic conclusion,
-and even a confirmed asymptotic trend would only feed the proved
+Expected result: at `eps=0.1` (the only threshold with enough flagged
+positions to be informative in this range), the observed longest run
+(3,3,3,3,3,3,2,2,2,2,2 for `ell=8..18`) stays below the
+random-arrangement baseline throughout, and does not grow: it drops
+from 3 to 2 between `ell=13` and `ell=14` and stays there. At
+`eps=0.2`, the fraction below threshold collapses toward zero by
+`ell=14` onward, leaving too few flagged positions for the run
+statistic (always 1, isolated) to mean anything either way. This is
+evidence of anti-clustering (not merely absence of clustering) of the
+deficient positions along the `A`-orbit, but the tested range (`ell=8`
+to `18`, 11 points) is far too short to extrapolate an asymptotic
+conclusion, and even a confirmed asymptotic trend would only feed the
+proved
 direction above (shrinking arcs support `beta_eff->1`), not prove it
 outright. `ell=20` was not reached: the full-array method here needs
 close to 90GB at that level, near this machine's safe ceiling; going

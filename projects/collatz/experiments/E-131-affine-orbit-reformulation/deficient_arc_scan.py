@@ -99,13 +99,22 @@ def main():
         normalized = mu_full[orbit_affine] * affine_period
         units_on_orbit = (orbit_affine % 3) != 0
 
-        row = f"{level:4d} | {normalized[units_on_orbit].min():.6e}"
+        # A(k) == k+1 (mod 3), so exactly one in every three consecutive
+        # orbit positions is a non-unit, where mu is identically 0 and
+        # would count as "deficient" for free. Runs must be measured on
+        # the CONTRACTED subsequence of unit positions only (in orbit
+        # order), matching the population `fraction` is computed over,
+        # not on the full orbit where non-units inflate every run by
+        # roughly 50% (one free hit per two real ones).
+        unit_values = normalized[units_on_orbit]
+        n_positions = int(units_on_orbit.sum())
+
+        row = f"{level:4d} | {unit_values.min():.6e}"
         for eps in args.eps_list:
             theta = math.exp(-eps * level)
-            below = normalized <= theta
-            fraction = below[units_on_orbit].mean()
+            below = unit_values <= theta
+            fraction = below.mean()
             run = longest_run(below)
-            n_positions = int(units_on_orbit.sum())
             if 0 < fraction < 1:
                 baseline = math.log(n_positions) / math.log(1.0 / fraction)
                 baseline_str = f"{baseline:7.2f}"

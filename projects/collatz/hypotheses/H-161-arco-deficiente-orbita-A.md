@@ -59,34 +59,46 @@ NENHUM `eps`), `beta_eff` tem que tender a 1. Esta é a direção que
 importa para usar "arco curto observado" como evidência a favor de
 `beta_eff -> 1`, e não precisa de nenhuma hipótese adicional.
 
-**(B) "beta_eff -> 1" implica "nenhum arco cresce" — NÃO FECHA sem uma
-hipótese extra sobre `N_max`.** A volta pediria: dado um arco curto
-(digamos, de comprimento `m`) com `N` pequeno no COMEÇO da janela,
-concluir que a soma INTEIRA `G(k)` (incluindo a cauda além do arco,
-`j>=m`) também é pequena. Isso exige controlar
-`max_u N_(ell-1)(u)` (o valor MÁXIMO possível na cauda, não só no
-arco). Provamos uma cota a priori limpa, por indução na própria
-recursão (`mu_ell(y) = 1/2 nu(2y) + 1/2 mu_ell(2y)`, logo
-`M_ell <= (2/3) M_(ell-1)` onde `M_ell = max_u mu_ell(u)`, com base
-`M_1=2/3`): `M_ell <= (2/3)^ell`, ou seja `N_max <= 2^ell` SEMPRE.
-Mas essa cota só fecha a volta para arcos de comprimento
-`m >= ell*(log2 + eps)/log4 ~ 0.5 ell` — MUITO maior que os arcos
-observados (3 a 5, ver dados abaixo). Medido o comportamento real de
-`N_max` (não só a cota): `N_max` cresce como `(3/2)^ell` quase
-exatamente (razão por nível convergindo a 1.5000 já em `ell~10`, ver
-tabela abaixo) — melhor que a cota provada, mas ainda EXPONENCIAL, não
-limitado. Usando essa taxa (empírica, não provada) em vez da cota
-crua, o comprimento crítico cai para `~0.29 ell`, mas isso AINDA excede
-os arcos observados a partir de `ell~14` (crítico `~4.7` contra arco
-observado `4`, piorando: crítico `6.6` contra arco `3` em `ell=18`).
+**(B) "beta_eff -> 1" implica "nenhum arco cresce" — FECHA por uma
+FAIXA de comprimentos, não por todos.** Correção (2026-08-08, segunda
+rodada, apontada em consulta): não é "não fecha", é mais preciso do
+que isso. A volta pediria: dado um arco curto (comprimento `m`) com `N`
+pequeno no COMEÇO da janela, concluir que a soma INTEIRA `G(k)`
+(incluindo a cauda além do arco, `j>=m`) também é pequena. Isso exige
+controlar `max_u N_(ell-1)(u)` na cauda. Provamos uma cota a priori
+limpa, por indução na própria recursão (`mu_ell(y) = 1/2 nu(2y) + 1/2
+mu_ell(2y)`, logo `M_ell <= (2/3) M_(ell-1)` onde `M_ell = max_u
+mu_ell(u)`, base `M_1=2/3`): `M_ell <= (2/3)^ell`, ou seja `N_max <=
+2^ell` SEMPRE. Com essa cota, a volta FECHA para todo arco de
+comprimento `m >= ell*(log2+eps)/log4 ~ 0.5 ell` (banda alta,
+`c>=0.5` na escala `m=c*ell`) — usando só o que já está provado, sem
+nada condicional. Medido o comportamento real de `N_max` (não só a
+cota): cresce como `(3/2)^ell` quase exatamente (razão por nível
+convergindo a 1.5000 já em `ell~10`, ver tabela abaixo). Usando essa
+taxa (empírica, não provada) em vez da cota crua, a banda onde a volta
+fecha desce para `c>=0.29`. O que fica genuinamente em aberto é só a
+faixa intermediária `0 < c < 0.29` (ou `<0.5`, sem a taxa empírica) —
+uma banda estreita, não a direção inteira. Os arcos observados (2 a 3
+em `ell=8..18`, ver dados abaixo) caem dentro dessa banda ainda aberta
+a partir de `ell~14`, é por isso que a evidência empírica de arco curto
+não fecha (B) sozinha, mas uma cota melhor de `N_max` só precisaria
+reduzir a banda, não resolver o problema inteiro do zero.
+
+**Nota**: a taxa `N_max ~ (3/2)^ell` não é um insumo independente. A
+cota crua `M_ell<=(2/3)M_(ell-1)` vem de permitir que TODOS os termos
+com `t>=3` estejam simultaneamente perto do máximo `M_(ell-1)`; chegar
+a `(1/2)M_(ell-1)` exigiria argumentar que eles não podem estar todos
+quase-máximos ao mesmo tempo — exatamente a mesma pergunta de
+anti-aglomeração de (B), um nível abaixo. Não é uma ferramenta externa
+que resolve o problema; é o mesmo fenômeno visto de outro ângulo.
 
 **Conclusão**: a direção útil (A) está provada e não precisa de nada
-além da identidade de base. A direção (B) — que seria necessária para
-usar um arco longo hipotético como REFUTAÇÃO, ou para provar que arco
-curto é NECESSÁRIO para `beta_eff->1`, não só suficiente pelo lado
-certo — continua em aberto, e os dados atuais não bastam para fechá-la
-mesmo com a taxa empírica de `N_max`. Isso não invalida usar os dados
-de arco curto como evidência a favor de `beta_eff->1` (via (A)); só
+além da identidade de base. A direção (B) fecha para arcos de
+comprimento `c*ell` com `c>=0.5` (provado) ou `c>=0.29` (com a taxa
+empírica de `N_max`, não provada); a faixa `c` menor que isso continua
+em aberto, e é justamente aí que caem os arcos observados a partir de
+`ell~14`. Isso não invalida usar os dados de arco curto como evidência
+a favor de `beta_eff -> 1` (via (A)); só
 significa que a formulação "sse" da consulta original estava incorreta
 e que "arco curto" não é (ainda) um critério equivalente, só suficiente
 por um lado.
@@ -138,58 +150,63 @@ C*(3/2)^ell`. Melhor que a cota provada (`2^ell`), mas ainda
 exponencial, não limitada — é isso que faz a direção (B) da
 equivalência não fechar para os arcos curtos observados (ver acima).
 
-## Primeira medição com limiar correto (2026-08-08, estendida a ell=19)
+## Primeira medição com limiar correto (2026-08-08)
+
+**Correção (2026-08-08, terceira rodada, apontada em consulta):** a
+primeira versão deste script tinha um bug real: `longest_run` rodava
+sobre a órbita INTEIRA (incluindo posições não-unidade, onde `mu=0`
+sempre, contando como "deficiente" de graça), enquanto a fração `p`
+era calculada só sobre unidades. Como `A(k)==k+1 (mod 3)`, uma em cada
+três posições da órbita é não-unidade — essas posições "grátis" podiam
+emendar arcos que na verdade eram só unidades isoladas, inflando o
+arco observado sem inflar `p` (nem a linha de base calculada a partir
+de `p`). Corrigido contraindo a órbita à subsequência de só unidades
+antes de medir o arco (mesma população que `p` mede). Os números
+abaixo já são os corrigidos; note que, ao contrair a sequência dessa
+forma, o teto estrutural que o padrão módulo 3 impunha sobre arcos na
+órbita completa desaparece — um arco de comprimento 2 ou 3 na
+sequência contraída não é um artefato geométrico do mapa `A`, é sinal
+real sobre os valores.
 
 Medido `exp(-eps*ell)` para `eps=0.1` e `eps=0.2`, níveis `ell=8` a
-`19` (estendido de 18 para 19; ir além de 19 com o método rápido atual
-exigiria mais memória do que é seguro usar nesta máquina de uma vez —
-o array de nível 20 chegaria perto de 90GB, o processo foi interrompido
-antes de tentar alocá-lo), contra a linha de base de arranjo aleatório
+`18` (ir além de 18 com o método rápido atual exigiria mais memória do
+que é seguro usar nesta máquina de uma vez — a tentativa em `ell=19`
+já passou de 47GB residentes com só 16GB livres no sistema, e foi
+interrompida antes de arriscar; o array de nível 20 sozinho chegaria
+perto de 90GB), contra a linha de base de arranjo aleatório
 `log(N)/log(1/p_ell)` (`N`= número de posições-unidade na órbita,
 `p_ell`= fração observada abaixo do limiar naquele nível):
 
 ```text
 eps=0.1:
 ell    frac      arco_observado   linha_de_base
- 8   0.29630          5              6.89
- 9   0.26947          5              7.23
-10   0.24539          5              7.53
-11   0.22203          5              7.76
-12   0.19951          5              7.93
-13   0.17812          5              8.04
-14   0.15774          4              8.11
-15   0.13851          4              8.13
-16   0.11999          4              8.10
-17   0.10219          4              8.01
-18   0.08545          3              7.87
-19   0.07028          2              7.71
+ 8   0.29630          3              6.89
+ 9   0.26947          3              7.23
+10   0.24539          3              7.53
+11   0.22203          3              7.76
+12   0.19951          3              7.93
+13   0.17812          3              8.04
+14   0.15774          2              8.11
+15   0.13851          2              8.13
+16   0.11999          2              8.10
+17   0.10219          2              8.01
+18   0.08545          2              7.87
 
-eps=0.2:
-ell    frac      arco_observado   linha_de_base
- 8   0.09785          2              3.61
- 9   0.06889          2              3.54
-10   0.04550          2              3.42
-11   0.02809          2              3.27
-12   0.01339          2              2.96
-13   0.00348          2              2.45
-14   0.00039          2              1.91
-15   4.8e-6           2              1.31
-16-18  0 posições abaixo do limiar (arco trivial)
+eps=0.2: fração já minúscula a partir de ell~13 (3.5e-3 a 4.8e-6),
+poucas posições marcadas o bastante para o arco (sempre 1, isolado, ou
+0 quando a fração some) dizer algo: não é evidência, é a contagem
+esperada de qualquer jeito quando há tão poucas posições marcadas.
 ```
 
-Em ambos os limiares, o arco observado fica ABAIXO da linha de base
-aleatória em quase todo o intervalo (a única exceção é `eps=0.2`,
-`ell=13-15`, onde a linha de base cai abaixo de 2 simplesmente porque
-`p_ell` fica minúsculo, tornando qualquer arco de tamanho >=1
-estatisticamente "acima do esperado" por definição quando há pouquíssimas
-posições no total). Em `eps=0.1`, o arco observado não só não cresce
-como DIMINUI (5 → 2 de `ell=8` a `19`) enquanto a linha de base
-aleatória sobe e depois se estabiliza (6.89 → 8.13 → 7.71). Isso é
-evidência a favor de anti-aglomeração real (não apenas ausência de
-aglomeração) dos pontos deficientes ao longo da órbita de `A`,
-consistente com a Hipótese (D) proposta na consulta original — mas o
-intervalo (`ell=8` a `19`, 12 pontos) é curto demais para distinguir um
-efeito assintótico genuíno de uma flutuação finita, e (ver seção
+O arco observado (limiar `eps=0.1`, a única coluna com sinal
+suficiente) fica ABAIXO da linha de base aleatória em todo o
+intervalo, e não cresce: cai de 3 para 2 entre `ell=13` e `ell=14` e
+se mantém em 2 até `ell=18`. Isso é evidência a favor de
+anti-aglomeração real (não apenas ausência de aglomeração) dos pontos
+deficientes ao longo da órbita de `A`, consistente com a Hipótese (D)
+proposta na consulta original — mas o intervalo (`ell=8` a `18`, 11
+pontos) é curto demais para distinguir um efeito assintótico genuíno de
+uma flutuação finita, e (ver seção
 acima) mesmo que a tendência de queda se confirme, isso sozinho não
 prova `beta_eff->1` pela direção (B) da equivalência, que continua sem
 fechar. Script limpo e commitado em
