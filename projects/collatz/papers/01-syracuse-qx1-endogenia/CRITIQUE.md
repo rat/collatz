@@ -37,6 +37,7 @@ rodada, mas registrar é).
 | C-021 | 2026-08-10 | `prop:always-frozen` repete literalmente o parágrafo anterior; seu título cobre só um dos dois roots que enuncia | baixa | hoje | fixed |
 | C-022 | 2026-08-10 | §6 e §2 mantêm frases de posicionamento ("we highlight it early", "stands entirely on its own", "whose implementation") que a divisão tornou falsas | baixa | hoje | fixed |
 | C-023 | 2026-08-10 | Abstract não reflete H-166/H-169: ignora os dois teoremas novos e ainda anuncia como melhor resultado de colisão o enunciado que `thm:diagonal-collision` superou | média | hoje | fixed |
+| C-024 | 2026-08-10 | `thm:kl-calibrated` (linhas 726, 2367) diz "ten interval-widths"; o número certificado no companion paper 04 (`thm:kl-calibrated`, linhas 247-248, banda medida em três construções independentes = 0,0037, não a tolerância a priori 0,003) é "seven band-widths". C-002 desta mesma rodada corrigiu a contradição abstract/corpo sobre este resultado sem checar o número em si contra o paper 04, blindando o valor errado ao deixá-lo consistente internamente | média | hoje | fixed |
 
 Checagens mecânicas que passaram, registradas para não serem refeitas:
 34 chaves `\cite` contra 34 `\bibitem`, sem órfãos nem pendentes nas
@@ -718,3 +719,43 @@ desde antes desta sessão. Corrigido para "his Reduction Theorem
 V.3.10, building on the Weak Covering Conjecture V.3.9" e "Wirsching
 1998, V.3.9" no rótulo da conjectura (linhas ~738-751). C-018 fechado
 como `fixed`.
+
+## Rodada 2026-08-10 (verificação independente pós-varredura dos 4 papers): C-024
+
+Verificação adversarial separada da divisão em quatro papers e das
+varreduras de backlog por sub-agente dedicado (01/04/05/06), pedida
+pelo diretor científico antes da redação final. Não reabriu nem
+questionou nada já fechado sem evidência nova (Regra 8d); achado único,
+verificado de forma independente (Regra 8c) antes de corrigir.
+
+### C-024 (média): "ten interval-widths" sobrevivia à correção "dez→sete"
+
+`thm:kl-calibrated` (linhas 726 e 2367 do `main.tex` de 01) dizia "ten
+interval-widths" separando a leitura da árvore aritmética (0,64926) de
+um controle de expoente 0,678. O número certificado é "seven
+band-widths": o companion paper 04 (`thm:kl-calibrated`, linhas 237-254)
+mede a banda de ruído por três construções independentes de expoente
+0,650919 (leituras 0,64751/0,64981/0,65122, banda 0,0037), não pela
+tolerância a priori de calibração (0,003) usada implicitamente na
+redação antiga de 01; 0,0282/0,0037 ≈ 7,6 ("mais de sete"), não
+0,0282/0,003 ≈ 9,4 ("dez").
+
+A correção "dez→sete" já tinha acontecido nesta mesma sessão (commit
+`90c3e2f`, "Corrige razão de larguras de banda no portão KL vs Volkov"),
+mas tocou só `hypotheses/H-113...md`, o `OUTLINE.md` e o `main.tex` do
+paper 04, nunca a restatement condensada em 01 (por desenho do split em
+quatro papers, cada `main.tex` é editado independentemente). A rodada de
+crítica anterior (C-002 desta mesma tabela) pegou uma contradição real
+entre abstract e corpo sobre este mesmo resultado, mas resolveu a
+inconsistência *interna* mantendo "ten interval-widths" nos dois
+lugares, sem cruzar o número contra o paper 04 citado (`\cite{KLVolkovCompanion}`) — o
+que blindou o valor errado ao torná-lo consistente, um modo de falha
+que Regra 8b não cobre por não ser abstract-vs-corpo dentro do mesmo
+documento, e sim corpo-vs-companion entre dois documentos.
+
+Corrigido nas duas ocorrências (726, 2367): "ten interval-widths" →
+"seven band-widths", igualando à redação do paper 04. Não há
+`main-pt-br.tex` para 01 nesta sessão (removido deliberadamente em
+`a586159` até uma rodada estável, ver `OUTLINE.md`), então não há
+segunda língua a sincronizar aqui. `main.tex` recompilado limpo depois
+da correção.
