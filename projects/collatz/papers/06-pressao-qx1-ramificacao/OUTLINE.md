@@ -37,11 +37,18 @@ colisão L^p), H-132 (índice de cauda no modelo iid, via Liu 2000).
 ## Rótulo dos resultados (Regra 10b)
 
 Teorema (prova completa): `thm:pressure`, `thm:qadic-martingale`,
-`thm:lp-collision`, `thm:frozen-singular`, `prop:always-frozen`,
-`thm:transition-model`, `thm:iid-tail`. Condicional/heurístico, marcado
-como tal no texto: `prop:transition-fine` (condicional a um refinamento
-tipo renovação, não provado). Conjectura: `conj:transition-arithmetic`
-(= problema aberto desde 1995 para q=3), `conj:tail-index`.
+`thm:lp-collision`, `thm:frozen-singular`, `prop:always-frozen` (agora
+via `lem:log-convex`, movido para o §3, em vez de depender para frente
+do §6), `thm:transition-model` (ganhou prova própria na rodada de
+crítica de 2026-08-10: limite superior por Chernoff/Markov, direto;
+limite inferior citando o método de grandes desvios de
+Kontorovich-Lagarias 2010, Teorema 8.10, adaptado ao modelo multitipo
+por q), `thm:iid-tail`. Condicional/heurístico, marcado como tal no
+texto: `prop:transition-fine` (condicional a um refinamento tipo
+renovação, não provado; é estritamente mais forte que
+`thm:transition-model`, fixa a constante, não só o expoente).
+Conjectura: `conj:transition-arithmetic` (= problema aberto desde 1995
+para q=3), `conj:tail-index`.
 
 ## Dependência de outros papers
 
@@ -55,12 +62,18 @@ assim que cada um for submetido.
 
 ## Pendências
 
-- Abstract marcado como rascunho, precisa de reescrita à mão.
-- `main-pt-br.tex`: não criado, só sob pedido explícito.
-- `CRITIQUE.md`: não existe ainda.
-- Nota de estilo herdada do `main.tex` original: o
-  Remark~`rem:transfer-basis` tinha uma frase de meta-honestidade
-  ("We are precise about the status of this because...") banida pela
-  Regra 4b; já reescrita nesta versão sem a frase-gatilho, mas vale
-  conferir se sobrou algo parecido em outros trechos copiados
-  verbatim antes de submeter.
+- `main-pt-br.tex`: não criado. Deixado deliberadamente aberto na
+  rodada de crítica de 2026-08-10 (C-30 em `CRITIQUE.md`): a política
+  interna deste projeto é só traduzir sob pedido explícito, o que tensiona
+  com a letra da Regra 5 (todo paper é bilíngue). Registrado como
+  tensão a resolver com o pesquisador, não como pendência técnica.
+
+## Rodada de crítica (Regra 8/15) fechada
+
+Rodada de 2026-08-10: 30 achados (`CRITIQUE.md`), 29 corrigidos, 1
+deixado `open` com motivo (C-30, acima). Abstract reescrito por
+completo (não é mais rascunho), `thm:transition-model` ganhou prova
+própria, o lema de log-convexidade foi generalizado e movido para o
+§3, todas as citações do item C-21 foram verificadas contra fonte
+primária (uma delas, PDF de Villemonais-Zalduendo 2025, baixado e lido
+para resolver C-22).

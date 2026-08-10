@@ -19,7 +19,6 @@
 \newtheorem{example}[theorem]{Example}
 
 \DeclareMathOperator{\ord}{ord}
-\newcommand{\ZZ}{\mathbb{Z}}
 
 \title{A Closed-Form Pressure Equation for the Accelerated\\
 $qx+1$ Branching Process}
@@ -34,35 +33,33 @@ $qx+1$ Branching Process}
 \maketitle
 
 \begin{abstract}
-% DRAFT -- rewrite by hand before submission (Rule 4b: abstracts carry
-% the highest marker density of any section in the paper).
 We study the reverse tree of the accelerated $qx+1$ map for odd
 $q\ge3$ through a linear population functional. We prove an exact
 identity, $\rho_{\mathrm{ann}}(\alpha)=q^{\alpha-1}/(2^\alpha-1)$, for
-its annealed pressure, via an exact fibre-counting bijection,
-correcting a finite-automaton argument for the same identity that we
-show is not well posed. The nontrivial root of
-$\rho_{\mathrm{ann}}(\alpha)=1$ undergoes a structural transition at
-$q=5$: it equals exactly $\alpha^\ast=2$ at $q=3$ and falls strictly
-below $1$ for every $q\ge5$. For $q=3$ this is the classical Growth
-Exponent Conjecture of Kontorovich--Lagarias and Applegate--Lagarias.
-We show that the two roots of this equation always sit on opposite
-sides of a quenched/annealed freezing transition, in the sense of
-directed polymers in a random environment: the smaller root is always
-unfrozen, so the annealed identity transfers rigorously to the
-quenched counting function of the matching i.i.d.\ branching-random-walk
-model; the larger root is always frozen, so the pressure identity
-alone does not establish the tail index of the density martingale. We
-prove that the tilted $q$-adic measure is singular at every frozen
-root by an entropy identity and a fractional-moment estimate, and we
-prove the tail index for the matching i.i.d.\ model by an implicit
-renewal theorem. For the coherent $q$-adic environment we prove
-martingale convergence and identify the limit with the density of the
-absolutely continuous component; absolute continuity and the tail
-remain conjectural. At $q=3$ the predicted index $\alpha^\ast=2$
-matches independent empirical measurements; for $q\ge5$ the claim is
-strengthened by a large-sample statistical test at $q=5$, though still
-not proved.
+its annealed pressure, via an exact fibre-counting bijection. The
+nontrivial root of $\rho_{\mathrm{ann}}(\alpha)=1$ undergoes a
+structural transition at $q=5$: it equals exactly $\alpha^\ast=2$ at
+$q=3$ and falls strictly below $1$ for every $q\ge5$. For $q=3$ this
+is the classical Growth Exponent Conjecture of Kontorovich--Lagarias
+and Applegate--Lagarias. We show that the two roots of this equation
+always sit on opposite sides of a quenched/annealed freezing
+transition, in the sense of directed polymers in a random environment:
+the smaller root is always unfrozen, so the annealed identity
+transfers to the quenched counting function of a matching i.i.d.\
+branching-random-walk model; the larger root is always frozen, so the
+pressure identity alone does not establish the tail index of the
+density martingale. We prove that the tilted $q$-adic measure is
+singular at every frozen root, by an entropy identity and a
+fractional-moment estimate, and we prove the tail index for the i.i.d.\
+model by an implicit renewal theorem. For the coherent $q$-adic
+environment we prove martingale convergence and identify the limit
+with the density of the absolutely continuous component; absolute
+continuity and the tail index remain conjectural. At $q=3$ the
+predicted index $\alpha^\ast=2$ matches independent empirical
+measurements. At $q=5$, the largest of three statistical tests run at
+increasing sample size gives evidence consistent with the conjectured
+tail index, though smaller-sample tests were inconclusive and the
+claim remains unproved for every $q\ge5$.
 \end{abstract}
 
 \section{Introduction}
@@ -72,12 +69,11 @@ The Collatz, or $3x+1$, conjecture generalizes naturally to a family of
 $qx+1$ maps, $q$ odd. This paper studies the reverse tree of the
 accelerated version of this map through a linear population functional
 $G$ satisfying a natural fixed-point recursion, and derives, from an
-exact bijective counting argument rather than a heuristic transfer
-operator, a closed-form equation for the annealed growth rate of the
+exact bijective counting argument, a closed-form equation for the annealed growth rate of the
 associated partition function. The equation's roots organize the rest
 of the analysis: they govern a quenched/annealed freezing transition
 familiar from directed polymers in a random environment, and their
-relative position undergoes a genuine structural change at $q=5$ that
+relative position undergoes a structural change at $q=5$ that
 reproduces, as a special case, a $30$-year-old open conjecture of
 Kontorovich--Lagarias and Applegate--Lagarias for the classical Collatz
 map.
@@ -85,11 +81,12 @@ map.
 \S\ref{sec:setup} fixes the reverse-tree construction.
 \S\ref{sec:pressure} proves the pressure identity and its consequences
 for the associated density martingale (absolute continuity criterion,
-singularity at frozen roots). \S\ref{sec:freezing} develops the
+singularity at frozen roots, Theorem~\ref{thm:frozen-singular}).
+\S\ref{sec:freezing} develops the
 freezing transition. \S\ref{sec:transition} states the structural
-transition at $q=5$ precisely, separating what is proved for the
+transition at $q=5$, separating what is proved for the
 matching stochastic model from what remains conjectural for the
-genuine arithmetic tree. \S\ref{sec:tail-regime} classifies the root
+actual arithmetic tree. \S\ref{sec:tail-regime} classifies the root
 $\alpha^\ast=2$ at $q=3$ against the multivariate smoothing-transform
 literature. \S\ref{sec:empirical} reports direct empirical support on
 real reverse trees.
@@ -113,27 +110,32 @@ multiplicative order of $2$ modulo $q$, admissibility of $a$ for a
 given parent $u$ depends only on $u\bmod q$: \emph{if} some
 $a_0(u)\in\{1,\dots,d\}$ satisfies $2^{a_0(u)}u\equiv 1\pmod q$, it is
 unique, and the admissible exponents are exactly $a\equiv a_0(u)\pmod
-d$. Such $a_0(u)$ exists exactly when $u\bmod q$ lies in the subgroup
-$\langle2\rangle\le(\mathbb{Z}/q\mathbb{Z})^\times$ generated by $2$;
-nodes with $u\equiv 0\pmod q$, and, more generally, nodes whose residue
-mod $q$ falls outside $\langle2\rangle$, are \emph{sterile} (no
-admissible children). When $2$ is a primitive root mod $q$ (as for
-$q=3,5,9$, all used numerically below), $\langle2\rangle$ is all of
-$(\mathbb{Z}/q\mathbb{Z})^\times$ and $u\equiv 0\pmod q$ is the only
-sterile class; for $q=3$ this recovers the familiar fact that
-multiples of $3$ have trivial reverse subtrees. In general, however,
-$d=\ord_q(2)$ can be a proper divisor of $\varphi(q)$: at $q=7$,
-$d=3<\varphi(7)=6$ and $\langle2\rangle=\{1,2,4\}$, so $u\equiv
-3,5,6\pmod7$ are sterile too, not merely $u\equiv 0$. This does not
+d$. Since $1$ is a unit mod $q$, $a_0(u)$ can exist only if $u$ itself
+is a unit, so any $u$ with $\gcd(u,q)>1$, not merely $u\equiv 0\pmod
+q$, is automatically \emph{sterile} (no admissible children); among
+unit residues, $a_0(u)$ exists exactly when $u\bmod q$ lies in the
+subgroup $\langle2\rangle\le(\mathbb{Z}/q\mathbb{Z})^\times$ generated
+by $2$, and units outside $\langle2\rangle$ are sterile too. When $2$
+is a primitive root mod $q$ (as for $q=3,5,9$, all used numerically
+below), $\langle2\rangle$ is all of $(\mathbb{Z}/q\mathbb{Z})^\times$,
+so every unit residue is fertile and the sterile classes are exactly
+the non-units, i.e.\ the multiples of any prime factor of $q$: for
+prime $q$ (so $q=3,5$) this is only $u\equiv0$, recovering the
+familiar fact that multiples of $3$ have trivial reverse subtrees; for
+$q=9=3^2$ the sterile classes are $u\equiv0,3,6\pmod9$, not $u\equiv0$
+alone. In general $d=\ord_q(2)$ can also be a proper divisor of
+$\varphi(q)$ even among units: at $q=7$, $d=3<\varphi(7)=6$ and
+$\langle2\rangle=\{1,2,4\}$, so $u\equiv 3,5,6\pmod7$ are sterile too,
+beyond the trivial $u\equiv 0$. This does not
 affect the pressure identity of Theorem~\ref{thm:pressure} below (whose
 proof, via Lemma~\ref{lem:fibre-bijection}, works in the reverse
-direction --- from an unconstrained exponent sequence to its unique
-root --- and never invokes existence of $a_0(u)$ for every $u$), nor
+direction, from an unconstrained exponent sequence to its unique
+root, and never invokes existence of $a_0(u)$ for every $u$), nor
 the numerical enumeration of \S\ref{sec:empirical}, whose
 implementation already excludes exactly these classes; it is a
 correction to this structural description only.
 
-We count distinct integer labels rather than path occurrences. Define
+We count distinct integer labels. Define
 \[
  N_u(x):=\#\{n\le x:n\text{ odd and }T_q^k(n)=u
                     \text{ for some }k\ge0\}.
@@ -155,7 +157,7 @@ endogeny-barrier line of investigation developed in a companion paper
 
 A first, natural attempt to organize the recursion \eqref{eq:G-recursion}
 into a transfer operator is to track the parent's residue class modulo
-$q$ alone. This attempt fails, and it is worth recording exactly why.
+$q$ alone. This attempt fails.
 
 \begin{example}[The naive mod-$q$ automaton is not well defined]
 \label{ex:naive-fails}
@@ -244,6 +246,33 @@ branching process). Thus $\alpha=1$ is always a root of
 \eqref{eq:pressure-eq}.
 \end{remark}
 
+\begin{lemma}[Log-convexity of the pressure function]\label{lem:log-convex}
+For every odd $q\ge3$, $P(\alpha):=\log\rho_{\mathrm{ann}}(\alpha)$ is
+strictly convex on $\alpha>0$. Consequently
+equation~\eqref{eq:pressure-eq} has at most two positive roots, and if
+it has exactly two, $\alpha_-<\alpha_+$, then $P'(\alpha_-)<0<P'(\alpha_+)$.
+\end{lemma}
+\begin{proof}
+From \eqref{eq:pressure-closed-form}, $P(\alpha)=(\alpha-1)\log q-\log(2^\alpha-1)$, so
+\[
+ P''(\alpha)=\frac{\log^2 2\cdot 2^\alpha}{(2^\alpha-1)^2}>0
+\]
+for every $\alpha>0$: strict convexity. A strictly convex function
+equals any given value at most twice, and, at two such roots, must be
+decreasing through the first and increasing through the second (on
+either side of its unique minimum), giving $P'(\alpha_-)<0<P'(\alpha_+)$.
+\end{proof}
+
+At a pressure root $\alpha$, the numbers $p_\alpha(a):=q^{\alpha-1}2^{-\alpha a}$,
+$a\ge1$, sum to one, so they define a probability law on branch
+exponents. For independent digits $a_1,a_2,\ldots$ drawn from
+$p_\alpha$, the partial sums
+$F_k:=\sum_{i=1}^k q^{i-1}2^{-S_i}\pmod{q^k}$, $S_i:=a_1+\cdots+a_i$,
+form a projectively consistent family (Lemma~\ref{lem:fibre-bijection}
+gives $F_{k+1}\equiv F_k\pmod{q^k}$), hence converge to a
+$\mathbb{Z}_q$-valued limit; write $\mu_\alpha$ for its law, the
+\emph{tilted Syracuse measure} at $\alpha$.
+
 \begin{theorem}[$q$-adic density martingale]\label{thm:qadic-martingale}
 Let $\alpha$ be either positive root of \eqref{eq:pressure-eq}, and let
 $U$ be Haar-uniform on $\mathbb Z_q$.
@@ -253,9 +282,9 @@ Then
 \]
 is a nonnegative martingale of mean one for the filtration generated by
 $U\bmod q^k$. Consequently $M_k$ converges almost surely to a finite
-limit $W_{q,\alpha}$. If $\mu_\alpha$ is the projective law of the tilted
-Syracuse sums and
-$\mu_\alpha=f_{q,\alpha}\,m_q+\mu_{\mathrm s}$ is its Lebesgue decomposition
+limit $W_{q,\alpha}$. Writing
+$\mu_\alpha=f_{q,\alpha}\,m_q+\mu_{\mathrm s}$ for the Lebesgue
+decomposition of the tilted Syracuse measure above
 with respect to Haar measure $m_q$, then
 \[
  W_{q,\alpha}=f_{q,\alpha}(U)\qquad m_q\text{-almost surely}.
@@ -266,22 +295,11 @@ and $\mathbb E W_{q,\alpha}=1$ exactly when $\mu_\alpha\ll m_q$.
 \end{theorem}
 
 \begin{proof}
-At a pressure root, the numbers
-\[
- p_\alpha(a):=q^{\alpha-1}2^{-\alpha a},\qquad a\ge1,
-\]
-sum to one. For independent digits with this law, let
-\[
- F_k=\sum_{i=1}^k q^{i-1}2^{-S_i}\pmod {q^k},
- \qquad S_i=a_1+\cdots+a_i.
-\]
-The fibre identity gives
+With $F_k$ and $p_\alpha$ as above, the fibre identity gives
 \[
  Z_k(\alpha;u)=q^k\Pr(F_k=u).
 \]
-Also $F_{k+1}\equiv F_k\pmod {q^k}$, since their difference is
-$q^k2^{-S_{k+1}}$. Thus the laws of $F_k$ form a projectively
-consistent family. Conditional on $U\equiv u\pmod {q^k}$,
+Conditional on $U\equiv u\pmod {q^k}$,
 \[
  \mathbb E[M_{k+1}\mid U\bmod q^k=u]
  =\frac1q\sum_{v\equiv u\ (q^k)}q^{k+1}\Pr(F_{k+1}=v)
@@ -341,7 +359,8 @@ smallest cylinder mass required by a worst-residue covering problem.
 
 \begin{theorem}[Singularity at the frozen root]
 \label{thm:frozen-singular}
-Let $\alpha=\alpha_+(q)$. Then
+Let $\alpha=\alpha_+(q)$, the larger of the two positive roots of
+\eqref{eq:pressure-eq} (\S\ref{sec:freezing}). Then
 \[
  M_k^{(\alpha)}(U)\longrightarrow0
  \qquad m_q\text{-almost surely},
@@ -382,7 +401,7 @@ then identifies the absolutely continuous component as zero.
 Theorem~\ref{thm:pressure} is a statement about the \emph{average} of
 $Z_k(\alpha;\cdot)$ over root residues; it is not, by itself, a
 statement about $Z_k(\alpha;u_0)^{1/k}$ for a single, fixed root
-$u_0$ --- which is what actually governs the population martingale
+$u_0$, which is what actually governs the population martingale
 $G(v)$ for one specific integer $v$. Whether the two coincide is
 exactly the quenched-versus-annealed question familiar from directed
 polymers in a random environment and from Derrida's random energy
@@ -391,9 +410,8 @@ $P(\alpha):=\log\rho_{\mathrm{ann}}(\alpha)$ for the annealed
 log-pressure and $s(\alpha):=P(\alpha)-\alpha P'(\alpha)$ for the
 associated entropy, quenched and annealed rates coincide where
 $s(\alpha)>0$ (an \emph{unfrozen} phase) and diverge where
-$s(\alpha)<0$ (a \emph{frozen} phase, in which the quenched rate is
-dominated by rare, low-entropy paths rather than by the bulk of the
-ensemble).
+$s(\alpha)<0$ (a \emph{frozen} phase, in which rare, low-entropy paths
+dominate the quenched rate instead of the bulk of the ensemble).
 
 \begin{proposition}[The larger root is always frozen]\label{prop:always-frozen}
 For every odd $q\ge3$, writing $\alpha_-<\alpha_+$ for the two positive
@@ -401,12 +419,9 @@ roots of $\rho_{\mathrm{ann}}(\alpha)=1$: $s(\alpha_-)>0$ (unfrozen) and
 $s(\alpha_+)<0$ (frozen), unconditionally.
 \end{proposition}
 \begin{proof}
-At any root, $P(\alpha)=0$, so $s(\alpha)=-\alpha P'(\alpha)$. Since
-$\rho_{\mathrm{ann}}=e^P$ is log-convex (\S\ref{sec:tail-regime}),
-$P$ itself is strictly convex; with exactly two zeros
-$\alpha_-<\alpha_+$, necessarily $P'(\alpha_-)<0<P'(\alpha_+)$
-(the function must be decreasing through the first zero and increasing
-through the second, on either side of its unique minimum). Hence
+At any root, $P(\alpha)=0$, so $s(\alpha)=-\alpha P'(\alpha)$.
+Lemma~\ref{lem:log-convex} gives $P'(\alpha_-)<0<P'(\alpha_+)$
+directly. Hence
 $s(\alpha_-)=-\alpha_-P'(\alpha_-)>0$ and
 $s(\alpha_+)=-\alpha_+P'(\alpha_+)<0$.
 \end{proof}
@@ -420,9 +435,13 @@ remark below ($\log q-2\log2>0$): the drift that makes orbits expand on
 average is, up to a minus sign, exactly the entropy deficit that
 freezes $\alpha_+=1$.
 
-We computed the freezing threshold $\alpha_c(q)$ (the root of
-$s(\alpha)=0$, which by Proposition~\ref{prop:always-frozen} always
-lies strictly between $\alpha_-(q)$ and $\alpha_+(q)$) directly:
+Since $s'(\alpha)=P'(\alpha)-P'(\alpha)-\alpha P''(\alpha)=-\alpha
+P''(\alpha)<0$ for every $\alpha>0$ by Lemma~\ref{lem:log-convex}, $s$
+is strictly decreasing throughout, so its root $\alpha_c(q)$ is unique
+wherever it exists; existence, and that it lies strictly between
+$\alpha_-(q)$ and $\alpha_+(q)$, follows from
+Proposition~\ref{prop:always-frozen} by the intermediate value theorem.
+We computed $\alpha_c(q)$ directly:
 \begin{center}
 \begin{tabular}{c|c}
 $q$ & $\alpha_c(q)$ \\ \hline
@@ -436,14 +455,13 @@ confirming $\alpha_-(q)<\alpha_c(q)<\alpha_+(q)$ in every case, as
 Proposition~\ref{prop:always-frozen} requires. We also verified
 numerically, with an independent memoised recursion computing
 $Z_k(\alpha;u_0)$ exactly at a fixed (not averaged) root, that the
-freezing is not merely a formal entropy computation but a genuine
-divergence of quenched from annealed growth: at $q=3$, $u_0=1$ --- a
-genuine period-one cycle of the residue dynamics, since $w_2(1)=1$
-exactly --- $Z_k(2;1)^{1/k}$ shows an oscillation with geometric-mean
-ratio well below the annealed rate $\rho_{\mathrm{ann}}(2)=1$; at
-$q=5$, $Z_k(1;u_0)^{1/k}$ at the roots $u_0\in\{1,2,3,4\}$ likewise
-fails to track $\rho_{\mathrm{ann}}(1)=1$. This check has a
-limitation, flagged rather than hidden: every one of these
+freezing reflects a real divergence of quenched from annealed growth:
+at $q=3$, $u_0=1$ (a period-one cycle of the residue dynamics, since
+$w_2(1)=1$ exactly), $Z_k(2;1)^{1/k}$ shows an oscillation with
+geometric-mean ratio well below the annealed rate
+$\rho_{\mathrm{ann}}(2)=1$; at $q=5$, $Z_k(1;u_0)^{1/k}$ at the roots
+$u_0\in\{1,2,3,4\}$ likewise fails to track $\rho_{\mathrm{ann}}(1)=1$.
+This check has a limitation: every one of these
 roots lies on or feeds directly into the smallest-admissible-branch
 map's own trivial cycle ($1\leftrightarrow3$ for $q=5$, exactly as
 $u_0=1$ does for $q=3$), so the divergence observed here has a
@@ -453,8 +471,9 @@ not by itself sample the generic (non-periodic) environment that the
 quenched statement is really about. We therefore report this as an
 illustration of freezing at a special, easily-computed class of
 roots, not as a confirmation at a generic one; \S\ref{sec:empirical}
-below carries the actual generic-environment evidence, averaging over
-many roots sampled well away from any known short cycle.
+below carries the corresponding generic-environment evidence, a
+handful of roots at $q=5,7$ sampled well away from any known short
+cycle.
 
 The pressure identity transfers to the counting exponent of the i.i.d.
 model at the unfrozen root $\alpha_-(q)$. It does not by itself prove a
@@ -466,11 +485,16 @@ claim for a coherent Haar-random $q$-adic root environment.
 \label{sec:transition}
 
 Besides the trivial root $\alpha=1$, equation~\eqref{eq:pressure-eq}
-has exactly one further positive root $\alpha^\ast(q)$ (by strict
-log-convexity of $\alpha\mapsto q^{\alpha-1}/(2^\alpha-1)$ on
-$\alpha>0$, discussed in \S\ref{sec:tail-regime} below, the
-equation $\rho(M_q(\alpha))=1$ has at most two positive roots). We
-solved for $\alpha^\ast(q)$ independently by bisection:
+has exactly one further positive root $\alpha^\ast(q)$. By
+Lemma~\ref{lem:log-convex}, $\rho_{\mathrm{ann}}(\alpha)=1$ has at
+most two positive roots; for existence, $\rho_{\mathrm{ann}}(\alpha)\to
+\infty$ both as $\alpha\to0^+$ (since $2^\alpha-1\to0$ linearly while
+$q^{\alpha-1}\to1/q$) and as $\alpha\to\infty$ (since $q>2$), so
+$P:=\log\rho_{\mathrm{ann}}\to\infty$ at both ends, and
+$P'(1)=\log(q/4)\ne0$ for every odd $q$ (\S\ref{sec:freezing}) places
+the strictly convex function's unique minimum away from $\alpha=1$,
+forcing a second root on the side of $1$ that the sign of $P'(1)$
+selects. We solved for $\alpha^\ast(q)$ independently by bisection:
 
 \begin{center}
 \begin{tabular}{c|c|c}
@@ -487,31 +511,82 @@ universal tail exponent for the classical Collatz reverse tree
 established by independent methods (Hill estimator on real-tree
 samples, and extreme value theory on block maxima) in earlier stages
 of this line of work. For $q\ge 5$, however, the second root falls
-\emph{below} $1$ rather than above it: a genuine structural transition,
-not a numerically small perturbation. Writing $\alpha_-<\alpha_+$ for
+strictly \emph{below} $1$, a qualitative structural transition. Writing
+$\alpha_-<\alpha_+$ for
 the two roots, we have $\{\alpha_-,\alpha_+\}=\{1,2\}$ at $q=3$ but
 $\{\alpha_-,\alpha_+\}=\{\alpha^\ast(q),1\}$ for $q\ge5$: the trivial
 root becomes the \emph{larger} of the two.
 
+\paragraph{The i.i.d.\ model.} Idealize the reverse tree by declaring
+each candidate exponent $a\ge1$ independently fertile with probability
+$1/q$; a fertile $a$ produces a child at multiplicative displacement
+$2^a/q$ from its parent, matching the arithmetic tree's own transition
+rule (\S\ref{sec:setup}) one branch at a time rather than only in
+aggregate. Writing $S_v\in\mathbb{R}$ for the cumulative log-displacement
+of an individual $v$ from the root, and $N(x):=\#\{v:S_v\le\log x\}$ for
+the number of individuals of any generation reaching size at most $x$,
+the many-to-one formula gives, for $\theta>0$,
+\[
+\mathbb E\Big[\sum_{|v|=n}e^{-\theta S_v}\Big]
+=\Big(\mathbb E\Big[\sum_{a\ge1}\mathbf1[\text{fertile}]\,(q/2^a)^{\theta}\Big]\Big)^{n}
+=\Big(\tfrac1q\sum_{a\ge1}(q/2^a)^\theta\Big)^{n}
+=\rho_{\mathrm{ann}}(\theta)^n,
+\]
+so the model's per-generation growth rate is governed by exactly the
+same pressure function as Theorem~\ref{thm:pressure}, not by a separately
+chosen one.
+
 \begin{theorem}[Structural transition: exponent, i.i.d.\ model]\label{thm:transition-model}
-Let $N(x)$ be the population counting function of the i.i.d.\
-branching-random-walk model whose annealed pressure is exactly
-$\rho_{\mathrm{ann}}(\alpha)=q^{\alpha-1}/(2^\alpha-1)$
-(Theorem~\ref{thm:pressure}). Since $\alpha_-(q)$ is always unfrozen
-(Proposition~\ref{prop:always-frozen}), $\log N(x)/\log x\to\alpha_-(q)$
-almost surely, for every odd $q\ge3$ \cite{Biggins1992}: exponent $1$
-(linear growth) at $q=3$; exponent $\alpha_-(q)<1$ for every $q\ge5$.
+For the i.i.d.\ model above, $\log N(x)/\log x\to\alpha_-(q)$ almost
+surely, for every odd $q\ge3$: exponent $1$ (i.e.\ $N(x)=x^{1+o(1)}$)
+at $q=3$; exponent $\alpha_-(q)<1$ for every $q\ge5$.
 \end{theorem}
 
+\begin{proof}
+\emph{Upper bound.} Fix $\theta\in(\alpha_-(q),\alpha_+(q))$, where
+$\rho_{\mathrm{ann}}(\theta)<1$ by the log-convexity argument above (a
+convex function vanishing at two points $\alpha_-<\alpha_+$ is
+non-positive in between). By Markov's inequality applied to the
+many-to-one identity, $\mathbb E[\#\{|v|=n:S_v\le y\}]\le
+e^{\theta y}\rho_{\mathrm{ann}}(\theta)^n$, so summing over all
+generations, $\mathbb E[N(e^y)]\le e^{\theta y}/(1-\rho_{\mathrm{ann}}(\theta))$.
+A second Markov step gives $\Pr(N(x)>x^{\theta+\varepsilon})\le
+x^{-\varepsilon}/(1-\rho_{\mathrm{ann}}(\theta))$ for any
+$\varepsilon>0$; this is summable along $x=2^k$, so Borel--Cantelli and
+monotonicity of $N$ give $\limsup_x\log N(x)/\log x\le\theta+\varepsilon$
+almost surely. Letting $\theta\downarrow\alpha_-(q)$ and
+$\varepsilon\downarrow0$ gives $\limsup\le\alpha_-(q)$.
+
+\emph{Lower bound.} This direction, matching the upper bound exponent
+almost surely on the survival event, is the content of
+Kontorovich--Lagarias's Theorem~8.10 \cite{KontorovichLagarias2010},
+proved there for the single-type $5x+1$ branching random walk by a
+large-deviations argument adapted from Lagarias--Weiss (the same
+Chernoff computation as above, run in reverse to locate the generation
+$k$ at which the bulk of the count accumulates, together with a
+second-moment estimate showing this generation's contribution is not a
+rare event). Their argument uses only the branching structure's pressure
+function, the independence of fertility across nodes, and survival on
+the large-deviation event with positive probability, the last of which
+is exactly what unfreezing at $\alpha_-(q)$
+(Proposition~\ref{prop:always-frozen}) supplies; with that in hand the
+argument transfers without change, and we do not repeat the
+second-moment computation here.
+\end{proof}
+
 \begin{proposition}[Finer asymptotic, conditional]\label{prop:transition-fine}
-Conditional on a renewal-type refinement, from the counting-function
-level (not merely the exponent) to the sharper asymptotic
-$N(x)\sim W\cdot x^{\alpha_-(q)}$, holding almost surely and uniformly,
-\emph{including} at $q=3$, for an almost surely positive, non-degenerate
-random scale factor $W$ (not a deterministic constant at any $q$, since
-the underlying reproduction law has genuine variance). A directed
-literature search found the neighboring machinery but not this exact
-statement ready-made: the classical Crump--Mode--Jagers renewal theorem
+The counting function conjecturally satisfies the sharper asymptotic
+$N(x)\sim W\cdot x^{\alpha_-(q)}$, not merely
+Theorem~\ref{thm:transition-model}'s exponent statement, holding almost
+surely and uniformly, \emph{including} at $q=3$, for an almost surely
+positive, non-degenerate random scale factor $W$ (not a deterministic
+constant at any $q$, since the underlying reproduction law has nonzero
+variance). This is a strictly stronger claim than
+Theorem~\ref{thm:transition-model}: it pins down the constant in front
+of $x^{\alpha_-(q)}$, not merely the exponent, which needs machinery
+beyond the large-deviations argument used above. A directed literature
+search found the neighboring machinery but not this exact statement
+ready-made: the classical Crump--Mode--Jagers renewal theorem
 \cite{Nerman1981} is stated for one-sided ($[0,\infty)$) reproduction
 point processes, while our branching displacements include negative
 values (e.g.\ $2/3<1$ at $q=3$, since a child can be numerically
@@ -521,17 +596,20 @@ generation-by-generation, not a renewal law summed over all generations;
 and the implicit renewal theory for weighted trees with general
 (two-sided) weights \cite{Goldie1991,JelenkovicOlveraCravioto2012,
 AlsmeyerBigginsMeiners2012} resolves the \emph{tail} of the fixed-point
-equation for $W$ itself, not the cumulative counting law for $N(x)$ ---
-a related but distinct question. We expect the present statement to
+equation for $W$ itself, not the cumulative counting law for $N(x)$, a
+related but distinct question. We expect the present statement to
 follow from combining this machinery (spine decomposition and
 exponential tilting for a two-sided one-dimensional random walk,
 exactly as already used for the tail-of-$W$ results just cited) but we
 have not carried out that adaptation, nor located it already written in
-this exact form; a very recent preprint \cite{VillemonaisZalduendo2025}
-extends branching-process convergence laws to general type spaces
-without geometric rescaling and may already contain it, but we have not
-verified this. The non-lattice hypothesis that any such extension of
-\cite{Nerman1981} would need holds here, and it is precisely the
+this exact form. A very recent preprint \cite{VillemonaisZalduendo2025}
+extends Biggins-type martingale convergence to general type spaces and
+non-geometric weights, but at the level of individual generations, the
+same scope as \cite{Biggins1992} above; it contains no renewal or
+Crump--Mode--Jagers machinery and does not address the cumulative,
+summed-over-generations statement needed here. The non-lattice
+hypothesis that any such extension of
+\cite{Nerman1981} would need holds here, and it is exactly the
 irrationality of $\log q/\log2$ that secures it. Although each
 single-step displacement $-\log q + a\log2$ ($a\in\mathbb{Z}_{\ge1}$)
 lies in one coset of the lattice $\log(2)\,\mathbb{Z}$, containment in
@@ -542,50 +620,52 @@ $\mathbb{R}$ for every odd $q\ge3$ because $\log q/\log2\notin\mathbb{Q}$.
 Equivalently, the characteristic function of the displacement equals
 $1$ only at the origin, so the renewal/CMJ asymptotic carries no
 log-periodic (period $\log2$) modulation. Were $\log q/\log2$ rational
-the branch positions would collapse onto a genuine lattice and a
+the branch positions would collapse onto a lattice and a
 periodic correction would appear; the irrationality is therefore the
 operative fact, not an irrelevant one.
 \end{proposition}
 
 \begin{conjecture}[Structural transition: exponent, arithmetic tree]\label{conj:transition-arithmetic}
-For every admissible root $u$, the genuine reverse tree of $T_q$
+For every admissible root $u$, the actual reverse tree of $T_q$
 satisfies
 \[
  N_u(x)=x^{\alpha_-(q)+o(1)}.
 \]
 Thus the exponent is $1$ for $q=3$ and is strictly below $1$ for every
 odd $q\ge5$. At $q=3$ this is the Growth Exponent Conjecture of
-Kontorovich--Lagarias \cite{KontorovichLagarias2009} and
+Kontorovich--Lagarias \cite{KontorovichLagarias2010} and
 Applegate--Lagarias
 \cite{ApplegateLagarias1995I,ApplegateLagarias1995II} for the classical
-Collatz reverse tree, namely $\pi_a(x)=x^{1+o(1)}$, open
+Collatz reverse tree, namely $\pi_a(x)=x^{1+o(1)}$ for their analogue
+of $N_u(x)$ above (the count, up to $x$, of odd integers reaching a
+fixed root $a$ under repeated reverse iteration), open
 since 1995, with the best unconditional partial result remaining the
 one-sided bound $\pi_a(x)\ge x^{0.84}$ of Krasikov--Lagarias
 \cite{KrasikovLagarias2003}. Our pressure identity reproduces the
 exponent-$1$ statement of this conjecture as the $\alpha_-=1$ case of
-a single closed-form equation, together with its $q\ge5$ analogue,
-rather than resolving it. A calibrated empirical test of this
+a single closed-form equation, together with its $q\ge5$ analogue; it
+does not resolve the conjecture. A calibrated empirical test of this
 conjecture at $q=5$ against a competing prediction is the subject of a
 companion paper \cite{KLVolkovCompanion}.
 \end{conjecture}
 
 We state Theorem~\ref{thm:transition-model},
 Proposition~\ref{prop:transition-fine}, and
-Conjecture~\ref{conj:transition-arithmetic} separately, rather than as
-a single theorem about the arithmetic tree, precisely because the step
-from one to the other is exactly the kind of transfer that caused the
-error corrected in Example~\ref{ex:naive-fails};
-Remark~\ref{rem:transfer-basis} below makes precise what does and does
+Conjecture~\ref{conj:transition-arithmetic} as three separate claims,
+not one theorem about the arithmetic tree, because the step
+from one to the other is exactly the kind of transfer that
+Example~\ref{ex:naive-fails} shows can fail;
+Remark~\ref{rem:transfer-basis} below specifies what does and does
 not rest on proof. Direct empirical support for
 Conjecture~\ref{conj:transition-arithmetic} is given in
 \S\ref{sec:empirical} below.
 
 \begin{remark}[What ``transfers'' rests on]\label{rem:transfer-basis}
-For the genuine i.i.d.\ branching-random-walk model that the annealed
+For the i.i.d.\ branching-random-walk model that the annealed
 identity of Theorem~\ref{thm:pressure} describes, quenched-equals-annealed
 growth throughout the unfrozen region is a rigorous, classical result
 \cite{Biggins1992}. For our arithmetic recursion, no analogous theorem
-is known to us: the closest genuine arithmetic result in
+is known to us: the closest arithmetic result in
 the literature is a one-sided density bound of Applegate--Lagarias
 \cite{ApplegateLagarias1995I,ApplegateLagarias1995II}, later sharpened
 by Krasikov--Lagarias \cite{KrasikovLagarias2003}, not a matching
@@ -625,9 +705,9 @@ Apply the implicit renewal theorem for generalized multiplicative
 cascades \cite{Liu2000}. With $\theta=\alpha_-(q)$, its logarithmic
 moment function is
 \[
- \psi(s)=\log\rho_{\mathrm{ann}}(\theta s).
+ \psi(\sigma)=\log\rho_{\mathrm{ann}}(\theta \sigma).
 \]
-It vanishes at $s=1$ and next at
+It vanishes at $\sigma=1$ and next at
 $\kappa=\alpha_+(q)/\alpha_-(q)$, while $\psi'(1)<0$ because the smaller
 root is unfrozen. The geometric offspring ladders give all moments
 needed in a neighborhood of $\kappa$. The closed subgroup generated by
@@ -637,8 +717,10 @@ Thus the renewal law is non-arithmetic and has a constant, positive
 tail coefficient.
 \end{proof}
 
-The four hypotheses above were checked numerically for
-$q=3,5,7,9,15$ in the accompanying repository.
+The hypotheses of Liu's theorem invoked above, namely
+$\rho_{\mathrm{ann}}(\alpha_-(q))=1$, $\rho_{\mathrm{ann}}(\alpha_+(q))=1$,
+$\psi'(1)<0$, and $\kappa=\alpha_+(q)/\alpha_-(q)>1$, were checked
+numerically for $q=3,5,7,9,15$ in the accompanying repository.
 
 This is the classical smoothing-transform result for the stochastic
 model. Its transfer to the coherent $q$-adic root environment is
@@ -651,30 +733,40 @@ exponent for class $i$), the scale factor satisfies
 $W_i\stackrel{d}{=}2^{-a_0(i)\theta}\cdot W^*$ for a common $W^*$,
 i.e.\ residue class only rescales the candidate limit, it does not
 change its shape.
-Verified on $5000$ sampled roots across four headroom levels, with
+Verified on $5000$ sampled roots across four headroom levels (the
+truncation bound $n_{\max}=v\cdot H$ expressed as a multiple $H$ of
+each root $v$, rather than an absolute size), with
 quantile ratios matching this prediction to within $2$--$9\%$; exact
 only in the idealized i.i.d.\ model, as in Remark~\ref{rem:transfer-basis}.
 The same relation survives unchanged when $2$ is not a primitive root
 mod $q$ (the extra sterile classes of \S\ref{sec:setup}): restricted
-to the surviving types $\langle2\rangle$, the multitype pressure
-matrix is rank $1$, and its Perron eigenvalue collapses, by a
+to the surviving types $\langle2\rangle$, one can still form a
+multitype pressure matrix, indexed by residue class, whose entries are
+one-step transition weights rather than the deterministic map that
+Example~\ref{ex:naive-fails} shows cannot exist; it is well defined
+because the digit $k=\lfloor u/q\rfloor\bmod q$ that example
+identifies as the missing information is itself uniform over all $q$
+residues independently of the parent's class $i$, so the transition
+weight out of class $i$ does not depend on $i$. This pressure matrix
+is rank $1$, and its Perron eigenvalue collapses, by a
 $d$-independent cancellation ($a_0$ a bijection
-$\langle2\rangle\to\{1,\ldots,d\}$), to exactly $q^{s-1}/(2^s-1)$ ---
-the same pressure equation --- so both the exponent and the
+$\langle2\rangle\to\{1,\ldots,d\}$), to exactly $q^{\sigma-1}/(2^\sigma-1)$, the
+same pressure equation, so both the exponent and the
 scale-family direction survive intact; verified for $q=7,15$ to
 $1$--$4\%$. (Whether $2$ is a primitive root mod $q$ is, for prime
 $q$, governed by Artin's primitive root conjecture, open in general
 but proved conditionally on GRH by \cite{Hooley1967}.)}
-the tail-index equation $\mathbb{E}[\sum_i A_i^s]=1$ becomes,
-for our weights, $q^{\alpha_-s-1}=2^{\alpha_- s}-1$, solved exactly by
-$s=\alpha_+/\alpha_-$. This is further reason to take the conjecture
+The tail-index equation $\mathbb{E}[\sum_i A_i^\sigma]=1$ becomes,
+for our weights, $q^{\alpha_-\sigma-1}=2^{\alpha_- \sigma}-1$, solved by
+$\sigma=1$ trivially and, nontrivially, by
+$\sigma=\alpha_+/\alpha_-$. This is further reason to take the conjecture
 seriously as a prediction, even though, per
-Remark~\ref{rem:transfer-basis}, the theory only rigorously covers the
-stochastic model, not our arithmetic recursion.
+Remark~\ref{rem:transfer-basis}, the theory rigorously covers only the
+stochastic model so far.
 
 We state this as a conjecture separate from both
 Theorem~\ref{thm:transition-model} and
-Conjecture~\ref{conj:transition-arithmetic} above, precisely because
+Conjecture~\ref{conj:transition-arithmetic} above, because
 Proposition~\ref{prop:always-frozen} shows $\alpha_+(q)$ is
 \emph{always} frozen, so the annealed pressure identity alone does not
 establish the tail. Theorem~\ref{thm:iid-tail} obtains it by implicit
@@ -684,26 +776,29 @@ Theorem~\ref{thm:pressure}. At $q=3$ that evidence is real and
 threefold: the Hill estimator on real-tree samples and extreme-value
 theory on block maxima (both from earlier stages of this line of work)
 give $\alpha\approx2$ independently of the pressure argument, and the
-counting-exponent confirmation below adds a third, related line of
-support. For $q\ge5$ the corresponding evidence is markedly weaker: an
+direct enumeration of \S\ref{sec:empirical}
+(Empirical Result~\ref{emp:real-trees}) adds a third, related line of
+support (that enumeration targets
+Conjecture~\ref{conj:transition-arithmetic}, the growth exponent, a
+distinct claim from the tail index tested below). For $q\ge5$ the
+tail-index evidence tested here is markedly weaker: an
 early Hill-estimator measurement of finite-depth root scale factors for
 $q=5$ (600
 roots, agreement to two decimal places with the predicted
 $1.536\ldots$) was later shown, over the course of this line of work,
 to be statistically non-confirmatory at that sample size (the
 estimator's true standard error is $\approx0.45$, an order of magnitude
-larger than the agreement being claimed). We pursued this further along
-two independent routes, and report both honestly rather than stopping
-at whichever gave the more favorable number.
+larger than the agreement being claimed). Two further tests bear on
+this question.
 
-First, a substantially larger statistical test (5000 roots, four
+First, a larger statistical test (5000 roots, four
 headroom levels up to $10^8$) applied a battery of four estimators (a
 rank-size regression with the Gabaix--Ibragimov finite-sample
 correction; a bias-corrected Hill estimator following Huisman et al.;
 a generalized-Pareto threshold-stability scan; and a
 Clauset--Shalizi--Newman fit with a Vuong test against a truncated
 log-normal alternative). The outcome is mixed rather than confirmatory:
-the bias-corrected Hill estimator is remarkably stable across headroom
+the bias-corrected Hill estimator is stable across headroom
 levels and lands close to the predicted $1.536$, but the
 threshold-stability scan shows no clean plateau near the predicted
 shape parameter, and the Vuong test favors the log-normal alternative
@@ -711,8 +806,8 @@ over the power law, at conventional significance, in three of the four
 headroom levels tested. Reading the four estimators together by the
 depth of tail they each summarize shows the apparent local tail index
 rising smoothly with depth (from $\approx1.3$ at the widest window to
-$\approx2.2$ at the narrowest) rather than settling near any single
-value --- consistent with a slowly-converging pre-asymptotic regime in
+$\approx2.2$ at the narrowest) without settling near any single
+value: consistent with a slowly-converging pre-asymptotic regime in
 which no estimator at this sample size can be treated as decisive.
 
 Second, we tested the conjecture by an exact, non-statistical route:
@@ -720,20 +815,20 @@ the same depth-$k$ recursion $Z_k(\theta;u)$ used to verify the
 frozen-phase growth law above (with $\theta=\alpha_-(5)$) was evaluated
 over the \emph{entire} population of residues $u\bmod 5^k$ (not a
 sample), for $k$ up to $11$ ($5^{11}\approx4.9\times10^7$ residues; a
-sanity check --- that the population mean of $Z_k(\theta;u)$ equals
+sanity check, that the population mean of $Z_k(\theta;u)$ equals
 exactly $1$ for every $k$, forced by Theorem~\ref{thm:pressure} at
-$\alpha=\theta$ --- passed to floating-point precision, confirming the
+$\alpha=\theta$, passed to floating-point precision, confirming the
 implementation). If $W_q=\lim_k Z_k(\theta;U)$ has tail index
 $\iota$, the population moment $M_k(p)=\mathrm{mean}_u\,Z_k(\theta;u)^p$
 should saturate in $k$ for $p<\iota$ and diverge for $p>\iota$.
 The data show saturating behavior throughout $p\le1.6$ and diverging
 behavior for $p\ge1.7$, which would place $\iota$ higher than the
-predicted $1.536$ if taken at face value --- but the ratio of
+predicted $1.536$ if taken at face value; the ratio of
 successive increments has not yet stabilized for $p\le1.6$ at $k=11$
 (unlike $p\ge1.7$, where it has), the classic signature of a system
 still relaxing toward its asymptotic exponent rather than one that has
 reached it. Given the previously observed slow convergence rate for
-$q=5$ ($k^{-0.222}$ decay in the moment test --- not an effect of the
+$q=5$ ($k^{-0.222}$ decay in the moment test, not an effect of the
 linear transfer operator's spectrum, which we later verified to be
 exactly $\{\Lambda,0\}$ at every truncation level, i.e. a perfect
 spectral gap with no isolated subdominant eigenvalue; the transient's
@@ -742,31 +837,30 @@ the transient decays by only about $7\%$ between
 $k=8$ and $k=11$; halving it would require $k\approx250$, far beyond
 what exhaustive enumeration over $5^k$ residues can reach. We therefore
 cannot distinguish, from this data, between $\theta=1.536$ lying just
-below a nearby true index and lying further below one --- the test is
+below a nearby true index and lying further below one. The test is
 inconclusive, not disconfirming, and enumeration alone will not resolve
 it.
 
-Taken together, neither route confirms Conjecture~\ref{conj:tail-index}
-for $q\ge5$ and neither refutes it; both are more informative than the
+Neither route confirms Conjecture~\ref{conj:tail-index}
+for $q\ge5$, and neither refutes it; both are more informative than the
 original under-powered measurement, and both point to the same
 conclusion: this is a harder statistical question than the $q=3$ case,
 which has stronger finite-level support from the independent Hill/EVT
-measurements noted above. We have since pursued exactly the two
-follow-ups this pointed to. A pre-registered log-periodic fit
-(motivated by the branch weights being powers of $2$) was tested against
-a period derived analytically, not fitted: the relevant renewal-theoretic
-dichotomy is non-arithmetic (the shift $\log_2 5$ is irrational), so no
-asymptotic log-periodicity is predicted, and a periodogram test found no
-power at the predicted frequencies. An analytic handle on the linear
-transfer operator's spectrum, once obtained, likewise turned out not to
-bear on this question, since the transient lives in a separate nonlinear
-layer (the operator has a provably perfect spectral gap). The other
-follow-up produced a real gain: a pre-registered comparison on a
-$20\times$ larger sample ($10^5$ roots) produced, for the first time,
-a clean GPD threshold-stability plateau at the predicted value, a
-tightly concentrated Hill estimate, and a Vuong test that no longer
-favors the lognormal alternative --- all confirmed against two synthetic
-calibration checks rather than taken at face value. This is now the
+measurements noted above. Two follow-ups address this. A log-periodic
+fit (motivated by the branch weights being powers of $2$) was tested
+against a period derived analytically, not fitted: the relevant
+renewal-theoretic dichotomy is non-arithmetic (the shift $\log_2 5$ is
+irrational), so no asymptotic log-periodicity is predicted, and a
+periodogram test found no power at the predicted frequencies. An
+analytic handle on the linear transfer operator's spectrum, once
+obtained, likewise turned out not to bear on this question, since the
+transient lives in a separate nonlinear layer (the operator has a
+provably perfect spectral gap). The second follow-up produced a real
+gain: a comparison on a $20\times$ larger sample ($10^5$ roots)
+produced, for the first time, a clean GPD threshold-stability plateau
+at the predicted value, a tightly concentrated Hill estimate, and a
+Vuong test that no longer favors the lognormal alternative; both were
+checked against two synthetic calibration tests. This is now the
 strongest evidence to date in favor of Conjecture~\ref{conj:tail-index}
 for $q=5$, though not a proof of it: Vuong non-rejection is not
 confirmation, and the martingale is provably still pre-asymptotic at
@@ -776,85 +870,92 @@ The mean drift $\log q - 2\log 2$ changes sign exactly at the
 threshold $q=5$ separating the two cases of
 Conjecture~\ref{conj:transition-arithmetic}: negative for $q=3$ (orbits
 contract on average), positive for $q\ge 5$ (orbits expand on average).
-This is not a coincidence alongside the freezing computation of
+The same sign condition governs the freezing computation of
 \S\ref{sec:freezing}: at $\alpha=1$ the entropy is exactly
 $s(1)=\log(4/q)$, so the same sign that decides contraction versus
 expansion of orbits also decides whether the trivial root $\alpha=1$
 is frozen.
 
-\section{Precise regime of the tail exponent at \texorpdfstring{$q=3$}{q=3}}
+\section{The tail-exponent regime at \texorpdfstring{$q=3$}{q=3}}
 \label{sec:tail-regime}
 
-A directed literature search raised the question whether
-$\alpha^\ast=2$ (the second root at $q=3$) coincides with the
-\emph{critical case} of the classical multivariate smoothing-transform
-theory \cite{KoleskoMentemeier2015}, characterized by $m'(\alpha)=0$ at
-a root of $m(\alpha)=1$ (a boundary/degenerate case in the sense of
-Biggins--Kyprianou). Writing $m(\alpha):=q^{\alpha-1}/(2^\alpha-1)$
-(the pressure function of \S\ref{sec:pressure} at $q=3$), we compute
+At $q=3$, the second root $\alpha^\ast=2$ is numerically the boundary
+value that the classical multivariate smoothing-transform theory
+\cite{KoleskoMentemeier2015} would classify as the \emph{critical
+case}, characterized by $m'(\alpha)=0$ at a root of $m(\alpha)=1$ (a
+boundary/degenerate case in the sense of Biggins--Kyprianou). Writing
+$m(\alpha):=q^{\alpha-1}/(2^\alpha-1)$ (the pressure function of
+\S\ref{sec:pressure} at $q=3$), we compute
 \[
-  m'(1) = \ln 3 - 2\ln 2\cdot\frac{2^1}{2^1-1}
+  m'(1) = \ln 3 - \ln 2\cdot\frac{2^1}{2^1-1}
     \quad\text{explicitly } \approx -0.288 < 0, \qquad
   m'(2) = \ln 3 - \tfrac{4}{3}\ln 2 \approx +0.174 > 0.
 \]
-Since $m$ is log-convex (as a sum, after clearing denominators, of
-exponentials in $\alpha$), two distinct roots of $m(\alpha)=1$
-necessarily straddle the unique minimum of $m$, so \emph{neither} can
-be a critical (double) root; criticality would require the two roots
-to merge, which does not happen at $q=3$. The correct classification
+By Lemma~\ref{lem:log-convex}, $\log m$ is strictly convex, so the two
+distinct roots of $m(\alpha)=1$ necessarily straddle its unique
+minimum, so \emph{neither} can be a critical (double) root;
+criticality would require the two roots to merge, which does not
+happen at $q=3$. The correct classification
 of $\alpha^\ast=2$ is therefore as the \emph{second root with
-$m'>0$} --- a Goldie/Guivarc'h-type regularly-varying tail regime
+$m'>0$}: a Goldie/Guivarc'h-type regularly-varying tail regime
 \cite{Goldie1991,BuraczewskiDamekMikosch2016}, not the critical case.
 This distinction matters operationally: the critical-case uniqueness
 theorem of \cite{KoleskoMentemeier2015} \emph{presupposes} exactly the
 independence between subtree copies that the endogeny-barrier companion
 paper identifies as the arithmetic gap obstructing a full proof
-\cite{BarrierCompanion} --- so even setting aside the regime mismatch,
+\cite{BarrierCompanion}. Even setting aside the regime mismatch,
 it could not have supplied a new tool for closing that gap. Tying this
 to \S\ref{sec:freezing}: ``second root with $m'>0$'' is exactly the
 freezing condition of Proposition~\ref{prop:always-frozen}: the
 Goldie/Guivarc'h regime name correctly classifies the algebraic root
 $\alpha^\ast=2$ of $m(\alpha)=1$, but by itself says nothing about
 whether this root governs the \emph{quenched} tail of our specific
-arithmetic recursion --- which is exactly the question
+arithmetic recursion. That is exactly the question
 Proposition~\ref{prop:always-frozen} and Conjecture~\ref{conj:tail-index}
 address directly.
 
 \section{Empirical confirmation on real reverse trees}
 \label{sec:empirical}
 
-Independent depth-first enumeration of the true (not extended) reverse
+\begin{empirical}[Direct enumeration on real reverse trees]\label{emp:real-trees}
+Independent depth-first enumeration of the reverse
 trees for $q=5$ and $q=7$, following the exact admissibility rule of
 \S\ref{sec:setup}, provides direct empirical support for
 Conjecture~\ref{conj:transition-arithmetic}:
 counting slopes per decade of $3$ independently sampled roots gave
 $\approx 0.62$--$0.66$ for $q=5$ (predicted $0.650919$) and
-$\approx 0.36$--$0.39$ for $q=7$ (predicted $0.373501$). A more careful,
+$\approx 0.36$--$0.39$ for $q=7$ (predicted $0.373501$).
+\end{empirical}
+
+A more careful,
 statistically calibrated measurement for $q=5$, separating this
 prediction from a competing one, is the subject of a companion paper
 \cite{KLVolkovCompanion}. As already noted above for $q=3$ (where
-$w_2(1)=1$ is a genuine fixed point), the smallest-branch map
-$u\mapsto w_{A_0(u\bmod q)}(u)$ has finite cycles for $q=5$ (e.g.\
+$w_2(1)=1$ is a fixed point), the smallest-branch map
+$u\mapsto w_{a_0(u\bmod q)}(u)$ has finite cycles for $q=5$ (e.g.\
 $1\mapsto3\mapsto1$, since $w_4(1)=3$ and $w_1(3)=1$) and $q=7$; naive
 enumeration would loop on nodes that reach one. Our implementation
 excludes all such cycle members explicitly (precomputed for each $q$)
-and deduplicates visited nodes, rather than relying only on sampling
+and deduplicates visited nodes, instead of only sampling
 roots far from them.
 
 \begin{remark}[Bibliographic calibration]\label{rem:novelty-109}
-A directed novelty check against Kontorovich--Lagarias
-\cite{KontorovichLagarias2009}, Wirsching \cite{Wirsching1998}, and a
-later rigorous forward-direction result excluding $q\ge5$ for the
-analogous $p=2$ generalization \cite{GoncalvesGreenfeldMadrid2022}
-established that neither the numerical value $\alpha^\ast(5)=0.650919$
-nor the qualitative transition at $q\ge 5$ is new: Wirsching had
-already conjectured the transition heuristically in 1998, and
-Kontorovich--Lagarias had already computed the same quantity
-(denoted $\eta_{5,BP}$ in their Theorem~8.10) via large-deviations
-methods for a branching random walk, a route different from, but
-numerically identical to, our pressure-equation derivation. Given
-\S\ref{sec:freezing}, this difference in route may matter more than a
-mere alternative derivation: a genuine large-deviations argument for a
+Neither the numerical value $\alpha^\ast(5)=0.650919$ nor the
+qualitative transition at $q\ge5$ is new, and a later result rigorously
+excludes $q\ge5$ in the forward direction for the analogous $p=2$
+generalization \cite{GoncalvesGreenfeldMadrid2022}. Wirsching
+\cite[Ch.~III, \S5, following Theorem~5.2]{Wirsching1998} anticipated
+the same qualitative transition at $p>4$ heuristically in 1998, in his
+own terms (a sign flip in the index of the maximal term $f_p(n)$,
+leading him to expect vanishing asymptotic density for the weak
+components of the Collatz graph of $T_p$),
+and Kontorovich--Lagarias \cite{KontorovichLagarias2010} had already
+computed the same quantity
+(denoted $\eta_{5,BP}$ in their Theorem~8.10) via a different route,
+large-deviations methods for a branching random walk, that is
+numerically identical to our pressure-equation derivation. Given
+\S\ref{sec:freezing}, this difference in route matters beyond giving
+an alternative derivation: a large-deviations argument for a
 branching random walk is, in the appropriate sense, a quenched
 statement, whereas our pressure identity (Theorem~\ref{thm:pressure})
 is annealed. That the two agree numerically at $\alpha_-(5)$ is
@@ -870,8 +971,8 @@ independent numerical confirmation.
 
 \section*{Data Availability Statement}
 
-Code and data reproducing every claim in this paper, organized by
-section with a README per subfolder, are at
+Code and data reproducing every claim in this paper, with a README
+mapping each script to the section and result it verifies, are at
 \url{https://github.com/faculdade/collatz-qx1-pressure}.
 
 \section*{Acknowledgments}
@@ -880,7 +981,7 @@ AI assistance (Claude, Anthropic) was used for textual review and
 translation.
 
 \bibliographystyle{plain}
-\begin{thebibliography}{9}
+\begin{thebibliography}{99}
 
 \bibitem{BarrierCompanion} R.\ A.\ Tavares, \emph{The $qx+1$
   generalization of Tao's Syracuse measure: an endogeny barrier},
@@ -891,7 +992,7 @@ translation.
   predictions for the $5x+1$ reverse tree}, companion paper, in
   preparation.
 
-\bibitem{KontorovichLagarias2009} A.\ V.\ Kontorovich and J.\ C.\
+\bibitem{KontorovichLagarias2010} A.\ V.\ Kontorovich and J.\ C.\
   Lagarias, \emph{Stochastic models for the $3x+1$ and $5x+1$
   problems}, in: \emph{The Ultimate Challenge: the $3x+1$ Problem}
   (J.\ C.\ Lagarias, ed.), American Mathematical Society, 2010.
@@ -953,7 +1054,8 @@ translation.
 
 \bibitem{KoleskoMentemeier2015} K.\ Kolesko and S.\ Mentemeier,
   \emph{Fixed points of the multivariate smoothing transform: the
-  critical case}, arXiv:1409.7220.
+  critical case}, Electronic Journal of Probability \textbf{20}
+  (2015), \href{https://doi.org/10.1214/EJP.v20-4022}{doi:10.1214/EJP.v20-4022}.
 
 \bibitem{BuraczewskiDamekMikosch2016} D.\ Buraczewski, E.\ Damek, and
   T.\ Mikosch, \emph{Stochastic Models with Power-Law Tails: The
