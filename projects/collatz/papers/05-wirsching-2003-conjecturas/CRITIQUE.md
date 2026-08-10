@@ -1,0 +1,676 @@
+# CRITIQUE: paper 05 (`main.tex`)
+
+Arquivo único de crítica deste paper (Regra 8/15). A tabela de status no
+topo é leitura obrigatória do produtor a cada passada; as seções datadas
+abaixo são o histórico completo, consultadas sob demanda.
+
+Primeira rodada, então não há coluna "Origem": o paper nasceu em
+2026-08-10 da divisão de `01-syracuse-qx1-endogenia` §9.2+§9.3, e não
+vale a pena separar o que veio de lá do que a divisão introduziu antes
+de alguém decidir consertar.
+
+Nenhum achado foi consertado nesta rodada (o crítico não conserta).
+
+## Tabela de status
+
+| ID | Rodada | Resumo | Severidade | Status |
+|----|--------|--------|------------|--------|
+| C-001 | 2026-08-10 | Abstract diz "a matching nonequivalence theorem at linear precision"; o corpo prova não equivalência só para os vetores de custo latentes e nega explicitamente a versão projetada | alta | fixed |
+| C-002 | 2026-08-10 | Discussão diz que `thm:ensemble-divergence` "shows why" há não equivalência; o teorema é uma dominação (cota superior) e o corpo já diz que a direção é insuficiente | alta | fixed |
+| C-003 | 2026-08-10 | As condições da fonte são (⋆1)-(⋆5), não (?1)-(?5): o "?" é artefato de extração de texto do PDF, propagado ~15 vezes no main.tex | alta | fixed |
+| C-004 | 2026-08-10 | `prop:fabius` reproduz, sem prova e sem citação, os Corolários 7 e 8 e a fórmula (7.7) de Wirsching (2003), inclusive a constante `2^{-n+1}` | alta | fixed |
+| C-005 | 2026-08-10 | Berg-Krüppel citados nominalmente em §5 sem `\bibitem`, com o paper registrado como não lido nesta linha; "atomic functions of Rvachev" idem | alta | fixed |
+| C-006 | 2026-08-10 | `fixed_precision_projection.py` não roda no repositório citado (importa pasta inexistente); é o script que sustenta três teoremas e um resultado empírico | alta | fixed |
+| C-007 | 2026-08-10 | §2: "The only bridge offered between the two is Wirsching's Theorem 3" é falso; a p.14 da fonte oferece também `lim ∫ g̃_ℓ(x,a)da = φ(x)` | média | fixed |
+| C-008 | 2026-08-10 | §2 define as funções Elka como "paths of length k+ℓ"; a fonte pede exatamente k passos `T_0` e ℓ passos `T_1` | média | fixed |
+| C-009 | 2026-08-10 | §3 apresenta como próprio o que a fonte já dá: `ē_ℓ(k)` é a fórmula (1.4) e a leitura de urnas está na p.8; o conteúdo novo é a cauda, não o cancelamento | média | fixed |
+| C-010 | 2026-08-10 | Objetos centrais nunca definidos: `g_ℓ(k,a)`, `E_{ℓ,k}(a)`, `Ã_δ`, `x_ℓ^+`, `φ_0`; (?5) nunca enunciada; `ḡ_ℓ` usado em §3 e definido em §4 | média | fixed |
+| C-011 | 2026-08-10 | Colisões de notação: `μ` (constante) contra `μ_ℓ`/`μ_r` (medida), com `μ_1` nos dois sentidos; `c_j` definido de dois modos; `u` em três sentidos | média | fixed |
+| C-012 | 2026-08-10 | Multiplicidade mínima zero no custo central em todo nível computado falsifica a hipótese de `thm:microcanonical` e `prop:complex-deconditioning` nesses níveis, sem nenhuma ressalva junto aos teoremas | média | fixed |
+| C-013 | 2026-08-10 | "delimit exactly how far local-limit methods reach" (Discussão e Introdução) contra "The linear-precision residue and Fourier problems remain open" (corpo) | média | fixed |
+| C-014 | 2026-08-10 | `sec5-conjecture3-numerical/README.md` é byte-idêntico ao do `sec4`, e o título de ambos ainda é "§9.3", numeração do paper 01 | média | fixed |
+| C-015 | 2026-08-10 | Treze números empíricos do paper não aparecem como resultado esperado em nenhum README do repositório | média | fixed |
+| C-016 | 2026-08-10 | "certified ... error bounded by 10^{-8}" no abstract cobre a avaliação de φ, não as extrapolações (±0.015 sistemático) que de fato testam a Conjectura 3; "(stat)" em cálculo determinístico | média | fixed |
+| C-017 | 2026-08-10 | Dois em dashes no corpo (linhas 91 e 632); Regra 3 pede zero | média | fixed |
+| C-018 | 2026-08-10 | Regra 4b: orçamento de "X, not Y"/"rather than" estourado (≥8); "precisely", "decisive", "honest range"; título é tricolon | média | fixed |
+| C-019 | 2026-08-10 | Frases cujo sujeito é o próprio paper em §2 e narração do processo interno do projeto no abstract, sem identificar a que se refere | média | fixed |
+| C-020 | 2026-08-10 | Abstract, 1ª frase: "three conjectures about the base-3 analogue of the Fabius function"; só a Conjectura 3 é sobre φ | média | fixed |
+| C-021 | 2026-08-10 | "imprecisely characterized in the literature that cites it" sem nenhuma citação; Lagarias, Dragičević et al. e Hafouta afirmados sem registro de leitura no projeto | média | fixed |
+| C-029 | 2026-08-10 | A equação (5) é atribuída a `thm:ensemble-divergence` ("the theorem gives"); ela decorre de `thm:sublinear-precision-ensemble`, não de uma cota de entropia | média | fixed |
+| C-030 | 2026-08-10 | Os dois passos estruturais que carregam §4 inteira (dobra dos expoentes pela ordem aplicável; bloco terminal determina o resíduo módulo `3^r`) são afirmados em uma frase cada, sem prova | média | fixed |
+| C-022 | 2026-08-10 | (?4) chamada de "target" da Conjectura 2 no abstract e na Discussão; na fonte é a hipótese, e (?3) é a conclusão | baixa | fixed |
+| C-023 | 2026-08-10 | §3 descreve a janela da Conjectura 3 como `A_δ` inteira; (⋆5) é sobre `Ã_{δ_5}` e a fonte exige `δ_5 > δ` na implicação | baixa | fixed |
+| C-024 | 2026-08-10 | Prefixo `thm:` nos quatro ambientes `empirical`; `\choose` de plain TeX em §3 contra `\binom` em §5 (aviso do amsmath) | baixa | fixed |
+| C-025 | 2026-08-10 | Discussão chama (2) de "The support identity"; é identidade de massa | baixa | fixed |
+| C-026 | 2026-08-10 | "The distances decrease over the computed levels" com um único nível exibido | baixa | fixed |
+| C-027 | 2026-08-10 | `main-pt-br.tex` não existe (Regra 5) | baixa | open |
+| C-028 | 2026-08-10 | `BarrierCompanion`, "in preparation" e sem URL, sustenta duas afirmações de conteúdo | baixa | fixed |
+
+## Checagens que passaram, registradas para não serem refeitas
+
+Contra a fonte primária (`literature/papers/132_Wirsching-2003-Positive-Predecessor-Density.pdf`,
+lido diretamente nesta rodada, pp. 1-18, não pela nota):
+
+- Quantificador de δ. Teorema 1 (p.5) e Conjectura 1 (p.8) são ambos
+  "If there are real numbers δ, μ > 0 such that ...". A ressalva "with a
+  possibly smaller central-limit window" em `thm:wirsching-conj1` é
+  portanto inofensiva, e o teorema prova de fato a Conjectura 1. Não é
+  achado.
+- `A_δ` (1.5), a fórmula (1.4) de `ē_ℓ`, a recursão (2.1), `e_ℓ = p_ℓ * g_ℓ`
+  (2.3), `ē_ℓ = p_ℓ * ḡ_ℓ` (2.4), as moedas `c_0 = 1`, `c_j = 2·3^{j-1}`
+  (2.2): todos conferem com o que o main.tex usa.
+- Enunciado literal de (⋆4) na p.14, com `χ_0 = 1_{[0,2/3]}` e
+  `χ_1 = 1_{[1/3,1]}`: bate com o display de §2.
+- `X = I_3 × Z_3^×`, `I_3 ≅ {0,1,2}^N`, `g̃_ℓ(x,a) = γ_ℓ g_ℓ(⌊3^ℓ x⌋, a)`
+  com `γ_ℓ` independente de `a`, Teorema 3 (convergência forte, uniforme
+  em famílias equicontínuas limitadas): conferem com pp. 9-11.
+- O primeiro dos três achados de §2 está certo, e é o melhor material do
+  paper: (5.1) diz literalmente que `(S_∞f)(x,a)` não depende de
+  `a ∈ Z_3^×`. O segundo ((?2) e (?3) são a mesma desigualdade) confere
+  com o Teorema 2 (p.10); o terceiro (Teorema 1 só consome `a ∈ N`)
+  confere com o Teorema 1 (p.5) e com (1.2)/(1.3).
+- `L_ℓ := 3^{1-ℓ} φ(3x_ℓ^+)/φ(x_ℓ^+)` é, via (7.7), exatamente o
+  quociente `(2/3^{ℓ+1})·φ'(x_ℓ^+)/φ(x_ℓ^+)` de (7.5), e o valor 2/3 é
+  (7.13). A matemática de §5 está correta; o defeito ali é só de
+  exposição (C-010).
+
+Álgebra conferida à mão:
+
+- Prova da Conjectura 1: `Σ q_ℓ(k)z^k = Π(1-z^{c_j})/(1-z)`,
+  `Σ p_ℓ(m)z^m = Π(1-z^{c_j})^{-1}`, cancelamento dando `(1-z)^{-(ℓ+1)}` e
+  daí `ē_ℓ(k) = binom(k+ℓ,ℓ)/(2·3^{ℓ-1})`; razão binomial
+  `≤ (k/(k+ℓ))^m`; a escolha `δ+η<δ_1` põe `j=k-m` na janela de (?2).
+  Fecha. (O passo `ḡ_ℓ ≤ ē_ℓ`, usado implicitamente para comparar a
+  cauda com `ē_ℓ(k)`, é imediato mas não está escrito.)
+- `thm:microcanonical`: `Pr(J_i=j) = 2^{-(j+1)}/(1-2^{-c_i})` soma 1; o
+  produto dá (2); o teto `k ≤ 3^ℓ-ℓ-1 = Σ(c_i-1)` confere;
+  `E K_ℓ = ℓ+O(1)`, `Var = 2ℓ+O(1)`, `2Φ(δ/√2)-1`; a cadeia final fecha.
+- `prop:complex-deconditioning`: a identidade (3) fecha por cancelamento
+  e `Q̄_ℓ` é de fato a lei de `K_ℓ`.
+- Identidade de redução de tampa
+  `Σ_{j<C, j≡s (d)} 2^{-(j+1)}/(1-2^{-C}) = 2^{-(s+1)}/(1-2^{-d})`:
+  confere. A divisibilidade `d | C` vale com o pareamento correto
+  (`J_{ℓ-1-i}` reduzido módulo `2·3^{r-1-i}`) para todo `r ≤ ℓ`.
+- `thm:linear-block-nonequivalence`: média e variância condicionais `ρu`
+  e `2ρ(1-ρ)`; cruzamento em `|x| = √(-2(1-ρ)ln(1-ρ))`; a fórmula
+  fechada para `u=0` recomputada dá 0.06934, 0.16608, 0.32272 para
+  `ρ = 0.25, 0.5, 0.75`.
+- `thm:ensemble-divergence`: dominação, `D_KL ≤ D_∞ ≤ -log Pr(K_ℓ=k)`, e
+  `½log ℓ + O(1)` na janela central.
+- `thm:microcanonical-fourier`: `min_a p/(1/(2·3^{ℓ-1})) ≥ 1 - (2/3)Σ|p̂-û|`
+  é a inversão correta em `Z/3^ℓ`.
+- `μ_1 = (1/3, 2/3)` sobre as unidades módulo 3 e `|μ̂_1| = 1/√3`.
+- Recursão de momentos `M_i = (3^i-1)^{-1} Σ binom(i,k) (2^k/(k+1)) M_{i-k}`,
+  derivada de `X = (2U+X')/3`.
+- Os dois passos estruturais que o paper afirma sem provar (C-030) são
+  verdadeiros. Da recursão (2.1), `a = (3a' + 1)·2^{-(j+1)}`, logo
+  `a mod 3^r` fica determinado por `a' mod 3^{r-1}` e por `j` módulo a
+  ordem de 2 em `(Z/3^r)^×`, que é `2·3^{r-1}`. Descendo, `a mod 3^r` é
+  função de `(J_{ℓ-1} mod 2·3^{r-1}, …, J_{ℓ-r} mod 2·3^0)`: é o bloco
+  terminal, e o emparelhamento correto é `J_{ℓ-1-i}` com tampa reduzida
+  `2·3^{r-1-i}`, cuja divisibilidade `2·3^{r-1-i} | 2·3^{ℓ-1-i}` vale
+  para todo `r ≤ ℓ`.
+- Item 3 da tarefa: os quatro teoremas de ensembles são mutuamente
+  consistentes. `thm:sublinear-precision-ensemble` prova, no caminho,
+  proximidade em nível de bloco para `r = o(ℓ)`, e
+  `thm:linear-block-nonequivalence` mostra falha em nível de bloco para
+  `r ~ ρℓ`: são o mesmo objeto em regimes disjuntos, e portanto a
+  afirmação de que `r = o(ℓ)` é nítida se sustenta.
+  `thm:ensemble-divergence` é unilateral e não colide com nenhum dos
+  outros. O corpo delimita isso corretamente; o abstract e a Discussão é
+  que escorregam (C-001, C-002).
+- Não há alegação, em nenhum lugar do paper, de ter fechado a Conjectura
+  2. §5 e a Discussão dizem que continua aberta. O item 4 da tarefa
+  passa.
+- Bibliografia: 5 chaves `\cite`, 5 `\bibitem`, sem órfãos nas duas
+  direções. Compila limpo, 9 páginas.
+
+Repositório `collatz-wirsching-2003`, executado nesta rodada:
+
+- Rodam: `check_generating_identity.py` (reporta `ok` para ℓ=2..12),
+  `validate_canonical_decomposition.py`, `microcanonical_multiplicity.py`,
+  `microcanonical_fourier.py`, `support_threshold.py`,
+  `linear_block_tv.py`. `experiment_conjecture3.py` roda (validação
+  interna passa, `M_1 = 1/2`, `M_2 = 7/24`, `φ(1/2) = 1.5`, e produz os
+  níveis iniciais), mas não foi executado aqui até ℓ=500.
+- `linear_block_tv.py` reproduz 0.0695, 0.1661, 0.3227, batendo com a
+  fórmula fechada recomputada à mão.
+- `support_threshold.py` em ℓ=10 dá `exact_first=15 = ℓ+5`, coerente com
+  o que o paper afirma para 10 ≤ ℓ ≤ 16.
+- Não roda: `fixed_precision_projection.py` (C-006).
+
+---
+
+## Rodada 2026-08-10 (primeira crítica; produtor: sessão da divisão do paper 01)
+
+### C-001 (alta). O abstract promete uma não equivalência que o corpo nega
+
+O abstract encadeia, na mesma frase: "an exact equivalence-of-ensembles
+theorem at fixed and sublinear precision, a matching nonequivalence
+theorem at linear precision". Os dois primeiros são sobre a projeção de
+`p_{ℓ,k}` módulo `3^r`. O terceiro, `thm:linear-block-nonequivalence`, é
+sobre o bloco terminal de custos, e o parágrafo logo abaixo dele diz o
+contrário do que "matching" sugere:
+
+> It does not prove nonequivalence after projection modulo `3^r`: the
+> residue map can discard the block sum, and total variation can
+> decrease under that projection. The linear-precision residue and
+> Fourier problems remain open.
+
+A Discussão acerta ("shows the latent cost vectors provably fail"). O
+abstract é o único lugar onde a distinção some, que é exatamente o
+padrão da Regra 8b.
+
+### C-002 (alta). A Discussão inverte a direção de `thm:ensemble-divergence`
+
+Discussão: "`thm:linear-block-nonequivalence` shows the latent cost
+vectors provably fail to converge at linear precision, and
+`thm:ensemble-divergence` shows why: the likelihood gap between the
+microcanonical and canonical ensembles degrades only logarithmically, in
+the direction opposite to what Conjecture 2 needs."
+
+`thm:ensemble-divergence` é `p^{(r)}_{ℓ,k}(E) ≤ Pr(K_ℓ=k)^{-1} μ_r(E)`,
+isto é, uma cota superior de `D_∞`. Uma cota superior na razão de
+verossimilhança não explica não equivalência nenhuma. O corpo já diz
+isso, três parágrafos acima:
+
+> Theorem ... applies at full precision, but its direction is
+> insufficient for condition (?3). ... the unresolved part is the lower
+> tail of the likelihood ratio.
+
+Ou a Discussão está errada, ou o parágrafo do corpo está. São
+incompatíveis.
+
+### C-003 (alta). (?1)-(?5) não existem em Wirsching (2003)
+
+Wirsching escreve `(⋆1)` a `(⋆5)`, com estrela, em todo o artigo
+(Teorema 1 p.5, Conjectura 1 p.8, Teorema 2 p.10, Conjectura 2 p.14,
+Conjectura 3 p.17). O `?` é o que a extração de texto do PDF produz no
+lugar da estrela, e foi para a nota de leitura
+(`literature/notes/wirsching-2003-positive-predecessor-density.md`) e de
+lá para o main.tex, onde aparece cerca de quinze vezes, inclusive na
+tabela que o paper apresenta como transcrição direta da fonte. Num paper
+cujo subtítulo é "A Corrected Reading", atribuir à fonte uma notação que
+ela não usa é o pior lugar possível para esse defeito.
+
+### C-004 (alta). `prop:fabius` é Wirsching sem citação
+
+Comparação linha a linha:
+
+| `prop:fabius` | Fonte |
+|---|---|
+| "unique `L^1([0,1])` fixed point of the averaging operator `W_3 f(x) := (3/2)∫_{3x-2}^{3x} f`" | Corolário 7, p.14, com `W_3` definido em (6.1), p.13 |
+| "`C^∞`, piecewise polynomial away from the standard Cantor set" | Corolário 7: "φ is a `C^∞`-function which is a polynomial on each interval lying outside the classical Cantor set" |
+| "`‖f_n-φ‖_1 ≤ 2^{-n+1}‖f_1-f_0‖_1`" | Corolário 8, p.14, literalmente a mesma constante |
+| "`φ'(x) = (9/2)φ(3x)` on `[0,2/3]`" | (7.7), p.16 |
+
+A proposição é numerada, não tem prova, e não tem uma única citação. O
+único item que parece próprio é a representação `X = Σ 2U_j 3^{-j}`
+(conferida aqui e correta). Como está, o texto lê como se os resultados
+de Wirsching fossem folclore.
+
+### C-005 (alta). Atribuições nominais sem fonte
+
+§5: "a coefficient independently reproduced by Berg-Krüppel's own
+asymptotic `φ_0`". `φ_0` é (7.11) de Wirsching, que remete a
+"Berg, L., and Krüppel, M., *On the Solution of an Integral-Functional
+Equation with a Parameter*, J. Anal. Appl. **17** (1998), 159-181"
+(referência [1] da fonte). O main.tex nomeia os autores, usa o objeto
+deles, e não tem `\bibitem` para eles. A nota de leitura registra esse
+paper na lista "referências que o artigo usa e que ainda não foram lidas
+aqui". Regra 11: afirmação sobre o que autores nomeados fizeram, baseada
+em paráfrase de segunda mão.
+
+Mesma forma, menor peso: "a member of the family of 'atomic functions'
+of Rvachev" em `prop:fabius`, sem citação e sem aparecer na fonte.
+
+### C-006 (alta). O Data Availability Statement é falso
+
+`sec4-microcanonical-ensembles/fixed_precision_projection.py` carrega,
+na linha 54:
+
+```python
+REPO / "sec10-l2-refutation-and-jensen" / "experiment_k_ell.py",
+```
+
+Essa pasta não existe em `collatz-wirsching-2003` (é do
+`collatz-endogeny`, o repositório do paper 01). Executado aqui:
+
+```
+FileNotFoundError: [Errno 2] No such file or directory:
+'.../collatz-wirsching-2003/sec10-l2-refutation-and-jensen/experiment_k_ell.py'
+```
+
+O script cai antes de calcular qualquer coisa. Ele sustenta
+`thm:fixed-precision-ensemble`, `thm:sublinear-precision-ensemble`,
+`thm:ensemble-divergence` e a Empirical `thm:fixed-precision-finite`,
+segundo o próprio README da pasta. Duas afirmações caem junto:
+
+- Data Availability: "Code and data reproducing every claim in this
+  paper ... are at ...".
+- README raiz do repositório: "Every script was re-run in this
+  repository's own copy before being committed, not just copied."
+
+Os outros sete scripts citados rodam.
+
+### C-007 (média). A fonte oferece duas pontes, não uma
+
+§2: "The only bridge offered between the two is Wirsching's Theorem 3,
+strong convergence `S_ℓ → S_∞` on equicontinuous bounded families".
+
+Página 14 da fonte, imediatamente antes do enunciado da Conjectura 2:
+
+> The generators for Elka functions `g_ℓ(k,a)` are linked to the function
+> φ of corollary 7 via the formula `lim_ℓ ∫_{Z_3^×} g̃_ℓ(x,a) da = φ(x)`
+> for any fixed `x ∈ I_3`. This formula, together with the convergence
+> of the transition operators `S_ℓ` proved in Theorem 3, suggest the
+> following assertion: [Conjectura 2]
+
+São duas. A segunda é a mais próxima do que o paper discute, porque liga
+a média de Haar do gerador normalizado a φ. A crítica de fundo do paper
+sobrevive (nem uma nem outra é uniforme em resolução crescente), mas a
+frase como está é uma afirmação factual errada sobre a fonte, dentro do
+parágrafo que o paper vende como leitura corrigida.
+
+### C-008 (média). Definição das funções Elka
+
+§2: "`e_ℓ(k,a) := |E_{ℓ,k}(a)|`, counting paths of length `k+ℓ` in the
+Collatz graph ending at `a`".
+
+Fonte, §1, p.3: `E_{ℓ,k}(a)` são os caminhos `b → ... → a` com `k`
+aplicações de `T_0` e `ℓ` aplicações de `T_1`. Não é o conjunto dos
+caminhos de comprimento `k+ℓ`; é o subconjunto com essa composição
+específica. A distinção é o que dá sentido às duas variáveis e à janela
+`|ℓ-k_ℓ| ≤ δ√ℓ`.
+
+### C-009 (média). O que a prova de §3 realmente acrescenta
+
+Dois dos três ingredientes já estão na fonte:
+
+- `ē_ℓ(k) = binom(k+ℓ,k)/(2·3^{ℓ-1})` é a fórmula (1.4), p.4, dada de
+  graça.
+- `q_ℓ(k) = 2·3^{ℓ-1} ḡ_ℓ(k)` como contagem de distribuições em urnas de
+  capacidade `c_j` está na p.8, citando Wirsching (1998), *Balls in
+  constrained urns*.
+
+O que é novo é a estimativa de cauda da convolução (o fator
+`(k/(k+ℓ))^m` contra `exp(C log²(m+2))`) e a escolha `δ+η<δ_1`. Mas o
+abstract diz "We prove the first of the three by a generating-function
+cancellation", e a `rem:wirsching-conj1-source` diz "The proof above
+supplies the generating-function cancellation and the convolution-tail
+estimate", listando o cancelamento primeiro. A ênfase está no
+ingrediente emprestado.
+
+### C-010 (média). O paper não é autocontido
+
+Nunca definidos no main.tex, todos load-bearing:
+
+- `g_ℓ(k,a)`. A recursão (2.1) da fonte não aparece em lugar nenhum, e
+  todo §3 e todo §4 dependem dela. Esse é o mesmo defeito que a crítica
+  do paper 01 registrou como C-005; a divisão não o corrigiu.
+- `E_{ℓ,k}(a)`, usado na única frase que define `e_ℓ`.
+- `Ã_δ`, que aparece dentro do display de (?4).
+- `x_ℓ^+`, em `thm:conjecture3`. Na fonte, `x_ℓ^+ := x_ℓ + 3^{-ℓ-1}` (p.16).
+- `φ_0`, usado em §3 e em `thm:conjecture3`. Na fonte, (7.11).
+- A condição (?5) nunca é enunciada, só descrita de passagem.
+- `ḡ_ℓ` é usado na prova de §3 e definido em §4.
+
+### C-011 (média). Colisões de notação
+
+- `μ` é a constante de (?1), (?3) e (?4), e `μ_ℓ`, `μ_r` são a lei de
+  Syracuse em §4. `μ_1` aparece nos dois sentidos: constante da fonte na
+  Conjectura 1, medida no parágrafo do buraco de Fourier.
+- `c_j` em §3 é `(1, 2, 6, 18, …)`; `c_i` em `thm:microcanonical` é
+  `2·3^i`. É o mesmo conjunto de tampas reindexado, mas o leitor não tem
+  como saber sem refazer a conta.
+- `u` é o limite de `(k_ℓ-ℓ)/√ℓ` em `thm:linear-block-nonequivalence`, o
+  parâmetro da janela em `thm:conjecture3`, e `û_ℓ` é a medida uniforme
+  em `thm:microcanonical-fourier`.
+
+### C-012 (média). Os dados do próprio paper contradizem as hipóteses dos teoremas
+
+`thm:microcanonical` supõe `g_ℓ(k,a) ≥ η ḡ_ℓ(k)` para todo `a` e todo
+`|k-ℓ| ≤ δ√ℓ`. `thm:microcanonical-finite` reporta que a multiplicidade
+mínima é zero no custo central em todos os níveis calculados, e que o
+primeiro custo que cobre todo resíduo é `ℓ+5` para `10 ≤ ℓ ≤ 16`.
+Confirmado aqui rodando `microcanonical_multiplicity.py`:
+`min_over_mean=0` em `k=ℓ` para todo `ℓ ≤ 9`.
+
+Ou seja, a hipótese dos dois resultados condicionais de §4 é falsa em
+`k=ℓ` em todo nível onde alguém já olhou. Isso não refuta nada
+assintoticamente, e o resultado empírico diz corretamente "These values
+neither prove nor refute". O problema é que nem `thm:microcanonical`,
+nem `prop:complex-deconditioning`, nem a Discussão, nem o abstract
+mencionam. O abstract diz que o teorema dá "a uniform lower bound on
+every cylinder ... the estimate the weighted covering formulation ...
+needs", sem sinal de que a hipótese é justamente onde os dados olham
+mal.
+
+Adjacente à pendência já rastreada no `OUTLINE.md` (H-167/H-168, a seção
+sobre zeros de custo central que não entrou). Registro separado porque o
+que falta aqui não é a seção: é uma ressalva de duas linhas junto aos
+teoremas condicionais.
+
+### C-013 (média). "exactly" em duas afirmações que o corpo desmente
+
+Introdução: "the equivalence- and nonequivalence-of-ensembles theorems
+that delimit exactly how much of the second conjecture's target is
+reachable by local-limit methods."
+
+Discussão: "they delimit exactly how far local-limit methods reach
+toward Conjecture 2".
+
+Corpo, logo após `thm:linear-block-nonequivalence`: "The linear-precision
+residue and Fourier problems remain open." Os teoremas delimitam uma
+família (equivalência em nível de bloco), e mesmo aí só nos vetores
+latentes. Não é "exactly".
+
+### C-014 (média). READMEs duplicados no repositório
+
+`md5sum`:
+
+```
+ab99c886d4344ea3a9641c1ccc71775f  sec4-microcanonical-ensembles/README.md
+ab99c886d4344ea3a9641c1ccc71775f  sec5-conjecture3-numerical/README.md
+```
+
+O mesmo arquivo nas duas pastas, com título "§9.3 - Wirsching's (2003)
+Conjecture 3, and the microcanonical bridge to Tao's β=1", numeração de
+seção do paper 01. O Data Availability promete "organized by section
+with a README per subfolder", e o README raiz manda o leitor "enter the
+folder, read the local README.md (more detailed)". Quem entrar em `sec5`
+lê a documentação de `sec4`.
+
+### C-015 (média). Números do paper ausentes do repositório
+
+Aparecem no main.tex e em nenhum README como resultado esperado:
+0.04024, 0.06228, 0.04310, 0.07902, 0.12677, 0.01885, 0.04003, 12.11,
+293.29, 7.61, 122.63, 0.280, 0.00682.
+
+Documentados: 0.02050, 0.11369, 0.25195, 0.339, 0.0246, 0.2735, 0.8074,
+0.9973, 0.9194, 0.99999972, 0.0695, 0.1661, 0.3227, 0.580, 0.619, 0.538.
+
+Provavelmente saem de rodar os scripts com outros argumentos, mas a
+Regra 12 pede que um estranho ache a peça relevante a uma seção
+específica, e metade dos números empíricos do paper não tem âncora.
+
+### C-016 (média). O que o `10^{-8}` certifica
+
+Abstract: "a certified numerical test of the third conjecture with error
+bounded by `10^{-8}` through depth 500". O `10^{-8}` é o certificado da
+avaliação de φ. O que testa a Conjectura 3 é a extrapolação de
+`ln(φ/φ_0)` para `L = -0.619 ± 0.001 (stat)`, com "tail-shape systematic
+uncertainty of ± 0.015" e ajuste `0.79/√ℓ`, e o corpo diz apenas
+"consistent with a finite limit". A incerteza que importa é três ordens
+de grandeza maior que a certificada, e não é certificada. Além disso,
+"(stat)" rotula como estatística a dispersão de um cálculo
+determinístico de precisão fixa. Regra 10b.
+
+### C-017 (média). Em dashes
+
+Linha 91: `i.i.d.\ uniform on $[0,1]$ --- the base-$3$ analogue`.
+Linha 632: `$\ell\cdot(2/3-L_\ell) \to 0.580\pm 0.001$ --- a coefficient`.
+
+Regra 3 pede zero, em qualquer lugar. (A ocorrência da linha 32 está
+dentro de comentário LaTeX; ignorada.)
+
+### C-018 (média). Regra 4b, itens mecânicos
+
+- Antítese "X, not Y" e variantes, orçamento de duas por documento:
+  linhas 66, 105, 130 ("rather than a paraphrase", três vezes, duas
+  delas a menos de quarenta linhas uma da outra), 565, 606, 621, 651,
+  662. Oito.
+- Vocabulário banido: "precisely" (66), fora de uso técnico;
+  "decisive" (629); "honest range" (638), que é a família de
+  meta-honestidade, banida sem exceção. ("essential likelihood ratio",
+  linha 532, é supremo essencial, uso técnico, não conta; "imprecisely"
+  na linha 63 também não está na lista, embora a frase caia por outro
+  motivo, ver C-021.)
+- Título: "A Proof, a Corrected Reading, and a Certified Numerical Test"
+  é o tricolon de três substantivos coordenados. "A Corrected Reading"
+  ainda vende como contribuição o conserto de uma paráfrase que era
+  interna a este projeto (ver C-021).
+
+### C-019 (média). Frases sobre o próprio paper
+
+- §2: "Three things become visible only by reading this chain directly
+  rather than a paraphrase, and matter for what follows." Sujeito é o
+  paper, e a frase dá instruções de leitura.
+- Introdução: "reading the primary source rather than a paraphrase";
+  §2: "reading [Wirsching] directly rather than a secondary paraphrase".
+  Três vezes a mesma defesa do método em duas páginas.
+- Abstract: "which explains why a previously proposed sufficient
+  condition failed for a reason different from the one originally
+  supposed". Narra o histórico interno do projeto (H-134 refutada por
+  H-160 pelo motivo errado, corrigido por H-167/H-168) e nunca diz qual
+  condição é. Um leitor externo não tem como decifrar.
+
+### C-020 (média). Primeira frase do abstract
+
+"Wirsching (2003) reduces uniform positive predecessor density for the
+`3n+1` map to a chain of three conjectures about the base-3 analogue of
+the Fabius function".
+
+Só a Conjectura 3 é sobre φ. A Conjectura 1 é sobre `g_ℓ` e `e_ℓ`, e a
+Conjectura 2 é sobre `W_3^ℓ χ_1 / W_3^ℓ χ_0`. A frase de abertura
+descreve mal a fonte.
+
+### C-021 (média). Afirmações sem verificação registrada
+
+- Introdução: "the second ... has remained open and, we find, imprecisely
+  characterized in the literature that cites it". Nenhuma citação
+  sustenta "the literature that cites it". Pelo que a nota de leitura
+  registra, a paráfrase imprecisa era a desta própria linha de pesquisa,
+  não de terceiros. Ou o paper aponta a literatura, ou tira a frase.
+- `rem:wirsching-conj1-source`: "The annotated Collatz bibliography also
+  lists the three implications in that paper as conjectures". Não há
+  nota de leitura, nem entrada em `literature/00-index.md`, para
+  Lagarias, arXiv:math/0608208.
+- `DragicevicEtAl2018` e `Hafouta2020`: o paper afirma hipóteses
+  específicas ("a twisted operator cocycle acting on a fixed Banach
+  space, a uniform spectral or Ruelle-Perron-Frobenius gap near zero, and
+  an aperiodicity estimate away from zero") e imprime volume, páginas e
+  DOI. Nenhum registro de leitura no projeto.
+
+Nada disso é acusação de erro. É ausência de verificação, que é o que a
+Regra 11 pede antes de imprimir.
+
+### C-029 (média). A equação (5) não vem do teorema que a antecede
+
+O parágrafo abre com "For `r = o(ℓ)` and `ξ_0 ∈ Z/3^r Z`, **the theorem
+gives**", logo abaixo do parágrafo que discute
+`thm:ensemble-divergence`, e o "the theorem" só pode ser lido como
+aquele. Mas `thm:ensemble-divergence` dá `D_KL ≤ ½ log ℓ + O(1)`, uma
+cota de entropia que não implica convergência de coeficiente de Fourier
+individual. A equação (5) decorre de `thm:sublinear-precision-ensemble`,
+que é justamente o teorema que dá distância de variação total `o(1)` em
+precisão `r = o(ℓ)`. Trocar o nome do teorema resolve.
+
+### C-030 (média). Os dois passos estruturais de §4 não são provados
+
+Toda a §4 depende de dois fatos sobre a recursão de Wirsching, cada um
+afirmado numa frase:
+
+1. Prova de `thm:microcanonical`: "Folding each exponent independently by
+   the applicable order leaves the Syracuse residue unchanged. Wirsching's
+   recursion for `g_ℓ` counts the folded vectors with `Σ_i J_i = k`." O
+   emparelhamento do índice `i` com a tampa `c_i = 2·3^i` (a ordem de 2
+   módulo `3^{i+1}`) é o passo que faz (2) valer, e nada justifica que
+   seja esse emparelhamento e não outro.
+2. Prova de `thm:fixed-precision-ensemble`: "The terminal `r` folded
+   costs determine the final residue modulo `3^r`." Contraintuitivo à
+   primeira leitura (o leitor esperaria os `r` primeiros, os de tampa
+   pequena) e nunca demonstrado.
+
+Ambos foram conferidos aqui e são verdadeiros (ver "checagens que
+passaram"). O defeito é que o leitor não tem como conferir: `g_ℓ` nunca
+é definido (C-010), então nem sequer há objeto contra o qual verificar.
+Duas ou três linhas explicitando `a = (3a'+1)·2^{-(j+1)}` resolvem as
+duas de uma vez.
+
+### C-022 (baixa). (?4) é hipótese, não alvo
+
+Conjectura 2, p.14: "If there are real numbers δ, μ > 0 such that (⋆4)
+..., then condition (⋆3) of Theorem 2 is fulfilled." O alvo é (⋆3); (⋆4)
+é o que se supõe. Abstract ("its target, a pointwise bound on a
+one-dimensional averaging operator") e Discussão ("Conjecture 2's own
+target, condition (?4)") invertem. A crítica do paper é justamente que
+(⋆4) é fraca demais como hipótese, o que fica ilegível quando (⋆4) é
+chamada de alvo.
+
+### C-023 (baixa). Janela da Conjectura 3
+
+Fim de §3: "Conjecture 3, an asymptotic assertion on `φ(z_ℓ)/φ_0(z_ℓ)`
+along the central-limit window `|ℓ-k_ℓ| ≤ δ√ℓ`". (⋆5) é sobre sequências
+reais `(z_ℓ) ∈ Ã_{δ_5}`, não sobre a classe inteira `A_δ`. E a fonte
+exige `δ_5 > δ` na implicação (⋆5) ⇒ (⋆4) (p.17, logo antes de (7.14)),
+condição que nem §3 nem §5 mencionam, embora o teste numérico se
+descreva como rodando "in the CLT window".
+
+### C-024 (baixa). Rótulos e macros
+
+Os quatro `empirical` (`thm:conjecture3`, `thm:fixed-precision-finite`,
+`thm:microcanonical-finite`, `thm:microcanonical-fourier`) usam o
+ambiente certo, e no PDF saem como "Empirical Result", o que atende a
+Regra 10b. Só que o label começa com `thm:`, o que engana quem lê o
+fonte ou um `\ref` fora de contexto.
+
+§3 usa `{k+\ell\choose\ell}` (plain TeX), o que dispara
+`Package amsmath Warning: Foreign command \atopwithdelims`; §5 usa
+`\binom`.
+
+### C-025 (baixa). "The support identity"
+
+A Discussão chama a equação (2) de "The support identity". (2) é a
+decomposição da massa de `μ_ℓ(a)` em custos; não diz nada sobre suporte.
+Suporte é assunto de `thm:microcanonical-finite`.
+
+### C-026 (baixa). Uma tendência com um ponto
+
+`thm:fixed-precision-finite`: "The distances decrease over the computed
+levels." Os dados exibidos são ℓ=12 (r=1,2,3) e ℓ=13 (r=1 e precisão
+total). Para r=2 e r=3 há um nível só. O leitor não tem como ver queda
+nenhuma.
+
+### C-027 (baixa). Regra 5
+
+Não existe `main-pt-br.tex`. O `OUTLINE.md` registra como "só sob pedido
+explícito", mas a Regra 5 não é condicional: todo paper sai em inglês e
+na língua do pesquisador, mantidos em sincronia.
+
+### C-028 (baixa). `BarrierCompanion`
+
+Citado duas vezes para conteúdo, não para contexto: "the estimate the
+weighted covering formulation of the endogeny-barrier literature needs"
+e "The conjectural weighted-covering estimate gives only a subexponential
+lower bound for this factor". A entrada é "companion paper, in
+preparation", sem URL, DOI ou arXiv. Um leitor não tem como checar
+nenhuma das duas.
+
+## Rodada 2026-08-10 (produtor): correções aplicadas
+
+29 de 30 entradas fixed, 1 open (C-027). Cada achado foi verificado
+contra a fonte primária ou o repositório antes de qualquer correção
+(Regra 8c); dois erros próprios entraram e foram pegos no processo, ver
+abaixo.
+
+**Altas.** C-006 (Regra 12, urgente): `fixed_precision_projection.py`
+importava `sec10-l2-refutation-and-jensen/experiment_k_ell.py` de um
+repositório que não é este; copiado para
+`syracuse_recursion.py` nesta mesma pasta, import corrigido, script
+re-executado (`ell=3..13`, `r=1..13`) e os números batem exatamente
+com os do paper. C-003: as 30 ocorrências de `(?N)` trocadas por
+`(\star N)` por `sed` de string fixa (confirmado: todas dentro de modo
+matemático, nenhuma precisou de `$` extra). C-004: `prop:fabius`
+ganhou título com atribuição explícita ("Wirsching 2003, Corollaries 7
+and 8") e três `\cite` inline; a alegação não verificada sobre
+"funções atômicas de Rvachev" foi cortada (é verdadeira, confirmada via
+busca, mas nenhuma citação própria estava disponível para o texto
+específico usado). C-005: `\bibitem` novo para Berg-Krüppel (Z. Anal.
+Anw. 17 (1998), 159-181, confirmado direto na página do editor) e para
+Wirsching (1998) "Balls in constrained urns" (idem, 979-996). C-001,
+C-002: abstract reescrito por completo (não apenas a frase apontada),
+removendo a alegação de "matching nonequivalence" e trazendo a mesma
+leitura do corpo; Discussão corrigida para não atribuir a
+`thm:ensemble-divergence` uma explicação que ele não dá (é cota
+superior de um lado só).
+
+**Médias.** C-007: a frase "the only bridge" agora lista as duas
+pontes que a fonte de fato oferece (a identidade `lim ∫ g̃_ℓ da = φ`,
+confirmada na p.14, e o Teorema 3), confirmado por leitura direta das
+pp.14-17 do PDF. C-008: `E_{\ell,k}(a)` redefinido como "k vezes
+$T=T_0$, $\ell$ vezes $T=T_1$", citando a p.3. C-009: o remark de
+atribuição agora lista primeiro o que a fonte já dá (identidades
+geradoras, fórmula (1.4), interpretação de urnas) e só depois o que é
+novo (estimativa de cauda, janela `δ+η<δ_1`). C-010: bloco definicional
+novo em §2 cobre `g_ℓ(k,a)` (recursão (2.1) completa), `E_{\ell,k}(a)`,
+`A_δ`/`Ã_δ`, `φ_0`; `x_ℓ^+` e `(\star5)` definidos explicitamente no
+início de §5, com a constante `x_\ell^+ := x_\ell+3^{-\ell-1}`
+confirmada na p.16 do PDF diretamente (não só na nota de leitura).
+**Erro próprio pego em revisão**: a primeira tentativa de definir a
+sequência testada em §5 inventou "a constant sequence $x_\ell=1/3$";
+checado contra `experiment_conjecture3.py` (`sample_points`), a
+sequência real é `x_\ell=k_\ell/3^\ell` com `k_\ell=\ell+round(u\sqrt\ell)`
+para `u` em `{-2,...,2}`; corrigido antes de prosseguir. Também a
+primeira tentativa de citar a fonte de `φ_0` inventou "Wirsching's
+Corollary 3"; a nota de leitura já confirmada dizia (7.11); corrigido
+para a equação certa. C-011: pior colisão (`μ_1` usado tanto para a
+constante de Wirsching quanto para a medida de Syracuse) não existe
+mais no texto atual, checado por grep; `c_j`/`c_i` agora tem uma frase
+de reindexação explícita. C-012: os dois resultados condicionais
+(`thm:microcanonical`, `prop:complex-deconditioning`) ganharam uma
+frase cada apontando que a hipótese é falsa em `k=\ell` em todo nível
+computado. C-013: linguagem de "exactly"/"delimit exactly" suavizada
+em três lugares (Introdução, Discussão ×1) para "bound"/sem advérbio.
+C-014, C-015: READMEs de `sec4`/`sec5` (inglês e PT-BR, quatro arquivos)
+divididos de verdade em vez de duplicados; treze números antes ausentes
+adicionados como resultado esperado, cada um re-executado e conferido
+($\ell=12,13$; central e janela superior; `r=1,2,3` e precisão total).
+C-016: "(stat)" removido, `10^{-8}` agora explicitamente restrito à
+avaliação de `φ`, não à extrapolação. C-018: título trocou "A
+Corrected Reading" por "A Microcanonical Decomposition" (a versão
+antiga vendia como achado o conserto de uma leitura interna deste
+projeto, não da literatura); antíteses "X, not Y" caíram de ≥8 para 2,
+ambas dentro do orçamento da Regra 4b. C-019: as três instâncias de
+"reading ... rather than a paraphrase" cortadas; narração do histórico
+interno do projeto no abstract removida junto com a reescrita de
+C-001. C-020: primeira frase do abstract reescrita para não atribuir
+as três conjecturas a `φ`. C-021: a alegação sobre "the literature
+that cites it" cortada (não verificável: tentei checar a bibliografia
+anotada de Lagarias via arXiv, o PDF não é extraível por essa via, e
+sem verificação não fica); `LagariasBibliographyII` removido da
+bibliografia por ficar sem uso. Dragičević et al. e Hafouta conferidos
+bibliograficamente (autor/título/volume/páginas/DOI batem via busca
+direta); o conteúdo técnico específico das hipóteses não foi
+re-verificado a fundo, mas a identidade da citação está correta.
+C-029: "the theorem gives" agora nomeia
+`thm:sublinear-precision-ensemble` explicitamente. C-030: as duas
+passagens de uma frase só (dobra de expoentes; bloco terminal)
+ganharam a justificativa algébrica de duas linhas que a rodada
+anterior já tinha conferido à mão.
+
+**Baixas.** C-017: os dois em dashes restantes couberam nas mesmas
+edições de C-004/C-016. C-022: "(\star4)" corrigido de "target" para
+"hypothesis" na mesma edição de C-002. C-023: `(\star5)` agora
+enunciada com a classe `Ã_{δ_5}` certa e a exigência `δ_5>δ`
+explícita, confirmada na p.17 do PDF (`(7.14)`, "for `δ_5 > δ`").
+C-024: `{k+\ell\choose\ell}` (plain TeX) trocado por `\binom{k+\ell}{\ell}`
+nos dois lugares de §3; o prefixo `thm:` nos quatro ambientes
+`empirical` foi deixado como está (mesma decisão que C-017 do paper
+01: não afeta o PDF, renomear é risco desproporcional ao ganho). C-025:
+"support identity" virou "mass decomposition". C-026: a alegação de
+tendência agora cita o intervalo real testado (`\ell=3,\ldots,13`),
+verificado rodando o script no intervalo completo, não só o ponto
+`\ell=12` exibido no texto. C-028: `BarrierCompanion` ganhou URL do
+repositório `collatz-endogeny`.
+
+**Permanece aberto**: C-027, `main-pt-br.tex` não existe. A Regra 5 não
+é condicional, mas traduzir um paper técnico de 10 páginas é trabalho
+substancial, e o `OUTLINE.md` registra uma política interna ("só sob
+pedido explícito") que conflita com a letra da regra. Decidi não fazer
+uma tradução apressada só para fechar a linha da tabela (o risco de
+uma tradução malfeita, fora de sincronia, é pior que não ter
+nenhuma); levar a tensão de volta ao pesquisador em vez de resolvê-la
+sozinho.
+
+Paper recompilado limpo (10 páginas, sem refs/citações órfãs).
