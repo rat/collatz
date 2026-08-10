@@ -249,6 +249,18 @@ chegou na direção certa por um caminho que não sustentava a conclusão;
 H-137 estava certo em derrubá-lo, e o que faltava era o controle
 calibrado, não mais dados.
 
+A separação é conservadora. A flutuação de `log10 N(1e8)` dá 0.594 em
+`arith`, 0.629 em `cycq(5.000)`, 0.721 em `cycq(5.05398)`, 0.666 em
+`cyc` e 0.801 em `iid`. Mais flutuação, mais viés, então o controle de
+expoente 0.678 é o que carrega o maior viés dos dois (0.019 contra 0.011
+no estimador de janela), o que puxa a leitura dele para baixo, na
+direção da aritmética. As bandas continuam sem se encostar. Na outra
+margem o mesmo raciocínio vira ressalva: `arith` flutua um pouco menos
+que o controle de 0.650919, então o viés próprio dela deve ser um pouco
+menor, e ler o mesmo valor colocaria o expoente dela um fio abaixo de
+0.650919. O 0.6505 da rodada profunda é consistente com isso, dentro da
+incerteza de extrapolação de 0.002.
+
 A tabela acima usa a grade `b13` nas cinco linhas, porque a comparação
 exige a mesma quantidade de buffer em todos os processos. Com mais
 buffer o mesmo número desce um pouco: a árvore aritmética na grade

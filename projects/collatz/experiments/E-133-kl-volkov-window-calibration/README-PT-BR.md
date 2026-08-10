@@ -165,6 +165,20 @@ Então o `0.639` de E-097 nunca foi evidência contra Kontorovich-Lagarias.
 É, com três casas, o que um processo de expoente deles devolve nesse
 estimador.
 
+A separação é conservadora. A flutuação de `log10 N(1e8)` dá 0.594 em
+`arith`, 0.629 em `cycq(5.000)`, 0.721 em `cycq(5.05398)`, 0.666 em
+`cyc` e 0.801 em `iid`. Mais flutuação significa mais viés, então o
+controle de expoente 0.678 carrega o maior viés dos dois (0.019 contra
+0.011 no estimador de janela), o que puxa a leitura dele para baixo, na
+direção da aritmética. As bandas continuam sem se encostar.
+
+O mesmo raciocínio corta para o outro lado na margem: `arith` flutua um
+pouco menos que o controle de 0.650919, então o viés próprio dela
+deveria ser um pouco menor, e ler o mesmo valor colocaria o expoente
+dela um fio abaixo de 0.650919. O 0.6505 da rodada profunda é
+consistente com isso, e a diferença cabe dentro da incerteza de
+extrapolação de 0.002, então é ressalva, não alegação.
+
 Isto é uma medição com controles calibrados, não uma prova, e testa o
 expoente 0.678, não o modelo de Volkov. Aquele modelo é uma árvore
 binária completa com outra codificação dos iterados, e não está

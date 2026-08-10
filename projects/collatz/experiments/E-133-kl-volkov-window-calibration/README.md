@@ -164,6 +164,20 @@ So E-097's `0.639` was never evidence against Kontorovich-Lagarias. It
 is, to three decimals, what a process with their exponent returns under
 that estimator.
 
+The separation is conservative. Fluctuation of `log10 N(1e8)` runs 0.594
+for `arith`, 0.629 for `cycq(5.000)`, 0.721 for `cycq(5.05398)`, 0.666
+for `cyc` and 0.801 for `iid`. More fluctuation means more bias, so the
+exponent-0.678 control carries the larger bias of the two (0.019 against
+0.011 on the window estimator), which pulls its reading down toward the
+arithmetic one. The bands still do not meet.
+
+The same reasoning cuts the other way at the margin: `arith` fluctuates
+slightly less than the 0.650919 control, so its own bias should be
+slightly smaller, and reading the same value would then put its exponent
+a hair below 0.650919. The deep run's 0.6505 is consistent with that,
+and the gap is inside the 0.002 extrapolation uncertainty, so it is a
+caveat and not a claim.
+
 This is a measurement with calibrated controls, not a proof, and it
 tests the exponent 0.678, not Volkov's model. That model is a complete
 binary tree with a different encoding of the iterates, and it is not
