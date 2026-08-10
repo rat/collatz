@@ -49,7 +49,15 @@ exponent value.
   mão pelo pesquisador (Regra 4b, divisão de trabalho).
 - `main-pt-br.tex`: não criado ainda, só sob pedido explícito (Regra 5,
   mesma política do paper 01).
-- `CRITIQUE.md`: não existe ainda, recomendável antes de submissão.
+- `CRITIQUE.md`: existe e está fechado (2026-08-10, 23 achados, todos
+  corrigidos).
 - Bibliografia: só 2 entradas (Kontorovich-Lagarias 2009, e uma entrada
   provisória `PressureCompanion` apontando para o paper 06 "em
-  preparação" — atualizar a citação quando 06 tiver DOI/arXiv).
+  preparação" — atualizar a citação quando 06 tiver DOI/arXiv). Pendência
+  real, não resolvida por mim: depende do paper 06 ganhar arXiv/DOI.
+- README-PT-BR de `experiments/E-097-qx1-empirical-gate/` e
+  `experiments/E-139-kl-volkov-window-calibration/` (e os espelhos
+  correspondentes em `collatz-kl-volkov`) ainda dizem "dez larguras de
+  banda" e "exclui Volkov com folga", números corrigidos nos READMEs em
+  inglês em 2026-08-10 mas não propagados ao PT-BR (Regra "sem edição
+  de PT-BR não solicitada"). Sinalizado, não corrigido.
