@@ -1,6 +1,6 @@
 # Outline — paper 01 (qx+1 / medida de Syracuse / barreira de endogenia)
 
-Status: `main.tex` é um rascunho completo (33 páginas, compila limpo,
+Status: `main.tex` é um rascunho completo (35 páginas, compila limpo,
 bibliografia consistente). Dividido em 2026-08-10: §3 (equação de
 pressão), §6 (Kontorovich-Lagarias vs. Volkov) e §9.2+§9.3 (Wirsching
 2003) saíram para os papers 04, 06 e 05 respectivamente (ver
@@ -224,12 +224,16 @@ na próxima revisão.
   repositório próprio populado e verificado (Regra 12). `main.tex` de
   01 caiu de 45 para 33 páginas; bibliografia reconferida (nenhum
   `\cite` órfão, nenhum `\bibitem` não citado).
-- **Pendência real**: a tabela O1-O8 na Conclusão (§13) não foi
-  atualizada para refletir H-166/H-169/a ponte O4-O7/a correção de
-  `gamma` — sinalizado explicitamente na tabela acima, não silenciado.
-- **Pendência real**: H-166 (E-134) e H-169 (E-138) ainda não têm
-  espelho em `collatz-endogeny`, só existem no repositório principal.
-  Espelhar antes da próxima crítica externa.
+- ~~Tabela O1-O8 na Conclusão desatualizada~~ — corrigida (2026-08-10):
+  adicionados `thm:cascade-factor` (H-166) e `thm:diagonal-collision`
+  (H-169) com enunciado e esboço de prova no corpo de §9.1/§10.1 (antes
+  só existiam nos arquivos de hipótese, nunca tinham entrado no
+  `main.tex`), e a lista O1-O8 reescrita citando os dois mais a leitura
+  corrigida de Wirsching Conj. 2, a ponte O4→O7, a família $\ell^r$
+  esgotada, e a separação calibrada de O8. 35 páginas agora (era 33).
+- ~~H-166/H-169 sem espelho em `collatz-endogeny`~~ — corrigido:
+  `sec9-worst-cylinder-cascade/` e `sec10-diagonal-shifted-collision/`
+  criados, cada script rerrodado no novo local antes do commit.
 - **Pendência real**: as citações `\cite{PressureCompanion}`,
   `\cite{KLVolkovCompanion}`, `\cite{WirschingCompanion}` (nos quatro
   papers) apontam para "in preparation" — trocar pelo arXiv ID real
