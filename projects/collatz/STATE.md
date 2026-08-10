@@ -2,6 +2,55 @@
 
 Última atualização: 2026-08-09
 
+## Ataque paralelo a O1-O8 (7 sub-agentes Opus, worktrees isolados)
+
+Pedido do diretor científico: atacar O1 a O8 em paralelo (O6 excluído,
+já fechado como auditoria). Cada resultado foi verificado por mim
+antes de integrar (recompilação/re-execução independente onde viável,
+não só leitura do relatório do agente), per Regra 8c. Resumo:
+
+- **O1 (H-159/H-162, E-133)**: funcional de Fourier diagonal cancela
+  onde TV não cancelava, mas a média certa (parâmetro livre) não é a
+  que O1 precisa (índices de caminho a `v` fixo). Não fecha, mas
+  identifica com precisão onde o cancelamento teria que vir.
+- **O2 (H-166, E-134)**: **beta_eff <= 1,882712 provado
+  incondicionalmente**, certificado em aritmética exata, melhorando a
+  cota anterior (2,306270). O resultado mais forte do lote. Programa de
+  Weyl para a Questão 2 de H-161 fecha como insuficiente (motivo
+  estrutural, não lacuna técnica).
+- **O3 (H-134/H-167/H-168, E-135)**: leu Wirsching 2003 na fonte
+  primária pela primeira vez nesta linha; corrige o enunciado da
+  Conjectura 2 (é sobre `W_3`, não sobre os geradores) e mostra que a
+  refutação de H-160 não fechava a rota pelo motivo até então suposto.
+- **O4 (H-115/H-163, E-137)**: nenhum ângulo novo fecha o regime 3, mas
+  prova que o alvo de O4 implica a condição L² de O7 (mesma ponte de
+  H-155 que liga O5 e O7) e quantifica por que a hierarquia de escalas
+  da §8 não fecha sozinha.
+- **O5 (H-127/H-164/H-165, E-136)**: esgota a família de orçamentos
+  `l^r`, nenhum fecha o hiato de 1,88 da Proposição C. **Achado que
+  precisa de decisão do diretor científico**: o `main.tex` afirma que o
+  critério inverte em `gamma=3`; o valor correto (verificado por mim,
+  independentemente) é `gamma≈3,31` — a barreira é um pouco mais forte
+  do que o texto atual diz.
+- **O7 (H-157/H-159, E-138)**: prova `K_(q,ell) >= (q/3)^ell`
+  incondicional para todo `q` ímpar (sem hipótese de levantamento
+  maximal, cobrindo primos excepcionais), melhorando H-157. Em `q=3`
+  reduz a margem que falta a uma única colisão deslocada afim, medida
+  mas não fechada.
+- **O8 (H-113/H-169, E-139)**: recalibra o portão KL vs Volkov com
+  controles casados (o estimador antigo tinha viés maior que a
+  diferença em disputa). Árvore aritmética lê `0,64926
+  [0,64818, 0,65027]`, separada de um controle a `0,678` por dez
+  larguras de banda. **Achado que precisa de decisão do diretor
+  científico**: `H-113` e `OUTLINE.md` §6 ainda dizem "exclui Volkov
+  com folga", mas o `main.tex` já tinha essa alegação retratada desde
+  H-137 — os três lugares estão fora de sincronia.
+
+Três colisões de numeração entre worktrees paralelos (todos partindo do
+mesmo `main`) resolvidas na integração: `E-133`/`H-162` (O1 venceu por
+ordem de chegada), `H-163` (O4), sucessivamente renumerando O3/O5/O8
+para os próximos números livres.
+
 ## H-166: beta_eff <= 1,882712 provado incondicionalmente (melhora 2,306270)
 
 Ataque paralelo dirigido a O2 (programa de somas de Weyl para a
