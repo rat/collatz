@@ -8,7 +8,8 @@ are processes whose counting exponent is known by construction, so their
 readings say what the estimator returns for each of the two disputed
 values, and the arithmetic row can be read against them.
 
-Run: python3 summary.py
+Run: python3 summary.py            # the b13 grid, window 1e5..1e8
+     python3 summary.py b15 10     # the b15 grid, deepest decade 1e9->1e10
 """
 import math
 import random
@@ -18,12 +19,15 @@ from analyze import aitken, load, mean, slope
 
 HERE = __file__.rsplit("/", 1)[0]
 
+SUFFIX = sys.argv[1] if len(sys.argv) > 1 else "b13"
+DEC_TOP = int(sys.argv[2]) if len(sys.argv) > 2 else 8
+
 ROWS = [
-    ("cycq 5.00000", "q5_cycq500_b13.txt", 0.650919, "control, exponent 0.650919 (Kontorovich-Lagarias)"),
-    ("cycq 5.05398", "q5_cycq505_b13.txt", 0.678000, "control, exponent 0.678 (the competing value)"),
-    ("cyc",          "q5_cyc_b13.txt",     0.650919, "control, integer recursion, exponent 0.650919"),
-    ("iid",          "q5_iid_b13.txt",     0.650919, "control, no sibling congruence, exponent 0.650919"),
-    ("arith",        "q5_arith_b13.txt",   None,     "the real 5x+1 reverse tree"),
+    ("cycq 5.00000", f"q5_cycq500_{SUFFIX}.txt", 0.650919),
+    ("cycq 5.05398", f"q5_cycq505_{SUFFIX}.txt", 0.678000),
+    ("cyc",          f"q5_cyc_{SUFFIX}.txt",     0.650919),
+    ("iid",          f"q5_iid_{SUFFIX}.txt",     0.650919),
+    ("arith",        f"q5_arith_{SUFFIX}.txt",   None),
 ]
 
 
@@ -73,13 +77,14 @@ def decade_estimate(path, dec_top=8, seed=17):
 
 
 def main():
-    print("Same estimator, same 300 roots, window 1e5..1e8, buffers 1e9..1e13,")
+    print(f"Same estimator, same 300 roots, window 1e5..1e8, grid {SUFFIX},")
     print("Aitken in the truncation buffer, 2000-resample bootstrap over roots.\n")
-    print(f"{'process':>14} {'true exponent':>14}   {'window estimator':>26}   {'decade 1e7->1e8':>26}")
-    for name, fn, truth, _note in ROWS:
+    dl = f"decade 1e{DEC_TOP-1}->1e{DEC_TOP}"
+    print(f"{'process':>14} {'true exponent':>14}   {'window estimator':>26}   {dl:>26}")
+    for name, fn, truth in ROWS:
         try:
             w = window_estimate(f"{HERE}/data/{fn}")
-            d = decade_estimate(f"{HERE}/data/{fn}")
+            d = decade_estimate(f"{HERE}/data/{fn}", dec_top=DEC_TOP)
         except FileNotFoundError:
             print(f"{name:>14}  (missing {fn})")
             continue
