@@ -191,10 +191,40 @@ seeds, 1.5 standard errors, so no implementation systematic above about
 where the integer recursion bottoms out, changes counts but leaves the
 slope identical to five decimals.
 
-## Deep run
+## Deep run: the same comparison where the estimator is almost unbiased
 
-Checkpoints `1e4..1e12`, buffers `1e9..1e17`, 300 roots. The arithmetic
-per-decade slope, each decade extrapolated in the buffer separately:
+The bias shrinks fast with depth. On the matched `b15` grid
+(checkpoints `1e4..1e10`, buffers `1e9..1e15`, 300 roots, all five
+processes), the per-decade bias of the controls falls to
+
+| process | true exponent | L=6.5 | L=7.5 | L=8.5 | L=9.5 |
+|---------|---------------|-------|-------|-------|-------|
+| cycq 5.00000 | 0.650919 | +0.0134 | +0.0033 | +0.0010 | +0.0011 |
+| cycq 5.05398 | 0.678000 | +0.0153 | +0.0060 | +0.0005 | +0.0005 |
+| cyc | 0.650919 | +0.0165 | +0.0061 | +0.0013 | -0.0003 |
+| iid | 0.650919 | +0.0355 | +0.0194 | +0.0087 | +0.0034 |
+
+At decade `1e9 -> 1e10` the estimator returns the true exponent to
+within 0.003 on every control, so at that depth the reading is the
+exponent:
+
+```
+       process  true exponent             window estimator             decade 1e9->1e10
+  cycq 5.00000       0.650919   0.63263 [0.62557,0.64025]   0.64981 [0.64884,0.65075]
+  cycq 5.05398       0.678000   0.65971 [0.65310,0.66628]   0.67748 [0.67651,0.67846]
+           cyc       0.650919   0.63097 [0.62435,0.63777]   0.65122 [0.65014,0.65223]
+           iid       0.650919   0.61250 [0.60102,0.62336]   0.64751 [0.64387,0.65044]
+         arith       disputed   0.63809 [0.63051,0.64661]   0.64926 [0.64818,0.65027]
+```
+
+Three independent processes whose exponent is 0.650919 read 0.6475,
+0.6498 and 0.6512 there, the spread of 0.004 being how much the residual
+bias still depends on how much each one fluctuates. The arithmetic tree
+reads 0.6493, inside that band. The process whose exponent is 0.678
+reads 0.6775, ten times the band away.
+
+Pushing the arithmetic tree alone further, to checkpoints `1e12` and
+buffers `1e17`, since it has no heavy tail to stall on:
 
 | decade | slope | bootstrap | distance to 0.650919 |
 |--------|-------|-----------|----------------------|

@@ -3,12 +3,15 @@
 Status: fechado em 2026-08-09, por um caminho diferente do de
 2026-07-17. O estimador de E-097 tem viés medido de 0,038 num processo
 de expoente conhecido, maior que a separação Δ=0,027, então a leitura
-crua nunca poderia ser comparada contra uma previsão teórica. Rodando o
-mesmo estimador em processos construídos para ter cada um dos dois
-expoentes em disputa, a árvore aritmética casa com o de 0,650919
-(0,64791 contra 0,64796 na década 1e7→1e8) e fica fora do intervalo do
-de 0,678 (0,67079). Medição empírica com controles calibrados, não
-prova, e testa o expoente 0,678, não o modelo de Volkov.
+crua nunca poderia ser comparada contra uma previsão teórica. A
+correção é rodar o mesmo estimador em processos construídos para ter
+cada um dos dois expoentes em disputa. Na década `1e9→1e10`, onde o
+viés dos controles já é menor que 0,003, três processos de expoente
+0,650919 leem 0,6475, 0,6498 e 0,6512, um processo de expoente 0,678 lê
+0,6775, e a árvore aritmética lê **0,64926 [0,64818, 0,65027]**, dentro
+da faixa dos primeiros e a dez larguras de faixa do segundo. Medição
+empírica com controles calibrados, não prova, e testa o expoente 0,678,
+não o modelo de Volkov.
 
 O texto até a seção datada de 2026-08-09 é o registro de 2026-07-17,
 mantido como está. O veredito daquela seção estava certo na direção e
@@ -116,7 +119,7 @@ com correção de Richardson), não o Hill estimator da rodada anterior.
 
 ## 2026-08-09 (E-133): o veredito acima chegou na direção certa por um método que não a sustentava
 
-Trabalho em O8. Quatro coisas, em ordem de importância.
+Trabalho em O8. Cinco coisas, em ordem de importância.
 
 ### 1. O arquivo estava desatualizado em relação ao paper
 
@@ -268,9 +271,41 @@ buffer o mesmo número desce um pouco: a árvore aritmética na grade
 controles desceriam junto; `buffer_squeeze.py` limita esse deslocamento
 em 0.002, bem abaixo dos 0.023 que separam as duas hipóteses.
 
-Rodada profunda só da árvore aritmética (checkpoints até `1e12`,
-buffers até `1e17`, 300 raízes), slope por década, cada década
-extrapolada no buffer:
+### 5. O mesmo teste onde o estimador quase não tem viés
+
+O viés encolhe rápido com a profundidade. Na grade casada `b15`
+(checkpoints `1e4..1e10`, buffers `1e9..1e15`, 300 raízes, os cinco
+processos), o viés por década dos controles cai a:
+
+| processo | expoente | L=6.5 | L=7.5 | L=8.5 | L=9.5 |
+|----------|----------|-------|-------|-------|-------|
+| cycq 5.00000 | 0.650919 | +0.0134 | +0.0033 | +0.0010 | +0.0011 |
+| cycq 5.05398 | 0.678000 | +0.0153 | +0.0060 | +0.0005 | +0.0005 |
+| cyc | 0.650919 | +0.0165 | +0.0061 | +0.0013 | -0.0003 |
+| iid | 0.650919 | +0.0355 | +0.0194 | +0.0087 | +0.0034 |
+
+Na década `1e9→1e10` o estimador devolve o expoente verdadeiro com erro
+abaixo de 0.003 em todos os controles. Nessa profundidade a leitura é o
+expoente, e não precisa de correção nenhuma:
+
+| processo | expoente verdadeiro | década 1e9→1e10 |
+|----------|--------------------|-----------------|
+| cycq 5.00000 | 0.650919 | 0.64981 [0.64884, 0.65075] |
+| cycq 5.05398 | 0.678000 | 0.67748 [0.67651, 0.67846] |
+| cyc | 0.650919 | 0.65122 [0.65014, 0.65223] |
+| iid | 0.650919 | 0.64751 [0.64387, 0.65044] |
+| **arith** | em disputa | **0.64926** [0.64818, 0.65027] |
+
+Três processos independentes de expoente 0.650919 leem 0.6475, 0.6498 e
+0.6512 ali; a dispersão de 0.004 entre eles é o quanto o viés residual
+ainda depende de quanto cada um flutua. A árvore aritmética lê 0.6493,
+dentro dessa faixa. O processo de expoente 0.678 lê 0.6775, dez vezes a
+faixa de distância.
+
+Empurrando só a árvore aritmética mais fundo (ela não tem cauda pesada
+para travar; os controles estocásticos, sim), checkpoints até `1e12` e
+buffers até `1e17`, slope por década, cada década extrapolada no
+buffer:
 
 | década | slope | bootstrap | distância a 0.650919 |
 |--------|-------|-----------|----------------------|

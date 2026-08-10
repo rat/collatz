@@ -192,10 +192,40 @@ implementação acima de cerca de 0.004 separa a recursão inteira da real
 recursão inteira encosta, muda as contagens mas deixa o slope idêntico a
 cinco casas.
 
-## Rodada profunda
+## Rodada profunda: a mesma comparação onde o estimador quase não tem viés
 
-Checkpoints `1e4..1e12`, buffers `1e9..1e17`, 300 raízes. O slope
-aritmético por década, cada década extrapolada no buffer separadamente:
+O viés encolhe rápido com a profundidade. Na grade casada `b15`
+(checkpoints `1e4..1e10`, buffers `1e9..1e15`, 300 raízes, os cinco
+processos), o viés por década dos controles cai para
+
+| processo | expoente verdadeiro | L=6.5 | L=7.5 | L=8.5 | L=9.5 |
+|----------|---------------------|-------|-------|-------|-------|
+| cycq 5.00000 | 0.650919 | +0.0134 | +0.0033 | +0.0010 | +0.0011 |
+| cycq 5.05398 | 0.678000 | +0.0153 | +0.0060 | +0.0005 | +0.0005 |
+| cyc | 0.650919 | +0.0165 | +0.0061 | +0.0013 | -0.0003 |
+| iid | 0.650919 | +0.0355 | +0.0194 | +0.0087 | +0.0034 |
+
+Na década `1e9 -> 1e10` o estimador devolve o expoente verdadeiro com
+erro menor que 0.003 em todos os controles, então nessa profundidade a
+leitura é o expoente:
+
+```
+       process  true exponent             window estimator             decade 1e9->1e10
+  cycq 5.00000       0.650919   0.63263 [0.62557,0.64025]   0.64981 [0.64884,0.65075]
+  cycq 5.05398       0.678000   0.65971 [0.65310,0.66628]   0.67748 [0.67651,0.67846]
+           cyc       0.650919   0.63097 [0.62435,0.63777]   0.65122 [0.65014,0.65223]
+           iid       0.650919   0.61250 [0.60102,0.62336]   0.64751 [0.64387,0.65044]
+         arith       disputed   0.63809 [0.63051,0.64661]   0.64926 [0.64818,0.65027]
+```
+
+Três processos independentes de expoente 0.650919 leem 0.6475, 0.6498 e
+0.6512 ali, e a dispersão de 0.004 entre eles é o quanto o viés residual
+ainda depende de quanto cada um flutua. A árvore aritmética lê 0.6493,
+dentro dessa faixa. O processo de expoente 0.678 lê 0.6775, dez vezes a
+faixa de distância.
+
+Empurrando só a árvore aritmética mais fundo, checkpoints `1e12` e
+buffers `1e17`, já que ela não tem cauda pesada para travar:
 
 | década | slope | bootstrap | distância a 0.650919 |
 |--------|-------|-----------|----------------------|
