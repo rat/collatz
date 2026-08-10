@@ -38,20 +38,27 @@ and, as writing progresses, the draft files themselves.
   theory, reusable outside the endogeny-barrier narrative. Scope:
   H-109, H-138, H-139, H-141. Repo: `collatz-qx1-pressure`. Split off 01
   on 2026-08-10.
-- **`02-critica-cumulativa-literatura/`** — cumulative, explicitly
+## Paused papers
+
+Not active. Left exactly as they are; no further work without a new
+explicit request from the scientific director.
+
+- **`02-critica-cumulativa-literatura/`** — cumulative,
   running/incomplete survey of the Collatz-adjacent literature that
   does NOT claim a complete proof (16 items consolidated as of
-  2026-07-20, out of a much larger surveyed collection). See
-  `BACKLOG.md` item 8 and `OUTLINE.md`. Started 2026-07-20 at the
-  scientific director's explicit request ("pode iniciar"). Grows with
-  every further item processed — no natural "closing" point, unlike
-  paper 01 or 03.
+  2026-07-20, out of a much larger surveyed collection). Draft complete
+  (`main.tex`/`main-pt-br.tex`, both compiled) but never reviewed by
+  the scientific director. See `BACKLOG.md` item 8 and `OUTLINE.md`.
+  **Paused indefinitely 2026-08-10** at the scientific director's
+  explicit request.
 - **`03-alegacoes-de-prova-refutadas/`** — narrower, closable sibling of
   02: catalogs *only* claims of a complete proof (or disproof) of the
   Collatz conjecture (12 cases as of 2026-07-20, all already reviewed
   in depth, none valid), with a taxonomy of the recurring error
-  patterns. Started 2026-07-20 at the scientific director's explicit
-  request; absorbs `BACKLOG.md` item 5 (Santos 2018). See `OUTLINE.md`.
+  patterns. Draft complete (`main.tex`/`main-pt-br.tex`, both compiled)
+  but never reviewed by the scientific director. See `OUTLINE.md`.
+  **Paused indefinitely 2026-08-10** at the scientific director's
+  explicit request.
 
 ## Convention
 
