@@ -30,8 +30,10 @@ and, as writing progresses, the draft files themselves.
 - **`05-wirsching-2003-conjecturas/`** — proof of Wirsching's (2003)
   Conjecture 1, a corrected reading of Conjecture 2 against the primary
   source, and a certified numerical test of Conjecture 3. Scope: H-125,
-  H-133, H-134, H-142 through H-147, H-153, H-160, H-167, H-168, E-135.
-  Repo: `collatz-wirsching-2003`. Split off 01 on 2026-08-10.
+  H-133, H-134, H-142 through H-147, H-153, H-160, H-167, H-168, H-171,
+  E-135. Repo: `collatz-wirsching-2003`. Split off 01 on 2026-08-10.
+  Backlog exhausted 2026-08-10: H-168 and H-171 both closed, no open
+  items remain in scope.
 - **`06-pressao-qx1-ramificacao/`** — closed-form pressure identity,
   q-adic density martingale, and $L^p$ collision criterion for the
   accelerated $qx+1$ branching process; general branching-random-walk

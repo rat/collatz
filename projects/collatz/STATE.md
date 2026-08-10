@@ -2,6 +2,34 @@
 
 Última atualização: 2026-08-10
 
+## Backlog do paper 05 (Wirsching 2003) esgotado
+
+H-168 era o único item aberto no escopo do paper 05 (H-125, H-133,
+H-134, H-142 a H-147, H-153, H-160, H-167, H-168, E-135; conferido
+contra todos os arquivos de `hypotheses/` que mencionam Wirsching,
+`BACKLOG.md` e os READMEs de todos os experimentos relacionados, sem
+mais nada pendente). Fechado `closed-inconclusive`. Novo script
+`central_quantiles.py` (E-135) executou o próximo passo que a própria
+H-168 já registrava (quantis fixos contra o mínimo, para separar
+estatística de extremos de deterioração real da cauda). Resultado
+misto por deslocamento motivou H-171 (Regra 8e), que por sua vez fecha
+`closed-confirmed`: a sensibilidade ao deslocamento `d` tem causa
+estrutural identificada (`d=+5` é a fronteira de suporte, não um ponto
+genérico da janela; `d=6..12` formam família consistente, todos em
+queda). Composição do bucket inferior da distribuição mostra que a
+queda populacional é feita quase inteiramente de resíduos novos de
+representante grande, não de nenhum `a` fixo piorando; conjuntos fixos
+de inteiros continuam achatados até `ell=17` (extensão de
+`central_ratio.py`, pico de memória ~39 GiB, checado ao vivo antes de
+rodar). Escalonamento (Regra 11b, Codex) mostrou que o mecanismo de
+combinação convexa de H-166 não se transfere para o quociente de
+Wirsching: contraexemplo exato em `ell=3,k=3`, e `min_a R_ell` nem é
+monótono em nível finito (frações exatas batendo com os dados numéricos
+já medidos aqui). Nenhuma rota disponível fecha H-168 como teorema; ver
+a seção de 2026-08-10 em `hypotheses/H-168-infimo-do-quociente-minimo-em-a.md`
+para a análise completa. Tudo espelhado e commitado em
+`collatz-wirsching-2003/sec4-central-zeros-conjecture2/`.
+
 ## Paper 01 dividido em quatro papers
 
 Pedido do diretor científico: dividir o paper de forma que cada parte

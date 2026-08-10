@@ -14,8 +14,12 @@ por H-160 mas pelo motivo errado, corrigido por H-167/H-168), H-142
 a H-147 (decomposição microcanônica, pontes de equivalência de
 ensembles), H-153 (não equivalência em precisão linear), H-160
 (refutação da rota de H-134), H-167 (zeros de custo central,
-fechada-inconclusiva), H-168 (aberta, ínfimo do quociente mínimo em
-conjuntos fixos), E-135 (medição nova desta sessão).
+fechada-inconclusiva), H-168 (fechada-inconclusiva em 2026-08-10,
+ínfimo do quociente mínimo em `a` fixo; ver seção própria no arquivo da
+hipótese para quantis, composição do bucket inferior, extensão a
+`ell=17` e o escalonamento que descarta a rota de H-166), H-171
+(fechada-confirmada, sensibilidade ao deslocamento explicada pela
+fronteira de suporte), E-135 (medições desta sessão e da anterior).
 
 ## Estrutura
 
@@ -42,12 +46,17 @@ conjuntos fixos), E-135 (medição nova desta sessão).
 
 ## O que NÃO entrou nesta versão (pendência)
 
-O achado de O3 desta sessão sobre zeros de custo central (H-167,
-fechada-inconclusiva, e H-168, aberta) está mirado no repositório
+O achado de O3 sobre zeros de custo central (H-167, fechada-inconclusiva,
+e H-168, agora também fechada-inconclusiva, com H-171 fechada-confirmada
+como subproduto) está mirado no repositório
 (`sec4-central-zeros-conjecture2/`) mas ainda não foi incorporado ao
 `main.tex` como seção própria — é um resultado real (leitura da fonte
-primária corrigindo o enquadramento de H-134/H-160) que merece uma
-seção quando houver tempo de escrever com o cuidado da Regra 4b.
+primária corrigindo o enquadramento de H-134/H-160, mais o teste de
+quantis, a composição do bucket inferior, a extensão a `ell=17` e o
+escalonamento que descarta a rota de H-166) que merece uma seção quando
+houver tempo de escrever com o cuidado da Regra 4b. O backlog de
+hipóteses do paper (H-125 a H-171 no escopo declarado) está esgotado
+desde 2026-08-10; esta pendência é só de redação, não de investigação.
 Registrar como pendência explícita, não esquecer.
 
 ## Rótulo dos resultados (Regra 10b)
