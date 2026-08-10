@@ -1,0 +1,2255 @@
+Reading additional input from stdin...
+OpenAI Codex v0.147.0
+--------
+workdir: /home/rat/Google/Projetos/Claude/collatz-endogeny
+model: gpt-5.6-sol
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: high
+reasoning summaries: none
+session id: 019fed8d-0767-78c1-9e7a-64a294b7d335
+--------
+user
+Preciso de uma segunda opiniao matematica genuinamente independente (voce nunca viu este problema) sobre uma questao em aberto especifica dentro de um programa de pesquisa sobre a conjectura de Collatz / Weak Covering Conjecture de Wirsching. Nao quero brainstorm superficial; quero que voce tente REALMENTE atacar o problema, ou apontar com precisao por que nao da, com o mesmo rigor que o resto ja recebeu (varias rodadas de escalonamento a um modelo mais forte ja tentaram e falharam de formas especificas, documentadas abaixo).
+
+## Setup
+
+Lei de Syracuse mod 3^ell (q=3), mu_ell : Z/3^ell Z -> [0,1], definida pela recursao sem memoria (memoryless splitting de Tao):
+
+  mu_ell(y) = (1/2) nu(2y) + (1/2) mu_ell(2y)
+
+onde nu = mu_{ell-1} levantada (nu(1+3k) = mu_{ell-1}(k), nu=0 fora dessa classe). Defina N_ell(u) := 3^ell mu_ell(u) para u unidade mod 3^ell (isto e, 3 nao divide u).
+
+## Objetivo original (ainda em aberto)
+
+c_ell := min_{u unidade} mu_ell(u), beta_eff(ell) definido por 3^ell c_ell = 3^{(1-beta_eff)ell}, i.e. queremos decidir se beta_eff -> 1 (equivalente a Weak Covering Conjecture / conjectura beta=1 de Tao 2020) ou se ha uma barreira estritamente > 1.
+
+## Identidades ja provadas e verificadas numericamente (nao re-derive, use como dadas)
+
+Para y unidade mod 3^ell, existe t0(y) em {1,2} (paridade fixa, o menor t>=1 com 2^t y == 1 mod 3), e definindo z=2^{t0} y, k=(z-1)/3, tem-se o mapa afim A(k) = 4k+1 (mod 3^{ell-1}), um UNICO ciclo de comprimento N=3^{ell-1} cobrindo todo Z/3^{ell-1}Z. Disso:
+
+  mu_ell(y) = 2^{-t0(y)} * sum_{j=0}^{N-1} 4^{-j} mu_{ell-1}(A^j(k0(y)))
+
+Defina W_ell(k) := sum_j 4^{-j} mu_{ell-1}(A^j(k)) (a soma completa ao longo da orbita de A, peso geometrico 4^{-j}). Entao:
+
+  c_ell = (1/4) min_k W_ell(k)
+
+**F1**: N_ell(y) = 3 * 2^{-t0(y)} * W_ell(k0(y)). Cada ponto k0 da orbita tem exatamente dois "filhos" y, com valores (3/2)W_ell(k0) e (3/4)W_ell(k0).
+
+**F3**: N_ell(2y) <= 2 N_ell(y) SEMPRE, com igualdade exata quando y==1 mod 3. (Prova de uma linha, direto da recursao.) Consequencia: N_ell(2^s y) <= 2^s N_ell(y).
+
+**F4** (pushforward/martingale): a soma das 3 massas "filhas" de u no nivel ell e exatamente mu_{ell-1}(u). Ou seja, sobre cada trinca de irmaos, E[R]=1 onde R_ell(u) := N_ell(u)/N_{ell-1}(u mod 3^{ell-1}).
+
+**Identidade de W**: W_ell(k) satisfaz W_ell(k) = N_ell(y(k)) + (1/4) W_ell(A(k)) [reindexacao direta da soma geometrica].
+
+## Resultado positivo ja PROVADO (H-166, nao precisa refazer)
+
+min_u R_ell(u) e NAO-DECRESCENTE em ell. Prova: por F1, R_ell(y) = W_ell(k)/W_{ell-1}(k mod 3^{ell-2}) para k=k0(y). Como A e formula inteira, numerador e denominador percorrem o MESMO indice j com os MESMOS pesos 4^{-j}; substituindo N_{ell-1}(A^j k) = N_{ell-2}(A^j k') * R_{ell-1}(A^j k), R_ell(k) aparece como combinacao CONVEXA de valores de R_{ell-1}, logo min R_ell >= min R_{ell-1}. Consequencia: limsup beta_eff <= 1 + log(1/min R_L)/log(3) para qualquer L calculado. Certificado em aritmetica racional exata: min R_2=2/7 (beta<=2.140314), min R_8 (beta<=1.888066), min R_10 (beta<=1.882712). Em ponto flutuante ate ell=16, min R_ell continua subindo, perto de 0.3803, MAS N_max/N_{ell-1} real (medido, nao provado) roda entre 0.93 e 0.97 -- ou seja, a rota "min R" sozinha SATURA por volta de beta_eff~1.88 e nao chega a 1. A distancia entre o que "min R" prova (fator ~0.38 por nivel) e o que a verdade parece atingir (~0.93-0.97 por nivel) e exatamente o que falta.
+
+## A questao central que fica aberta: desigualdade de anti-concentracao de pares (Q2)
+
+**Teorema condicional ja provado** (nao precisa reprovar, so use): se existem kappa>0, C<infinito com
+
+  P(par consecutivo de unidades na sequencia, ambos N <= x) <= C * x^{2*kappa}   para x >= exp(-c0*ell), c0 >= log(3)/(2*kappa)
+
+entao beta_eff <= 1 + 1/(2*kappa) + o(1), incondicionalmente. (Prova: cota de uniao sobre os ~3^{ell-1} pares forca zero pares com ambos <= x* ~ 3^{-ell/(2 kappa)}; entao para todo k, ou N(k)>x* ou o proximo elemento da sequencia contraida as unidades tem N>x*, contribuindo >= x*/16 a W(k) [peso minimo 4^{-2}]; em ambos os casos W(k)>=x*/16 para todo k, dando 3^ell c_ell >= (3/64) x*.)
+
+**Calibracao**: com a cota de referencia agora em beta<=1.882712 (via min R, ja provado), a desigualdade de par so vale a pena atacar se der kappa > 0.567 (kappa=0.4 so daria beta<=2.25, pior que o que ja esta provado).
+
+**Evidencia empirica que sugere kappa existe e pode ate ser bem maior que 0.567**: medindo pair(x)/d(x)^2 (a razao entre a probabilidade conjunta de par pequeno e o produto das marginais, separadas por fase -- os pares consecutivos na sequencia contraida as unidades alternam entre dois "tipos" com marginais diferentes, d1 e d2, com d1(x)=d2(2x) por uma identidade exata F1) a limiar ESCALADO exp(-eps*ell), eps=0.1:
+
+  ell=8: razao=0.379, theta implicito=3.05
+  ell=10: razao=0.237, theta implicito=3.32
+  ell=12: razao=0.100, theta implicito=3.81
+  ell=14: razao=0.024, theta implicito=4.56
+  ell=16: razao=0.0015, theta implicito=5.91
+
+(theta implicito definido via razao ~ d(x)^{2*theta-2}, i.e. um theta MAIOR que 1 significa DESCORRELACAO mais forte que independencia.) A razao cai bem abaixo de 1 e continua caindo, sem sinal de estabilizar em 5 pontos ate ell=16 (n=5 e pouco para separar "theta genuinamente crescente" de "convergencia lenta a um theta grande fixo" de "efeito de alcance finito"). Isso e evidencia empirica FORTE a favor de kappa>0.567 existir (mesmo kappa~1 pareceria plausivel a julgar pelos numeros), mas NAO e prova de taxa nenhuma.
+
+## Tentativa que ja FALHOU de forma estrutural (nao repetir)
+
+Um programa de somas de Weyl 3-adicas foi montado explicitamente para provar a desigualdade de par: em z=1+3k, A e multiplicacao por 4 no grupo ciclico G={z==1 mod 3} de ordem 3^n; os caracteres de G sao as fases de Weyl; a recursao de W diagonaliza exatamente: What(m) = Nhat(m)/(1-(1/4)e(-m/3^n)). Os dois "tipos" de par (deslocamento por A e por A^2) viram mapas afins de G: sigma1(z)=2z+2, sigma2(z)=32z+20. As somas mistas T(m,n) = sum_z chi_m(z) chi_n(sigma z) se comportam da MELHOR forma possivel por fase estacionaria 3-adica (cancelamento de raiz quadrada em toda frequencia primitiva, verificado exaustivamente). MESMO ASSIM nao serve para nada: expandindo os indicadores dos dois conjuntos de nivel em caracteres e limitando o erro por valores absolutos, o termo de erro so perde se (delta*delta')^{1/2} > 3^{1/2}|G|^{1/2}, impossivel para densidade <=1 -- em NENHUMA densidade essa rota diz algo. Motivo estrutural identificado: T(m,n)/|G| e, na base de caracteres, a matriz de uma COMPOSICAO COM UMA BIJECAO de G, que e isometria de L^2(G), logo UNITARIA -- a rota por norma de operador devolve exatamente a cota trivial de Cauchy-Schwarz, nao importa quao boas sejam as estimativas de Weyl individuais. Ou seja: NENHUMA cota que dependa so de |S|, |S'| (tamanhos dos conjuntos de nivel) e dados espectrais de sigma pode ser nao-trivial, por melhores que sejam as somas de Weyl. Conclusao do time: o que falta e controle HARMONICO do proprio conjunto de nivel {V<=x} (a estrutura autossimilar/recursiva de V=W_ell em si), nao equidistribuicao de sigma. Isso exclui especificamente o programa "estimar T, inserir, limitar o erro por Cauchy-Schwarz/norma de operador" -- nao exclui necessariamente todo metodo harmonico (estimar os proprios coeficientes de Mellin/Fourier de V, por exemplo, continua intocado, so nao foi tentado ainda).
+
+## O que se pede
+
+1. Existe uma rota REAL (nao so mais uma reformulacao) para provar a desigualdade de anti-concentracao de pares P(par consecutivo, ambos <= x) <= C x^{2 kappa} para algum kappa > 0.567, dado tudo acima? Em particular: a estrutura autossimilar exata de W_ell (W_ell(k) = N_ell(y(k)) + (1/4) W_ell(A(k)), e a identidade F1 relacionando W_ell a W_{ell-1} via a MESMA orbita de A) sugere alguma tecnica de renormalizacao, transferencia, ou martingale que nao foi tentada? A analogia mais proxima que o time ja considerou e teoria de renovacao implicita / large deviations para produtos de matrizes aleatorias, mas nao foi desenvolvida a fundo.
+2. Se voce acha que NAO ha rota viavel com as ferramentas atuais, tente articular POR QUE com a mesma precisao que a exclusao do programa de Weyl acima (um motivo estrutural nomeavel, nao "parece dificil").
+3. Existe alguma conexao com um problema classico ja resolvido (produtos aleatorios de matrizes 2x2, cadeias de Markov com pesos multiplicativos, spectral gap de operadores de transferencia IFS conforme com overlaps) que daria kappa explicito, mesmo que pequeno?
+
+Responda com o maximo de rigor e concretude possivel. Se propuser um argumento, va o mais fundo que conseguir (nao pare em "provavelmente funciona"); se refutar, aponte o mecanismo exato de falha, no mesmo padrao do argumento de unitariedade acima.
+codex
+Vou tratar isso como um problema de pesquisa, não como uma busca de analogias. Primeiro vou auditar as identidades e os artefatos locais do projeto, e em paralelo identificar qual seria o objeto de estado mínimo para uma renormalização de pares; só depois decido se há uma rota fechável ou uma obstrução estrutural.
+exec
+/bin/bash -lc "rg --files -g '"'!*__pycache__*'"' | sed -n '1,200p'" in /home/rat/Google/Projetos/Claude/collatz-endogeny
+ succeeded in 0ms:
+sec8-fresh-digit-coupling/README-PT-BR.md
+sec8-fresh-digit-coupling/README.md
+sec8-fresh-digit-coupling/fresh_digit_coupling.py
+sec7-weak-covering-conjecture/README-PT-BR.md
+sec7-weak-covering-conjecture/experiment_wcc.py
+sec7-weak-covering-conjecture/README.md
+sec9-wcc-beta-bridge/weighted_bridge.py
+sec9-wcc-beta-bridge/README-PT-BR.md
+sec9-wcc-beta-bridge/README.md
+sec9-wcc-beta-bridge/large_deviation_barrier.py
+README.md
+E-076-tao-2022-review/experiment.py
+E-018-reverse-tree-branching/experiment_dfs.py
+sec4-endogeny-barrier/README-PT-BR.md
+sec4-endogeny-barrier/lemma_no_2adic_memory.py
+sec4-endogeny-barrier/README.md
+sec5-rho-eff-control-experiment/experiment.py
+sec5-rho-eff-control-experiment/experiment_headroom.py
+sec5-rho-eff-control-experiment/experiment_synthetic_dp_oracle.py
+sec10-primitive-spectral-analysis/verify_logarithmic_renormalization.py
+sec10-primitive-spectral-analysis/primitive_fibre_energy.py
+sec10-primitive-spectral-analysis/README-PT-BR.md
+sec10-primitive-spectral-analysis/verify_qadic_renormalization.py
+sec10-primitive-spectral-analysis/multiscale_parseval.py
+sec10-primitive-spectral-analysis/primitive_hole.py
+sec10-primitive-spectral-analysis/README.md
+sec11-chang-one-bit-mixing/README.md
+sec11-chang-one-bit-mixing/experiment_deep_orbit.py
+sec11-chang-one-bit-mixing/experiment_ensemble.py
+sec11-chang-one-bit-mixing/README-PT-BR.md
+README-PT-BR.md
+sec5-rho-eff-control-experiment/verify_orthogonality.py
+sec5-rho-eff-control-experiment/experiment_control_arms.py
+sec5-rho-eff-control-experiment/README.md
+sec5-rho-eff-control-experiment/README-PT-BR.md
+sec5-rho-eff-control-experiment/experiment_synthetic_core.py
+sec10-diagonal-shifted-collision/README.md
+sec10-diagonal-shifted-collision/q3_shifted_profile.py
+sec10-diagonal-shifted-collision/affine_transfer.py
+sec10-diagonal-shifted-collision/diagonal_rate.py
+sec10-diagonal-shifted-collision/README-PT-BR.md
+sec10-l2-refutation-and-jensen/experiment_k_ell.py
+sec10-l2-refutation-and-jensen/validate_against_direct_mc.py
+sec10-l2-refutation-and-jensen/norm_sweep.py
+sec10-l2-refutation-and-jensen/README.md
+sec10-l2-refutation-and-jensen/README-PT-BR.md
+sec10-l2-refutation-and-jensen/delta_weighted_correlation.py
+sec10-l2-refutation-and-jensen/lp_collision_spectrum.py
+sec10-l2-refutation-and-jensen/experiment_lambda_mc.py
+sec9-worst-cylinder-cascade/README-PT-BR.md
+sec9-worst-cylinder-cascade/cascade_factor_bound.py
+sec9-worst-cylinder-cascade/pair_character_sum.py
+sec9-worst-cylinder-cascade/README.md
+
+exec
+/bin/bash -lc 'for f in README.md sec7-weak-covering-conjecture/README.md sec9-wcc-beta-bridge/README.md sec9-worst-cylinder-cascade/README.md sec10-diagonal-shifted-collision/README.md sec10-l2-refutation-and-jensen/README.md sec10-primitive-spectral-analysis/README.md; do echo "FILE $f"; sed -n '"'1,260p' \""'$f"; done' in /home/rat/Google/Projetos/Claude/collatz-endogeny
+ succeeded in 0ms:
+FILE README.md
+# collatz-endogeny — verification material
+
+This repository exists for a specific reason: an external review of
+the paper "The $qx+1$ Generalization of Tao's Syracuse Measure" (the
+project's main repository,
+`ResearchOS/projects/collatz/papers/01-syracuse-qx1-endogenia/`)
+correctly pointed out that the paper's numerical results had no public
+code or data allowing a skeptical reader to verify them — the numbers
+appeared only as text, with no way to run anything and check. This
+repository fixes exactly that: here is **all the code that produced
+every numerical result cited in the paper**, organized by section, with
+instructions on how to run it and what to expect as output.
+
+The paper (LaTeX/PDF) is **not** here — it lives only in the project's
+main repository. This repository is purely for **verification**:
+computational proofs, data, and the programs themselves.
+
+## How to use this table
+
+Each row below corresponds to a folder. Enter the folder, read the
+local `README.md` (more detailed), and run the indicated command.
+
+**2026-08-10: paper 01 was split into four papers.** The pressure
+equation (old §3), the Kontorovich--Lagarias vs.\ Volkov gate (old
+§6), and the two Wirsching 2003 subsections (old §9.2/§9.3) now belong
+to their own companion papers, each with its own dedicated
+repository: `collatz-qx1-pressure`, `collatz-kl-volkov`, and
+`collatz-wirsching-2003` respectively. Their folders here
+(`sec3-pressure-equation/`, `sec6-kontorovich-lagarias-vs-volkov/`,
+`sec9-wirsching-conjecture1/`, `sec9-wirsching-2003-conjecture3/`) were
+removed from this repository accordingly; see those repositories for
+that material, re-verified there before removal here.
+
+| Folder | Paper section | What it verifies | Expected result |
+|---|---|---|---|
+| `sec4-endogeny-barrier/` | §4 | "No 2-adic memory" lemma: $w\equiv -3^{-1}\pmod{2^a}$, independent of $v$ | OK for $a=1,\ldots,10$, 500 samples each |
+| `sec5-rho-eff-control-experiment/` | §5 | Three-arm control experiment: empirical bound on residual coupling between sibling subtrees | $\rho_{\mathrm{eff}} \lesssim 0.06$ |
+| `sec7-weak-covering-conjecture/` | §7 | Direct computational test of Wirsching's (1998) Weak Covering Conjecture | $j^*(\ell)$ for $\ell=1,\ldots,20$ |
+| `sec8-fresh-digit-coupling/` | §8 | Exact TV/mutual-information identities for the affine coupling of fresh sibling digits | $\mathrm{TV}=1-3^{-s}$, $I=s\log3$, exact |
+| `sec9-wcc-beta-bridge/` | §9.1 | Exact cost-budget identity between WCC and geometric representation cost, and a large-deviation barrier at the WCC's critical cost | $\beta\le1.130929\ldots$, not $\beta=1$, even under ideal equidistribution |
+| `sec9-worst-cylinder-cascade/` | §9.1 | Unconditional bound on $\beta_{\mathrm{eff}}$: the inter-level cascade factor $R_\ell(u)=N_\ell(u)/N_{\ell-1}(u\bmod3^{\ell-1})$ is a convex combination of $R_{\ell-1}$ values, so $\min R_\ell$ is nondecreasing, certified in exact rational arithmetic; also closes the 3-adic Weyl-sum program for the pair anti-concentration inequality as insufficient (unitary obstruction) | $\beta_{\mathrm{eff}}\le1.882712$ at level 10, improving the previous unconditional bound $2.306270$ |
+| `sec10-l2-refutation-and-jensen/` | §10 | Finite-level growth of the $L^2$ statistic ($K_\ell$, evidence not proof) + $L^p$ collision spectrum + Jensen identity (Λ), including the corrected inversion point $\gamma\approx3.31$ and the exhausted $\ell^r$ budget family | $K_\ell$ grows with no saturation through $\ell=17$; $\Lambda=0.5834\pm0.0005$; no $\ell^r$ member closes the Proposition C gap |
+| `sec10-primitive-spectral-analysis/` | §10.2 | Primitive-hole Fourier barrier; primitive energy as fresh-fibre imbalance; multiscale Parseval decomposition of $K_\ell$; exact discrete-log diagonalization of the collision recursion | unconditional $K_{q,\ell}\ge(35/27)^\ell$ (no $L^2$ density) for every prime $q\ge5$ |
+| `sec10-diagonal-shifted-collision/` | §10.1 | Diagonal-term decomposition of the collision recursion, unconditional for every odd $q$ (prime or composite), no maximal-lifting hypothesis; reduces the remaining $q=3$ margin to a single affine shifted collision | unconditional $K_{q,\ell}\ge(q/3)^\ell$ for every odd $q\ge3$, improving `sec10-primitive-spectral-analysis`'s constant and covering exceptional primes |
+| `sec11-chang-one-bit-mixing/` | §11.2 | Test of Chang's (2026) residue-balance conjecture on real orbits | deviation tracks $1/\sqrt i$ noise |
+| `E-076-tao-2022-review/`, `E-018-reverse-tree-branching/` | — | Internal dependencies used by `sec5-rho-eff-control-experiment/` (don't correspond to any specific paper section on their own) | — |
+
+## Requirements
+
+Python 3.10+, with `numpy`, `scipy`, and `mpmath` installed
+(`pip install numpy scipy mpmath`). Most scripts use only the standard
+library.
+
+## Computational cost (heads up)
+
+Some scripts are slow by nature (not a bug): `experiment_wcc.py` (§7)
+takes ~27 minutes to reach $\ell=20$; `experiment_k_ell.py` (§10) takes
+~55s at the last level ($\ell=17$). This is documented in each folder's
+README. The slowest script in the original pressure-equation battery
+(~70-75 minutes, 12 parallel processes) now lives in
+`collatz-qx1-pressure`.
+
+## Provenance
+
+All the code here is a direct copy (or a minimal import-path fix, with
+no logic change) of what was actually run during the research,
+recorded step by step in the main repository
+(`ResearchOS/projects/collatz/`, hypotheses H-109 through H-129 and
+experiments E-018/E-076/E-090/E-097 through E-107; and hypotheses
+H-131 through H-157 and experiments E-100/E-111 through E-126 for the
+folders added 2026-08-08). Nothing here was rewritten "clean" to look
+better — it's the real code, with the same comments and variable names
+from the original process, except for import paths adjusted to this
+repository's folder layout (documented at the top of each affected
+script and in the relevant folder's README).
+FILE sec7-weak-covering-conjecture/README.md
+# §7 — Direct computational test of the Weak Covering Conjecture
+
+Verifies the result from paper Section 7: for Wirsching's (1998,
+Conjecture 3.9) conjecture, computes $j^*(\ell)$ (the smallest $j$
+such that $R_{j-1,j}$ covers $\mathbb{Z}_3^*\bmod 3^\ell$) for
+$\ell=1,\ldots,20$ via exact dynamic programming.
+
+## File
+
+- **`experiment_wcc.py`** — a bitset DP with cyclic rotation: maintains,
+  for each count of chosen terms, the set of reachable partial sums mod
+  $3^\ell$ as a single Python integer (bitset). First validates against
+  an independent reference table ($\ell=1,\ldots,7$) and one
+  hand-checked point, then extends up to $\ell=20$.
+
+## How to run
+
+```
+python3 experiment_wcc.py
+```
+
+## Expected result
+
+Initial validation (should match 100%):
+
+```
+ell=1: j*=1 (expected 1) OK
+ell=2: j*=4 (expected 4) OK
+...
+ell=7: j*=11 (expected 11) OK
+spot check ell=2,j=2: image size=4 (expected 4, missing {4,8} out of 6 total)
+```
+
+Then, the extension up to $\ell=20$ should reproduce the paper's full
+table (Section 7), with $j^*(20)=24$.
+
+## Computational cost (important)
+
+Cost grows by a factor $\approx 3.3\times$ per step near the end. The
+last levels are expensive: $\ell=18$ takes ~139s, $\ell=19$ ~485s,
+$\ell=20$ ~1597s (~27 minutes) — **running the whole script up to
+$\ell=20$ takes well over half an hour**. For a quick check (only the
+validation against the reference table, $\ell\le7$), interrupt the
+script after the first output section.
+FILE sec9-wcc-beta-bridge/README.md
+# §9.1 — The correct (and insufficient) bridge from the Weak Covering Conjecture to β=1
+
+Verifies two results from paper Section 9.1. The paper previously
+claimed that Wirsching's Weak Covering Conjecture (WCC) implies Tao's
+$\beta=1$ by an entropy-counting argument; that argument was invalid
+(a single-representation-per-residue count, not a weighted-mass
+count). This section replaces it with the correct exact cost identity
+and a large-deviation barrier showing the corrected bridge, on its own,
+still falls short of $\beta=1$.
+
+## Part 1 — Exact identity between the two cost budgets
+
+**File**: `weighted_bridge.py`.
+
+Derives and validates (against brute force for $\ell\le4$) the exact
+identity $\max_z B_\ell(z) = \ell + j^*(\ell)$ between the minimum
+geometric-representation cost $B_\ell(z)$ of a residue $z$ and
+Wirsching's WCC budget $j^*(\ell)$, via an explicit index-shift
+bijection. Backs Proposition (`prop:beta-wcc` in the paper). Also computes the
+full weighted multiplicity $c_\ell$ by Tao's memoryless recursion (not
+just the single cheapest representation), giving the finite-level
+effective exponent $\beta_{\mathrm{eff}}(\ell)=-\log(c_\ell)/(\ell\log3)$.
+
+```
+python3 weighted_bridge.py
+```
+
+Expected result: for $\ell=1,\ldots,12$, DP-versus-brute-force checks
+pass, and the WCC budget identity holds exactly. Using WCC's critical
+cost scale gives $\beta\le(1+\log_43)/\log_23=1.130929\ldots$, not
+$\beta=1$ — a genuine gap, not an artifact. The full weighted
+multiplicity's $\beta_{\mathrm{eff}}(\ell)$ decreases from $1.570157$
+($\ell=2$) to $1.222938$ ($\ell=12$), compatible with $\beta=1$ but not
+proof of it (this asymptotic question is tracked separately, see
+`sec10-primitive-spectral-analysis/` and
+`ResearchOS/projects/collatz/hypotheses/H-158-*.md`).
+
+## Part 2 — Large-deviation barrier at the WCC cost
+
+**File**: `large_deviation_barrier.py`.
+
+Even under *ideal* equidistribution of representations restricted to
+the WCC's critical cost budget, computes the large-deviation rate
+$I(\text{slope})$ and the resulting worst-case $\beta$ bound, for
+increasing truncation levels.
+
+```
+python3 large_deviation_barrier.py
+```
+
+Expected result: the rate function gives $I(1+\log_43)=0.012039$; the
+finite-level $\beta$ bound decreases toward, but does not cross below,
+the theoretical ceiling as the cutoff grows (e.g. $1.019099$ at cutoff
+358, $1.013223$ at cutoff 1792) — confirming that the critical-cost
+slice of the WCC carries exponentially insufficient mass to recover
+$\beta=1$ on its own, even in the best case. Backs
+Theorem (`thm:wcc-large-deviation` in the paper).
+FILE sec9-worst-cylinder-cascade/README.md
+# E-134: the 3-adic Weyl-sum program for the pair inequality, and an unconditional cascade bound
+
+Two results, one negative and one positive, both aimed at H-161's
+Question 2 (the pair anti-concentration inequality that would give
+`beta_eff <= 1 + 1/(2*kappa)`).
+
+The negative one answers the question that was asked: the sketched
+program of 3-adic Weyl sums cannot prove the pair inequality, and the
+reason is not a failure of equidistribution. The positive one came out
+of setting that program up, and improves the best unconditional bound on
+`beta_eff` recorded in this project from `2.306270` to `1.882712`.
+
+## Result 1 (positive, unconditional): the cascade factor is nondecreasing
+
+Write `N_ell(u) = 3^ell mu_ell(u)` and, for `u` a unit mod `3^ell`,
+
+```text
+R_ell(u) := N_ell(u) / N_(ell-1)(u mod 3^(ell-1)).
+```
+
+F4 (pushforward) says the three children of every `u` average to the
+parent, so `R` has mean 1 over each sibling triple and `min_u R <= 1`.
+
+**Claim.** `min_u R_ell(u) >= min_v R_(ell-1)(v)`.
+
+*Proof.* F1 gives `N_ell(y) = 3*2^-t0(y)*W_ell(k0(y))` with
+`W_ell(k) = sum_{j>=0} 4^-j N_(ell-1)(A^j k)` and `A(k) = 4k+1 mod
+3^(ell-1)`. Since `t0` depends only on `y mod 3` and
+`k0(y mod 3^(ell-1)) = k0(y) mod 3^(ell-2)`, the `3*2^-t0` factors cancel
+in the ratio:
+
+```text
+R_ell(y) = W_ell(k) / W_(ell-1)(k mod 3^(ell-2)),    k = k0(y).
+```
+
+`A` is given by an integer formula, so `A^j k mod 3^(ell-2) =
+A^j(k mod 3^(ell-2))` for every `j`. Numerator and denominator therefore
+run over the same index `j` with the same weights `4^-j`. Substituting
+`N_(ell-1)(A^j k) = N_(ell-2)(A^j k') * R_(ell-1)(A^j k)` exhibits
+`R_ell(k)` as a weighted average of `R_(ell-1)(A^j k)` with weights
+`4^-j N_(ell-2)(A^j k') / W_(ell-1)(k') >= 0` summing to 1. A convex
+combination lies between the min and the max of what it averages. The
+weights vanish exactly at non-unit positions, where `N` is identically
+zero and `R_(ell-1)` is undefined, so no `0/0` term enters. QED
+
+**Consequence.** `N_ell(u) = N_(ell-1)(u mod 3^(ell-1)) * R_ell(u)`
+pointwise, so `min N_ell >= (min R_ell)(min N_(ell-1))`, and by the claim
+`min R_ell >= min R_L` for every `ell >= L`. Hence for any single level
+`L`,
+
+```text
+3^ell c_ell = min_u N_ell(u) >= (min R_L)^(ell-L) * min_u N_L(u)
+limsup beta_eff <= 1 + log(1 / min R_L) / log 3.
+```
+
+A finite computation at one level bounds every level above it.
+
+### Certified values (exact rational arithmetic, no floating point)
+
+```text
+ ell   min R_ell (exact)        decimal        beta bound
+   2   2/7                     0.285714285714   2.140314
+   3   5240/15257              0.343448908698   1.972788
+   4   49-bit ratio            0.358528086675   1.933676
+   5   153-bit ratio           0.367554035026   1.911045
+   6   479-bit ratio           0.372104367916   1.899845
+   7   1450-bit ratio          0.375368623784   1.891895
+   8   4365-bit ratio          0.376951049877   1.888066
+   9   13112-bit ratio         0.377986076854   1.885570
+  10   39355-bit ratio         0.379174805339   1.882712
+```
+
+`min R_2 = 2/7` already gives `beta_eff <= 2.140314` from a nine-element
+computation, beating the `2.306270` previously recorded in H-158. Level
+10 gives `1.882712`.
+
+### Where the method saturates
+
+float64, levels 2 to 16 (min N cross-checked against the values E-127
+recorded independently, `match` in the last column):
+
+```text
+ ell    min R        max R      min N      minN/prev   beta bound  E-127
+  10  0.37917481  1.51367184  0.060876   0.91318    1.882712
+  12  0.37982580  1.51306047  0.052915   0.97170    1.881150  match
+  14  0.38016988  1.51271393  0.046917   0.93648    1.880326  match
+  16  0.38030266  1.51244385  0.042929   0.97315    1.880008  match
+```
+
+`min R_ell` increases and is bounded by 1, so it converges; the measured
+values sit near `0.3803` and are still climbing at level 16. This route
+therefore floors out near `beta_eff <= 1.880` and **cannot reach 1**. The
+reason is visible in the table: the proved per-level factor is `0.38`
+while the ratio the truth achieves (`minN/prev`) runs at `0.93` to
+`0.97`. That gap is exactly what the pair inequality would close, and it
+is why H-161's Question 2 stays open.
+
+Only `min R_L` at a computed `L` is certified. The limit near `0.3803` is
+a measurement, not a proved constant.
+
+### Relation to H-158's "no scalar recursion" claim
+
+H-158 records, as a sketch not rederived line by line, that no inequality
+using only the scalar `c_(ell-1)` (or any finite list of order statistics
+of `mu_(ell-1)`, with no positional information) can do better than about
+`beta <= 2.31`. Result 1 is a scalar recursion with factor `0.3798 >
+5/21`, so the two statements have to be reconciled.
+
+They are consistent. `min R_L` is not a function of `c_(ell-1)`, nor of
+any order statistic of a single level: it is an inter-level quantity,
+comparing `mu_ell` against `mu_(ell-1)` at matched residues. The
+adversarial construction behind the H-158 sketch (a hypothetical
+level-`ell-1` measure holding a block of values at the minimum along an
+A-arc) is ruled out here not by how small the values are but by the
+convex-combination identity, which constrains how a real Syracuse law at
+one level can sit above its own projection. The H-158 sketch is about
+what the value `c_(ell-1)` alone can support, and it survives; it just
+does not cover inter-level input.
+
+## Result 2 (negative): the Weyl-sum program cannot prove the pair inequality
+
+### The reformulation is clean and exact
+
+In the coordinate `z = 1+3k`, the affine map `A(k) = 4k+1` is
+multiplication by 4 on the cyclic group `G = {z = 1 mod 3}` inside
+`(Z/3^(n+1))^*`, of order `3^n`. The orbit time is the 3-adic discrete
+logarithm base 4, `tau(z) = log(z)/log(4)`, both logarithms convergent on
+`G`. So `A` is the shift `tau -> tau+1` and the characters of `G` are
+exactly the Weyl phases `chi_m(z) = e(m tau(z) / 3^n)`. In this basis the
+recursion `W(k) = N(k) + (1/4) W(A(k))` diagonalizes exactly:
+
+```text
+What(m) = Nhat(m) / (1 - (1/4) e(-m/3^n)),
+```
+
+whose denominator has modulus between 3/4 and 5/4, so `W` and `N` have
+comparable coefficients frequency by frequency.
+
+F2's two pair types become affine maps of `G` (both verified below):
+
+```text
+Type (1,2):  b = 2a+1       <=>  sigma1(z) = 2z+2
+Type (2,1):  a''' = 32b+17  <=>  sigma2(z) = 32z+20
+```
+
+### The mixed Weyl sums are maximally non-degenerate
+
+`T(m,n) = sum_{z in G} chi_m(z) chi_n(sigma z)`. Writing `z = 1+3a` and
+`lambda = log/3`, the phase is `F(a) = m~ lambda(1+3a) + n~ lambda(sigma
+z)` with `m~ = m/lambda(4)`, and
+
+```text
+sigma1:  F'(a) = m~/(1+3a) + n~/(2+3a)
+sigma2:  F'(a) = m~/(1+3a) + 8 n~/(13+24a)
+```
+
+A critical point mod 3 requires `2m+n = 0 (mod 3)` for `sigma1` and
+`m+2n = 0 (mod 3)` for `sigma2` (`lambda(4)` is a 3-adic unit, so the
+criteria read the same in `m,n` as in `m~,n~`). With no critical point
+the sum vanishes identically.
+
+Verified exhaustively for `n = 2..7` and both maps:
+
+- off the criterion, `max|T| < 3.3e-14`: the vanishing is exact;
+- on the criterion, `|T(m,n)| = 3^((n+1+v)/2)` with
+  `v = v_3(gcd(m,n))`, attained. Ratio `max|T| / 3^((n+1+v)/2) =
+  1.000000` at every level tested.
+
+So every primitive frequency has square-root cancellation, `|T| =
+3^((n+1)/2) = sqrt(3|G|)`, and the only larger sums are the
+arithmetically forced ones at frequencies divisible by a power of 3
+(a frequency divisible by `3^v` collapses the sum to `3^v` copies of a
+sum mod `3^(n-v)`). The phase is as non-degenerate as a phase can be.
+
+### And it still gives nothing
+
+Let `S, S' ⊂ G` with densities `delta, delta'`, and
+`Sigma = #{z : z in S, sigma z in S'}`. Expanding both indicators,
+
+```text
+Sigma = |S||S'|/|G| + |G|^-2 * sum_{(m,n)!=(0,0)} conj(Shat(m)) conj(S'hat(n)) T(m,n).
+```
+
+Bounding the error by absolute values, with
+`sum_m |Shat(m)| <= |G|^(1/2) (sum_m |Shat(m)|^2)^(1/2) = |G|^(3/2)
+delta^(1/2)`:
+
+```text
+error <= max|T| * |G| * (delta*delta')^(1/2) = 3^(1/2) |G|^(3/2) (delta delta')^(1/2),
+```
+
+against a main term `|G| delta delta'`. This substitutes the most
+favorable value `max|T| = sqrt(3|G|)`, the primitive one; the true
+maximum over all nonzero frequencies is `|G|`, which only makes it
+worse. The error beats the main term
+only if `(delta delta')^(1/2) > 3^(1/2) |G|^(1/2)`, which is impossible
+for densities at most 1. **At no density does this route say anything**,
+including the dense regime, let alone the deep tail `x ~ 3^(-ell/2kappa)`
+the theorem needs.
+
+This is not an artifact of taking absolute values. `T(m,n)/|G|` is the
+matrix, in the character basis, of composition with a bijection of `G`;
+composition with a bijection is an isometry of `L^2(G)`, so that matrix is
+unitary and the operator-norm route returns exactly the trivial
+Cauchy-Schwarz bound `(|S||S'|)^(1/2)`. Decisively: taking `S' =
+sigma(S)` gives `Sigma = |S|`, so **no bound depending only on `|S|`,
+`|S'|` and spectral data of `sigma` can be nontrivial**, no matter how
+good the Weyl estimates are.
+
+### What is actually missing
+
+Not equidistribution of `sigma`. What is missing is harmonic control of
+the level set `{V <= x}` itself, jointly with `sigma`: some reason why
+`Shat` cannot align with the frequencies where `T` is large. Since `S` is
+defined by `V` and `sigma` relates `V` to itself, any proof has to use
+the self-similar description of `V` rather than treat `S` as a black box.
+
+Scope of the negative claim: it rules out the specific program (estimate
+`T`, insert into the expansion, bound the error), not Weyl-type methods
+in general. Estimating the Mellin coefficients of `V` itself is untouched
+and remains the natural next thing to try.
+
+## Files
+
+- `cascade_factor_bound.py`: Result 1. `--exact L` runs certified
+  rational arithmetic through level `L`; `--float L` runs the float64
+  measurement, checks F4 and monotonicity at every level, and
+  cross-checks min N against E-127.
+- `pair_character_sum.py`: Result 2. Re-verifies F1 and both F2 pair
+  types from a scratch rebuild of the laws, derives the `z`-coordinate
+  maps, and evaluates `T(m,n)` exhaustively against the stationary-phase
+  prediction and the size law.
+
+## Running
+
+```sh
+python3 cascade_factor_bound.py --exact 8 --float 12     # seconds
+python3 cascade_factor_bound.py --exact 10 --float 16    # about 100 s
+python3 pair_character_sum.py --weyl-levels 2 3 4 5 6 7  # about 3 s
+```
+
+Exact level 10 takes about 74 s and is the slow part (the minimum search
+compares 39355-bit rationals). Level 16 in float64 peaks at 2.4 GB
+resident (measured).
+Every assertion in both scripts is a check that would fail loudly:
+total mass 1 at each level, F4 to 1e-10, monotonicity of `min R`,
+`min R <= 1`, `sigma` bijective on `G`, and 4 generating `G`.
+FILE sec10-diagonal-shifted-collision/README.md
+# E-138: diagonal term of the shifted-collision decomposition
+
+Related hypotheses: H-157 (q-adic logarithmic renormalization), H-156,
+H-155, H-159 (arithmetic transfer of the iid tail), H-161 (same affine map,
+different question).
+
+## What this tests
+
+Write `mu_(q,ell)` for the Syracuse law of parameter `q` with geometric
+weight `P(a)=2^-a`, and `K_(q,ell) = q^ell sum_x mu_(q,ell)(x)^2`.
+
+Condition on the first exponent. With `F_ell = 2^-a (1 + q F_(ell-1))` and
+`Y = 1 + q F_(ell-1) mod q^ell`, two independent copies collide exactly when
+`Y' = 2^(a'-a) Y`. The exponents are iid geometric on `{1,2,...}`, so
+`P[a'-a = s] = 2^-|s| / 3` and
+
+```text
+K_(q,ell) = (q/3) sum_(s in Z) 2^-|s| H_(ell-1)(s),
+H_(ell-1)(s) = q^(ell-1) P[Y' = 2^s Y mod q^ell],
+H_(ell-1)(0) = K_(q,ell-1).
+```
+
+Each `H` is a probability times a positive constant, so every term is
+nonnegative. This is the Fourier dual of H-156 and H-157: the transform of
+`2^-|s|` on the subgroup generated by `2^d` is exactly the multiplier
+`W_(q,d)` of H-157, and `q/3` is its circle average. What the time-domain
+form adds is termwise nonnegativity, which the spectral form hides inside a
+signed balance.
+
+Dropping every `s != 0` gives the unconditional rate
+
+```text
+K_(q,ell) >= (q/3) K_(q,ell-1)    for every ell >= 1.
+```
+
+The inequality already holds at `ell=1`, where `F_0 = 0` and `Y = 1` is
+deterministic, so `H_0(s) = [d | s]` and the identity gives the closed form
+`K_(q,1) = (q/3) (2^d+1)/(2^d-1)`, checked against the law for every `q`
+tested. With the base `K_(q,0) = 1` (trivial law modulo `q^0 = 1`),
+iterating gives `K_(q,ell) >= (q/3)^ell`.
+
+Three lines, no Parseval, no orbit structure, and no maximal-lifting
+hypothesis `v_q(2^d-1)=1`. Since `c_(q,d) = (q/3) (2^d-1)/(2^d+1) < q/3` for
+every `d`, this is a strict improvement on H-157's constant, and it also
+covers the exceptional (Wieferich) primes and composite odd `q`, both of
+which H-157 excludes. It stays inside H-157's own bracket
+`[c_(q,d), C_(q,d)]`, so it contradicts nothing there.
+
+## Scripts
+
+```sh
+python3 diagonal_rate.py            # identity and the q/3 rate, several q
+python3 q3_shifted_profile.py       # q=3: the increment E_ell, and min over affine states
+python3 affine_transfer.py          # exact affine transfer operator, and a failed certificate
+```
+
+`diagonal_rate.py` builds the law by the plain convolution
+`mu_ell(y) = sum_(a>=1) 2^-a nu(2^a y)`, with no assumption on the orbit of
+2, so composite `q` and non-maximal lifting are both admissible inputs.
+
+## What comes out
+
+`diagonal_rate.py`, for `q` in `{3,5,7,9,11,13,15,21,25}` up to modulus
+2e6: the identity holds to `2.3e-13` absolute at worst, and the ratio
+`K_(q,ell)/K_(q,ell-1)` never falls below `q/3` (smallest observed excess
+`8.0e-9`, at `q=25` where the first nonzero off-diagonal shift is `s=20`).
+The ratio decreases towards `q/3` from above, so the bound is not just
+valid, it is asymptotically sharp:
+
+```text
+q=5  (q/3=1.666667, H-157 gives 1.470588):  1.7238, 1.6962, 1.6814, ..., 1.6688 at ell=8
+q=7  (q/3=2.333333, H-157 gives 1.814815):  2.4187, 2.3701, 2.3463, ..., 2.3352 at ell=6
+q=11 (q/3=3.666667, H-157 gives 3.659512):  3.6671, 3.6667, 3.6667, 3.6667 at ell=5
+```
+
+For `q=3` the rate is `q/3 = 1`, so it yields monotonicity of `K_ell` and
+nothing more. Monotonicity is already known (H-155 writes the increment as a
+sum of squares, H-140 records it as a martingale second moment), so at `q=3`
+the diagonal term is not new information.
+
+`q3_shifted_profile.py` gives what is new at `q=3`, the explicit form of the
+increment. With `G_(ell-1)(r) = H_(ell-1)(2r)`,
+
+```text
+E_ell = K_ell - K_(ell-1) = 2 sum_(r>=1) 4^-r G_(ell-1)(r) >= (1/2) G_(ell-1)(1),
+G_(ell-1)(1) = T_(ell-1)(4,1),   T_ell(u,v) = 3^ell P[F' = u F + v mod 3^ell].
+```
+
+Measured:
+
+```text
+ell   K_ell      E_ell      G(1)      G(2)      G(3)     (1/2)G(1)
+  4   3.068646   0.464214   0.70303   0.49512   1.33461   0.351515
+  8   4.931742   0.465921   0.71709   0.47605   1.24238   0.358544
+ 12   6.802899   0.468941   0.72427   0.47333   1.23741   0.362133
+```
+
+So the missing uniform margin for `q=3` reduces to one arithmetic
+statement: a level-uniform positive lower bound on the single affine shifted
+collision `T_ell(4,1)`. No cancellation is involved, only positivity. The
+observed value rises slowly through `0.724` at `ell=12`; `0.5 * 0.72` would
+give `K_ell >= K_1 + 0.36 (ell-1)`.
+
+The same script scans every affine state. Over all units `u` and all `v`,
+
+```text
+ell        1        2        3        4        5        6        7        8
+min T   0.3333   0.2449   0.2137   0.2023   0.1961   0.1930   0.1915   0.1911
+```
+
+The minimum decreases and flattens near `0.191`, which is evidence, not
+proof, that `inf_ell inf_(u,v) T_ell(u,v) > 0`. That statement alone would
+close the `q=3` margin.
+
+## Two routes that failed
+
+`affine_transfer.py` validates, in exact rational arithmetic at levels 1, 2
+and 3, the level-independent recursion
+
+```text
+T_ell(u,v) = 3 sum_(a,a'>=1) 2^-(a+a') T_(ell-1)(w, (w + v 2^a' - 1)/3),
+w = u 2^(a'-a),   over the pairs with 3 | (w + v 2^a' - 1),   T_0 = 1.
+```
+
+Route A, induction on `ell`. The operator is monotone, so `T_2 >= T_1`
+everywhere would give `T_ell >= T_1(4,1) = 2/3` for all `ell` and close the
+question. It is false: 22 of the 54 states mod 9 have `T_2 < T_1`, for
+instance `T_2(1,1) = 24/49 < 2/3`. The target state itself is fine
+(`T_1(4,1) = 2/3`, `T_2(4,1) = 34/49`), the induction is not.
+
+Route B, a subinvariant certificate at finite resolution. A function `h` of
+`(u,v) mod 3^k` with `0 <= h <= 1` and `(Th) >= h` on every lift would give
+`T_ell >= h` by induction from `T_0 = 1`. The largest such `h` is the limit
+of `h <- min(h, T_* h)` from `h = 1`, where `T_*` minimizes over lifts. It
+collapses geometrically: about `0.79` per round at `k=1`, about `0.88` at
+`k=2`. Refining `k` improves the rate but the structural reason for the loss
+does not go away, since `min` over lifts lets an adversary pick the worst
+lift again at every level with no consistency between levels, which the real
+dynamics forbids. No certificate of this shape exists at `k=1` or `k=2`.
+
+## What this does not show
+
+`K_ell -> infinity` is equivalent to the density martingale being unbounded
+in `L^2` (H-155), which rules out an `L^2` density. It does not by itself
+prove that the limiting measure is singular; that would need `L^1`
+non-uniform-integrability, which is not established here.
+
+The `q/3` rate holds for every odd `q`, prime or composite. The step from
+divergence to "no `L^2` density" goes through H-155's Parseval decomposition,
+stated for prime modulus, and it was not checked whether its
+character-conductor bookkeeping survives at `q^ell` with a non-cyclic unit
+group. The `L^2` conclusion is therefore scoped to prime `q`; the rate is
+not.
+
+For `q=3` nothing is proved beyond monotonicity, which was already known.
+The reduction to `T_ell(4,1)` is a reformulation, and the `0.191` floor is a
+finite-level measurement over eight levels.
+
+## Relation to O1 and H-161
+
+The map `A(k) = 4k+1` and the recursion `W = N + (1/4) W circ A` used in
+H-161 are the same objects that appear here: `G_ell(1)` is the
+nearest-neighbour correlation `(1/M) sum_j N_j N_(j+1)` along exactly the
+orbit that E-132 measures. The two questions are related, not identical.
+E-132 measures how often two consecutive positions are jointly small, and
+finds anti-clustering; what the margin here needs is a lower bound on the
+expectation of their product. Anti-clustering pushes in the helpful
+direction for that bound without supplying it.
+FILE sec10-l2-refutation-and-jensen/README.md
+# §10 — Finite-level growth of K_ℓ, the L^p collision spectrum, the Jensen identity (Λ), and the coarse-correlation Δ-weighted sum
+
+Verifies five independent results from paper Section 10.
+
+## Part 1 — Finite-level growth of the $L^2$ statistic (Empirical Result, not a refutation)
+
+**Files**: `experiment_k_ell.py`, `validate_against_direct_mc.py`.
+
+**Status correction**: an earlier version of this section, and of the
+paper, treated this computation as a direct proof that $K_\infty=\infty$.
+It is not: growth over a finite range of $\ell$ does not rule out
+convergence past the levels actually computed. The paper now labels
+this an Empirical Result (`thm:l2-finite` in the paper), not a theorem,
+and the finding is tracked as H-140 in the main project repository.
+
+$K_\ell := 3^\ell\sum_y\mu_\ell(y)^2$ (the Syracuse measure's normalized
+collision mass) is computed exactly via the recursion
+$\mu_n(y)=\tfrac12\nu(2y)+\tfrac12\mu_n(2y)$ (mod $3^n$), solved as a
+geometric series along the cyclic orbit of multiplication by 2 mod
+$3^n$.
+
+```
+python3 experiment_k_ell.py
+```
+
+Expected result: $K_1=1.666667$ ($=5/3$ exact), growing up to
+$K_{17}=9.15677$, with increments converging to $\approx0.47$ **with
+no sign of saturation on the tested range**. This is finite evidence
+against the $L^2$ hypothesis $K_\infty<\infty$, not a proof that
+$K_\infty=\infty$: a bounded monotone sequence can display this exact
+behavior over any prescribed finite initial range. The last levels are
+the cost bottleneck: $\ell=16$ takes ~18s, $\ell=17$ takes ~55s.
+
+**Validation of the recursion** (the only point originally validated
+was the base case $\ell=1$, which doesn't exercise the real recursive
+machinery):
+
+```
+python3 validate_against_direct_mc.py
+```
+
+Compares the full distribution $\mu_\ell$ (not just $K_\ell$), bin by
+bin, against direct Monte Carlo sampling of Syrac's primary definition
+at $\ell=3,4$ ($3\times10^6$ samples). Expected maximum discrepancy:
+$\approx0.0003$ ($\ell=3$), $\approx0.0002$ ($\ell=4$), both within the
+expected Monte Carlo noise ($\approx1/\sqrt N\approx0.000577$).
+
+## Part 2 — The Jensen identity (Λ) and the Fourier-budget deficit
+
+**File**: `experiment_lambda_mc.py`.
+
+Computes, by Monte Carlo, $\Lambda:=\mathbb{E}[\log(1/|Z|)]$ for
+$Z=\sum_g w_g e(U_g)$ with geometric weights, under two models (Tao's
+original Geom(1/2); a "tilted" model at the WCC threshold). The Jensen
+identity (proven in the paper, the "Jensen identity and the exact
+Fourier-budget deficit" Theorem) gives $\Lambda=\log(1/p)$ **exactly**
+— the Monte Carlo here is only a sanity check, not the source of the
+value.
+
+```
+python3 experiment_lambda_mc.py
+```
+
+Expected result:
+
+```
+Model 1 (Geom(1/2), Tao's Syrac): Lambda = 0.6929 +/- 0.0006   vs  log 3 = 1.0986
+Model 2 (tilted, WCC threshold):  Lambda = 0.5834 +/- 0.0005   vs  log 3 = 1.0986
+```
+
+The factor deficit $\approx e^{1.0986-0.5834}\approx1.88$ in Model 2 is
+the numerical basis of the paper's "Proposition C: self-consistency of
+a diffuse hole" Theorem.
+
+## Part 3 — Δ-weighted sum of the coarse correlation (Proposition "Exact coarse endogeny")
+
+**File**: `delta_weighted_correlation.py`.
+
+Verifies the exact value $\mathbb{E}[\Corr]=-3/7$ quoted in the paper's
+remark reconciling the "Exact coarse endogeny" Proposition (the coarse
+pair correlation between sibling subtrees, $+1$ if
+$\Delta\equiv0\pmod6$, $-1/2$ otherwise) with the empirical calibration
+of §5 ($\rho_{\mathrm{eff}}\lesssim0.06$). Weights pairs of sibling
+branches by their natural second-moment mass
+$2^{-a_i}\cdot2^{-a_j}$ (the same weighting entering the covariance
+identity of that Proposition) and derives $\Pr[\Delta\equiv0\bmod6]=
+1/21$ in closed form (confirmed by direct truncated summation), giving
+the exact mean coarse correlation $-3/7$.
+
+```
+python3 delta_weighted_correlation.py
+```
+
+Expected result: closed-form $\Pr[\Delta=2k]=3\cdot4^{-k}$ (ratio
+between successive terms confirmed numerically as exactly $0.25$),
+$\Pr[\Delta\equiv0\bmod6]=1/21\approx0.0476$,
+$\Pr[\Delta\not\equiv0\bmod6]=20/21\approx0.9524$, and
+$\mathbb{E}[\Corr]=-3/7\approx-0.4286$.
+
+## Part 4 — Finite-level $L^p$ collision spectrum (Empirical Result (`thm:lp-spectrum` in the paper))
+
+**File**: `lp_collision_spectrum.py`.
+
+Reuses the exact recursion from Part 1 to evaluate
+$\|M_\ell\|_p^p=3^{\ell(p-1)}\sum_x\mu_\ell(x)^p$ for
+$p\in\{1.1,1.25,1.5,1.75,1.9,2,2.1,2.5\}$ and $\ell\le14$. This puts
+the $L^2$ statistic of Part 1 inside an exact one-parameter family
+rather than treating it as an isolated sufficient condition.
+
+```
+python3 lp_collision_spectrum.py
+```
+
+Expected result: at $\ell=14$, moments below $p=2$ slow their growth
+on the tested range, $p=2$ shows the near-linear behavior of Part 1,
+and moments above $p=2$ grow faster. Finite evidence only; it does not
+prove a critical index or settle absolute continuity.
+
+## Part 5 — The $\ell^r$ budget family and the corrected inversion point $\gamma\approx3.31$
+
+**File**: `norm_sweep.py`.
+
+The paragraph following Theorem "Jensen identity and the exact
+Fourier-budget deficit" states that the annealed criterion inverts at
+$\gamma\approx3.31$, not the naive $\gamma=3$, because the Jensen
+identity $\Lambda=\log(1/p)$ requires $p\ge\tfrac12$ and the naive
+threshold $p=1/3$ falls below it. This script checks that directly (by
+Monte Carlo, against the exact closed forms available at $r=0$ and
+$r=2$) and sweeps the wider $\ell^r$ family, $r\ge1$: closing a support
+hole in $\ell^r$ needs $\|Z\|_r<1/3$ for every $r$, and $\|Z\|_r$ grows
+with $r$, so no member of the family beats $r\to0$ (the Jensen
+exponent).
+
+```
+python3 norm_sweep.py --samples 2000000 --threshold-samples 200000
+```
+
+Expected result: self-checks pass ($\|Z\|_2$ against the closed form
+$\sqrt{p/(2-p)}$; the $r\to0$ limit against $p$; the bracket
+$p\le\mathbb E|Z|\le\|Z\|_2$; monotonicity of $\|Z\|_r$ in $r$). The
+$\ell^r$ table gives inversion thresholds rising from $\gamma\approx3.31$
+($r\to0$) through $\gamma=5$ exactly at $r=2$ (closed form
+$\|Z\|_2^2=p/(2-p)$) to $\gamma\approx6.6$ at $r=4$. The second table
+gives $\Lambda(p)$ against $\log(1/p)$ directly: at $p=1/3$,
+$\Lambda\approx1.032<\log3\approx1.0986$, confirming the inversion point
+sits above $\gamma=3$.
+FILE sec10-primitive-spectral-analysis/README.md
+# §10.2 — Primitive spectral energy, multiscale Parseval, and the logarithmic-order diagonalization
+
+Verifies four results from paper Section 10.2, all sharpening what
+"the Z-number reduction" subsection needs beyond a bare support hole:
+a sharp barrier ruling out coarse-mode arguments, an exact identity
+turning the abstract spectral energy into a concrete new-digit
+imbalance, an exact multiscale decomposition of the $L^2$ collision
+statistic, and an exact diagonalization of its recursion in
+discrete-logarithm order — the last one strong enough to prove
+unconditional exponential collision growth (no $L^2$ density) for
+every prime $q\ge5$ in a broad family.
+
+## Part 1 — Coarse modes and the sharp primitive-hole barrier
+
+**File**: `primitive_hole.py`.
+
+Backs Proposition (`prop:primitive-hole` in the paper): a support hole (removing
+one unit residue from an otherwise uniform law) has primitive Fourier
+coefficients of size exactly $1/(M-1)$ (a Ramanujan-sum identity, since
+the sum of any primitive character over all units mod $3^\ell$ vanishes
+for $\ell\ge2$) — far too small to force the concentration condition
+$\mathrm{SC}_{\mathrm{prim}}(\epsilon)$ for any fixed $\epsilon<1$. A
+support failure alone is therefore never enough.
+
+```
+python3 primitive_hole.py
+```
+
+Expected result: for $\ell=2,\ldots,8$, the coarse (non-primitive)
+coefficient at the central frequency stays pinned near $0.5$ (matching
+the algebraic lower bound of $1/2$ for any convex combination of the
+two nontrivial cube roots of unity), while the primitive-hole
+coefficient matches the closed form $1/(M-1)$ to machine precision
+(e.g. $\approx1.22\times10^{-13}$ agreement at $\ell=8$).
+
+## Part 2 — Primitive energy is fresh-fibre imbalance
+
+**File**: `primitive_fibre_energy.py`.
+
+Backs Proposition (`prop:primitive-fibre-energy` in the paper): the total
+primitive spectral energy at level $\ell$ equals (up to the exact
+constant $3^{\ell-1}$) the sum, over every fibre of three siblings
+mod $3^{\ell-1}$, of $(x_0-x_1)^2+(x_1-x_2)^2+(x_2-x_0)^2$ — an
+elementary algebraic identity, turning an abstract Fourier quantity
+into a concrete statement about within-fibre digit imbalance.
+
+```
+python3 primitive_fibre_energy.py
+```
+
+Expected result: for $\ell=1,\ldots,8$, the identity holds to machine
+precision (errors $\lesssim2\times10^{-16}$) on random laws; on the
+uniform lift of a lower-level law (zero within-fibre imbalance by
+construction), both the direct and lifted energies are exactly zero.
+
+## Part 3 — Multiscale Parseval decomposition
+
+**File**: `multiscale_parseval.py`. Depends on
+`sec10-l2-refutation-and-jensen/experiment_k_ell.py` (loaded by
+relative path; both folders must be present as siblings).
+
+Backs Theorem (`thm:multiscale-parseval` in the paper): $K_\ell-K_{\ell-1}$
+equals exactly the primitive spectral energy $E_\ell$ at level $\ell$
+(a conductor decomposition of Parseval's identity), so
+$K_\ell=1+\sum_{r\le\ell}E_r$ — the $L^2$ question of §3/§10.1 and the
+primitive-energy question of Part 2 are the cumulative and incremental
+versions of the same quantity.
+
+```
+python3 multiscale_parseval.py
+```
+
+Expected result: for the Syracuse law and for an independent random
+law, both identities ($K_\ell-K_{\ell-1}=E_\ell$ and the telescoping
+sum) hold to machine precision (errors $\lesssim3\times10^{-14}$) up
+to $\ell=12$.
+
+## Part 4 — Exact collision renormalization in discrete-log order
+
+**Files**: `verify_logarithmic_renormalization.py` (the $q=3$ case,
+also depends on `sec10-l2-refutation-and-jensen/experiment_k_ell.py`)
+and `verify_qadic_renormalization.py` (the general odd-prime-$q$ case,
+self-contained).
+
+Backs Theorem (`thm:logarithmic-collision` in the paper): reordering the Syracuse
+law by the discrete logarithm (base 4, or base 2 for general $q$ with
+$d=\mathrm{ord}_q(2)$) diagonalizes the collision recursion exactly,
+turning the growth question for $K_\ell$ into an explicit spectral
+balance with multiplier $W_{q,d}(\theta)$, bounded between
+$c_{q,d}=q(2^d-1)/(3(2^d+1))$ and $C_{q,d}=q(2^d+1)/(3(2^d-1))$. For
+every prime $q\ge5$ (so $d\ge3$ automatically, since $q$ can divide
+neither $2^1-1$ nor $2^2-1=3$), $c_{q,d}\ge35/27>1$, giving
+unconditional exponential growth $K_{q,\ell}\ge(35/27)^\ell$ and hence
+no $L^2$ density — strictly stronger than the singularity already
+available from the entropy argument. The bound does not apply at
+$q=3$ (multiplier infimum $3/5<1$), where the question stays reduced to
+the spectral balance of Part 3.
+
+```
+python3 verify_logarithmic_renormalization.py
+python3 verify_qadic_renormalization.py
+```
+
+Expected result: `verify_logarithmic_renormalization.py` matches the
+direct and spectral computations of $K_\ell$ to machine precision
+(errors $\lesssim3\times10^{-15}$) up to $\ell=12$, both for the
+Syracuse law and for independent random laws.
+`verify_qadic_renormalization.py` matches direct and spectral $K_{q,\ell}$
+for $q=7,11,13,17,19$ (a spread of multiplicative orders $d$,
+including cases where $2$ is not a primitive root mod $q$) up to
+$\ell=5$, with maximum absolute error $<2\times10^{-12}$ on values of
+$K$ reaching $\sim10^4$.
+
+exec
+/bin/bash -lc "sed -n '1,360p' sec9-worst-cylinder-cascade/pair_character_sum.py; sed -n '1,340p' sec9-worst-cylinder-cascade/cascade_factor_bound.py; rg -n \"pair|anti|theta|E-132|kappa|scaled\" -S ." in /home/rat/Google/Projetos/Claude/collatz-endogeny
+ succeeded in 101ms:
+./sec8-fresh-digit-coupling/README.md:4:for a fixed sibling pair (or any fixed pair of descendant paths), the
+./sec10-primitive-spectral-analysis/README.md:44:elementary algebraic identity, turning an abstract Fourier quantity
+./sec10-primitive-spectral-analysis/README.md:67:versions of the same quantity.
+./sec10-primitive-spectral-analysis/README.md:89:balance with multiplier $W_{q,d}(\theta)$, bounded between
+./sec9-worst-cylinder-cascade/README-PT-BR.md:4:H-161 (a desigualdade de anti-concentração de pares que daria
+./sec9-worst-cylinder-cascade/README-PT-BR.md:5:`beta_eff <= 1 + 1/(2*kappa)`).
+./sec9-worst-cylinder-cascade/README-PT-BR.md:112:nenhuma estatística de ordem de um único nível: é uma quantidade entre
+./sec9-worst-cylinder-cascade/README-PT-BR.md:202:`x ~ 3^(-ell/2kappa)` que o teorema exige.
+./sec9-worst-cylinder-cascade/README-PT-BR.md:233:- `pair_character_sum.py`: Resultado 2. Reverifica F1 e os dois tipos de
+./sec9-worst-cylinder-cascade/README-PT-BR.md:243:python3 pair_character_sum.py --weyl-levels 2 3 4 5 6 7  # cerca de 3 s
+./sec9-worst-cylinder-cascade/pair_character_sum.py:2:"""The 3-adic Weyl-sum program for H-161's pair inequality, carried to the
+./sec9-worst-cylinder-cascade/pair_character_sum.py:15:F2 says every consecutive-unit pair reduces to a pair of W values one
+./sec9-worst-cylinder-cascade/pair_character_sum.py:22:Both send G to G bijectively. The pair question is whether the level set
+./sec9-worst-cylinder-cascade/pair_character_sum.py:146:        # Type (1,2): k = 1 mod 3 paired with A(k)
+./sec9-worst-cylinder-cascade/pair_character_sum.py:152:        # Type (2,1): k = 2 mod 3 paired with A^2(k)
+./sec9-worst-cylinder-cascade/pair_character_sum.py:254:        "\nfrequencies divisible by a power of 3. Whatever blocks the pair"
+./sec9-worst-cylinder-cascade/README.md:1:# E-134: the 3-adic Weyl-sum program for the pair inequality, and an unconditional cascade bound
+./sec9-worst-cylinder-cascade/README.md:4:Question 2 (the pair anti-concentration inequality that would give
+./sec9-worst-cylinder-cascade/README.md:5:`beta_eff <= 1 + 1/(2*kappa)`).
+./sec9-worst-cylinder-cascade/README.md:8:program of 3-adic Weyl sums cannot prove the pair inequality, and the
+./sec9-worst-cylinder-cascade/README.md:95:`0.97`. That gap is exactly what the pair inequality would close, and it
+./sec9-worst-cylinder-cascade/README.md:110:any order statistic of a single level: it is an inter-level quantity,
+./sec9-worst-cylinder-cascade/README.md:120:## Result 2 (negative): the Weyl-sum program cannot prove the pair inequality
+./sec9-worst-cylinder-cascade/README.md:139:F2's two pair types become affine maps of `G` (both verified below):
+./sec9-worst-cylinder-cascade/README.md:198:including the dense regime, let alone the deep tail `x ~ 3^(-ell/2kappa)`
+./sec9-worst-cylinder-cascade/README.md:229:- `pair_character_sum.py`: Result 2. Re-verifies F1 and both F2 pair
+./sec9-worst-cylinder-cascade/README.md:239:python3 pair_character_sum.py --weyl-levels 2 3 4 5 6 7  # about 3 s
+./sec5-rho-eff-control-experiment/experiment.py:200:        corr, n_pts, pairs = test_correlation_for_m(m, n_per_residue, log_mag_lo, log_mag_hi)
+./sec5-rho-eff-control-experiment/experiment.py:202:        if m == 2 and pairs:
+./sec5-rho-eff-control-experiment/experiment.py:204:            for r, x, y in sorted(pairs):
+./sec5-rho-eff-control-experiment/experiment_control_arms.py:11:mult=2000 (nao reusa os dados antigos de mult=20000 de
+./sec5-rho-eff-control-experiment/experiment_control_arms.py:12:experiment_deep_pairs*.py - Fable foi explicito que a comparacao entre
+./sec5-rho-eff-control-experiment/experiment_control_arms.py:28:from experiment_synthetic_core import run_synth_pairs_with_ci
+./sec5-rho-eff-control-experiment/experiment_control_arms.py:34:# janelas de magnitude de v1 por m, mesmo criterio de experiment_deep_pairs*.py
+./sec5-rho-eff-control-experiment/experiment_control_arms.py:44:def sample_pair_real(rng, m, log_lo, log_hi):
+./sec5-rho-eff-control-experiment/experiment_control_arms.py:68:def run_real_for_m(m, n_pairs, mult, seed):
+./sec5-rho-eff-control-experiment/experiment_control_arms.py:72:    for _ in range(n_pairs):
+./sec5-rho-eff-control-experiment/experiment_control_arms.py:73:        v1, v2 = sample_pair_real(rng, m, log_lo, log_hi)
+./sec5-rho-eff-control-experiment/experiment_control_arms.py:94:def run_real_for_m_with_ci(m, n_pairs, mult, seed):
+./sec5-rho-eff-control-experiment/experiment_control_arms.py:98:    for _ in range(n_pairs):
+./sec5-rho-eff-control-experiment/experiment_control_arms.py:99:        v1, v2 = sample_pair_real(rng, m, log_lo, log_hi)
+./sec5-rho-eff-control-experiment/experiment_control_arms.py:110:def stage_braco1(n_pairs=2000):
+./sec5-rho-eff-control-experiment/experiment_control_arms.py:115:        res = run_synth_pairs_with_ci(g=g, mult=MULT, rho=0.0, n_pairs=n_pairs, seed=3000 + m)
+./sec5-rho-eff-control-experiment/experiment_control_arms.py:123:def stage_braco3(n_pairs=2000):
+./sec5-rho-eff-control-experiment/experiment_control_arms.py:128:        res = run_real_for_m_with_ci(m, n_pairs=n_pairs, mult=MULT, seed=4000 + m)
+./sec5-rho-eff-control-experiment/experiment_control_arms.py:135:def stage_forma(n_pairs=1000):
+./sec5-rho-eff-control-experiment/experiment_control_arms.py:142:            res = run_synth_pairs_with_ci(g=g, mult=MULT, rho=rho, n_pairs=n_pairs, seed=5000 + m + int(rho * 1000))
+./sec5-rho-eff-control-experiment/experiment_control_arms.py:175:def stage_slope(n_pairs=4000):
+./sec5-rho-eff-control-experiment/experiment_control_arms.py:181:    print(f"=== Rodada de slope: rho pequeno x m={SLOPE_M_GRID}, n={n_pairs}, mult={MULT} ===", flush=True)
+./sec5-rho-eff-control-experiment/experiment_control_arms.py:187:            res = run_synth_pairs_with_ci(g=g, mult=MULT, rho=rho, n_pairs=n_pairs,
+./sec5-rho-eff-control-experiment/experiment_control_arms.py:194:    print(f"\n=== Braco 3 (real) remedido para o mesmo n={n_pairs}, m={SLOPE_M_GRID} ===", flush=True)
+./sec5-rho-eff-control-experiment/experiment_control_arms.py:197:        res = run_real_for_m_with_ci(m, n_pairs=n_pairs, mult=MULT, seed=7000 + m)
+./sec10-primitive-spectral-analysis/README-PT-BR.md:46:algébrica elementar, transformando uma quantidade abstrata de Fourier
+./sec10-primitive-spectral-analysis/README-PT-BR.md:70:da mesma quantidade.
+./sec10-primitive-spectral-analysis/README-PT-BR.md:92:espectral explícito com multiplicador $W_{q,d}(\theta)$, limitado entre
+./sec10-l2-refutation-and-jensen/README.md:81:pair correlation between sibling subtrees, $+1$ if
+./sec10-l2-refutation-and-jensen/README.md:83:of §5 ($\rho_{\mathrm{eff}}\lesssim0.06$). Weights pairs of sibling
+./sec5-rho-eff-control-experiment/experiment_synthetic_core.py:119:    gera filho k sse s+a_k<=L_SEARCH (mesma semantica do search_bound
+./sec5-rho-eff-control-experiment/experiment_synthetic_core.py:182:def synth_pair(rng, g, mult, rho):
+./sec5-rho-eff-control-experiment/experiment_synthetic_core.py:199:def run_synth_pairs(g, mult, rho, n_pairs, seed):
+./sec5-rho-eff-control-experiment/experiment_synthetic_core.py:200:    """Roda n_pairs pares sinteticos e retorna
+./sec5-rho-eff-control-experiment/experiment_synthetic_core.py:206:    for _ in range(n_pairs):
+./sec5-rho-eff-control-experiment/experiment_synthetic_core.py:207:        res = synth_pair(rng, g, mult, rho)
+./sec5-rho-eff-control-experiment/experiment_synthetic_core.py:237:def run_synth_pairs_with_ci(g, mult, rho, n_pairs, seed, n_boot=1000):
+./sec5-rho-eff-control-experiment/experiment_synthetic_core.py:241:    for _ in range(n_pairs):
+./sec5-rho-eff-control-experiment/experiment_synthetic_core.py:242:        res = synth_pair(rng, g, mult, rho)
+./sec5-rho-eff-control-experiment/experiment_synthetic_core.py:297:    res1 = run_synth_pairs(g=10, mult=2000, rho=0.0, n_pairs=50, seed=777)
+./sec5-rho-eff-control-experiment/experiment_synthetic_core.py:298:    res2 = run_synth_pairs(g=10, mult=2000, rho=0.0, n_pairs=50, seed=777)
+./sec5-rho-eff-control-experiment/experiment_synthetic_core.py:304:    resid_var, n, frac_sat = run_synth_pairs(g=300, mult=2000, rho=0.0, n_pairs=300, seed=42)
+./sec5-rho-eff-control-experiment/experiment_synthetic_core.py:308:    resid_var0, n0, _ = run_synth_pairs(g=0, mult=2000, rho=0.0, n_pairs=1000, seed=99)
+
+codex
+Há uma redução promissora e testável: a desigualdade Q2 seguiria imediatamente de uma cota uniforme do momento negativo conjunto
+\[
+\sup_\ell \mathbb E[(N_\ell(U)N_\ell(TU))^{-\kappa}]<\infty.
+\]
+Isso transforma “anti-concentração” num problema espectral positivo (sem cancelamento e sem a obstrução unitária). Estou verificando agora se a recursão exata realmente induz um operador fechado para esse momento — e, crucialmente, se os dados mostram boundedness ou crescimento exponencial.
+exec
+/bin/bash -lc "python3 - <<'PY'
+import importlib.util, numpy as np
+p='sec9-worst-cylinder-cascade/cascade_factor_bound.py'
+s=importlib.util.spec_from_file_location('c',p); m=importlib.util.module_from_spec(s); s.loader.exec_module(m)
+for ell,mu,prev in m.float_levels(14):
+    if ell<2: continue
+    M=3**ell; N=mu*M; k=np.arange(M); unit=(k%3)"'!=0
+    nxt=np.empty(M,dtype=np.int64)
+    nxt[k%3==1]=(4*k[k%3==1]+1)%M
+    nxt[k%3==2]=(16*k[k%3==2]+5)%M
+    a=N[unit]; b=N[nxt[unit]]
+    out=[]
+    for kap in (.4,.57,.6,.8,1.0,1.2):
+        out.append(np.mean((a*b)**(-kap)))
+    print(ell, '"'minpair',np.min(np.maximum(a,b)), 'mom', ' '.join(f'{v:.6g}' for v in out), 'corrlog',np.corrcoef(np.log(a),np.log(b))[0,1])
+PY" in /home/rat/Google/Projetos/Claude/collatz-endogeny
+ succeeded in 1623ms:
+2 minpair 1.1428571428571428 mom 0.944766 0.94287 0.943608 0.955786 0.979177 1.01228 corrlog -0.5646196284661705
+3 minpair 0.6583582243279431 mom 1.06874 1.14581 1.16269 1.30364 1.50271 1.77672 corrlog -0.4341266532531278
+4 minpair 0.5412312690816002 mom 1.13735 1.25727 1.28295 1.49498 1.79401 2.21095 corrlog -0.41977337283396926
+5 minpair 0.43213568041009925 mom 1.18892 1.34605 1.37976 1.66042 2.06531 2.64776 corrlog -0.39320740105807284
+6 minpair 0.3615700812195052 mom 1.2275 1.4123 1.45194 1.78316 2.26509 2.96633 corrlog -0.38235614882465696
+7 minpair 0.2948852107785764 mom 1.25949 1.4688 1.51385 1.89276 2.45206 3.2804 corrlog -0.3723553272295399
+8 minpair 0.27423107034848304 mom 1.28566 1.51516 1.56468 1.98308 2.60674 3.54146 corrlog -0.36461067166917865
+9 minpair 0.2539238636985987 mom 1.30758 1.55446 1.60785 2.06098 2.74231 3.77411 corrlog -0.35793787476470257
+10 minpair 0.236801744087451 mom 1.32592 1.58747 1.64415 2.12688 2.85786 3.97408 corrlog -0.35270496018841047
+11 minpair 0.22266445995486578 mom 1.34135 1.61539 1.67487 2.18304 2.95708 4.1473 corrlog -0.3484673092044259
+12 minpair 0.20929571803454922 mom 1.35436 1.63896 1.70082 2.23062 3.04146 4.29522 corrlog -0.3452048849877421
+13 minpair 0.19926549745373767 mom 1.3654 1.65901 1.72292 2.27127 3.11388 4.42282 corrlog -0.3425512766994047
+14 minpair 0.18730008531334477 mom 1.37484 1.67619 1.74185 2.30621 3.17635 4.53333 corrlog -0.3403667234282144
+
+web search: 
+web search: site:projecteuclid.org small deviations fixed points smoothing transform negative moments ...
+web search: 
+web search: Ruelle Perron Frobenius operator summable variations g-measures large deviations paper pdf ...
+exec
+/bin/bash -lc "python3 - <<'PY'
+import importlib.util, numpy as np
+p='sec9-worst-cylinder-cascade/cascade_factor_bound.py'; s=importlib.util.spec_from_file_location('c',p);m=importlib.util.module_from_spec(s);s.loader.exec_module(m)
+for ell,mu,prev in m.float_levels(14):
+ N=mu*3**ell; u=N[np.arange(3**ell)%3"'!=0]
+ print(ell,u.min(),u.max(),np.quantile(u,[.001,.01,.1,.5,.9,.99,.999]))
+PY' in /home/rat/Google/Projetos/Claude/collatz-endogeny
+ succeeded in 1039ms:
+1 1.0 2.0 [1.001 1.01  1.1   1.5   1.9   1.99  1.999]
+2 0.2857142857142857 3.142857142857143 [0.28714286 0.3        0.42857143 1.35714286 2.71428571 3.1
+ 3.13857143]
+3 0.16458955608198575 4.796580492326707 [0.16600783 0.17877227 0.30483057 1.03574004 3.55369245 4.58573077
+ 4.77549552]
+4 0.14491611424667103 7.26853868716624 [0.14493369 0.14509185 0.27594369 0.97569687 3.14018416 6.30491744
+ 7.17217656]
+5 0.10803392010252481 10.977777433261773 [ 0.11094225  0.12664975  0.24425204  0.94622938  3.38589221  8.24037155
+ 10.5373805 ]
+6 0.09039252030487631 16.526982933691055 [ 0.09544277  0.11440323  0.23221471  0.88072938  3.43433836 12.32801169
+ 14.53880247]
+7 0.07710121034791187 24.84859933045163 [ 0.08910802  0.1054799   0.21442056  0.84764576  3.12188053 10.39533927
+ 18.68564451]
+8 0.07506678956861262 37.33479974009869 [ 0.07928299  0.09737817  0.20363991  0.82483369  3.32846367 10.29306738
+ 28.02362537]
+9 0.06666417887649638 56.076091875069324 [ 0.07612949  0.09304277  0.19887843  0.8149181   3.30360405 11.59380681
+ 24.46123057]
+10 0.06087649184537147 84.17693726735094 [ 0.07275608  0.09045387  0.19510452  0.79936203  3.23071011 10.84630192
+ 32.40682965]
+11 0.05445601405746123 126.33944842206394 [ 0.07016038  0.087849    0.19109462  0.78878297  3.23114932 12.05687527
+ 29.55016372]
+12 0.05291503870793925 189.5935678814827 [ 0.06800885  0.08610918  0.18869033  0.77980793  3.21700728 11.68005867
+ 36.2447636 ]
+13 0.05009954294905854 284.4640100794894 [ 0.06630784  0.08493788  0.18669892  0.77221987  3.18938414 11.6342086
+ 33.47742486]
+14 0.04691719185870123 426.75544146776605 [ 0.06520494  0.08372711  0.18457985  0.76576973  3.19126726 11.99234545
+ 34.7518296 ]
+
+exec
+/bin/bash -lc "python3 - <<'PY'
+import importlib.util,numpy as np
+p='sec9-worst-cylinder-cascade/cascade_factor_bound.py';s=importlib.util.spec_from_file_location('c',p);m=importlib.util.module_from_spec(s);s.loader.exec_module(m)
+for ell,mu,pr in m.float_levels(14):
+ if ell<3:continue
+ M=3**ell;N=mu*M;k=np.arange(M);u=k%3"'!=0;nxt=np.where(k%3==1,(4*k+1)%M,(16*k+5)%M)
+ a=N[u];b=N[nxt[u]]
+ print(ell,'"'E-log',np.mean(-np.log(a)),'med',np.median(a),*[np.mean((a<=x)&(b<=x)) for x in (.05,.1,.2,.3,.5,1.0)])
+PY" in /home/rat/Google/Projetos/Claude/collatz-endogeny
+ succeeded in 1282ms:
+3 E-log -0.01022597045087439 med 1.0357400350190544 0.0 0.0 0.0 0.0 0.0 0.16666666666666666
+4 E-log 0.05648474015935712 med 0.9756968703029766 0.0 0.0 0.0 0.0 0.0 0.14814814814814814
+5 E-log 0.10077001271241118 med 0.9462293816731298 0.0 0.0 0.0 0.0 0.018518518518518517 0.20987654320987653
+6 E-log 0.1341606629089416 med 0.8807293776337015 0.0 0.0 0.0 0.0 0.03909465020576132 0.26337448559670784
+7 E-log 0.1605127445998402 med 0.8476457629307683 0.0 0.0 0.0 0.0006858710562414266 0.04046639231824417 0.2626886145404664
+8 E-log 0.18183324727706368 med 0.8248336862385353 0.0 0.0 0.0 0.0006858710562414266 0.04481024234110654 0.26428898033836307
+9 E-log 0.19929181605925725 med 0.8149181003353402 0.0 0.0 0.0 0.0012193263222069807 0.046334400243865266 0.2719097698521567
+10 E-log 0.21379015624711126 med 0.7993620268500017 0.0 0.0 0.0 0.0021592236955748616 0.04945892394452065 0.2813849514809734
+11 E-log 0.22590188865432795 med 0.7887829733390856 0.0 0.0 0.0 0.002514860539551898 0.052574980101271825 0.28798963572626124
+12 E-log 0.23609939171342756 med 0.7798079346805761 0.0 0.0 0.0 0.003206376625062801 0.05473984882611616 0.2939112714299424
+13 E-log 0.244732848132781 med 0.7722198719506213 0.0 0.0 9.408382115794604e-07 0.0039007152252084425 0.05708912184043008 0.298809275159425
+14 E-log 0.2520947023396594 med 0.7657697250352836 0.0 0.0 3.1361273719315344e-06 0.004438247456757508 0.05890054901045773 0.3028517433418448
+
+codex
+A recursão de \(W\) produz algo mais concreto do que a analogia sugeria. Após normalizar os coeficientes positivos, Jensen para \(x\mapsto x^{-\kappa}\) gera um operador positivo de Feynman–Kac sobre estados afins \(y=ax+b\) em \(\mathbb Z_3\). Os três fatores escalares de uma etapa são exatamente
+\[
+C_0=2/7,\qquad C_1=8/7,\qquad C_2=11/7.
+\]
+Assim, a questão vira um teste de raio espectral \(r(\mathcal L_\kappa)\le1\), certificável por truncamento positivo; isso é uma rota real e não usa somas de Weyl. Ainda preciso verificar se o operador tem o sinal espectral favorável em \(\kappa>0{,}567\), pois o ramo \(C_0<1\) pode matar o argumento.
+exec
+/bin/bash -lc "python3 - <<'PY'
+import random, math, statistics, time
+C=[2/7,8/7,11/7]; ce={1:3/4,2:3/2}
+def pick_j(s,rng):
+    js={e:(e-s)%3 for e in (1,2)}
+    ws=[ce[e]*4.0**(-js[e]) for e in (1,2)]
+    e=1 if rng.random()<ws[0]/sum(ws) else 2
+    # geom m with ratio 1/64
+    m=0
+    while rng.random()<1/64: m+=1
+    return js[e]+3*m,e
+
+def trans(a,b,q,s,rng):
+    # inputs a,b modulo q, q divisible by 3; output modulo q/3
+    t=(a*s+b)%3
+    j1,e1=pick_j(s,rng); j2,e2=pick_j(t,rng)
+    d1=4 if e1==1 else 2; d2=4 if e2==1 else 2
+    p41=pow(4,j1); p42=pow(4,j2)
+    Aj_s=(p41*s+(p41-1)//3)
+    c1=(d1*Aj_s-1)//3
+    # compute A"'^j(y0) mod q so division gives c2 mod q/3
+    y0=(a*s+b)%q
+    Aj_y=( (p42%q)*y0 + ((p42-1)//3)%q )%q
+    num=(d2*Aj_y-1)%q
+    assert num%3==0
+    c2=num//3
+    q2=q//3
+    L1=(d1*(p41%q2))%q2
+    L2=(d2*(p42%q2)*(a%q2))%q2
+    an=(L2*pow(L1,-1,q2))%q2
+    bn=(c2-an*(c1%q2))%q2
+    return an,bn,q2,t
+
+def trial(a0,b0,kap,n,N,seed):
+ rng=random.Random(seed); logs=[]; vals=[]
+ q0=3**(n+5)
+ for _ in range(N):
+  a,b,q=a0%q0,b0%q0,q0; lg=0
+  for h in range(n):
+   s=rng.randrange(3); t=(a*s+b)%3
+   lg += -kap*math.log(C[s]*C[t])
+   a,b,q,_=trans(a,b,q,s,rng)
+  logs.append(lg); vals.append(math.exp(lg))
+ mean=sum(vals)/N; se=statistics.pstdev(vals)/math.sqrt(N)
+ return mean,se,sum(logs)/N/n
+for kap in (.4,.57,.6,.8,1.0):
+ for st in [(2,1),(32,17)]:
+  print('"'kap,state',kap,st)
+  for n in (5,10,15,20,25):
+   mean,se,ml=trial(*st,kap,n,20000,12345+n+int(kap*1000)+st[0])
+   print(n,mean,se,'root',mean**(1/n),'meanlogstep',ml)
+PY" in /home/rat/Google/Projetos/Claude/collatz-endogeny
+ succeeded in 36270ms:
+kap,state 0.4 (2, 1)
+5 3.6248434957239324 0.028720483597168178 root 1.2937723105549557 meanlogstep 0.17615218411613012
+10 14.216590043144603 0.23195857579952076 root 1.304005862864166 meanlogstep 0.17667462581644783
+15 53.19224247241618 1.3544786298967364 root 1.303336486325519 meanlogstep 0.1769222163821933
+20 222.0469045228971 10.076740897053844 root 1.3101536652607402 meanlogstep 0.17823464874234407
+25 845.5529931371289 58.58829409560341 root 1.3094400901174503 meanlogstep 0.17736669181685838
+kap,state 0.4 (32, 17)
+5 3.6300736140397114 0.02808196200542807 root 1.2941454400634926 meanlogstep 0.17871812988420857
+10 13.836336462919848 0.22675011279230303 root 1.3004753101958928 meanlogstep 0.17873672838844906
+15 53.259940609841806 1.1215599027803744 root 1.3034470050614835 meanlogstep 0.17926675759264923
+20 215.78042117560244 15.562995151052007 root 1.3082796973891853 meanlogstep 0.17737141971657042
+25 919.718441069378 180.84867781876764 root 1.313851241510527 meanlogstep 0.17767043770642243
+kap,state 0.57 (2, 1)
+5 8.285596576371132 0.11798672015191145 root 1.5263873451373615 meanlogstep 0.2551997635219563
+10 73.48291991957527 2.4332465183269054 root 1.5368045600681448 meanlogstep 0.254892484471597
+15 639.6415228968286 32.995462493277614 root 1.5383758134209686 meanlogstep 0.253984852793714
+20 5150.093478011667 415.7745219467108 root 1.5331715635493315 meanlogstep 0.2520753919958156
+25 46421.505159414664 4182.709994780513 root 1.5369819551231505 meanlogstep 0.25342210186189723
+kap,state 0.57 (32, 17)
+5 8.097808956002316 0.10700094287788244 root 1.5194048394161244 meanlogstep 0.25774597523881637
+10 66.52956200312858 1.7583990311770674 root 1.521603387419072 meanlogstep 0.25414687696140864
+15 652.3670435905594 58.363047897402524 root 1.5403974849850783 meanlogstep 0.2527501716496428
+20 5323.932002554982 478.9423895468168 root 1.5357185317547375 meanlogstep 0.2543058031984919
+25 45854.35279488437 8387.46406987284 root 1.5362263948566417 meanlogstep 0.25381816640778715
+kap,state 0.6 (2, 1)
+5 9.69602345738011 0.1499359239097531 root 1.5751384445587675 meanlogstep 0.27080023379454843
+10 105.48994430189896 3.7837721734723577 root 1.593386401035658 meanlogstep 0.26878659272330635
+15 1145.8574764865116 99.91012936228776 root 1.599344569993684 meanlogstep 0.26649922844800256
+20 9813.373018455364 937.3025354090707 root 1.5834010017432993 meanlogstep 0.26725159189404424
+25 167249.31989085567 36825.328552823434 root 1.6178362955247452 meanlogstep 0.26693480652133245
+kap,state 0.6 (32, 17)
+5 9.222617136045443 0.1365977384033146 root 1.559447778270834 meanlogstep 0.2661235706490428
+10 91.99938641965664 2.8344951599646526 root 1.5717319917563068 meanlogstep 0.2640788895373953
+15 1063.7577039200442 75.79455998308201 root 1.5914372331132138 meanlogstep 0.26734222159154114
+20 11901.532740293258 1706.9083910757538 root 1.5987484807319707 meanlogstep 0.2671357326137253
+25 84263.7307064343 9124.509939236941 root 1.5740757465304596 meanlogstep 0.2674563171035305
+kap,state 0.8 (2, 1)
+5 30.27510605756821 0.8564726279094238 root 1.9779583147105728 meanlogstep 0.3549756021456136
+10 1152.81252441507 108.77320960531154 root 2.0238385711287346 meanlogstep 0.35624050439733207
+15 84970.78149943602 48363.44692366819 root 2.13116941165341 meanlogstep 0.35555416724904243
+20 1274489.1153361527 234938.00483690185 root 2.019606717439989 meanlogstep 0.3558292500066573
+25 29404314.093931794 12080967.760871237 root 1.9894656366430317 meanlogstep 0.35450201475895793
+kap,state 0.8 (32, 17)
+5 27.884565599801846 0.8100883138494194 root 1.9456861015134206 meanlogstep 0.35270809733714825
+10 1100.385894594335 86.00737229249121 root 2.0144407653124103 meanlogstep 0.3583826152142666
+15 53760.980593110406 13572.299316079398 root 2.0671142400093645 meanlogstep 0.3561354775561113
+20 56097610.21040964 54884379.372265995 root 2.4403224654444013 meanlogstep 0.3561876353658213
+25 36067574.48338899 10369115.012531063 root 2.0057863777848595 meanlogstep 0.35571086801157054
+kap,state 1.0 (2, 1)
+5 120.590940836461 5.697047609525048 root 2.6077318820207456 meanlogstep 0.4468253287472021
+10 14876.176089622733 1812.7346121529827 root 2.613660238709076 meanlogstep 0.4434164613220772
+15 1762504.5281406243 338578.23910444067 root 2.608607164705798 meanlogstep 0.446487938597521
+20 407531210.3637827 302888164.91689247 root 2.694685241081061 meanlogstep 0.4473388011572779
+25 7862418307.075428 4285557864.4295526 root 2.4878388521643955 meanlogstep 0.44408586122885635
+kap,state 1.0 (32, 17)
+5 115.6506210544775 5.946663670722699 root 2.5860063910666895 meanlogstep 0.44722639060262326
+10 17114.03895639132 3426.0378361618573 root 2.650545425402008 meanlogstep 0.44647006299121667
+15 4008960.912244561 2155588.4072762704 root 2.7555108248116813 meanlogstep 0.4454266949688973
+20 110561227.09151858 27648178.311295826 root 2.5245277129088546 meanlogstep 0.446166440333372
+25 4168722838.8303127 1203638208.5005832 root 2.4254935321320605 meanlogstep 0.4459420528447668
+
+exec
+/bin/bash -lc "python3 - <<'PY'
+import random, math, statistics
+C=[2/7,8/7,11/7]; ce={1:3/4,2:3/2}
+def pick(s,r):
+ j1=(1-s)%3;j2=(2-s)%3;w1=ce[1]*4.0**(-j1);w2=ce[2]*4.0**(-j2);e=1 if r.random()<w1/(w1+w2) else 2;m=0
+ while r.random()<1/64:m+=1
+ return ((e-s)%3)+3*m,e
+def run(a0,b0,k,n,N,seed):
+ r=random.Random(seed); sm=ss=sl=0.;q0=3**(n+3)
+ for ii in range(N):
+  a,b,q=a0%q0,b0%q0,q0;lg=0.
+  for h in range(n):
+   s=r.randrange(3);t=(a*s+b)%3;lg-=k*math.log(C[s]*C[t])
+   j1,e1=pick(s,r);j2,e2=pick(t,r);d1=4 if e1==1 else 2;d2=4 if e2==1 else 2;p1=4**j1;p2=4**j2
+   c1=(d1*(p1*s+(p1-1)//3)-1)//3;y0=(a*s+b)%q;Ay=(p2*y0+(p2-1)//3)%q;c2=((d2*Ay-1)%q)//3;q//=3
+   L1=d1*p1%q;L2=d2*(p2%q)*(a%q)%q;an=L2*pow(L1,-1,q)%q;bn=(c2-an*(c1%q))%q;a,b=an,bn
+  v=math.exp(lg);sm+=v;ss+=v*v;sl+=lg
+ mean=sm/N;se=((ss/N-mean*mean)/N)**.5
+ return mean,se,sl/N/n
+for k in (.4,.57,.6,.8,1.):
+ for st in ((2,1),(32,17)):
+  row=[]
+  for n in (5,10,15,20):
+   z=run(*st,k,n,5000,1000+n+int(k*100)+st[0]);row.append((n,)+z+(z[0]**(1/n),))
+  print(k,st,row,flush=True)
+PY" in /home/rat/Google/Projetos/Claude/collatz-endogeny
+ succeeded in 3796ms:
+0.4 (2, 1) [(5, 3.7166116593247134, 0.05822710556303904, 0.18153787999980936, 1.3002577080586872), (10, 14.730622515737199, 0.47440182829934874, 0.18113056297723917, 1.3086457830626828), (15, 53.430120856748594, 2.4874959302382296, 0.17749148396929043, 1.3037242501434605), (20, 229.2027733311431, 14.908191703271962, 0.18068780123958356, 1.3122331155066709)]
+0.4 (32, 17) [(5, 3.6050176110507315, 0.0553295703747159, 0.1804885145581433, 1.2923539606358017), (10, 13.398433044871627, 0.3747489582549962, 0.17707513812701345, 1.2962996418233796), (15, 55.69225967006212, 2.619777081160468, 0.1806743815495511, 1.3073332972557488), (20, 193.95001051129663, 11.301153543503986, 0.17681085093112447, 1.3013211561914342)]
+0.57 (2, 1) [(5, 8.172578515648011, 0.22264350374297134, 0.2521578139493215, 1.5222003600347238), (10, 75.31208551014682, 4.926642602323894, 0.25442544461028305, 1.5405878463628184), (15, 625.6017383083079, 56.042016773013785, 0.25065022267036235, 1.5361013227115596), (20, 6428.15365153959, 1476.592898169967, 0.25269917230538935, 1.5502591825524894)]
+0.57 (32, 17) [(5, 8.35743541555932, 0.22639438230918682, 0.2593788154870782, 1.5290250687186342), (10, 79.56333274191142, 6.281544047464842, 0.2542404631963689, 1.5490709037562445), (15, 640.9732183486653, 116.15645671040508, 0.2529476914634062, 1.5385891266865779), (20, 6064.677374849327, 1925.2295689105074, 0.24936979270414178, 1.5457540217568002)]
+0.6 (2, 1) [(5, 9.996496112002529, 0.3045665521254943, 0.2717861579778824, 1.5847821111266733), (10, 94.80949580940336, 8.836600168544107, 0.2650248710038122, 1.5764680873881096), (15, 1105.1729403087186, 129.03116107703943, 0.27065143383154655, 1.5954946399512386), (20, 10362.873085035542, 1952.3566131326363, 0.2677262796473404, 1.587720341754606)]
+0.6 (32, 17) [(5, 8.943887910256908, 0.25160733840847505, 0.2650853478117956, 1.549905678947731), (10, 84.10547651261736, 3.938063465208019, 0.268674487853913, 1.557695006085766), (15, 974.896163149307, 127.88107092092014, 0.2686883234124388, 1.582209146399227), (20, 11250.113415333304, 4130.018994757263, 0.2677028071459885, 1.5942552103905554)]
+0.8 (2, 1) [(5, 29.305223429388274, 1.5116650566018441, 0.35111154186303034, 1.9651196908395492), (10, 1018.9328700876497, 108.73428697410341, 0.36023524747322155, 1.999008115485504), (15, 31355.488158073516, 10497.237408381032, 0.3535428342042135, 1.9941335384650876), (20, 1170794.3482380754, 469854.42909292516, 0.3548717796769102, 2.0110553827687827)]
+0.8 (32, 17) [(5, 30.823036169622604, 2.1395900554847818, 0.34614605470822524, 1.9850666047396552), (10, 1129.4250274422136, 187.82143118468815, 0.35851204704122963, 2.0196947693102465), (15, 20150.735222628482, 3385.9449980016925, 0.35407551531368475, 1.93621119315641), (20, 1402335.42964733, 558987.8740418662, 0.3566611613635272, 2.0292828980208415)]
+1.0 (2, 1) [(5, 116.27613501446689, 10.242266290962341, 0.4502360068474995, 2.5887977203650303), (10, 34664.59611643942, 16125.2731159766, 0.4492891500745942, 2.8443865374835267), (15, 3597668.6898035193, 2409003.8036126303, 0.44032692741460283, 2.7356975265822103), (20, 115980294.62115486, 49392789.93331972, 0.4467026648387332, 2.53057498327309)]
+1.0 (32, 17) [(5, 113.18899465065603, 12.07197952328868, 0.4506346292683966, 2.5749028059172177), (10, 14097.690978522425, 2964.6735642000735, 0.442417306650779, 2.5996495052227044), (15, 5666336.350993403, 4490173.470947651, 0.4448729223272391, 2.8198120149895023), (20, 68829064.19988531, 31849160.995437942, 0.44216385830603755, 2.4654068212484535)]
+
+exec
+/bin/bash -lc "python3 - <<'PY'
+import itertools
+C=[9/32,9/8,99/64]
+for k in [.4,.57,.6,.8,1]:
+ vals=[]
+ for a in [1,2]:
+  for b in [0,1,2]:
+   vals.append((sum((C[s]*C[(a*s+b)%3])**(-k) for s in range(3))/3,a,b))
+ print(k,sorted(vals,reverse=True))
+PY" in /home/rat/Google/Projetos/Claude/collatz-endogeny
+ succeeded in 0ms:
+0.4 [(1.4581046151502093, 1, 0), (1.453765157296903, 2, 0), (1.2914905447981135, 2, 1), (1.2602621536067093, 1, 2), (1.2602621536067093, 1, 1), (1.2333732202686114, 2, 2)]
+0.57 [(1.9096830719526698, 1, 0), (1.9016521230344112, 2, 0), (1.487324872042998, 2, 1), (1.421053583765475, 1, 2), (1.421053583765475, 1, 1), (1.3628132444062107, 2, 2)]
+0.6 [(2.0143348655790003, 1, 0), (2.005580389266379, 2, 0), (1.5272088739065828, 2, 1), (1.4531510059871042, 1, 2), (1.4531510059871042, 1, 1), (1.3878476143802472, 2, 2)]
+0.8 [(2.979002934697404, 1, 0), (2.96503883633197, 2, 0), (1.839698540165779, 2, 1), (1.6996021357348068, 1, 2), (1.6996021357348068, 1, 1), (1.5734698296692684, 2, 2)]
+1 [(4.61667176818692, 1, 0), (4.597081930415263, 2, 0), (2.246301397816549, 2, 1), (2.011223344556678, 1, 2), (2.011223344556678, 1, 1), (1.7957351290684624, 2, 2)]
+
+exec
+/bin/bash -lc "python3 - <<'PY'
+import importlib.util,numpy as np
+p='sec9-worst-cylinder-cascade/cascade_factor_bound.py';s=importlib.util.spec_from_file_location('c',p);m=importlib.util.module_from_spec(s);s.loader.exec_module(m)
+for ell,mu,pr in m.float_levels(14):
+ if ell>=5:
+  N=mu*3**ell;a=N[np.arange(3**ell)%3"'!=0]
+  print(ell,*[np.mean(a**(-q)) for q in (.6,1.,1.2,1.5,2.)])
+PY' in /home/rat/Google/Projetos/Claude/collatz-endogeny
+ succeeded in 1108ms:
+5 1.2701034713699304 1.7838015209665368 2.2119463229316674 3.2025178191104864 6.564230795113586
+6 1.3035017138396001 1.8720535662146616 2.350370239294124 3.4719049186919584 7.385017430446648
+7 1.3305986970116719 1.945181171218548 2.466246724370043 3.700792634356598 8.099883567281035
+8 1.3528655049568505 2.006180710967892 2.5637206882080195 3.895954542837881 8.724550223253013
+9 1.3712442741564228 2.0570471880658605 2.645516950378851 4.061512487316885 9.265993304207722
+10 1.3865581587236262 2.0996846626132344 2.7143396866075897 4.201716677497227 9.730344627495002
+11 1.3993546416710274 2.135458125201421 2.7722526701958925 4.320335188154077 10.127715499659072
+12 1.4101219119040085 2.1656560582744717 2.8212576214361684 4.42115367482371 10.468542885460385
+13 1.4192114674126206 2.191162675415512 2.8626800953701874 4.506506301057644 10.758146790560096
+14 1.4269465153359742 2.212894522134411 2.898011046614866 4.579461061312486 11.006799593255693
+
+web search: 
+web search: Alsmeyer Dyszewski Thin tails fixed points nonhomogeneous smoothing transform 2017 official ...
+exec
+/bin/bash -lc "python3 - <<'PY'
+C=[2/7,8/7,11/7]
+for k in [.4,.57,.6]:
+ for a,b in [(2,1),(2,2),(1,0)]:
+  z=sum((C[s]*C[(a*s+b)%3])**(-k) for s in range(3))/3
+  print(k,a,b,z)
+PY" in /home/rat/Google/Projetos/Claude/collatz-endogeny
+ succeeded in 0ms:
+0.4 2 1 1.275321529542254
+0.4 2 2 1.2179318138293491
+0.4 1 0 1.4398496493187027
+0.57 2 1 1.4608610051933109
+0.57 2 2 1.3385648041905795
+0.57 1 0 1.875704215355027
+0.6 2 1 1.498618637717575
+0.6 2 2 1.3618663018254136
+0.6 1 0 1.9766253482008427
+
+codex
+Minha conclusão é dupla:
+
+1. Há uma rota matemática real, diferente do programa de Weyl: momentos negativos conjuntos e um operador de transferência positivo sobre estados afins 3-ádicos. Ela reduz Q2 a um certificado espectral preciso, potencialmente verificável por aritmética intervalar.
+
+2. Não vejo ainda uma prova fechada. A versão linear mais natural desse operador falha quantitativamente, por um mecanismo identificável. Para preservar a antiaglomeração é necessário um operador não linear do tipo Perron–Frobenius/Bellman. E há uma advertência importante: Q2 implica que o martingale de densidades não pode ser singular. Portanto Q2 pode ser substancialmente mais forte que \(\beta=1\).
+
+## 1. A redução correta: momentos negativos conjuntos
+
+Se \(T_\ell\) denota o sucessor na sequência contraída de unidades, defina
+
+\[
+J_\ell(\kappa)
+ =\mathbb E\!\left[
+    \bigl(N_\ell(U)N_\ell(T_\ell U)\bigr)^{-\kappa}
+  \right],
+\]
+
+com \(U\) uniforme entre as unidades. Então
+
+\[
+\{N_\ell(U)\le x,\;N_\ell(T_\ell U)\le x\}
+ \subseteq
+ \{(N_\ell(U)N_\ell(T_\ell U))^{-\kappa}\ge x^{-2\kappa}\}.
+\]
+
+Logo
+
+\[
+\mathbb P(N_\ell(U)\le x,\;N_\ell(T_\ell U)\le x)
+ \le x^{2\kappa}J_\ell(\kappa).
+\]
+
+Portanto basta provar
+
+\[
+\boxed{\sup_\ell J_\ell(\kappa)<\infty}
+\tag{1}
+\]
+
+para algum \(\kappa>0.567\). Isso seria mais forte que Q2, pois valeria para todo \(x>0\), sem a restrição \(x\ge e^{-c_0\ell}\).
+
+Por F1, em ambos os tipos de par o produto dos dois fatores externos é
+
+\[
+\frac34\cdot\frac32=\frac98.
+\]
+
+Se \(V_n\) denota o \(W\) no nível cujo domínio é \(\mathbb Z/3^n\mathbb Z\), obtemos
+
+\[
+J_\ell(\kappa)
+=
+\left(\frac89\right)^\kappa
+\frac{H_{\ell-1}^{(\sigma_1)}(\kappa)+H_{\ell-1}^{(\sigma_2)}(\kappa)}2,
+\]
+
+onde
+
+\[
+H_n^{(g)}(\kappa)
+ :=
+ \int_{\mathbb Z_3}
+ [V_n(x)V_n(gx)]^{-\kappa}\,dx
+\]
+
+e os estados iniciais são
+
+\[
+g_1(x)=2x+1,\qquad g_2(x)=32x+17
+\]
+
+nas coordenadas \(k\). Assim, Q2 é reduzida a uma cota uniforme para dois momentos negativos afins.
+
+Como teste independente, reconstruí os níveis a partir do código local. Para \(\kappa=0.6\), encontrei
+
+\[
+\begin{array}{c|cccc}
+\ell&8&10&12&14\\ \hline
+J_\ell(0.6)&1.565&1.644&1.701&1.742
+\end{array}
+\]
+
+e, para comparação,
+
+\[
+\mathbb E[N_\ell(U)^{-1.2}]
+=2.564,\;2.714,\;2.821,\;2.898.
+\]
+
+Isso é compatível com convergência, mas também com divergência muito lenta. Não é evidência suficiente para afirmar (1).
+
+## 2. A renormalização exata sobre estados afins
+
+Escreva \(x=3r+s\), \(s\in\{0,1,2\}\). Para
+
+\[
+A^j(x)=4^jx+\frac{4^j-1}{3},
+\]
+
+ponha
+
+\[
+\epsilon_s(j)\equiv s+j\pmod3,\qquad
+d_1=4,\quad d_2=2.
+\]
+
+Os índices admissíveis são aqueles com \(\epsilon_s(j)\in\{1,2\}\). F1 dá a decomposição positiva
+
+\[
+V_n(3r+s)
+ =
+ \sum_{j:\epsilon_s(j)\ne0}
+ a_{s,j}\,
+ V_{n-1}(P_{s,j}(r)),
+\tag{2}
+\]
+
+com
+
+\[
+a_{s,j}
+ =
+ \begin{cases}
+ \frac34\,4^{-j},&\epsilon_s(j)=1,\\[2mm]
+ \frac32\,4^{-j},&\epsilon_s(j)=2,
+ \end{cases}
+\]
+
+e
+
+\[
+P_{s,j}(r)
+ =
+ \frac{d_{\epsilon_s(j)}A^j(3r+s)-1}{3}.
+\]
+
+A inclinação de \(P_{s,j}\) é \(d_{\epsilon_s(j)}4^j\), portanto uma unidade 3-ádica.
+
+As somas totais dos coeficientes são especialmente simples:
+
+\[
+C_s:=\sum_j a_{s,j},\qquad
+(C_0,C_1,C_2)=\left(\frac27,\frac87,\frac{11}7\right).
+\tag{3}
+\]
+
+Por exemplo,
+
+\[
+C_0
+ =
+ \frac{\frac{3}{16}+\frac{3}{32}}{1-4^{-3}}
+ =\frac27.
+\]
+
+Agora considere um estado afim
+
+\[
+g(x)=\alpha x+\beta,\qquad \alpha\in\mathbb Z_3^\times.
+\]
+
+Em \(x=3r+s\), escreva
+
+\[
+t\equiv \alpha s+\beta\pmod3,\qquad
+\alpha(3r+s)+\beta=3(\alpha r+h_s)+t.
+\]
+
+Escolhendo \(j\) na primeira soma e \(j'\) na segunda, os dois descendentes são
+
+\[
+P_{s,j}(r),\qquad P_{t,j'}(\alpha r+h_s).
+\]
+
+Como a primeira transformação é uma bijeção afim de \(\mathbb Z_3\), existe um novo estado afim \(g_{s;j,j'}\) tal que
+
+\[
+P_{t,j'}(\alpha r+h_s)
+ =
+ g_{s;j,j'}(P_{s,j}(r)).
+\]
+
+Sua inclinação é explicitamente
+
+\[
+\alpha'
+ =
+ \alpha\,
+ \frac{d_{\epsilon_t(j')}4^{j'}}
+      {d_{\epsilon_s(j)}4^j},
+\tag{4}
+\]
+
+e a translação é obtida comparando os termos constantes. Portanto a classe de estados afins fecha exatamente sob a renormalização.
+
+Esse é, a meu ver, o espaço de estados correto.
+
+## 3. Por que a versão linear falha
+
+Normalizando (2) pelos \(C_s\) e usando Jensen,
+
+\[
+V_n(3r+s)^{-\kappa}
+ \le
+ C_s^{-\kappa}
+ \sum_j\frac{a_{s,j}}{C_s}
+ V_{n-1}(P_{s,j}(r))^{-\kappa}.
+\]
+
+Para o produto, isso produz um operador linear de Feynman–Kac
+
+\[
+(\mathcal L_\kappa h)(g)
+ =
+ \frac13\sum_{s=0}^2
+ (C_sC_t)^{-\kappa}
+ \mathbb E_{j,j'}[h(g_{s;j,j'})].
+\tag{5}
+\]
+
+A dificuldade é o ramo
+
+\[
+C_0=\frac27<1.
+\]
+
+Ele recebe, após inversão, o fator \((7/2)^\kappa\). Já aplicando (5) à função constante \(h=1\), no primeiro passo e em \(\kappa=0.6\), obtém-se
+
+\[
+(\mathcal L_{0.6}1)(g_1)=1.4986\ldots,
+\qquad
+(\mathcal L_{0.6}1)(g_2)=1.3619\ldots.
+\]
+
+Uma simulação diagnóstica do processo afim correspondente deu crescimento por nível próximo de \(1.58\) para \(\kappa=0.6\). Isso não é um certificado do raio espectral, mas deixa claro que a função constante e a Jensen linear não estão perto de fechar.
+
+O mecanismo da falha é preciso:
+
+> Jensen substitui a soma positiva por um único descendente aleatório e destrói exatamente o efeito de smoothing responsável pela antiaglomeração.
+
+É a versão, para momentos negativos, da mesma espécie de perda estrutural que Cauchy–Schwarz causava no programa de Weyl.
+
+## 4. O operador não linear que preserva o smoothing
+
+Há uma maneira de evitar essa perda e, ao mesmo tempo, manter apenas estados de pares.
+
+Considere, para um \(s\) fixo, os termos \(a_{s,j}X_j\) da primeira soma e \(a_{t,j'}Y_{j'}\) da segunda. Seja \(\pi=(\pi_{jj'})\) qualquer acoplamento probabilístico entre os índices, com marginais
+
+\[
+p_j=\sum_{j'}\pi_{jj'},\qquad
+q_{j'}=\sum_j\pi_{jj'}.
+\]
+
+Pela desigualdade aritmético–geométrica ponderada,
+
+\[
+V_n(x)V_n(gx)
+\ge
+\prod_{j,j'}
+\left[
+ \frac{a_{s,j}a_{t,j'}}{p_jq_{j'}}
+ X_jY_{j'}
+\right]^{\pi_{jj'}}.
+\]
+
+Invertendo, integrando e aplicando Hölder generalizado,
+
+\[
+H_n(g)
+\le
+\frac13\sum_s
+\inf_\pi
+\prod_{j,j'}
+\left[
+ \left(\frac{p_jq_{j'}}
+ {a_{s,j}a_{t,j'}}\right)^\kappa
+ H_{n-1}(g_{s;j,j'})
+\right]^{\pi_{jj'}}.
+\tag{6}
+\]
+
+Defina o lado direito como \((\mathcal B_\kappa H_{n-1})(g)\). Então
+
+\[
+\boxed{H_n\le\mathcal B_\kappa H_{n-1}.}
+\tag{7}
+\]
+
+As propriedades importantes são:
+
+- \(\mathcal B_\kappa\) é positivo e monótono;
+- é homogêneo de grau \(1\);
+- mantém a soma de descendentes por meio do acoplamento \(\pi\);
+- o espaço de estados continua sendo apenas o grupo afim 3-ádico;
+- a otimização em \(\pi\), após tomar logaritmos, é convexa: aparecem entropias das marginais mais um termo linear em \(\log H(g_{s;j,j'})\).
+
+Isso é um problema de Perron–Frobenius não linear/Collatz–Wielandt, não uma reformulação probabilística vaga. A teoria correspondente fornece justamente certificados do tipo
+
+\[
+\mathcal B_\kappa h\le h
+\tag{8}
+\]
+
+para uma função positiva \(h\). Se (8) valer em um conjunto fechado contendo as órbitas de \(g_1,g_2\), então por indução
+
+\[
+H_n\le M h
+\]
+
+uniformemente, dando (1) e Q2.
+
+A estrutura abstrata de operadores positivos homogêneos e a caracterização de Collatz–Wielandt estão bem estabelecidas; veja, por exemplo, [Gautier–Tudisco–Hein](https://arxiv.org/abs/1801.05034).
+
+## 5. Um programa de certificação concreto
+
+Eu tentaria primeiro \(\kappa=3/5\).
+
+1. Manter inicialmente os dois termos de menor \(j\) em cada classe:
+
+\[
+\begin{array}{c|cc}
+s&a_s&b_s\\ \hline
+0&3/16&3/32\\
+1&3/4&3/8\\
+2&3/2&3/64
+\end{array}
+\]
+
+e depois acrescentar \(j+3,j+6,\ldots\). Como todos os termos omitidos são positivos, descartá-los produz uma cota superior válida, embora mais fraca.
+
+2. Representar \(h(\alpha,\beta)\) por cilindros módulo \(3^K\). Para verificar a desigualdade em todos os estados, é necessário enumerar \((\alpha,\beta)\bmod 3^{K+1}\), porque a divisão por \(3\) em uma transição consome um dígito. Para \(K=4\) são \(2\cdot3^9=39366\) estados; para \(K=5\), \(354294\). Isso é perfeitamente viável.
+
+3. Resolver numericamente a equação própria não linear em variáveis \(\log h\), com a otimização convexa sobre \(\pi\) em cada estado.
+
+4. Verificar depois \(\mathcal B_{3/5}h\le h\) com intervalos dirigidos. Os coeficientes são racionais; apenas as potências de expoente \(3/5\) exigem envelopes intervalares.
+
+5. Se o certificado global falhar, repetir no subconjunto fechado de estados realmente alcançável a partir de \(g_1,g_2\). Não se deve tomar um “pior lift” independente em cada nível: isso recriaria exatamente a inconsistência adversarial já identificada no experimento do operador afim anterior.
+
+Há uma sutileza: como os momentos observados parecem convergir para uma constante positiva, o raio crítico provavelmente é exatamente \(1\), não estritamente menor que \(1\). Portanto pode ser necessário certificar uma função subinvariante com igualdade em alguns estados, ou uma condição de Foster–Lyapunov
+
+\[
+\mathcal B_\kappa h\le \rho h+D,\qquad \rho<1,
+\]
+
+para uma versão truncada do momento. Uma mera estimativa grosseira do raio dificilmente bastará.
+
+## 6. Uma obstrução mais profunda: Q2 exclui singularidade
+
+F4 faz de \(N_\ell\), sob Haar e com a normalização apropriada, um martingale de densidades. Seja \(N_\infty\) seu limite quase certo.
+
+Se a medida limite de Syracuse for singular em relação a Haar, então
+
+\[
+N_\infty=0\qquad\text{Haar-q.c.}
+\]
+
+Para qualquer um dos mapas afins de par, que preserva Haar,
+
+\[
+N_\ell(U)\to0,\qquad N_\ell(TU)\to0
+\]
+
+quase certamente. Consequentemente, para cada \(x>0\) fixo,
+
+\[
+\mathbb P(N_\ell(U)\le x,\;N_\ell(TU)\le x)\longrightarrow1.
+\]
+
+Mas Q2 daria
+
+\[
+1\le Cx^{2\kappa}
+\]
+
+para todo \(x>0\), impossível escolhendo \(x\) suficientemente pequeno.
+
+Portanto:
+
+\[
+\boxed{\text{Q2 implica que o martingale não é puramente singular.}}
+\]
+
+A cota uniforme de momento negativo (1) é ainda mais forte: ela força positividade quase certa do limite e integrabilidade de uma potência negativa.
+
+Isso mostra que Q2 pode ser estritamente mais forte que \(\beta=1\). É perfeitamente possível, em princípio, ter mínimos subexponenciais — portanto \(\beta_{\rm eff}\to1\) — enquanto \(N_\ell(U)\to0\) lentamente para Haar-quase todo \(U\). Nesse cenário Q2 é falsa.
+
+Por isso eu mediria, além dos limiares \(e^{-0.1\ell}\),
+
+\[
+\mathbb E[-\log N_\ell(U)]
+\]
+
+e as probabilidades de pares para \(x\) fixos, por exemplo \(0.1,0.2,0.5\). Nos níveis até \(14\), encontrei
+
+\[
+\mathbb E[-\log N_\ell(U)]
+=0.182,\;0.214,\;0.236,\;0.252
+\quad(\ell=8,10,12,14).
+\]
+
+Ainda é compatível tanto com convergência quanto com crescimento lento. A razão pair/\(d^2\) em limiar exponencial não distingue esses dois regimes.
+
+## 7. Relações com problemas clássicos
+
+- Produtos aleatórios de matrizes \(2\times2\): não fecham exatamente. O vetor \((V(x),V(gx))\) gera muitos novos argumentos afins; não permanece um vetor bidimensional. Só depois da desigualdade AM–GM/Hölder surge um processo controlado sobre estados afins.
+
+- Smoothing transforms/renovação implícita: as teorias clássicas pressupõem descendentes iid ou independentes condicionalmente. Aqui todos os descendentes são bijeções do mesmo \(r\); a entropia disponível continua sendo um dígito ternário por escala, não uma árvore de variáveis independentes. Logo os teoremas de renovação em árvores, como os de [Jelenković–Olvera-Cravioto](https://arxiv.org/abs/1012.2165), não se aplicam diretamente.
+
+- IFS conformes com spectral gap: os mapas \(P_{s,j}\) têm inclinação 3-ádica de módulo \(1\), portanto são isometrias, não contrações. A expansão está no descarte do dígito \(s\), enquanto os carries ficam no estado afim. Isso impede aplicar diretamente o formalismo padrão de IFS contrativa com overlaps.
+
+- Operadores de Ruelle/countable Markov shifts: esta é a analogia mais próxima. O índice \(j\) dá um alfabeto enumerável com cauda \(4^{-j}\), e o estado afim registra os carries. A teoria de Sarig fornece o vocabulário de pressão, recorrência positiva e spectral gap para shifts enumeráveis, mas verificar essas hipóteses aqui é parte do problema, não uma consequência automática; veja o [panorama de Sarig](https://www.weizmann.ac.il/math/sarigo/sites/math.sarigo/files/uploads/tdf-survey.pdf).
+
+- Aproximação espectral certificada: se for obtida uma desigualdade de Lasota–Yorke/summable variation para o operador afim, a estabilidade de Keller–Liverani permitiria passar de matrizes finitas para o operador verdadeiro. Mas essa desigualdade ainda precisa ser provada; não se pode apenas invocar Ulam. A referência primária é [Keller–Liverani](https://www.numdam.org/item/ASNSP_1999_4_28_1_141_0/).
+
+## Veredito
+
+Eu não afirmaria hoje que Q2 está ao alcance de uma aplicação pronta de renovação ou produtos de matrizes. As hipóteses clássicas falham por uma razão estrutural: descendentes completamente dependentes e mapas 3-ádicos isométricos.
+
+Mas há um próximo ataque bem definido:
+
+\[
+\boxed{\text{construir e certificar }\mathcal B_{3/5}h\le h
+\text{ no semigrupo afim alcançável}.}
+\]
+
+Se esse certificado existir, ele prova Q2 com \(\kappa=0.6\) e melhora a cota atual. Se as aproximações refinadas do número de Collatz–Wielandt permanecerem uniformemente acima de \(1\), isso excluirá toda a família de argumentos por momentos negativos/AM–GM–Hölder com a mesma precisão estrutural que a unitariedade excluiu o programa de Weyl.
+
+Antes de investir muito nisso, eu faria em paralelo o teste de singularidade em limiares fixos. Se \(N_\ell(U)\) estiver caminhando para zero tipicamente, Q2 não é apenas difícil: é falsa, embora \(\beta=1\) ainda possa ser verdadeira.
+tokens used
+124.319
+Minha conclusão é dupla:
+
+1. Há uma rota matemática real, diferente do programa de Weyl: momentos negativos conjuntos e um operador de transferência positivo sobre estados afins 3-ádicos. Ela reduz Q2 a um certificado espectral preciso, potencialmente verificável por aritmética intervalar.
+
+2. Não vejo ainda uma prova fechada. A versão linear mais natural desse operador falha quantitativamente, por um mecanismo identificável. Para preservar a antiaglomeração é necessário um operador não linear do tipo Perron–Frobenius/Bellman. E há uma advertência importante: Q2 implica que o martingale de densidades não pode ser singular. Portanto Q2 pode ser substancialmente mais forte que \(\beta=1\).
+
+## 1. A redução correta: momentos negativos conjuntos
+
+Se \(T_\ell\) denota o sucessor na sequência contraída de unidades, defina
+
+\[
+J_\ell(\kappa)
+ =\mathbb E\!\left[
+    \bigl(N_\ell(U)N_\ell(T_\ell U)\bigr)^{-\kappa}
+  \right],
+\]
+
+com \(U\) uniforme entre as unidades. Então
+
+\[
+\{N_\ell(U)\le x,\;N_\ell(T_\ell U)\le x\}
+ \subseteq
+ \{(N_\ell(U)N_\ell(T_\ell U))^{-\kappa}\ge x^{-2\kappa}\}.
+\]
+
+Logo
+
+\[
+\mathbb P(N_\ell(U)\le x,\;N_\ell(T_\ell U)\le x)
+ \le x^{2\kappa}J_\ell(\kappa).
+\]
+
+Portanto basta provar
+
+\[
+\boxed{\sup_\ell J_\ell(\kappa)<\infty}
+\tag{1}
+\]
+
+para algum \(\kappa>0.567\). Isso seria mais forte que Q2, pois valeria para todo \(x>0\), sem a restrição \(x\ge e^{-c_0\ell}\).
+
+Por F1, em ambos os tipos de par o produto dos dois fatores externos é
+
+\[
+\frac34\cdot\frac32=\frac98.
+\]
+
+Se \(V_n\) denota o \(W\) no nível cujo domínio é \(\mathbb Z/3^n\mathbb Z\), obtemos
+
+\[
+J_\ell(\kappa)
+=
+\left(\frac89\right)^\kappa
+\frac{H_{\ell-1}^{(\sigma_1)}(\kappa)+H_{\ell-1}^{(\sigma_2)}(\kappa)}2,
+\]
+
+onde
+
+\[
+H_n^{(g)}(\kappa)
+ :=
+ \int_{\mathbb Z_3}
+ [V_n(x)V_n(gx)]^{-\kappa}\,dx
+\]
+
+e os estados iniciais são
+
+\[
+g_1(x)=2x+1,\qquad g_2(x)=32x+17
+\]
+
+nas coordenadas \(k\). Assim, Q2 é reduzida a uma cota uniforme para dois momentos negativos afins.
+
+Como teste independente, reconstruí os níveis a partir do código local. Para \(\kappa=0.6\), encontrei
+
+\[
+\begin{array}{c|cccc}
+\ell&8&10&12&14\\ \hline
+J_\ell(0.6)&1.565&1.644&1.701&1.742
+\end{array}
+\]
+
+e, para comparação,
+
+\[
+\mathbb E[N_\ell(U)^{-1.2}]
+=2.564,\;2.714,\;2.821,\;2.898.
+\]
+
+Isso é compatível com convergência, mas também com divergência muito lenta. Não é evidência suficiente para afirmar (1).
+
+## 2. A renormalização exata sobre estados afins
+
+Escreva \(x=3r+s\), \(s\in\{0,1,2\}\). Para
+
+\[
+A^j(x)=4^jx+\frac{4^j-1}{3},
+\]
+
+ponha
+
+\[
+\epsilon_s(j)\equiv s+j\pmod3,\qquad
+d_1=4,\quad d_2=2.
+\]
+
+Os índices admissíveis são aqueles com \(\epsilon_s(j)\in\{1,2\}\). F1 dá a decomposição positiva
+
+\[
+V_n(3r+s)
+ =
+ \sum_{j:\epsilon_s(j)\ne0}
+ a_{s,j}\,
+ V_{n-1}(P_{s,j}(r)),
+\tag{2}
+\]
+
+com
+
+\[
+a_{s,j}
+ =
+ \begin{cases}
+ \frac34\,4^{-j},&\epsilon_s(j)=1,\\[2mm]
+ \frac32\,4^{-j},&\epsilon_s(j)=2,
+ \end{cases}
+\]
+
+e
+
+\[
+P_{s,j}(r)
+ =
+ \frac{d_{\epsilon_s(j)}A^j(3r+s)-1}{3}.
+\]
+
+A inclinação de \(P_{s,j}\) é \(d_{\epsilon_s(j)}4^j\), portanto uma unidade 3-ádica.
+
+As somas totais dos coeficientes são especialmente simples:
+
+\[
+C_s:=\sum_j a_{s,j},\qquad
+(C_0,C_1,C_2)=\left(\frac27,\frac87,\frac{11}7\right).
+\tag{3}
+\]
+
+Por exemplo,
+
+\[
+C_0
+ =
+ \frac{\frac{3}{16}+\frac{3}{32}}{1-4^{-3}}
+ =\frac27.
+\]
+
+Agora considere um estado afim
+
+\[
+g(x)=\alpha x+\beta,\qquad \alpha\in\mathbb Z_3^\times.
+\]
+
+Em \(x=3r+s\), escreva
+
+\[
+t\equiv \alpha s+\beta\pmod3,\qquad
+\alpha(3r+s)+\beta=3(\alpha r+h_s)+t.
+\]
+
+Escolhendo \(j\) na primeira soma e \(j'\) na segunda, os dois descendentes são
+
+\[
+P_{s,j}(r),\qquad P_{t,j'}(\alpha r+h_s).
+\]
+
+Como a primeira transformação é uma bijeção afim de \(\mathbb Z_3\), existe um novo estado afim \(g_{s;j,j'}\) tal que
+
+\[
+P_{t,j'}(\alpha r+h_s)
+ =
+ g_{s;j,j'}(P_{s,j}(r)).
+\]
+
+Sua inclinação é explicitamente
+
+\[
+\alpha'
+ =
+ \alpha\,
+ \frac{d_{\epsilon_t(j')}4^{j'}}
+      {d_{\epsilon_s(j)}4^j},
+\tag{4}
+\]
+
+e a translação é obtida comparando os termos constantes. Portanto a classe de estados afins fecha exatamente sob a renormalização.
+
+Esse é, a meu ver, o espaço de estados correto.
+
+## 3. Por que a versão linear falha
+
+Normalizando (2) pelos \(C_s\) e usando Jensen,
+
+\[
+V_n(3r+s)^{-\kappa}
+ \le
+ C_s^{-\kappa}
+ \sum_j\frac{a_{s,j}}{C_s}
+ V_{n-1}(P_{s,j}(r))^{-\kappa}.
+\]
+
+Para o produto, isso produz um operador linear de Feynman–Kac
+
+\[
+(\mathcal L_\kappa h)(g)
+ =
+ \frac13\sum_{s=0}^2
+ (C_sC_t)^{-\kappa}
+ \mathbb E_{j,j'}[h(g_{s;j,j'})].
+\tag{5}
+\]
+
+A dificuldade é o ramo
+
+\[
+C_0=\frac27<1.
+\]
+
+Ele recebe, após inversão, o fator \((7/2)^\kappa\). Já aplicando (5) à função constante \(h=1\), no primeiro passo e em \(\kappa=0.6\), obtém-se
+
+\[
+(\mathcal L_{0.6}1)(g_1)=1.4986\ldots,
+\qquad
+(\mathcal L_{0.6}1)(g_2)=1.3619\ldots.
+\]
+
+Uma simulação diagnóstica do processo afim correspondente deu crescimento por nível próximo de \(1.58\) para \(\kappa=0.6\). Isso não é um certificado do raio espectral, mas deixa claro que a função constante e a Jensen linear não estão perto de fechar.
+
+O mecanismo da falha é preciso:
+
+> Jensen substitui a soma positiva por um único descendente aleatório e destrói exatamente o efeito de smoothing responsável pela antiaglomeração.
+
+É a versão, para momentos negativos, da mesma espécie de perda estrutural que Cauchy–Schwarz causava no programa de Weyl.
+
+## 4. O operador não linear que preserva o smoothing
+
+Há uma maneira de evitar essa perda e, ao mesmo tempo, manter apenas estados de pares.
+
+Considere, para um \(s\) fixo, os termos \(a_{s,j}X_j\) da primeira soma e \(a_{t,j'}Y_{j'}\) da segunda. Seja \(\pi=(\pi_{jj'})\) qualquer acoplamento probabilístico entre os índices, com marginais
+
+\[
+p_j=\sum_{j'}\pi_{jj'},\qquad
+q_{j'}=\sum_j\pi_{jj'}.
+\]
+
+Pela desigualdade aritmético–geométrica ponderada,
+
+\[
+V_n(x)V_n(gx)
+\ge
+\prod_{j,j'}
+\left[
+ \frac{a_{s,j}a_{t,j'}}{p_jq_{j'}}
+ X_jY_{j'}
+\right]^{\pi_{jj'}}.
+\]
+
+Invertendo, integrando e aplicando Hölder generalizado,
+
+\[
+H_n(g)
+\le
+\frac13\sum_s
+\inf_\pi
+\prod_{j,j'}
+\left[
+ \left(\frac{p_jq_{j'}}
+ {a_{s,j}a_{t,j'}}\right)^\kappa
+ H_{n-1}(g_{s;j,j'})
+\right]^{\pi_{jj'}}.
+\tag{6}
+\]
+
+Defina o lado direito como \((\mathcal B_\kappa H_{n-1})(g)\). Então
+
+\[
+\boxed{H_n\le\mathcal B_\kappa H_{n-1}.}
+\tag{7}
+\]
+
+As propriedades importantes são:
+
+- \(\mathcal B_\kappa\) é positivo e monótono;
+- é homogêneo de grau \(1\);
+- mantém a soma de descendentes por meio do acoplamento \(\pi\);
+- o espaço de estados continua sendo apenas o grupo afim 3-ádico;
+- a otimização em \(\pi\), após tomar logaritmos, é convexa: aparecem entropias das marginais mais um termo linear em \(\log H(g_{s;j,j'})\).
+
+Isso é um problema de Perron–Frobenius não linear/Collatz–Wielandt, não uma reformulação probabilística vaga. A teoria correspondente fornece justamente certificados do tipo
+
+\[
+\mathcal B_\kappa h\le h
+\tag{8}
+\]
+
+para uma função positiva \(h\). Se (8) valer em um conjunto fechado contendo as órbitas de \(g_1,g_2\), então por indução
+
+\[
+H_n\le M h
+\]
+
+uniformemente, dando (1) e Q2.
+
+A estrutura abstrata de operadores positivos homogêneos e a caracterização de Collatz–Wielandt estão bem estabelecidas; veja, por exemplo, [Gautier–Tudisco–Hein](https://arxiv.org/abs/1801.05034).
+
+## 5. Um programa de certificação concreto
+
+Eu tentaria primeiro \(\kappa=3/5\).
+
+1. Manter inicialmente os dois termos de menor \(j\) em cada classe:
+
+\[
+\begin{array}{c|cc}
+s&a_s&b_s\\ \hline
+0&3/16&3/32\\
+1&3/4&3/8\\
+2&3/2&3/64
+\end{array}
+\]
+
+e depois acrescentar \(j+3,j+6,\ldots\). Como todos os termos omitidos são positivos, descartá-los produz uma cota superior válida, embora mais fraca.
+
+2. Representar \(h(\alpha,\beta)\) por cilindros módulo \(3^K\). Para verificar a desigualdade em todos os estados, é necessário enumerar \((\alpha,\beta)\bmod 3^{K+1}\), porque a divisão por \(3\) em uma transição consome um dígito. Para \(K=4\) são \(2\cdot3^9=39366\) estados; para \(K=5\), \(354294\). Isso é perfeitamente viável.
+
+3. Resolver numericamente a equação própria não linear em variáveis \(\log h\), com a otimização convexa sobre \(\pi\) em cada estado.
+
+4. Verificar depois \(\mathcal B_{3/5}h\le h\) com intervalos dirigidos. Os coeficientes são racionais; apenas as potências de expoente \(3/5\) exigem envelopes intervalares.
+
+5. Se o certificado global falhar, repetir no subconjunto fechado de estados realmente alcançável a partir de \(g_1,g_2\). Não se deve tomar um “pior lift” independente em cada nível: isso recriaria exatamente a inconsistência adversarial já identificada no experimento do operador afim anterior.
+
+Há uma sutileza: como os momentos observados parecem convergir para uma constante positiva, o raio crítico provavelmente é exatamente \(1\), não estritamente menor que \(1\). Portanto pode ser necessário certificar uma função subinvariante com igualdade em alguns estados, ou uma condição de Foster–Lyapunov
+
+\[
+\mathcal B_\kappa h\le \rho h+D,\qquad \rho<1,
+\]
+
+para uma versão truncada do momento. Uma mera estimativa grosseira do raio dificilmente bastará.
+
+## 6. Uma obstrução mais profunda: Q2 exclui singularidade
+
+F4 faz de \(N_\ell\), sob Haar e com a normalização apropriada, um martingale de densidades. Seja \(N_\infty\) seu limite quase certo.
+
+Se a medida limite de Syracuse for singular em relação a Haar, então
+
+\[
+N_\infty=0\qquad\text{Haar-q.c.}
+\]
+
+Para qualquer um dos mapas afins de par, que preserva Haar,
+
+\[
+N_\ell(U)\to0,\qquad N_\ell(TU)\to0
+\]
+
+quase certamente. Consequentemente, para cada \(x>0\) fixo,
+
+\[
+\mathbb P(N_\ell(U)\le x,\;N_\ell(TU)\le x)\longrightarrow1.
+\]
+
+Mas Q2 daria
+
+\[
+1\le Cx^{2\kappa}
+\]
+
+para todo \(x>0\), impossível escolhendo \(x\) suficientemente pequeno.
+
+Portanto:
+
+\[
+\boxed{\text{Q2 implica que o martingale não é puramente singular.}}
+\]
+
+A cota uniforme de momento negativo (1) é ainda mais forte: ela força positividade quase certa do limite e integrabilidade de uma potência negativa.
+
+Isso mostra que Q2 pode ser estritamente mais forte que \(\beta=1\). É perfeitamente possível, em princípio, ter mínimos subexponenciais — portanto \(\beta_{\rm eff}\to1\) — enquanto \(N_\ell(U)\to0\) lentamente para Haar-quase todo \(U\). Nesse cenário Q2 é falsa.
+
+Por isso eu mediria, além dos limiares \(e^{-0.1\ell}\),
+
+\[
+\mathbb E[-\log N_\ell(U)]
+\]
+
+e as probabilidades de pares para \(x\) fixos, por exemplo \(0.1,0.2,0.5\). Nos níveis até \(14\), encontrei
+
+\[
+\mathbb E[-\log N_\ell(U)]
+=0.182,\;0.214,\;0.236,\;0.252
+\quad(\ell=8,10,12,14).
+\]
+
+Ainda é compatível tanto com convergência quanto com crescimento lento. A razão pair/\(d^2\) em limiar exponencial não distingue esses dois regimes.
+
+## 7. Relações com problemas clássicos
+
+- Produtos aleatórios de matrizes \(2\times2\): não fecham exatamente. O vetor \((V(x),V(gx))\) gera muitos novos argumentos afins; não permanece um vetor bidimensional. Só depois da desigualdade AM–GM/Hölder surge um processo controlado sobre estados afins.
+
+- Smoothing transforms/renovação implícita: as teorias clássicas pressupõem descendentes iid ou independentes condicionalmente. Aqui todos os descendentes são bijeções do mesmo \(r\); a entropia disponível continua sendo um dígito ternário por escala, não uma árvore de variáveis independentes. Logo os teoremas de renovação em árvores, como os de [Jelenković–Olvera-Cravioto](https://arxiv.org/abs/1012.2165), não se aplicam diretamente.
+
+- IFS conformes com spectral gap: os mapas \(P_{s,j}\) têm inclinação 3-ádica de módulo \(1\), portanto são isometrias, não contrações. A expansão está no descarte do dígito \(s\), enquanto os carries ficam no estado afim. Isso impede aplicar diretamente o formalismo padrão de IFS contrativa com overlaps.
+
+- Operadores de Ruelle/countable Markov shifts: esta é a analogia mais próxima. O índice \(j\) dá um alfabeto enumerável com cauda \(4^{-j}\), e o estado afim registra os carries. A teoria de Sarig fornece o vocabulário de pressão, recorrência positiva e spectral gap para shifts enumeráveis, mas verificar essas hipóteses aqui é parte do problema, não uma consequência automática; veja o [panorama de Sarig](https://www.weizmann.ac.il/math/sarigo/sites/math.sarigo/files/uploads/tdf-survey.pdf).
+
+- Aproximação espectral certificada: se for obtida uma desigualdade de Lasota–Yorke/summable variation para o operador afim, a estabilidade de Keller–Liverani permitiria passar de matrizes finitas para o operador verdadeiro. Mas essa desigualdade ainda precisa ser provada; não se pode apenas invocar Ulam. A referência primária é [Keller–Liverani](https://www.numdam.org/item/ASNSP_1999_4_28_1_141_0/).
+
+## Veredito
+
+Eu não afirmaria hoje que Q2 está ao alcance de uma aplicação pronta de renovação ou produtos de matrizes. As hipóteses clássicas falham por uma razão estrutural: descendentes completamente dependentes e mapas 3-ádicos isométricos.
+
+Mas há um próximo ataque bem definido:
+
+\[
+\boxed{\text{construir e certificar }\mathcal B_{3/5}h\le h
+\text{ no semigrupo afim alcançável}.}
+\]
+
+Se esse certificado existir, ele prova Q2 com \(\kappa=0.6\) e melhora a cota atual. Se as aproximações refinadas do número de Collatz–Wielandt permanecerem uniformemente acima de \(1\), isso excluirá toda a família de argumentos por momentos negativos/AM–GM–Hölder com a mesma precisão estrutural que a unitariedade excluiu o programa de Weyl.
+
+Antes de investir muito nisso, eu faria em paralelo o teste de singularidade em limiares fixos. Se \(N_\ell(U)\) estiver caminhando para zero tipicamente, Q2 não é apenas difícil: é falsa, embora \(\beta=1\) ainda possa ser verdadeira.

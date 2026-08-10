@@ -1,6 +1,8 @@
 # H-161: reformulação exata de beta=1 como ausência de arco deficiente longo
 
-Status: in-progress
+Status: fechada-inconclusiva (2026-08-10). Ver "Fechamento" no fim do
+arquivo para o histórico completo de escalonamento (Regra 11b) e o
+veredito.
 
 Criada: 2026-08-08
 
@@ -619,3 +621,117 @@ fora do escopo desta tarefa).
    uma operação descorrelacionante**, o que pode ser a razão estrutural
    por trás da descorrelação medida em E-132. Só uma observação, não
    desenvolvida.
+
+## Fechamento (2026-08-10)
+
+Registro das duas pistas acima como hipóteses próprias (Regra 8e):
+H-175 (coeficientes de Mellin de `V`, backlog: uma primeira tentativa
+de reciclar dados de E-137 foi encontrada errada por um crítico
+independente, transformada aditiva e transformada de Mellin/tempo-de-
+órbita são objetos diferentes, não uma reescala uma da outra,
+verificado por Plancherel; refeita corretamente, ainda não decide a
+questão, precisa de medição própria) e H-176 (`R` como média
+descorrelacionante, fechada-refutada: `R_ell(k)` e `R_ell(A(k))` são
+POSITIVAMENTE correlacionados, `0,40` a `0,55`, o oposto do que a
+pista precisava).
+
+### Escalonamento em Q2 (Regra 11b): rodada com Codex, verificada de forma independente
+
+A questão central que ficava aberta era a desigualdade de
+anti-concentração de pares (Q2): existe `kappa>0,567` tal que
+`P(par consecutivo, ambos N<=x) <= C x^{2 kappa}`? O programa de Weyl
+já tinha excluído uma rota inteira ("Terceira rodada" acima). Consultei
+o Codex (`codex exec -s read-only`, gpt-5.6-sol, transcrição completa
+em `experiments/E-142-singularity-diagnostic/codex_consultation_transcript.txt`,
+2255 linhas) com o dossiê completo (F1-F4, a exclusão de unitariedade
+do programa de Weyl, a monotonicidade de `min R` de H-166, o alvo
+recalibrado `kappa>0,567`, a evidência empírica de E-132).
+
+**Achado 1, verificado por mim de forma independente antes de aceitar
+(Regra 8c)**: Codex identificou que Q2, como enunciada (a cota vale
+para `x>=exp(-c0*ell)`, faixa que eventualmente contém qualquer `x`
+fixo conforme `ell` cresce), IMPLICA que o limite da medida de Syracuse
+não é Haar-singular. Prova elementar (rederivada por mim, não só
+copiada): se `N_ell(U) -> 0` quase certamente sob Haar, então para todo
+`x` fixo `P(N_ell(U)<=x) -> 1`, e como o mapa de par preserva Haar,
+`P(par ambos<=x) -> 1` também (cota de união no complementar),
+contradizendo Q2 para `x` pequeno o bastante. Ou seja: **se o limite
+for singular, Q2 é falsa mesmo que `beta_eff->1` (WCC, o alvo real de
+O2) continue verdadeira**. Q2 pode ser estritamente mais forte do que
+o necessário. Passo que o argumento em duas frases pula, sinalizado
+mas não escrito por extenso (Regra 8c, apontado em segunda rodada de
+crítica): a contabilidade de densidade entre a indexação por `k`-órbita
+e a medida de Haar sobre unidades. Ela se sustenta (um subconjunto de
+densidade positiva herda convergência em probabilidade da convergência
+quase certa do todo), mas fica registrado aqui como passo não escrito
+por extenso, não como lacuna.
+
+**Achado 2, verificado por mim de forma independente com dados
+estendidos (não só lendo o número do Codex)**: medi `E[-log N_ell(U)]`
+e `P(N_ell(U)<=x)` para `x` fixo em `{0,1; 0,2; 0,5}`, `ell=4` a `16`
+(Codex tinha ido só até `ell=14`), reproduzindo exatamente os números
+do Codex nos níveis em comum (`0,182`/`0,214`/`0,236`/`0,252` em
+`ell=8,10,12,14`) e estendendo. Ajuste de lei de potência dos
+incrementos, agora parte do script persistido (não um cálculo avulso):
+expoente `-1,69` (faixa toda) a `-2,05` (últimos 6 pontos), do lado
+somável (`<=-1`) do limiar, consistente com `E[-log N]` convergindo a
+um limite FINITO, i.e. consistente com NÃO-singularidade. `P(N<=0,1)`
+cresce de `0` a `0,024` com incrementos visivelmente desacelerando, não
+acelerando rumo a `1`. **Ressalva adicionada na segunda rodada de
+crítica**: 12-13 incrementos não separam de forma confiável uma lei de
+potência somável (`-1,7`) de uma marginalmente divergente (`-1,0` a
+`-1,2`, que também pareceria desacelerar nesse intervalo curto); "bem
+abaixo do limiar" superestimava o poder discriminante do ajuste. É
+evidência (Regra 11: medição em 13 níveis, não prova; H-140 continua
+valendo, nenhuma faixa finita decide uma questão assintótica) contra o
+cenário singular, não uma medição decisiva, o que mantém o programa de
+certificação de operador do Codex (abaixo) como opção viva em vez de
+moot, sem promovê-lo a "quase certo".
+
+**Achado 3, programa concreto proposto pelo Codex, NÃO rederivado
+linha a linha por nós (Regra 11: rotulado honestamente como tal)**:
+um operador positivo homogêneo `B_kappa` (Perron-Frobenius/
+Collatz-Wielandt não-linear) sobre o semigrupo afim 3-ádico alcançável
+a partir de `g_1, g_2`, tal que um certificado `B_kappa h <= h` (função
+positiva `h`, verificável por truncamento em cilindros mod `3^K`,
+`K=4` ou `5`, com aritmética de intervalo nas potências de expoente
+`kappa`) provaria Q2 para `kappa=3/5` se existisse. Nota de
+corroboração parcial (não verificação): os três fatores escalares de
+um passo que o Codex reporta, `C=(2/7, 8/7, 11/7)`, têm mínimo
+EXATAMENTE igual a `min R_2=2/7`, já certificado em H-166, e média
+exatamente 1, batendo com a propriedade de martingale de F4, sinal de
+que a construção está ancorada corretamente nos objetos certos deste
+projeto, não confirmação da derivação completa (o passo AM-GM/Hölder e
+o acoplamento não foram conferidos por nós).
+
+**Decisão sobre investir no programa `B_kappa`, consultado com o
+advisor**: não tentar nesta sessão. Os próprios números intermediários
+do Codex (fatores `z` entre `1,27` e `1,98` para o certificado ingênuo
+de um passo em `kappa=0,4`-`0,6`, e a própria suspeita do Codex de que
+o raio crítico seja exatamente 1, exigindo uma construção tipo
+Foster-Lyapunov, não um certificado de um passo) mostram que isto é
+engenharia-mais-teoria substancial, não um teste limitado. Um
+certificado ingênuo que falhasse não decidiria nada (não refutaria nem
+provaria Q2); o payoff é assimétrico o bastante para não valer o
+investimento dentro do mandato desta sessão (fechar o backlog do
+paper 01, não abrir um novo programa de pesquisa). Registrado como
+H-177 para quem quiser continuar.
+
+### Veredito final
+
+`fechada-inconclusiva`. Três rodadas de escalonamento real ao longo da
+vida desta hipótese (Fable, três vezes, ver seções datadas acima) mais
+uma rodada de Codex mais uma verificação independente minha, nenhuma
+fechou Q2. O que sobrevive, sólido: a monotonicidade de `min R`
+(H-166, `beta_eff<=1,882712` incondicional, o melhor resultado
+concreto desta linha inteira), a exclusão estrutural do programa de
+Weyl (unitariedade), o diagnóstico de que Q2 pode ser mais forte que
+`beta=1` (achado novo do Codex, verificado), e a evidência (não prova)
+contra singularidade. O que fica genuinamente aberto: a desigualdade de
+par em si, com um programa concreto mas não executado (H-177) e um
+diagnóstico de singularidade que aponta na direção favorável mas não
+decide (H-177 também herda esse gate).
+
+Ver `experiments/E-142-singularity-diagnostic/` (script, README,
+transcrição completa da consulta ao Codex) e H-166, H-175, H-176,
+H-177.
