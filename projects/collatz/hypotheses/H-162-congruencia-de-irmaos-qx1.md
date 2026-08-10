@@ -77,25 +77,25 @@ convergiria mais rápido do que o modelo no mesmo estimador.
 Medido em E-133, `q=5`, mesmas 300 raízes, mesma janela `1e5..1e8`,
 mesmos buffers, estimador de H-113 idêntico nos três casos:
 
-| modo | descrição | estimador | sd de log10 N(1e8) |
-|------|-----------|-----------|--------------------|
-| iid | classe de ramo sorteada em cada nó | 0.6119 | 0.8014 |
-| cyc | primeira classe sorteada, irmãos avançam `+c` | 0.6283 | 0.6657 |
-| arith | árvore aritmética verdadeira | 0.6364 | 0.5942 |
+| modo | descrição | estimador (Aitken) | sd de log10 N(1e8), buffer 1e13 |
+|------|-----------|--------------------|----------------------------------|
+| iid | classe de ramo sorteada em cada nó | 0.6131 | 0.8014 |
+| cyc | primeira classe sorteada, irmãos avançam `+c` | 0.6294 | 0.6657 |
+| arith | árvore aritmética verdadeira | 0.6382 | 0.5942 |
 
 (valor anelado exato do modelo: `alpha_-(5) = 0.650919`.)
 
 Esta tabela é sobre variância, não sobre o veredito KL versus Volkov. O
 veredito depende de um quarto controle, `cycq`, de expoente ajustável,
-que veio depois; ver H-113 e o README de E-133. A leitura de `cyc`
-(0.6283) e a de `arith` (0.6364) não devem ser comparadas diretamente
-como se `cyc` fosse a referência: `cyc` e `cycq(5.0)` são o mesmo
-processo e leem 0.6283 e 0.6379 em realizações independentes, o que dá
-a escala do ruído desta coluna.
+que veio depois; ver H-113 e o README de E-133.
 
-A congruência de irmãos cobre cerca de metade do caminho de `iid` até
-`arith` no estimador. Na dispersão ela cobre tudo, ver a seção
-seguinte, que corrige a leitura ingênua desta coluna.
+Não leia a coluna do estimador como se `cyc` fosse a referência exata
+de `arith`. `cyc` e `cycq(5.0)` são o mesmo processo por construção e,
+em seis sementes, diferem de 0.0035 (1.5 erro-padrão), o que dá a escala
+do ruído aqui. Dentro dessa escala, a congruência de irmãos cobre
+grosso modo metade do caminho de `iid` até `arith` no estimador. Na
+dispersão ela cobre tudo, ver a seção seguinte, que corrige a leitura
+ingênua desta coluna.
 
 Antes desta tabela eu produzi uma versão errada dela, com o iid em
 0.484, por um artefato de amostragem: as raízes aritméticas são
