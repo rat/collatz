@@ -2,6 +2,109 @@
 
 Última atualização: 2026-08-10
 
+## Verificação independente e adversarial pós-varredura dos 4 papers (crítico, worktree isolado)
+
+Pedido do diretor científico: uma checagem adversarial de tudo o que as
+quatro varreduras paralelas (01/04/05/06) abaixo reportaram, antes de
+decidir avançar para redação final. Papel de crítico (Regra 8/15), não
+produtor: procurar ativamente o que ficou para trás, não confirmar
+passivamente.
+
+**Estado do git**: dois branches locais órfãos de worktrees já
+encerrados (`worktree-agent-a91808d521dba9179`, totalmente ancestral de
+`main`; `worktree-agent-a2263ebe96048af51`, um commit não mesclado mas
+com texto adicionado a `STATE.md` idêntico, byte a byte, ao já mesclado
+via `102c8a5` — mesma correção, produzida em paralelo por dois
+worktrees, sem perda de trabalho) apagados (`git branch -d`/`-D`). Um
+arquivo de saída (`lp_collision_spectrum.csv`) gerado mas não commitado
+em `collatz-qx1-pressure/sec3-pressure-and-transition/`; commitado
+(`ec5d958`), valores conferidos exatamente contra o Empirical Result
+`thm:lp-spectrum` do paper 01. Os outros três repositórios companheiros
+e a própria `ResearchOS` estavam limpos.
+
+**Backlog de hipóteses**: 175 arquivos, só 3 genuinamente abertos
+(H-129 `aberta`, H-175/H-177 `backlog`), nenhum deles um esquecimento —
+H-129 é tratada honestamente como conjectura (não teorema) em ambos os
+papers 01 e 06, com a única pendência real sendo de atribuição
+("a quem pertence"), já sinalizada para o diretor científico decidir;
+H-175/H-177 têm decisão explícita e fundamentada de não prosseguir
+agora, com passo barato já executado em H-175 (E-144).
+
+**`CRITIQUE.md` dos 4 papers**: paper 05 tinha C-027 marcado `open`
+quando a prosa da própria seção já registrava uma decisão de
+`rejected` (mesma tensão de política de PT-BR já tratada como
+`rejected` nos papers 04/06); corrigido só o rótulo da tabela
+(commit `b3f5b87`). Os outros três já estavam sem itens `open`.
+
+**Achado real, verificado e corrigido**: `thm:kl-calibrated` no
+`main.tex` do paper 01 (linhas 726, 2367) ainda dizia "ten
+interval-widths"; o número certificado (companion paper 04, banda
+medida por três construções independentes) é "seven band-widths"
+(0,0282/0,0037≈7,6). A correção "dez→sete" já tinha acontecido nesta
+sessão (commit `90c3e2f`) mas nunca tocou a restatement condensada de
+01. Uma rodada de crítica anterior (C-002) tinha corrigido uma
+contradição abstract/corpo sobre este mesmo resultado sem cruzar o
+número contra o paper 04, deixando o valor errado consistente por
+dentro do documento — um modo de falha que a Regra 8b não cobre por
+não ser abstract-vs-corpo dentro do mesmo texto, e sim corpo-vs-companion
+entre dois. Corrigido (commit `3c144dc`, registrado como C-024 no
+`CRITIQUE.md` de 01); confirmado que "ten"/"dez" não aparece mais em
+lugar nenhum do arquivo, inclusive o abstract, e reproduzido de novo
+rodando `summary.py b15 10` sobre os dados já commitados em
+`collatz-kl-volkov/sec6-calibrated-comparison/data/` (as cinco leituras
+batem exatamente com o paper 04).
+
+**Achado pequeno, verificado e corrigido**: README de E-144 e H-175
+diziam "under 3% spread"/"variação menor que 3%" para a energia por
+classe de condutor em `ell=12`; recalculado a partir do próprio
+`run_output.txt`, o valor real é 3,17% (3,07% se normalizado pelo
+máximo) — levemente ACIMA de 3%, não abaixo. Não afeta a conclusão
+qualitativa (energia quase constante por classe); não aparece em
+nenhum `main.tex`. Corrigido (commit `1aa0e77`).
+
+**Reprodutibilidade (Regra 12)**: rodado ao vivo, em cada um dos 4
+repositórios companheiros, pelo menos um script ligado a um resultado
+citado no paper correspondente, com números conferidos contra o texto:
+`lp_collision_spectrum.py` (qx1-pressure, paper 06/01), `summary.py`
+(kl-volkov, paper 04/01), `check_generating_identity.py`
+(wirsching-2003, paper 05), `cascade_factor_bound.py` (endogeny, paper
+01, reproduz β_eff≤1,882712 exatamente). Todos batem.
+
+**Compilação**: os 4 `main.tex` recompilados do zero (3 passadas
+`pdflatex`, sem `bibtex`, bibliografia é `thebibliography` inline) —
+limpos, sem `undefined reference`/`citation`, sem erro. Bibliografias
+conferidas com um script que trata `\cite[...]{...}` e `\cite{...}`
+multilinha (a checagem ingênua por `grep` linha a linha dá falsos
+positivos nessas duas formas): as 4 batem exatamente, `\cite`↔`\bibitem`
+sem órfãos em nenhuma direção.
+
+**`STATE.md` (leitura integral, delegada a um sub-agente com
+verificação cruzada)**: nenhuma pendência de prosa sem rastreamento em
+`hypotheses/` além do já listado acima. A seção "Pendências reais, não
+silenciadas" perto do topo (tabela O1-O8, espelho de H-166,
+`CRITIQUE.md` ausente) já estava de fato resolvida na prática, só nunca
+marcada como tal na narrativa — foi checando essa nota que o achado do
+"dez/sete" apareceu. A seção "Hipóteses abertas" perto do fim cita
+H-127/H-130 com status desatualizado (ambos fechados nos respectivos
+arquivos `hypotheses/H-NNN...md`, que são a fonte de verdade); resíduo
+inerente ao log reverso-cronológico, sem risco real dado o protocolo de
+sessão do `CLAUDE.md`.
+
+**Não verificado por limitação de sandbox**: este agente roda isolado
+num worktree e não pode inspecionar diretamente o checkout compartilhado
+de `ResearchOS` (`/home/rat/Google/Projetos/Claude/ResearchOS`, a pasta
+principal, fora de qualquer worktree). `origin/main` foi confirmado
+sincronizado antes de cada push (fetch + fast-forward); a sessão que
+gerencia aquele checkout precisa rodar `git pull` lá.
+
+**Veredito**: backlog dos 4 papers genuinamente esgotado. As duas únicas
+pendências reais (atribuição de H-129; ausência de `main-pt-br.tex` nos
+4 papers, decisão deliberada desde `a586159`, mais o drift de
+README-PT-BR de E-097/E-139 já sinalizado no `OUTLINE.md` do paper 04)
+são decisões explicitamente devolvidas ao diretor científico, não
+lacunas não percebidas. Pronto para redação final, sujeito a essas duas
+decisões.
+
 ## Backlog do paper 05 (Wirsching 2003) esgotado
 
 H-168 era o único item aberto no escopo do paper 05 (H-125, H-133,
