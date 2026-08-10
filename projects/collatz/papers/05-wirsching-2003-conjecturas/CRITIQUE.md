@@ -43,7 +43,7 @@ Nenhum achado foi consertado nesta rodada (o crítico não conserta).
 | C-024 | 2026-08-10 | Prefixo `thm:` nos quatro ambientes `empirical`; `\choose` de plain TeX em §3 contra `\binom` em §5 (aviso do amsmath) | baixa | fixed |
 | C-025 | 2026-08-10 | Discussão chama (2) de "The support identity"; é identidade de massa | baixa | fixed |
 | C-026 | 2026-08-10 | "The distances decrease over the computed levels" com um único nível exibido | baixa | fixed |
-| C-027 | 2026-08-10 | `main-pt-br.tex` não existe (Regra 5) | baixa | open |
+| C-027 | 2026-08-10 | `main-pt-br.tex` não existe (Regra 5) | baixa | rejected (mesma tensão de política dos papers 01/04/06, deixado para o pesquisador decidir; ver rodada abaixo) |
 | C-028 | 2026-08-10 | `BarrierCompanion`, "in preparation" e sem URL, sustenta duas afirmações de conteúdo | baixa | fixed |
 
 ## Checagens que passaram, registradas para não serem refeitas
@@ -569,7 +569,7 @@ nenhuma das duas.
 
 ## Rodada 2026-08-10 (produtor): correções aplicadas
 
-29 de 30 entradas fixed, 1 open (C-027). Cada achado foi verificado
+29 de 30 entradas fixed, 1 rejected (C-027). Cada achado foi verificado
 contra a fonte primária ou o repositório antes de qualquer correção
 (Regra 8c); dois erros próprios entraram e foram pegos no processo, ver
 abaixo.
@@ -664,7 +664,7 @@ verificado rodando o script no intervalo completo, não só o ponto
 `\ell=12` exibido no texto. C-028: `BarrierCompanion` ganhou URL do
 repositório `collatz-endogeny`.
 
-**Permanece aberto**: C-027, `main-pt-br.tex` não existe. A Regra 5 não
+**Rejected, tensão registrada**: C-027, `main-pt-br.tex` não existe. A Regra 5 não
 é condicional, mas traduzir um paper técnico de 10 páginas é trabalho
 substancial, e o `OUTLINE.md` registra uma política interna ("só sob
 pedido explícito") que conflita com a letra da regra. Decidi não fazer
