@@ -45,9 +45,19 @@ def alpha_minus(q):
     return 0.5 * (lo + hi)
 
 
-def logM(t, q, kmax=None):
-    """log10 of the exact annealed count at value ratio 10^t. Log-space sum."""
-    lq = math.log10(q)
+def logM(t, q, kmax=None, qval=None):
+    """log10 of the exact annealed count at value ratio 10^t. Log-space sum.
+
+    `q` sets the offspring intensity 1/q per exponent; `qval` sets the value
+    denominator and defaults to q. Mode `cycq` of the enumerator separates
+    them, which is how its counting exponent is tuned: the exponent solves
+    qval^alpha = q (2^alpha - 1).
+    """
+    # log10 of the VALUE denominator, which sets how deep a level reaches;
+    # the per-level weight is q^(-k) and uses the intensity denominator, a
+    # distinction that only shows up when the two differ
+    lq = math.log10(q if qval is None else qval)
+    lqw = math.log10(q)
     if kmax is None:
         # mass per level decays like ~0.978^k at q=5, so go deep; checked
         # against kmax = 8000 at t = 1, 3, 8, 20, agreeing to 8 decimals
@@ -59,7 +69,7 @@ def logM(t, q, kmax=None):
             continue
         # log10 C(N,k) - k log10 q
         lc = (math.lgamma(N + 1) - math.lgamma(k + 1) - math.lgamma(N - k + 1)) / math.log(10.0)
-        terms.append(lc - k * lq)
+        terms.append(lc - k * lqw)
     if not terms:
         return None
     mx = max(terms)

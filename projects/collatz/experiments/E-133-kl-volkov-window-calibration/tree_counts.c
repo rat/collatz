@@ -121,6 +121,10 @@ static const char *MODENAME[4] = {"arith", "iid", "cyc", "cycq"};
  * Values are carried in log10, since they are no longer integers.
  */
 static double QVAL_LOG10 = 0.0;
+/* mode cycq only: children below this log10 value are dropped, mimicking the
+   fact that the arithmetic recursion lives on positive integers and bottoms
+   out around 1, while a pure real-valued walk descends without limit */
+static double MIN_LOG10 = -1e9;
 static double CP_LOG10[MAX_CP], BUF_LOG10[MAX_BUF];
 static const double LOG10_2 = 0.30102999566398119521;
 
@@ -153,6 +157,7 @@ static uint64_t dfs_root_q(uint64_t root, uint64_t seed, uint64_t *raw)
         for (int a = A0[r]; ; a += Dd) {
             double L = nd.L + a * LOG10_2 - QVAL_LOG10;
             if (L > top) break;
+            if (L < MIN_LOG10) continue;
             if (sp + 1 >= cap) { cap <<= 1; st = (fnode_t *)realloc(st, cap * sizeof(fnode_t)); }
             st[sp].L = L;
             st[sp].pmaxL = (L > nd.pmaxL) ? L : nd.pmaxL;
@@ -282,6 +287,7 @@ int main(int argc, char **argv) {
         else if (!strcmp(argv[i], "--iid"))   mode = MODE_IID;
         else if (!strcmp(argv[i], "--cyc"))   mode = MODE_CYC;
         else if (!strcmp(argv[i], "--cycq")) { mode = MODE_CYCQ; QVAL_LOG10 = log10(atof(argv[++i])); }
+        else if (!strcmp(argv[i], "--minlog")) MIN_LOG10 = atof(argv[++i]);
         else if (!strcmp(argv[i], "--fixedroot")) fixedroot = strtoull(argv[++i],0,10);
         else if (!strcmp(argv[i], "--cp"))  { cp_lo = atoi(argv[++i]); cp_hi = atoi(argv[++i]); }
         else if (!strcmp(argv[i], "--buf")) { buf_lo = atoi(argv[++i]); buf_hi = atoi(argv[++i]); }

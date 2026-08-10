@@ -16,23 +16,28 @@ between these two predicted exponents. It would be interesting for this
 problem to be investigated further." E-097 measured `0.639` with a
 bootstrap interval `[0.633, 0.645]`.
 
-The question this experiment answers is not "what is the exponent". It
-is "how much bias does that estimator carry", which nobody had
-measured, and which decides whether the measurement can settle anything
-at all.
+Nobody had measured what that estimator does to a process whose exponent
+is already known. Doing so turns out to answer the original question
+too, because the estimator's bias is larger than `Delta`, and the way
+around that is to run the same estimator on processes built to have each
+of the two disputed exponents and see which reading the arithmetic tree
+matches.
 
 ## What is here
 
 | file | what it does |
 |------|--------------|
-| `tree_counts.c` | the enumerator: arithmetic tree and two matched stochastic controls, one code path |
+| `tree_counts.c` | the enumerator: arithmetic tree and three matched stochastic controls, one code path |
 | `validate_vs_python.py` | byte-for-byte check of the C against the E-097 Python enumerator |
 | `annealed_exact.py` | closed form for the exact annealed counting function of the model |
 | `check_mean_vs_annealed.py` | the simulator reproduces that closed form |
-| `compare_modes.py` | count distributions of the three modes side by side |
+| `compare_modes.py` | count distributions of the modes side by side |
 | `within_root_spread.py` | separates across-root from within-root fluctuation |
+| `cyc_vs_cycq.py` | checks that the integer and real-valued recursions agree |
+| `buffer_squeeze.py` | bounds the error of the truncation extrapolation itself |
 | `analyze.py` | the E-097 estimator, per-decade slopes, deficit against `alpha_-` |
-| `run_deep.sh` | the deep runs, checkpoints to `1e12`, buffers to `1e17` |
+| `summary.py` | the comparison table: every process, one estimator |
+| `run_deep.sh`, `run_deep_cycq.sh` | the deep runs, checkpoints to `1e12`, buffers to `1e17` |
 
 Build and reproduce:
 
@@ -43,11 +48,13 @@ python3 annealed_exact.py 5
 ./tree_counts --q 5       --roots 300 --cp 4 8 --buf 9 13 --out data/q5_arith_b13.txt
 ./tree_counts --q 5 --cyc --roots 300 --cp 4 8 --buf 9 13 --out data/q5_cyc_b13.txt
 ./tree_counts --q 5 --iid --roots 300 --cp 4 8 --buf 9 13 --out data/q5_iid_b13.txt
-python3 compare_modes.py data/q5_arith_b13.txt data/q5_cyc_b13.txt data/q5_iid_b13.txt
-./run_deep.sh                          # about 45 minutes on 16 cores
+./tree_counts --q 5 --cycq 5.00000 --roots 300 --cp 4 8 --buf 9 13 --out data/q5_cycq500_b13.txt
+./tree_counts --q 5 --cycq 5.05398 --roots 300 --cp 4 8 --buf 9 13 --out data/q5_cycq505_b13.txt
+python3 summary.py                     # the comparison table
+./run_deep.sh ; ./run_deep_cycq.sh     # hours, not minutes, on 16 cores
 ```
 
-## The three modes
+## The four modes
 
 They share one code path. The branch class of a node is either the true
 residue or a draw, and nothing else differs:
@@ -59,8 +66,12 @@ residue or a draw, and nothing else differs:
 - `cyc`: the first sibling's class is drawn, and successive siblings
   advance by `c = ((2^d-1)/q) mod q`, which is what the arithmetic tree
   does exactly (H-162).
+- `cycq qval`: the `cyc` structure with the value denominator replaced by
+  a real `qval`, so the exponent becomes tunable. It solves
+  `qval^alpha = q(2^alpha - 1)`: `qval = 5.00000` gives 0.650919 and
+  `qval = 5.05398` gives 0.678.
 
-Roots in all three modes are fertile by construction. Getting this wrong
+Roots are fertile by construction in every mode. Getting this wrong
 was a real error in the first pass here: the arithmetic roots are
 sampled with `u mod q != 0` and are therefore always fertile, so a
 control that drew the root residue from `{0..q-1}` killed one tree in
@@ -99,40 +110,89 @@ quenched-versus-annealed lag, the log-slope of one realization trailing
 the log-slope of the mean, and not a correction exponent that could be
 fitted away.
 
-## Result
+## Result, part 1: the estimator has a bias larger than the thing it measures
 
 Standard E-097 window, `1e5..1e8`, 300 roots, truncation extrapolated to
-infinite buffer by Aitken, identical estimator in all three modes:
+infinite buffer by Aitken, identical estimator in every mode:
 
-| mode | estimator | sd of log10 N(1e8) | truth |
-|------|-----------|--------------------|-------|
-| iid | 0.6119 | 0.8014 | 0.650919 |
-| cyc | 0.6283 | 0.6657 | 0.650919 |
-| arith | 0.6364 | 0.5942 | disputed |
+| mode | estimator | sd of log10 N(1e8) | true exponent |
+|------|-----------|--------------------|---------------|
+| iid | 0.6131 | 0.8014 | 0.650919 |
+| cyc | 0.6294 | 0.6657 | 0.650919 |
+| arith | 0.6382 | 0.5942 | disputed |
 
-**The estimator under-reads by 0.039 on a process whose exponent is
-known.** That is larger than the separation `Delta = 0.027` it was built
-to resolve. The E-097 measurement is therefore silent on Kontorovich-
-Lagarias versus Volkov, in both directions.
+The estimator under-reads by 0.038 on a process whose exponent is known.
+That is larger than `Delta = 0.027`. So the raw reading cannot be
+compared against a theoretical prediction at all, which is what E-097
+and H-113 did, and it is also why adding the bias back by hand is not
+licensed: the bias itself depends on how much the process fluctuates,
+and the three rows above have visibly different fluctuation.
 
-The obvious next step, adding 0.039 back to the arithmetic reading to
-get `0.675`, is not licensed. The bias was measured on a process whose
-fluctuation is visibly larger than the arithmetic tree's (sd 0.80
-against 0.59), so it is not the same bias regime, and a bias measured in
-one regime does not transfer to another.
+## Result, part 2: compare readings, not a reading against a prediction
 
-Per-decade slopes, each extrapolated in the truncation buffer
-separately, behave much better than the three-decade window estimator.
-At the deepest decade of the standard run, `1e7 -> 1e8`, the control
-bias is already down to `0.0102`, below `Delta/2`. The deep run pushes
-that to decade `1e11 -> 1e12`; see `data/` and the table below.
+The fix is to stop comparing a biased reading to an unbiased prediction.
+Run the same estimator on a process built to have exponent 0.650919 and
+on one built to have exponent 0.678, and see which reading the
+arithmetic tree matches. Mode `cycq` supplies both: same branching, same
+sibling congruence, same roots, same window, same buffers, with only the
+value denominator changed, `qval^alpha = q(2^alpha - 1)`.
+
+From `summary.py`:
+
+```
+       process  true exponent             window estimator              decade 1e7->1e8
+  cycq 5.00000       0.650919   0.63950 [0.63357,0.64647]   0.64796 [0.64426,0.65204]
+  cycq 5.05398       0.678000   0.65943 [0.65290,0.66630]   0.67079 [0.66649,0.67585]
+           cyc       0.650919   0.62943 [0.62213,0.63650]   0.64437 [0.64067,0.64819]
+           iid       0.650919   0.61308 [0.60233,0.62415]   0.64068 [0.63276,0.64962]
+         arith       disputed   0.63824 [0.63183,0.64474]   0.64791 [0.64391,0.65241]
+```
+
+The arithmetic tree reads 0.64791 on the deepest common decade. A
+process with exponent 0.650919 reads 0.64796 there. A process with
+exponent 0.678 reads 0.67079, and its interval does not overlap the
+arithmetic one. Same conclusion on the window estimator.
+
+So E-097's `0.639` was never evidence against Kontorovich-Lagarias. It
+is, to three decimals, what a process with their exponent returns under
+that estimator.
+
+This is a measurement with calibrated controls, not a proof, and it
+tests the exponent 0.678, not Volkov's model. That model is a complete
+binary tree with a different encoding of the iterates, and it is not
+implemented here.
+
+Two systematics were checked rather than assumed. `cyc` and `cycq(5.0)`
+are the same process by construction and differ by 0.0035 over six
+seeds, 1.5 standard errors, so no implementation systematic above about
+0.004 separates the integer recursion from the real-valued one
+(`cyc_vs_cycq.py`). Putting a floor at value 1 on the real-valued walk,
+where the integer recursion bottoms out, changes counts but leaves the
+slope identical to five decimals.
 
 ## Deep run
 
-Checkpoints `1e4..1e12`, buffers `1e9..1e17`, 300 roots, all three
-modes. Filled in from `analyze.py` output.
+Checkpoints `1e4..1e12`, buffers `1e9..1e17`, 300 roots. The arithmetic
+per-decade slope, each decade extrapolated in the buffer separately:
 
-Running; results land in `data/q5_{arith,cyc,iid}_b17.txt`.
+| decade | slope | bootstrap | distance to 0.650919 |
+|--------|-------|-----------|----------------------|
+| 1e7 -> 1e8 | 0.6465 | [0.6425,0.6506] | 0.0044 |
+| 1e8 -> 1e9 | 0.6487 | [0.6467,0.6506] | 0.0022 |
+| 1e9 -> 1e10 | 0.6490 | [0.6479,0.6499] | 0.0020 |
+| 1e10 -> 1e11 | 0.6506 | [0.6502,0.6510] | 0.0003 |
+| 1e11 -> 1e12 | 0.6505 | [0.6503,0.6508] | 0.0004 |
+
+Those bootstrap bands cover root resampling only. `buffer_squeeze.py`
+bounds the other term: redoing a well-buffered decade with only the
+three buffers the deepest decades have available moves it by at most
+0.002, and by 0.0003 to 0.0004 from decade `1e8 -> 1e9` onward. Read the
+deep decades as `0.6505 +/- 0.002`, against `alpha_-(5) = 0.650919` and
+`0.678`.
+
+The window estimator itself saturates at 0.63778 by buffer `1e17`, so
+E-097's Aitken value of 0.639 for the infinite-buffer limit was right,
+and the whole remaining gap to 0.6509 was window bias, not truncation.
 
 ## Notes
 

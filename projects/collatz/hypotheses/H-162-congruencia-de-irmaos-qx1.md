@@ -85,6 +85,14 @@ mesmos buffers, estimador de H-113 idêntico nos três casos:
 
 (valor anelado exato do modelo: `alpha_-(5) = 0.650919`.)
 
+Esta tabela é sobre variância, não sobre o veredito KL versus Volkov. O
+veredito depende de um quarto controle, `cycq`, de expoente ajustável,
+que veio depois; ver H-113 e o README de E-133. A leitura de `cyc`
+(0.6283) e a de `arith` (0.6364) não devem ser comparadas diretamente
+como se `cyc` fosse a referência: `cyc` e `cycq(5.0)` são o mesmo
+processo e leem 0.6283 e 0.6379 em realizações independentes, o que dá
+a escala do ruído desta coluna.
+
 A congruência de irmãos cobre cerca de metade do caminho de `iid` até
 `arith` no estimador. Na dispersão ela cobre tudo, ver a seção
 seguinte, que corrige a leitura ingênua desta coluna.

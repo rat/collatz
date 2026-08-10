@@ -197,12 +197,71 @@ acima está certa no fenômeno e errada no mecanismo.
 
 Consequência prática: o estimador de janela de três décadas é a parte
 ruim. Slopes por década, cada um extrapolado no buffer separadamente,
-se comportam muito melhor. No controle iid, o viés por década cai de
-+0.0704 (década `1e4->1e5`) para +0.0102 (década `1e7->1e8`), já abaixo
-de Δ/2.
+se comportam muito melhor.
 
-A rodada profunda (checkpoints ate 1e12, buffers ate 1e17, tres modos)
-esta em execucao; ver E-133.
+### 4. Como o portão fecha de verdade: comparar leituras, não leitura contra previsão
+
+O erro metodológico de E-097 e da seção de 2026-07-17 acima não foi o
+número, foi o que se comparou com o quê. Comparava-se uma leitura
+enviesada (0.639) contra uma previsão teórica não enviesada (0.650919).
+Com viés de 0.038, isso não decide nada.
+
+A correção: rodar o mesmo estimador num processo construído para ter
+expoente 0.650919 e noutro construído para ter 0.678, e ver qual leitura
+a árvore aritmética casa. Modo `cycq` de E-133: a estrutura de `cyc` com
+o denominador de valor trocado por um real `qval`, e o expoente resolve
+`qval^alpha = q(2^alpha - 1)`. `qval=5.00000` dá 0.650919 e
+`qval=5.05398` dá 0.678. Conferido contra a forma fechada anelada, que
+para `qval=5.05398` dá slope anelado 0.6768 a 0.6782.
+
+Mesmo estimador, mesmas 300 raízes, mesma janela, mesmos buffers:
+
+| processo | expoente verdadeiro | estimador de janela | década 1e7→1e8 |
+|----------|--------------------|---------------------|----------------|
+| cycq 5.00000 | 0.650919 | 0.63950 [0.63357, 0.64647] | 0.64796 [0.64426, 0.65204] |
+| cycq 5.05398 | 0.678000 | 0.65943 [0.65290, 0.66630] | 0.67079 [0.66649, 0.67585] |
+| cyc | 0.650919 | 0.62943 [0.62213, 0.63650] | 0.64437 [0.64067, 0.64819] |
+| iid | 0.650919 | 0.61308 [0.60233, 0.62415] | 0.64068 [0.63276, 0.64962] |
+| **arith** | em disputa | **0.63824** [0.63183, 0.64474] | **0.64791** [0.64391, 0.65241] |
+
+A árvore aritmética lê 0.64791 na década comum mais profunda; um
+processo de expoente 0.650919 lê 0.64796 ali. Diferença: 0.00005. Um
+processo de expoente 0.678 lê 0.67079, e o intervalo dele não encosta no
+da árvore. Mesma conclusão no estimador de janela.
+
+Ou seja: **o 0.639 de E-097 nunca foi evidência contra
+Kontorovich-Lagarias.** É, com três casas, exatamente o que um processo
+com o expoente deles devolve nesse estimador. O veredito de 2026-07-17
+chegou na direção certa por um caminho que não sustentava a conclusão;
+H-137 estava certo em derrubá-lo, e o que faltava era o controle
+calibrado, não mais dados.
+
+Rodada profunda (checkpoints até `1e12`, buffers até `1e17`, 300
+raízes), slope aritmético por década, cada década extrapolada no buffer:
+
+| década | slope | bootstrap | distância a 0.650919 |
+|--------|-------|-----------|----------------------|
+| 1e7→1e8 | 0.6465 | [0.6425, 0.6506] | 0.0044 |
+| 1e8→1e9 | 0.6487 | [0.6467, 0.6506] | 0.0022 |
+| 1e9→1e10 | 0.6490 | [0.6479, 0.6499] | 0.0020 |
+| 1e10→1e11 | 0.6506 | [0.6502, 0.6510] | 0.0003 |
+| 1e11→1e12 | 0.6505 | [0.6503, 0.6508] | 0.0004 |
+
+As bandas cobrem só reamostragem de raízes; o erro da extrapolação de
+truncamento está limitado em 0.002 (E-133, `buffer_squeeze.py`), então
+leia as décadas profundas como `0.6505 ± 0.002` contra 0.650919 e 0.678.
+O estimador de janela satura em 0.63778 no buffer `1e17`, confirmando
+que o Aitken de buffer de E-097 estava certo e que toda a diferença
+restante era viés de janela.
+
+### Categoria do resultado (Regra 10b)
+
+Medição empírica com controles calibrados. Não é prova. E testa o
+**expoente** 0.678, não o **modelo** de Volkov, que é uma árvore binária
+completa com outra codificação dos iterados e não foi implementado.
+Para O8 (`conj:transition-arithmetic`), isto é suporte empírico
+calibrado ao valor do expoente em `q=5`; a lacuna de transferência
+continua sendo O1/O7.
 
 ### Arquivos
 
