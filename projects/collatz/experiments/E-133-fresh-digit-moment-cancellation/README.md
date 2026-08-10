@@ -83,6 +83,13 @@ extreme still, exactly `0` from `fresh=4` on, because no resonant gap
 is inside the truncation at all. The `k_max=300` column is the honest
 one, and it is the one the bound is compared against.
 
+Reading section A's table: the rows showing `max|D|prim = 1.000e+00`
+are exactly those with `s <= j`, where `j = 1 + v3(k)`, that is
+`(delta=2, fresh=1)`, `(delta=6, fresh<=2)`, `(delta=18, fresh<=3)`.
+Those are the closed form's own prediction and not exceptions to it. A
+gap with `j = 3` is resonant on primitive frequencies up to scale `3`
+and on nothing above; its branching weight is `1.14e-05`.
+
 The mechanism is exact, not numerical. For a fixed gap `Delta = 2k`,
 the fresh blocks satisfy `Y = m X + g mod 3^s` with `m = 2^Delta`, so
 `X - Y = (1-m)X - g` and
@@ -104,7 +111,9 @@ Two consequences, both exact:
 - A gap `2k` contributes to a primitive frequency at scale `s` only if
   `v3(k) >= s-1`, hence only if `k >= 3^(s-1)`. Those gaps carry total
   branching weight at most `4^(1-3^(s-1))`, which is the bound in the
-  table above and is met to within a factor below `1.4` at every scale.
+  table above and is met to within a factor below `1.4` at every scale
+  from `s=2` on. At `s=1` the bound reads `4^0 = 1` and says nothing,
+  since every coefficient has modulus at most `1`.
 - At `fresh=1` there is no cancellation at all, and none is claimed:
   `X - Y = -g mod 3` identically, so the conductor-3 mode is fully
   resonant. The honest statement is not "the diagonal vanishes" but
