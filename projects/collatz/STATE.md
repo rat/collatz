@@ -87,6 +87,74 @@ para fechar); nenhuma pista nova de Regra 8e surgiu na verificação
 (nada além do que já estava documentado nas próprias hipóteses e no
 `CRITIQUE.md`).
 
+## Varredura de backlog do paper 04 (dono do paper, worktree isolado)
+
+Mesmo pedido acima, sub-agente do paper 04
+(`kontorovich-lagarias-volkov`). Escopo declarado (`papers/README.md` +
+`OUTLINE.md` do paper 04): H-113, H-169, E-097, E-139. As duas
+hipóteses já estavam fechadas antes desta sessão (H-113 em 2026-08-09,
+H-169 em 2026-08-09). Cruzamento independente com os 169 arquivos de
+`hypotheses/`: nenhuma das hipóteses ainda abertas naquele momento
+(H-129, H-158, H-159, H-161, H-162, H-163, H-168, a mesma lista que o
+sub-agente do paper 06 já tinha levantado) pertence ao tema
+Kontorovich-Lagarias/Volkov; `BACKLOG.md` também revisado, sem
+pendência não capturada em `hypotheses/`.
+
+O que sobrava não era hipótese em aberto, era sincronização
+desatualizada, já sinalizada no bloco "Ataque paralelo a O1-O8" abaixo
+como pendência de decisão do diretor científico. Verifiquei de forma
+independente (reproduzindo `summary.py b15 10` em
+`experiments/E-139-kl-volkov-window-calibration/` e de novo dentro do
+próprio `collatz-kl-volkov`): a razão de larguras de banda que separa a
+árvore aritmética do controle de expoente 0,678 na década 1e9→1e10 é
+`0,02822/0,00371 = 7,6`, não `10`. O `main.tex` já dizia "seven
+band-widths" nos dois lugares onde a razão aparece (corrigido na
+crítica anterior, achado C-04); quem ainda dizia "dez" eram `H-113`,
+`OUTLINE.md` §6, e a fonte do número, o README do E-139 (e os mesmos
+três, mais o README de topo, espelhados em `collatz-kl-volkov`).
+Corrigidos os seis lugares em inglês; os quatro espelhos PT-BR
+(`E-097` e `E-139` no repositório principal, `sec5`/`sec6` em
+`collatz-kl-volkov`) ficaram para trás de propósito, sem edição não
+solicitada de PT-BR. Isso também resolve a pendência de decisão citada
+abaixo sobre H-113/OUTLINE ainda ecoarem uma alegação retratada: o
+`OUTLINE.md` criado no split já refletia a retratação de H-137
+corretamente, só o número de larguras de banda estava desatualizado.
+
+Além disso, o README do E-097 ainda apresentava a leitura crua de
+2026-07-17 ("exclui Volkov com folga, ~10+ erros-padrão") como
+resultado final, sem apontar que H-137/E-139 mostraram depois que esse
+estimador tem viés de 0,038, maior que a separação Δ=0,027 em disputa.
+Corrigido (texto original mantido como registro, correção anexada),
+espelhado em `collatz-kl-volkov/sec5-fixed-window-estimator/README.md`.
+
+**Pista nova (Regra 8e)**: a Discussão do `main.tex` sinaliza duas
+observações como "fora do escopo deste paper". A primeira (viés do
+controle iid vs. da árvore aritmética na mesma profundidade) é
+restatement de um resultado já fechado em H-169; não abriu entrada
+nova. A segunda (a leitura profunda da árvore aritmética fica
+sistematicamente "logo abaixo" de 0,650919) virou **H-170**, investigada
+e fechada como inconclusiva: o resíduo de 0,0003-0,0004 está dentro do
+orçamento de erro sistemático de 0,002 já quantificado em
+`buffer_squeeze.py`. Cogitei fechar via teorema de quenched=anelado
+(Biggins/Kingman) para branching random walks; descartado com apoio do
+advisor porque a árvore aritmética é determinística (quenched não é
+sequer definido para ela) e porque H-109 já tinha testado e descartado
+exatamente essa rota ("Biggins não cobre nossa recursão aritmética
+diretamente"). A pergunta teórica mais funda pertence à lacuna de
+transferência já rastreada como O1/O7, fora do escopo deste paper.
+
+Reprodutibilidade (Regra 12): `summary.py` (E-139, grades `b13` e
+`b15`) rodado de novo, de forma independente, tanto no repositório
+principal quanto dentro do próprio `collatz-kl-volkov`; bate byte a
+byte com o que os dois repositórios já documentavam.
+
+**Conclusão**: backlog de hipóteses do paper 04 genuinamente vazio
+(nada em `backlog`/`open-unexplored`/`in-progress` no escopo deste
+paper); o trabalho real desta sessão foi sincronização numérica entre
+`main.tex` (já correto) e os documentos de apoio (desatualizados) mais
+uma pista nova investigada e fechada (H-170). Nada pendente de
+escalonamento sem solução.
+
 ## Ataque paralelo a O1-O8 (7 sub-agentes Opus, worktrees isolados)
 
 Pedido do diretor científico: atacar O1 a O8 em paralelo (O6 excluído,
