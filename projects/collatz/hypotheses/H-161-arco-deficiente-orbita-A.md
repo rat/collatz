@@ -448,3 +448,174 @@ tentar a indução de Weyl esboçada acima usando a estrutura de cilindro
 de F4 (cilindros de profundidade `L` em `u` correspondem a progressões
 aritméticas de módulo `3^L` em tempo de órbita — a ponte que falta
 entre a álgebra e as somas de Weyl).
+
+## Terceira rodada (2026-08-09): programa de Weyl executado e fechado como insuficiente; cota incondicional nova como subproduto
+
+Tarefa desta rodada: levar o programa de somas de Weyl 3-ádicas esboçado
+acima até uma prova real da desigualdade de par de Q2, ou até o ponto
+exato onde ele emperra. Ele emperra, e o motivo é estrutural, não uma
+lacuna técnica. Montar o programa, porém, produziu uma cota
+incondicional sobre `beta_eff` melhor que qualquer coisa registrada
+antes neste projeto. Tudo em `E-134-weyl-sum-pair-anticoncentration`.
+
+### Reverificação independente antes de qualquer coisa (Regra 8c)
+
+Reconstruí as leis do zero e reconferi, sem reaproveitar código das
+rodadas anteriores:
+
+- **F1**: bate a `<=1.4e-14` em `ell=2..9`.
+- **F2**: os dois tipos saem por álgebra exata, não só numericamente.
+  Tipo (1,2): `a=(4k-1)/3`, `b=(2·A(k)-1)/3=(8k+1)/3`, e `2a+1 =
+  (8k-2+3)/3 = (8k+1)/3`. Idêntico. Tipo (2,1): `b=(2k'-1)/3`,
+  `a'''=(4·A²(k')-1)/3=(64k'+19)/3`, e `32b+17 = (64k'-32+51)/3 =
+  (64k'+19)/3`. Idêntico. Confirmados também numericamente, erro
+  inteiro 0, em `n=3..8`.
+- **F4 / martingale**: a média dos 3 filhos bate o pai a `<1e-10` em
+  todos os níveis até 16.
+- **min N** bate os valores que E-127 registrou de forma independente
+  em `ell=12..16` (cinco níveis, `match` em todos).
+- **Teorema condicional par->beta**: rederivado e correto no expoente.
+  Uma correção pequena na constante: com peso mínimo `4^-2` e o fator
+  `3/4` de F1, sai `3^ell c_ell >= (3/64) x*`, não `(3/16) x*` como
+  estava escrito acima. Não muda `beta_eff <= 1 + 1/(2 kappa) + o(1)`,
+  que é o conteúdo; registro por disciplina.
+
+### Resultado negativo: o programa de Weyl não pode funcionar
+
+A reformulação em si é limpa. Em `z = 1+3k`, `A` é multiplicação por 4
+no grupo cíclico `G = {z ≡ 1 mod 3}` de ordem `3^n`, o tempo de órbita é
+o logaritmo discreto 3-ádico base 4, e os caracteres de `G` são
+exatamente as fases de Weyl. A recursão de `W` diagonaliza exata:
+`What(m) = Nhat(m)/(1 - (1/4)e(-m/3^n))`, denominador de módulo entre
+3/4 e 5/4. Os dois tipos de par de F2 viram mapas afins de `G`:
+`sigma1(z)=2z+2` e `sigma2(z)=32z+20`.
+
+As somas mistas `T(m,n) = sum_z chi_m(z) chi_n(sigma z)` se comportam da
+melhor forma possível. Fase estacionária 3-ádica prevê anulamento total
+salvo `2m+n ≡ 0 mod 3` (para `sigma1`) e `m+2n ≡ 0 mod 3` (para
+`sigma2`); verificado exaustivamente em `n=2..7`, os dois mapas, com
+`max|T|` fora do critério `< 3.3e-14`. E dentro do critério vale, com
+igualdade atingida, `|T(m,n)| = 3^((n+1+v)/2)`, `v = v_3(mdc(m,n))`:
+cancelamento de raiz quadrada em toda frequência primitiva.
+
+E não serve para nada. Expandindo os indicadores de `S` e `S'` em
+caracteres e limitando o erro por valores absolutos, o erro é
+`3^(1/2)|G|^(3/2)(delta delta')^(1/2)` contra termo principal
+`|G| delta delta'`; o erro só perde se `(delta delta')^(1/2) >
+3^(1/2)|G|^(1/2)`, impossível para densidade no máximo 1. **Em nenhuma
+densidade** essa rota diz alguma coisa, nem no regime denso.
+
+Não é artefato de tomar módulo. `T(m,n)/|G|` é a matriz, na base de
+caracteres, da composição com uma bijeção de `G`, que é isometria de
+`L^2(G)`, logo unitária: a rota por norma de operador devolve exatamente
+a cota trivial de Cauchy-Schwarz. E tomando `S' = sigma(S)` sai
+`Sigma = |S|` na mosca. Portanto **nenhuma cota que dependa só de `|S|`,
+`|S'|` e de dados espectrais de `sigma` pode ser não trivial**, por
+melhores que sejam as estimativas de Weyl.
+
+O que falta, então, é nomeável com precisão: não é equidistribuição de
+`sigma`, é controle harmônico do próprio conjunto de nível `{V <= x}`,
+conjuntamente com `sigma`. Qualquer prova tem que usar a descrição
+autossimilar de `V`, não tratar `S` como caixa preta. Escopo: isso
+exclui o programa específico (estimar `T`, inserir, limitar o erro), não
+métodos tipo Weyl em geral; estimar os coeficientes de Mellin do próprio
+`V` continua intocado.
+
+### Resultado positivo: `min R_ell` é não decrescente, e `beta_eff <= 1.882712`
+
+Definindo `R_ell(u) := N_ell(u)/N_(ell-1)(u mod 3^(ell-1))` para `u`
+unidade, F4 dá média 1 em cada trio de irmãos, logo `min_u R <= 1`. O
+lado oposto é novo:
+
+```text
+min_u R_ell(u) >= min_v R_(ell-1)(v)
+```
+
+Prova. Por F1 os fatores `3·2^-t0` se cancelam na razão, dando
+`R_ell(y) = W_ell(k)/W_(ell-1)(k mod 3^(ell-2))` com `k = k0(y)`. Como
+`A` é dado por fórmula inteira, `A^j k mod 3^(ell-2) = A^j(k mod
+3^(ell-2))` para todo `j`: numerador e denominador percorrem o MESMO
+índice `j` com os MESMOS pesos `4^-j`. Substituindo `N_(ell-1)(A^j k) =
+N_(ell-2)(A^j k')·R_(ell-1)(A^j k)`, `R_ell(k)` aparece como combinação
+CONVEXA de valores de `R_(ell-1)`, com pesos `4^-j N_(ell-2)(A^j k') /
+W_(ell-1)(k')`. Pesos nulos exatamente onde `R_(ell-1)` não está
+definido (posições não-unidade). Uma combinação convexa fica entre o
+mínimo e o máximo do que promedia. QED
+
+Como `N_ell(u) = N_(ell-1)(u mod 3^(ell-1))·R_ell(u)` pontualmente,
+`min N_ell >= (min R_ell)(min N_(ell-1))`, e a monotonicidade transporta
+um cálculo finito em um nível para todos os níveis acima:
+
+```text
+limsup beta_eff <= 1 + log(1/min R_L)/log 3   para qualquer L calculado.
+```
+
+Certificado em aritmética racional exata (inteiros sobre denominador
+comum, zero ponto flutuante em qualquer lugar do cálculo):
+
+```text
+  L=2   min R = 2/7                  beta <= 2.140314
+  L=3   min R = 5240/15257           beta <= 1.972788
+  L=6   min R = 0.372104367916...    beta <= 1.899845
+  L=8   min R = 0.376951049877...    beta <= 1.888066
+  L=10  min R = 0.379174805339...    beta <= 1.882712
+```
+
+`min R_2 = 2/7`, um cálculo de nove elementos, já bate o `2.306270` que
+era a melhor cota incondicional registrada (H-158). O nível 10 dá
+`1.882712`.
+
+**Teto do método, explícito.** `min R_ell` cresce e é limitado por 1,
+logo converge; medido em float64 até `ell=16` fica em `0.38030` e ainda
+subindo, então esta rota encalha perto de `beta <= 1.880` e NÃO chega a
+1. O motivo aparece na comparação direta: o fator por nível provado é
+`0.38`, enquanto a razão que a verdade atinge (`min N_ell/min
+N_(ell-1)`) roda entre `0.93` e `0.97`. Essa folga é exatamente o que a
+desigualdade de par fecharia. Só `min R_L` num `L` calculado está
+certificado; o limite perto de `0.3803` é medição.
+
+**Recalibração importante para Q2.** Com a cota de referência agora em
+`1.882712`, a desigualdade de par só passa a valer a pena se
+`1 + 1/(2 kappa) < 1.882712`, ou seja `kappa > 0.5665`. A observação
+registrada acima de que "`kappa=0.4` já daria `beta<=2.25`,
+incondicional e novo" fica **superada**: `2.25` é agora pior que o que
+já está provado. Qualquer trabalho futuro em Q2 precisa mirar
+`kappa > 0.567`, não `kappa > 0.383`.
+
+### Reconciliação com a alegação "nenhuma recursão escalar" de H-158
+
+H-158 registra, como esboço não rederivado, que nenhuma desigualdade
+usando só `c_(ell-1)` ou qualquer lista finita de estatísticas de ordem
+de um nível pode passar de `beta <= 2.31`. O resultado acima é uma
+recursão escalar com fator `0.3798 > 5/21`, então isso precisa de
+resposta.
+
+São compatíveis. `min R_L` não é função de `c_(ell-1)` nem de nenhuma
+estatística de ordem de um único nível: é quantidade ENTRE níveis,
+comparando `mu_ell` com `mu_(ell-1)` em resíduos casados. A construção
+adversarial por trás do esboço de H-158 (uma medida hipotética de nível
+`ell-1` com um bloco de valores no mínimo ao longo de um arco de `A`)
+não é excluída aqui por quão pequenos são os valores, e sim pela
+identidade de combinação convexa, que restringe como uma lei de Syracuse
+real pode se apoiar sobre a própria projeção. O esboço de H-158
+sobrevive dentro do escopo dele; só não cobre insumo entre níveis. Vale
+anotar isso em H-158 numa próxima passagem (não editado aqui, arquivo
+fora do escopo desta tarefa).
+
+### Pistas abertas (Regra 8e)
+
+1. **A monotonicidade de `min R` merece número próprio de hipótese.**
+   Não criei um `H-162` aqui para não colidir com os agentes rodando em
+   paralelo. Conteúdo a registrar: o enunciado provado, o teto medido
+   perto de `0.3803`, e a pergunta em aberto de qual é
+   `lim_ell min R_ell` e se ele é estritamente menor que 1 (se fosse 1,
+   `beta_eff -> 1` sairia de graça; a evidência medida diz que não é).
+2. **Coeficientes de Mellin de `V`.** A rota de Weyl que sobra: estimar
+   a transformada de caracteres do próprio `V` (equivalentemente de
+   `N`), em vez de tratar o conjunto de nível como caixa preta. A
+   identidade `What(m) = Nhat(m)/(1-(1/4)e(-m/3^n))` diz que `W` e `N`
+   têm coeficientes comparáveis, então basta um dos dois.
+3. **`R_ell` como média de janela de `R_(ell-1)` ao longo da órbita é
+   uma operação descorrelacionante**, o que pode ser a razão estrutural
+   por trás da descorrelação medida em E-132. Só uma observação, não
+   desenvolvida.
