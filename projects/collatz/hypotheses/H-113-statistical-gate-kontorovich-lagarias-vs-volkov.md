@@ -1,12 +1,19 @@
 # H-113 — Portão estatístico para o expoente de 5x+1: Kontorovich-Lagarias (0,650919) versus Volkov (0,678)
 
-Status: reaberto em 2026-08-09. O portão NÃO fecha. O estimador tem viés
-medido de 0,039 num processo de expoente conhecido, maior que a
-separação Δ=0,027 que ele deveria resolver, então a medição é silenciosa
-nas duas direções. Ver a seção datada de 2026-08-09 no fim deste
-arquivo; o texto até lá é o registro de 2026-07-17, mantido como está e
-superado no que diz respeito ao veredito. O `main.tex` já estava certo
-(via H-137); este arquivo é que estava velho.
+Status: fechado em 2026-08-09, por um caminho diferente do de
+2026-07-17. O estimador de E-097 tem viés medido de 0,038 num processo
+de expoente conhecido, maior que a separação Δ=0,027, então a leitura
+crua nunca poderia ser comparada contra uma previsão teórica. Rodando o
+mesmo estimador em processos construídos para ter cada um dos dois
+expoentes em disputa, a árvore aritmética casa com o de 0,650919
+(0,64791 contra 0,64796 na década 1e7→1e8) e fica fora do intervalo do
+de 0,678 (0,67079). Medição empírica com controles calibrados, não
+prova, e testa o expoente 0,678, não o modelo de Volkov.
+
+O texto até a seção datada de 2026-08-09 é o registro de 2026-07-17,
+mantido como está. O veredito daquela seção estava certo na direção e
+errado no método; H-137 estava certo em derrubá-lo, e o `main.tex` já
+refletia isso. Este arquivo e o `OUTLINE.md` é que ficaram para trás.
 Criada em: 2026-07-17
 Origem: sexta rodada de consulta à IA externa recomendou consolidar um
 pacote de publicação (H-113 planejado); o Fable identificou que a peça
@@ -146,25 +153,25 @@ muda entre os modos é de onde vem a classe de ramo de um nó:
   árvore aritmética faz exatamente (H-162).
 
 Mesma janela `1e5..1e8`, mesmas 300 raízes, mesmos buffers, mesmo
-Aitken, mesmo bootstrap:
+Aitken, mesmo bootstrap (valores de `summary.py`):
 
 | modo | estimador | verdade |
 |------|-----------|---------|
-| iid | 0.6119 | 0.650919 |
-| cyc | 0.6283 | 0.650919 |
-| arith | 0.6364 | em disputa |
+| iid | 0.6131 | 0.650919 |
+| cyc | 0.6294 | 0.650919 |
+| arith | 0.6382 | em disputa |
 
-**O estimador subestima em 0.039 num processo cujo expoente é
+**O estimador subestima em 0.038 num processo cujo expoente é
 conhecido.** A separação KL vs. Volkov é Δ = 0.027081. O viés é maior
-que a coisa que se queria medir. A medição de E-097 é silenciosa sobre
-a disputa, nas duas direções, e não "favorece a direção de KL".
+que a coisa que se queria medir, então comparar a leitura crua contra
+uma previsão teórica não decide nada, e é isso que E-097 e a seção de
+2026-07-17 fizeram.
 
-Não somei 0.039 de volta a 0.6364 para obter 0.675 (que seria o valor
-de Volkov). Isso não é lícito: o viés foi medido num processo cuja
-flutuação é maior que a da árvore aritmética, logo não é o mesmo regime
-de viés, e viés medido num regime não transfere para outro. O número
-0.675 fica registrado aqui só para deixar claro que ele existe e que
-foi deliberadamente não usado.
+Somar o viés de volta na mão também não resolve: 0.6382 + 0.038 = 0.676
+daria quase exatamente Volkov, e o passo é ilícito, porque o viés depende
+de quanto o processo flutua e os três modos flutuam de formas
+diferentes. Registro o número só para deixar claro que ele existe e que
+foi deliberadamente não usado. A saída correta é a seção 4 abaixo.
 
 ### 3. O viés é atraso quenched, não correção anelada, e isso é computável
 
