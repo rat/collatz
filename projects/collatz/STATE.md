@@ -2,6 +2,27 @@
 
 Última atualização: 2026-08-09
 
+## H-166: beta_eff <= 1,882712 provado incondicionalmente (melhora 2,306270)
+
+Ataque paralelo dirigido a O2 (programa de somas de Weyl para a
+Questão 2 de H-161). O programa de Weyl em si fecha como insuficiente
+(cancelamento de raiz quadrada máximo nas somas mistas, mas
+`T/|G|` é matriz de uma bijeção na base de caracteres, logo unitária, e
+devolve só Cauchy-Schwarz trivial em qualquer densidade). Montá-lo
+revelou um resultado incondicional separado: `R_ell(u) :=
+N_ell(u)/N_(ell-1)(u mod 3^(ell-1))` é combinação convexa de valores de
+`R_(ell-1)` (prova de uma linha a partir de F1 e da fórmula fechada de
+`A`), logo `min R` é não decrescente e um cálculo em um nível certifica
+todos os níveis acima. Nível 10, aritmética racional exata (sem ponto
+flutuante): `beta_eff <= 1,882712`, contra `2,306270` que era a melhor
+cota incondicional registrada. Reverificado antes de aceitar (Regra
+8c/11b, consulta ao advisor): a identidade de ponte entre as duas
+indexações (`k0`/`t0` compatíveis entre níveis adjacentes) que sustenta
+o passo de combinação convexa foi checada de forma exaustiva, zero
+exceções em `ell=3` a `8`. Recalibra o limiar de `kappa` útil para a
+Questão 2 de H-161 (agora `kappa > 0,567`, não `0,383`). Ver H-166 e
+`E-134-weyl-sum-pair-anticoncentration`.
+
 ## H-161: segunda consulta reduz a faixa aberta a uma pergunta sobre pares; sinal forte em E-132
 
 Segunda consulta a modelo mais forte (Fable) sobre H-161, com contexto

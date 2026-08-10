@@ -129,7 +129,10 @@ conferidas por nós:
   posições-unidade na fase mais desfavorável (`k==0 mod 3`), o fator
   é `20/63`, dando `c_ell >= (5/63) c_(ell-1)`, ou seja
   `beta <= 2.306270` (recalculado por nós; a consulta original errou
-  esse número em ~0.003, provavelmente arredondamento).
+  esse número em ~0.003, provavelmente arredondamento). **Superada**:
+  H-166 prova `beta_eff <= 1.882712`, incondicional, via uma quantidade
+  ENTRE níveis (não um estatística de um único nível, ver H-166 para a
+  reconciliação com o esboço logo abaixo).
 
 **Plausível, esboço de prova não rederivado linha a linha por nós:**
 um argumento adversarial (construir uma medida hipotética de nível
