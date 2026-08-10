@@ -1,6 +1,9 @@
 # H-159: transferência da cauda iid para a árvore aritmética
 
-Status: aberta
+Status: fechada-inconclusiva (2026-08-10). Ver seção final "Fechamento"
+para o veredito.
+
+Status anterior (histórico): aberta
 
 Criada: 2026-08-08
 
@@ -201,3 +204,65 @@ hipótese em forma concreta: os dois lados chegam a um funcional de
 momento sobre pares na mesma órbita afim, por rotas independentes. Ver
 a seção datada de 2026-08-09 em H-157 e
 `projects/collatz/experiments/E-138-diagonal-shifted-collision/`.
+
+## Fechamento (2026-08-10), corrigido depois de uma crítica independente
+
+**Registro honesto de um erro nesta seção.** A primeira versão deste
+fechamento dizia que H-163 tinha "fechado como CONFIRMADO: há
+cancelamento de fase real e mensurável". Isso estava errado. Um
+crítico independente (Regra 8/15) encontrou, e eu confirmei de forma
+independente (Regra 8c, controles refeitos por mim), que a medição de
+E-140 era um artefato de escala (produto das massas das duas
+subárvores, ver H-163) sem relação nenhuma com irmandade: dois
+controles com dados não relacionados reproduzem os mesmos números.
+H-163 foi reaberta e fechada como `fechada-inconclusiva`, não
+confirmada.
+
+H-162 (o alvo que esta hipótese deixou registrado: "cancelamento pela
+média sobre índices de caminho, a `v` fixo") continua fechado como
+refutado quanto à forma específica testada (a localização de condutor
+de E-133 não transporta da média sobre o parâmetro livre para a média
+sobre índices de caminho), esse veredito sobrevive à crítica, porque
+não dependia de o cancelamento agregado ser real (ver H-162, seção
+revisada). Mas a leitura de "mecanismo de banda larga" que uma versão
+anterior desta seção citava também foi retirada de H-162 pelo mesmo
+motivo: um controle mostrou que o perfil por condutor também não é
+específico de irmandade.
+
+**Estado real, revisado**: nenhuma evidência empírica de cancelamento
+foi de fato estabelecida nesta rodada. O que ficou estabelecido é mais
+modesto: a construção testada em E-140/E-141 (subárvore real truncada)
+não é o objeto certo para testar a pergunta, por um motivo estrutural
+(identidade de Parseval: o suporte é PLENO, mas o peso de ramo não
+renormalizado concentra a massa numa razão de participação pequena
+dentro dele, o que já basta para que a soma bilinear seja dominada pelo
+produto trivial das massas, ver H-163), não por falta de sinal. A
+pergunta original de H-159 (existe
+cancelamento no funcional que O1 precisa, via soma sobre índices de
+caminho a `v` fixo?) permanece tão aberta quanto antes desta sessão,
+com uma lição adicional sobre como NÃO testá-la (não usar um objeto
+cujo suporte é esparso o bastante para que a identidade de Parseval
+trivialize o resultado; comparar sempre contra um controle com dados
+não relacionados antes de interpretar um número pequeno como sinal).
+
+**Decisão de fechamento**: `fechada-inconclusiva` (mantida, mas agora
+pelo motivo certo). Não é refutada, porque nada testado corretamente
+aponta contra a transferência. Não é confirmada, porque nada testado
+corretamente aponta a favor dela tampouco: a suposta evidência positiva
+foi retirada. O critério original (prova ou contraexemplo estrutural)
+continua sem resposta, e a pista de continuação (H-174) foi reescrita
+para refletir isso, pedindo a construção correta (decomposição
+idealizada de Tao, modos grosseiros removidos, com os dois controles
+como parte do protocolo desde o início) em vez de uma "taxa" para um
+efeito que não foi estabelecido.
+
+**Escalonamento (Regra 11b)**: o processo que deveria ter pego isto
+antes da primeira versão deste fechamento é exatamente o que a Regra
+11b pede (verificar antes de declarar feito). Não foi feito na
+primeira passada; foi feito na correção, com um crítico independente
+detectando o problema.
+
+Ver `experiments/E-129-fresh-digit-aggregate-cancellation/`,
+`experiments/E-133-fresh-digit-moment-cancellation/`,
+`experiments/E-140-bilinear-sibling-pairing/`,
+`experiments/E-141-path-index-diagonal-cancellation/`.
