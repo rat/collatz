@@ -32,6 +32,61 @@ os repos novos).
 H-166 e H-169 ainda não têm espelho em `collatz-endogeny`; nenhum dos
 quatro papers tem `CRITIQUE.md` ainda. Ver `OUTLINE.md` de cada paper.
 
+## Varredura de backlog do paper 06 (sub-agente dedicado, worktree isolado)
+
+Pedido do diretor científico: um sub-agente por paper (01/04/05/06),
+cada um esgotando o backlog de hipóteses/experimentos do seu paper.
+Este é o resultado da varredura do paper 06 (`pressao-qx1-ramificacao`).
+
+Escopo declarado (`papers/README.md` + `OUTLINE.md` do paper 06):
+H-109, H-132, H-138, H-139, H-141. Todas as cinco já estavam
+`fechada-confirmada`/`closed-confirmed` antes desta sessão começar (a
+rodada de crítica de hoje mais cedo, 29/30 achados, já tinha deixado o
+paper nesse estado). Não reabri nenhuma sem evidência nova (Regra 8d);
+apenas reverifiquei.
+
+Cruzamento com todo o projeto: dos 169 arquivos em `hypotheses/`, só 7
+têm status aberto (`backlog`/`aberta`/`in-progress`/`em andamento`):
+H-129, H-158, H-159, H-161, H-162, H-163, H-168. Nenhum pertence ao
+paper 06. H-168 está no escopo explícito do paper 05
+(`papers/README.md`). Os outros seis (H-129, H-158, H-159, H-161,
+H-162, H-163) são o programa O1-O8 do paper 01 (barreira de endogenia,
+segundo momento de Fourier, WCC/beta=1, pior cilindro) — li o conteúdo
+de cada um, não só o título, antes de descartar. H-129 é o mais
+próximo tematicamente (índice de cauda do martingale na árvore real,
+mesmo objeto que `conj:tail-index` do paper 06), mas o paper 06 já o
+trata corretamente: cita o resultado como conjectura honesta, com a
+evidência empírica forte (bateria n=100.000, E-103/E-105) já
+resumida; fechar H-129 de verdade é o mesmo problema em aberto que O7
+rastreia no paper 01, não uma tarefa isolada do paper 06 — não dupliquei
+o trabalho que o sub-agente do paper 01 provavelmente já está fazendo
+em paralelo nesta mesma máquina.
+
+`STATE.md` e `BACKLOG.md` foram lidos por completo (não só grep) atrás
+de qualquer pendência de paper 06 não capturada em `hypotheses/`;
+nenhuma encontrada — todo o conteúdo de ambos os arquivos antecede a
+linha qx+1/pressão de ramificação ou pertence às linhas de crítica de
+literatura (papers 02/03).
+
+Reprodutibilidade (Regra 12): rodei de verdade, no repositório externo
+`collatz-qx1-pressure/sec3-pressure-and-transition/`, os quatro
+scripts mais baratos citados pelo paper (`pressure_qx1.py`,
+`iid_tail_check_assumptions.py`, `experiment_gap_check.py`,
+`lp_collision_spectrum.py`) — todos reproduzem exatamente os números
+já documentados (raízes da equação de pressão, hipóteses do teorema
+de cauda iid, gap espectral do operador de transferência, espectro de
+colisão `L^p`). Não regenerei a bateria `stage6` (cara, horas,
+resultado já fechado e commitado). `main.tex` do paper 06 recompilado
+localmente (pdflatex, limpo, sem erro) só para conferir; PDF/artefatos
+de build descartados depois (papers 04/05/06 não versionam PDF neste
+projeto).
+
+**Conclusão**: backlog do paper 06 genuinamente vazio no início desta
+sessão. Nenhuma hipótese fechada por mim (não havia nenhuma aberta
+para fechar); nenhuma pista nova de Regra 8e surgiu na verificação
+(nada além do que já estava documentado nas próprias hipóteses e no
+`CRITIQUE.md`).
+
 ## Ataque paralelo a O1-O8 (7 sub-agentes Opus, worktrees isolados)
 
 Pedido do diretor científico: atacar O1 a O8 em paralelo (O6 excluído,
