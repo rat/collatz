@@ -1072,6 +1072,82 @@ all the difficulty lives)''. This confirms that a route avoiding
 decorrelation altogether exists, and that it hits the \emph{same} wall
 in marginal form.
 
+A direct, unconditional bound on $\beta_{\mathrm{eff}}$ comes from an
+inter-level identity on the worst-cylinder mass itself, independent of
+the microcanonical machinery above. Write $N_\ell(u):=3^\ell\mu_\ell(u)$
+and, for $u$ a unit mod $3^\ell$,
+$R_\ell(u):=N_\ell(u)/N_{\ell-1}(u\bmod3^{\ell-1})$.
+
+\begin{theorem}[The inter-level cascade factor is nondecreasing]
+\label{thm:cascade-factor}
+$\min_uR_\ell(u)$ is nondecreasing in $\ell$. Consequently, for any
+fixed level $L$ and every $\ell\ge L$,
+\[
+ 3^\ell c_\ell=\min_uN_\ell(u)\ge(\min_uR_L(u))^{\ell-L}\min_uN_L(u),
+ \qquad
+ \limsup_\ell\beta_{\mathrm{eff}}(\ell)\le
+ 1+\frac{\log(1/\min_uR_L(u))}{\log3}.
+\]
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+Unrolling the memoryless recursion $\mu_\ell(y)=\tfrac12\nu(2y)+
+\tfrac12\mu_\ell(2y)$ along the $2$-power orbit of $y$ shows the valid
+exponents $t\ge1$ with $2^ty\equiv1\pmod3$ share a fixed parity
+$t_0(y)\in\{1,2\}$, and the step $t\to t+2$ acts on $z=2^ty\bmod3^\ell$
+as $z\mapsto4z$; writing $z=1+3k$ this is the affine map
+$A(k)=4k+1\bmod3^{\ell-1}$, a single cycle of length $3^{\ell-1}$. This
+gives the exact identity $N_\ell(y)=3\cdot2^{-t_0(y)}W_\ell(k_0(y))$,
+where $k_0(y)$ is $y$'s position on this orbit and
+$W_\ell(k):=\sum_{j\ge0}4^{-j}N_{\ell-1}(A^jk)$. Since $t_0$ and $k_0$
+are compatible between adjacent levels (an elementary but
+non-trivial fact, checked exhaustively for $\ell\le8$: zero
+exceptions), the scale factors cancel in the ratio and
+$R_\ell(y)=W_\ell(k)/W_{\ell-1}(k\bmod3^{\ell-2})$, with numerator and
+denominator running over the \emph{same} index $j$ with the same
+weights $4^{-j}$ (since $A$ is given by an integer formula, iterating
+it commutes with reduction mod $3^{\ell-2}$). Substituting
+$N_{\ell-1}(A^jk)=N_{\ell-2}(A^jk')R_{\ell-1}(A^jk)$ exhibits $R_\ell$
+as a convex combination of $R_{\ell-1}$ values, which lies between
+their minimum and maximum. Full derivation and the exact rational
+arithmetic certifying the bound below are in the accompanying
+repository.
+\end{proof}
+
+At level $L=10$, exact rational arithmetic certifies
+$\beta_{\mathrm{eff}}\le1.882712$, improving the previous unconditional
+bound $2.306270$ recorded above. The rate saturates: measured in
+floating point through $\ell=16$, $\min R_\ell$ climbs toward
+$\approx0.3803$ against an observed ratio $\min N_\ell/\min N_{\ell-1}$
+running at $0.93$--$0.97$, so this route alone floors out near
+$\beta_{\mathrm{eff}}\approx1.88$ and does not reach $1$. Closing that
+gap is O2's remaining content: a pairwise anti-concentration
+inequality bounding the joint lower tail
+$\Pr(N_\ell(k)\le x\text{ and }N_\ell(A(k))\le x)$ for consecutive
+units on the same orbit, uniformly down to $x\sim\exp(-c_0\ell)$; any
+fixed exponent in such a bound would already improve
+$\beta_{\mathrm{eff}}\le1.88$ toward $1$, via a union bound over the
+$\sim3^{\ell-1}$ pairs combined with the exact recursive identity
+$W_\ell(k)=N_\ell(k)+\tfrac14W_\ell(A(k))$ used above.
+
+A natural attempt to close it directly --- a $3$-adic Weyl-sum
+estimate for the mixed character sums attached to the two pair types of
+O2 --- fails for a structural, not merely technical, reason: the
+relevant sums achieve the maximal square-root cancellation available at
+every primitive frequency, but the operator $T/|G|$ they define is,
+in the character basis, the matrix of composition with a bijection of
+the underlying group, hence unitary; composing with a bijection is an
+$L^2$ isometry, so the route returns exactly the trivial
+Cauchy--Schwarz bound at every density, and in particular can never be
+nontrivial for the specific pair the union bound needs. No bound
+depending only on the two set sizes and spectral data of that bijection
+can close O2's remaining gap, however strong the individual character
+sum estimates are.
+
+Theorem~\ref{thm:cascade-factor}, the certified bound, the saturation
+measurement, and the Weyl-sum obstruction are all verified in
+\texttt{collatz-endogeny/\allowbreak sec9-worst-cylinder-cascade}.
+
 \subsection{Wirsching's 2003 functional equation and the base-$3$
 Fabius function}
 
@@ -1742,6 +1818,66 @@ Theorem~\ref{thm:logarithmic-collision} above are all verified in
 including the general-$q$ case for
 $q=7,11,13,17,19$.
 
+Theorem~\ref{thm:logarithmic-collision} needs $q$ prime and the maximal
+lifting hypothesis $v_q(2^d-1)=1$. Conditioning on the first exponent
+instead of diagonalizing removes both restrictions.
+
+\begin{theorem}[Diagonal-term collision rate, unconditional]
+\label{thm:diagonal-collision}
+For every odd $q\ge3$ (prime or composite), with $Y=1+qF_{\ell-1}$ and
+$H_{\ell-1}(s):=q^{\ell-1}\Pr[Y'=2^sY\bmod q^\ell]$,
+\[
+ K_{q,\ell}=\frac q3\sum_{s\in\mathbb Z}2^{-|s|}H_{\ell-1}(s),
+ \qquad H_{\ell-1}(0)=K_{q,\ell-1},
+\]
+with every term nonnegative. Dropping every $s\ne0$ gives, for every
+$\ell\ge1$,
+\begin{equation}\label{eq:diagonal-rate}
+ K_{q,\ell}\ge\frac q3K_{q,\ell-1},
+ \qquad\text{hence}\qquad
+ K_{q,\ell}\ge\Bigl(\frac q3\Bigr)^\ell.
+\end{equation}
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+The exponents in the Syracuse recursion are i.i.d.\ geometric on
+$\{1,2,\ldots\}$, so the exponent gap between two independent copies has
+law $\Pr[a'-a=s]=2^{-|s|}/3$, and two copies collide exactly when
+$Y'=2^sY$. Each $H_{\ell-1}(s)$ is a probability times a nonnegative
+constant, so the sum is termwise nonnegative; dropping the off-diagonal
+terms ($s\ne0$) can only decrease the right-hand side, giving the
+displayed inequality. This is the Fourier dual of
+Theorem~\ref{thm:logarithmic-collision}, with $q/3$ its circle average;
+what the time-domain form adds is termwise nonnegativity, invisible in
+the signed spectral balance. Full derivation and the numerical
+verification (identity checked to $2\times10^{-13}$; ratio never below
+$q/3$, for $q\in\{3,5,7,9,11,13,15,21,25\}$) are in the accompanying
+repository.
+\end{proof}
+
+Since $c_{q,d}<q/3$ for every $d$, \eqref{eq:diagonal-rate} strictly
+improves Theorem~\ref{thm:logarithmic-collision}'s constant for every
+$q\ge5$ where the latter applies, and it covers the exceptional
+(Wieferich) primes and composite odd $q$, both excluded there. At
+$q=3$ the rate is $q/3=1$: only monotonicity, already known from
+Theorem~\ref{thm:multiscale-parseval}. What is new at $q=3$ is a
+reduction: writing $G_{\ell-1}(r):=H_{\ell-1}(2r)$, the increment is
+\[
+ K_\ell-K_{\ell-1}=2\sum_{r\ge1}4^{-r}G_{\ell-1}(r)
+ \ge\tfrac12G_{\ell-1}(1)=\tfrac12T_{\ell-1}(4,1),
+ \qquad
+ T_\ell(u,v):=3^\ell\Pr[F'=uF+v\bmod3^\ell],
+\]
+so the missing uniform margin for $q=3$ reduces to a single affine
+shifted collision, involving no cancellation, only positivity. Measured
+through $\ell=8$, $T_\ell(4,1)$ rises slowly through $0.72$; the
+infimum of $T_\ell(u,v)$ over every affine state flattens near $0.191$.
+Two natural certificate constructions for a uniform lower bound on
+$T_\ell(4,1)$ (state-by-state induction; a finite-resolution
+subinvariant) both fail, for reasons recorded in the accompanying
+repository. This is verified in
+\texttt{collatz-endogeny/\allowbreak sec10-diagonal-shifted-collision}.
+
 \begin{definition}[Primitive spectral concentration
 $SC_{\rm prim}(\varepsilon)$]
 $\mu_{\ell,j}$ (the law of $Y=\sum R\bmod 3^\ell$) satisfies
@@ -2074,16 +2210,28 @@ other seven contain open mathematical statements.
   Remark~\ref{rem:barrier-reading}). Pairwise fresh-digit independence
   is impossible: Theorem~\ref{thm:fresh-digit-coupling} gives total
   variation $1-3^{-s}$ and mutual information $s\log3$ for every fixed
-  path pair. The open arithmetic statement concerns cancellation only
-  after independent averaging over the two path indices and removal of
-  the exact coarse affine modes.
+  path pair. Averaging over the branching measure on the sibling gap
+  does not repair this in either total variation or mutual information,
+  but the diagonal Fourier coefficient the second-moment route actually
+  consumes does cancel under that same average, with the surviving
+  resonance confined to the coarse affine mode this direction already
+  discards; the gap is that this cancellation is over the free
+  arithmetic parameter of the coupling theorem, not over the two path
+  indices at a fixed integer, which is what the route needs and remains
+  open.
 \item \textbf{Wirsching's Weak Covering Conjecture} (Conjecture~\ref{conj:wcc}),
   and the stronger weighted covering estimate needed for Tao's
   $\beta=1$ (\S\ref{sec:triangulation}). Proposition~\ref{prop:beta-wcc}
   identifies their common support. Theorem~\ref{thm:wcc-large-deviation}
   proves that even ideal multiplicity inside the WCC cost slice remains
   exponentially insufficient; the weighted estimate must reach the
-  typical cost window.
+  typical cost window. Theorem~\ref{thm:cascade-factor} now gives an
+  unconditional bound, $\beta_{\mathrm{eff}}\le1.882712$, from an
+  inter-level identity independent of this microcanonical machinery;
+  the remaining gap to $\beta_{\mathrm{eff}}\to1$ is exactly a pairwise
+  anti-concentration inequality, for which the natural $3$-adic
+  Weyl-sum approach is shown to fail for a structural (unitarity)
+  reason, not a technical one.
 \item \textbf{Wirsching's Conjecture 2} (\S\ref{sec:triangulation}),
   above the numerically tested Conjecture~3. Conjecture~1 is proved in
   Theorem~\ref{thm:wirsching-conj1}. Theorem~\ref{thm:microcanonical}
@@ -2093,6 +2241,13 @@ other seven contain open mathematical statements.
   canonical weights to fixed cost. Theorem~\ref{thm:ensemble-divergence}
   shows that their likelihood gap is at most polynomial at every
   precision, but in the direction opposite to the required lower bound.
+  Reading Wirsching's chain directly against the primary source shows
+  Conjecture~2's actual target, condition $(?4)$, is a statement purely
+  about the one-dimensional averaging operator $W_3$ carrying no
+  information about the residue coordinate the rest of the chain needs;
+  a previously proposed sufficient condition for it failed for exactly
+  this reason, not the one originally supposed
+  \cite{WirschingCompanion}.
 \item \textbf{Exponential control of the fine-frequency tail at depth
   $\ell\asymp D$} (\S\ref{sec:regimes}, Regime~3), after separating
   sublinear-conductor modes. Theorem~\ref{thm:sublinear-precision-ensemble}
@@ -2103,7 +2258,18 @@ other seven contain open mathematical statements.
   vectors, although this separation need not survive the residue map.
   The remaining linear-precision estimate is the input
   required by the second-moment route; Remark~\ref{thm:regime3}
-  records nearby open theories without claiming an equivalence.
+  records nearby open theories without claiming an equivalence. Posed
+  per first-step class, O4's pointwise target would imply, via the
+  same Parseval identity underlying Theorem~\ref{thm:multiscale-parseval},
+  the $L^2$ finiteness condition of O7 --- a bridge in the opposite
+  direction from the one used elsewhere in this paper, not previously
+  recorded. Measured through $\ell=15$, the primitive spectrum sits
+  at the square-root scale on average but is visibly concentrated, not
+  flat, and the sublinear-conductor separation this regime's own
+  argument requires removes only an asymptotically vanishing fraction
+  of the total mass; O4 does not reduce to O2, since inverting a
+  pointwise Fourier bound over $3^r$ frequencies costs a factor
+  $3^{r/2}$ above the cylinder scale O2 controls.
 \item \textbf{Exclusion of primitively spectrally diffuse Weak Covering
   Conjecture failures}. Proposition~\ref{prop:primitive-hole} proves
   that a support hole alone need not produce any primitive Fourier
@@ -2112,8 +2278,14 @@ other seven contain open mathematical statements.
   three fresh children of each residue. Projective compatibility and
   inherited holes still allow zero primitive spectrum.
   Proposition~\ref{thm:propC} shows that the
-  annealed $\ell^1$ budget tested here has insufficient strength; it
-  does not rule out other $\ell^1$ arguments.
+  annealed $\ell^1$ budget tested here has insufficient strength. The
+  entire wider family of annealed $\ell^r$ budgets, $r\ge1$, has since
+  been tested and none closes the gap: the closing criterion is the
+  same for every $r$ and only gets harder as $r$ grows, so $r=1$ was
+  already the best member of the family, and the deficit's true
+  inversion point is $\gamma\approx3.31$, not the $\gamma=3$ stated
+  above, since the identity behind Theorem~\ref{thm:jensen} requires
+  $p\ge\tfrac12$ and degrades strictly below it.
 \item \textbf{Fixed-modulus residue balance, audit closed}
   (\S\ref{sec:context}). The statistic proposed in \cite{Chang2026}
   was tested here, but its claimed implication depends on an unspecified
@@ -2131,8 +2303,15 @@ other seven contain open mathematical statements.
   identity in Theorem~\ref{thm:logarithmic-collision} gives exponential
   collision growth for the nonexceptional primes $q\ge5$ and expresses
   the remaining $q=3$ increment as an explicit low-versus-high spectral
-  balance. It does not yet give a uniform sign margin at $q=3$. The matching
-  i.i.d. statement is
+  balance, without yet giving a uniform sign margin there.
+  Theorem~\ref{thm:diagonal-collision} now gives an unconditional
+  collision rate $K_{q,\ell}\ge(q/3)^\ell$ for every odd $q\ge3$, prime
+  or composite, with no maximal-lifting hypothesis, strictly improving
+  the constant above for every $q\ge5$ where it applies and covering
+  the exceptional primes it excludes; at $q=3$ it reduces the missing
+  margin to a single affine shifted collision, positivity only, no
+  cancellation, measured but not yet uniformly bounded below. The
+  matching i.i.d. statement is
   Theorem~\ref{thm:iid-tail}; its arithmetic transfer remains open.
   Empirical
   support, however, has substantially strengthened since the original
@@ -2159,7 +2338,14 @@ other seven contain open mathematical statements.
   Growth Exponent Conjecture of Kontorovich--Lagarias and
   Applegate--Lagarias, open since 1995, of
   which the best unconditional partial result remains the one-sided
-  bound of Krasikov--Lagarias \cite{KrasikovLagarias2003}.
+  bound of Krasikov--Lagarias \cite{KrasikovLagarias2003}. A companion
+  paper gives a calibrated empirical measurement at $q=5$, separated
+  from a competing prediction (Volkov's, discussed in
+  \cite{KontorovichLagarias2009}) by ten interval-widths once the
+  estimator's own bias is calibrated out with matched synthetic
+  controls \cite{KLVolkovCompanion}; this is evidence, not a proof, and
+  it targets the disputed exponent value rather than Volkov's branching
+  model itself.
 \end{enumerate}
 
 Any progress on any one of (O1)--(O8) would very likely transfer, given
