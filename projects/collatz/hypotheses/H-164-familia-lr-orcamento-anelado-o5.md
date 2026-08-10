@@ -1,4 +1,4 @@
-# H-162: a família de orçamentos l^r para O5, e por que a norma não é a variável livre
+# H-164: a família de orçamentos l^r para O5, e por que a norma não é a variável livre
 
 Status: fechada-refutada (a hipótese testada era "outra norma fecha o
 hiato de 1,88"; ela é falsa, e falsa por uma razão exata)

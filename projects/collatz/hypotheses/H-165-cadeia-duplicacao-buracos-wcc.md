@@ -1,4 +1,4 @@
-# H-163: rigidez por duplicação dos buracos da WCC (mecanismo sem orçamento)
+# H-165: rigidez por duplicação dos buracos da WCC (mecanismo sem orçamento)
 
 Status: fechada-inconclusiva. A estrutura é exata e verificada, mas
 quantitativamente fraca demais para excluir uma falha da WCC; fechá-la
@@ -8,7 +8,7 @@ Criada em: 2026-08-09
 
 Origem: metade (b) da tarefa sobre O5, procurar um mecanismo de exclusão
 genuinamente diferente, não baseado em orçamento de Fourier, depois que
-H-162 mostrou que a família `l^r` inteira está esgotada.
+H-164 mostrou que a família `l^r` inteira está esgotada.
 
 ## A estrutura
 
@@ -112,6 +112,6 @@ resultado assintótico. Nada aqui exclui uma falha da WCC.
 
 - H-114 (WCC, medição de `j*/ell`), H-127 (definição de `R_{ell-1,j}`,
   Etapa 6).
-- H-162 (a metade de orçamento da mesma tarefa; esta hipótese é a
+- H-164 (a metade de orçamento da mesma tarefa; esta hipótese é a
   resposta à outra metade).
 - E-136, `hole_chain.py`.

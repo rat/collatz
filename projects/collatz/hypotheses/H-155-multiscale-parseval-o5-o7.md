@@ -60,7 +60,7 @@ independente de refinamentos de Dirichlet até o nível 12.
 ## Atualização 2026-08-09: a ponte para O5, quantificada, e o que ela custa
 
 Sessão dirigida a O5. Detalhe em
-[`H-162`](H-162-familia-lr-orcamento-anelado-o5.md), numérica em
+[`H-164`](H-164-familia-lr-orcamento-anelado-o5.md), numérica em
 [`E-136`](../experiments/E-136-lr-budget-sweep-hole-chain/README.md).
 
 **Desigualdade de cascas.** Cauchy-Schwarz dentro de cada casca de

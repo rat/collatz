@@ -1,8 +1,8 @@
 # E-136: the l^r budget family for O5, and the doubling structure of WCC holes
 
 Related hypotheses:
-[`H-162`](../../hypotheses/H-162-familia-lr-orcamento-anelado-o5.md),
-[`H-163`](../../hypotheses/H-163-cadeia-duplicacao-buracos-wcc.md),
+[`H-164`](../../hypotheses/H-164-familia-lr-orcamento-anelado-o5.md),
+[`H-165`](../../hypotheses/H-165-cadeia-duplicacao-buracos-wcc.md),
 [`H-127`](../../hypotheses/H-127-reducao-z-number-dicotomia-espectral-wcc.md).
 
 Two independent parts, both aimed at O5 (excluding a primitively

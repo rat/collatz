@@ -455,7 +455,7 @@ independente do destino do Lema B).
   `l^r` inteira está esgotada, e o número 3 da Proposição C está
   subestimado.** Sessão dirigida a O5, perguntando se um orçamento mais
   apertado ou em outra norma fecharia o hiato. Detalhe completo em
-  [`H-162`](H-162-familia-lr-orcamento-anelado-o5.md), numérica em
+  [`H-164`](H-164-familia-lr-orcamento-anelado-o5.md), numérica em
   [`E-136`](../experiments/E-136-lr-budget-sweep-hole-chain/README.md).
   Quatro achados.
 
@@ -509,7 +509,7 @@ independente do destino do Lema B).
   idêntico. Não fica estabelecido que nenhum argumento `l^r` funcione.
 
   **Rota (b) da mesma tarefa, mecanismo sem orçamento:** ver
-  [`H-163`](H-163-cadeia-duplicacao-buracos-wcc.md). `2 S_j subset
+  [`H-165`](H-165-cadeia-duplicacao-buracos-wcc.md). `2 S_j subset
   S_{j+1}` força `H_{j+m} subset interseccao_k 2^k H_j`, logo buracos
   vêm em progressões geométricas de razão `1/2` e `|H_j| >= j*-j`.
   Exato e verificado até `ell = 10`, mas linear contra `2*3^{ell-1}`:
