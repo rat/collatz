@@ -51,6 +51,8 @@ python3 annealed_exact.py 5
 ./tree_counts --q 5 --cycq 5.05398 --roots 300 --cp 4 8 --buf 9 13 --out data/q5_cycq505_b13.txt
 python3 summary.py                     # a tabela de comparação
 ./run_deep.sh                          # o lote profundo casado, dezenas de minutos
+python3 summary.py b15 10              # a mesma tabela na década 1e9->1e10
+python3 buffer_squeeze.py data/q5_arith_b17.txt
 ```
 
 ## Os quatro modos

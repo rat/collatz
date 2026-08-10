@@ -52,6 +52,8 @@ python3 annealed_exact.py 5
 ./tree_counts --q 5 --cycq 5.05398 --roots 300 --cp 4 8 --buf 9 13 --out data/q5_cycq505_b13.txt
 python3 summary.py                     # the comparison table
 ./run_deep.sh                          # the matched deep batch, tens of minutes
+python3 summary.py b15 10              # the same table at decade 1e9->1e10
+python3 buffer_squeeze.py data/q5_arith_b17.txt
 ```
 
 ## The four modes
