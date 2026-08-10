@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-E-133, part 2: check that the i.i.d. simulator reproduces the exact annealed
+E-139, part 2: check that the i.i.d. simulator reproduces the exact annealed
 count of `annealed_exact.py`.
 
 One correction has to be applied before they can be compared. The closed

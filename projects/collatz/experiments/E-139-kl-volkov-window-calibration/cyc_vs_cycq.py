@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-E-133, part 6: is `cycq` at qval = q the same process as `cyc`?
+E-139, part 6: is `cycq` at qval = q the same process as `cyc`?
 
 It has to be. `cyc` runs the integer recursion w = floor((2^a u - 1)/q) with
 the sibling residues advancing by c; `cycq` runs the same branching with the

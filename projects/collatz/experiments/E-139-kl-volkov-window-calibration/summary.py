@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-E-133, part 7: the comparison table.
+E-139, part 7: the comparison table.
 
 Every row is the same estimator on the same 300 roots with the same window
 and the same truncation buffers. Only the process differs. Two of the rows

@@ -117,7 +117,7 @@ casas decimais foi coincidência estatística, não evidência. O resultado
 válido e citável é este H-113 (slope de contagem por década, n=300,
 com correção de Richardson), não o Hill estimator da rodada anterior.
 
-## 2026-08-09 (E-133): o veredito acima chegou na direção certa por um método que não a sustentava
+## 2026-08-09 (E-139): o veredito acima chegou na direção certa por um método que não a sustentava
 
 Trabalho em O8. Cinco coisas, em ordem de importância.
 
@@ -138,11 +138,11 @@ nunca foram atualizados. O paper está certo; estes dois arquivos é que
 estão velhos. Não editei `OUTLINE.md` (fora do escopo desta sessão);
 fica sinalizado.
 
-### 2. O que E-133 acrescenta a H-137: o tamanho do viés
+### 2. O que E-139 acrescenta a H-137: o tamanho do viés
 
 H-137 disse que existe viés sistemático fora do intervalo e que o
 experimento "favorece a direção da previsão de Kontorovich--Lagarias".
-A primeira metade estava certa e E-133 põe número nela. A segunda metade
+A primeira metade estava certa e E-139 põe número nela. A segunda metade
 não se sustentava no que estava medido: com viés de 0.038 sobre uma
 separação de 0.027, a leitura crua não favorece direção nenhuma. Ela
 volta a valer, agora com suporte, depois do controle calibrado da seção
@@ -159,7 +159,7 @@ muda entre os modos é de onde vem a classe de ramo de um nó:
   pressão anelada é a do paper, logo seu expoente de contagem **é**
   `alpha_-(5) = 0.650919`, provadamente;
 - `cyc`: como `iid`, mas os irmãos avançam de `+3 mod 5`, que é o que a
-  árvore aritmética faz exatamente (H-162).
+  árvore aritmética faz exatamente (H-169).
 
 Mesma janela `1e5..1e8`, mesmas 300 raízes, mesmos buffers, mesmo
 Aitken, mesmo bootstrap (valores de `summary.py`):
@@ -224,7 +224,7 @@ Com viés de 0.038, isso não decide nada.
 
 A correção: rodar o mesmo estimador num processo construído para ter
 expoente 0.650919 e noutro construído para ter 0.678, e ver qual leitura
-a árvore aritmética casa. Modo `cycq` de E-133: a estrutura de `cyc` com
+a árvore aritmética casa. Modo `cycq` de E-139: a estrutura de `cyc` com
 o denominador de valor trocado por um real `qval`, e o expoente resolve
 `qval^alpha = q(2^alpha - 1)`. `qval=5.00000` dá 0.650919 e
 `qval=5.05398` dá 0.678. Conferido contra a forma fechada anelada, que
@@ -316,7 +316,7 @@ buffer:
 | 1e11→1e12 | 0.6505 | [0.6503, 0.6508] | 0.0004 |
 
 As bandas cobrem só reamostragem de raízes; o erro da extrapolação de
-truncamento está limitado em 0.002 (E-133, `buffer_squeeze.py`), então
+truncamento está limitado em 0.002 (E-139, `buffer_squeeze.py`), então
 leia as décadas profundas como `0.6505 ± 0.002` contra 0.650919 e 0.678.
 O estimador de janela satura em 0.63778 no buffer `1e17`, confirmando
 que o Aitken de buffer de E-097 estava certo e que toda a diferença
@@ -333,7 +333,7 @@ continua sendo O1/O7.
 
 ### Arquivos
 
-`experiments/E-133-kl-volkov-window-calibration/`. Ver também H-162
+`experiments/E-139-kl-volkov-window-calibration/`. Ver também H-169
 (congruência de irmãos, provada aqui) e H-137 (a auditoria anterior).
 
 ### Erro meu, registrado

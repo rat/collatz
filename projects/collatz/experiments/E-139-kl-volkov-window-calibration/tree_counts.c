@@ -1,5 +1,5 @@
 /*
- * E-133 -- matched enumeration of the qx+1 reverse tree and of its i.i.d.
+ * E-139 -- matched enumeration of the qx+1 reverse tree and of its i.i.d.
  * control, for calibrating the finite-window bias of the counting-exponent
  * estimator used in H-113 / E-097.
  *

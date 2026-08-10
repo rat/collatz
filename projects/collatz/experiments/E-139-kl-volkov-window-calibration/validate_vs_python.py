@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-E-133 validation: the C enumerator must reproduce, entry by entry, the
+E-139 validation: the C enumerator must reproduce, entry by entry, the
 count matrix of the original E-097 Python enumerator
 (`experiment_gate_richardson.decade_counts_2d_v2`).
 

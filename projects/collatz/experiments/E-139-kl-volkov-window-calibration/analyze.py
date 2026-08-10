@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-E-133 analysis: turn a count matrix produced by `tree_counts` into
+E-139 analysis: turn a count matrix produced by `tree_counts` into
 
   1. the E-097 estimator, reproduced exactly (fixed window, Aitken in the
      truncation buffer, bootstrap over roots);

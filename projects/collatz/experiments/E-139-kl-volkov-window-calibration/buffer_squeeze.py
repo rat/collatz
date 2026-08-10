@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-E-133, part 5: how much does the truncation extrapolation itself cost?
+E-139, part 5: how much does the truncation extrapolation itself cost?
 
 The deepest decades of the deep run have the fewest buffers above them, so
 their Aitken step is the least constrained: at decade 1e11->1e12 with

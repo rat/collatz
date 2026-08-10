@@ -1,8 +1,8 @@
-# E-133 -- calibrating the Kontorovich-Lagarias versus Volkov gate (H-113, O8)
+# E-139 -- calibrating the Kontorovich-Lagarias versus Volkov gate (H-113, O8)
 
 Related hypotheses:
 [`H-113`](../../hypotheses/H-113-statistical-gate-kontorovich-lagarias-vs-volkov.md),
-[`H-162`](../../hypotheses/H-162-congruencia-de-irmaos-qx1.md).
+[`H-169`](../../hypotheses/H-169-congruencia-de-irmaos-qx1.md).
 Predecessor experiment: [`E-097`](../E-097-qx1-empirical-gate/).
 
 ## The question
@@ -67,7 +67,7 @@ residue or a draw, and nothing else differs:
   counting exponent is provably `alpha_-(q) = 0.650919` at `q = 5`.
 - `cyc`: the first sibling's class is drawn, and successive siblings
   advance by `c = ((2^d-1)/q) mod q`, which is what the arithmetic tree
-  does exactly (H-162).
+  does exactly (H-169).
 - `cycq qval`: the `cyc` structure with the value denominator replaced by
   a real `qval`, so the exponent becomes tunable. It solves
   `qval^alpha = q(2^alpha - 1)`: `qval = 5.00000` gives 0.650919 and

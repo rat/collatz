@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-E-133, part 4: is the arithmetic tree's low spread a real property, or just
+E-139, part 4: is the arithmetic tree's low spread a real property, or just
 bookkeeping?
 
 Mode `arith` gives one deterministic tree per root, while `cyc` and `iid`

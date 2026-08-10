@@ -1,5 +1,5 @@
 #!/bin/sh
-# E-133: the deep runs. Five processes, same roots, same checkpoints, same
+# E-139: the deep runs. Five processes, same roots, same checkpoints, same
 # buffers, so every decade is comparable across all of them.
 #
 # Buffer 1e15 rather than 1e17. The stochastic controls have a heavy-tailed

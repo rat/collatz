@@ -1,8 +1,8 @@
-# E-133 -- calibração do portão Kontorovich-Lagarias versus Volkov (H-113, O8)
+# E-139 -- calibração do portão Kontorovich-Lagarias versus Volkov (H-113, O8)
 
 Hipóteses relacionadas:
 [`H-113`](../../hypotheses/H-113-statistical-gate-kontorovich-lagarias-vs-volkov.md),
-[`H-162`](../../hypotheses/H-162-congruencia-de-irmaos-qx1.md).
+[`H-169`](../../hypotheses/H-169-congruencia-de-irmaos-qx1.md).
 Experimento predecessor: [`E-097`](../E-097-qx1-empirical-gate/).
 
 ## A pergunta
@@ -67,7 +67,7 @@ o resíduo verdadeiro ou é um sorteio, e nada mais difere:
   `q = 5`.
 - `cyc`: a classe do primeiro irmão é sorteada, e irmãos sucessivos
   avançam de `c = ((2^d-1)/q) mod q`, que é exatamente o que a árvore
-  aritmética faz (H-162).
+  aritmética faz (H-169).
 - `cycq qval`: a estrutura de `cyc` com o denominador de valor trocado
   por um real `qval`, o que torna o expoente ajustável. Ele resolve
   `qval^alpha = q(2^alpha - 1)`: `qval = 5.00000` dá 0.650919 e

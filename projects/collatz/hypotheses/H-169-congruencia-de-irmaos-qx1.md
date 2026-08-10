@@ -1,9 +1,9 @@
-# H-162: congruência de irmãos na árvore reversa de qx+1
+# H-169: congruência de irmãos na árvore reversa de qx+1
 
 Status: fechada-confirmada como enunciado estrutural (prova de duas
 linhas, verificada numericamente em `q=3` e `q=5`). Sobre o papel dela
 em explicar a flutuação reduzida da árvore aritmética: no desenho de
-E-133 ela dá conta de toda a diferença mensurável contra o modelo iid,
+E-139 ela dá conta de toda a diferença mensurável contra o modelo iid,
 e não sobra efeito residual detectável. Sobre o estimador de contagem
 ela cobre cerca de metade do caminho, dentro de um ruído de 0.0035.
 Além disso, foi ela que permitiu construir o controle de expoente
@@ -51,13 +51,13 @@ Valores: `q=3`, `d=2`, `c=1`; `q=5`, `d=4`, `c=3`; `q=7`, `d=3`, `c=1`.
 
 Verificação numérica direta (todo `u` ímpar `< 4000`, 6 irmãos cada):
 0 violações em `q=3` e `q=5`. Ver
-`experiments/E-133-kl-volkov-window-calibration/`.
+`experiments/E-139-kl-volkov-window-calibration/`.
 
 ## Relação com H-018
 
 Para `q=3` isto é exatamente o Teorema 2 de H-018 (periodicidade mod 3
 dos galhos de primeiro nível ao longo de uma cadeia de duplicação, com
-período 3, lá derivado de `ord_9(4)=3`). H-162 é a generalização para
+período 3, lá derivado de `ord_9(4)=3`). H-169 é a generalização para
 `qx+1` arbitrário, com a constante `c` identificada e a condição de
 Wieferich isolada. Não substitui H-018; estende.
 
@@ -69,7 +69,7 @@ não altera a equação de pressão do paper: para cada expoente `n >= 1`,
 o número esperado de filhos de um nó no expoente exatamente `n` é
 `1/q`, porque a condição é `2^n r == 1 (mod q)`, ou seja `r == 2^(-n)`,
 uma única classe entre `q`. Confirmei numericamente que a forma fechada
-recíproca (ver E-133, `annealed_exact.py`) bate com a soma dupla bruta
+recíproca (ver E-139, `annealed_exact.py`) bate com a soma dupla bruta
 também em `q=7`.
 
 ## O que foi testado sobre o papel explicativo (parcial)
@@ -79,7 +79,7 @@ modelo iid não tem (no iid cada irmão é estéril por moeda independente,
 mesma média, variância maior), e por isso a árvore aritmética
 convergiria mais rápido do que o modelo no mesmo estimador.
 
-Medido em E-133, `q=5`, mesmas 300 raízes, mesma janela `1e5..1e8`,
+Medido em E-139, `q=5`, mesmas 300 raízes, mesma janela `1e5..1e8`,
 mesmos buffers, estimador de H-113 idêntico nos três casos:
 
 | modo | descrição | estimador (Aitken) | sd de log10 N(1e8), buffer 1e13 |
@@ -92,7 +92,7 @@ mesmos buffers, estimador de H-113 idêntico nos três casos:
 
 Esta tabela é sobre variância, não sobre o veredito KL versus Volkov. O
 veredito depende de um quarto controle, `cycq`, de expoente ajustável,
-que veio depois; ver H-113 e o README de E-133.
+que veio depois; ver H-113 e o README de E-139.
 
 Não leia a coluna do estimador como se `cyc` fosse a referência exata
 de `arith`. `cyc` e `cycq(5.0)` são o mesmo processo por construção e,
@@ -149,4 +149,4 @@ erros-padrão. O percentil está medindo a amostra de raízes, não a
 - H-018 (Teorema 2, caso `q=3`).
 - H-113 e `experiments/E-097-qx1-empirical-gate/` (o estimador
   calibrado aqui).
-- `experiments/E-133-kl-volkov-window-calibration/`.
+- `experiments/E-139-kl-volkov-window-calibration/`.

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-E-133, part 1: the exact annealed counting function of the i.i.d. model,
+E-139, part 1: the exact annealed counting function of the i.i.d. model,
 in closed form, with no simulation.
 
 For the branching random walk whose annealed pressure is

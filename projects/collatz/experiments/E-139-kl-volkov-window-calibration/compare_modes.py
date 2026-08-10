@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-E-133, part 3: where the arithmetic tree and its stochastic controls differ.
+E-139, part 3: where the arithmetic tree and its stochastic controls differ.
 
 All three runs use the same 300 roots, the same window and the same
 truncation buffers, so the columns are directly comparable.
