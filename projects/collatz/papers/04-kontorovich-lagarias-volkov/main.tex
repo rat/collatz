@@ -1,0 +1,301 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\usepackage{orcidlink}
+\usepackage{fontawesome5}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{empirical}[theorem]{Empirical Result}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\DeclareMathOperator{\ord}{ord}
+
+\title{A Calibrated Separation of the Kontorovich--Lagarias\\
+and Volkov Exponent Predictions for the $5x+1$ Reverse Tree}
+
+\author{Renato Augusto Tavares~{\small\href{mailto:dr.renatotavares@gmail.com}{\textcolor{black}{\faEnvelope}}}~\orcidlink{0009-0002-0196-3311}\\
+\normalsize Universidade Federal de Goiás\\
+\small \href{https://orcid.org/0009-0002-0196-3311}{https://orcid.org/0009-0002-0196-3311}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+% DRAFT -- rewrite by hand before submission (Rule 4b: abstracts carry
+% the highest marker density of any section in the paper).
+Kontorovich and Lagarias predict a counting exponent
+$\eta_{5,BP}\approx0.650919$ for the reverse tree of the accelerated
+$5x+1$ map, and note a competing prediction $\eta^\ast_{5,BP}\approx
+0.678$ due to Volkov, leaving the two unresolved for lack of
+sufficiently powerful data. We report an exact enumeration with
+Aitken-extrapolated truncation correction that reaches only $0.639$,
+a fixed-window reading that excludes neither value. We then show the
+estimator itself is biased by more than the gap separating the two
+predictions when applied to a process of known exponent, so a raw
+reading cannot settle the dispute at all. Building synthetic controls
+that share the arithmetic tree's branching and sibling structure but
+target a chosen exponent, via an exact sibling congruence in the
+reverse tree, we obtain a calibrated comparison at the depth where
+the controls read their own target exponent to within $0.003$: the
+arithmetic tree separates clearly from a control at $0.678$ and
+matches controls at $0.650919$. The result is a measurement with
+calibrated controls, not a proof, and targets the exponent value in
+dispute rather than Volkov's branching model itself.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:intro}
+
+The Collatz, or $3x+1$, conjecture asks whether every positive integer
+eventually reaches $1$ under the map $n\mapsto n/2$ ($n$ even),
+$n\mapsto3n+1$ ($n$ odd). Kontorovich and Lagarias
+\cite{KontorovichLagarias2009} study the generalization to $qx+1$ maps
+through the counting statistics of the associated reverse tree, and
+give a stochastic model predicting a counting exponent
+$\eta_{q,BP}$ governing the growth of $N_u(x)$, the number of integers
+up to $x$ that eventually map to a fixed residue $u$. At $q=5$ this
+model predicts $\eta_{5,BP}\approx0.650919$. In the same reference the
+authors discuss a competing branching model due to Volkov, predicting
+$\eta^\ast_{5,BP}\approx0.678$, and note explicitly that the two
+predictions are close enough ($\Delta=0.027$) that available numerical
+data could not discriminate between them, calling for further
+investigation.
+
+This paper reports such an investigation. \S\ref{sec:setup} fixes the
+reverse-tree construction and records an exact sibling congruence used
+later to build calibrated controls. \S\ref{sec:dispute} restates the
+dispute precisely. \S\ref{sec:method}--\S\ref{sec:result} report a
+direct exact enumeration, reaching a fixed-window reading of $0.639$
+that, on its own, excludes neither prediction.
+\S\ref{sec:calibrated} is the paper's contribution: we show this
+estimator is biased on a process of \emph{known} exponent by more than
+the gap in dispute, so the raw reading in \S\ref{sec:result} was never
+evidence against either side, and we then build matched synthetic
+controls that isolate and calibrate out that bias, obtaining a clear
+separation from the disputed value $0.678$.
+
+\section{Setup: the reverse tree of the accelerated $qx+1$ map}
+\label{sec:setup}
+
+Fix an odd integer $q\ge3$ coprime to $2$. The \emph{accelerated
+$qx+1$ map} is
+\[
+  T_q(n) = \frac{qn+1}{2^{v_2(qn+1)}}, \qquad n \text{ odd},
+\]
+where $v_2$ is the $2$-adic valuation. The \emph{reverse tree} rooted
+at an odd integer $u$ coprime to $q$ is built by, at each odd node
+$u$, adjoining a child $w_a := (2^a u - 1)/q$ for every $a\ge1$ such
+that $2^a u\equiv1\pmod q$; such $w_a$ is automatically an odd integer
+whenever it is an integer. Writing $d:=\ord_q(2)$, admissibility of
+$a$ for a given parent $u$ depends only on $u\bmod q$: if some
+$a_0(u)\in\{1,\dots,d\}$ satisfies $2^{a_0(u)}u\equiv1\pmod q$, it is
+unique, and the admissible exponents are exactly $a\equiv a_0(u)\pmod
+d$. At $q=5$, $d=4$ and $A_0=\{1\mapsto4,\allowbreak2\mapsto3,
+\allowbreak3\mapsto1,\allowbreak4\mapsto2\}$; nodes with $u\equiv
+0\pmod5$ are sterile, and, unlike $q=3$, there is no further parity
+condition beyond integrality mod $5$.
+
+We count distinct integer labels rather than path occurrences:
+\[
+ N_u(x):=\#\{n\le x:n\text{ odd and }T_q^k(n)=u
+                    \text{ for some }k\ge0\}.
+\]
+
+\begin{lemma}[Sibling congruence]
+\label{lem:sibling-congruence}
+Let $q\ge3$ be odd, $d=\ord_q(2)$, and $u$ odd with $2^au\equiv1\pmod
+q$ solvable. The children of $u$ in the accelerated reverse tree are
+$w_j=(2^{a_0+jd}u-1)/q$, $j\ge0$, where $a_0=a_0(u)$. Then
+\[
+  w_{j+1} = 2^d w_j + \frac{2^d-1}{q} \qquad\text{(exact identity in
+  $\mathbb Z$)},
+\]
+and consequently $w_{j+1}\equiv w_j+c\pmod q$, with
+$c:=\bigl((2^d-1)/q\bigr)\bmod q$.
+\end{lemma}
+
+\begin{proof}
+Direct substitution: $2^d w_j+(2^d-1)/q =
+\bigl(2^{a_0+(j+1)d}u-2^d+2^d-1\bigr)/q = w_{j+1}$. The congruence
+follows from $2^d\equiv1\pmod q$.
+\end{proof}
+
+When $q$ is prime, $c=0$ would force $q^2\mid2^d-1$, the base-$2$
+Wieferich condition; the only known Wieferich primes are $1093$ and
+$3511$, so $c\ne0$ for every $q$ of interest here, and consecutive
+siblings' residues mod $q$ advance by a fixed nonzero step. At $q=5$,
+$d=4$, $c=3$.
+
+\section{The dispute}
+\label{sec:dispute}
+
+For the reverse tree of $T_5$, Kontorovich--Lagarias
+\cite{KontorovichLagarias2009} predict a counting exponent
+$\eta_{5,BP}\approx0.650919$, while a competing stochastic model due
+to Volkov, discussed in the same reference, predicts
+$\eta^\ast_{5,BP}\approx0.678$. The authors themselves flag this as an
+open dispute, unresolved for lack of sufficiently powerful data; the
+two predictions differ by only $\Delta=0.027$.
+
+\section{Method}
+\label{sec:method}
+
+We implemented the exact reverse tree of $T_5$ from scratch (the
+admissibility rule of \S\ref{sec:setup} specialized to $q=5$).
+
+A first pilot ($60$ roots) already gave a slope of $0.6433$ (95\% CI
+$[0.6327,0.6531]$), excluding $0.678$ by roughly $6.4$ standard
+errors. A larger production run ($n=300$ roots) initially sampled
+roots too close to the measurement window's lower checkpoint,
+contaminating the truncation buffer; correcting this (roots restricted
+well below the window) gave a slope of $0.63801$ (95\% CI
+$[0.63159,0.64410]$) --- which, at this sample size, excluded
+\emph{both} candidate values ($0.678$ by $12.6$ standard errors, but
+also $0.650919$ by $4.1$ standard errors), a failure mode anticipated
+in advance: once the standard error falls below the residual
+truncation bias, a naive confidence interval on the biased estimator
+excludes everything, which is not evidence against the correct
+prediction.
+
+We therefore rewrote the enumeration to track, in a single pass, the
+running path-maximum at every node, giving simultaneous counts at
+truncation buffers $10^9$ through $10^{13}$ (validated byte-for-byte
+against the earlier buffer-by-buffer method on four test roots). The
+pooled mean curve across roots decays geometrically:
+\[
+  0.60049\ (10^9) \to 0.62387\ (10^{10}) \to 0.63261\ (10^{11}) \to
+  0.63650\ (10^{12}) \to 0.63801\ (10^{13}),
+\]
+with increments $0.0234, 0.0087, 0.0039, 0.0015$ shrinking by a factor
+of roughly $0.4$--$0.5$ per decade of truncation --- a signature of a
+genuine, extrapolable truncation bias, not noise.
+
+\section{Result: a fixed-window estimator}
+\label{sec:result}
+
+Aitken's $\Delta^2$ extrapolation of this sequence to infinite
+truncation gives
+\begin{equation}\label{eq:kl-result}
+  \hat\eta_5 = 0.639, \qquad 95\%\ \text{bootstrap interval, fixed window} =
+  [0.633,\, 0.645].
+\end{equation}
+The bootstrap interval measures variation between sampled roots after
+the truncation extrapolation. It does not include the remaining bias
+from the fixed measurement window and therefore cannot exclude either
+asymptotic prediction. That bias has a visible signature: the
+slope-per-decade panel \emph{within} the fixed measurement window
+($10^4\!\to\!10^5$ through $10^7\!\to\!10^8$) is still monotonically
+rising at the last decade tested ($0.6021\to0.6296\to0.6432\to0.6460$,
+no plateau), approaching $0.6509$ monotonically without having reached
+it --- the signature of \emph{fixed-window pre-asymptotics} (the
+window is not yet ``deep enough''), not of uncorrected truncation bias
+(already handled by the Aitken $\Delta^2$ extrapolation above).
+
+\begin{empirical}[Finite-window comparison of two exponent predictions]
+\label{thm:kl}
+The fixed-window estimator of the $5x+1$ reverse-tree counting
+exponent, computed by exact enumeration with
+Aitken-$\Delta^2$-extrapolated truncation correction, is $0.639$
+(bootstrap interval $[0.633,0.645]$). The sequence of local slopes
+rises monotonically toward the Kontorovich--Lagarias prediction
+$0.650919$ on the available windows. Since it has not stabilized, the
+experiment does not provide a calibrated confidence interval for the
+asymptotic exponent and does not exclude the Volkov prediction.
+\end{empirical}
+
+\section{A calibrated comparison}
+\label{sec:calibrated}
+
+The estimator behind Empirical Result~\ref{thm:kl} had never been run
+on a process with a known exponent. It is biased: on a branching
+random walk with the same offspring law but an independently drawn
+branch class at every node (exponent provably $0.650919$, the
+Kontorovich--Lagarias prediction itself, realized as a pressure-equation
+root in a companion paper on the $qx+1$ branching structure
+\cite{PressureCompanion}), the same window, truncation, and
+extrapolation reads $0.6131$, an under-read of $0.038$, larger than
+the gap $\Delta=0.027$ separating the two disputed values. Comparing
+the raw reading against either theoretical prediction therefore
+settles nothing.
+
+The bias depends on how much a process fluctuates, and it can be
+calibrated out by comparison rather than subtraction: run the same
+estimator on synthetic processes built to have exponent $0.650919$ and
+exponent $0.678$ respectively, sharing every feature of the arithmetic
+tree except the ultimate value of $q$, and see which reading the
+arithmetic tree matches. Lemma~\ref{lem:sibling-congruence} makes this
+construction exact: replacing the integer denominator $q$ by a tunable
+real value reproduces the arithmetic tree's branching and its sibling
+spacing while moving the exponent to any target solving
+$q_{\mathrm{val}}^{\alpha}=q(2^{\alpha}-1)$.
+
+\begin{empirical}[Calibrated separation from the Volkov exponent]
+\label{thm:kl-calibrated}
+At truncation depth $10^9\!\to\!10^{10}$, where the calibrated controls
+read their target exponent to within $0.003$, the arithmetic tree
+reads $0.64926$ ($95\%$ interval $[0.64818,0.65027]$); a control built
+to exponent $0.650919$ reads $0.64981$ and $0.65122$ on two
+independent constructions; a control built to exponent $0.678$ reads
+$0.67748$, ten interval-widths from the arithmetic reading. The
+separation widens, not narrows, as bias is calibrated away with
+depth. This measurement compares against the exponent value $0.678$,
+not against Volkov's branching model itself, which has a different
+tree structure and is not implemented here.
+\end{empirical}
+
+\section{Discussion}
+\label{sec:discussion}
+
+Two systematics were checked rather than assumed before trusting
+Empirical Result~\ref{thm:kl-calibrated}. The integer-denominator
+construction and its real-valued counterpart at the exponent
+$0.650919$ agree to $0.0035$ over six seeds ($1.5$ standard errors),
+bounding any implementation systematic between the two recursions at
+about $0.004$. And the exponent-$0.678$ control fluctuates more than
+the arithmetic tree, which would if anything bias its reading
+\emph{downward} toward the arithmetic reading; the separation survives
+that direction of bias.
+
+This is a measurement with calibrated controls, not a proof. It settles
+the narrower, well-defined question of whether the arithmetic tree's
+counting exponent is closer to $0.650919$ or to the value $0.678$;
+it does not implement or test Volkov's branching model directly, which
+uses a different encoding of the iterates than the matched controls
+built here. Whether that stronger claim holds is a separate question.
+
+\section*{Data Availability Statement}
+
+Code and data reproducing every claim in this paper, organized by
+section with a README per subfolder, are at
+\url{https://github.com/faculdade/collatz-kl-volkov}.
+
+\section*{Acknowledgments}
+
+AI assistance (Claude, Anthropic) was used for textual review and
+translation.
+
+\bibliographystyle{plain}
+\begin{thebibliography}{9}
+
+\bibitem{KontorovichLagarias2009} A.\ V.\ Kontorovich and J.\ C.\
+  Lagarias, \emph{Stochastic models for the $3x+1$ and $5x+1$
+  problems}, in: \emph{The Ultimate Challenge: the $3x+1$ Problem}
+  (J.\ C.\ Lagarias, ed.), American Mathematical Society, 2010.
+
+\bibitem{PressureCompanion} R.\ A.\ Tavares, \emph{A closed-form
+  pressure equation for the accelerated $qx+1$ branching process},
+  companion paper, in preparation.
+
+\end{thebibliography}
+
+\end{document}
