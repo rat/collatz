@@ -30,6 +30,83 @@ a seção de 2026-08-10 em `hypotheses/H-168-infimo-do-quociente-minimo-em-a.md`
 para a análise completa. Tudo espelhado e commitado em
 `collatz-wirsching-2003/sec4-central-zeros-conjecture2/`.
 
+## Esgotamento do backlog do paper 01 (agente paralelo, worktree isolado)
+
+Sessão dedicada a fechar todo o backlog em aberto sob o escopo do
+paper 01 (barreira de endogenia, triangulação beta=1/WCC/Wirsching
+Conj. 3, H-166, os dois lemas fracassados de §10, os direcionamentos
+O1-O8). Seis hipóteses pré-existentes fechadas (H-127, H-158, H-159,
+H-161, H-162, H-163) e quatro hipóteses novas registradas (H-174 a
+H-177, Regra 8e), das quais duas também já fechadas (H-174, H-176) e
+duas em backlog com passo barato dado (H-175, H-177). Três rodadas de
+crítica independente (Regra 8/15) antes de qualquer commit.
+
+**Fechadas**: H-127 (fechada-inconclusiva; Prop. C sobrevive, Lema B
+não fecha, parede de constantes de Halász-Jensen identificada três
+vezes por vias independentes), H-158 (fechada-inconclusiva; H-166
+continua sendo a melhor cota incondicional, 1,882712), H-159
+(fechada-inconclusiva, depois de um incidente de correção real, ver
+abaixo), H-161 (fechada-inconclusiva; rodada de Codex sobre a
+desigualdade de par Q2 produziu um achado novo, Q2 pode implicar
+não-singularidade da medida limite, e um programa de certificado de
+operador não executado, H-177), H-162 (fechada-refutada; localização
+de condutor de E-133 não transporta para a média sobre índices de
+caminho), H-163 (fechada-inconclusiva, ver incidente abaixo), H-176
+(fechada-refutada, escopo corrigido depois de crítica: refuta a
+correlação em massa, não a descorrelação de cauda profunda que Q2
+precisa).
+
+**Registradas**: H-174 (fechada-refutada por premissa invalidada, com
+a pergunta corretamente reformulada para retomada futura), H-175
+(backlog; uma primeira tentativa de reciclar dados de E-137 foi
+encontrada errada por crítica independente, transformada aditiva e
+transformada de Mellin/tempo-de-órbita são objetos diferentes, não
+uma reescala; refeita corretamente, ainda em aberto), H-177 (backlog,
+programa de certificado B_kappa para Q2, não executado por decisão
+explícita, custo-benefício assimétrico).
+
+**Incidente de correção, em duas camadas (registrado com honestidade,
+Regra 8c/11b)**: um primeiro fechamento de H-163 (E-140) declarou
+"cancelamento de fase real" no pareamento bilinear `sum_xi S_1(xi)
+conj(S_2(xi))` entre subárvores irmãs. Um crítico independente
+(subagente, Regra 8/15) encontrou, e uma verificação minha própria
+confirmou, que a medição era um artefato: por Parseval, o valor medido
+é dominado pelo produto das massas das duas subárvores (`m_1*m_2`).
+Na primeira tentativa de correção, atribuí isso erroneamente a
+"suportes esparsos" (poucos resíduos não-nulos); uma SEGUNDA rodada do
+mesmo crítico mostrou que os suportes são PLENOS (todo resíduo coprimo
+com 3) e que o mecanismo real é concentração de massa dentro desse
+suporte pleno (razão de participação pequena), uma distinção que
+importa para qualquer um que tentar retomar a linha. Essa segunda
+rodada também encontrou uma segunda conflação real (H-175 confundia a
+transformada aditiva de Fourier de `mu_ell`, já medida por E-137, com
+a transformada de Mellin/tempo-de-órbita que o programa de Weyl de
+H-161 realmente usa, objetos diferentes, não uma reescala). Ambas
+corrigidas e reverificadas nesta sessão; uma terceira rodada de
+crítica pegou ainda um terceiro erro menor (a tabela de H-175 comparava
+frequências primitivas de um lado com todas as frequências não-nulas
+do outro, maçãs com laranjas) antes de confirmar o lote inteiro para
+commit. H-163, H-159, H-162, H-174 e H-175 foram todos reabertos e
+corrigidos. Os controles (dilatação aleatória; raiz não relacionada)
+ficaram como parte permanente de E-140/E-141 (não removidos depois de
+servirem), e a lição está documentada em cada arquivo afetado.
+
+**Experimentos novos**: E-140 (pareamento bilinear + controles),
+E-141 (perfil por condutor + controle), E-142 (diagnóstico de
+singularidade para Q2, com a transcrição completa da consulta ao
+Codex), E-143 (correlação R_ell(k)/R_ell(A(k)), persistida depois de
+uma crítica apontar que vivia só em prosa).
+
+**Fora de escopo, sinalizado**: H-129 (índice de cauda q>=5) parece
+órfã, não listada explicitamente no escopo de nenhum dos quatro
+papers, mas tematicamente pertence ao paper 06 (equação de pressão,
+`conj:tail-index`). Não tocada nesta sessão; fica para o diretor
+científico decidir a quem atribuir.
+
+Ver `HYPOTHESES` individuais (H-127, H-158, H-159, H-161, H-162,
+H-163, H-174, H-175, H-176, H-177) para o detalhe completo de cada
+fechamento.
+
 ## Paper 01 dividido em quatro papers
 
 Pedido do diretor científico: dividir o paper de forma que cada parte
