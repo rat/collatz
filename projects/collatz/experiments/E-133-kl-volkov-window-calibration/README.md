@@ -37,7 +37,7 @@ matches.
 | `buffer_squeeze.py` | bounds the error of the truncation extrapolation itself |
 | `analyze.py` | the E-097 estimator, per-decade slopes, deficit against `alpha_-` |
 | `summary.py` | the comparison table: every process, one estimator |
-| `run_deep.sh`, `run_deep_cycq.sh` | the deep runs, checkpoints to `1e12`, buffers to `1e17` |
+| `run_deep.sh` | the matched deep batch, checkpoints to `1e10`, buffers to `1e15` |
 
 Build and reproduce:
 
@@ -51,7 +51,7 @@ python3 annealed_exact.py 5
 ./tree_counts --q 5 --cycq 5.00000 --roots 300 --cp 4 8 --buf 9 13 --out data/q5_cycq500_b13.txt
 ./tree_counts --q 5 --cycq 5.05398 --roots 300 --cp 4 8 --buf 9 13 --out data/q5_cycq505_b13.txt
 python3 summary.py                     # the comparison table
-./run_deep.sh ; ./run_deep_cycq.sh     # hours, not minutes, on 16 cores
+./run_deep.sh                          # the matched deep batch, tens of minutes
 ```
 
 ## The four modes
@@ -152,6 +152,13 @@ The arithmetic tree reads 0.64791 on the deepest common decade. A
 process with exponent 0.650919 reads 0.64796 there. A process with
 exponent 0.678 reads 0.67079, and its interval does not overlap the
 arithmetic one. Same conclusion on the window estimator.
+
+All five rows use the `b13` grid, since the comparison needs the same
+amount of buffer everywhere. More buffer moves the number down a little:
+on the `b17` grid the arithmetic tree reads 0.6465 on that same decade
+against 0.64791 here. The controls would move with it, and
+`buffer_squeeze.py` bounds that shift at 0.002, well under the 0.023
+separating the two hypotheses.
 
 So E-097's `0.639` was never evidence against Kontorovich-Lagarias. It
 is, to three decimals, what a process with their exponent returns under

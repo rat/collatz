@@ -249,8 +249,16 @@ chegou na direção certa por um caminho que não sustentava a conclusão;
 H-137 estava certo em derrubá-lo, e o que faltava era o controle
 calibrado, não mais dados.
 
-Rodada profunda (checkpoints até `1e12`, buffers até `1e17`, 300
-raízes), slope aritmético por década, cada década extrapolada no buffer:
+A tabela acima usa a grade `b13` nas cinco linhas, porque a comparação
+exige a mesma quantidade de buffer em todos os processos. Com mais
+buffer o mesmo número desce um pouco: a árvore aritmética na grade
+`b17` lê 0.6465 nessa mesma década, contra 0.64791 na `b13`. Os
+controles desceriam junto; `buffer_squeeze.py` limita esse deslocamento
+em 0.002, bem abaixo dos 0.023 que separam as duas hipóteses.
+
+Rodada profunda só da árvore aritmética (checkpoints até `1e12`,
+buffers até `1e17`, 300 raízes), slope por década, cada década
+extrapolada no buffer:
 
 | década | slope | bootstrap | distância a 0.650919 |
 |--------|-------|-----------|----------------------|

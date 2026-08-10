@@ -36,7 +36,7 @@ dois expoentes em disputa e ver qual leitura a árvore aritmética casa.
 | `buffer_squeeze.py` | limita o erro da própria extrapolação de truncamento |
 | `analyze.py` | o estimador de E-097, slopes por década, déficit contra `alpha_-` |
 | `summary.py` | a tabela de comparação: todos os processos, um estimador |
-| `run_deep.sh`, `run_deep_cycq.sh` | as rodadas profundas, checkpoints até `1e12`, buffers até `1e17` |
+| `run_deep.sh` | o lote profundo casado, checkpoints até `1e10`, buffers até `1e15` |
 
 Compilar e reproduzir:
 
@@ -50,7 +50,7 @@ python3 annealed_exact.py 5
 ./tree_counts --q 5 --cycq 5.00000 --roots 300 --cp 4 8 --buf 9 13 --out data/q5_cycq500_b13.txt
 ./tree_counts --q 5 --cycq 5.05398 --roots 300 --cp 4 8 --buf 9 13 --out data/q5_cycq505_b13.txt
 python3 summary.py                     # a tabela de comparação
-./run_deep.sh ; ./run_deep_cycq.sh     # horas, não minutos, em 16 núcleos
+./run_deep.sh                          # o lote profundo casado, dezenas de minutos
 ```
 
 ## Os quatro modos
@@ -153,6 +153,13 @@ A árvore aritmética lê 0.64791 na década comum mais profunda. Um
 processo de expoente 0.650919 lê 0.64796 ali. Um processo de expoente
 0.678 lê 0.67079, e o intervalo dele não encosta no da aritmética. A
 mesma conclusão vale no estimador de janela.
+
+As cinco linhas usam a grade `b13`, porque a comparação precisa da mesma
+quantidade de buffer em todo lugar. Com mais buffer o número desce um
+pouco: na grade `b17` a árvore aritmética lê 0.6465 nessa mesma década,
+contra 0.64791 aqui. Os controles desceriam junto, e
+`buffer_squeeze.py` limita esse deslocamento em 0.002, bem abaixo dos
+0.023 que separam as duas hipóteses.
 
 Então o `0.639` de E-097 nunca foi evidência contra Kontorovich-Lagarias.
 É, com três casas, o que um processo de expoente deles devolve nesse
