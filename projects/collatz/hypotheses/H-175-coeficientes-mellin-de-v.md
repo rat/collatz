@@ -152,7 +152,8 @@ CONSTANTE através de todos os `r`, apesar de o número de frequências
 por classe crescer por um fator de quase `60000` entre `r=1` (2
 frequências) e o `r` mais fino de cada nível (`ell=12`: `118098`
 frequências). Em `ell=12`, as onze energias por classe ficam todas
-entre `34,76` e `35,86` bilhões (variação menor que `3%`), com a classe
+entre `34,76` e `35,86` bilhões (variação de cerca de `3%`, `3,17%`
+relativa ao mínimo), com a classe
 de MENOS frequências (`r=1`) tendo energia comparável à classe de MAIS
 frequências (`r=11`). Isso é o oposto do padrão visto na transformada
 aditiva por E-137 (onde a massa `l²` primitiva se concentra fortemente

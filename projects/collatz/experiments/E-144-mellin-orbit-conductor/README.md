@@ -24,7 +24,8 @@ check (sum of per-conductor energies against the total) passes at
 the number of frequencies per class growing by a factor of almost
 `60000` between `r=1` (2 frequencies) and the finest class at `ell=12`
 (`r=11`, 118098 frequencies). At `ell=12` the eleven per-class energies
-all fall between `34.76` and `35.86` billion (under 3% spread). This is
+all fall between `34.76` and `35.86` billion (about 3% spread, 3.17%
+relative to the minimum). This is
 the opposite of the additive-spectrum pattern E-137 found (primitive
 `l^2` mass concentrated at the maximizer, not equidistributed by
 conductor).
