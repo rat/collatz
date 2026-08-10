@@ -1,6 +1,36 @@
 # Estado atual — Collatz
 
-Última atualização: 2026-08-09
+Última atualização: 2026-08-10
+
+## Paper 01 dividido em quatro papers
+
+Pedido do diretor científico: dividir o paper de forma que cada parte
+tenha citabilidade própria. Criados três novos repositórios de
+reprodutibilidade (`collatz-kl-volkov`, `collatz-wirsching-2003`,
+`collatz-qx1-pressure`), cada um populado com o experimento espelhado
+e verificado (Regra 12), e três novos papers extraídos do `main.tex`
+de 01, cada um compilando limpo e autocontido:
+
+- **04** (`kontorovich-lagarias-volkov`, 4 páginas): separação
+  calibrada KL vs. Volkov, achado novo do O8.
+- **05** (`wirsching-2003-conjecturas`, 9 páginas): prova da
+  Conjectura 1, leitura corrigida da Conjectura 2, teste certificado
+  da Conjectura 3.
+- **06** (`pressao-qx1-ramificacao`, 13 páginas): equação de pressão
+  fechada, transição estrutural em q=5, inclui a Growth Exponent
+  Conjecture de Kontorovich-Lagarias/Applegate-Lagarias como caso q=3.
+
+`01` ficou enxuto (45→33 páginas): mantém enunciados condensados (sem
+prova) dos resultados que migraram, citando o companion paper
+correspondente ("in preparation" até cada um ser submetido ao arXiv).
+Bibliografia reconferida em todos os quatro (nenhum `\cite` órfão).
+`collatz-endogeny` limpo das pastas duplicadas (conteúdo migrado para
+os repos novos).
+
+**Pendências reais, não silenciadas**: a tabela O1-O8 da Conclusão de
+01 não foi atualizada para refletir H-166/H-169/a correção de `gamma`;
+H-166 e H-169 ainda não têm espelho em `collatz-endogeny`; nenhum dos
+quatro papers tem `CRITIQUE.md` ainda. Ver `OUTLINE.md` de cada paper.
 
 ## Ataque paralelo a O1-O8 (7 sub-agentes Opus, worktrees isolados)
 
