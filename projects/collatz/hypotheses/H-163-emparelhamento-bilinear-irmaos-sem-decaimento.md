@@ -1,4 +1,4 @@
-# H-162: cancelamento bilinear entre irmãs sem decaimento pontual nem l2
+# H-163: cancelamento bilinear entre irmãs sem decaimento pontual nem l2
 
 Status: backlog
 
@@ -25,7 +25,7 @@ separadamente: cota pontual uniforme, ou Cauchy-Schwarz sobre o
 somatório. H-115 (passe de 2026-08-09) mostra que as duas estão barradas
 pelo mesmo lado. A cota pontual uniforme com power-saving implicaria
 `K_infinity < infinity`, e é contrariada em nível finito pela medição de
-E-133 (`sup * 3^(ell/2)` cresce de 1,13 para 61,7 entre `ell=2` e
+E-137 (`sup * 3^(ell/2)` cresce de 1,13 para 61,7 entre `ell=2` e
 `ell=15`). Cauchy-Schwarz gasta exatamente `K_ell - K_(r_ell)`, que
 cresce linearmente sob o platô medido `E_r ~ 0,47`.
 
@@ -44,7 +44,7 @@ MESMA função em frequências relacionadas por potências de 2 módulo
 `3^ell`. O pareamento não é um produto de dois objetos arbitrários, é uma
 correlação da função consigo mesma ao longo da órbita de duplicação.
 
-Isso é exatamente onde E-133 vê estrutura: o maximizador do coeficiente
+Isso é exatamente onde E-137 vê estrutura: o maximizador do coeficiente
 primitivo fica na órbita de `1` sob duplicação em quase todo nível. Ou
 seja, o mesmo lugar onde a energia se concentra é o lugar onde os dois
 fatores estão relacionados. Pode ser que a concentração ajude o
@@ -63,7 +63,7 @@ Calcular, para `ell` pequeno e um par de irmãs explícito, a soma
 Se o valor medido ficar perto de (1), não há cancelamento e a rota morre
 com um número. Se ficar perto de (2) ou abaixo, há cancelamento de fase e
 a pergunta seguinte é se a taxa é suficiente e uniforme em `ell`. Custo
-esperado: o mesmo da recursão de E-133, poucos minutos até `ell=12`.
+esperado: o mesmo da recursão de E-137, poucos minutos até `ell=12`.
 
 E-129 já mede algo vizinho (agregação sobre o intervalo entre irmãs
 contra o acoplamento de dígitos novos) e deve ser lido antes, para não

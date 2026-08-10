@@ -308,7 +308,7 @@ modos de condutor sublinear, tratados por
 é mensurável: a parcela da massa l² primitiva que ele remove é
 `(K_(r_ell) - 1)/(K_ell - 1)`.
 
-Medido em E-133 (níveis exatos até `ell=15`), com `E_r` perto de 0,47 em
+Medido em E-137 (níveis exatos até `ell=15`), com `E_r` perto de 0,47 em
 toda a faixa, essa fração vale 0,408 em `(ell,r)=(8,3)`, 0,330 em
 `(10,3)`, 0,276 em `(12,3)` e 0,238 em `(14,3)`. Ao longo de qualquer
 `r_ell = o(ell)` ela tende a `r_ell/ell -> 0`. O passo preparatório
@@ -324,7 +324,7 @@ mesma direção em aberto.
 
 ### (3) A medida do espectro primitivo, e o que ela alcança
 
-Também em E-133, e rotulado como medição de nível finito (Regra 10b;
+Também em E-137, e rotulado como medição de nível finito (Regra 10b;
 H-140 continua valendo, `K_ell` é não decrescente e nenhuma faixa finita
 decide o assintótico):
 
@@ -366,7 +366,7 @@ uma cota SUPERIOR sobre oscilação. Nenhuma das duas direções fecha:
   Fourier custa a norma l¹ sobre `3^r` frequências. Por Cauchy-Schwarz,
   `sum_{xi!=0} |muhat_r(xi)| <= 3^(r/2) * sqrt(K_r - 1)`, logo
   `|mu_r(b) - 3^(-r)| <= 3^(-r/2) * sqrt(K_r - 1)`. O fator
-  `sqrt(K_r - 1)` NÃO é O(1) aqui: sob o platô medido em E-133 vale
+  `sqrt(K_r - 1)` NÃO é O(1) aqui: sob o platô medido em E-137 vale
   `K_r - 1 ~ 0,47 r`, logo o erro é da ordem de `0,68 * sqrt(r) *
   3^(-r/2)`, maior que `3^(-r)` por um fator `3^(r/2)` a menos de
   `sqrt(r)`. A escala pontual de que O2 e beta=1 tratam fica inteiramente
@@ -389,7 +389,7 @@ cancelamento no pareamento `sum_xi S_1(xi) S_2(xi)^*` sem qualquer
 decaimento pontual nem l², explorando a fase relativa entre as duas
 irmãs. Todo método de função quadrática está barrado pelo item (2), e a
 forma pontual uniforme está barrada, em nível finito, pelo item (3).
-Registrada como H-162, em backlog, com a origem marcada.
+Registrada como H-163, em backlog, com a origem marcada.
 
 Veredito desta rodada, sem forçar tentativa artificial: nenhum ângulo
 novo viável para o regime 3. O ganho é a redução do item (1), que amarra

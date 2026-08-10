@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-E-133: the l^2 budget available to O4 (Regime 3 of the three-precision
+E-137: the l^2 budget available to O4 (Regime 3 of the three-precision
 frame), measured directly on the Syracuse law mu_ell.
 
 Three quantities, all exact up to double-precision rounding:

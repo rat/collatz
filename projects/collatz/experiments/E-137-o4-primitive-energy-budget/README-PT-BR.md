@@ -1,4 +1,4 @@
-# E-133: o orçamento l2 disponível para O4 (regime 3)
+# E-137: o orçamento l2 disponível para O4 (regime 3)
 
 Hipóteses relacionadas:
 [`H-115`](../../hypotheses/H-115-tao-bivariate-extension-three-precision-regimes.md)
@@ -7,7 +7,7 @@ Hipóteses relacionadas:
 (Parseval multiescala),
 [`H-154`](../../hypotheses/H-154-primitive-fibre-energy.md)
 (identidade de energia por fibras novas),
-[`H-162`](../../hypotheses/H-162-emparelhamento-bilinear-irmaos-sem-decaimento.md)
+[`H-163`](../../hypotheses/H-163-emparelhamento-bilinear-irmaos-sem-decaimento.md)
 (a rota que esta medição deixa de pé).
 
 ## O que mede
