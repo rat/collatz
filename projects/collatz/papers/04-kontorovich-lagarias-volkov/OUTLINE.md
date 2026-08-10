@@ -50,7 +50,7 @@ exponent value.
 - `main-pt-br.tex`: não criado ainda, só sob pedido explícito (Regra 5,
   mesma política do paper 01).
 - `CRITIQUE.md`: existe e está fechado (2026-08-10, 23 achados, todos
-  corrigidos).
+  resolvidos: 22 corrigidos, 1 rejeitado com motivo registrado).
 - Bibliografia: só 2 entradas (Kontorovich-Lagarias 2009, e uma entrada
   provisória `PressureCompanion` apontando para o paper 06 "em
   preparação" — atualizar a citação quando 06 tiver DOI/arXiv). Pendência

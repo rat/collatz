@@ -383,7 +383,8 @@ banda é que ainda estava desatualizado nos dois, e ficou.
 irmãos) está provada e usada; E-097 e E-139 já rodaram e seus outputs
 foram reproduzidos de novo agora (`summary.py`, grades `b13` e `b15`),
 batendo byte a byte com o que está documentado. `CRITIQUE.md` do paper
-04 já estava fechado (todos os achados corrigidos, sessão anterior).
+04 já estava fechado (23 achados, 22 corrigidos e 1 rejeitado com
+motivo registrado, sessão anterior).
 Não há entrada em `backlog`/`open-unexplored`/`in-progress` no escopo
 deste paper além do que está registrado aqui.
 
