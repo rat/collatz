@@ -229,6 +229,151 @@ auditoria de correção de texto. A reformulação unidirecional do paper
 defensável no estado atual do conhecimento — não uma perda de rigor,
 mas o reflexo exato do que é conhecido.
 
+## Passe dirigido a O4 (2026-08-09): a ponte com O7, e o diagnóstico do obstáculo
+
+Rodada pedida com um objetivo estreito: procurar um ângulo ainda não
+tentado para o regime 3 (estrutura de bloco não linear, outra escala de
+frequência, ou redução a outra direção em aberto), ou, na falta dele,
+escrever o obstáculo com precisão. Não apareceu ângulo novo. Apareceu
+uma redução que não estava registrada, e uma medida que explica por que
+a hierarquia de escalas da §8 não compra nada.
+
+### Correção de enquadramento sobre H-153 (Regra 8c)
+
+O pedido desta rodada supunha que H-153 já mostrava que "a separação de
+blocos falha até em escala linear", e portanto que o obstáculo aparece
+antes de `ell≍D`. Isso não é o que H-153 prova. O
+`thm:linear-block-nonequivalence` prova não equivalência dos VETORES DE
+CUSTO LATENTES em escala linear, e tanto o arquivo da hipótese quanto o
+manuscrito (linhas 2078 a 2081 de `main.tex`) dizem explicitamente que
+isso NÃO transfere para os resíduos módulo `3^r`: a projeção é
+muitos-para-um e pode apagar a estatística suficiente `S_(ell,r)`. H-153
+é um resultado de afiação para `thm:sublinear-precision-ensemble`, não
+um obstáculo a O4. A razão real pela qual a maquinaria sublinear não
+alcança O4 é outra, e é a de (2) abaixo.
+
+### (1) O alvo uniforme de O4 implica a condição L² de O7
+
+Pela identidade de Parseval multiescala de H-155,
+`E_r = K_r - K_(r-1)` é a energia primitiva na escala `r`, e há
+`2*3^(r-1)` frequências primitivas nessa escala. Suponha o alvo uniforme
+que a rota de segundo momento pede, na sua forma pontual:
+
+```text
+sup_{3 nao divide xi} |muhat_r(xi)| <= C * 3^(-r(1/2+eps)),  eps>0.
+```
+
+Então `E_r <= 2*3^(r-1) * C^2 * 3^(-r(1+2eps)) = (2C^2/3) * 3^(-2eps r)`,
+que é somável, logo `K_infinity = 1 + sum_r E_r < infinity`. Isto é a
+condição L² de O7 (H-126, H-155, E-100).
+
+Ou seja: O4, na forma pontual uniforme, é ao menos tão forte quanto o
+ramo L² de O7. A dependência registrada até aqui era a oposta, em H-126
+(um lema de regime 2 que PRECISAVA de `K_infinity<infinity` como
+hipótese). A implicação nesta direção não estava escrita. Ela é a mesma
+ponte que H-155 usa entre O5 e O7, aplicada a um terceiro item, e
+responde à pergunta desta rodada: O4 se conecta a O7, não a O2.
+
+Não é uma equivalência, e o arquivo não deve deixar isso escorregar
+(H-135 existe por causa de uma alegação de equivalência anterior).
+A recíproca falha: o que a rota de Cauchy-Schwarz de fato consome é
+`T_ell(r_ell) = K_ell - K_(r_ell) -> 0` ao longo de sequências
+sublineares `r_ell -> infinity`, e essa condição de tipo Cauchy é
+estritamente mais fraca que `K_infinity<infinity` (basta tomar
+`K_ell = log log ell`, divergente, com `K_ell - K_(sqrt ell) -> 0`).
+
+### (2) Por que "separar os modos de condutor sublinear" não ajuda
+
+O enunciado de O4 no paper embute um passo preparatório: separar os
+modos de condutor sublinear, tratados por
+`thm:sublinear-precision-ensemble`. Sob a identidade de H-155 esse passo
+é mensurável: a parcela da massa l² primitiva que ele remove é
+`(K_(r_ell) - 1)/(K_ell - 1)`.
+
+Medido em E-133 (níveis exatos até `ell=15`), com `E_r` perto de 0,47 em
+toda a faixa, essa fração vale 0,408 em `(ell,r)=(8,3)`, 0,330 em
+`(10,3)`, 0,276 em `(12,3)` e 0,238 em `(14,3)`. Ao longo de qualquer
+`r_ell = o(ell)` ela tende a `r_ell/ell -> 0`. O passo preparatório
+remove uma fração assintoticamente nula do problema, e o resíduo
+`K_ell - K_(r_ell)` cresce linearmente em `ell`.
+
+A dicotomia, que não exige tomar partido sobre a questão em aberto:
+se `K_infinity < infinity`, a separação sublinear captura
+assintoticamente TODA a massa e a rota de Cauchy-Schwarz fecha sozinha;
+se `K_ell ~ c*ell`, a cauda restante diverge linearmente e nenhum
+rearranjo de escalas a torna pequena. As duas direções em aberto são a
+mesma direção em aberto.
+
+### (3) A medida do espectro primitivo, e o que ela alcança
+
+Também em E-133, e rotulado como medição de nível finito (Regra 10b;
+H-140 continua valendo, `K_ell` é não decrescente e nenhuma faixa finita
+decide o assintótico):
+
+- O coeficiente primitivo em RMS fica entre `0,832` e `0,845` vezes
+  `3^(-ell/2)` de `ell=2` a `ell=15`, sem tendência que o tire dali.
+  Exatamente a escala de raiz quadrada.
+- O máximo é muito maior: `sup * 3^(ell/2)` vai de 1,13 em `ell=2` a
+  61,69 em `ell=15`, com `sup/rms` subindo de 1,3 para 73. A razão por
+  nível `sup_ell/sup_(ell-1)` sobe de 0,6546 para 0,8513, com recuos em
+  `ell=9` e `ell=12`, contra o `3^(-1/2)=0,5774` que uma cota uniforme de
+  raiz quadrada exigiria.
+- O maximizador fica na órbita de `1` sob duplicação em quase todo
+  nível, o que é onde o suporte de `mu_ell` vive. O espectro primitivo é
+  concentrado, não plano.
+
+O que isso alcança: evidência forte, em nível finito, contra a forma
+pontual uniforme do alvo de O4. O que isso NÃO alcança: a rota de
+segundo momento não precisa de cota pontual, precisa que o pareamento
+bilinear `sum_xi S_1(xi) S_2(xi)^*` seja pequeno. Descartar uma condição
+suficiente não descarta o alvo. A medida restringe métodos de tipo l² e
+função quadrática, e nada além disso.
+
+Transferência para as somas condicionadas `S_i` de O4: pela recursão de
+Tao (eq. 1.22), `mu_ell = sum_j 2^(-j) mu_ell^(j)`, decomposição pelo
+primeiro passo. Jensen dá `E_ell <= sum_j 2^(-j) E_ell^(j)`, logo
+condicionar no primeiro passo não pode reduzir a energia primitiva MÉDIA
+e o obstáculo transfere na direção certa. Isso é uma cota inferior sobre
+a média das energias condicionadas, não um enunciado sobre qualquer
+`S_i(xi)` individual; a distância entre "o perfil de energia de `mu_ell`"
+e "os `S_i` do alvo de O4" continua sendo real e não foi fechada aqui.
+
+### (4) O4 não se reduz a O2
+
+Procurei a ponte e ela não existe, por uma razão que dá para escrever.
+O2 é uma cota INFERIOR sobre massa de cobertura e multiplicidade; O4 é
+uma cota SUPERIOR sobre oscilação. Nenhuma das duas direções fecha:
+
+- De O4 para O2: mesmo com `sup |muhat_r| <= 3^(-r(1/2+eps))`, inverter
+  Fourier custa a norma l¹ sobre `3^r` frequências. Por Cauchy-Schwarz,
+  `sum_{xi!=0} |muhat_r(xi)| <= 3^(r/2) * sqrt(K_r - 1)`, logo
+  `|mu_r(b) - 3^(-r)| <= C*3^(-r/2)`, que é maior que `3^(-r)` por um
+  fator `3^(r/2)`. A escala pontual de que O2 e beta=1 tratam fica
+  inteiramente abaixo do erro. Nem uma cota de Fourier com power-saving
+  entrega uma cota inferior de cobertura.
+- De O2 para O4: uma cota inferior de multiplicidade não produz nenhuma
+  cota superior de coeficiente de Fourier. H-149 já mostra o lado
+  vizinho disso, que buraco de suporte sozinho não força espectro
+  primitivo.
+
+Não redução documentada, com o motivo explícito, em vez de "incompatível
+por tipo".
+
+### O que sobra
+
+A única rota que esta análise deixa de pé é genuinamente bilinear:
+cancelamento no pareamento `sum_xi S_1(xi) S_2(xi)^*` sem qualquer
+decaimento pontual nem l², explorando a fase relativa entre as duas
+irmãs. Todo método de função quadrática está barrado pelo item (2), e a
+forma pontual uniforme está barrada, em nível finito, pelo item (3).
+Registrada como H-162, em backlog, com a origem marcada.
+
+Veredito desta rodada, sem forçar tentativa artificial: nenhum ângulo
+novo viável para o regime 3. O ganho é a redução do item (1), que amarra
+O4 ao mesmo ingrediente faltante de O7 pela ponte de H-155, e a
+quantificação do item (2), que explica por que a hierarquia de três
+escalas da §8 não é um caminho e sim uma descrição.
+
 ## Referências
 
 - H-110/H-111 — a barreira de endogenia e sua calibração empírica.
