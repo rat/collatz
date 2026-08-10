@@ -274,6 +274,24 @@ hipótese). A implicação nesta direção não estava escrita. Ela é a mesma
 ponte que H-155 usa entre O5 e O7, aplicada a um terceiro item, e
 responde à pergunta desta rodada: O4 se conecta a O7, não a O2.
 
+**Escopo: o alvo tem de ser posto por classe de primeiro passo.** O
+enunciado acima é sobre `muhat_r`, e o alvo de O4 no paper é sobre as
+somas condicionadas `S_i`. A ponte entre os dois é a decomposição de Tao
+(eq. 1.22), `mu_r = sum_j 2^(-j) mu_r^(j)`, com pesos positivos somando
+1. Se a cota uniforme valer para CADA classe de primeiro passo `j`, a
+desigualdade triangular a transporta para qualquer combinação convexa
+normalizada dessas classes, o que inclui tanto `S_1` e `S_2` quanto o
+próprio `muhat_r`, e a implicação acima vale sem mudança.
+
+Se, em vez disso, o alvo for posto apenas para as duas somas agregadas
+`S_1` e `S_2`, a implicação NÃO fica disponível: `B_1` e `B_2` não
+esgotam necessariamente os primeiros passos, e cancelamento entre
+classes fora de `B_1 uniao B_2` não está excluído. A forma por classe é
+a que a rota de segundo momento de fato precisa, já que a expansão do
+quadrado percorre pares de índices de caminho e a cota tem de ser
+uniforme sobre o condicionamento; mas o ganho registrado aqui é o da
+forma por classe, e é nessa forma que ele deve ser citado.
+
 Não é uma equivalência, e o arquivo não deve deixar isso escorregar
 (H-135 existe por causa de uma alegação de equivalência anterior).
 A recíproca falha: o que a rota de Cauchy-Schwarz de fato consome é
@@ -347,10 +365,15 @@ uma cota SUPERIOR sobre oscilação. Nenhuma das duas direções fecha:
 - De O4 para O2: mesmo com `sup |muhat_r| <= 3^(-r(1/2+eps))`, inverter
   Fourier custa a norma l¹ sobre `3^r` frequências. Por Cauchy-Schwarz,
   `sum_{xi!=0} |muhat_r(xi)| <= 3^(r/2) * sqrt(K_r - 1)`, logo
-  `|mu_r(b) - 3^(-r)| <= C*3^(-r/2)`, que é maior que `3^(-r)` por um
-  fator `3^(r/2)`. A escala pontual de que O2 e beta=1 tratam fica
-  inteiramente abaixo do erro. Nem uma cota de Fourier com power-saving
-  entrega uma cota inferior de cobertura.
+  `|mu_r(b) - 3^(-r)| <= 3^(-r/2) * sqrt(K_r - 1)`. O fator
+  `sqrt(K_r - 1)` NÃO é O(1) aqui: sob o platô medido em E-133 vale
+  `K_r - 1 ~ 0,47 r`, logo o erro é da ordem de `0,68 * sqrt(r) *
+  3^(-r/2)`, maior que `3^(-r)` por um fator `3^(r/2)` a menos de
+  `sqrt(r)`. A escala pontual de que O2 e beta=1 tratam fica inteiramente
+  abaixo do erro. Nem uma cota de Fourier com power-saving entrega uma
+  cota inferior de cobertura. (Escrever `C*3^(-r/2)` aqui seria importar
+  `K_infinity<infinity` sem dizer, que é exatamente o que H-140 existe
+  para pegar.)
 - De O2 para O4: uma cota inferior de multiplicidade não produz nenhuma
   cota superior de coeficiente de Fourier. H-149 já mostra o lado
   vizinho disso, que buraco de suporte sozinho não força espectro
