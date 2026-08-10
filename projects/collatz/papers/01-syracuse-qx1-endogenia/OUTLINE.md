@@ -25,10 +25,11 @@ companheiros" abaixo).
 
 Motivação (Collatz, medida de Syracuse de Tao 2022), enquadramento
 deliberado como "caracterização precisa de uma barreira", não
-"tentativa de prova". A lista de contribuições precisa ser conferida
-contra o corpo atual (pode ainda citar §3/§6/§9.2-9.3 como se
-estivessem no corpo completo; ajustar para "resumido aqui, provado no
-companion paper X" na próxima passada de crítica).
+"tentativa de prova". Lista de contribuições reconferida contra o
+corpo atual e reescrita (2026-08-10, rodada de crítica): cada item
+migrado agora diz explicitamente "companion paper prova X", e os dois
+teoremas novos (`thm:cascade-factor`, `thm:diagonal-collision`) têm
+item próprio.
 
 ## 2. Setup (§2)
 
@@ -179,14 +180,17 @@ legítima.
 
 ## 13. Conclusão e direções em aberto (§13) — a lista O1-O8
 
-Precisa de uma passada de atualização (não feita ainda nesta sessão):
-os números da tabela abaixo são de antes do ataque paralelo a O1-O8
-(2026-08-09) e não refletem H-166 (O2 quase fechado, cota
-1.882712), H-169 (O7, nova cota incondicional), a ponte O4→O7 (H-115),
-nem a correção de `gamma` em O5.
+Tabela atualizada em 2026-08-10 (ver "Zeladoria" abaixo para o
+histórico da correção): reflete H-166 (O2, cota `beta_eff<=1.882712`
+incondicional), H-169 (O7, `K_(q,ell)>=(q/3)^ell` incondicional), a
+ponte O4→O7 (H-115), e a correção de `gamma` em O5 (3.31, não 3). O1 e
+O4 foram revistos na rodada de crítica seguinte (C-004) para remover
+alegações sem âncora no corpo (coeficiente diagonal, espectro
+primitivo ℓ=15); o texto vivo é `main.tex`, §13, não a tabela abaixo,
+mantida só como resumo de referência rápida.
 
-| # | Alvo | Status pré-2026-08-09 (desatualizado, ver seções acima) |
-|---|------|----------------------------------------------------------|
+| # | Alvo | Status (2026-08-10) |
+|---|------|----------------------|
 | O1 | Cancelamento de correlações de frequência fina | Aberta, alvo restrito a funcional de momento/Fourier (E-129, E-133). |
 | O2 | WCC + estimativa de cobertura ponderada (β=1) | **H-166 prova beta_eff<=1.882712 incondicional**; desigualdade de par de H-161 continua aberta. |
 | O3 | Wirsching Conjectura 2 | Aberta; leitura corrigida da fonte primária (O3), condição de H-134 refutada por H-160 pelo motivo certo agora. |
@@ -239,7 +243,11 @@ na próxima revisão.
   papers) apontam para "in preparation" — trocar pelo arXiv ID real
   assim que cada companion for submetido (ordem sugerida: 06 primeiro,
   depois 04/05 em paralelo, 01 por último).
-- Não existe ainda `CRITIQUE.md` para nenhum dos quatro papers (Regra
-  8/15). Recomendável antes de qualquer submissão real.
+- **Rodada de crítica (Regra 8/15) fechada** (2026-08-10): subagente
+  independente encontrou 23 achados (5 altos), 22 corrigidos e 1 aberto
+  (numeração Wirsching 1998 "Corollary II.5.8" vs "Conj. 3.9",
+  verificada contra o PDF local do livro e corrigida para "Reduction
+  Theorem V.3.10" / "V.3.9", que é a numeração real). Ver `CRITIQUE.md`.
+  Papers 04 e 05 também têm rodada fechada; 06 em andamento.
 - H-158 (passo 4, a desigualdade de par de H-161) continua aberta: é a
   questão de pesquisa real por trás do que falta de O2.

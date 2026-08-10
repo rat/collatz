@@ -31,7 +31,7 @@ rodada, mas registrar é).
 | C-015 | 2026-08-10 | "threefold empirical support ... counting-exponent confirmation below" não existe mais abaixo; três listas de "três medições" divergentes entre si; medições sem citação | média | hoje | fixed |
 | C-016 | 2026-08-10 | Violações mecânicas das Regras 3 e 4b: 47 linhas com em dash, "genuine" 10x (inclusive abstract), "pre-registered" 2x, narração de processo em O7, §12 inteira defendendo o próprio paper | média | misto | fixed |
 | C-017 | 2026-08-10 | Cosméticos de rotulagem: prefixo `thm:` em ambientes `empirical`/`remark`/`proposition`; 7 labels nunca referenciados; pasta `sec4-endogeny-barrier` do repo nunca citada | baixa | prévio | fixed |
-| C-018 | 2026-08-10 | Bibliografia: anos de chave divergentes dos itens, URLs de blog truncadas, KL sem páginas, "Wirsching 1998, Conj. 3.9" vs "Corollary II.5.8" (checar fonte primária) | baixa | prévio | open |
+| C-018 | 2026-08-10 | Bibliografia: anos de chave divergentes dos itens, URLs de blog truncadas, KL sem páginas, "Wirsching 1998, Conj. 3.9" vs "Corollary II.5.8" (checar fonte primária) | baixa | prévio | fixed |
 | C-019 | 2026-08-10 | "identity checked to 2×10⁻¹³" no paper contra "2.3e-13 absolute at worst" no repositório | baixa | hoje | fixed |
 | C-020 | 2026-08-10 | O5: "not the γ=3 stated above" é redação confusa (γ=3 aparece acima já como o valor corrigido), não contradição factual | baixa | hoje | fixed |
 | C-021 | 2026-08-10 | `prop:always-frozen` repete literalmente o parágrafo anterior; seu título cobre só um dos dois roots que enuncia | baixa | hoje | fixed |
@@ -695,3 +695,26 @@ sem uso restantes (`prop:fabius`, `prop:halasz-deficit`,
 foram deixados como estão: o próprio crítico registrou que isso não
 afeta o PDF, e renomear rótulos usados em dezenas de `\ref` por todo
 o documento é risco desproporcional ao ganho (Regra 8d).
+
+## Rodada 2026-08-10 (produtor, follow-up): C-018 fechado
+
+O item sobre "Corollary II.5.8" vs "Wirsching 1998, Conj. 3.9" foi
+reaberto e resolvido: o livro de 1998 está no repositório
+(`literature/papers/131_Dynamical-System-3n1-Function-Wirsching-Book.pdf`,
+166 páginas, texto extraído com `pdftotext`). Conferido diretamente:
+`CHAPTER II` começa na linha 2059 do texto extraído e `CHAPTER V`
+("Mixing and predecessor density") na linha 9312. Dentro do Capítulo
+II, o item "5.8" é um `THEOREM` (não `Corollary`) sobre uma cota para
+o grafo de Collatz podado, assunto não relacionado à densidade de
+predecessores. Dentro do Capítulo V, a numeração de seção volta a
+`1.x`, `2.x`, `3.x`; a "WEAK COVERING CONJECTURE FOR MIXED POWER SUMS"
+é o item `3.9`, e o `3.10. REDUCTION THEOREM` logo depois é o
+resultado que de fato reduz a propriedade de densidade uniforme à
+conjectura de cobertura fraca, batendo exatamente com a frase do
+paper ("identifies the following combinatorial covering property as
+sufficient for uniform positive predecessor density"). Não existe
+`Corollary II.5.8` no livro com esse conteúdo; a citação estava errada
+desde antes desta sessão. Corrigido para "his Reduction Theorem
+V.3.10, building on the Weak Covering Conjecture V.3.9" e "Wirsching
+1998, V.3.9" no rótulo da conjectura (linhas ~738-751). C-018 fechado
+como `fixed`.
