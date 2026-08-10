@@ -1,8 +1,13 @@
 # H-162: congruência de irmãos na árvore reversa de qx+1
 
-Status: fechada-confirmada como enunciado estrutural. O papel dela em
-explicar a variância reduzida da árvore aritmética fica registrado
-abaixo como parcial, medido, e menor do que eu esperava.
+Status: fechada-confirmada como enunciado estrutural (prova de duas
+linhas, verificada numericamente em `q=3` e `q=5`). Sobre o papel dela
+em explicar a flutuação reduzida da árvore aritmética: no desenho de
+E-133 ela dá conta de toda a diferença mensurável contra o modelo iid,
+e não sobra efeito residual detectável. Sobre o estimador de contagem
+ela cobre cerca de metade do caminho, dentro de um ruído de 0.0035.
+Além disso, foi ela que permitiu construir o controle de expoente
+ajustável (`cycq`) que fechou H-113.
 
 Criada: 2026-08-09
 
