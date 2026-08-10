@@ -450,3 +450,79 @@ independente do destino do Lema B).
   correta + Etapa 6 como problema aberto explícito) ou de não entrar no
   paper por ora — ambas as opções são honestas, nenhuma é um
   fechamento.
+
+- **2026-08-09, o hiato de 1,88 não é um artefato da norma: a família
+  `l^r` inteira está esgotada, e o número 3 da Proposição C está
+  subestimado.** Sessão dirigida a O5, perguntando se um orçamento mais
+  apertado ou em outra norma fecharia o hiato. Detalhe completo em
+  [`H-162`](H-162-familia-lr-orcamento-anelado-o5.md), numérica em
+  [`E-136`](../experiments/E-136-lr-budget-sweep-hole-chain/README.md).
+  Quatro achados.
+
+  1. **Colapso da família.** Para todo `r >= 1`, o orçamento `l^r`
+     aplicado a um buraco fecha se, e somente se, `||Z||_r < 1/3`, com
+     `Z` o mesmo fator anelado da Proposição C. O critério é o mesmo
+     para toda a família, e `||Z||_r` cresce com `r`. Logo `l^1` já é o
+     melhor membro utilizável e o expoente de Jensen
+     `exp(E log|Z|) = p`, que é o limite `r -> 0`, é cota inferior
+     estrita para todos. Ir de `l^1` para `l^2` **piora** o limiar de
+     `gamma > 3` para `gamma > 5` (exato, via `||Z||_2^2 = p/(2-p)`). O
+     déficit medido em `p_c` sobe de `1,88` (`r -> 0`) para `2,10`
+     (`l^1`) e `2,31` (`l^2`).
+
+  2. **Correção à Proposição C, na direção que fortalece a barreira.**
+     A identidade `Lambda = log(1/p)` do `thm:jensen` exige `p >= 1/2`.
+     Abaixo disso, a fórmula de Jensen com zeros dentro do disco dá
+     `Lambda(p) <= log(1/p)`, estrita. Então o ponto de inversão do
+     critério anelado não é `gamma = 3`: é `gamma = 3,31` (medido,
+     E-136; em `p = 1/3` sai `Lambda = 1,032 < log 3 = 1,0986`). A frase
+     do `main.tex` "would only invert at $\gamma=3$" subestima a
+     barreira. **Não editei o manuscrito** (outros agentes podem estar
+     nele); fica para o diretor científico.
+
+  3. **A norma ponderada casada com H-155 dá o mesmo muro, exatamente.**
+     Cauchy-Schwarz dentro de cada casca de condutor (válida para
+     qualquer medida isolada, sem compatibilidade projetiva) leva a
+     `sum_{xi != 0} |muhat| <= sum_r sqrt(2*3^{r-1} E_r^{(ell)})`, e no
+     modelo anelado isso pede de novo `3p < 1`, isto é `gamma > 3`. Zero
+     ganho. Isso é evidência de que separações naturais por condutor não
+     ajudam. Ressalva verificada: as leis `mu_{ell,j}` **não** formam
+     família projetivamente compatível (reduzir módulo `3^{ell-1}` deixa
+     uma marginal ponderada, com peso proporcional a `alpha_{ell-2}`),
+     então a leitura telescópica de H-155 não se aplica a elas.
+
+  4. **`l^1` é o teto de qualquer argumento só de módulos.** A
+     desigualdade `sum_{xi != 0} |muhat(xi)| >= 1` vem de desigualdade
+     triangular; dado qualquer perfil de módulos com soma 1 existem
+     fases que anulam a inversão no ponto `b`. Logo todo orçamento com
+     expoente maior ou peso qualquer é relaxamento estrito. O que sobra
+     por explorar é exatamente o que essa construção de fases ignora: a
+     positividade de `mu` (majorantes não negativos, Turán,
+     Beurling-Selberg), separações aritméticas em arcos maiores e
+     menores, e a fase aritmética em si. Mesma conclusão de H-149/H-154
+     por outro caminho.
+
+  **Escopo (Regra 10b, e o recuo de H-135 achado 3 continua valendo):**
+  isto é negativo **dentro do benchmark anelado**. Fica estabelecido que
+  nenhum orçamento `l^r` não ponderado sobre o conjunto completo de
+  frequências fecha, e que a separação por condutor dá o limiar
+  idêntico. Não fica estabelecido que nenhum argumento `l^r` funcione.
+
+  **Rota (b) da mesma tarefa, mecanismo sem orçamento:** ver
+  [`H-163`](H-163-cadeia-duplicacao-buracos-wcc.md). `2 S_j subset
+  S_{j+1}` força `H_{j+m} subset interseccao_k 2^k H_j`, logo buracos
+  vêm em progressões geométricas de razão `1/2` e `|H_j| >= j*-j`.
+  Exato e verificado até `ell = 10`, mas linear contra `2*3^{ell-1}`:
+  não exclui nada, e fechá-lo pediria a estimativa anticolisão central.
+
+  **Dependência O5-O7 (registrada mesmo sem saber o resultado do agente
+  de O7):** progresso em O7 não fecha parte de O5 mecanicamente. Com
+  decaimento medido por nível de condutor (`|muhat_ell(xi)| <=
+  3^{-theta r}` para `cond(xi) = 3^r`, a graduação de H-154/H-155), O7
+  (`sum_r E_r < infinito`) pede `theta > 1/2` e a exclusão de buraco
+  pela desigualdade de cascas pede `theta > 1`. Fator dois. Sem passar
+  por taxa, a exclusão exige `sum_r sqrt(2*3^{r-1} E_r) < 1`, uma
+  constante dura, não uma condição assintótica. Estruturalmente uma
+  densidade `L^2` pode se
+  anular num conjunto, então `L^2` não força cobertura. Se O7 for
+  provado para Syracuse, O5 segue aberto.
