@@ -1339,6 +1339,44 @@ experiment does not provide a calibrated confidence interval for the
 asymptotic exponent and does not exclude the Volkov prediction.
 \end{empirical}
 
+\subsection{A calibrated comparison}
+
+The estimator behind Empirical Result~\ref{thm:kl} had never been run on
+a process with a known exponent. It is biased: on a branching random
+walk with the same offspring law but an independently drawn branch
+class at every node (exponent provably $0.650919$, the pressure-equation
+root of \S\ref{sec:pressure}), the same window, truncation, and
+extrapolation reads $0.6131$, an under-read of $0.038$, larger than the
+gap $\Delta=0.027$ separating the two disputed values. Comparing the raw
+reading against either theoretical prediction therefore settles nothing.
+
+The bias depends on how much a process fluctuates, and it can be
+calibrated out by comparison rather than subtraction: run the same
+estimator on synthetic processes built to have exponent $0.650919$ and
+exponent $0.678$ respectively, sharing every feature of the arithmetic
+tree except the ultimate value of $q$, and see which reading the
+arithmetic tree matches. A sibling congruence in the reverse tree
+($w_{j+1}\equiv w_j+(2^d-1)/q\pmod q$ for consecutive children of a
+fertile node, a one-line consequence of the recursion of
+\S\ref{sec:setup}) makes this construction exact: replacing the integer
+denominator $q$ by a tunable real value reproduces the arithmetic
+tree's branching and its sibling spacing while moving the exponent to
+any target solving $q_{\mathrm{val}}^{\alpha}=q(2^{\alpha}-1)$.
+
+\begin{empirical}[Calibrated separation from the Volkov exponent]
+\label{thm:kl-calibrated}
+At truncation depth $10^9\!\to\!10^{10}$, where the calibrated controls
+read their target exponent to within $0.003$, the arithmetic tree reads
+$0.64926$ ($95\%$ interval $[0.64818,0.65027]$); a control built to
+exponent $0.650919$ reads $0.64981$ and $0.65122$ on two independent
+constructions; a control built to exponent $0.678$ reads $0.67748$,
+ten interval-widths from the arithmetic reading. The separation widens,
+not narrows, as bias is calibrated away with depth. This measurement
+compares against the exponent value $0.678$, not against Volkov's
+branching model itself, which has a different tree structure and is not
+implemented here.
+\end{empirical}
+
 This result stands entirely on its own, independent of the theoretical
 program of \S\S\ref{sec:endogeny}--\ref{sec:lemmas}; we highlight it
 early in the paper's overall argument because it is the least
@@ -2798,9 +2836,19 @@ $\Lambda = \log\gamma_c \approx 0.5836+O(c)$, confirmed by Monte Carlo
 ($8\times10^6$ samples: $0.58344\pm0.0005$), against the value
 $\log 3\approx 1.0986$ that would be needed to exclude a diffuse hole
 by an annealed $\ell^1$ Fourier-budget argument: a deficit factor of
-$\approx 1.88$. The annealed criterion would only invert at
-$\gamma=3$ ($j\ge 2\ell$), far above the regime of the conjecture
-($j^\ast(\ell)/\ell\approx1.2$, Empirical Result~\ref{thm:wcc}).
+$\approx 1.88$. The naive threshold for inversion, $p=1/3$, sits below
+$\tfrac12$, where Theorem~\ref{thm:jensen}'s identity no longer holds:
+the same stationary-phase argument gives $\Lambda(p)<\log(1/p)$ strictly
+for $p<\tfrac12$, so the actual inversion point is $\gamma\approx3.31$
+($\Lambda\approx1.032$ at $p=1/3$, against $\log3\approx1.0986$), not
+$\gamma=3$, still far above the regime of the conjecture
+($j^\ast(\ell)/\ell\approx1.2$, Empirical Result~\ref{thm:wcc}). No
+member of the wider $\ell^r$ family ($r\ge1$) closes the gap either:
+the closing criterion is the same $\|Z\|_r<1/3$ for every $r$, and
+$\|Z\|_r$ increases with $r$, so $r=1$ is already the best choice and
+$r\to0$ (the Jensen exponent above) is a strict lower bound for the
+whole family (verified in
+\texttt{collatz-endogeny/\allowbreak sec10-l2-refutation-and-jensen/}).
 
 \begin{proposition}[Annealed budget for a diffuse hole]
 \label{thm:propC}
