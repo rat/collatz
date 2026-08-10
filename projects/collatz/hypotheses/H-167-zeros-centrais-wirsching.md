@@ -1,4 +1,4 @@
-# H-162: os zeros de custo central de Wirsching persistem?
+# H-167: os zeros de custo central de Wirsching persistem?
 
 Status: fechada-inconclusiva
 
@@ -73,7 +73,7 @@ e com `c_0 = 5` o suporte é completo em todo nível testado a partir de
 10. Os buracos em `k=ell` são artefato da janela simétrica.
 
 Segundo, o obstáculo real medido em E-135 não é de suporte e sim
-quantitativo, e ele está registrado em H-163.
+quantitativo, e ele está registrado em H-168.
 
 ## Auditoria
 

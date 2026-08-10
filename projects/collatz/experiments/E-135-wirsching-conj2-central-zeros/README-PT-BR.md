@@ -1,6 +1,6 @@
 # E-135: zeros de custo central e a metade quantitativa de `(?3)` de Wirsching
 
-Hipóteses relacionadas: H-134 (seção de 2026-08-09), H-162, H-163.
+Hipóteses relacionadas: H-134 (seção de 2026-08-09), H-167, H-168.
 
 Wirsching (2003) reduz densidade positiva uniforme de predecessores a
 uma cadeia de cinco condições. A Conjectura 2 é o passo `(?4) => (?3)`,
@@ -94,7 +94,7 @@ inteiro da ordem de `3^ell`. O que as tabelas estabelecem é que a `a`
 fixo o quociente não se deteriora com `ell`; a queda do mínimo sobre
 todas as unidades é o crescimento do conjunto de índices. Separar isso
 de uma queda real da cauda esquerda exige quantis em vez do mínimo, que
-é o próximo passo registrado em H-163.
+é o próximo passo registrado em H-168.
 
 ## Memória e tempo
 

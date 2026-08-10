@@ -1,6 +1,6 @@
 # E-135: central-cost zeros and the quantitative half of Wirsching's (?3)
 
-Related hypotheses: H-134 (dated section of 2026-08-09), H-162, H-163.
+Related hypotheses: H-134 (dated section of 2026-08-09), H-167, H-168.
 
 Wirsching (2003) reduces uniform positive predecessor density to a chain
 of five conditions. Conjecture 2 is the step `(?4) => (?3)`, where
@@ -91,7 +91,7 @@ size `3^ell`. What the tables establish is that at fixed `a` the ratio
 does not deteriorate with `ell`; the decay of the all-unit minimum is
 the growth of the index set. Separating that from a genuine decay of the
 left tail needs quantiles rather than the minimum, which is the next
-step recorded in H-163.
+step recorded in H-168.
 
 ## Memory and runtime
 

@@ -115,7 +115,7 @@ em `k=ell` são artefato da janela simétrica de Wirsching, e a Proposição
 abaixo mostra que o Teorema 1 não precisa do centro. O decaimento
 quantitativo que aparece é do ínfimo sobre um grupo que cresce com
 `ell`, não de nenhum resíduo fixo, e é sobre a constante uniforme em
-`a`, que o Teorema 1 não consome. A pergunta viva é a de H-163.
+`a`, que o Teorema 1 não consome. A pergunta viva é a de H-168.
 
 Fonte lida na íntegra:
 `literature/papers/132_Wirsching-2003-Positive-Predecessor-Density.pdf`,
@@ -223,7 +223,7 @@ queda é estatística de extremos e não deterioração de nenhum resíduo.
 Fixando o conjunto, o quociente fica plano: sobre as 1458 unidades
 abaixo de `3^7`, em `d=+5`, ele dá 0,102, 0,074, 0,107, 0,079, 0,116,
 0,108, 0,096 para `ell=10..16`. Separar os dois efeitos exige quantis
-em vez do mínimo, e é o que H-163 registra.
+em vez do mínimo, e é o que H-168 registra.
 
 Se a queda for real, ela custa caro: o Teorema 1 consome `mu` constante,
 e com `mu_ell ~ 0.94^ell` a soma sobre `ell in Delta_y` tem
@@ -275,7 +275,7 @@ reescrita e transfere sem mudança.
 Consequência: os buracos de suporte em `k=ell`, o único obstáculo
 concreto e indiscutível nos dados, são artefato da janela simétrica de
 Wirsching e não obstruem o programa. O que sobra é a questão
-quantitativa, que a janela unilateral não conserta e que H-163 formula.
+quantitativa, que a janela unilateral não conserta e que H-168 formula.
 
 ### O que continua vivo
 
@@ -284,6 +284,6 @@ condições `(?2)`/`(?3)` são enunciadas sobre `Z_3^x` e são estritamente
 mais fortes do que o Teorema 1 usa. Medindo o mínimo sobre um conjunto
 fixo de inteiros em vez do mínimo sobre todas as unidades, em `d=+5`,
 o contraste é de uma ordem de grandeza e o mínimo sobre um conjunto fixo
-fica plano em `ell`: ver E-135 e H-163. Essa diferença, e não `(?4)`, é
+fica plano em `ell`: ver E-135 e H-168. Essa diferença, e não `(?4)`, é
 onde a Conjectura 2 deveria ser reformulada. A persistência dos zeros
-centrais ficou como H-162, inconclusiva até `ell=18`.
+centrais ficou como H-167, inconclusiva até `ell=18`.

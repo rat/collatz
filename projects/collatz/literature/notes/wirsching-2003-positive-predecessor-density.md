@@ -91,7 +91,7 @@ Enunciados literais:
   `thm:wirsching-conj1`.
 - Conjectura 3: testada numericamente com erro certificado até
   `ell = 500` (paper 01, `thm:conjecture3`).
-- Conjectura 2: aberta. Ver H-134 (seção de 2026-08-09), H-162, H-163 e
+- Conjectura 2: aberta. Ver H-134 (seção de 2026-08-09), H-167, H-168 e
   E-135.
 
 ## Referências que o artigo usa e que ainda não foram lidas aqui

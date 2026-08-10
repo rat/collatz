@@ -1,10 +1,10 @@
-# H-163: o quociente mínimo de Wirsching estabiliza em `ell`; o ínfimo em `a` é positivo?
+# H-168: o quociente mínimo de Wirsching estabiliza em `ell`; o ínfimo em `a` é positivo?
 
 Status: aberta (open-unexplored), com medição parcial em E-135
 
 Criada: 2026-08-09
 
-Origem: H-134, seção de 2026-08-09, e H-162. Ao medir a metade
+Origem: H-134, seção de 2026-08-09, e H-167. Ao medir a metade
 quantitativa de `(?3)` apareceu uma separação que nenhuma nota anterior
 desta linha registra.
 
