@@ -1,0 +1,704 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\usepackage{orcidlink}
+\usepackage{fontawesome5}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{empirical}[theorem]{Empirical Result}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\title{Wirsching's 2003 Conjectures on the Base-$3$ Fabius Function:\\
+A Proof, a Corrected Reading, and a Certified Numerical Test}
+
+\author{Renato Augusto Tavares~{\small\href{mailto:dr.renatotavares@gmail.com}{\textcolor{black}{\faEnvelope}}}~\orcidlink{0009-0002-0196-3311}\\
+\normalsize Universidade Federal de Goiás\\
+\small \href{https://orcid.org/0009-0002-0196-3311}{https://orcid.org/0009-0002-0196-3311}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+% DRAFT -- rewrite by hand before submission (Rule 4b: abstracts carry
+% the highest marker density of any section in the paper).
+Wirsching (2003) reduces uniform positive predecessor density for the
+$3n+1$ map to a chain of three conjectures about the base-$3$ analogue
+of the Fabius function, the unique $L^1$ fixed point of an averaging
+operator built from Collatz path counts. We prove the first of the
+three by a generating-function cancellation. We read the primary
+source directly for the second and find that its target, a pointwise
+bound on a one-dimensional averaging operator, carries no information
+about the coordinate the surrounding chain actually needs, which
+explains why a previously proposed sufficient condition failed for a
+reason different from the one originally supposed. We give a
+microcanonical decomposition of the Syracuse law in terms of
+Wirsching's path-counting functions, an exact equivalence-of-ensembles
+theorem at fixed and sublinear precision, a matching nonequivalence
+theorem at linear precision, and a certified numerical test of the
+third conjecture with error bounded by $10^{-8}$ through depth $500$.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:intro}
+
+Wirsching~\cite{Wirsching2003} studies uniform positive predecessor
+density for the Collatz map through a functional equation for a
+specific probability density $\varphi$, a base-$3$ analogue of the
+Fabius function, arising as the limiting density of a normalized path
+count in the Collatz reverse tree. The paper reduces the target
+density statement to a chain of implications through three
+increasingly concrete conjectures, of which only the first has since
+been settled; the third has numerical support in this line of work,
+and the second, on which the whole chain pivots, has remained open and,
+we find, imprecisely characterized in the literature that cites it.
+
+\S\ref{sec:chain} fixes Wirsching's objects and states the chain
+precisely, reading the primary source rather than a paraphrase.
+\S\ref{sec:conj1} proves the first conjecture.
+\S\ref{sec:microcanonical} develops the microcanonical decomposition of
+the Syracuse law that connects Wirsching's path counts to the weighted
+covering formulation of the endogeny-barrier literature this line of
+work also produces \cite{BarrierCompanion}, together with the
+equivalence- and nonequivalence-of-ensembles theorems that delimit
+exactly how much of the second conjecture's target is reachable by
+local-limit methods. \S\ref{sec:conj3} reports the certified numerical
+test of the third conjecture.
+
+\section{Wirsching's chain, from the primary source}
+\label{sec:chain}
+
+Wirsching's central combinatorial objects are the ``Elka'' functions
+$e_\ell(k,a):=|E_{\ell,k}(a)|$, counting paths of length $k+\ell$ in
+the Collatz graph ending at $a$, viewed on the state space
+$\mathbb X=\mathbb I_3\times\mathbb Z_3^\times$: the
+$\mathbb Z_3^\times$ factor carries the $3$-adic variable habitat of
+the Syracuse measure, while the $\mathbb I_3\cong\{0,1,2\}^{\mathbb
+N}$ factor carries the normalized step count $k/3^\ell$, converging to
+a density $\varphi$.
+
+\begin{proposition}[Base-$3$ Fabius function]\label{prop:fabius}
+$\varphi$ is the density of $X=\sum_{j\ge1}2U_j\cdot3^{-j}$, $U_j$
+i.i.d.\ uniform on $[0,1]$ --- the base-$3$ analogue of the Fabius
+function (which satisfies $f'(x)=2f(2x)$; here $\varphi'(x)=
+\tfrac92\varphi(3x)$ on $[0,2/3]$), a member of the family of ``atomic
+functions'' of Rvachev. It is the unique $L^1([0,1])$ fixed point of
+the averaging operator $W_3f(x):=\tfrac32\int_{3x-2}^{3x}f(t)\,dt$,
+$C^\infty$, piecewise polynomial away from the standard Cantor set,
+with certified geometric convergence
+$\|f_n-\varphi\|_1\le2^{-n+1}\|f_1-f_0\|_1$.
+\end{proposition}
+
+Wirsching's paper reduces uniform positive predecessor density (that
+the sets of predecessors of $T$ have density bounded below uniformly
+over admissible targets) to a chain of five conditions, reading
+\cite[Definition~1, \S\S1--7]{Wirsching2003} directly rather than a
+secondary paraphrase:
+\[
+\begin{array}{ll}
+\text{Theorem 1 (proved in \cite{Wirsching2003})} & (?1)\Rightarrow
+  \text{Positive Density}\\
+\text{Conjecture 1} & (?2)\Rightarrow(?1)\\
+\text{Theorem 2 (proved in \cite{Wirsching2003})} & (?3)\Rightarrow(?2)\\
+\text{Conjecture 2} & (?4)\Rightarrow(?3)\\
+\text{Conjecture 3} & (?5);\ (?5)\Rightarrow(?4)\text{ proved in
+  \cite[\S7]{Wirsching2003}}
+\end{array}
+\]
+where $(?1)$ is a $\liminf$ lower bound on Wirsching's Elka functions
+relative to their Haar average, uniform over sequences
+$(k_\ell)$ with $|\ell-k_\ell|\le\delta\sqrt\ell$; $(?2)$ is the same
+statement for his generators $g_\ell(k,a)$; $(?3)$ upgrades the
+$\liminf$ over $\ell$ to a bound holding for every $\ell\ge\ell_0$;
+and $(?4)$ is
+\[
+ \liminf_\ell\frac{(W_3^\ell\chi_1)(x_\ell)}{(W_3^\ell\chi_0)(x_\ell)}
+ \ge\mu,\qquad\text{uniformly for }(x_\ell)\in\widetilde A_\delta,
+\]
+with $\chi_0=\mathbf 1_{[0,2/3]}$, $\chi_1=\mathbf1_{[1/3,1]}$, and
+$W_3$ the averaging operator of Proposition~\ref{prop:fabius}. Three
+things become visible only by reading this chain directly rather than
+a paraphrase, and matter for what follows.
+
+First, $(?4)$ is a statement purely about the one-dimensional operator
+$W_3$: it never mentions Wirsching's generators, and carries no
+information about the residue coordinate that $(?3)$ needs. The only
+bridge offered between the two is Wirsching's Theorem~3, strong
+convergence $S_\ell\to S_\infty$ on equicontinuous bounded families,
+uniform in that family but not in growing resolution.
+
+Second, $(?3)$ and $(?2)$ are the same inequality. Writing
+$\widetilde g_\ell(x,a)=\gamma_\ell\,g_\ell(\lfloor3^\ell
+x\rfloor,a)$ for a constant $\gamma_\ell$ not depending on $a$, the
+constant cancels from both sides of the ratio each condition bounds;
+what Wirsching's Theorem~2 adds is a change of quantifier, from a
+$\liminf$ in $\ell$ at each $a$ to a bound holding at every
+$\ell\ge\ell_0$ and every unit simultaneously.
+
+Third, Theorem~1's own hypothesis and conclusion are about $a\in\mathbb
+N$, non-cyclic, $a\not\equiv0\pmod3$: conditions $(?2)$ and $(?3)$,
+stated over $\mathbb Z_3^\times$, are strictly stronger than what the
+chain from Theorem~1 alone requires.
+
+\section{Wirsching's Conjecture 1}
+\label{sec:conj1}
+
+\begin{theorem}[Wirsching's Conjecture 1]\label{thm:wirsching-conj1}
+In the notation of \S\ref{sec:chain}, condition $(?2)$ implies
+condition $(?1)$, with a possibly smaller central-limit window.
+\end{theorem}
+
+\begin{proof}
+Put $c_0=1$ and $c_j=2\cdot3^{j-1}$ for $j\ge1$. If $q_\ell(k)$ counts
+the bounded urn distributions defining $\bar g_\ell(k)$, then
+\[
+ \sum_{k\ge0}q_\ell(k)z^k
+ =\prod_{j=0}^\ell\frac{1-z^{c_j}}{1-z},\qquad
+ \sum_{m\ge0}p_\ell(m)z^m
+ =\prod_{j=0}^\ell(1-z^{c_j})^{-1}.
+\]
+Since $q_\ell(k)=2\cdot3^{\ell-1}\bar g_\ell(k)$ and
+$\bar e_\ell=p_\ell*\bar g_\ell$, cancellation gives
+\[
+ \bar e_\ell(k)=\frac{1}{2\cdot3^{\ell-1}}
+                 {k+\ell\choose\ell}.
+\]
+The unrestricted partition count for the coins $1,2,6,18,\ldots$ is
+at most $\exp(C\log^2(m+2))$. Also
+\[
+ \frac{{k-m+\ell\choose\ell}}{{k+\ell\choose\ell}}
+ \le \left(\frac{k}{k+\ell}\right)^m.
+\]
+Uniformly for $|k-\ell|\le\delta\sqrt\ell$, the part of the convolution
+with $m\ge\eta\sqrt\ell$ is
+$\exp(-c\sqrt\ell+O(\log^2\ell))$. Choose
+$\delta+\eta<\delta_1$. On the remaining terms $j=k-m$ lies in the
+window of $(?2)$, and positivity transfers its lower bound from
+$g_\ell/\bar g_\ell$ to $e_\ell/\bar e_\ell$.
+\end{proof}
+
+\begin{remark}[Relation to the source]\label{rem:wirsching-conj1-source}
+Wirsching records the two convolution identities used above and states
+the implication as Conjecture~1 \cite[\S\S1--2]{Wirsching2003}. The
+annotated Collatz bibliography also lists the three implications in
+that paper as conjectures \cite{LagariasBibliographyII}. The proof
+above supplies the generating-function cancellation and the
+convolution-tail estimate for the first implication, checked
+coefficient by coefficient in the accompanying repository.
+\end{remark}
+
+The second conjecture remains open. The most concrete sufficient
+condition above it is Conjecture~3, an asymptotic assertion on
+$\varphi(z_\ell)/\varphi_0(z_\ell)$ along the central-limit window
+$|\ell-k_\ell|\le\delta\sqrt\ell$, which we test numerically in
+\S\ref{sec:conj3}.
+
+\section{A microcanonical decomposition, and how far local-limit methods reach}
+\label{sec:microcanonical}
+
+\begin{theorem}[Microcanonical decomposition]\label{thm:microcanonical}
+Let $g_\ell(k,a)$ be Wirsching's generator, let
+$c_i=2\cdot3^i$, and let $\mu_\ell$ be the Syracuse law modulo
+$3^\ell$. For every unit residue $a$,
+\begin{equation}\label{eq:microcanonical}
+ \mu_\ell(a)=
+ \left(\prod_{i=0}^{\ell-1}\frac{1}{2(1-2^{-c_i})}\right)
+ \sum_{k=0}^{3^\ell-\ell-1}2^{-k}g_\ell(k,a).
+\end{equation}
+Suppose there are $\delta,\eta>0$ such that, for all sufficiently large
+$\ell$, every unit $a$, and every integer
+$|k-\ell|\le\delta\sqrt\ell$,
+\[
+ g_\ell(k,a)\ge\eta\,\overline g_\ell(k),
+ \qquad
+ \overline g_\ell(k)=\frac{1}{2\cdot3^{\ell-1}}
+ \sum_{b\in(\mathbb Z/3^\ell\mathbb Z)^\times}g_\ell(k,b).
+\]
+Then $\mu_\ell(a)\ge C_{\delta,\eta}3^{-\ell}$ uniformly in $a$ and
+$\ell$. In particular, condition $(?3)$ implies a uniform lower bound
+on every cylinder of the Syracuse law, the estimate the weighted
+covering formulation of the endogeny-barrier literature needs
+\cite{BarrierCompanion}.
+\end{theorem}
+
+\begin{proof}
+At recursion level $i$, multiplication by $2$ has order
+$c_i=2\cdot3^i$ modulo $3^{i+1}$. If $A_i$ has the geometric law
+$\Pr(A_i=m)=2^{-m}$, then $J_i=A_i-1\bmod c_i$ satisfies
+\[
+ \Pr(J_i=j)=\frac{2^{-(j+1)}}{1-2^{-c_i}},
+ \qquad 0\le j<c_i.
+\]
+Folding each exponent independently by the applicable order leaves the
+Syracuse residue unchanged. Wirsching's recursion for $g_\ell$ counts
+the folded vectors with $\sum_iJ_i=k$. Multiplying their probabilities
+gives \eqref{eq:microcanonical}.
+
+Put $K_\ell=\sum_{i<\ell}J_i$. The summands are independent and are
+uniformly dominated by an untruncated geometric variable. Direct
+summation gives
+$\mathbb E K_\ell=\ell+O(1)$ and
+$\operatorname{Var}K_\ell=2\ell+O(1)$. The Lindeberg central limit
+theorem therefore gives
+\[
+ \Pr(|K_\ell-\ell|\le\delta\sqrt\ell)
+ \longrightarrow 2\Phi(\delta/\sqrt2)-1>0.
+\]
+Sum \eqref{eq:microcanonical} over the central values of $k$ and use
+the assumed lower bound. Since there are $2\cdot3^{\ell-1}$ unit
+residues, this yields
+\[
+ \mu_\ell(a)\ge
+ \frac{\eta}{2\cdot3^{\ell-1}}
+ \Pr(|K_\ell-\ell|\le\delta\sqrt\ell)
+ \ge C_{\delta,\eta}3^{-\ell}.
+\]
+\end{proof}
+
+\begin{proposition}[Conditional local-limit bridge]
+\label{prop:complex-deconditioning}
+Set
+\[
+ G_{\ell,a}(z)=\sum_k g_\ell(k,a)z^k,\qquad
+ \overline G_\ell(z)=\frac{1}{2\cdot3^{\ell-1}}\sum_aG_{\ell,a}(z).
+\]
+Define the conditional cost laws
+\[
+ Q_{\ell,a}(k)=\frac{2^{-k}g_\ell(k,a)}{G_{\ell,a}(1/2)},
+ \qquad
+ \overline Q_\ell(k)=
+ \frac{2^{-k}\overline g_\ell(k)}{\overline G_\ell(1/2)}.
+\]
+Then the exact identity
+\begin{equation}\label{eq:deconditioning}
+ \frac{g_\ell(k,a)}{\overline g_\ell(k)}
+ =
+ \frac{G_{\ell,a}(1/2)}{\overline G_\ell(1/2)}
+ \frac{Q_{\ell,a}(k)}{\overline Q_\ell(k)}
+\end{equation}
+holds. Fix $\delta>0$. If, uniformly in unit $a$ and
+$|k-\ell|\le\delta\sqrt\ell$,
+\[
+ \frac{G_{\ell,a}(1/2)}{\overline G_\ell(1/2)}\ge\eta>0,
+ \qquad
+ Q_{\ell,a}(k)\ge c_\delta\ell^{-1/2},
+\]
+then condition $(?3)$ holds.
+\end{proposition}
+
+\begin{proof}
+Identity \eqref{eq:deconditioning} follows by cancellation. Under the
+folded geometric law in the proof of Theorem~\ref{thm:microcanonical},
+$\overline Q_\ell$ is the law of $K_\ell$.
+The summands have uniformly bounded exponential moments,
+mean sum $\ell+O(1)$, and variance $2\ell+O(1)$. Their lattice local
+central limit theorem gives, uniformly in the stated window,
+\[
+ \overline Q_\ell(k)\asymp_\delta\ell^{-1/2}.
+\]
+The two assumed lower bounds and \eqref{eq:deconditioning} now give a
+positive uniform lower bound for
+$g_\ell(k,a)/\overline g_\ell(k)$.
+\end{proof}
+
+The first factor in \eqref{eq:deconditioning} is the canonical Syracuse
+mass relative to its mean. The conjectural weighted-covering estimate
+gives only a subexponential lower bound for this factor; the
+proposition assumes a constant lower bound. The second factor is a
+local limit theorem after conditioning on the residue. Its Fourier
+representation is
+\[
+ Q_{\ell,a}(k)=\frac{1}{2\pi}\int_{-\pi}^{\pi}
+ e^{-ikt}\frac{G_{\ell,a}(e^{it}/2)}{G_{\ell,a}(1/2)}\,dt.
+\]
+
+\begin{remark}[Local limit theorems for operator cocycles]
+Spectral local limit theorems exist for random expanding dynamics
+\cite{DragicevicEtAl2018} and for time-dependent expanding systems
+\cite{Hafouta2020}. Their hypotheses include a twisted operator
+cocycle acting on a fixed Banach space, a uniform spectral or
+Ruelle--Perron--Frobenius gap near zero, and an aperiodicity estimate
+away from zero. These hypotheses would give the phase control in
+Proposition~\ref{prop:complex-deconditioning}. They have not been
+verified for Wirsching's $S_\ell$. Theorem~3 of
+\cite{Wirsching2003} gives strong convergence on fixed
+equicontinuous families, while the densities used here acquire
+resolution $3^{-\ell}$. The available local limit theorems do not
+remove that growing-resolution obstruction.
+\end{remark}
+
+\begin{theorem}[Equivalence of ensembles at fixed precision]
+\label{thm:fixed-precision-ensemble}
+For a unit residue $a$ put
+\[
+ p_{\ell,k}(a)=\frac{g_\ell(k,a)}{\sum_b g_\ell(k,b)}.
+\]
+Fix $r\ge1$ and $\delta>0$. Uniformly over integers
+$|k-\ell|\le\delta\sqrt\ell$, the projection of $p_{\ell,k}$ modulo
+$3^r$ converges in total variation to the Syracuse law $\mu_r$ as
+$\ell\to\infty$.
+\end{theorem}
+
+\begin{proof}
+Under the canonical weights in Theorem~\ref{thm:microcanonical}, the
+folded costs $J_0,\ldots,J_{\ell-1}$ are independent and
+$p_{\ell,k}$ is the law of the resulting residue conditional on
+$K_\ell=\sum_iJ_i=k$. Fix the terminal block of $r$ costs. For each
+fixed value $\mathbf j$ of that block, with coordinate sum
+$s(\mathbf j)$, independence gives
+\[
+ \Pr(\mathbf J=\mathbf j\mid K_\ell=k)
+ =\Pr(\mathbf J=\mathbf j)
+   \frac{\Pr(K_{\ell-r}=k-s(\mathbf j))}
+        {\Pr(K_\ell=k)}.
+\]
+The lattice local central limit theorem used in
+Proposition~\ref{prop:complex-deconditioning} makes the ratio tend to
+one, uniformly in the stated window, for every fixed $\mathbf j$.
+The geometric domination of the coordinates makes the block tails
+uniformly summable. Splitting at block sum $o(\sqrt\ell)$ and applying
+the same local estimate there extends the convergence to total
+variation on the whole block.
+
+The terminal $r$ folded costs determine the final residue modulo
+$3^r$. At a terminal stage whose original cap is $C$, reduction to the
+cap $d=2\cdot3^i$ required at precision $r$ is exact because $d\mid C$
+and
+\[
+ \sum_{\substack{0\le j<C\\j\equiv s\ ({\rm mod}\ d)}}
+ \frac{2^{-(j+1)}}{1-2^{-C}}
+ =\frac{2^{-(s+1)}}{1-2^{-d}},\qquad 0\le s<d.
+\]
+The reduced block therefore has exactly the canonical folded-geometric
+law defining $\mu_r$. Total variation cannot increase under the
+deterministic map from the block to its residue, which proves the
+claim.
+\end{proof}
+
+\begin{theorem}[Equivalence of ensembles at sublinear precision]
+\label{thm:sublinear-precision-ensemble}
+Let $r=r_\ell$ be an integer sequence with $1\le r\le\ell$ and
+$r=o(\ell)$. Fix $\delta>0$. Uniformly over integers
+$|k-\ell|\le\delta\sqrt\ell$, the projection of $p_{\ell,k}$ modulo
+$3^r$ has total-variation distance $o(1)$ from $\mu_r$.
+\end{theorem}
+
+\begin{proof}
+It remains to treat $r\to\infty$, since bounded subsequences follow
+from Theorem~\ref{thm:fixed-precision-ensemble}. Split the canonical
+cost as $K_\ell=R_{\ell,r}+B_{\ell,r}$, where $B_{\ell,r}$ is the sum
+of the terminal $r$ folded costs. The Radon derivative of the law of
+the terminal block conditional on $K_\ell=k$, relative to its
+unconditioned law, is
+\begin{equation}\label{eq:block-radon}
+ D_{\ell,r}(B_{\ell,r})
+ =\frac{\Pr(R_{\ell,r}=k-B_{\ell,r})}
+        {\Pr(K_\ell=k)}.
+\end{equation}
+Choose $h_\ell\to\infty$ slowly enough that
+$h_\ell\sqrt{r/\ell}\to0$. Uniform exponential moments give
+\[
+ \Pr\bigl(|B_{\ell,r}-\mathbb EB_{\ell,r}|>
+                 h_\ell\sqrt r\bigr)=o(1).
+\]
+On the complementary event, removing the block changes the centered
+local-CLT coordinate by $o(1)$ and changes the variance by a relative
+$o(1)$. The uniform lattice local central limit theorem for the folded
+geometric triangular array therefore gives
+$D_{\ell,r}(B_{\ell,r})=1+o(1)$ uniformly there. Since
+$\Pr(K_\ell=k)\gg_\delta\ell^{-1/2}$ in the central window, while the
+standard concentration bound for lattice sums with uniformly bounded
+exponential moments gives
+$\sup_m\Pr(R_{\ell,r}=m)\ll(\ell-r)^{-1/2}$. Hence
+$D_{\ell,r}\ll_\delta1$ on its whole support. Truncation of the
+exceptional set now gives
+$\mathbb E|D_{\ell,r}-1|=o(1)$. This is twice the total-variation
+distance between the conditioned and unconditioned terminal blocks.
+Their deterministic residue maps cannot increase that distance. The
+cap-reduction identity in the proof of
+Theorem~\ref{thm:fixed-precision-ensemble} shows that the unconditioned
+residue has law exactly $\mu_r$.
+\end{proof}
+
+\begin{theorem}[Linear-block nonequivalence]\label{thm:linear-block-nonequivalence}
+Let $\mathbf B_{\ell,r}=(J_{\ell-r},\ldots,J_{\ell-1})$ be the
+terminal block of folded costs and let
+$S_{\ell,r}=\sum_{i=\ell-r}^{\ell-1}J_i$. Suppose that
+\[
+ \frac r\ell\longrightarrow\rho\in(0,1),\qquad
+ \frac{k_\ell-\ell}{\sqrt\ell}\longrightarrow u.
+\]
+Then
+\begin{align*}
+ &d_{\rm TV}\bigl(
+   \mathcal L(\mathbf B_{\ell,r}\mid K_\ell=k_\ell),
+   \mathcal L(\mathbf B_{\ell,r})\bigr)\\
+ &\quad=d_{\rm TV}\bigl(
+   \mathcal L(S_{\ell,r}\mid K_\ell=k_\ell),
+   \mathcal L(S_{\ell,r})\bigr)\\
+ &\quad\longrightarrow
+ d_{\rm TV}\bigl(
+   \mathcal N(\rho u,2\rho(1-\rho)),
+   \mathcal N(0,2\rho)\bigr)>0,
+\end{align*}
+where the second parameter of $\mathcal N$ is the variance. In fact,
+the first equality holds without the $o(1)$ at every finite level.
+For $u=0$, the limit equals
+\[
+ 2\left[
+ \Phi\left(\sqrt{\frac{-\log(1-\rho)}{\rho}}\right)
+ -\Phi\left(\sqrt{\frac{-(1-\rho)\log(1-\rho)}{\rho}}\right)
+ \right].
+\]
+\end{theorem}
+
+\begin{proof}
+Write $R_{\ell,r}=K_\ell-S_{\ell,r}$. Relative to the
+unconditioned block law, the conditioned law has density
+\[
+ \frac{\Pr(R_{\ell,r}=k_\ell-S_{\ell,r})}
+      {\Pr(K_\ell=k_\ell)}.
+\]
+This density is a function of $S_{\ell,r}$ alone. Taking its absolute
+deviation from one proves the finite-level equality of the two total
+variation distances.
+
+The folded costs have uniformly bounded exponential moments. Their
+means and variances differ from $1$ and $2$, respectively, by summable
+errors. The lattice local central limit theorem, applied separately to
+$S_{\ell,r}$ and $R_{\ell,r}$, gives the unconditioned limit
+$\mathcal N(0,2\rho)$ for
+$(S_{\ell,r}-r)/\sqrt\ell$. After conditioning, its limiting density is
+\[
+ x\longmapsto
+ \frac{\phi_{0,2\rho}(x)\phi_{0,2(1-\rho)}(u-x)}
+      {\phi_{0,2}(u)}
+ =\phi_{\rho u,2\rho(1-\rho)}(x).
+\]
+Uniform exponential tails promote the local convergence to convergence
+in total variation. The two limiting variances are different, so the
+distance is positive. When $u=0$, the two centered Gaussian densities
+cross at
+$|x|=\sqrt{-2(1-\rho)\log(1-\rho)}$; integration on the central
+interval gives the displayed formula.
+\end{proof}
+
+Theorem~\ref{thm:linear-block-nonequivalence} shows that the condition
+$r=o(\ell)$ in Theorem~\ref{thm:sublinear-precision-ensemble} is sharp
+for the latent cost vectors. It does not prove nonequivalence after
+projection modulo $3^r$: the residue map can discard the block sum,
+and total variation can decrease under that projection. The
+linear-precision residue and Fourier problems remain open.
+
+\begin{theorem}[Full-precision likelihood domination]
+\label{thm:ensemble-divergence}
+Let $p_{\ell,k}^{(r)}$ be the projection of $p_{\ell,k}$ modulo $3^r$,
+where $1\le r\le\ell$. For every set
+$E\subseteq\mathbb Z/3^r\mathbb Z$,
+\begin{equation}\label{eq:ensemble-domination}
+ p_{\ell,k}^{(r)}(E)
+ \le \Pr(K_\ell=k)^{-1}\mu_r(E).
+\end{equation}
+Consequently
+\[
+ D_{\rm KL}(p_{\ell,k}^{(r)}\Vert\mu_r)
+ \le D_\infty(p_{\ell,k}^{(r)}\Vert\mu_r)
+ \le-\log\Pr(K_\ell=k).
+\]
+Uniformly for $|k-\ell|\le\delta\sqrt\ell$, the last quantity is
+$\frac12\log\ell+O_\delta(1)$.
+\end{theorem}
+
+\begin{proof}
+On the canonical folded-cost space, the microcanonical law is the
+conditional law given $K_\ell=k$. Hence, for the inverse image
+$\widetilde E$ of $E$ under the residue map,
+\[
+ \Pr(\widetilde E\mid K_\ell=k)
+ \le\frac{\Pr(\widetilde E)}{\Pr(K_\ell=k)}.
+\]
+The unconditioned residue modulo $3^r$ has law $\mu_r$, by the same cap
+reduction used in Theorem~\ref{thm:fixed-precision-ensemble}. This proves
+\eqref{eq:ensemble-domination}. It is the asserted bound on the
+essential likelihood ratio, and relative entropy is bounded by its
+logarithm. The lattice local central limit theorem gives
+$\Pr(K_\ell=k)\asymp_\delta\ell^{-1/2}$ in the central window.
+\end{proof}
+
+Theorem~\ref{thm:ensemble-divergence} applies at full precision, but its
+direction is insufficient for condition $(?3)$. It proves that the
+relative entropy per digit vanishes and rules out an exponential
+likelihood separation from the canonical ensemble. Condition $(?3)$
+asks for a lower bound on every residue, so the unresolved part is the
+lower tail of the likelihood ratio.
+
+For $r=o(\ell)$ and $\xi_0\in\mathbb Z/3^r\mathbb Z$, the theorem gives
+\begin{equation}\label{eq:fixed-conductor-fourier}
+ \widehat p_{\ell,k}(3^{\ell-r}\xi_0)
+ =\widehat\mu_r(\xi_0)+o(1),
+\end{equation}
+uniformly in $\xi_0$ and in the central cost window.
+Thus the fixed-cost law does not approach Haar at fixed precision.
+Fixed-conductor modes may persist. For example, $\mu_1$ assigns masses
+$1/3$ and $2/3$ to the two units modulo $3$, so its nontrivial Fourier
+coefficient has modulus $1/\sqrt3$. Any Fourier estimate for condition
+$(?3)$ must separate these exact coarse modes and control frequencies
+whose conductor is comparable with $\ell$.
+
+\begin{empirical}[Fixed-precision projection test]
+\label{thm:fixed-precision-finite}
+We projected the exact fixed-cost tables onto $3^r$, for $r=1,2,3$,
+and compared them in total variation with $\mu_r$ obtained from the
+independent Syracuse recursion. At $\ell=12$ and $k=\ell$, the
+distances were $0.02050$, $0.04024$, and $0.06228$. At
+$k=\ell+\lfloor\sqrt\ell\rfloor$, they were $0.04310$, $0.07902$,
+and $0.12677$. The distances decrease over the computed levels. This
+finite test checks the implementation and is not used in the proof.
+At full precision and $\ell=13$, the distances were $0.25195$ at
+$k=\ell$ and $0.26078$ at
+$k=\ell+\lfloor\sqrt\ell\rfloor$. The corresponding precision-one
+values were $0.01885$ and $0.04003$. These full-precision values do not
+determine an asymptotic limit.
+\end{empirical}
+
+\begin{empirical}[Finite microcanonical coverage]\label{thm:microcanonical-finite}
+We computed the multiplicities $g_\ell(k,a)$ exactly through
+$\ell=12$, checking at every level that their residue sum equals the
+independent bounded-composition count. At $\ell=12$, the fractions of
+unit residues reached at
+$k=\ell-\lfloor\sqrt\ell\rfloor,\ell,
+\ell+\lfloor\sqrt\ell\rfloor$ are respectively
+$0.2735$, $0.8074$, and $0.9973$. The minimum multiplicity is still
+zero in all three cases. A separate Boolean recursion extends the
+support calculation through $\ell=16$. At that level the central and
+upper-window coverage fractions are $0.9194$ and $0.99999972$, while
+the first fixed cost covering every residue equals $\ell+5$ for each
+$10\le\ell\le16$. These values neither prove nor refute the uniform
+asymptotic lower bound.
+\end{empirical}
+
+\begin{empirical}[Fourier budget for fixed-cost multiplicities]
+\label{thm:microcanonical-fourier}
+For $p_{\ell,k}(a)=g_\ell(k,a)/\sum_b g_\ell(k,b)$, additive Fourier
+inversion gives
+\[
+ \min_a\frac{p_{\ell,k}(a)}{1/(2\cdot3^{\ell-1})}
+ \ge 1-\frac23\sum_\xi
+ |\widehat p_{\ell,k}(\xi)-\widehat u_\ell(\xi)|.
+\]
+At the central cost $k=\ell$, the spectral sum grows from $12.11$ at
+$\ell=4$ to $293.29$ at $\ell=12$ and is dominated by primitive
+frequencies. At $k=\ell+\lfloor\sqrt\ell\rfloor$, it grows from $7.61$
+to $122.63$. At $\ell=12$, the largest individual discrepancy is
+$0.339$ at central cost and $0.280$ in the upper window, while the
+largest primitive discrepancies are $0.0246$ and $0.00682$. Thus the
+largest coefficients retain a coarse component even as each primitive
+coefficient becomes smaller. The resulting lower bounds are negative
+throughout. This does not disprove uniform positivity; it shows that
+termwise absolute summation of the finite Fourier series does not
+establish it on this range.
+\end{empirical}
+
+\section{Certified numerical test of Wirsching's Conjecture 3}
+\label{sec:conj3}
+
+Using the exact self-similarity $X\overset{d}{=}(2U+X)/3$, the moments
+$M_i=\mathbb{E}[X^i]$ satisfy the exact rational recursion
+\[
+  M_i = \frac{1}{3^i-1}\sum_{k=1}^i \binom{i}{k}\frac{2^k}{k+1} M_{i-k},
+\]
+and, combined with an antiderivative reduction expressing $\varphi$ at
+extreme-tail arguments in terms of exact binomial moment sums (rather
+than iterating $W_3$, whose $L^1$ error certificate is too weak to
+control pointwise values at the relevant scale), we obtain a
+zero-truncation-error evaluation of $\varphi$ at depth $\ell$ up to
+$\ell=500$ (working throughout in log-space with $60$-digit precision;
+error certified $\le 10^{-8}$).
+
+\begin{empirical}[Numerical test of Wirsching's Conjecture 3]
+\label{thm:conjecture3}
+The decisive ratio $L_\ell := 3^{1-\ell}\varphi(3x_\ell^+)/\varphi(x_\ell^+)$,
+measured for $\ell=250,\dots,500$ in the CLT window ($u\in[-2,2]$),
+converges to the predicted value $2/3$ with deficit
+$\ell\cdot(2/3-L_\ell) \to 0.580\pm 0.001$ --- a coefficient
+independently reproduced by Berg--Krüppel's own asymptotic
+$\varphi_0$. The quantity $\ln(\varphi/\varphi_0)$ is increasing,
+concave, and uniform across $u\in[-2,2]$ (dispersion $<10^{-4}$),
+consistent with a finite limit $L=-0.619\pm0.001\,(\mathrm{stat})$,
+with a tail-shape systematic uncertainty of $\pm 0.015$, giving
+$c=e^L\approx 0.538$ (honest range $0.53$--$0.55$), best fit by a
+tail term $0.79/\sqrt\ell$; no log-periodic modulation is detected.
+This supports Conjecture~3 with certified numerical error on the tested
+range. Conjecture~2 remains open; Theorem~\ref{thm:wirsching-conj1}
+settles Conjecture~1 independently of this computation.
+\end{empirical}
+
+\section{Discussion}
+\label{sec:discussion}
+
+The support identity \eqref{eq:microcanonical} and the equivalence and
+nonequivalence theorems above are exact; they delimit exactly how far
+local-limit methods reach toward Conjecture 2, not the conjecture
+itself. Theorem~\ref{thm:fixed-precision-ensemble} and
+Theorem~\ref{thm:sublinear-precision-ensemble} give convergence at
+fixed and sublinear precision; Theorem~\ref{thm:linear-block-nonequivalence}
+shows the latent cost vectors provably fail to converge at linear
+precision, and Theorem~\ref{thm:ensemble-divergence} shows why: the
+likelihood gap between the microcanonical and canonical ensembles
+degrades only logarithmically, in the direction opposite to what
+Conjecture 2 needs. Conjecture~2's own target, condition $(?4)$,
+carries no information about the coordinate this machinery
+controls (\S\ref{sec:chain}); closing the gap needs an argument on
+$W_3$ itself, or a different bridge between $(?4)$ and $(?3)$ than the
+one Wirsching's Theorem~3 supplies.
+
+\section*{Data Availability Statement}
+
+Code and data reproducing every claim in this paper, organized by
+section with a README per subfolder, are at
+\url{https://github.com/faculdade/collatz-wirsching-2003}.
+
+\section*{Acknowledgments}
+
+AI assistance (Claude, Anthropic) was used for textual review and
+translation.
+
+\bibliographystyle{plain}
+\begin{thebibliography}{9}
+
+\bibitem{Wirsching2003} G.\ J.\ Wirsching, \emph{On the problem of
+  positive predecessor density in $3n+1$ dynamics}, Discrete and
+  Continuous Dynamical Systems \textbf{9}(3) (2003), 771--787.
+  DOI: 10.3934/dcds.2003.9.771.
+
+\bibitem{LagariasBibliographyII} J.\ C.\ Lagarias, \emph{The $3x+1$
+  problem: an annotated bibliography, II (2000--2009)},
+  arXiv:math/0608208v6, 2012.
+
+\bibitem{DragicevicEtAl2018} D.\ Dragi\v{c}evi\'c, G.\ Froyland,
+  C.\ Gonz\'alez-Tokman, and S.\ Vaienti, \emph{A spectral approach
+  for quenched limit theorems for random expanding dynamical systems},
+  Communications in Mathematical Physics \textbf{360}(3) (2018),
+  1121--1187. DOI: 10.1007/s00220-017-3083-7.
+
+\bibitem{Hafouta2020} Y.\ Hafouta, \emph{Limit theorems for some
+  time-dependent expanding dynamical systems}, Nonlinearity
+  \textbf{33} (2020), 6421--6460.
+  DOI: 10.1088/1361-6544/aba5e7.
+
+\bibitem{BarrierCompanion} R.\ A.\ Tavares, \emph{The $qx+1$
+  generalization of Tao's Syracuse measure: an endogeny barrier},
+  companion paper, in preparation.
+
+\end{thebibliography}
+
+\end{document}
