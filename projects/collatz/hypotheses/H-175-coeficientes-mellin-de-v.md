@@ -136,8 +136,59 @@ têm alguma estrutura útil para Q2); ao contrário da tentativa 1, agora
 está estabelecido que a resposta não pode vir de reciclar os achados de
 E-137, precisa de uma medição nova e própria da transformada de Mellin.
 Isso é, honestamente, menos progresso do que a tentativa 1 alegava, mas
-é o estado real. Mantido em `backlog`: o próximo passo real é medir a
-estrutura da transformada de Mellin diretamente (o `sup`/`rms` acima já
-são um primeiro esboço dela, até `ell=9`; estender e procurar um padrão
-de decaimento por "condutor de órbita" análogo ao que E-137 fez para a
-transformada aditiva, mas sobre o objeto certo desta vez).
+é o estado real.
+
+## Passo real (2026-08-10): decomposição por condutor de órbita, achado novo
+
+Executado o próximo passo que a avaliação acima deixava registrado:
+agrupei as frequências `m` da transformada de Mellin por CONDUTOR DE
+ÓRBITA `3^r`, `r := (ell-1) - v3(m)` (o análogo exato da graduação de
+condutor de H-154/H-155/E-137, mas no espaço de tempo de órbita, não no
+espaço aditivo), `ell=6` a `12`.
+
+**Achado (Empírico, Regra 10b, medição de nível finito)**: a ENERGIA
+total por classe de condutor (`sum_{m: cond=3^r} |Nhat(m)|^2`) é quase
+CONSTANTE através de todos os `r`, apesar de o número de frequências
+por classe crescer por um fator de quase `60000` entre `r=1` (2
+frequências) e o `r` mais fino de cada nível (`ell=12`: `118098`
+frequências). Em `ell=12`, as onze energias por classe ficam todas
+entre `34,76` e `35,86` bilhões (variação menor que `3%`), com a classe
+de MENOS frequências (`r=1`) tendo energia comparável à classe de MAIS
+frequências (`r=11`). Isso é o oposto do padrão visto na transformada
+aditiva por E-137 (onde a massa `l²` primitiva se concentra fortemente
+no maximizador, não se equidistribui por condutor).
+
+Consequência aritmética direta: como a energia por classe é quase fixa
+mas a contagem de frequências cresce exponencialmente com `r`, o
+coeficiente TÍPICO (RMS dentro da classe) cai como `~3^{-r/2}`
+(cancelamento de raiz quadrada dentro de cada classe), mas o
+coeficiente MÁXIMO da classe `r=1` (só 2 frequências, sem cancelamento
+possível por amostra pequena) é enorme em termos absolutos e cresce
+como `3^ell` inteiro (verificado: `sup` em `r=1` cresce por fator
+EXATO `3` a cada nível, `ell=6` a `12`), enquanto o `sup` na classe mais
+fina de cada nível cresce muito mais devagar (fator `~1,1`-`1,3` por
+nível, `sup/sqrt(3^r)` subindo de `2,55` em `ell=6` a `6,65` em
+`ell=12`, quase estável).
+
+**O que isso sugere para Q2/H-177, sem decidir nada**: a estrutura por
+condutor de órbita não é plana da forma mais simples possível
+(coeficiente uniforme), mas também não está concentrada num único
+condutor como a transformada aditiva. A classe `r=1` (2 frequências,
+sem cancelamento) é estruturalmente diferente de todas as outras e
+pode ser um obstáculo separado, não uma amostra representativa do
+comportamento geral. Nenhuma tentativa de conectar isso à desigualdade
+de par de Q2 foi feita aqui (seria um passo teórico novo, fora do
+escopo de uma medição).
+
+**Avaliação final**: achado real, verificado (checagem de
+autoconsistência de Plancherel já feita na tentativa 2 continua
+válida, a decomposição por `r` soma exatamente à energia total sem
+resíduo), mas que NÃO decide a pergunta original desta hipótese. Não
+perseguido mais fundo nesta sessão (o próximo passo seria teórico:
+entender por que a classe `r=1` é anômala e se isso é generalizável a
+`r` pequeno em geral, ou se é um artefato de ter só `2` amostras).
+Mantido em `backlog`.
+
+Script persistido como experimento formal:
+`experiments/E-144-mellin-orbit-conductor/` (script, README, saída
+completa até `ell=12`).
