@@ -1,6 +1,9 @@
 # H-127 — Falha da WCC como dicotomia espectral: redução condicional a configurações de Bohr pós-wrap
 
-Status: em revisão — redução real mas mais fraca do que o esboço de
+Status: fechada-inconclusiva (2026-08-10). Ver seção "Fechamento" no
+fim do arquivo para o veredito final e o motivo.
+
+Status anterior (histórico): em revisão — redução real mas mais fraca do que o esboço de
 H-115 sugeria; inclui um resultado negativo próprio (Proposição C, com
 identidade exata via fórmula de Jensen, verificação Monte Carlo formal
 em E-101, já espelhado em `collatz-endogeny/sec10-l2-refutation-and-jensen/`)
@@ -193,6 +196,19 @@ de fator 1,88 — é auto-consistente do ponto de vista ℓ¹, e nenhuma
 contagem tipo Littlewood-Offord o exclui. O critério anelado só
 inverteria em γ=3 (j≥2ℓ), bem acima do regime da conjectura (j*(ℓ)/ℓ≈
 1,2 medido em H-114).
+
+**Correção (2026-08-09, ver seção datada abaixo, "o hiato de 1,88 não é
+artefato"): γ=3 aqui é o valor NAIVE de primeira passagem, não o ponto
+de inversão real.** A identidade de Jensen usada acima exige `p≥1/2`;
+abaixo disso o decaimento é estrito, `Λ(p)<log(1/p)`, e o ponto de
+inversão verdadeiro é `γ≈3,31` (`Λ≈1,032` em `p=1/3`, contra
+`log3≈1,0986`), não `γ=3`. Isso FORTALECE a barreira descrita aqui (o
+regime da conjectura fica ainda mais distante do ponto de inversão), não
+a enfraquece. `main.tex` já usa `γ≈3,31` corretamente nas duas
+ocorrências relevantes (linhas com "the actual inversion point" e
+"true inversion point", conferido nesta revisão, 2026-08-10); a nota
+mais abaixo, "Não editei o manuscrito", está desatualizada e refere-se
+a uma pendência já resolvida em sessão posterior.
 
 ## Heurística de abundância (restrição adicional sobre δ)
 
@@ -477,8 +493,13 @@ independente do destino do Lema B).
      critério anelado não é `gamma = 3`: é `gamma = 3,31` (medido,
      E-136; em `p = 1/3` sai `Lambda = 1,032 < log 3 = 1,0986`). A frase
      do `main.tex` "would only invert at $\gamma=3$" subestima a
-     barreira. **Não editei o manuscrito** (outros agentes podem estar
-     nele); fica para o diretor científico.
+     barreira. **Não editei o manuscrito nesta rodada** (outros agentes
+     podiam estar nele); fica para o diretor científico. **Nota
+     (2026-08-10): pendência já resolvida**. Conferido diretamente
+     contra `main.tex`, que hoje usa `\gamma\approx3.31` como "the
+     actual inversion point" / "true inversion point" nas duas
+     ocorrências relevantes (§10), com `\gamma=3` mantido só como o
+     valor naive de comparação explícito. Nada a fazer aqui.
 
   3. **A norma ponderada casada com H-155 dá o mesmo muro, exatamente.**
      Cauchy-Schwarz dentro de cada casca de condutor (válida para
@@ -526,3 +547,66 @@ independente do destino do Lema B).
   densidade `L^2` pode se
   anular num conjunto, então `L^2` não força cobertura. Se O7 for
   provado para Syracuse, O5 segue aberto.
+
+## Fechamento (2026-08-10)
+
+Reavaliação de escopo (divisão do paper em quatro, trabalho paralelo no
+paper 01) pede uma decisão de status em vez de deixar a hipótese
+indefinidamente "em revisão". Revi o arquivo inteiro, sem reabrir
+nenhum resultado já fechado (Regra 8d).
+
+**Estado real, a esta altura**: o programa inteiro de redução (Lema B)
+converge, por três rodadas de escalonamento independentes (Fable,
+2026-07-17/18/19), na mesma parede de constantes que a Proposição C já
+tinha identificado por outra via. As duas sub-hipóteses que a rodada de
+2026-08-09 abriu para testar se alguma variação (família de norma
+`l^r`, cadeia de duplicação de buracos) escapava dessa parede já
+fecharam: H-164 (fechada-refutada, a família inteira colapsa no mesmo
+critério `gamma>3` ou pior) e H-165 (fechada-inconclusiva, exato mas
+linear, não exclui nada). Não sobra nenhuma rota aberta e não tentada
+para o Lema B em si.
+
+**O que se sustenta, sem ressalva**: a Proposição C (déficit de Halász,
+identidade exata de Jensen, verificação Monte Carlo em E-101) é um
+resultado negativo próprio, independente do destino do Lema B, e já
+está marcado como tal na seção "Veredito final" acima. A correção de
+`gamma=3` para `gamma≈3,31` (achado de O5, 2026-08-09, ver H-164)
+fortalece essa peça em vez de enfraquecê-la.
+
+**O que não se sustenta**: o Lema B como enunciado original (Def. 2 sem
+o segmento encadeado) é vazio (E-107), e a Etapa 6 que o consertaria
+não fecha por nenhuma das duas rotas tentadas, por um motivo estrutural
+identificado três vezes de formas independentes (a mesma parede de
+Halász/Jensen). Isso não é falta de tempo ou de tentativa: é a mesma
+resposta chegando por rotas diferentes o suficiente para não ser
+coincidência de método.
+
+**Decisão de fechamento**: `fechada-inconclusiva`. Não é
+`fechada-refutada` porque a Proposição C (o conteúdo cientificamente
+sólido desta hipótese) não foi refutada, permanece um resultado
+positivo próprio; não é `fechada-confirmada` porque o objeto original
+da hipótese (uma redução que desse conteúdo real ao Lema B) nunca
+fechou. "Inconclusiva" aqui significa precisamente o que a Regra 7/14
+pede: testada, sem resposta limpa, com o motivo documentado (parede de
+constantes de Halász-Jensen, encontrada três vezes por vias
+independentes: Proposição C original, item (iii) da Etapa 6, e a
+família `l^r` de H-164).
+
+**Recomendação para o paper (já registrada acima, reafirmada)**: opção
+(b), reportar só a Proposição C como resultado negativo próprio; não
+incluir o Lema B como está. Nenhuma mudança em `main.tex` feita aqui
+(fora do escopo desta tarefa; o parágrafo de §10.2 do `OUTLINE.md` já
+reflete essa decisão, listando `lem:B` como conjectura de alvo, não
+como lema provado, e `prop:halasz-deficit`/`thm:jensen`/`thm:propC`
+como os resultados que sobrevivem).
+
+**Escalonamento (Regra 11b), para o registro**: esta hipótese já passou
+por três consultas completas ao Fable com contexto integral
+(2026-07-17 criação, 2026-07-19 Etapa 6, 2026-08-09 família `l^r` e
+cadeia de buracos), cada uma verificada de forma independente antes de
+aceitar (Regra 8c, com pelo menos duas correções reais encontradas no
+caminho: o ano de Halász, a subestimação de `gamma`). Não há rodada
+nova pendente: o motivo estrutural da parede já está identificado com
+precisão suficiente para não valer a pena uma quarta rodada sem uma
+ideia genuinamente nova de fora (nenhuma apareceu na busca literária
+dirigida de H-128).
