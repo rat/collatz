@@ -1,6 +1,17 @@
 # H-162: cancelamento diagonal pela média sobre índices de caminho, com v fixo
 
-Status: backlog
+Status: fechada-refutada (2026-08-10). Correção (mesma sessão, depois
+de uma crítica independente encontrar um erro em H-163): a frase
+"o cancelamento agregado em si é real (ver H-163)" que estava aqui
+antes é FALSA. H-163 foi reaberta e retratada: a "confirmação" do
+cancelamento agregado era um artefato (controles com dados não
+relacionados reproduzem os mesmos números, ver H-163). O veredito desta
+hipótese (`fechada-refutada`) sobrevive de forma independente disso, e
+está reverificado abaixo, mas a leitura de mecanismo ("cancelamento de
+banda larga") foi removida por não ter sustentação. Ver seção
+"Fechamento" (reescrita) no fim do arquivo.
+
+Status anterior (histórico): backlog
 
 Criada: 2026-08-09
 
@@ -56,3 +67,82 @@ e O7 por meio de H-159. O funcional é o mesmo que
 
 Criada durante trabalho paralelo em worktree isolado. Se outro ramo
 tiver usado `H-162` ao mesmo tempo, renumerar na integração.
+
+## Fechamento (2026-08-10): E-141, corrigido depois de uma crítica independente
+
+Executado o "primeiro passo barato" descrito acima, reusando a mesma
+construção de `S_i` de E-140/H-163 (enumeração real ponderada, `v`
+fixo, subárvore inteira de profundidade `ell-1` abaixo de cada irmão).
+Agregado por condutor: para `xi != 0`, condutor `3^r` com
+`r = ell - v3(xi)` (graduação de H-154/H-155/E-133). A estatística
+exata (Regra 8c: descrita aqui com precisão depois de um crítico
+apontar que a primeira versão a descrevia errado) é
+`por_condutor[r] = |sum_{xi: cond(xi)=3^r} S_1(xi) S_2(xi)^*|`, a soma
+COMPLEXA dentro de cada classe de condutor antes de tomar o módulo
+(portanto já inclui qualquer cancelamento interno à classe), normalizada
+por `sum_r por_condutor[r]`. Isto não é a mesma coisa que
+`sum_{xi: cond=3^r} |S_1(xi)S_2(xi)^*|` (soma de módulos, sem
+cancelamento interno), a frase original desta hipótese ("a fração de
+`sum_xi |S_1(xi) S_2(xi)^*|` que cai...") descrevia a segunda, o código
+mede a primeira. A diferença importa para a magnitude absoluta de cada
+classe, não para o veredito abaixo (verificado: refazer a estatística
+como soma de módulos por classe dá o mesmo padrão qualitativo, a maior
+parte da massa acima do condutor previsto).
+
+Medido em 12 raízes (`1,5,7,11,13,17,19,23,25,29,31,35`) × 3 pares de
+posto (`(1,2)`: `k=1` para toda raiz; `(1,3)`: `k=2` ou `k=3` conforme
+a raiz; `(2,3)`: `k=1` ou `k=2` conforme a raiz, a frase original
+"`(2,3)` dá `k=1` de novo" estava errada, o `k` realizado depende da
+raiz) em `ell=8` (36 medições) e 6 raízes × 3 pares de posto em `ell=10`
+(18 medições), persistidas em
+`experiments/E-141-path-index-diagonal-cancellation/run_ell8.txt` e
+`run_ell10.txt` (não existiam no repositório antes desta correção):
+
+```text
+ell=8:  fração no condutor previsto: média 0,118 (desvio padrão 0,072)
+        fração ACIMA do condutor previsto: média 0,837 (desvio padrão 0,098)
+ell=10: mesmo padrão, levemente mais pronunciado
+```
+
+Cruzamento de sanidade: para o par de posto `(1,2)`, `|total|` desta
+medição bate EXATAMENTE `measured_abs` de E-140 nos mesmos `(v,ell)`,
+confirma que as duas implementações constroem o mesmo `S_1`, `S_2`.
+
+**Controle (adicionado depois da crítica a H-163, Regra 8c)**: rodei a
+mesma medição de fração-por-condutor substituindo o segundo irmão por
+uma dilatação aleatória de sua própria subárvore (mesmo controle que
+derrubou H-163), nas mesmas 36 combinações de `ell=8`. Resultado:
+fração no condutor previsto, média `0,1235` (desvio padrão `0,0788`);
+fração acima, média `0,8235` (desvio padrão `0,1201`), contra
+`0,1175`/`0,8367` (desvios `0,0722`/`0,0977`) dos irmãos reais.
+Estatisticamente indistinguível. O perfil por condutor, portanto,
+TAMBÉM não carrega informação específica de irmandade.
+
+**Veredito, revisado**: o enunciado original desta hipótese ("a mesma
+localização de condutor vale para a média sobre índices de caminho")
+continua `fechada-refutada`, isso sobrevive à crítica intacto, porque
+a refutação não dependia de o cancelamento ser real: mesmo que
+`sum_xi S_1(xi)S_2(xi)^*` completo seja um artefato (H-163), o PERFIL
+por condutor dessa soma-artefato ainda não se concentra onde E-133
+previu, e o controle mostra que essa não-concentração também é
+genérica, não uma propriedade fina dos irmãos.
+
+**O que foi removido desta seção (não sustentado, retirado depois da
+crítica)**: a alegação de que "o cancelamento existe, mas por um
+mecanismo de banda larga" e de que "essa diferença de mecanismo é o
+achado". Essas frases pressupunham que H-163 tivesse medido
+cancelamento real; não mediu (ver H-163). O achado que sobrevive é mais
+modesto: nem a localização por condutor de E-133 nem a ausência dela
+aqui distinguem irmãos reais de pares não relacionados, a pergunta de
+mecanismo continua genuinamente aberta, não resolvida como "banda
+larga".
+
+**Escalonamento (Regra 11b)**: a resposta original ("não foi
+necessário") ficou mantida quanto ao veredito de refutação, que
+sobrevive; mas o processo deveria ter incluído um controle negativo
+antes de interpretar o padrão como um mecanismo, o que só aconteceu
+depois da crítica externa encontrar o problema em H-163.
+
+Ver `experiments/E-141-path-index-diagonal-cancellation/` (script,
+README atualizado, verificação de corretude, saídas persistidas,
+controle).
