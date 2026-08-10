@@ -14,6 +14,7 @@ O texto até a seção datada de 2026-08-09 é o registro de 2026-07-17,
 mantido como está. O veredito daquela seção estava certo na direção e
 errado no método; H-137 estava certo em derrubá-lo, e o `main.tex` já
 refletia isso. Este arquivo e o `OUTLINE.md` é que ficaram para trás.
+
 Criada em: 2026-07-17
 Origem: sexta rodada de consulta à IA externa recomendou consolidar um
 pacote de publicação (H-113 planejado); o Fable identificou que a peça
@@ -113,9 +114,9 @@ casas decimais foi coincidência estatística, não evidência. O resultado
 válido e citável é este H-113 (slope de contagem por década, n=300,
 com correção de Richardson), não o Hill estimator da rodada anterior.
 
-## 2026-08-09 — o veredito acima está errado. O estimador tem viés maior que Δ (E-133)
+## 2026-08-09 (E-133): o veredito acima chegou na direção certa por um método que não a sustentava
 
-Trabalho em O8. Três coisas, em ordem de importância.
+Trabalho em O8. Quatro coisas, em ordem de importância.
 
 ### 1. O arquivo estava desatualizado em relação ao paper
 
@@ -138,11 +139,16 @@ fica sinalizado.
 
 H-137 disse que existe viés sistemático fora do intervalo e que o
 experimento "favorece a direção da previsão de Kontorovich--Lagarias".
-E-133 mede o viés, e a segunda metade dessa frase não sobrevive.
+A primeira metade estava certa e E-133 põe número nela. A segunda metade
+não se sustentava no que estava medido: com viés de 0.038 sobre uma
+separação de 0.027, a leitura crua não favorece direção nenhuma. Ela
+volta a valer, agora com suporte, depois do controle calibrado da seção
+4.
 
 Reimplementei a enumeração em C (validada byte a byte contra o Python
-de E-097 em 5 raízes, 165x mais rápida) com dois controles estocásticos
-casados que compartilham o mesmo caminho de código. A única coisa que
+de E-097 em 5 raízes, 165x mais rápida) com controles estocásticos
+casados que compartilham o mesmo caminho de código. Dois deles aqui; o
+terceiro, decisivo, entra na seção 4. A única coisa que
 muda entre os modos é de onde vem a classe de ramo de um nó:
 
 - `arith`: `r = u mod q`, a árvore de verdade;
@@ -197,7 +203,7 @@ enumeração.
 O slope local anelado chega a **0.6517 em `t = 3`** e 0.65079 em
 `t = 4`, contra `alpha_-(5) = 0.650919`. Ou seja: nas escalas em que
 E-097 trabalhou (`t = log10(x/u)` entre 1 e 5), o lado anelado do
-modelo praticamente não tem viés de janela. Todo o viés de 0.039 é
+modelo praticamente não tem viés de janela. Todo o viés de 0.038 é
 atraso do log-slope de UMA realização atrás do log-slope da média. A
 diagnose de "pré-assintótica de janela fixa" na seção de 2026-07-17
 acima está certa no fenômeno e errada no mecanismo.
