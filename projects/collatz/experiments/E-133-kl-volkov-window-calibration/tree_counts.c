@@ -50,6 +50,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
+#include <math.h>
 #ifdef _OPENMP
 #include <omp.h>
 #endif
@@ -104,8 +105,73 @@ static void setup_q(int q) {
 /* stack entry; rr carries the imposed residue in mode `cyc`, unused elsewhere */
 typedef struct { uint64_t u, pmax; uint32_t rr; } node_t;
 
-enum { MODE_ARITH = 0, MODE_IID = 1, MODE_CYC = 2 };
-static const char *MODENAME[3] = {"arith", "iid", "cyc"};
+enum { MODE_ARITH = 0, MODE_IID = 1, MODE_CYC = 2, MODE_CYCQ = 3 };
+static const char *MODENAME[4] = {"arith", "iid", "cyc", "cycq"};
+
+/*
+ * Mode `cycq`: the `cyc` tree structure with the value denominator replaced
+ * by a real number qval, so the counting exponent becomes tunable while the
+ * branching combinatorics and the sibling congruence stay put. The exponent
+ * solves qval^alpha = q (2^alpha - 1), so at q = 5:
+ *     qval = 5.000  ->  alpha = 0.650919  (Kontorovich-Lagarias)
+ *     qval = 5.054  ->  alpha = 0.678      (Volkov)
+ * This is what makes the estimator's reading comparable between the two
+ * hypotheses: run the same estimator on a process built to have each
+ * exponent, and see which reading the arithmetic tree matches.
+ * Values are carried in log10, since they are no longer integers.
+ */
+static double QVAL_LOG10 = 0.0;
+static double CP_LOG10[MAX_CP], BUF_LOG10[MAX_BUF];
+static const double LOG10_2 = 0.30102999566398119521;
+
+typedef struct { double L, pmaxL; uint32_t rr; } fnode_t;
+
+static uint64_t dfs_root_q(uint64_t root, uint64_t seed, uint64_t *raw)
+{
+    size_t cap = 1u << 14;
+    fnode_t *st = (fnode_t *)malloc(cap * sizeof(fnode_t));
+    size_t sp = 0;
+    uint64_t visited = 0, rng = seed;
+    const uint64_t cstep = STEP_ADD % (uint64_t)Q;
+    const double top = BUF_LOG10[n_buf - 1];
+
+    st[sp].L = log10((double)root); st[sp].pmaxL = st[sp].L;
+    st[sp].rr = (uint32_t)FERT[sm64(&rng) % (uint64_t)n_fert];
+    sp++;
+
+    while (sp) {
+        fnode_t nd = st[--sp];
+        visited++;
+        int ci = 0; while (ci < n_cp && CP_LOG10[ci] < nd.L) ci++;
+        if (ci < n_cp) {
+            int bi = 0; while (bi < n_buf && BUF_LOG10[bi] < nd.pmaxL) bi++;
+            if (bi < n_buf) raw[ci * MAX_BUF + bi]++;
+        }
+        uint64_t r = nd.rr;
+        if (r == 0) continue;
+        uint64_t cr = sm64(&rng) % (uint64_t)Q;
+        for (int a = A0[r]; ; a += Dd) {
+            double L = nd.L + a * LOG10_2 - QVAL_LOG10;
+            if (L > top) break;
+            if (sp + 1 >= cap) { cap <<= 1; st = (fnode_t *)realloc(st, cap * sizeof(fnode_t)); }
+            st[sp].L = L;
+            st[sp].pmaxL = (L > nd.pmaxL) ? L : nd.pmaxL;
+            st[sp].rr = (uint32_t)cr;
+            sp++;
+            cr = (cr + cstep) % (uint64_t)Q;
+        }
+    }
+    free(st);
+    for (int bi = 0; bi < n_buf; bi++) {
+        uint64_t acc = 0;
+        for (int ci = 0; ci < n_cp; ci++) { acc += raw[ci * MAX_BUF + bi]; raw[ci * MAX_BUF + bi] = acc; }
+    }
+    for (int ci = 0; ci < n_cp; ci++) {
+        uint64_t acc = 0;
+        for (int bi = 0; bi < n_buf; bi++) { acc += raw[ci * MAX_BUF + bi]; raw[ci * MAX_BUF + bi] = acc; }
+    }
+    return visited;
+}
 
 /*
  * DFS from one root. raw[ci][bi] accumulates, then a 2D prefix sum turns it
@@ -215,6 +281,7 @@ int main(int argc, char **argv) {
         else if (!strcmp(argv[i], "--roots")) n_roots = atoi(argv[++i]);
         else if (!strcmp(argv[i], "--iid"))   mode = MODE_IID;
         else if (!strcmp(argv[i], "--cyc"))   mode = MODE_CYC;
+        else if (!strcmp(argv[i], "--cycq")) { mode = MODE_CYCQ; QVAL_LOG10 = log10(atof(argv[++i])); }
         else if (!strcmp(argv[i], "--fixedroot")) fixedroot = strtoull(argv[++i],0,10);
         else if (!strcmp(argv[i], "--cp"))  { cp_lo = atoi(argv[++i]); cp_hi = atoi(argv[++i]); }
         else if (!strcmp(argv[i], "--buf")) { buf_lo = atoi(argv[++i]); buf_hi = atoi(argv[++i]); }
@@ -231,6 +298,9 @@ int main(int argc, char **argv) {
     for (int i = 0; i < n_cp; i++) { uint64_t v = 1; for (int e = 0; e < cp_lo + i; e++) v *= 10; cp[i] = v; }
     for (int i = 0; i < n_buf; i++) { uint64_t v = 1; for (int e = 0; e < buf_lo + i; e++) v *= 10; bufthr[i] = v; }
     BOUND = bufthr[n_buf - 1];
+    for (int i = 0; i < n_cp; i++)  CP_LOG10[i]  = (double)(cp_lo + i);
+    for (int i = 0; i < n_buf; i++) BUF_LOG10[i] = (double)(buf_lo + i);
+    if (mode == MODE_CYCQ && QVAL_LOG10 == 0.0) { fprintf(stderr, "--cycq needs a value\n"); return 1; }
 
     /* sample roots: odd, not divisible by q, not a cycle member, distinct */
     uint64_t *roots = NULL;
@@ -270,8 +340,11 @@ int main(int argc, char **argv) {
 
 #pragma omp parallel for schedule(dynamic, 1)
     for (int i = 0; i < n_roots; i++) {
-        nvis[i] = dfs_root(roots[i], mode, seed * 1000003ULL + (uint64_t)i * 7919ULL + 1,
-                           all + (size_t)i * MAX_CP * MAX_BUF, allres + (size_t)i * 64);
+        uint64_t sd = seed * 1000003ULL + (uint64_t)i * 7919ULL + 1;
+        nvis[i] = (mode == MODE_CYCQ)
+            ? dfs_root_q(roots[i], sd, all + (size_t)i * MAX_CP * MAX_BUF)
+            : dfs_root(roots[i], mode, sd, all + (size_t)i * MAX_CP * MAX_BUF,
+                       allres + (size_t)i * 64);
     }
 
     FILE *f = out ? fopen(out, "w") : stdout;

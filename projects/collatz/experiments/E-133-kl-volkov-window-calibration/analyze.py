@@ -54,6 +54,10 @@ def aitken(s):
     if len(s) < 3:
         return None
     s1, s2, s3 = s[-3], s[-2], s[-1]
+    # already converged in the buffer direction: extrapolating a difference
+    # that is pure rounding noise would amplify it, so take the last value
+    if abs(s3 - s2) < 1e-5:
+        return s3
     den = (s3 - s2) - (s2 - s1)
     if abs(den) < 1e-12:
         return None
@@ -93,7 +97,7 @@ def main():
     print(f"    q={hdr['q']} mode={hdr['mode']} roots={len(roots)} "
           f"cp=1e{cp_lo}..1e{cp_lo+n_cp-1} buf=1e{buf_lo}..1e{buf_lo+n_buf-1}")
 
-    if resid:
+    if resid and sum(resid) > 0:   # mode cycq carries no integer residues
         tot = sum(resid)
         print("    residue histogram of counted nodes (u mod q): "
               + " ".join(f"{r}:{c/tot:.5f}" for r, c in enumerate(resid))
@@ -125,23 +129,43 @@ def main():
                   f"[{boots[int(0.025*len(boots))]:.5f}, {boots[int(0.975*len(boots))-1]:.5f}]")
 
     # ---- 2. per-decade slopes, each buffer-extrapolated separately ----
-    print("\n    [2] per-decade slope, raw at each buffer and buffer-extrapolated:")
-    print("        decade      " + "  ".join(f"1e{buf_lo+bi}" for bi in range(n_buf)) + "    Aitken")
+    print("\n    [2] per-decade slope, raw at each buffer, then buffer-extrapolated")
+    print("        with a bootstrap over roots (2000 resamples):")
+    print("        decade      " + "  ".join(f"1e{buf_lo+bi}" for bi in range(n_buf))
+          + "    Aitken   95% CI")
     dec_L, dec_y = [], []
+    rng = random.Random(17)
     for ci in range(n_cp - 1):
-        row = []
-        for bi in range(n_buf):
-            vals = [slope(m, ci, ci + 1, bi) for m in mats]
-            vals = [v for v in vals if v is not None]
-            row.append(mean(vals) if len(vals) == len(mats) else None)
+        # per-root slope at each buffer for this decade
+        per_root = []
+        for m in mats:
+            r = [slope(m, ci, ci + 1, bi) for bi in range(n_buf)]
+            if all(v is not None for v in r):
+                per_root.append(r)
+        if not per_root:
+            continue
+        row = [mean([r[bi] for r in per_root]) for bi in range(n_buf)]
         # only buffers strictly above the decade's upper checkpoint are usable
-        usable = [row[bi] for bi in range(n_buf)
-                  if row[bi] is not None and buf_lo + bi > cp_lo + ci + 1]
+        use_idx = [bi for bi in range(n_buf) if buf_lo + bi > cp_lo + ci + 1]
+        usable = [row[bi] for bi in use_idx]
         ait = aitken(usable) if len(usable) >= 3 else None
-        cells = "  ".join(("  --  " if row[bi] is None else f"{row[bi]:.4f}") for bi in range(n_buf))
+        ci_lo = ci_hi = None
+        if ait is not None:
+            boots = []
+            for _ in range(2000):
+                idx = [rng.randrange(len(per_root)) for _ in range(len(per_root))]
+                c = [mean([per_root[i][bi] for i in idx]) for bi in use_idx]
+                v = aitken(c)
+                if v is not None:
+                    boots.append(v)
+            boots.sort()
+            ci_lo = boots[int(0.025 * len(boots))]
+            ci_hi = boots[int(0.975 * len(boots)) - 1]
+        cells = "  ".join(f"{row[bi]:.4f}" for bi in range(n_buf))
+        band = f"[{ci_lo:.4f},{ci_hi:.4f}]" if ci_lo is not None else ""
         print(f"        1e{cp_lo+ci}->1e{cp_lo+ci+1}  {cells}    "
               + (f"{ait:.4f}" if ait is not None else "  --  ")
-              + f"   (n_buf usable {len(usable)})")
+              + f"  {band}  (n_buf usable {len(usable)}, n_roots {len(per_root)})")
         if ait is not None and len(usable) >= 4:
             dec_L.append(cp_lo + ci + 0.5)
             dec_y.append(ait)
