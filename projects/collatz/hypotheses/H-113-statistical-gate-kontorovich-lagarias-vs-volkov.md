@@ -1,6 +1,12 @@
-# H-113 — Portão estatístico: expoente empírico de 5x+1 exclui Volkov (0,678), consistente com Kontorovich-Lagarias/pressão (0,650919)
+# H-113 — Portão estatístico para o expoente de 5x+1: Kontorovich-Lagarias (0,650919) versus Volkov (0,678)
 
-Status: fechado — evidência forte a favor de Kontorovich-Lagarias, resíduo pequeno explicado por pré-assintótica de janela
+Status: reaberto em 2026-08-09. O portão NÃO fecha. O estimador tem viés
+medido de 0,039 num processo de expoente conhecido, maior que a
+separação Δ=0,027 que ele deveria resolver, então a medição é silenciosa
+nas duas direções. Ver a seção datada de 2026-08-09 no fim deste
+arquivo; o texto até lá é o registro de 2026-07-17, mantido como está e
+superado no que diz respeito ao veredito. O `main.tex` já estava certo
+(via H-137); este arquivo é que estava velho.
 Criada em: 2026-07-17
 Origem: sexta rodada de consulta à IA externa recomendou consolidar um
 pacote de publicação (H-113 planejado); o Fable identificou que a peça
@@ -99,6 +105,117 @@ k≈12 pontos de cauda, é ≈0,45 (ξ_cauda/√k), então a concordância de 2
 casas decimais foi coincidência estatística, não evidência. O resultado
 válido e citável é este H-113 (slope de contagem por década, n=300,
 com correção de Richardson), não o Hill estimator da rodada anterior.
+
+## 2026-08-09 — o veredito acima está errado. O estimador tem viés maior que Δ (E-133)
+
+Trabalho em O8. Três coisas, em ordem de importância.
+
+### 1. O arquivo estava desatualizado em relação ao paper
+
+A seção "Veredito" acima ("exclui Volkov com confiança alta") e a
+entrada correspondente no `OUTLINE.md` §6 ("excluindo Volkov (0.678)
+com folga") **contradizem o próprio `main.tex`**, que em
+`\begin{empirical}[...]\label{thm:kl}` diz o contrário: "Since it has
+not stabilized, the experiment does not provide a calibrated confidence
+interval for the asymptotic exponent and does not exclude the Volkov
+prediction."
+
+Isto não é descoberta minha. H-137 (2026-08-07, "Auditoria do
+experimento KL--Volkov") já tinha feito essa auditoria e corrigido o
+manuscrito. O que ficou para trás foram H-113 e o `OUTLINE.md`, que
+nunca foram atualizados. O paper está certo; estes dois arquivos é que
+estão velhos. Não editei `OUTLINE.md` (fora do escopo desta sessão);
+fica sinalizado.
+
+### 2. O que E-133 acrescenta a H-137: o tamanho do viés
+
+H-137 disse que existe viés sistemático fora do intervalo e que o
+experimento "favorece a direção da previsão de Kontorovich--Lagarias".
+E-133 mede o viés, e a segunda metade dessa frase não sobrevive.
+
+Reimplementei a enumeração em C (validada byte a byte contra o Python
+de E-097 em 5 raízes, 165x mais rápida) com dois controles estocásticos
+casados que compartilham o mesmo caminho de código. A única coisa que
+muda entre os modos é de onde vem a classe de ramo de um nó:
+
+- `arith`: `r = u mod q`, a árvore de verdade;
+- `iid`: `r` sorteado uniforme em cada nó. É o passeio ramificado cuja
+  pressão anelada é a do paper, logo seu expoente de contagem **é**
+  `alpha_-(5) = 0.650919`, provadamente;
+- `cyc`: como `iid`, mas os irmãos avançam de `+3 mod 5`, que é o que a
+  árvore aritmética faz exatamente (H-162).
+
+Mesma janela `1e5..1e8`, mesmas 300 raízes, mesmos buffers, mesmo
+Aitken, mesmo bootstrap:
+
+| modo | estimador | verdade |
+|------|-----------|---------|
+| iid | 0.6119 | 0.650919 |
+| cyc | 0.6283 | 0.650919 |
+| arith | 0.6364 | em disputa |
+
+**O estimador subestima em 0.039 num processo cujo expoente é
+conhecido.** A separação KL vs. Volkov é Δ = 0.027081. O viés é maior
+que a coisa que se queria medir. A medição de E-097 é silenciosa sobre
+a disputa, nas duas direções, e não "favorece a direção de KL".
+
+Não somei 0.039 de volta a 0.6364 para obter 0.675 (que seria o valor
+de Volkov). Isso não é lícito: o viés foi medido num processo cuja
+flutuação é maior que a da árvore aritmética, logo não é o mesmo regime
+de viés, e viés medido num regime não transfere para outro. O número
+0.675 fica registrado aqui só para deixar claro que ele existe e que
+foi deliberadamente não usado.
+
+### 3. O viés é atraso quenched, não correção anelada, e isso é computável
+
+A forma da correção nunca tinha sido determinada, e as duas escolhas
+naturais (correção em lei de potência ou em `1/log x`) extrapolam o
+mesmo painel para valores muito diferentes, um perto de KL e outro
+perto de Volkov. Dava para decidir isso, e decidi, com forma fechada.
+
+Para o modelo, o número esperado de filhos de um nó no expoente
+exatamente `n >= 1` é `1/q` (o filho existe sse `2^n r == 1 (mod q)`,
+uma classe entre `q`). Logo
+`E[# nós de nível k com sum a_i = A] = q^(-k) C(A-1,k-1)`, e contando
+os que têm `2^A/q^k <= 10^t`, a identidade do taco de hóquei dá
+
+```text
+M(t) = sum_{k>=1} C(N_k(t), k) / q^k ,   N_k(t) = floor((t + k log10 q)/log10 2).
+```
+
+Conferida contra a soma dupla bruta em `q = 3, 5, 7`, `t = 1..4`, e
+contra a média do simulador. Avaliável em `t` muito além de qualquer
+enumeração.
+
+O slope local anelado chega a **0.6517 em `t = 3`** e 0.65079 em
+`t = 4`, contra `alpha_-(5) = 0.650919`. Ou seja: nas escalas em que
+E-097 trabalhou (`t = log10(x/u)` entre 1 e 5), o lado anelado do
+modelo praticamente não tem viés de janela. Todo o viés de 0.039 é
+atraso do log-slope de UMA realização atrás do log-slope da média. A
+diagnose de "pré-assintótica de janela fixa" na seção de 2026-07-17
+acima está certa no fenômeno e errada no mecanismo.
+
+Consequência prática: o estimador de janela de três décadas é a parte
+ruim. Slopes por década, cada um extrapolado no buffer separadamente,
+se comportam muito melhor. No controle iid, o viés por década cai de
++0.0704 (década `1e4->1e5`) para +0.0102 (década `1e7->1e8`), já abaixo
+de Δ/2.
+
+A rodada profunda (checkpoints ate 1e12, buffers ate 1e17, tres modos)
+esta em execucao; ver E-133.
+
+### Arquivos
+
+`experiments/E-133-kl-volkov-window-calibration/`. Ver também H-162
+(congruência de irmãos, provada aqui) e H-137 (a auditoria anterior).
+
+### Erro meu, registrado
+
+A primeira rodada do controle iid deu 0.484 e eu quase escrevi que o
+modelo é absurdamente mais lento que a árvore. Era artefato: as raízes
+aritméticas são sorteadas com `u mod q != 0`, sempre férteis, enquanto
+o controle sorteava o resíduo da raiz em `{0..q-1}` e matava uma árvore
+em cinco na largada. Corrigido antes de qualquer conclusão.
 
 ## Notação (clarificada, corrige ambiguidade α₁/α₂ de H-109)
 
