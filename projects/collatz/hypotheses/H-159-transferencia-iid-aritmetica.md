@@ -181,3 +181,23 @@ alvo deslocado da média sobre o parâmetro livre para a média sobre
 índices de caminho a `v` fixo.
 
 Ver `projects/collatz/experiments/E-133-fresh-digit-moment-cancellation/`.
+## Nota E-138 (2026-08-09): o lado O7 encontrou o mesmo objeto de O1
+
+Atacando o sub-alvo de O7 (a margem de sinal uniforme de `q=3` em
+H-157), o funcional que sobra é uma colisão deslocada afim,
+`T_ell(4,1) = 3^ell P[F' = 4F+1 mod 3^ell]`, que é a correlação de
+vizinhos `(1/M) sum_j N_j N_(j+1)` ao longo da órbita do mapa afim
+`A(k)=4k+1`. É a mesma órbita e o mesmo mapa de H-161, e são os mesmos
+pares consecutivos que E-132 mede.
+
+As duas perguntas não são a mesma. E-132 mede a cauda inferior conjunta
+(com que frequência os dois membros de um par consecutivo são pequenos
+ao mesmo tempo) e acha antiaglomeração; O7 precisa de cota inferior
+para a esperança do produto do par. Antiaglomeração empurra na direção
+certa para essa cota, mas não a dá.
+
+Isso confirma o diagnóstico de "dívida aritmética compartilhada" desta
+hipótese em forma concreta: os dois lados chegam a um funcional de
+momento sobre pares na mesma órbita afim, por rotas independentes. Ver
+a seção datada de 2026-08-09 em H-157 e
+`projects/collatz/experiments/E-138-diagonal-shifted-collision/`.
