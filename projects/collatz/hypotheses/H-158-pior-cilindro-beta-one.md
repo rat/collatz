@@ -1,6 +1,6 @@
 # H-158: massa do pior cilindro na lei de Syracuse
 
-Status: em andamento
+Status: fechada-inconclusiva (2026-08-10). Ver "Fechamento" no fim.
 
 Criada: 2026-08-08
 
@@ -146,6 +146,25 @@ provar `beta=1`; qualquer prova precisa de informação sobre ONDE ao
 longo da órbita de `A` os valores pequenos de `mu_(ell-1)` estão, não
 só de quão pequenos eles são.
 
+**Reconciliação com H-166 (nota pendente desde a "Terceira rodada" de
+H-161, adicionada aqui em 2026-08-10 depois de uma crítica apontar que
+nunca tinha sido escrita neste arquivo, só no de H-166)**: H-166 prova
+`beta_eff<=1,882712` via uma recursão que TAMBÉM é escalar, no sentido
+de que `min R_L` é um único número calculado num nível `L`. Isso parece
+contradizer o parágrafo acima, mas não contradiz: o esboço adversarial
+aqui é sobre desigualdades que usem só `c_(ell-1)` (ou uma lista finita
+de estatísticas de ORDEM de um único nível, sem informação posicional).
+`min R_L` não é uma estatística de ordem de um nível; é uma quantidade
+ENTRE níveis (compara `mu_ell` com `mu_{ell-1}` em resíduos casados pela
+identidade de órbita afim de H-166), fora do escopo do esboço acima. A
+construção adversarial deste parágrafo não é excluída por quão pequenos
+são os valores de nível único, e sim pela identidade de combinação
+convexa de H-166, que restringe como uma lei de Syracuse real pode se
+apoiar sobre sua própria projeção entre níveis adjacentes. O esboço
+sobrevive dentro do escopo dele (nenhuma cota de nível único faz melhor
+que `beta<=2,31`); só não cobre insumo entre níveis, que é onde H-166
+ganha.
+
 **Conjectural, com suporte empírico não conclusivo:** a consulta propôs
 uma hipótese de descorrelação (não conspiração da cauda inferior de
 `mu_(ell-1)` ao longo de janelas da órbita de `A`) que implicaria
@@ -182,3 +201,31 @@ cenários (ver acima). Nem confirma nem refuta H-158.
 Reformulação estrutural (arco deficiente ao longo da órbita de `A`)
 registrada como H-161, separada desta hipótese por não ser uma
 auditoria computacional e sim uma nova pergunta em aberto (Regra 8e).
+
+## Fechamento (2026-08-10)
+
+Os quatro passos de "Próximos testes" estão todos executados: 1-3
+concluídos nas atualizações E-127/E-130 acima; o passo 4 (desigualdade
+recursiva subexponencial) gerou H-161, que por sua vez passou por um
+programa de somas de Weyl (fechado como estruturalmente insuficiente,
+unitariedade), um resultado incondicional novo derivado no caminho
+(H-166, `beta_eff<=1.882712`, o melhor obtido nesta linha inteira,
+superando a cota escalar `2.306270` registrada acima), e uma rodada de
+escalonamento a Codex sobre a desigualdade de par (Q2), fechada
+`fechada-inconclusiva` com um programa concreto mas não executado
+registrado em H-177. Ver H-161 para o histórico completo.
+
+**Decisão de fechamento**: `fechada-inconclusiva`. Não há mais próximo
+passo desta hipótese especificamente que não esteja já melhor descrito
+em H-161/H-166/H-177. `beta_eff->1` (o alvo original) permanece nem
+provado nem refutado; o que ficou estabelecido é a melhor cota
+incondicional que este projeto produziu (`1,882712`, H-166) e um
+diagnóstico preciso de onde a prova completa emperra (a desigualdade
+de anti-concentração de pares, Q2, possivelmente mais forte que o
+necessário se o limite for singular, ver H-161).
+
+Ver H-161, H-166, H-177, `experiments/E-127-worst-cylinder/`,
+`experiments/E-130-worst-cylinder-cost-bands/`,
+`experiments/E-131-affine-orbit-reformulation/`,
+`experiments/E-134-weyl-sum-pair-anticoncentration/`,
+`experiments/E-142-singularity-diagnostic/`.
