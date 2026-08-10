@@ -9,7 +9,10 @@ cada um dos dois expoentes em disputa. Na década `1e9→1e10`, onde o
 viés dos controles já é menor que 0,003, três processos de expoente
 0,650919 leem 0,6475, 0,6498 e 0,6512, um processo de expoente 0,678 lê
 0,6775, e a árvore aritmética lê **0,64926 [0,64818, 0,65027]**, dentro
-da faixa dos primeiros e a dez larguras de faixa do segundo. Medição
+da faixa dos primeiros e a mais de sete larguras de faixa do segundo
+(0,02822/0,00371 = 7,6; a razão "dez" que aparecia aqui e no
+`OUTLINE.md` estava errada, ver correção de 2026-08-10 abaixo).
+Medição
 empírica com controles calibrados, não prova, e testa o expoente 0,678,
 não o modelo de Volkov.
 
@@ -299,8 +302,10 @@ expoente, e não precisa de correção nenhuma:
 Três processos independentes de expoente 0.650919 leem 0.6475, 0.6498 e
 0.6512 ali; a dispersão de 0.004 entre eles é o quanto o viés residual
 ainda depende de quanto cada um flutua. A árvore aritmética lê 0.6493,
-dentro dessa faixa. O processo de expoente 0.678 lê 0.6775, dez vezes a
-faixa de distância.
+dentro dessa faixa. O processo de expoente 0.678 lê 0.6775, mais de sete
+vezes a faixa de distância (0.02822/0.00371 = 7.6, ver correção de
+2026-08-10 abaixo: o texto original desta seção dizia "dez", número
+não verificado contra a própria tabela que o precede).
 
 Empurrando só a árvore aritmética mais fundo (ela não tem cauda pesada
 para travar; os controles estocásticos, sim), checkpoints até `1e12` e
@@ -343,6 +348,44 @@ modelo é absurdamente mais lento que a árvore. Era artefato: as raízes
 aritméticas são sorteadas com `u mod q != 0`, sempre férteis, enquanto
 o controle sorteava o resíduo da raiz em `{0..q-1}` e matava uma árvore
 em cinco na largada. Corrigido antes de qualquer conclusão.
+
+## 2026-08-10 (paper 04, correção de sincronização e verificação numérica)
+
+Trabalho de fechamento do backlog do paper 04
+(`04-kontorovich-lagarias-volkov`, criado nesta mesma data pelo split de
+`01`). Duas coisas, verificadas de forma independente antes de editar
+qualquer arquivo (Regra 8c/11).
+
+**1. A razão de larguras de banda estava errada em três lugares, certa
+em um.** A seção de 2026-08-09 acima e o `OUTLINE.md` §6 diziam "dez
+larguras de faixa/banda" separando a árvore aritmética do controle de
+0,678, na década `1e9→1e10` (grade `b15`). Reproduzi `summary.py b15
+10` neste repositório (`experiments/E-139-kl-volkov-window-calibration/`)
+e recalculei a partir da própria tabela já publicada: banda dos três
+controles de expoente 0,650919 = `[0,64751, 0,65122]`, largura
+`0,00371`; separação entre a árvore aritmética (`0,64926`) e o controle
+de `0,678` (`0,67748`) = `0,02822`; razão = `0,02822/0,00371 = 7,6`. O
+`main.tex` já dizia "more than seven band-widths" nos dois lugares onde
+essa razão aparece (abstract e `thm:kl-calibrated`) — o número certo
+já estava no paper, só não tinha sido propagado de volta para este
+arquivo e para o `OUTLINE.md`, que ainda diziam "dez" desde antes do
+split. Corrigido nos dois lugares acima e no `OUTLINE.md`. Isto resolve
+a pendência registrada no `STATE.md` ("H-113 e OUTLINE.md ainda dizem
+'exclui Volkov com folga', três lugares fora de sincronia"): o
+`OUTLINE.md` de fato já refletia a retratação de H-137 (nunca chegou a
+dizer "exclui Volkov com folga" no texto criado em 2026-08-10, essa
+frase só existia na citação, dentro deste próprio arquivo, do que o
+`OUTLINE.md` costumava dizer antes do split); o número de larguras de
+banda é que ainda estava desatualizado nos dois, e ficou.
+
+**2. Nenhuma hipótese/experimento em aberto sobrando no escopo do paper
+04.** H-113 já estava fechada (2026-08-09); H-169 (congruência de
+irmãos) está provada e usada; E-097 e E-139 já rodaram e seus outputs
+foram reproduzidos de novo agora (`summary.py`, grades `b13` e `b15`),
+batendo byte a byte com o que está documentado. `CRITIQUE.md` do paper
+04 já estava fechado (todos os achados corrigidos, sessão anterior).
+Não há entrada em `backlog`/`open-unexplored`/`in-progress` no escopo
+deste paper além do que está registrado aqui.
 
 ## Notação (clarificada, corrige ambiguidade α₁/α₂ de H-109)
 

@@ -70,11 +70,15 @@ não só leitura do relatório do agente), per Regra 8c. Resumo:
 - **O8 (H-113/H-169, E-139)**: recalibra o portão KL vs Volkov com
   controles casados (o estimador antigo tinha viés maior que a
   diferença em disputa). Árvore aritmética lê `0,64926
-  [0,64818, 0,65027]`, separada de um controle a `0,678` por dez
-  larguras de banda. **Achado que precisa de decisão do diretor
-  científico**: `H-113` e `OUTLINE.md` §6 ainda dizem "exclui Volkov
-  com folga", mas o `main.tex` já tinha essa alegação retratada desde
-  H-137 — os três lugares estão fora de sincronia.
+  [0,64818, 0,65027]`, separada de um controle a `0,678` por mais de
+  sete larguras de banda (0,02822/0,00371=7,6). **Resolvido
+  2026-08-10, dono do paper 04**: o `OUTLINE.md` criado no split já
+  refletia a retratação de H-137 (nunca chegou a afirmar "exclui Volkov
+  com folga"); o número de larguras de banda é que estava desatualizado
+  em três lugares (`H-113`, `OUTLINE.md` §6, e a fonte, o README do
+  E-139), todos diziam "dez" contra o "seven" já correto do `main.tex`
+  (achado do critique C-04). Os três corrigidos para "sete",
+  reproduzido de novo a partir de `summary.py b15 10`.
 
 Três colisões de numeração entre worktrees paralelos (todos partindo do
 mesmo `main`) resolvidas na integração: `E-133`/`H-162` (O1 venceu por

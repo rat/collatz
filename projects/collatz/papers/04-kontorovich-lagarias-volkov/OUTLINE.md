@@ -30,8 +30,9 @@ deste paper).
    sessão: o estimador tem viés maior que a disputa em si; construindo
    controles casados (mesma estrutura de ramificação e de irmãos, só
    `q` trocado por um valor real ajustável), a árvore aritmética lê
-   0,64926 [0,64818, 0,65027], separada de um controle a 0,678 por dez
-   larguras de banda, e bate com controles a 0,650919.
+   0,64926 [0,64818, 0,65027], separada de um controle a 0,678 por mais
+   de sete larguras de banda (0,02822/0,00371=7,6), e bate com
+   controles a 0,650919.
 7. Discussão — escopo preciso (testa o valor 0,678, não o modelo de
    Volkov em si, que tem estrutura de árvore diferente e não foi
    implementado).

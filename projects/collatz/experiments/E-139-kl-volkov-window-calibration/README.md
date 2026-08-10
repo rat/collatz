@@ -220,10 +220,15 @@ exponent:
 ```
 
 Three independent processes whose exponent is 0.650919 read 0.6475,
-0.6498 and 0.6512 there, the spread of 0.004 being how much the residual
-bias still depends on how much each one fluctuates. The arithmetic tree
-reads 0.6493, inside that band. The process whose exponent is 0.678
-reads 0.6775, ten times the band away.
+0.6498 and 0.6512 there, the spread of 0.0037 being how much the
+residual bias still depends on how much each one fluctuates. The
+arithmetic tree reads 0.6493, inside that band. The process whose
+exponent is 0.678 reads 0.6775, more than seven times the band away
+(0.02822/0.00371 = 7.6; an earlier draft of this note said "ten",
+carried into `main.tex` as "ten interval-widths" and caught there by
+the paper's critique round, C-04, which flagged that no reading in the
+paper's own numbers gives ten in any unit; corrected here at the
+source).
 
 Pushing the arithmetic tree alone further, to checkpoints `1e12` and
 buffers `1e17`, since it has no heavy tail to stall on:
