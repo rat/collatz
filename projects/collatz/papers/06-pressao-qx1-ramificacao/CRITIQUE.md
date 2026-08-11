@@ -1217,3 +1217,40 @@ rodada (achado é só sobre o mapeamento do repositório, Regra 12).
 **Verificação técnica.** `main.tex` inalterado nesta rodada; estado já
 confirmado limpo na verificação da rodada 5 (recompila sem erro,
 `\cite`/`\bibitem` e `\ref`/`\eqref`/`\label` sem órfãos).
+
+### 2026-08-11 — rodada de convergência 7 (crítico, contexto fresco)
+
+Escopo: `main.tex` inteiro, quarta reconferência independente das
+provas centrais (incluindo `thm:transition-model`) sem erro novo, mais
+verificação de citações ainda não abertas contra fonte primária.
+
+**Resultado: 0 crítico, 0 maior, 2 moderado, 1 menor. Não limpa.
+Contagem de rodadas limpas consecutivas volta a 0/3** (a rodada 6
+tinha alcançado 1/3).
+
+| ID | Nível | Resumo | Status |
+|----|-------|--------|--------|
+| D-25 | moderado | `rem:novelty-109` cita "Conjecture 1.5" de GGM2022 como o locus formal da alegação de necessidade ($q\ge5$ exclui órbitas quase limitadas), mas o enunciado numerado de Conjecture 1.5 é só de suficiência; a necessidade aparece em prosa não numerada no parágrafo seguinte | fixed |
+| D-26 | moderado | Resumo: frase de 72 palavras no padrão "uma raiz faz X ...; a outra faz Y..." — exatamente a forma que a Regra 4b §7 proíbe por nome ("one yields... the other yields") | fixed |
+| D-27 | menor | Resumo sem nenhuma frase abaixo de 10 palavras (mínimo 14 antes da correção), violando a exigência de variância de comprimento da Regra 4b §2 | fixed |
+
+**Correções aplicadas:**
+
+- **D-25.** Localizador da citação ajustado para
+  `\cite[Theorem~1.3; the necessity claim is discussed, not itself
+  numbered, in the paragraph following Conjecture~1.5]{GoncalvesGreenfeldMadrid2022}`,
+  deixando explícito que a necessidade não é o enunciado formal de
+  Conjecture 1.5. O conteúdo já estava certo (rodada 4/D-18); só o
+  localizador precisava de ajuste.
+- **D-26/D-27.** A frase de 72 palavras do resumo ("We show that the
+  two roots... density martingale") quebrada em cinco frases curtas,
+  incluindo duas de 6 palavras cada ("The smaller root is always
+  unfrozen." / "The larger root is always frozen."), resolvendo os
+  dois achados juntos: elimina o padrão banido e dá ao resumo a
+  variância de comprimento que faltava (recontei as 15 frases do
+  resumo depois da correção: mínimo 6 palavras, máximo 55).
+
+**Verificação técnica pós-correção:** recompilado (2 passadas
+`pdflatex`), zero erro/referência indefinida; `\cite`/`\bibitem` e
+`\ref`/`\eqref`/`\label` conferidos por script, sem órfãos em nenhuma
+direção.
