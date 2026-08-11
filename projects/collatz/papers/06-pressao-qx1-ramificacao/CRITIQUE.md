@@ -1404,3 +1404,40 @@ tinha alcançado 1/3, quebrada pela rodada 10).
 `pdflatex`), zero erro/referência indefinida; `\cite`/`\bibitem` e
 `\ref`/`\eqref`/`\label` conferidos por script, sem órfãos em nenhuma
 direção.
+
+### 2026-08-11 — rodada de convergência 12 (crítico, contexto fresco)
+
+Escopo: `main.tex` inteiro, nona reconferência independente das provas
+centrais sem erro novo, primeira verificação de `Krasikov-Lagarias
+2003` contra fonte primária (confirmada correta), reconferência da
+alegação de "perfect spectral gap" rodando `experiment_gap_check.py`.
+
+**Resultado: 0 crítico, 1 maior, 1 moderado, 0 menor. Não limpa.
+Contagem de rodadas limpas consecutivas volta a 0/3.**
+
+| ID | Nível | Resumo | Status |
+|----|-------|--------|--------|
+| D-37 | maior | §5, l.880-889: "the evidence for Conjecture~\ref{conj:real-tree-tail} is real and threefold" em $q=3$, mas a "terceira perna" citada (`emp:real-trees`) é de $q=5,7$, não $q=3$, e o próprio texto admite na mesma frase que ela mira uma conjectura diferente (`conj:transition-arithmetic`) — a frase-tópico promete evidência que a continuação da mesma frase desmente | fixed |
+| D-38 | moderado | `conj:transition-arithmetic`, l.706-708: descreve $\pi_a(x)$ como contando inteiros que alcançam $a$ "under repeated **reverse** iteration", mas $N_u(x)$ (definido em §2, l.145) e a fonte primária (Krasikov-Lagarias 2003) usam iteração **direta** ($T_q^k(n)=u$); "reverse" inverte a direção | fixed |
+
+**Correções aplicadas (Regra 8c: cruzei D-37 contra
+`hypotheses/H-129-q-adic-pole-analog-seymour.md`, l.557-558, antes de
+corrigir — a formulação "threefold em q=3" foi de fato uma escolha
+deliberada do produtor na rodada de formalização de H-129, não um erro
+de digitação isolado; a nota de hipótese não resolve a inconsistência
+interna, só confirma quando ela nasceu):**
+
+- **D-37.** "threefold" trocado por "twofold" (só Hill + EVT, ambos de
+  fato em $q=3$); a frase sobre `emp:real-trees` separada em uma
+  sentença própria, descrita como "a separate, related line of support
+  at $q=5,7$" em vez de "a third... line of support", removendo a
+  alegação de que conta como uma terceira perna da evidência em $q=3$
+  para `conj:real-tree-tail`.
+- **D-38.** "under repeated reverse iteration" corrigido para "under
+  repeated forward iteration of the map", batendo com a definição de
+  $N_u(x)$ em §2 e com Krasikov-Lagarias 2003.
+
+**Verificação técnica pós-correção:** recompilado (2 passadas
+`pdflatex`), zero erro/referência indefinida; `\cite`/`\bibitem` e
+`\ref`/`\eqref`/`\label` conferidos por script, sem órfãos em nenhuma
+direção.
