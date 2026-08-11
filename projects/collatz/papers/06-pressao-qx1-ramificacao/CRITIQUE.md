@@ -820,3 +820,400 @@ presentes.
 **Não fica pendente para o paper 01**: o agente responsável pelo paper
 01, em paralelo, ajusta o lado dele para apenas citar o tratamento
 deste paper, sem duplicar o enunciado de `conj:tail-index`.
+
+---
+
+## Loop de convergência (critério do pesquisador, 4 níveis: crítico/maior/moderado/menor)
+
+A partir daqui, cada rodada é uma crítica adversarial completa e
+independente do `main.tex` atual (contexto fresco, sem reaproveitar o
+julgamento da rodada anterior). Critério de parada: 3 rodadas
+CONSECUTIVAS limpas (crítico=0, maior=0, moderado=0, menor<3), sem
+crédito parcial — qualquer rodada abaixo do padrão zera a contagem.
+
+### 2026-08-10 — rodada de convergência 1 (crítico, contexto fresco)
+
+Escopo: `main.tex` inteiro, revisão adversarial independente, incluindo
+verificação numérica própria (mpmath, 30 dígitos), checagem de
+`\cite`/`\bibitem`/`\ref`/`\eqref` por script, e consulta a fontes
+primárias locais (Kontorovich-Lagarias 2010, Applegate-Lagarias I/II,
+Gonçalves-Greenfeld-Madrid 2022, Liu 2000, Villemonais-Zalduendo 2025)
+para todas as citações de maior risco, incluindo uma nunca antes
+checada em nenhuma rodada anterior (GGM2022).
+
+**Resultado: 2 crítico, 2 maior, 4 moderado, 1 menor (agrupado, 3
+ocorrências). Não limpa. Contagem de rodadas limpas consecutivas: 0/3.**
+
+| ID | Nível | Resumo | Status |
+|----|-------|--------|--------|
+| D-01 | crítico | `thm:transition-model`, prova do limite inferior: alegava que o Teorema 8.10 de Kontorovich-Lagarias 2010 "transfere sem mudança" para q geral; falso (modelo B[5^0] de KL tem função de pressão diferente da deste paper, mesma raiz por identidade algébrica distinta) | fixed |
+| D-02 | crítico | `prop:transition-fine` rotulado Proposition com conteúdo explicitamente não provado (abre com "conjecturally"); `conj:real-tree-tail` já dependia dele | fixed |
+| D-03 | maior | Resumo: "For q=3 this is the classical Growth Exponent Conjecture" tem como único antecedente gramatical $\alpha^\ast=2$ (raiz não trivial), mas a GEC é sobre a raiz trivial ($\alpha_-=1$), como o corpo (`conj:transition-arithmetic`) já atribui corretamente | fixed |
+| D-04 | maior | Remark "Mass conservation as a corollary": o lado direito de \eqref{eq:annealed-identity} em $\alpha=1$ vale $q^k$, não $1$; o objeto que vale $1$ é a média \eqref{eq:pressure-closed-form} | fixed |
+| D-05 | moderado | Nota de rodapé de `conj:real-tree-tail`: $\theta$ usado sem redefinição próxima (definido só dentro da prova de `thm:iid-tail`, várias dezenas de linhas antes) | fixed |
+| D-06 | moderado | `conj:real-tree-tail`: ordem do limite duplo mal especificada ("as $H\to\infty$ and then the interval grows" não corresponde ao protocolo empírico real, onde $H$ é finito e a amostra de raízes cresce) | fixed |
+| D-07 | moderado | Resumo vs. §5: a ressalva de não convergência da mediana de $W_v(H)$ no teste de $10^5$ raízes não chegava ao resumo | fixed |
+| D-08 | moderado | §5: tensão aparente entre "the bias-corrected Hill estimator is stable... lands close to the predicted 1.536" e "without settling near any single value" (dois eixos de comparação distintos, não explicados) | fixed |
+| D-09 | menor | Narração de processo (Regra 4b §3), 3 ocorrências: "in earlier stages of this line of work" (×2) e "was later shown, over the course of this line of work" | fixed |
+
+**Verificado e correto nesta rodada, sem achado (registro para não ser re-checado à toa nas próximas rodadas):** compilação limpa; `\cite`/`\bibitem` e `\ref`/`\eqref`/`\label` fechados nas duas direções; tabelas de $\alpha^\ast(q)$/$\alpha_c(q)$; $m'(1)$/$m'(2)$ em §6; citação Kontorovich-Lagarias 2010 Teorema 8.10 e $\eta_{5,BP}$; Applegate-Lagarias "Conjecture A"; cota de Krasikov-Lagarias; localizador de Wirsching 1998; Villemonais-Zalduendo 2025 (não contém maquinaria de renovação/CMJ); Gonçalves-Greenfeld-Madrid 2022 (primeira vez checada, correta); Liu 2000 (hipóteses do Teorema 2.2 usadas corretamente em `thm:iid-tail`); zero travessão; zero vocabulário da lista literal da Regra 4b §1.
+
+**Correções aplicadas (produtor, Regra 8c: cada achado verificado antes do conserto):**
+
+- **D-01.** Fui à fonte primária (PDF local de Kontorovich-Lagarias
+  2010) e confirmei: o modelo B[5^0], para o qual o Teorema 8.10 é
+  provado, tem no máximo 2 filhos por nó, função de pressão
+  $m_{KL}(\theta)=2^{-\theta}(1+5^{\theta-1})$; o modelo i.i.d. deste
+  paper tem quase certamente infinitos filhos por nó, função de
+  pressão $\rho_{\mathrm{ann}}(\theta)=5^{\theta-1}/(2^\theta-1)$.
+  Processos genuinamente diferentes, que só coincidem nas raízes de
+  suas equações de pressão (identidade algébrica verificada:
+  $m_{KL}(\theta)-1=\frac{2^\theta-1}{2^\theta}(\rho_{\mathrm{ann}}(\theta)-1)$).
+  Consultei o advisor e depois o Codex (leitura read-only,
+  `codex exec`) antes de escrever qualquer prova nova, exatamente para
+  não repetir o erro documentado na rodada 2 anterior (segundo momento
+  nunca escrito "sob pressão de tempo"). O Codex propôs um argumento de
+  Galton-Watson em blocos (tilt exponencial na raiz $\alpha_-(q)$,
+  truncamento em janela de deslocamento, redução a um processo
+  supercrítico); verifiquei cada passo eu mesmo linha a linha e
+  encontrei um erro na primeira versão do Codex (a alegação de que o
+  número de sequências de expoentes candidatas por bloco seria
+  limitado é falsa: cresce exponencialmente em $L$; a correção correta
+  é truncar em $K$ filhos por bloco, com $K\to\infty$ depois de
+  $L\to\infty$, o que evita qualquer hipótese de momento tipo
+  Kesten-Stigum/Seneta-Heyde, já que a versão truncada tem variância
+  finita trivialmente). A prova final no `main.tex` usa só fatos
+  clássicos elementares (identidade de muitos-para-um, já usada
+  corretamente em outros pontos do mesmo paper; lei dos grandes
+  números; teorema de crescimento para processos de Galton-Watson
+  supercríticos de variância finita). Um novo Remark registra a
+  identidade algébrica das raízes e deixa claro que a prova de KL não
+  transfere.
+- **D-02.** Relabel `prop:transition-fine` → `conj:transition-fine`
+  (ambiente `conjecture`, não mais `proposition`); todas as 4
+  ocorrências de `\ref`/`\label` atualizadas; a frase "three separate
+  claims" ajustada para descrever a hierarquia real (um Teorema provado
+  e duas Conjecturas).
+- **D-03.** Resumo reescrito: a raiz não trivial $\alpha^\ast(q)$ e o
+  expoente de crescimento $\alpha_-(q)$ agora aparecem como objetos
+  claramente distintos, com a GEC ligada explicitamente ao caso
+  $q=3$/expoente $1$.
+- **D-04.** Remark corrigido para usar diretamente
+  $\rho_{\mathrm{ann}}(1)=q^0/(2^1-1)=1$ (conta trivial e certamente
+  correta), em vez de uma leitura errada de \eqref{eq:annealed-identity}.
+- **D-05 a D-08.** Correções mecânicas: $\theta:=\alpha_-(q)$ redefinido
+  na própria nota de rodapé; `conj:real-tree-tail` reescrita com $H$
+  fixo e a amostra de raízes crescendo primeiro, depois $H\to\infty$;
+  cláusula sobre a deriva da mediana incorporada ao resumo; frase
+  adicionada em §5 nomeando os dois eixos de comparação (estabilidade
+  de um estimador através de níveis de headroom vs. variação entre
+  quatro estimadores diferentes).
+- **D-09.** As três ocorrências de narração de processo removidas e
+  reancoradas com o conteúdo factual que carregavam (metodologia e
+  objeto medido, amostras reais da árvore vs. modelo idealizado), sem
+  narrar quando ou em que estágio a medição foi feita.
+
+**Verificação técnica pós-correção:** recompilado (3 passadas
+`pdflatex`), zero erro/referência indefinida; `\cite`/`\bibitem` e
+`\ref`/`\eqref`/`\label` conferidos por script, sem órfãos em nenhuma
+direção. `OUTLINE.md` atualizado (tabela de rótulos Regra 10b).
+
+### 2026-08-10 — rodada de convergência 2 (crítico, contexto fresco)
+
+Escopo: `main.tex` inteiro, com atenção dedicada à prova nova de
+`thm:transition-model` (limite inferior via Galton-Watson em blocos,
+nunca revisada por um crítico fresco antes desta rodada).
+
+**Resultado: 1 crítico, 0 maior, 3 moderado, 2 menor. Não limpa.
+Contagem de rodadas limpas consecutivas: 0/3.**
+
+| ID | Nível | Resumo | Status |
+|----|-------|--------|--------|
+| D-10 | crítico | Prova de `thm:transition-model` (limite inferior): definia $\xi_i$ como sorteio direto de $p_\alpha(a)$ (a lei do dígito) e alegava média $\mu$; falso — $p_\alpha$ tem média $\mathbb E[a]=2^\alpha/(2^\alpha-1)\approx2{,}754$ em $q=5$, não $\mu\approx0{,}299$. A LLN citada, como estava escrita, mandava a soma para o valor errado | fixed |
+| D-11 | moderado | Colisão de notação: $H$ usado para entropia de Shannon ($H(p_\alpha)$, prova de `thm:frozen-singular`) e para "headroom" (resumo, `conj:real-tree-tail`, §7) | fixed |
+| D-12 | moderado | Colisão de notação: $\sigma$ com dois papéis distintos (multiplicador normalizado em `thm:iid-tail`; argumento bruto da equação de pressão multitype na nota de rodapé de `conj:real-tree-tail`) | fixed |
+| D-13 | moderado | `conj:transition-fine` descreve a prova de `thm:transition-model` como "the large-deviations argument used above", desatualizado após D-01 reescrever o limite inferior via Galton-Watson em blocos | fixed |
+| D-14 | menor | Vocabulário banido (Regra 4b §1): "genuine" na prova nova de `thm:transition-model`, nunca escaneada contra a lista depois de escrita | fixed |
+| D-15 | menor | Orçamento "X, not Y"/"rather than" (Regra 4b §2, máx. 2 no documento): 17 ocorrências contadas nesta rodada | parcialmente corrigido, ver nota |
+
+**Correções aplicadas (Regra 8c: cada achado verificado antes do conserto):**
+
+- **D-10.** Recalculei eu mesmo, independentemente do crítico:
+  $\mathbb E[a]=2^\alpha/(2^\alpha-1)\approx2{,}7539$ e
+  $\mu=-P'(\alpha)\approx0{,}2994$ em $q=5$, $\alpha=\alpha_-(5)$ —
+  confirma o achado. Corrigido para: $a_1,a_2,\ldots$ i.i.d. de
+  $p_\alpha(a)$ (a lei do dígito, papel correto), $\xi_i:=a_i\log2-\log q$
+  (o deslocamento induzido); verifiquei
+  $\mathbb E[\xi_i]=\log2\cdot\mathbb E[a_i]-\log q=-P'(\alpha)=\mu$
+  diretamente (identidade exata, não aproximada). O resto da prova já
+  tratava $\xi_i$ consistentemente como deslocamento (confirmado pelo
+  crítico e por mim), então nenhuma outra correção foi necessária ali.
+  Uma tentativa inicial de conserto introduziu, por minha conta, um
+  segundo erro (uma identidade errada $\mu=-\alpha^{-1}s(\alpha)$, sinal
+  trocado); descartada antes de entrar no texto, substituída pela conta
+  direta e mais simples acima.
+- **D-11.** Entropia de Shannon renomeada de $H(p_\alpha)$ para
+  $\mathrm{Ent}(p_\alpha)$ nas 4 ocorrências (todas dentro da prova
+  contida de `thm:frozen-singular`); "headroom $H$" mantido sem
+  alteração (termo mais extenso e recente no documento).
+- **D-12.** O $\sigma$ da nota de rodapé de `conj:real-tree-tail`
+  (equação de pressão multitype genérica) renomeado para $\alpha$,
+  igual à variável já usada em toda parte para essa mesma equação
+  (\eqref{eq:pressure-closed-form}); o $\sigma$ de `thm:iid-tail`
+  (multiplicador normalizado) mantido sem alteração, papel distinto e
+  já consistente ali.
+- **D-13.** "the large-deviations argument used above" corrigido para
+  "the exponential tilting and block truncation used above", refletindo
+  a prova de fato usada após D-01.
+- **D-14.** "genuine" removido.
+- **D-15.** Reclassifiquei cada uma das 17 ocorrências à mão: 13
+  desambiguam objetos matemáticos genuinamente confundíveis (a maioria
+  delas é precisamente o tipo de contraste que a Regra 4b §2 diz que
+  deve ficar: "only where a reader would actually confuse X with Y" —
+  ex.: a distinção entre o modelo B[5^0] de KL e o modelo i.i.d. deste
+  paper no novo Remark, a distinção entre `conj:real-tree-tail` e
+  `conj:tail-index`, a classificação do regime de cauda em §6). 4 eram
+  puramente retóricas e foram cortadas (l. 479, 898, e a redução de
+  "rather than one that has reached it" em l. 930-931, mais "we later
+  verified" → "we verified" ao lado, achado colateral pequeno da mesma
+  família proibida pela Regra 4b §3, corrigido nesta mesma passagem por
+  estar na mesma frase). Contagem final: 14. Julgamento explícito, não
+  omissão: reduzir a 2 exigiria cortar distinções que o próprio texto
+  precisa para não confundir objetos matemáticos genuinamente
+  diferentes (mesmo julgamento já registrado na rodada de redação final
+  de 2026-08-10, reconferido aqui de novo, independentemente). Por isso
+  D-15 está marcado "parcialmente corrigido": o volume caiu (17→14) mas
+  não chegou ao orçamento literal de 2; classificado como `menor` no
+  critério de convergência, então não bloqueia uma rodada limpa por si
+  só desde que o total de achados menores da rodada fique abaixo de 3.
+
+**Verificação técnica pós-correção:** recompilado (2 passadas
+`pdflatex`), zero erro/referência indefinida; `\cite`/`\bibitem` e
+`\ref`/`\eqref`/`\label` conferidos por script, sem órfãos em nenhuma
+direção.
+
+### 2026-08-10 — rodada de convergência 3 (crítico, contexto fresco)
+
+Escopo: `main.tex` inteiro; terceira reconferência independente, do
+zero, da prova de `thm:transition-model` (limite inferior), incluindo
+o Remark novo sobre Kontorovich-Lagarias, com verificação direta contra
+a fonte primária local (não reaproveitada das rodadas anteriores).
+
+**Resultado: 0 crítico, 0 maior, 1 moderado, 1 menor. Não limpa.
+Contagem de rodadas limpas consecutivas: 0/3.**
+
+Nenhum erro matemático novo encontrado (a prova de
+`thm:transition-model` foi confirmada correta, do zero, pela terceira
+vez). O crítico registrou explicitamente: "Não encontrei erro
+matemático novo em nenhuma prova, identidade ou fórmula numérica."
+
+| ID | Nível | Resumo | Status |
+|----|-------|--------|--------|
+| D-16 | moderado | Orçamento "X, not Y"/"rather than" (Regra 4b §2): reavaliado de forma independente, 2 trechos concretos identificados como cortáveis sem perda técnica e não cortados nas rodadas anteriores apesar de examinados | fixed |
+| D-17 | menor | Prova de `thm:transition-model`: dois gaps de rigor rotineiros não escritos explicitamente (deslocamento finito $\Delta$ da cópia sobrevivente; interseção contável sobre $L\to\infty$, mesma técnica já usada para $K$) | fixed |
+
+**Correções aplicadas:**
+
+- **D-16.** Cortadas as duas ocorrências concretas que o crítico
+  apontou como redundantes: "one branch at a time rather than only in
+  aggregate" (§5, parágrafo do modelo i.i.d., reescrito como
+  "branch-by-branch transition rule", sem antítese) e "so the two
+  models are not the same stochastic process" no Remark de
+  Kontorovich-Lagarias (redundante com "not $\rho_{\mathrm{ann}}(\theta)$"
+  imediatamente anterior, que já estabelece a diferença). Contagem cai
+  de ~16 para ~14. A tensão remanescente entre a letra da Regra 4b §2
+  ("no máximo dois por documento") e o conteúdo tecnicamente necessário
+  do paper (distinguir repetidamente objetos matemáticos genuinamente
+  diferentes: dois modelos estocásticos, duas conjecturas, um teorema
+  de uma proposição condicional) fica registrada aqui como uma tensão
+  real e não resolvida por conta própria do produtor pela terceira vez
+  seguida — nomeada explicitamente para o pesquisador decidir, no
+  mesmo espírito de C-30 (Regra 5), em vez de o produtor continuar
+  arbitrando sozinho o mesmo ponto rodada após rodada.
+- **D-17.** A prova ganhou um deslocamento finito $\Delta$ nomeado
+  explicitamente (generation $jL+O(1)$, displacement at most
+  $jL(\mu+\varepsilon)+\Delta$) em vez de só "shifts what follows by a
+  bounded amount"; e a interseção contável sobre $K$ foi estendida,
+  pela mesma técnica, a uma interseção contável sobre a sequência de
+  $L$ usada no limite $L\to\infty$, deixando explícito que o evento
+  quase certo vale simultaneamente ao longo dessa sequência.
+
+**Verificação técnica pós-correção:** recompilado (2 passadas
+`pdflatex`), zero erro/referência indefinida; `\cite`/`\bibitem` e
+`\ref`/`\eqref`/`\label` conferidos por script, sem órfãos em nenhuma
+direção.
+
+### 2026-08-11 — rodada de convergência 4 (crítico, contexto fresco)
+
+Escopo: `main.tex` inteiro, com instrução explícita de concentrar
+esforço nas provas mais antigas do paper (nunca tocadas pelas três
+rodadas anteriores) e na bibliografia, já que a prova de
+`thm:transition-model` tinha acabado de ser confirmada correta, do
+zero, três vezes seguidas.
+
+**Resultado: 0 crítico, 1 maior, 1 moderado, 0 menor. Não limpa.
+Contagem de rodadas limpas consecutivas: 0/3.**
+
+| ID | Nível | Resumo | Status |
+|----|-------|--------|--------|
+| D-18 | maior | `rem:novelty-109`: "a later result rigorously excludes $q\ge5$" citando Gonçalves-Greenfeld-Madrid 2022 — falso; a exclusão de $q\ge5$ é a **Conjecture 1.5** do próprio paper deles, não um teorema, com suporte só numérico ("we were not able to find... it seems that condition (b) must be satisfied") | fixed |
+| D-19 | moderado | `\bibitem{KontorovichLagarias2010}` sem faixa de páginas (única entrada de capítulo/artigo do documento sem uma) | fixed |
+
+**Correções aplicadas (Regra 8c: cada achado verificado antes do conserto):**
+
+- **D-18.** Baixei o PDF primário (arXiv:2111.06170v2, a versão exata
+  citada) e li o Teorema 1.3, o Remark 1.4 e a Conjecture 1.5 na
+  íntegra. O Teorema 1.3 prova a direção positiva (órbitas quase
+  limitadas) sob três condições, incluindo $q<p^{p/(p-1)}$ (que em
+  $p=2$ dá $q<4$). A necessidade dessa condição, isto é, que ela falhe
+  para todo $q\ge5$, é exatamente a Conjecture 1.5, sustentada só por
+  não terem achado contraexemplo numérico ("it seems that condition
+  (b) must be satisfied whenever all orbits are bounded"). Reescrevi o
+  trecho para atribuir corretamente: Teorema 1.3 prova a direção
+  positiva sob a condição $q<4$; Conjecture 1.5 conjectura, com suporte
+  numérico e sem prova, que a condição também é necessária. A rodada de
+  convergência 1 tinha registrado essa citação como "primeira vez
+  checada, correta" sem checar o status teorema-vs-conjectura da
+  alegação específica sendo citada; registro aqui, por Regra 8c, que
+  essa verificação anterior estava incompleta, não errada no que de
+  fato conferiu (a existência do paper e o tema geral).
+- **D-19.** Baixei o PDF oficial de sumário do livro
+  (`ams.org/bookstore/pspdf/mbk-78-toc.pdf`, via `curl`) e confirmei: o
+  capítulo de Kontorovich-Lagarias começa na página 131 e o capítulo
+  seguinte (Oliveira e Silva) começa na 189, logo 131-188. Adicionado à
+  entrada bibliográfica; corrigido também o título, que no sumário
+  oficial é "... and related problems" (a entrada do `main.tex` estava
+  truncada, faltando esse sufixo).
+
+**Verificação técnica pós-correção:** recompilado (2 passadas
+`pdflatex`), zero erro/referência indefinida; `\cite`/`\bibitem` e
+`\ref`/`\eqref`/`\label` conferidos por script, sem órfãos em nenhuma
+direção.
+
+### 2026-08-11 — rodada de convergência 5 (crítico, contexto fresco)
+
+Escopo: `main.tex` inteiro, com instrução explícita de distribuir
+esforço pelas citações da bibliografia ainda não conferidas em detalhe
+(11 das 18 entradas) e pela Regra 12 (rodar de fato os scripts do
+repositório `collatz-qx1-pressure` contra os números citados no §5/§7).
+
+**Resultado: 0 crítico, 2 maior, 1 moderado, 1 menor. Não limpa.
+Contagem de rodadas limpas consecutivas: 0/3.**
+
+| ID | Nível | Resumo | Status |
+|----|--------|--------|--------|
+| D-20 | maior | `emp:real-trees`: números alegados (0,62-0,66 em $q=5$; 0,36-0,39 em $q=7$) não batem com o que `empirical_qx1_tree.py` de fato produz; raiz $9$ em $q=7$ fica inteira abaixo de $0{,}34$, e "3 raízes independentemente amostradas" descreve raízes fixas literais no código, não uma amostra | fixed |
+| D-21 | maior | Atribuição da Growth Exponent Conjecture: "namely $\pi_a(x)=x^{1+o(1)}$" citada diretamente a Applegate-Lagarias 1995 I/II, mas a fonte primária (KL2010) chama a Conjectura A de AL de "the **stronger** conjecture"; AL1995I não contém a forma de expoente, só a forma linear mais forte. Verificação da rodada de convergência 2 ("é exatamente a mesma afirmação") estava incompleta | fixed |
+| D-22 | moderado | "Guivarc'h" e "Kyprianou" citados nominalmente (regime/terminologia) sem `\bibitem` correspondente na bibliografia de 18 itens | fixed |
+| D-23 | menor | `OUTLINE.md`: tabela de rótulos (Regra 10b) não listava `emp:real-trees`, o único ambiente `empirical` do documento | fixed |
+
+**Correções aplicadas (Regra 8c: cada achado verificado antes do conserto; consultei o advisor para a forma exata dos dois consertos maiores, por serem julgamento sobre como recaracterizar dados empíricos reais e uma atribuição a autor vivo nomeado):**
+
+- **D-20.** Rodei `empirical_qx1_tree.py` eu mesmo e reproduzi
+  exatamente os números que o crítico reportou. `emp:real-trees`
+  reescrito: raízes nomeadas explicitamente ($7,11,19$ em $q=5$;
+  $9,11,15$ em $q=7$, todas constantes fixas no script, não uma
+  amostra aleatória), a primeira e a última década excluídas com o
+  mecanismo explicado (a poda da DFS no corte $n_{\max}$ descarta um
+  ramo inteiro assim que um ancestral excede o corte, mesmo quando um
+  descendente mais fundo voltaria a ficar abaixo dele via um
+  deslocamento de ramo sub-unitário, subcontando desproporcionalmente
+  perto do corte), e o resultado real reportado sem esconder a raiz
+  $9$ de $q=7$ (fica em $0{,}29$-$0{,}34$ em toda década, um erro
+  claro, com a árvore $\sim40\times$ menor que as outras duas no
+  mesmo corte). Título da §7 trocado de "confirmation" para
+  "measurements". Também troquei "sampled" por "chosen" em outro
+  trecho do mesmo §5 que descreve o mesmo conjunto de raízes fixas,
+  pela mesma razão.
+- **D-21.** Fui à fonte primária de KL2010 (linha 845 do PDF
+  extraído): "Applegate and Lagarias [2, Conjecture A] made the
+  **stronger** conjecture that... $\pi_a(x) > c_ax$". Conferido também
+  contra o PDF de AL1995I: só contém a Conjectura A (forma linear) e a
+  Conjectura B (quantidade diferente, indexada por profundidade); a
+  forma de expoente $\pi_a(x)=x^{1+o(1)}$ não está literalmente em
+  nenhuma das duas, é a **Conjectura 2.1** do próprio KL2010 (que KL
+  atribui a Applegate-Lagarias, mas como reformulação mais fraca da
+  Conjectura A). Reescrito: a forma de expoente agora cita
+  `[Conjecture 2.1]{KontorovichLagarias2010}` diretamente, e é descrita
+  como reformulação em forma de expoente da conjectura linear mais
+  forte de Applegate-Lagarias, citada como `[Conjecture A]{ApplegateLagarias1995I}`.
+  `ApplegateLagarias1995II` removido desta frase (nunca foi aberto em
+  nenhuma rodada para esta alegação específica; continua citado, sem
+  órfão, em `rem:transfer-basis`). Registro por Regra 8c: a rodada de
+  convergência 2 (`CRITIQUE.md`, verificação de C-21/C-22 antiga)
+  registrou "é exatamente $\pi_a(x)\ge c_ax$, a mesma afirmação" sem
+  notar que essa é uma afirmação **mais forte**, não a mesma, que a
+  citada no `main.tex`; a verificação anterior não estava errada sobre
+  o conteúdo da Conjectura A em si, só incompleta sobre a relação entre
+  ela e o que o `main.tex` afirmava citar.
+- **D-22.** "Biggins--Kyprianou" (l.999) reescrito para apontar só para
+  `\cite{KoleskoMentemeier2015}`, já citado na mesma frase para o
+  mesmo "caso crítico". "Goldie/Guivarc'h" (l.1013, 1023) reescrito
+  para "Goldie-type", mantendo as citações já presentes
+  (`Goldie1991`, `BuraczewskiDamekMikosch2016`).
+- **D-23.** Linha adicionada ao `OUTLINE.md` para `emp:real-trees`.
+
+**Verificação proativa adicional (não veio do crítico desta rodada; o
+advisor apontou como risco real de reabrir a contagem na rodada 6 se
+não verificado agora).** A nota de rodapé de `conj:real-tree-tail`
+alega "quantile ratios matching this prediction to within $2$-$9\%$"
+para a bateria de 5000 raízes de `stage4_type_constants_check.py`, e
+"$1$-$4\%$" para `experiment_type_rescaling_sterility.py` ($q=7,15$).
+Nenhuma rodada anterior tinha reproduzido `stage4` até o fim (roda
+~13 min, acima do limite de 10 min por chamada); o crítico desta rodada
+deixou rodando em segundo plano sem concluir. Reproduzi as $5000$
+raízes eu mesmo, em 4 blocos sequenciais (bloqueantes, sem
+segundo-plano), salvando progresso incrementalmente entre chamadas com
+a mesma semente/parâmetros do script original, e agreguei exatamente
+como o script faz. Resultado real: desvio de $1{,}40\%$ a $18{,}52\%$
+nas 36 comparações tipo/quantil/headroom, não $2$-$9\%$. Rodei também
+`experiment_type_rescaling_sterility.py` ($q=7,15$) do zero: desvio de
+$0{,}17\%$ a $4{,}24\%$, não $1$-$4\%$ (o valor antigo já tinha sido
+visto pelo crítico desta rodada, que o chamou de consistente sem notar
+que contradizia a faixa impressa nas duas pontas). Corrigidas as duas
+faixas no `main.tex` ($1$-$19\%$ e $0{,}2$-$4{,}2\%$, arredondadas) e
+sincronizadas no `collatz-qx1-pressure/sec3-pressure-and-transition/README.md`
+(Regra 12; não toquei no `README-PT-BR.md` por instrução explícita do
+pesquisador desta sessão).
+
+**Verificação técnica pós-correção:** recompilado (2 passadas
+`pdflatex`), zero erro/referência indefinida; `\cite`/`\bibitem` e
+`\ref`/`\eqref`/`\label` conferidos por script, sem órfãos em nenhuma
+direção.
+
+### 2026-08-11 — rodada de convergência 6 (crítico, contexto fresco)
+
+Escopo: `main.tex` inteiro, com instrução explícita de identificar e
+rodar de fato (síncrono, sem segundo plano) qualquer alegação
+numérica/empírica ainda não reproduzida por nenhuma rodada anterior.
+
+**Resultado: 0 crítico, 0 maior, 0 moderado, 1 menor. PRIMEIRA RODADA
+LIMPA da série. Contagem de rodadas limpas consecutivas: 1/3.**
+
+O crítico rodou, do início ao fim, de forma síncrona: o teste de Hill
+de 600 raízes (`empirical_qx1_tree.py`); a bateria de 4 estimadores de
+5000 raízes/4 headrooms (`full_battery.py`, paralelizado por ele em 16
+processos, reusando o código de análise original sem alteração); uma
+reimplementação independente (não copiada do repositório) do teste
+exato de momento populacional até $k=11$; e a bateria de $10^5$ raízes
+do "Estágio 6" (via inspeção do JSON já gerado mais reanálise completa
+do zero). Todos os números batem com o que o `main.tex` afirma, número
+por número. Também leu, pela primeira vez em qualquer rodada, a fonte
+primária de Kolesko-Mentemeier 2015 para a alegação específica sobre a
+hipótese de independência do teorema de unicidade do caso crítico
+(confirmada). Zero achado crítico, maior ou moderado.
+
+| ID | Nível | Resumo | Status |
+|----|-------|--------|--------|
+| D-24 | menor | `collatz-qx1-pressure/sec3-pressure-and-transition/README.md`: `empirical_qx1_tree.py` também roda o teste de Hill de 600 raízes citado no `main.tex` (§5), mas o README não credita esse arquivo como a fonte dessa alegação específica | fixed |
+
+**Correção aplicada.** Linha adicionada à descrição de
+`empirical_qx1_tree.py` no README do repositório
+`collatz-qx1-pressure`, creditando o teste de Hill de 600 raízes
+($H=10^6$, erro-padrão real $\approx0{,}45$) que esse mesmo arquivo já
+executa corretamente. `main.tex` não precisou de nenhuma edição nesta
+rodada (achado é só sobre o mapeamento do repositório, Regra 12).
+
+**Verificação técnica.** `main.tex` inalterado nesta rodada; estado já
+confirmado limpo na verificação da rodada 5 (recompila sem erro,
+`\cite`/`\bibitem` e `\ref`/`\eqref`/`\label` sem órfãos).

@@ -42,21 +42,35 @@ distinto de `conj:tail-index`).
 Teorema (prova completa): `thm:pressure`, `thm:qadic-martingale`,
 `thm:lp-collision`, `thm:frozen-singular`, `prop:always-frozen` (agora
 via `lem:log-convex`, movido para o §3, em vez de depender para frente
-do §6), `thm:transition-model` (ganhou prova própria na rodada de
-crítica de 2026-08-10: limite superior por Chernoff/Markov, direto;
-limite inferior citando o método de grandes desvios de
-Kontorovich-Lagarias 2010, Teorema 8.10, adaptado ao modelo multitipo
-por q), `thm:iid-tail`. Condicional/heurístico, marcado como tal no
-texto: `prop:transition-fine` (condicional a um refinamento tipo
-renovação, não provado; é estritamente mais forte que
+do §6), `thm:transition-model`, `thm:iid-tail`. `thm:transition-model`
+ganhou uma segunda prova própria na rodada de convergência de
+2026-08-10 (critério de 4 níveis, ver `CRITIQUE.md`): a alegação
+original de que a prova de Kontorovich-Lagarias 2010 (Teorema 8.10)
+"transfere sem mudança" para q geral era falsa (o modelo B[5^0] deles
+tem função de pressão diferente da deste paper, $m_{KL}(\theta)=
+2^{-\theta}(1+5^{\theta-1})\ne\rho_{\mathrm{ann}}(\theta)$, ainda que
+compartilhem exatamente as mesmas raízes por uma identidade algébrica
+agora registrada num Remark); o limite inferior foi reescrito como um
+argumento autocontido de Galton-Watson em blocos (tilt exponencial na
+raiz de pressão + truncamento em K filhos por bloco para evitar
+qualquer condição de momento delicada), verificado passo a passo e
+revisado pelo Codex antes de entrar no texto.
+Condicional/conjectural, marcado como tal no texto: `conj:transition-fine`
+(antigo `prop:transition-fine`, renomeado de Proposition para
+Conjecture na mesma rodada: o enunciado abre com "conjecturally" e
+`conj:real-tree-tail` já dependia dele, então rotulá-lo como resultado
+provado violava a Regra 10b; é estritamente mais forte que
 `thm:transition-model`, fixa a constante, não só o expoente).
 Conjectura: `conj:transition-arithmetic` (= problema aberto desde 1995
 para q=3), `conj:tail-index` (martingale Haar-q-ádica $W_q$),
 `conj:real-tree-tail` (fator de escala de crescimento na árvore real,
-`prop:transition-fine`; nova em 2026-08-10, formaliza H-129 — objeto
-distinto de `conj:tail-index`, mesmo expoente previsto pelo mesmo
-mecanismo de renovação implícita, sem prova de equivalência entre os
-dois).
+`conj:transition-fine`; formaliza H-129 — objeto distinto de
+`conj:tail-index`, mesmo expoente previsto pelo mesmo mecanismo de
+renovação implícita, sem prova de equivalência entre os dois).
+Resultado empírico: `emp:real-trees` (§7, enumeração exaustiva em
+raízes fixas nomeadas; suporta `conj:transition-arithmetic` em 5 de 6
+combinações raiz/q, com a raiz $9$ em $q=7$ registrada como exceção
+clara, não escondida — ver rodada de convergência 5 no `CRITIQUE.md`).
 
 ## Dependência de outros papers
 
