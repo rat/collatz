@@ -1976,3 +1976,40 @@ confirmado limpo na verificação da rodada 21. Primeira rodada limpa da
 contagem de convergência (1/3); precisa de mais duas rodadas
 consecutivas nas mesmas condições (0 crítico/maior/moderado, menos de
 3 menores) para fechar o loop.
+
+### 2026-08-11 — rodada de convergência 23 (crítico, contexto fresco)
+
+Escopo: `main.tex` inteiro, `CRITIQUE.md` inteiro (22 rodadas
+anteriores), README raiz e da subpasta de `collatz-qx1-pressure`.
+Verificou contra fonte primária, via WebSearch, as 9 entradas
+bibliográficas ainda não conferidas explicitamente nesta série
+(Biggins 1992, Alsmeyer-Biggins-Meiners 2012,
+Buraczewski-Damek-Mikosch 2016, Applegate-Lagarias I e II,
+Krasikov-Lagarias 2003, Villemonais-Zalduendo 2025, Liu 2000,
+Wirsching 1998) — todas bateram. Rodou `pressure_qx1.py` e
+`alpha_c_table.py` do início ao fim, reproduzindo cada número da
+tabela de raízes e de $\alpha_c(q)$.
+
+**Resultado: 0 crítico, 0 maiores, 0 moderados, 2 menores. Limpa.
+Contagem de rodadas limpas consecutivas: 2/3.**
+
+| ID | Nível | Resumo | Status |
+|----|-------|--------|--------|
+| D-88 | menor | Resumo, l.51-52: "The smaller root is always unfrozen, and the larger root is always frozen." remendado numa única frase de 13 palavras; a rodada de convergência 7 (D-26/D-27) já tinha separado isso em duas frases curtas para satisfazer a Regra 4b §2 (variância de comprimento de frase), e a reordenação da rodada 20 (D-73) desfez esse conserto sem querer ao resolver um problema diferente (o par lógico ficava separado da frase seguinte) | fixed |
+| D-89 | menor | `OUTLINE.md`, l.110: "20 rodadas rodadas até agora" — a própria correção D-87 (rodada 22) afirmava ter trocado as duas ocorrências, mas só trocou a da l.7; a da l.110 ficou para trás | fixed |
+
+**Correções aplicadas:**
+
+- **D-88.** "The smaller root is always unfrozen, and the larger root
+  is always frozen." voltou a ser duas frases: "The smaller root is
+  always unfrozen. The larger root is always frozen.", mantendo a
+  ordem que D-73 corrigiu (a frase seguinte, sobre o que cada raiz
+  implica, continua logo depois).
+- **D-89.** `OUTLINE.md`, l.110: "20 rodadas" → "23 rodadas" (já
+  contando esta própria rodada, e a l.7 também atualizada para o mesmo
+  número).
+
+**Verificação técnica:** `main.tex` recompilado (2 passadas
+`pdflatex`), zero erro/referência indefinida (16 páginas). Segunda
+rodada limpa consecutiva (2/3); mais uma rodada nas mesmas condições
+fecha o loop de convergência.
