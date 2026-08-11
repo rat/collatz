@@ -1535,3 +1535,36 @@ Contagem de rodadas limpas consecutivas: 0/3.**
 passadas `pdflatex`), zero erro/referência indefinida;
 `\cite`/`\bibitem` e `\ref`/`\eqref`/`\label` conferidos por script,
 sem órfãos em nenhuma direção.
+
+### 2026-08-11 — rodada de convergência 16 (crítico, contexto fresco)
+
+Escopo: `main.tex` inteiro (décima terceira reconferência independente
+das provas centrais sem erro novo), mais arquivos de suporte.
+
+**Resultado: 0 crítico, 2 maior, 0 moderado, 0 menor. Não limpa.
+Contagem de rodadas limpas consecutivas: 0/3.**
+
+| ID | Nível | Resumo | Status |
+|----|-------|--------|--------|
+| D-45 | maior | `emp:real-trees` (§7): "root 9 stays at 0.29-0.34 throughout every decade, including the excluded ones" — falso; rodei `empirical_qx1_tree.py` e as duas décadas excluídas valem $0{,}273$ e $0{,}260$, abaixo da faixa citada. A imprecisão nasceu na própria correção da rodada 5 (D-20) e sobreviveu 10 rodadas sem que ninguém reconferisse as décadas excluídas especificamente | fixed |
+| D-46 | maior | §5, l.892-894: "600 roots, agreement to two decimal places with the predicted $1{,}536\ldots$" — rodei o mesmo script e nenhuma das três leituras de Hill (top 2%/5%/10%: $1{,}547$/$1{,}475$/$1{,}766$) concorda com $1{,}536290$ a duas casas decimais; a mais próxima (top-2%) difere já na segunda casa | fixed |
+
+**Correções aplicadas (Regra 8c: reproduzi os dois números eu mesmo,
+rodando `empirical_qx1_tree.py` do zero, antes de corrigir):**
+
+- **D-45.** Faixa corrigida de "$0{,}29$-$0{,}34$" para "$0{,}26$-$0{,}34$",
+  com os dois valores das décadas excluídas ($0{,}27$ e $0{,}26$)
+  citados explicitamente, deixando claro que ficam ainda mais longe da
+  previsão, não mais perto.
+- **D-46.** "agreement to two decimal places" trocado por "agreement to
+  within $0{,}02$", que cobre a leitura top-2% (diferença real
+  $\approx0{,}011$) com folga seguindo o mesmo padrão de arredondamento
+  conservador já usado noutras correções desta série. "an order of
+  magnitude larger" ajustado para "more than an order of magnitude
+  larger" para continuar consistente com o novo número (erro-padrão
+  $\approx0{,}45$ contra $0{,}02$, mais de $20\times$).
+
+**Verificação técnica pós-correção:** recompilado (2 passadas
+`pdflatex`), zero erro/referência indefinida; `\cite`/`\bibitem` e
+`\ref`/`\eqref`/`\label` conferidos por script, sem órfãos em nenhuma
+direção.
