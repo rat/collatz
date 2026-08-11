@@ -67,6 +67,9 @@ retroativa.
 | C-041 | loop R5 | `thm:conjecture3` (linha 1339) restatava "near $0.580$ ($0.5807$/$0.5800$)", correção da Rodada 4 contra o companion 05; mas o companion 05 corrigiu esse mesmo número na sua própria Rodada 2 (commit `b1d8d73`, concorrente, entre a checagem da Rodada 3 e agora) para "near $0.802$ ($0.8026$/$0.8021$)" — divergência de quase 40%, a mesma fonte que a Rodada 4 tinha acabado de conferir e bater | maior | prévio | fixed |
 | C-042 | loop R5 | Tabela $(\star1)$-$(\star5)$ (§9.2, linha 1290): $(\star2)$ restatada com domínio "uniformly over $a\in\mathbb N$", mas o companion 05 (`rem:wirsching-conj1-source`, parágrafo "Third") diz explicitamente que $(\star2)$ e $(\star3)$ são enunciadas sobre $\mathbb Z_3^\times$, não $\mathbb N$ (que vale só para $(\star1)$); a redação errada também contradizia internamente a prosa do próprio parágrafo seguinte em 01, que já dizia "$(\star3)$ and $(\star2)$ are... the same inequality" | maior | prévio | fixed |
 | C-043 | loop R5 | Subseção "Microcanonical decomposition and equivalence of ensembles" (linha 1346) não tinha frase de abertura sinalizando que os 6 resultados restatados vêm do companion, ao contrário das duas subseções irmãs; um leitor só descobre isso ~110 linhas depois, na Data Availability Statement | moderado | prévio | fixed |
+| C-044 | loop R6 | Data Availability Statement omitia `prop:fabius` e `prop:complex-deconditioning` da lista de resultados de Wirsching 2003 restatados sem prova, e a lista não tinha o qualificador "including" que a entrada irmã sobre a equação de pressão usa, lendo-se como exaustiva quando não era | moderado | prévio | fixed |
+| C-045 | loop R6 | `rem:novelty-109` (calibração bibliográfica de §3) desatualizado em relação ao estado atual do companion 06 (mesmo label, texto compartilhado): faltava o resultado de exclusão rigorosa para $q\ge5$ na direção direta (Gonçalves-Greenfeld-Madrid 2022) e a localização mais precisa da citação de Wirsching 1998 | moderado | prévio | fixed |
+| C-046 | loop R6 | "that stronger claim would be imprecise" (linha 2131), residual de "imprecise" fora de sentido técnico que C-035/C-039 não pegaram | menor | prévio | fixed |
 
 Checagens mecânicas que passaram, registradas para não serem refeitas:
 34 chaves `\cite` contra 34 `\bibitem`, sem órfãos nem pendentes nas
@@ -1226,3 +1229,52 @@ sessão, é a natureza de dois loops de convergência paralelos sobre
 papers que se citam, e a defesa é a mesma que já está em uso: cada
 rodada nova confere de novo contra o estado atual do companion, não
 confia no que uma rodada anterior já verificou.
+
+### Rodada 6 (subagente `general-purpose`, síncrono, contexto fresco): NÃO limpa
+
+Leu `main.tex` completo (2755 linhas) e `CRITIQUE.md` completo
+(incluindo as cinco rodadas anteriores). Reconferiu, contra o estado
+ATUAL dos três companions (04/05/06, não confiando em nenhuma checagem
+anterior mesmo recente, dado que 05 está sob edição concorrente), a
+cadeia $(\star1)$-$(\star5)$, `thm:wirsching-conj1`, `thm:conjecture3`,
+os seis resultados de "Microcanonical decomposition and equivalence of
+ensembles", os números da equação de pressão, e "seven band-widths" do
+KL-Volkov: todos batem com o estado atual (as correções C-041/C-042 da
+Rodada 5 se sustentam, `thm:conjecture3` não mudou de novo). Achou 2
+moderados e 1 menor num ponto que as rodadas anteriores não tinham
+coberto: a Data Availability Statement e um Remark de calibração
+bibliográfica em §3.
+
+Achados: 0 crítico, 0 maior, 2 moderados (C-044, C-045), 1 menor
+(C-046).
+
+**C-044 (moderado).** A Data Availability Statement lista os
+resultados de Wirsching 2003 restatados sem prova, mas omitia
+`prop:fabius` e `prop:complex-deconditioning` (também restatados sem
+prova na mesma seção) e não usava o qualificador "including" que a
+entrada irmã sobre a equação de pressão usa, lendo-se como lista
+exaustiva quando não era.
+
+**C-045 (moderado).** `rem:novelty-109` (mesmo `\label` do companion
+06, texto de calibração bibliográfica sobre a novidade da equação de
+pressão) ficou desatualizado: o companion 06 acrescentou, depois da
+última sincronização, o resultado de exclusão rigorosa
+$q\ge5$ na direção direta (Gonçalves-Greenfeld-Madrid 2022) e uma
+citação mais precisa a Wirsching 1998 (Cap. III, §5). Mesmo padrão
+estrutural de C-024/C-036/C-041/C-042, desta vez sobre um Remark, não
+um número.
+
+**C-046 (menor).** "that stronger claim would be imprecise" (linha
+2131), residual de "imprecise" fora de sentido técnico que a limpeza
+de C-035/C-039 não tinha coberto (forma negada da mesma palavra).
+
+**Correções aplicadas (produtor, antes da Rodada 7).** C-044: lista da
+Data Availability Statement ganhou "including" e os dois rótulos
+faltantes. C-045: `rem:novelty-109` reescrito incorporando a exclusão
+de Gonçalves-Greenfeld-Madrid 2022 e a citação mais precisa de
+Wirsching; citação verificada por `WebSearch` (autores, arXiv ID e
+título conferem) antes de adicionar `\bibitem{GoncalvesGreenfeldMadrid2022}`
+à bibliografia (Regra 11). C-046: "imprecise" trocado por "not
+correct" (nega o fato, não apela ao vocabulário banido). `main.tex`
+recompilado limpo (3 passadas `pdflatex`); `\cite`/`\bibitem`
+reconferidos (36/36, a nova entrada incluída, sem órfãos).
