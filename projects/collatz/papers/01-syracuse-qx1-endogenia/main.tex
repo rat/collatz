@@ -275,8 +275,10 @@ below, and which is the direct reverse-tree analogue of
 \label{sec:pressure}
 
 This section summarizes, without proof, the pressure-equation results
-a companion paper establishes in full \cite{PressureCompanion}; the
-rest of this paper depends on the objects and facts stated here.
+a companion paper develops in full \cite{PressureCompanion}, proving
+all but Conjecture~\ref{prop:transition-fine}, which remains open
+there too; the rest of this paper depends on the objects and facts
+stated here.
 
 On the reverse tree of \S\ref{sec:setup}, the population functional $G$
 of \eqref{eq:G-recursion} has an exact annealed pressure identity. For
@@ -347,15 +349,17 @@ $\alpha_-(q)$ is always unfrozen, $\log N(x)/\log x\to\alpha_-(q)$
 almost surely, for every odd $q\ge3$.
 \end{theorem}
 
-\begin{proposition}[Finer asymptotic, conditional]\label{prop:transition-fine}
-Conditional on a renewal-type refinement (spine decomposition and
-exponential tilting for the two-sided random walk underlying the
-model, not yet carried out in this exact form; see the companion paper
-for the gap in the literature), the counting function has the
-sharper asymptotic $N(x)\sim W\cdot x^{\alpha_-(q)}$ almost surely and
-uniformly, including at $q=3$, for an almost surely positive,
-non-degenerate random scale factor $W$.
-\end{proposition}
+\begin{conjecture}[Finer asymptotic for the counting function]\label{prop:transition-fine}
+The counting function has the sharper asymptotic $N(x)\sim
+W\cdot x^{\alpha_-(q)}$, a claim strictly beyond
+Theorem~\ref{thm:transition-model}'s exponent statement, almost surely
+and uniformly, including at $q=3$, for an almost surely positive,
+non-degenerate random scale factor $W$. This needs a renewal-type
+refinement (spine decomposition and exponential tilting for the
+two-sided random walk underlying the model) not yet carried out in
+this exact form; see the companion paper for the gap in the
+literature.
+\end{conjecture}
 
 \begin{conjecture}[Structural transition: exponent, arithmetic tree]\label{conj:transition-arithmetic}
 For every admissible root $u$, the actual reverse tree of $T_q$
@@ -1797,7 +1801,9 @@ $R_{j-1,j}$. Set $\gamma_c := (j+\ell)/\ell = 1+(1+c)\log_4 3$.
 
 \begin{definition}[Diagonal configuration]
 A configuration of depth $s$ at slope $\gamma$, tolerance $\delta$, and
-exception rate $\eta$ is $\xi\in\ZZ$, $3\nmid\xi$, such that in
+exception rate $\eta$ (unrelated to the scalar constant $\eta$ of
+$(\star3)$ or the path weight $\eta_i$ of Lemma~\ref{lem:cov-spectral})
+is $\xi\in\ZZ$, $3\nmid\xi$, such that in
 $\ge(1-\eta)s$ of the scales $t\in\{1,\dots,s\}$ there is
 $a\in[\gamma t - t^{2/3}, \gamma t+t^{2/3}]$ with
 $\|\xi\cdot 2^a/3^t\|<\delta$.
@@ -2525,8 +2531,8 @@ other seven contain open mathematical statements.
 \item \textbf{The exponent transition on the actual arithmetic tree}
   (Conjecture~\ref{conj:transition-arithmetic}): established here only
   for the matching i.i.d.\ branching-random-walk model
-  (Theorem~\ref{thm:transition-model}, and, conditionally,
-  Proposition~\ref{prop:transition-fine}); for $q=3$ this is the
+  (Theorem~\ref{thm:transition-model}, and, conjecturally,
+  Conjecture~\ref{prop:transition-fine}); for $q=3$ this is the
   Growth Exponent Conjecture of Kontorovich--Lagarias and
   Applegate--Lagarias, open since 1995, of
   which the best unconditional partial result remains the one-sided
@@ -2718,7 +2724,11 @@ recorded in the corresponding companion paper's appendix
 \item \emph{Jensen-identity Monte Carlo} (Theorem~\ref{thm:jensen}):
   the identity is exact and independent of simulation; the Monte Carlo
   estimate ($8\times10^6$ samples) serves only as a sanity check on
-  the analytic value, and matches it to four significant figures.
+  the analytic value, and matches it to four significant figures. The
+  same identity gives the exact inversion point $\gamma\approx3.31$
+  below $p=1/2$ (superseding the naive threshold $\gamma=3$) and the
+  monotonicity of $\|Z\|_r$ in $r$ closing the wider $\ell^r$ family,
+  both checked against direct computation.
 \item \emph{Chang residue-balance test} (\S\ref{sec:context}):
   validated by confirming that no burst-ending event ever produced a
   residue outside the two predicted values ($9,25\bmod32$) in either

@@ -92,6 +92,9 @@ retroativa.
 | C-066 | loop R12 | Abertura da Data Availability Statement escopava "this paper's own claims" como "§sec:endogeny onward" e ao mesmo tempo "excluindo" material de §sec:pressure, que já vem *antes* de §sec:endogeny e nunca esteve no intervalo declarado; frase confusa, ambiguidade só resolvida em outro ponto do mesmo parágrafo | moderado | prévio | fixed |
 | C-067 | loop R12 | Prova de `prop:beta-wcc`: afirmava que os expoentes decrescem "from the total cost $A_\ell$", mas em $m=1$ o expoente é $A_\ell-a_1<A_\ell$ (já que $a_1\ge1$), então $A_\ell$ nunca é de fato atingido pela soma | moderado | prévio | fixed |
 | C-068 | loop R12 | Caminhos de pasta/arquivo do repositório (`sec9-wcc-beta-bridge/weighted_bridge.py`, `sec5-rho-eff-control-experiment`) apareciam no corpo do texto (dentro de duas provas), violando a Regra 4b §3 ("repository folder paths in body text... go in Data Availability, once"); ambos já reapareciam na DAS e no Apêndice | menor | prévio | fixed |
+| C-069 | loop R13 | `prop:transition-fine` era `\begin{proposition}`, mas o mesmo enunciado é `\begin{conjecture}` no companion 06 (`conj:transition-fine`), explicitamente não provado lá; agravado pela frase de abertura de §sec:pressure ("results a companion paper establishes in full"), falsa especificamente para este item | maior | prévio | fixed |
+| C-070 | loop R13 | O cálculo de $\gamma\approx3,31$ (inversão abaixo de $p=1/2$) e a verificação de monotonicidade da família $\ell^r$ eram ditos "verified in the accompanying repository" no corpo, mas a entrada do Apêndice para `thm:jensen` só cobria o caso $p_c\approx0,558$ | moderado | prévio | fixed |
+| C-071 | loop R13 | `\eta` como "exception rate" em "Diagonal configuration"/"Chained configuration" era um terceiro sentido não desambiguado da mesma letra, além do escalar de $(\star3)$ e do peso $\eta_i$ de `lem:cov-spectral` | menor | prévio | fixed |
 
 Checagens mecânicas que passaram, registradas para não serem refeitas:
 34 chaves `\cite` contra 34 `\bibitem`, sem órfãos nem pendentes nas
@@ -1651,3 +1654,58 @@ do corpo, mantendo só "the accompanying repository" como referência
 genérica (o caminho exato já está na DAS/Apêndice). `main.tex`
 recompilado limpo (3 passadas `pdflatex`); `\cite`/`\bibitem`
 reconferidos (37/37, sem órfãos).
+
+### Rodada 13 (subagente `general-purpose`, síncrono, contexto fresco): NÃO limpa
+
+Leu `main.tex` completo (2900 linhas) e `CRITIQUE.md` completo
+(incluindo as doze rodadas anteriores). Refez do zero, algebricamente,
+as cinco provas de risco mais duas adicionais por precaução; nenhum
+erro novo. Cruzou números restatados dos companions contra o estado
+atual; nenhuma divergência nova. Consultou o `advisor()` para dirimir
+dúvida real entre "maior" e "crítico" no achado 1 antes de classificar
+(confirmado "maior": nenhuma alegação de "provado" específica sobre o
+resultado, nada depende dele a jusante). Descartou três candidatos que
+não se sustentaram após verificação própria.
+
+Achados: 0 crítico, 1 maior (C-069), 1 moderado (C-070), 1 menor
+(C-071).
+
+**C-069 (maior).** `prop:transition-fine` (§3, "Finer asymptotic,
+conditional") usava o ambiente `proposition`, mas o companion 06 tem o
+mesmo enunciado como `\begin{conjecture}` (`conj:transition-fine`),
+explicitamente não provado lá ("we have not carried out that
+adaptation"). O conteúdo já sinalizava a condicionalidade ("not yet
+carried out in this exact form"), mas o rótulo do ambiente (Regra 10b:
+categoria do resultado) dizia o oposto do companion. Agravado pela
+frase de abertura de §sec:pressure, que dizia genericamente que a
+seção resume "results a companion paper establishes in full", falso
+especificamente para este item.
+
+**C-070 (moderado).** O cálculo do ponto de inversão exato
+$\gamma\approx3,31$ (abaixo de $p=1/2$, onde a identidade de Jensen
+muda de regime) e a verificação de monotonicidade de $\|Z\|_r$
+fechando a família $\ell^r$ inteira eram ditos "verified in the
+accompanying repository" no corpo, mas a entrada do Apêndice para
+`thm:jensen` só documentava o caso $p_c\approx0,558$ usado no cálculo
+principal do slack $1,88$.
+
+**C-071 (menor).** `\eta` como "exception rate" nas definições
+"Diagonal configuration"/"Chained configuration" (§ Weyl-sum/Halász)
+era um terceiro sentido não desambiguado da mesma letra, além do
+escalar de $(\star3)$ e do peso de caminho `\eta_i` de
+`lem:cov-spectral`.
+
+**Correções aplicadas (produtor, antes da Rodada 14).** C-069:
+`prop:transition-fine` reclassificada para `\begin{conjecture}`, com
+o título do companion 06 ("Finer asymptotic for the counting
+function"); referência textual atualizada de "Proposition" para
+"Conjecture"; frase de abertura de §sec:pressure reescrita para
+excluir explicitamente este item ("proving all but
+Conjecture~\ref{prop:transition-fine}, which remains open there too").
+C-070: entrada do Apêndice para `thm:jensen` expandida para cobrir o
+cálculo de $\gamma\approx3,31$ e a monotonicidade da família $\ell^r$.
+C-071: frase de desambiguação inserida na definição de "Diagonal
+configuration". `main.tex` recompilado limpo (3 passadas `pdflatex`);
+`\cite`/`\bibitem` reconferidos (37/37, sem órfãos); orçamento de
+antítese reconfirmado em exatamente 2 (a reescrita evitou introduzir
+uma terceira ocorrência).
