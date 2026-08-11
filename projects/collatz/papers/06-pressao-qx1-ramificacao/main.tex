@@ -379,14 +379,14 @@ to Haar measure.
 Write $r=2^{-\alpha}$. The digit law is
 $p_\alpha(a)=(1-r)r^{a-1}$, so its entropy is
 \[
- H(p_\alpha)=-\log(1-r)-\frac{r}{1-r}\log r.
+ \mathrm{Ent}(p_\alpha)=-\log(1-r)-\frac{r}{1-r}\log r.
 \]
 At a pressure root, direct differentiation gives
 \[
- H(p_\alpha)-\log q
+ \mathrm{Ent}(p_\alpha)-\log q
  =-\alpha P'(\alpha)=s(\alpha).
 \]
-The larger root is frozen, hence $H(p_\alpha)<\log q$ (see
+The larger root is frozen, hence $\mathrm{Ent}(p_\alpha)<\log q$ (see
 \S\ref{sec:freezing}). For $0<t<1$,
 subadditivity of $x^t$ and the representation
 $M_k^{(\alpha)}(u)=q^k\sum_{F_k=u}\prod_i p_\alpha(a_i)$ give
@@ -395,7 +395,7 @@ $M_k^{(\alpha)}(u)=q^k\sum_{F_k=u}\prod_i p_\alpha(a_i)$ give
  \le\left(q^{t-1}\sum_{a\ge1}p_\alpha(a)^t\right)^k.
 \]
 The logarithmic derivative of the factor in parentheses at $t=1$ is
-$\log q-H(p_\alpha)>0$. It is therefore less than one for some
+$\log q-\mathrm{Ent}(p_\alpha)>0$. It is therefore less than one for some
 $t<1$ sufficiently close to one. The fractional moment tends to zero,
 so the almost-sure martingale limit is zero. Theorem~\ref{thm:qadic-martingale}
 then identifies the absolutely continuous component as zero.
@@ -474,9 +474,8 @@ $u_0=1$ does for $q=3$), so the divergence observed here has a
 deterministic-recurrence explanation available in addition to the
 entropy mechanism of Proposition~\ref{prop:always-frozen}, and does
 not by itself sample the generic (non-periodic) environment that the
-quenched statement is really about. We therefore report this as an
-illustration of freezing at a special, easily-computed class of
-roots, not as a confirmation at a generic one; \S\ref{sec:empirical}
+quenched statement is really about. This illustrates freezing at a
+special, easily-computed class of roots. \S\ref{sec:empirical}
 below carries the corresponding generic-environment evidence, a
 handful of roots at $q=5,7$ sampled well away from any known short
 cycle.
@@ -564,10 +563,17 @@ $\varepsilon\downarrow0$ gives $\limsup\le\alpha_-(q)$.
 
 \emph{Lower bound.} Write $\alpha:=\alpha_-(q)$ and
 $\mu:=-\rho_{\mathrm{ann}}'(\alpha)>0$ (unfrozen,
-Proposition~\ref{prop:always-frozen}). The numbers
-$p_\alpha(a):=q^{\alpha-1}2^{-\alpha a}$ of \S\ref{sec:pressure} form a
-probability law of mean $\mu$; let $\xi_1,\xi_2,\ldots$ be i.i.d.\ draws
-from it. Fix $0<\varepsilon<\mu$ and $L\ge1$, and let $Y_L$ be the
+Proposition~\ref{prop:always-frozen}). Let $a_1,a_2,\ldots$ be i.i.d.\
+draws from the digit law $p_\alpha(a):=q^{\alpha-1}2^{-\alpha a}$ of
+\S\ref{sec:pressure}, and set $\xi_i:=a_i\log2-\log q$, the induced
+displacement per step. Since $p_\alpha$ is geometric with mean
+$\mathbb E[a_i]=2^\alpha/(2^\alpha-1)$,
+\[
+ \mathbb E[\xi_i]=\log2\cdot\frac{2^\alpha}{2^\alpha-1}-\log q
+ =-P'(\alpha)=\mu,
+\]
+so the $\xi_i$ are i.i.d.\ with mean exactly $\mu$. Fix $0<\varepsilon<\mu$
+and $L\ge1$, and let $Y_L$ be the
 number of generation-$L$ descendants of a node whose cumulative
 displacement lies in $[L(\mu-\varepsilon),L(\mu+\varepsilon)]$. The
 many-to-one identity at $\theta=\alpha$ (where $\rho_{\mathrm{ann}}(\alpha)=1$)
@@ -582,7 +588,7 @@ gives
 and the law of large numbers sends the probability factor to $1$ as
 $L\to\infty$, so $r_L\to\infty$; fix $L$ with $r_L>1$. For any $K$,
 keep only the first $K$ such descendants at every node (in some fixed
-measurable order): this defines a genuine sub-population, resampled
+measurable order): this defines a sub-population, resampled
 every $L$ generations, that is an ordinary Galton--Watson process with
 bounded offspring $Y_L^{(K)}:=\min(Y_L,K)\in\{0,\ldots,K\}$, hence of
 finite variance, and mean $r_L^{(K)}:=\mathbb E[Y_L^{(K)}]\uparrow r_L$
@@ -642,7 +648,7 @@ constant at any $q$, since the underlying reproduction law has nonzero
 variance). This is a strictly stronger claim than
 Theorem~\ref{thm:transition-model}: it pins down the constant in front
 of $x^{\alpha_-(q)}$, which needs machinery
-beyond the large-deviations argument used above. A directed literature
+beyond the exponential tilting and block truncation used above. A directed literature
 search found the neighboring machinery but not this exact statement
 ready-made: the classical Crump--Mode--Jagers renewal theorem
 \cite{Nerman1981} is stated for one-sided ($[0,\infty)$) reproduction
@@ -847,8 +853,8 @@ residues independently of the parent's class $i$, so the transition
 weight out of class $i$ does not depend on $i$. This pressure matrix
 is rank $1$, and its Perron eigenvalue collapses, by a
 $d$-independent cancellation ($a_0$ a bijection
-$\langle2\rangle\to\{1,\ldots,d\}$), to exactly $q^{\sigma-1}/(2^\sigma-1)$, the
-same pressure equation, so both the exponent and the
+$\langle2\rangle\to\{1,\ldots,d\}$), to exactly $q^{\alpha-1}/(2^\alpha-1)$, the
+same pressure equation~\eqref{eq:pressure-closed-form}, so both the exponent and the
 scale-family direction survive intact; verified for $q=7,15$ to
 $1$--$4\%$. (Whether $2$ is a primitive root mod $q$ is, for prime
 $q$, governed by Artin's primitive root conjecture, open in general
@@ -888,7 +894,7 @@ rank-size regression with the Gabaix--Ibragimov finite-sample
 correction; a bias-corrected Hill estimator following Huisman et al.;
 a generalized-Pareto threshold-stability scan; and a
 Clauset--Shalizi--Newman fit with a Vuong test against a truncated
-log-normal alternative). The outcome is mixed rather than confirmatory:
+log-normal alternative). The outcome is mixed:
 the bias-corrected Hill estimator is stable across headroom
 levels and lands close to the predicted $1.536$, but the
 threshold-stability scan shows no clean plateau near the predicted
@@ -921,11 +927,11 @@ behavior for $p\ge1.7$, which would place $\iota$ higher than the
 predicted $1.536$ if taken at face value; the ratio of
 successive increments has not yet stabilized for $p\le1.6$ at $k=11$
 (unlike $p\ge1.7$, where it has), the classic signature of a system
-still relaxing toward its asymptotic exponent rather than one that has
-reached it. Given the previously observed slow convergence rate for
-$q=5$ ($k^{-0.222}$ decay in the moment test, not an effect of the
-linear transfer operator's spectrum, which we later verified to be
-exactly $\{\Lambda,0\}$ at every truncation level, i.e. a perfect
+still relaxing toward its asymptotic exponent. Given the observed slow
+convergence rate for $q=5$ ($k^{-0.222}$ decay in the moment test, not
+an effect of the linear transfer operator's spectrum, which we
+verified to be exactly $\{\Lambda,0\}$ at every truncation level, i.e.\
+a perfect
 spectral gap with no isolated subdominant eigenvalue; the transient's
 origin lies in a separate, nonlinear critical layer and remains open),
 the transient decays by only about $7\%$ between

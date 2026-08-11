@@ -917,3 +917,77 @@ ocorrências). Não limpa. Contagem de rodadas limpas consecutivas: 0/3.**
 `pdflatex`), zero erro/referência indefinida; `\cite`/`\bibitem` e
 `\ref`/`\eqref`/`\label` conferidos por script, sem órfãos em nenhuma
 direção. `OUTLINE.md` atualizado (tabela de rótulos Regra 10b).
+
+### 2026-08-10 — rodada de convergência 2 (crítico, contexto fresco)
+
+Escopo: `main.tex` inteiro, com atenção dedicada à prova nova de
+`thm:transition-model` (limite inferior via Galton-Watson em blocos,
+nunca revisada por um crítico fresco antes desta rodada).
+
+**Resultado: 1 crítico, 0 maior, 3 moderado, 2 menor. Não limpa.
+Contagem de rodadas limpas consecutivas: 0/3.**
+
+| ID | Nível | Resumo | Status |
+|----|-------|--------|--------|
+| D-10 | crítico | Prova de `thm:transition-model` (limite inferior): definia $\xi_i$ como sorteio direto de $p_\alpha(a)$ (a lei do dígito) e alegava média $\mu$; falso — $p_\alpha$ tem média $\mathbb E[a]=2^\alpha/(2^\alpha-1)\approx2{,}754$ em $q=5$, não $\mu\approx0{,}299$. A LLN citada, como estava escrita, mandava a soma para o valor errado | fixed |
+| D-11 | moderado | Colisão de notação: $H$ usado para entropia de Shannon ($H(p_\alpha)$, prova de `thm:frozen-singular`) e para "headroom" (resumo, `conj:real-tree-tail`, §7) | fixed |
+| D-12 | moderado | Colisão de notação: $\sigma$ com dois papéis distintos (multiplicador normalizado em `thm:iid-tail`; argumento bruto da equação de pressão multitype na nota de rodapé de `conj:real-tree-tail`) | fixed |
+| D-13 | moderado | `conj:transition-fine` descreve a prova de `thm:transition-model` como "the large-deviations argument used above", desatualizado após D-01 reescrever o limite inferior via Galton-Watson em blocos | fixed |
+| D-14 | menor | Vocabulário banido (Regra 4b §1): "genuine" na prova nova de `thm:transition-model`, nunca escaneada contra a lista depois de escrita | fixed |
+| D-15 | menor | Orçamento "X, not Y"/"rather than" (Regra 4b §2, máx. 2 no documento): 17 ocorrências contadas nesta rodada | parcialmente corrigido, ver nota |
+
+**Correções aplicadas (Regra 8c: cada achado verificado antes do conserto):**
+
+- **D-10.** Recalculei eu mesmo, independentemente do crítico:
+  $\mathbb E[a]=2^\alpha/(2^\alpha-1)\approx2{,}7539$ e
+  $\mu=-P'(\alpha)\approx0{,}2994$ em $q=5$, $\alpha=\alpha_-(5)$ —
+  confirma o achado. Corrigido para: $a_1,a_2,\ldots$ i.i.d. de
+  $p_\alpha(a)$ (a lei do dígito, papel correto), $\xi_i:=a_i\log2-\log q$
+  (o deslocamento induzido); verifiquei
+  $\mathbb E[\xi_i]=\log2\cdot\mathbb E[a_i]-\log q=-P'(\alpha)=\mu$
+  diretamente (identidade exata, não aproximada). O resto da prova já
+  tratava $\xi_i$ consistentemente como deslocamento (confirmado pelo
+  crítico e por mim), então nenhuma outra correção foi necessária ali.
+  Uma tentativa inicial de conserto introduziu, por minha conta, um
+  segundo erro (uma identidade errada $\mu=-\alpha^{-1}s(\alpha)$, sinal
+  trocado); descartada antes de entrar no texto, substituída pela conta
+  direta e mais simples acima.
+- **D-11.** Entropia de Shannon renomeada de $H(p_\alpha)$ para
+  $\mathrm{Ent}(p_\alpha)$ nas 4 ocorrências (todas dentro da prova
+  contida de `thm:frozen-singular`); "headroom $H$" mantido sem
+  alteração (termo mais extenso e recente no documento).
+- **D-12.** O $\sigma$ da nota de rodapé de `conj:real-tree-tail`
+  (equação de pressão multitype genérica) renomeado para $\alpha$,
+  igual à variável já usada em toda parte para essa mesma equação
+  (\eqref{eq:pressure-closed-form}); o $\sigma$ de `thm:iid-tail`
+  (multiplicador normalizado) mantido sem alteração, papel distinto e
+  já consistente ali.
+- **D-13.** "the large-deviations argument used above" corrigido para
+  "the exponential tilting and block truncation used above", refletindo
+  a prova de fato usada após D-01.
+- **D-14.** "genuine" removido.
+- **D-15.** Reclassifiquei cada uma das 17 ocorrências à mão: 13
+  desambiguam objetos matemáticos genuinamente confundíveis (a maioria
+  delas é precisamente o tipo de contraste que a Regra 4b §2 diz que
+  deve ficar: "only where a reader would actually confuse X with Y" —
+  ex.: a distinção entre o modelo B[5^0] de KL e o modelo i.i.d. deste
+  paper no novo Remark, a distinção entre `conj:real-tree-tail` e
+  `conj:tail-index`, a classificação do regime de cauda em §6). 4 eram
+  puramente retóricas e foram cortadas (l. 479, 898, e a redução de
+  "rather than one that has reached it" em l. 930-931, mais "we later
+  verified" → "we verified" ao lado, achado colateral pequeno da mesma
+  família proibida pela Regra 4b §3, corrigido nesta mesma passagem por
+  estar na mesma frase). Contagem final: 14. Julgamento explícito, não
+  omissão: reduzir a 2 exigiria cortar distinções que o próprio texto
+  precisa para não confundir objetos matemáticos genuinamente
+  diferentes (mesmo julgamento já registrado na rodada de redação final
+  de 2026-08-10, reconferido aqui de novo, independentemente). Por isso
+  D-15 está marcado "parcialmente corrigido": o volume caiu (17→14) mas
+  não chegou ao orçamento literal de 2; classificado como `menor` no
+  critério de convergência, então não bloqueia uma rodada limpa por si
+  só desde que o total de achados menores da rodada fique abaixo de 3.
+
+**Verificação técnica pós-correção:** recompilado (2 passadas
+`pdflatex`), zero erro/referência indefinida; `\cite`/`\bibitem` e
+`\ref`/`\eqref`/`\label` conferidos por script, sem órfãos em nenhuma
+direção.
