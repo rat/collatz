@@ -1,5 +1,16 @@
 # CRITIQUE: paper 04 (Kontorovich-Lagarias vs. Volkov)
 
+**Nota sobre as rodadas R1, R2, R3, ... (loop de convergência, a partir
+de 2026-08-10):** essas rodadas seguem um critério de parada formal do
+pesquisador, com escala de severidade própria de 4 níveis (crítico /
+maior / moderado / menor, definições no próprio prompt de cada rodada),
+diferente da escala alta/média/baixa usada nas rodadas C-01..C-23
+acima. Critério: parar só ao atingir 3 rodadas CONSECUTIVAS "limpas"
+(crítico=0, maior=0, moderado=0, menor<3), sem crédito parcial. Cada
+rodada é uma crítica adversarial independente, com contexto fresco
+(subagente novo), instruída a não confiar no julgamento das rodadas
+anteriores.
+
 Formato conforme Regra 8/15: tabela de status no topo (o que ainda exige
 atenção agora), seções datadas abaixo (histórico completo, apensado,
 nunca reescrito). O produtor lê a tabela **inteira** a cada passada, não
@@ -41,6 +52,43 @@ Alvo: `main.tex` (rascunho de 4 páginas, split do §6 do paper 01 em
 | C-21 | 2026-08-10 | "measurement with calibrated controls, not a proof" aparece idêntico no resumo e na discussão; o §3 repete o parágrafo de abertura quase palavra por palavra | baixa | fixed |
 | C-22 | 2026-08-10 | Os "6,4 standard errors" do piloto não reproduzem sob a convenção que valida 12,6 e 4,1 (dá 6,7) | baixa | fixed |
 | C-23 | 2026-08-10 | `\cite{PressureCompanion}` sustenta um "provably" e é "in preparation": externamente inverificável até o paper 06 sair | baixa | rejected |
+| R1-01 | 2026-08-10 (loop R1) | Nomes dos três controles trocados em `thm:kl-calibrated` (cyc/cycq/iid) | maior | fixed |
+| R1-02 | 2026-08-10 (loop R1) | "every control reads within 0.003" é falso: `iid` desvia 0,00341 | maior | fixed |
+| R1-03 | 2026-08-10 (loop R1) | Banda de 0,0037 descrita como três controles compartilhando a congruência de irmãos; só dois compartilham, o terceiro (`iid`) sorteia todo resíduo | maior | fixed |
+| R1-04 | 2026-08-10 (loop R1) | "0,0229" na década 1e7→1e8 mistura grade b13 com a b15 usada em 1e9→1e10; valor casado real é 0,0258 | maior | fixed |
+| R1-05 | 2026-08-10 (loop R1) | "five test roots" da validação byte-for-byte (path-max vs. buffer-a-buffer) não tinha script correspondente no repositório | maior | fixed |
+| R1-06 | 2026-08-10 (loop R1) | IC de 95% usado como critério de exclusão de 0,678 exclui também a própria previsão de KL (0,650919 fica fora dele) | maior | fixed |
+| R1-07 | 2026-08-10 (loop R1) | §3 atribui a KL uma causalidade ("Δ pequeno o bastante que...") e generaliza "dado de Volkov" para "dado numérico disponível", o que eles não escrevem | maior | fixed |
+| R1-08 | 2026-08-10 (loop R1) | "0,013" de viés da árvore aritmética na Discussão não bate com o 0,639 do §5 (correto: 0,012) | moderado | fixed |
+| R1-09 | 2026-08-10 (loop R1) | "0,6490" (grade b17, corrida profunda) e "0,64926" (grade b15, `thm:kl-calibrated`) apresentados como a mesma leitura na mesma década sem distinguir grade | moderado | fixed |
+| R1-10 | 2026-08-10 (loop R1) | "These bootstrap bands cover root resampling only" sem referente claro no parágrafo | moderado | fixed |
+| R1-11 | 2026-08-10 (loop R1) | "makes sense verbatim over $\mathbb R$" é falso: o modo `cycq` do enumerador é puramente multiplicativo, sem o termo aditivo do lema | moderado | fixed |
+| R1-12 | 2026-08-10 (loop R1) | Janela de medição rotulada errado (inclui década 1e4→1e5, fora de 1e5–1e8) e painel por década usa 40 de 300 raízes sem dizer | moderado | fixed |
+| R1-13 | 2026-08-10 (loop R1) | Segundo sistemático da Discussão (flutuação do controle 0,678) citado sem magnitude | moderado | fixed |
+| R1-14 | 2026-08-10 (loop R1) | Argumento de flutuação/viés (árvore flutua menos que todo controle) desconectado do Empirical Result que qualifica | moderado | fixed |
+| R1-15 | 2026-08-10 (loop R1) | "The i.i.d. control is Kontorovich and Lagarias's own stochastic model" sem a ponte argumentativa (colapso de duplicações) | moderado | fixed |
+| R1-16 | 2026-08-10 (loop R1) | Colisões de notação: $u$ genérico vs. raiz fixa de $N_u(x)$; $\alpha$ e o subscrito BP nunca definidos | moderado | fixed |
+| R1-17 | 2026-08-10 (loop R1) | §6 não autossuficiente: número de raízes, grade de checkpoint/buffer da comparação calibrada nunca ditos | moderado | fixed |
+| R1-18 | 2026-08-10 (loop R1) | Narração de processo/meta-honestidade no §4 e na abertura do §6 (Regra 4b §3) | moderado | fixed |
+| R1-19 | 2026-08-10 (loop R1) | "rises monotonically toward 0.650919" não é sustentado pelos 4 valores exibidos no §5 (extrapolação ingênua dá ~0,647) | moderado | fixed |
+| R1-20 | 2026-08-10 (loop R1) | "Two systematics bound on..." agramatical | menor | fixed |
+| R1-21 | 2026-08-10 (loop R1) | "an order of magnitude below" impreciso (fator real ~7) | menor | fixed |
+| R1-22 | 2026-08-10 (loop R1) | Orçamento de antíteses "X, not Y"/"instead of" excedido (4 no documento contra 2 do orçamento) | menor | fixed |
+| R1-23 | 2026-08-10 (loop R1) | Kickers de fim de parágrafo | menor | fixed |
+| R1-24 | 2026-08-10 (loop R1) | Variância de comprimento de frase no resumo | menor | rejected |
+| R1-25 | 2026-08-10 (loop R1) | Título do Empirical Result 1 ("comparison of two exponent predictions") não descreve o que o resultado faz | menor | fixed |
+| R1-26 | 2026-08-10 (loop R1) | "ignoring repeated visits along different paths" é enganoso (não há caminhos alternativos: cada nó tem um único pai) | menor | fixed |
+| R1-27 | 2026-08-10 (loop R1) | "each within 0.0004 of the prediction" impreciso (0,000419 > 0,0004) | menor | fixed |
+| R1-28 | 2026-08-10 (loop R1) | `\bibliographystyle{plain}` inerte junto de `thebibliography` manual | menor | fixed |
+| R1-29 | 2026-08-10 (loop R1) | Parágrafo-roteiro de seções na introdução, sujeito = o próprio paper (Regra 4b, item 6 do checklist) | menor | fixed |
+| R1-30 | 2026-08-10 (loop R1) | Título "A Calibrated Separation..." pode soar como resultado provado | menor | rejected |
+| R1-31 | 2026-08-10 (loop R1) | `OUTLINE.md` desatualizado (dizia 4 páginas; PDF tem 5) | menor | fixed |
+
+Rodada 1 do loop de convergência: **crítico 0, maior 7, moderado 12,
+menor 12** (total 31 achados). NÃO limpa (limiar: crítico=0, maior=0,
+moderado=0, menor<3). Todos corrigidos nesta mesma passada, exceto
+R1-24 e R1-30, rejeitados com razão registrada na seção datada abaixo.
+Contagem de rodadas limpas consecutivas após R1: **0**.
 
 Todos os 23 achados foram lidos de volta nesta mesma rodada (2026-08-10) e corrigidos no main.tex, exceto C-23, marcado `rejected` com razao registrada (decisao de ordem de submissao ja tomada no OUTLINE.md de 01: paper 06 primeiro; nao e bug de texto). C-13: o orcamento estrito da Regra 4b e de duas construcoes antiteticas no documento inteiro; apos a reescrita ficaram tres, todas com funcao desambiguadora real (residuo sorteado vs. verdadeiro; vies vs. ruido de amostra; largura de banda vs. separacao), nao floreio retorico -- marcado `fixed` com essa ressalva em vez de forcar uma reescrita que perderia precisao.
 
@@ -404,3 +452,119 @@ que, por Regra 8e, não devem morrer aqui dentro. Registrar em
    árvore aritmética e o modelo de ramificação, exatamente o tipo de
    coisa que esta linha de pesquisa procura, e merece uma passada
    dedicada em vez de uma nota de rodapé.
+
+---
+
+## 2026-08-10, rodada R1 (loop de convergência do pesquisador, crítico independente)
+
+Critério de severidade próprio desta rodada (crítico/maior/moderado/
+menor), definido no prompt do critico; ver nota no topo do arquivo.
+Subagente com contexto fresco, instruído a não confiar no julgamento
+das rodadas C-01..C-23 acima e a reverificar tudo contra fonte
+primária. Reproduziu os números de §4/§5 rodando
+`experiment_gate_richardson.py` e os de §6 rodando `summary.py` nas
+grades `b13`/`b15` do repositório `collatz-kl-volkov`, leu o PDF de
+Kontorovich-Lagarias diretamente, refez o lema e a extrapolação de
+Aitken à mão.
+
+**Resultado: crítico 0, maior 7, moderado 12, menor 12** (31 achados,
+tabela acima, IDs R1-01 a R1-31). Rodada não limpa por larga margem.
+
+Achados de maior gravidade, resumo do que a crítica encontrou (texto
+completo do subagente arquivado na sessão que gerou este loop, não
+reproduzido aqui por extenso para não duplicar a tabela): os três
+controles sintéticos de `thm:kl-calibrated` (cyc/cycq/iid) estavam
+descritos com os rótulos e a ordem trocados; o limiar "within 0.003"
+citado para todos os controles era falso para o `iid` (desvio real
+0,00341); a frase que descrevia os três controles como compartilhando
+a congruência de irmãos via Lema 1 encobria que só dois de fato
+compartilham (o `iid` sorteia todo resíduo, sem congruência alguma), e
+é justamente esse terceiro controle que produz a banda de 0,0037 sob a
+qual a árvore aritmética "cai dentro"; o número "0,0229" citado para a
+década mais rasa vinha de uma grade de buffers diferente (`b13`) da
+usada na década mais funda (`b15`, dando 0,0282), então "the same gap"
+comparava coisas calculadas de formas diferentes; a validação "byte for
+byte... on five test roots" do §4 não correspondia a nenhum script
+existente no repositório (o único script byte-for-byte ali comparava
+outra coisa: o enumerador C do E-139 contra o Python do E-097); e o
+intervalo de 95% citado como argumento extra de exclusão de 0,678 na
+verdade exclui também a própria previsão de Kontorovich-Lagarias
+(0,650919 fica fora de $[0.64818,0.65027]$), o que mina o próprio
+argumento que o invoca.
+
+### Verificação (Regra 8c) antes de agir
+
+Antes de corrigir, reverifiquei os achados de maior gravidade
+diretamente contra os dados-fonte em `/home/rat/Google/Projetos/Claude/collatz-kl-volkov`
+e `projects/collatz/experiments/E-097-qx1-empirical-gate/`, em vez de
+confiar cegamente no relato do crítico:
+
+- **Rótulos/ordem dos três controles (R1-01) e composição da banda
+  (R1-03).** Rodei `python3 summary.py b15 10` e `b15 8` diretamente:
+  confirma `cyc`=0,65122, `cycq 5.00000`=0,64981, `iid`=0,64751 na
+  década 1e9→1e10, exatamente como o crítico relatou, e confirma que o
+  `iid` é o único sem congruência de irmãos (`tree_counts.c`,
+  `MODE_IID`, resíduo sorteado a cada nó).
+- **Mistura de grades (R1-04).** `summary.py b15 8` dá `arith`=0,64622
+  e `cycq 5.05398`=0,67200 na década 1e7→1e8, gap 0,0258; `summary.py
+  b13 8` dá `arith`=0,64791 e `cycq 5.05398`=0,67079, gap 0,02288, que
+  é exatamente de onde saiu o "0,0229" do paper. Confirmado: números de
+  grades diferentes tratados como comparáveis.
+- **"Five test roots" (R1-05).** Busquei por qualquer script que
+  comparasse `experiment_gate_production.py` (buffer-a-buffer) contra
+  `experiment_gate_richardson.py` (path-max): não existe nenhum, nem no
+  repositório de reprodutibilidade nem em `experiments/E-097-*`. A
+  alegação do crítico de que o número "cinco" foi importado de uma
+  validação diferente (C vs. Python, E-139) está correta. Em vez de só
+  trocar o número ou apagar a alegação, escrevi um script novo,
+  `sec5-fixed-window-estimator/validate_richardson_vs_production.py`,
+  que recomputa o painel de convergência de 5 raízes que
+  `experiment_gate_production.py` já fazia internamente (linhas
+  124-132) usando a função de contagem buffer-a-buffer, e o compara
+  contagem a contagem com a saída do método path-max de
+  `experiment_gate_richardson.py` nas mesmas 5 raízes e nos mesmos 5
+  buffers. Rodei: `VALIDATION PASSED: every count identical, 5 roots x
+  5 buffers = 25 checks`. A alegação original do paper ("five test
+  roots", "byte-for-byte") era **verdadeira em substância**, só não
+  tinha um script que a demonstrasse; agora tem, e README do repositório
+  atualizado para citá-lo.
+- **Intervalo de 95% como critério de exclusão (R1-06).** Confirmado por
+  leitura direta de `thm:kl-calibrated`: $[0.64818,0.65027]$ não contém
+  $0.650919$. Achado real, removida a menção ao IC nesse papel.
+- **Citação de KL em §3 (R1-07).** Confirmado contra o PDF primário
+  (mesma passagem já verificada na rodada C-06 anterior): KL escrevem
+  sobre o dado que Volkov apresenta, não sobre "a evidência numérica
+  disponível a eles" em geral, e não atribuem a dificuldade ao tamanho
+  de $\Delta$.
+
+### Resolução
+
+Todos os 31 achados corrigidos nesta mesma passada, exceto R1-24
+(variância de frase no resumo: recontei após a reescrita do resumo
+feita para corrigir R1-01/02/03, ritmo permanece com sentenças curtas e
+longas, achado não se sustentava mais e foi marcado `rejected`) e R1-30
+(risco de título soar como resultado provado: o resumo já rotula
+explicitamente "a measurement, not a proof" na primeira e na última
+frase, o que a Regra 10b exige; renomear o título teria custo em
+outros arquivos do projeto que o referenciam por esse nome sem
+benefício adicional de honestidade, `rejected`).
+
+Mudanças de substância no `main.tex`: renomeação do nó genérico da
+árvore de $u$ para $v$ (preservando $u$ só como raiz de $N_u(x)$);
+reescrita completa do §4 (Método), removendo narrativa de processo e
+definindo as raízes explicitamente; reescrita do parágrafo de transição
+e do `thm:kl-calibrated` no §6, com os três controles corretamente
+nomeados, ordenados e com a composição da banda explicada; correção da
+comparação 1e7→1e8 para a grade casada (0,0258, não 0,0229); remoção do
+uso do IC de 95% como critério de exclusão; correção da citação de KL
+em §3; adição da ponte argumentativa entre o controle `iid` e o modelo
+estocástico de KL na Discussão (colapso de duplicações em saltos
+$2^a/5$); e remoção do parágrafo-roteiro de seções da introdução.
+Fora do `main.tex`: novo script de validação e README atualizado no
+repositório de reprodutibilidade (`collatz-kl-volkov`), `OUTLINE.md`
+atualizado (5 páginas, não 4).
+
+Recompilado limpo (pdflatex 2x, 5 páginas); `\cite`/`\bibitem`
+conferidos sem órfãos em nenhuma direção.
+
+**Contagem de rodadas limpas consecutivas após R1: 0.**

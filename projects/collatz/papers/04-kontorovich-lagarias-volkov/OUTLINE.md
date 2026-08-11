@@ -1,7 +1,7 @@
 # Outline — paper 04 (Kontorovich-Lagarias vs. Volkov)
 
-Status: `main.tex` completo, com passagem de redação final aplicada
-(4 páginas, compila limpo).
+Status: `main.tex` completo, em loop de crítica de convergência (Rodada
+1 aplicada 2026-08-10; ver `CRITIQUE.md`), 5 páginas, compila limpo.
 Split de `01-syracuse-qx1-endogenia/main.tex` §6, em 2026-08-10, a
 pedido do diretor científico ("divida o paper de forma que todos
 tenham sua importância e possam receber citações").
