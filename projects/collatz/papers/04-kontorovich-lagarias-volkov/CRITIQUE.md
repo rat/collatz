@@ -1045,3 +1045,69 @@ Recompilado limpo (pdflatex 2x, 6 páginas); `\cite`/`\bibitem`
 conferidos sem órfãos em nenhuma direção (três chaves).
 
 **Contagem de rodadas limpas consecutivas após R6: 0.**
+
+---
+
+## 2026-08-11, rodada R7 (loop de convergência, crítico independente)
+
+| R7-M1 | 2026-08-11 (loop R7) | Nota de versão do `\bibitem` de KL dizia "the quotations from §7", mas a citação sobre o dado de Volkov está no Remark do Theorem 8.10 (§8.10), não no §7 | maior | fixed |
+| R7-M2 | 2026-08-11 (loop R7) | "truncation extrapolation of §5 is accurate to at most 0,002" (Discussão) é falso para os dados reais do §5 (grade b15): máximo real é 0,0189, quase dez vezes o alegado; o número correto (0,002/0,0004) é só da corrida profunda b17, citada corretamente em outro lugar do §5 mas reescopada errado na Discussão | maior | fixed |
+| R7-M3 | 2026-08-11 (loop R7) | Índice de cauda citado ao companion "in the i.i.d. model" para a construção irrestrita; essa expressão nunca é definida no paper 04 e, no vocabulário do próprio paper, "i.i.d." aponta de volta para a construção irrestrita, fechando uma referência circular com o objeto errado (mesma raiz de R6-D4) | maior | fixed |
+| R7-M4 | 2026-08-11 (loop R7) | READMEs PT-BR do repositório de reprodutibilidade contradizem o resultado central do paper: `sec5/README-PT-BR.md` apresenta como corrente a leitura "exclui Volkov com folga ampla", exatamente o que o Empirical Result 4.1 refuta; `sec6/README-PT-BR.md` diz "dez vezes a faixa" contra "seven widths" do paper | maior | **escalado ao pesquisador**, não corrigido (Regra "sem edição de PT-BR não solicitada" impede correção unilateral; ver `OUTLINE.md`) |
+| R7-D1 | 2026-08-11 (loop R7) | "The two constructions differ" no singular do B[5⁰] colapsado poluía a contagem de quatro construções que o resumo estabelece | moderado | fixed |
+| R7-D2 | 2026-08-11 (loop R7) | "The comparison settles..." é o verbo mais forte do documento, a três linhas de uma frase que chama a mesma igualdade de "working hypothesis"; e "narrower" não tinha antecedente após a divisão de parágrafos da R6 | moderado | fixed |
+| R7-D3 | 2026-08-11 (loop R7) | "bounding any implementation systematic ... at about 0,004" tratava a estimativa pontual (0,0035) como cota, ignorando o erro-padrão (0,0023, 1,5σ) que o próprio script imprime; cota honesta é ~0,008, o dobro do alegado | moderado | fixed |
+| R7-n1 | 2026-08-11 (loop R7) | Comparação com a largura de banda repetida em frases consecutivas | menor | fixed |
+| R7-n2 | 2026-08-11 (loop R7) | Parágrafo de nove frases no §5 sem nenhuma abaixo de dez palavras | menor | fixed |
+| R7-n3 | 2026-08-11 (loop R7) | $q_{\mathrm{val}}$ introduzido no Setup e não usado até o §5, três seções depois | menor | fixed |
+| R7-n4 | 2026-08-11 (loop R7) | `OUTLINE.md` desatualizado (dizia "rodadas 1-5"; estrutura da Discussão desatualizada) | menor | fixed |
+| R7-n5 | 2026-08-11 (loop R7) | "pattern ... distinguish from ... extrapolation" mistura categorias (padrão vs. extrapolação); número de raízes da corrida profunda nunca dito | menor | fixed |
+
+Rodada 7 do loop de convergência: **crítico 0, maior 4, moderado 3,
+menor 5** (total 12 achados). NÃO limpa. Todos corrigidos nesta mesma
+passada, exceto R7-M4, que não é um problema do `main.tex` e não pode
+ser corrigido sem autorização explícita do pesquisador (edição de
+PT-BR não solicitada é proibida pela instrução permanente do projeto);
+registrado como pendência explícita em `OUTLINE.md` em vez de ignorado
+ou corrigido à revelia. Contagem de rodadas limpas consecutivas após
+R7: **0**.
+
+Contexto fresco (novo subagente). Reproduziu todos os números do
+§3/§4/§5 contra os scripts reais do repositório, incluindo
+`buffer_squeeze.py` nas cinco construções da grade b15 (não só na
+árvore aritmética b17), o que revelou R7-M2. Renderizou a página 1 do
+PDF de Volkov como imagem e conferiu a numeração de teoremas/definições
+do `main.aux` contra o PDF de KL para R7-M1.
+
+### Verificação (Regra 8c)
+
+Confirmei R7-M2 rodando `buffer_squeeze.py` em `q5_cycq500_b15.txt` e
+`q5_cycq505_b15.txt`: máximo real 0,0189 (não 0,002), e violação do
+refinamento "0,0004 de 1e8→1e9 em diante" por `cycq505` (0,0009).
+Confirmei R7-D3 rodando `cyc_vs_cycq.py`: diferença +0,00347, erro
+padrão 0,00230, 1,5σ de zero. Confirmei R7-M1 lendo o texto extraído do
+PDF de KL: a citação sobre Volkov está nas linhas em torno de 3799
+(dentro do Remark da §8.10), não no §7.
+
+### Resolução
+
+Todos os achados corrigidos nesta passada, exceto R7-M4 (escalado).
+Mudanças de substância: correção do limite de erro de truncamento na
+Discussão para os números reais da grade b15 (0,0000 na década de
+calibração, no máximo 0,0010 na década rasa, em vez do 0,002/0,0004 da
+corrida b17 errado reescopado); correção do sistemático de
+implementação de uma cota pontual para o intervalo honesto que inclui
+o erro-padrão; remoção da citação ao companion para o índice de cauda
+(a expressão "i.i.d. model" não está definida no paper 04 e criava uma
+referência circular); correção da nota de versão do bibitem de KL para
+localizar corretamente as duas citações textuais (uma no §7, outra no
+§8.10); enfraquecimento do verbo "settles" para "addresses only", que
+concorda com o resto do texto ("a measurement, not a proof",
+"working hypothesis"). `OUTLINE.md` atualizado, incluindo uma nota
+detalhada e explícita sobre a pendência de autorização para os
+READMEs PT-BR.
+
+Recompilado limpo (pdflatex 2x, 6 páginas); `\cite`/`\bibitem`
+conferidos sem órfãos em nenhuma direção (três chaves).
+
+**Contagem de rodadas limpas consecutivas após R7: 0.**

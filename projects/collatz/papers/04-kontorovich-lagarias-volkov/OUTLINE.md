@@ -1,7 +1,7 @@
 # Outline — paper 04 (Kontorovich-Lagarias vs. Volkov)
 
 Status: `main.tex` completo, em loop de crítica de convergência
-(critério do pesquisador: 3 rodadas consecutivas limpas; rodadas 1-5
+(critério do pesquisador: 3 rodadas consecutivas limpas; rodadas 1-7
 aplicadas 2026-08-10/11, ver `CRITIQUE.md` para o histórico completo e
 a contagem de rodadas limpas consecutivas atual). 6 páginas, compila
 limpo. Split de `01-syracuse-qx1-endogenia/main.tex`
@@ -40,11 +40,13 @@ introdução na rodada 2 do loop de crítica, por redundância)
    aritmética lê 0,64926 na década 1e9→1e10, dentro da banda das três
    construções a 0,650919 e separada por mais de sete larguras de banda
    de uma construção a 0,678 (0,02822/0,00371=7,6).
-6. Discussão — dois sistemáticos (implementação, truncamento), ponte
-   entre a construção irrestrita e o colapso acelerado do $B[5^0]$ de
-   KL (só a cota superior do expoente transfere rigorosamente; a cota
-   inferior é lead em aberto, `BACKLOG.md` item 10), e escopo preciso
-   (testa o valor 0,678, não o modelo de Volkov em si).
+6. Discussão — dois sistemáticos (implementação, truncamento), o
+   escopo exato da comparação, e a ponte entre a construção irrestrita
+   e o colapso acelerado do $B[5^0]$ de KL (só a cota superior do
+   expoente transfere rigorosamente; a cota inferior é lead em aberto,
+   `BACKLOG.md` item 10). O escopo preciso quanto ao modelo de Volkov em
+   si (testa o valor 0,678, não o modelo) está no Empirical Result 5.1,
+   não na Discussão.
 
 ## Rótulo do resultado (Regra 10b)
 
@@ -65,12 +67,20 @@ expoente em disputa.
   preparação"). Atualizar a citação de `PressureCompanion` quando o 06
   tiver DOI/arXiv. Pendência real, não resolvida por mim: depende do
   paper 06 ganhar arXiv/DOI.
-- README-PT-BR de `experiments/E-097-qx1-empirical-gate/` e
-  `experiments/E-139-kl-volkov-window-calibration/` (e os espelhos
-  correspondentes em `collatz-kl-volkov`) ainda dizem "dez larguras de
-  banda" e "exclui Volkov com folga", números corrigidos nos READMEs em
-  inglês em 2026-08-10 mas não propagados ao PT-BR (Regra "sem edição
-  de PT-BR não solicitada"). Sinalizado, não corrigido.
+- **README-PT-BR desatualizado ao ponto de contradizer o resultado
+  central do paper** (achado R7-M4, `CRITIQUE.md`): em
+  `collatz-kl-volkov/sec5-fixed-window-estimator/README-PT-BR.md`, a
+  seção "## Resultado" apresenta como corrente a leitura original de
+  0,639 "exclui Volkov (0,678) com folga ampla (~10+ erros-padrão)",
+  sem a marcação de superada nem o parágrafo "This exclusion claim does
+  not hold" que o gêmeo em inglês tem; é exatamente a alegação que o
+  Empirical Result 4.1 do paper refuta. Em
+  `sec6-calibrated-comparison/README-PT-BR.md`, "dez vezes a faixa"
+  contra "more than seven widths" do paper. Falta também a entrada de
+  `validate_richardson_vs_production.py`. Regra do projeto ("sem edição
+  de PT-BR não solicitada") impede corrigir isso sem pedido explícito;
+  **precisa de autorização do pesquisador para propagar as correções já
+  feitas nos gêmeos em inglês**.
 - BACKLOG.md item 10: estender o teorema do paper 06 (transição
   estrutural, modelo i.i.d.) à lei de prole por classe de resíduo, para
   que a cota inferior do expoente também transfira à construção
