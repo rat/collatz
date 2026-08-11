@@ -979,3 +979,69 @@ atualizado); `\cite`/`\bibitem` conferidos sem órfãos em nenhuma
 direção (três chaves).
 
 **Contagem de rodadas limpas consecutivas após R5: 0.**
+
+---
+
+## 2026-08-11, rodada R6 (loop de convergência, crítico independente)
+
+| R6-M1 | 2026-08-11 (loop R6) | Números 0,484/0,612 (sensibilidade do resíduo da raiz, adicionados na R5) não são reproduzíveis: `tree_counts.c` não tem flag para sortear o resíduo da raiz sem restringir à fertilidade; o número só existe como prosa histórica no README, sem script | maior | fixed |
+| R6-D1 | 2026-08-11 (loop R6) | "At the calibration depth itself" na Discussão rotulava um checkpoint 10⁸ como sendo a década 10⁹→10¹⁰ que o parágrafo anterior tinha acabado de nomear como "profundidade de calibração" | moderado | fixed |
+| R6-D2 | 2026-08-11 (loop R6) | Inferência de flutuação agrupava a recursão inteira ("cyc", uma das duas construções abaixo das quais a árvore aritmética lê) em "the others", e a diferença de 0,004 entre árvore aritmética e o controle mais próximo estava 15x abaixo da resolução do próprio estimador (bootstrap pareado nas mesmas 300 raízes) | moderado | fixed |
+| R6-D3 | 2026-08-11 (loop R6) | "so it can be calibrated out by comparing readings at a common depth" afirmava mais do que o parágrafo entrega: comparar na mesma profundidade neutraliza a dependência de profundidade, não a de flutuação, que na verdade fica absorvida na largura da banda | moderado | fixed |
+| R6-D4 | 2026-08-11 (loop R6) | Índice de cauda $1/0,650919=1,5363$ citado ao companion para as construções casadas por congruência; o teorema do paper 06 só cobre o modelo i.i.d., e a extensão à árvore aritmética é uma Conjectura no próprio 06, com evidência "mixed rather than confirmatory" | moderado | fixed |
+| R6-D5 | 2026-08-11 (loop R6) | "On the same 300 roots and grid" sem antecedente claro; a grade correta (b13, buffers 10⁹-10¹³) nunca é nomeada, e o leitor mais provavelmente presume a b15, que dá números diferentes | moderado | fixed |
+| R6-D6 | 2026-08-11 (loop R6) | "read empirically by how closely each measurement approaches its own target" é circular: os mesmos resíduos usados como medida de viés residual são usados como evidência de que o expoente realizado é a raiz de pressão | moderado | fixed |
+| R6-D7 | 2026-08-11 (loop R6) | Parágrafo de 30 linhas da Discussão com sete movimentos argumentativos distintos sem transição entre eles | moderado | fixed |
+| R6-n1 | 2026-08-11 (loop R6) | Frase de 50 palavras no §5 com apositivo, relativa reduzida, particípio e absoluta empilhados ao definir a raiz de pressão da relaxação | menor | fixed |
+| R6-n2 | 2026-08-11 (loop R6) | Orçamento de antíteses em 3 contra 2 (a terceira era parte do trecho 0,484/0,612 já cortado por R6-M1) | menor | fixed (efeito colateral de R6-M1) |
+| R6-n3 | 2026-08-11 (loop R6) | "A real denominator can replace q in two facts" contradiz o primeiro fato, que é explicitamente "independent of q" | menor | fixed |
+| R6-n4 | 2026-08-11 (loop R6) | Nota de versão do `\bibitem` de KL cobria só Theorem 8.10 e o Remark, mas o paper também cita a Conjectura 7.2 e passagens do §7 pelo número | menor | fixed |
+| R6-n5 | 2026-08-11 (loop R6) | "The two authors write..." no resumo, com antecedente mais próximo sendo Volkov, não Kontorovich-Lagarias | menor | fixed |
+| R6-n6 | 2026-08-11 (loop R6) | Afirmação sobre teoria padrão de BRW (equivalência quenched-anelado para reprodução i.i.d.) sem citação nomeada | menor | rejected (conhecimento de especialista, Regra 4b §5; adicionar uma citação nova exigiria verificação fora do escopo desta rodada) |
+
+Rodada 6 do loop de convergência: **crítico 0, maior 1, moderado 7,
+menor 6** (total 14 achados). NÃO limpa. Todos corrigidos nesta mesma
+passada, exceto R6-n6, rejeitado com razão registrada. Contagem de
+rodadas limpas consecutivas após R6: **0**.
+
+Contexto fresco (novo subagente; uma tentativa anterior de rodada 6 foi
+interrompida por um erro de infraestrutura de billing quase no início,
+sem produzir achados, tratada como se não tivesse acontecido). Reproduziu
+todos os números do §3/§4/§5, incluindo as raízes de pressão via
+`mpmath` com 25 dígitos, e fez um bootstrap pareado nas mesmas 300
+raízes para testar se a diferença de flutuação entre a árvore
+aritmética e os controles casados era distinguível de zero (não era,
+achado R6-D2).
+
+### Verificação (Regra 8c)
+
+Confirmei R6-M1 lendo a lista completa de flags de `tree_counts.c`:
+não existe caminho de código para sortear o resíduo da raiz sem
+restringi-lo à fertilidade; o número 0,484 só aparece como prosa no
+README do E-139, sem script. Confirmei R6-D4 lendo diretamente
+`papers/06-pressao-qx1-ramificacao/main.tex`: o `\begin{theorem}[Tail
+index in the i.i.d. model]` é só para o modelo i.i.d. por construção, e
+o `\begin{conjecture}[Tail of the real-tree growth scale factor]`
+conjectura o mesmo índice para a árvore aritmética com evidência que o
+próprio 06 descreve como "mixed rather than confirmatory".
+
+### Resolução
+
+Todos os 14 achados corrigidos, exceto R6-n6 (rejeitado). Mudança de
+substância mais importante: reescrita completa do terceiro parágrafo
+da Discussão, removendo o argumento de flutuação (que dependia de uma
+diferença estatisticamente indistinguível de ruído) e o número
+0,484/0,612 não reproduzível, dividindo o parágrafo de 30 linhas em
+três parágrafos menores por movimento argumentativo (escopo; ponte com
+o B[5⁰] e estatuto epistêmico; comparação numérica de viés na grade
+correta, explicitamente nomeada). O resultado principal (separação
+calibrada de 0,650919 vs. 0,678) não dependia de nenhum desses
+argumentos secundários e permanece intacto; o que caiu foi só a
+explicação lateral de por que a árvore aritmética lê abaixo dos dois
+controles casados, que agora fica como padrão não explicado, igual ao
+já registrado na nota de Regra 8e sobre a leitura profunda.
+
+Recompilado limpo (pdflatex 2x, 6 páginas); `\cite`/`\bibitem`
+conferidos sem órfãos em nenhuma direção (três chaves).
+
+**Contagem de rodadas limpas consecutivas após R6: 0.**
