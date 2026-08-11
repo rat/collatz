@@ -44,6 +44,9 @@ prosa, então não havia nada para sincronizar no repositório
 companheiro. `OUTLINE.md` atualizado (pendência do abstract-rascunho
 removida, substituída por um resumo desta passagem).
 
+Ver também a seção paralela abaixo, "Redação final do paper 01", do
+agente que fez o mesmo trabalho no paper 01 na mesma janela de tempo.
+
 **Pendência real para uma leitura humana antes de submissão**: o
 abstract reescrito nesta passagem não passou por uma nova rodada de
 crítica (Regra 8) — é a seção de maior risco do documento (Regra 4b
@@ -52,6 +55,69 @@ pendências já conhecidas do paper 04 continuam de pé, sem relação com
 esta passagem: `main-pt-br.tex` não criado (decisão deliberada) e o
 drift de README-PT-BR de E-097/E-139 (números corrigidos só em
 inglês).
+
+## Redação final do paper 01 (agente paralelo, worktree isolado)
+
+Pedido explícito do diretor científico (Regra 5): passagem de redação
+final no paper 01, depois do esgotamento de backlog registrado abaixo.
+Consultado o `advisor` antes de escrever, dado o volume de conteúdo
+novo não incorporado ao `main.tex` (a rodada de fechamento de H-127/
+H-158/H-159/H-161/H-162/H-163/H-174-177 só tinha tocado os arquivos de
+`hypotheses/`, nunca o `main.tex`, confirmado via `git log` nos
+commits de fechamento).
+
+**H-129 (decisão do diretor científico)**: deixa de ser tratada como
+conjectura própria do paper 01. `conj:tail-index` (o mesmo objeto que
+H-129 evoluiu para investigar, ver "Hipóteses abertas" abaixo) agora é
+atribuída explicitamente ao companion `PressureCompanion` (paper 06,
+que já a formaliza como sua própria conjectura numerada, conferido
+diretamente no `main.tex` de 06) em três pontos do `main.tex` de 01: o
+ambiente da conjectura, o parágrafo de suporte logo abaixo, e a entrada
+O7 da Conclusão (já citava por rótulo, sem reivindicar autoria).
+
+**Achado novo incorporado (H-161/Q2)**: a rodada de Codex sobre a
+desigualdade de par Q2 (registrada em H-161, não integrada ao `main.tex`
+antes) mostrou que Q2, se verdadeira, implica que a medida limite em
+q=3 não é Haar-singular — pode ser estritamente mais forte do que o
+que O2 realmente precisa (`beta_eff->1`). Formalizada como
+`prop:pairwise-nonsingular` em `main.tex` (prova própria, escrevendo por
+extenso o passo de contabilidade de densidade que H-161 tinha deixado
+sinalizado mas não escrito), com o diagnóstico empírico marginal até
+`ell=16` (a parte sólida de E-142, não a parte (b) sinalizada como
+enviesada). Script espelhado e rodado em
+`collatz-endogeny/sec9-worst-cylinder-cascade/singularity_diagnostic.py`
+(reproduz os números de E-142 exatamente), README atualizado. Não
+incorporado: o programa de certificado `B_kappa` (H-177), não executado
+e não conferido linha a linha, por decisão explícita de não abrir um
+programa de pesquisa novo numa passagem de redação final.
+
+**Regra 4b (protocolo de escrita acadêmica), documento inteiro**:
+abstract e a lista de contribuições da Introdução reescritos por
+completo (abstract era literalmente o padrão banido de "uma frase
+encadeada" da própria Regra 4b §7; a lista de contribuições (i)-(viii)
+duplicava O1-O8 da Conclusão quase item a item, agora condensada em
+prosa). Removidos: frases de auditoria da própria honestidade ("we
+emphasize the logical status", "we flag this bibliographic correction
+explicitly", "the honest anchor"), dois fechamentos de parágrafo
+banidos ("Item (d) is the crux", "What survives is"), a frase final da
+Conclusão que avaliava o próprio paper ("We regard this convergence as
+the paper's central finding"), e nove ocorrências de caminho de
+repositório dentro do corpo (regra: caminho só na Data Availability,
+uma vez; nenhuma perda de informação, a DAS já cobre por seção). A
+seção `rem:calibration-consistency` (a mais longa violação, achado do
+advisor) comprimida sem alterar nenhuma afirmação técnica (Regra 8d).
+
+**Verificação técnica final**: `main.tex` recompilado (3 passadas
+`pdflatex`, sem `undefined reference`), bibliografia e rótulos
+conferidos com script Python (34 `\cite`/34 `\bibitem`, sem órfãos em
+nenhuma direção; `\ref`/`\label` sem órfãos na direção perigosa).
+Regra 8b: abstract e conclusão relidos depois de todas as edições
+próprias, números conferidos (`1.882712`, `2.306270`, "seven
+band-widths", nenhum resíduo de "ten"/"dez").
+
+**Não tocado, por decisão explícita do diretor científico**:
+`main-pt-br.tex` (fica para pedido separado, mesma decisão de hoje que
+já vale para os outros três papers).
 
 ## Verificação independente e adversarial pós-varredura dos 4 papers (crítico, worktree isolado)
 

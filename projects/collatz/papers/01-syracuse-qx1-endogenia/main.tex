@@ -46,69 +46,64 @@ on the Arithmetic Obstruction}
 \maketitle
 
 \begin{abstract}
-% DRAFT -- rewrite by hand before submission (Rule 4b: abstracts carry
-% the highest marker density of any section in the paper). This
-% abstract summarizes a paper that is now the umbrella of a four-paper
-% split; where a result is restated here without proof, the companion
-% paper carrying the proof is named.
-We study a natural $qx+1$ generalization of Tao's Syracuse random
-variable \cite{Tao2022}, the probabilistic object underlying the
-strongest unconditional partial result toward the Collatz conjecture.
-A companion paper proves an exact identity,
-$\rho_{\mathrm{ann}}(\alpha)=q^{\alpha-1}/(2^\alpha-1)$, for the
-annealed pressure of the natural population functional on the reverse
-tree of the accelerated $qx+1$ map, via an exact fibre-counting
-bijection \cite{PressureCompanion}. Its nontrivial root undergoes a
-structural transition at $q=5$: it equals exactly $\alpha^\ast=2$ at
-$q=3$, matching the classical Growth Exponent Conjecture of
-Kontorovich--Lagarias and Applegate--Lagarias, and falls strictly below
-$1$ for every $q\ge5$. The two roots of the pressure equation always
-sit on opposite sides of a quenched/annealed freezing transition; the
-smaller root is always unfrozen, so the pressure identity transfers
-rigorously to the matching i.i.d.\ branching-random-walk model, and,
-on strong but not conclusive empirical grounds, to the actual
-arithmetic tree.
+We study a $qx+1$ generalization of Tao's Syracuse random variable
+\cite{Tao2022}, the probabilistic object behind the strongest
+unconditional partial result toward the Collatz conjecture.
 
-We identify and formally characterize an \emph{endogeny barrier}, in
-the sense of Aldous--Bandyopadhyay \cite{AldousBandyopadhyay2005},
-obstructing any proof that relies only on the linear recursive
-structure of the tree: solutions of the form $G=W\cdot Y$, with $Y$ an
-arbitrary bounded factor invariant along the tree, solve the same
-fixed-point recursion as the canonical solution $W$ and are
-statistically indistinguishable from it by every observable we test.
-Closing this gap leads to a small collection of unresolved arithmetic
-statements, studied here through several complementary routes:
-Wirsching's 1998 Weak Covering Conjecture \cite{Wirsching1998} and
-Tao's weighted $\beta=1$ conjecture \cite{Tao2020}, which we connect by
-an exact cost-budget identity and a large-deviation barrier at the
-conjecture's critical cost, and for which we now prove an unconditional
-bound $\beta_{\mathrm{eff}}\le1.882712$ from an inter-level cascade
-identity on the worst-cylinder mass, improving the previous
-unconditional bound of $2.306270$; Wirsching's 2003 functional equation
-for a base-$3$ analogue of the Fabius function \cite{Wirsching2003},
-whose first conjecture we prove and whose third we test numerically to
-certified error, with the remaining second conjecture and a corrected
-reading of its actual target given in a companion paper
-\cite{WirschingCompanion}; and two candidate lemmas suggested by Tao's
-bivariate Fourier-decay technique \cite{Tao2022,Tao2011}, of which one
-yields a closed-form structure theorem tested against sustained finite-level
-growth through level $17$, and the other an exact Jensen calculation
-showing slack by a factor $\approx1.88$ in one annealed $\ell^1$
-Fourier budget, a slack we show here persists across the entire wider
-family of annealed $\ell^r$ budgets. A diagonalization in
-discrete-logarithm coordinates now proves an unconditional collision
-growth rate $K_{q,\ell}\ge(q/3)^\ell$ for every odd $q\ge3$, with no
-lifting hypothesis, reducing the remaining critical case $q=3$ to a
-single affine shifted collision. A companion paper reports a fully
-independent, calibrated empirical result on the $5x+1$ counting
-exponent, separating Kontorovich and Lagarias's prediction from a
-competing one due to Volkov once a raw estimator's own bias is
-calibrated out with matched synthetic controls \cite{KLVolkovCompanion}.
-Finally, a directed literature search situates the barrier within the
-wider theory of Fourier decay for self-similar and self-conformal
-measures \cite{BakerBanaji2026, Bremont}, and compares the resulting
-obstruction with a recent fixed-modulus orbit statistic
-\cite{Chang2026}.
+A companion paper proves a closed-form annealed pressure equation,
+$q^{\alpha-1}=2^\alpha-1$, for the reverse tree of the accelerated
+$qx+1$ map, via an exact fibre-counting bijection
+\cite{PressureCompanion}. Its nontrivial root equals $2$ at $q=3$,
+reproducing the Growth Exponent Conjecture of Kontorovich--Lagarias and
+Applegate--Lagarias, and falls below $1$ for every $q\ge5$: a
+structural transition, not a small perturbation. The root is always
+unfrozen, in the sense of directed polymers in a random environment, so
+the identity transfers rigorously to the matching i.i.d.\
+branching-random-walk model, and, as empirical evidence rather than
+proof, to the arithmetic tree itself.
+
+We prove that the tree's fixed-point recursion admits an \emph{endogeny
+barrier}, in the sense of Aldous--Bandyopadhyay
+\cite{AldousBandyopadhyay2005}: solutions of the form $G=W\cdot Y$, for
+$Y$ any bounded factor invariant along the tree, solve the same
+recursion as the canonical solution $W$ and match it in pressure, tail
+index, and regression slope against the limiting measure. The
+recursion together with the statistics of the $3$-adic digits cannot by
+itself force this gap to vanish. A three-arm control experiment bounds
+the residual empirical coupling between sibling subtrees at
+$\rho_{\mathrm{eff}}\lesssim0.06$ (95\% CI).
+
+Closing the gap connects several open arithmetic statements. We test
+Wirsching's 1998 Weak Covering Conjecture directly by computation
+through level $20$, and prove an unconditional bound
+$\beta_{\mathrm{eff}}\le1.882712$ on the related cost in Tao's
+$\beta=1$ conjecture, from an inter-level cascade identity on the
+worst-cylinder mass, improving the previous bound of $2.306270$. A
+large-deviation argument shows that even ideal multiplicity inside the
+conjecture's own cost window falls short of what $\beta=1$ needs. We
+prove Wirsching's first 2003 conjecture on the base-$3$ Fabius
+function, and test the third to certified numerical error; a companion
+paper treats the second, with a corrected reading of its actual target
+\cite{WirschingCompanion}. Two candidate lemmas from Tao's bivariate
+Fourier-decay technique each fail to close the gap, for reasons we make
+exact. One yields a closed-form structure theorem, tested against
+sustained finite-level growth through level $17$. The other, an exact
+Jensen identity, quantifies a slack factor of $1.88$ in one annealed
+Fourier budget, a slack we show persists across the entire wider family
+of annealed $\ell^r$ budgets. A diagonalization in discrete-logarithm
+coordinates separately proves an unconditional collision growth rate
+$K_{q,\ell}\ge(q/3)^\ell$ for every odd $q\ge3$, with no lifting
+hypothesis, reducing the remaining critical case $q=3$ to a single
+affine shifted collision.
+
+A companion paper separates Kontorovich and Lagarias's counting-exponent
+prediction for $5x+1$ from a competing one due to Volkov, once a raw
+estimator's own bias is calibrated out with matched synthetic controls
+\cite{KLVolkovCompanion}. A directed literature search situates the
+barrier against the general theory of Fourier decay for self-similar
+and self-conformal measures \cite{BakerBanaji2026, Bremont}, and
+against a recent fixed-modulus orbit statistic \cite{Chang2026};
+neither supplies a shortcut.
 \end{abstract}
 
 \noindent\textbf{Keywords:} Collatz conjecture; $qx+1$ map; Syracuse random variable;
@@ -177,65 +172,40 @@ ones.
 The orientation convention embedded in Proposition~\ref{prop:tao123}
 (that $a_1$, not $a_n$, is the coordinate adjacent to the root) is a
 recurring source of error when translating Tao's construction into
-reverse-tree language, and we flag it explicitly throughout.
+reverse-tree language.
 
 \subsection{This paper's contributions}
 
 Building on \cite{Tao2022} and on the classical predecessor-density
-program of Wirsching \cite{Wirsching1998,Wirsching2003}, we make the
-following contributions.
-
-\begin{enumerate}[label=(\roman*)]
-\item \textbf{A closed-form pressure equation for $qx+1$
-  (\S\ref{sec:pressure}).} A companion paper proves that the tail
-  exponent controlling the reverse-tree population martingale of the
-  accelerated $qx+1$ map satisfies the exact equation
-  $q^{\alpha-1}=2^\alpha-1$, with a structural transition at $q=5$
-  \cite{PressureCompanion}; \S\ref{sec:pressure} restates the result and
-  the role it plays here.
-\item \textbf{A precise endogeny barrier (\S\ref{sec:endogeny}).} We
-  exhibit an explicit family of \emph{non-endogenous} solutions to the
-  tree's fixed-point recursion, prove they are statistically
-  indistinguishable from the canonical one by pressure, tail index, or
-  linear regression against the limiting measure. We identify the
-  missing arithmetic input as cancellation of centered fine-frequency
-  correlations after averaging over path pairs; pairwise independence
-  is impossible.
-\item \textbf{An empirical bound on the residual coupling
-  (\S\ref{sec:calibration}).} A three-arm control experiment gives
-  $\rho_{\mathrm{eff}} \lesssim 0.06$ (95\% CI) for the effective
-  arithmetic coupling between sibling subtrees, converting the
-  theoretical gap of (ii) into a quantitative empirical bound.
-\item \textbf{A direct computational test of the Weak Covering
-  Conjecture, and an unconditional bound on its cost
-  (\S\ref{sec:wcc}, \S\ref{sec:triangulation}).}
-  Theorem~\ref{thm:cascade-factor} proves
-  $\beta_{\mathrm{eff}}\le1.882712$ from an inter-level cascade identity
-  on the worst-cylinder mass.
-\item \textbf{A calibrated finite-window comparison of two
-  counting-exponent predictions for $5x+1$ (\S\ref{sec:kl}).} A
-  companion paper separates Kontorovich--Lagarias's prediction from
-  Volkov's competing one once a raw estimator's own bias is calibrated
-  out with matched synthetic controls \cite{KLVolkovCompanion};
-  \S\ref{sec:kl} restates the calibrated separation.
-\item \textbf{Triangulation with Wirsching's 2003 functional equation
-  (\S\ref{sec:triangulation}).} We prove Wirsching's first conjecture
-  here; a companion paper tests the third conjecture numerically and
-  corrects the target of the second \cite{WirschingCompanion}.
-\item \textbf{Two candidate routes (\S\ref{sec:lemmas}), and an
-  unconditional collision-growth bound.} The first yields a structural
-  obstruction and a finite-level test of a natural sufficient
-  condition. The second leaves an explicit frequency-stability step
-  open, gives an exact Jensen calculation for one annealed Fourier
-  budget, and, via a diagonalization in discrete-logarithm coordinates
-  (Theorem~\ref{thm:diagonal-collision}), proves
-  $K_{q,\ell}\ge(q/3)^\ell$ unconditionally for every odd $q\ge3$.
-\item \textbf{A literature-theoretic contextualization
-  (\S\ref{sec:context}).} We show why three standard methods from the
-  theory of Fourier decay for self-similar measures do not transfer
-  directly. We also test a recent fixed-modulus orbit statistic
-  \cite{Chang2026}, without treating it as a proved reduction.
-\end{enumerate}
+program of Wirsching \cite{Wirsching1998,Wirsching2003}, the paper
+proceeds as follows. Section~\ref{sec:pressure} restates the closed-form
+pressure equation for the accelerated $qx+1$ tree and its structural
+transition at $q=5$, proved in full in a companion paper
+\cite{PressureCompanion}. Section~\ref{sec:endogeny} proves the
+endogeny barrier: an explicit family of non-endogenous solutions to the
+tree's fixed-point recursion, indistinguishable from the canonical one
+by pressure, tail index, or regression slope against the limiting
+measure. Section~\ref{sec:calibration} bounds the residual empirical
+coupling between sibling subtrees at $\rho_{\mathrm{eff}}\lesssim0.06$.
+Sections~\ref{sec:wcc} and \ref{sec:triangulation} test Wirsching's
+Weak Covering Conjecture by direct computation through level $20$ and
+prove the unconditional bound $\beta_{\mathrm{eff}}\le1.882712$ on the
+related cost in Tao's $\beta=1$ conjecture; \S\ref{sec:triangulation}
+also proves Wirsching's first 2003 conjecture, with the third tested
+numerically and the second treated in a companion paper
+\cite{WirschingCompanion}. Section~\ref{sec:kl} restates a companion
+paper's calibrated separation of the Kontorovich--Lagarias and Volkov
+counting-exponent predictions for $5x+1$ \cite{KLVolkovCompanion}.
+Section~\ref{sec:lemmas} executes two candidate routes to Regime~3 of
+\S\ref{sec:regimes} to completion, proving along the way an
+unconditional collision-growth bound
+$K_{q,\ell}\ge(q/3)^\ell$ for every odd $q\ge3$
+(Theorem~\ref{thm:diagonal-collision}). Section~\ref{sec:context}
+situates the barrier against the general theory of Fourier decay for
+self-similar measures and against a recent fixed-modulus orbit
+statistic \cite{Chang2026}. The eight resulting open points, (O1)
+through (O8), and how progress on one would transfer to several others,
+are collected in \S\ref{sec:conclusion}.
 
 \section{Setup: the accelerated $qx+1$ map and its reverse tree}
 \label{sec:setup}
@@ -426,9 +396,12 @@ $\alpha=1$, $p=2$ it is exactly the collision statistic $K_k$ of
 \end{theorem}
 
 Absolute continuity and the tail of $W_{q,\alpha_-(q)}$ remain
-conjectural for the coherent $q$-adic environment.
+conjectural for the coherent $q$-adic environment. The companion paper
+states and studies this as its own conjecture \cite{PressureCompanion};
+we restate it here for the role it plays in O7 below.
 
-\begin{conjecture}[Density and tail of the tilted Syracuse measure]
+\begin{conjecture}[Density and tail of the tilted Syracuse measure;
+\cite{PressureCompanion}]
 \label{conj:tail-index}
 $W_q:=W_{q,\alpha_-(q)}$ is absolutely continuous and non-degenerate,
 with $\Pr(W_q>x)=x^{-\alpha_+(q)/\alpha_-(q)+o(1)}$.
@@ -507,19 +480,17 @@ unchanged to every child. For bounded, non-constant $Y:\mathcal{Y}\to
 \end{enumerate}
 \end{proposition}
 
-Item (d) is the crux: no statistic computed from pressure, tail index,
-or regression slope against $\mu$ distinguishes $W$ from $W\cdot Y$.
+No statistic computed from pressure, tail index, or regression slope
+against $\mu$ distinguishes $W$ from $W\cdot Y$: this is item (d) above.
 The technical name for this phenomenon is \emph{endogeny}
 \cite{AldousBandyopadhyay2005}: collapse of the conditional variance is
 equivalent to $X$ being measurable with respect to the $\sigma$-algebra
 generated by the digits (``endogenous''); Proposition~\ref{prop:gauge}
-exhibits a non-endogenous solution. We emphasize the logical status of
-this construction: it proves that the recursion \emph{alone} does not
-force exactness; it does not assert that a non-trivial $Y$ actually
-occurs for the arithmetic object built from a single integer $v$ (there,
-$Y$ would have to be manufactured from $v$ itself, not injected as an
-independent auxiliary coordinate). These two statements must never be
-conflated.
+exhibits a non-endogenous solution. The construction proves that the
+recursion \emph{alone} does not force exactness. It does not assert
+that a non-trivial $Y$ actually occurs for the arithmetic object built
+from a single integer $v$, where $Y$ would have to be manufactured from
+$v$ itself rather than injected as an independent auxiliary coordinate.
 
 \subsection{A specific mechanism ruled out}
 
@@ -546,9 +517,7 @@ path, composing the relation at each generation, gives the claim.
 \end{proof}
 
 We verified Lemma~\ref{lem:2adic} numerically for $a=1,\dots,10$ against
-more than $500$ values of $v$ per exponent
-(\texttt{collatz-endogeny/\allowbreak sec4-endogeny-barrier}),
-confirming the predicted
+more than $500$ values of $v$ per exponent, confirming the predicted
 universal constant exactly in every case (e.g.\ $a=5\Rightarrow w\equiv
 21\ (\mathrm{mod}\ 32)$ always; $a=10\Rightarrow w\equiv 341\
 (\mathrm{mod}\ 1024)$ always). The reverse tree destroys all $2$-adic
@@ -896,8 +865,7 @@ mutual information equals the entropy of a uniform $3^s$-point
 variable, namely $s\log3$.
 \end{proof}
 
-Both identities were checked numerically in
-\texttt{collatz-endogeny/\allowbreak sec8-fresh-digit-coupling}.
+Both identities were checked numerically.
 
 Consequently, ``apply Proposition~\ref{prop:tao117} twice, assuming
 conditional independence given the ancestor'' is not merely circular:
@@ -991,8 +959,7 @@ representation alone gives
  =3^{-(1/2+\log_3 2)\ell+o(\ell)}.
 \]
 This yields only $\beta\le 1/2+\log_3 2=1.1309\ldots$, rather than
-$\beta=1$ (identity and bound checked against brute force in
-\texttt{collatz-endogeny/\allowbreak sec9-wcc-beta-bridge}). The
+$\beta=1$ (identity and bound checked against brute force). The
 entropy implication previously asserted here is invalid.
 The missing statement is a weighted covering estimate reaching the
 typical cost window: the total geometric multiplicity must be within a
@@ -1044,8 +1011,8 @@ $3^{-\ell}$ is absorbed by $o(\ell)$. Direct substitution of
 $s_\ast$ gives the stated constants.
 \end{proof}
 
-The finite-level rate and bound are computed in
-\texttt{collatz-endogeny/\allowbreak sec9-wcc-beta-bridge}.
+The finite-level rate and bound are computed in the accompanying
+repository.
 
 Theorem~\ref{thm:wcc-large-deviation} sharpens the distinction between
 O2 and O3, two of the eight tracked points enumerated in the
@@ -1167,9 +1134,50 @@ needs: no bound depending only on the two set sizes and spectral data
 of that bijection can close O2's remaining gap, however strong the
 individual character sum estimates are.
 
+\begin{proposition}[The pairwise inequality forces non-collapse]
+\label{prop:pairwise-nonsingular}
+If the pairwise anti-concentration inequality above holds, the
+$q$-adic density martingale at $\alpha=1$, $q=3$
+(Theorem~\ref{thm:qadic-martingale}) does not converge to $0$ almost
+surely under Haar measure.
+\end{proposition}
+
+\begin{proof}
+The parity class $t_0(y)\in\{1,2\}$ of the proof of
+Theorem~\ref{thm:cascade-factor} depends only on $y\bmod 3$, splitting
+the unit group into two classes of Haar measure exactly $1/2$ each,
+independent of $\ell$. On the fixed class $t_0(y)=t_0$, the map
+$y\mapsto k_0(y)$ of that proof is a bijection onto
+$\mathbb{Z}/3^{\ell-1}\mathbb{Z}$ carrying the conditional Haar measure
+to the uniform measure, and $A(k)=4k+1$ is a further measure-preserving
+bijection of $\mathbb{Z}/3^{\ell-1}\mathbb{Z}$. Almost-sure convergence
+of $N_\ell(U)$, established over the whole unit group by
+Theorem~\ref{thm:qadic-martingale}, restricts to almost-sure convergence
+on this positive-probability class. If the limit were $0$ a.s. there,
+$\Pr(N_\ell(k)\le x)\to1$ for every fixed $x>0$, $k$ uniform on
+$\mathbb{Z}/3^{\ell-1}\mathbb{Z}$; since $A$ preserves that uniform
+measure, a union bound on the complement gives $\Pr(N_\ell(k)\le
+x\text{ and }N_\ell(A(k))\le x)\ge1-2\Pr(N_\ell(k)>x)\to1$ as well,
+contradicting any bound $Cx^{\theta}<1$ (for some fixed exponent
+$\theta>0$) on that joint probability once $\ell$ is large enough.
+\end{proof}
+
+The pairwise inequality is accordingly not obviously equivalent to
+$\beta_{\mathrm{eff}}\to1$: it rules out the one scenario,
+$N_\ell(U)\to0$ a.s., under which the limiting measure at $q=3$ would be
+Haar-singular, so it may be a strictly stronger statement than the
+Weak Covering Conjecture itself needs. A finite check gives no reason to
+expect that scenario here either: through $\ell=16$, a power-law fit of
+$\Pr(N_\ell(U)\le0.1)$ and of the increments of
+$\mathbb{E}[-\log N_\ell(U)]$ sits on the summable side of the exponent
+that would separate the two scenarios; thirteen levels do not separate a
+summable exponent from one merely close to the boundary, so this is
+corroborating evidence, not a decisive test.
+
 Theorem~\ref{thm:cascade-factor}, the certified bound, the saturation
-measurement, and the Weyl-sum obstruction are all verified in
-\texttt{collatz-endogeny/\allowbreak sec9-worst-cylinder-cascade}.
+measurement, the Weyl-sum obstruction, and
+Proposition~\ref{prop:pairwise-nonsingular} are all verified in the
+accompanying repository.
 
 \subsection{Wirsching's 2003 functional equation and the base-$3$
 Fabius function}
@@ -1407,7 +1415,7 @@ $0$: closing by frequency counting would require square-root
 cancellation, $\ell^{-\ell'/2-\varepsilon}$ decay, Regime~3
 resurfacing inside what should have been the easy regime.
 
-What survives is a structure theorem. With $w_2 =
+A structure theorem survives the failed budget. With $w_2 =
 2^\Delta w_1 + c_\Delta$, $c_\Delta=(2^\Delta-1)/3$ (a unit multiplier
 mod $3^\ell$) relating admissible sibling leaves at exponent gap
 $\Delta$:
@@ -1463,64 +1471,43 @@ $m,D,\Delta$.
 \label{rem:calibration-consistency}
 Proposition~\ref{prop:exact-endogeny} and the null result
 $\rho_{\mathrm{eff}}\lesssim 0.06$ of \S\ref{sec:calibration} measure
-different objects and do not conflict, though the point is worth making
-explicit. The sharpest reason is structural, not merely quantitative:
-in the synthetic model underlying \S\ref{sec:calibration}'s Arm~1 and
-Arm~2, a child's type (its residue mod $3$, exactly the
-$\ell=1$ object $Z_i$ of Proposition~\ref{prop:exact-endogeny}) is
-computed as a deterministic function of the root's phase and the
-branch index alone, reproducing the true cyclic admissibility
-structure (validated against real integers), and is entirely
-independent of the coupling intensity $\rho$ that Arm~2 varies: we
-checked this directly in the simulator's code (2000 seeds,
-$\rho\in\{0,0.3,0.7,1\}$, zero divergence in the resulting type
-sequence), and confirmed that this deterministic type structure
-reproduces the exact correlation of
-Proposition~\ref{prop:exact-endogeny} ($+1$ for
-$\Delta\equiv0\pmod6$, $-1/2$ otherwise) to four decimal places. In
-other words, the coarse correlation is already present, identically,
-in Arm~1 ($\rho=0$, the ``no coupling'' null) as it is in the real
-tree; $\rho$ instead governs a disjoint axis: whether sibling
-subtrees' \emph{content} (the fresh randomness setting each subtree's
-\emph{size}) is shared, not whether their root residues are
-correlated. The bound $\rho_{\mathrm{eff}}\lesssim0.06$ therefore could
-not have detected, or failed to detect,
-Proposition~\ref{prop:exact-endogeny}'s correlation in the first
-place: that correlation was never a form of coupling the calibration's
-null hypothesis removes. A secondary, quantitative reason reinforces
-this: even granting the coarse correlation full weight, its
-contribution to the \emph{aggregate} variance the calibration measures
-is diluted. Proposition~\ref{prop:exact-endogeny}'s covariance
-$C_{\mathrm{exact}}(\ell_0;\Delta)$ is finite and $D$-independent,
-while the aggregate means $\mathbb{E}[Z_i]$ grow exponentially with
+different objects. In the synthetic model underlying
+\S\ref{sec:calibration}'s Arm~1 and Arm~2, a child's type (its residue
+mod $3$, the $\ell=1$ object $Z_i$ of Proposition~\ref{prop:exact-endogeny})
+is a deterministic function of the root's phase and the branch index,
+reproducing the true cyclic admissibility structure and independent of
+the coupling intensity $\rho$ that Arm~2 varies. Checked directly in
+the simulator's code (2000 seeds, $\rho\in\{0,0.3,0.7,1\}$, zero
+divergence in the resulting type sequence), this deterministic type
+structure reproduces Proposition~\ref{prop:exact-endogeny}'s exact
+correlation ($+1$ for $\Delta\equiv0\pmod6$, $-1/2$ otherwise) to four
+decimal places. The coarse correlation is already present in Arm~1
+($\rho=0$) exactly as in the real tree; $\rho$ governs a disjoint axis,
+whether sibling subtrees' \emph{content} is shared, not whether their
+root residues correlate. The bound $\rho_{\mathrm{eff}}\lesssim0.06$
+could not have detected Proposition~\ref{prop:exact-endogeny}'s
+correlation in the first place.
+
+A second, quantitative reason points the same way.
+Proposition~\ref{prop:exact-endogeny}'s covariance
+$C_{\mathrm{exact}}(\ell_0;\Delta)$ is finite and $D$-independent, while
+the aggregate means $\mathbb{E}[Z_i]$ grow exponentially with
 truncation depth, so its normalized contribution
 $C_{\mathrm{exact}}/(\mathbb{E}[Z_1]\mathbb{E}[Z_2])\to0$ as depth
-increases, consistent with the excess of \S\ref{sec:calibration}
-decaying monotonically to zero with truncation depth. Separately, the
-finite-level $L^2$ computation below
-(Empirical Result~\ref{thm:l2-finite}) tests an upper-bound route,
-not the fine covariance itself; \S\ref{sec:calibration} measures the
-fine coupling directly and finds it small. Finally, the geometric branch
-weights $q\cdot 2^{-a}$ concentrate on small gaps $\Delta$: weighting
-pairs of branches by their natural second-moment mass
-$2^{-a_i}\cdot2^{-a_j}$ (the same weighting entering $\Cov$ above),
-$\Delta=2k$ has probability $3\cdot4^{-k}$, giving $\Pr[\Delta\equiv
-0\!\!\pmod6]=1/21$ against $\Pr[\Delta\not\equiv0\!\!\pmod6]=20/21$
-exactly, so the mean coarse correlation under this natural weighting is
-exactly $\mathbb{E}[\Corr]=\tfrac{1}{21}(+1)+\tfrac{20}{21}(-\tfrac12)=
--\tfrac37$ (verified in
-\texttt{collatz-endogeny/\allowbreak sec10-l2-refutation-and-jensen/}), consistent with the
-observed negative sign of the residual excess in
-\S\ref{sec:calibration}, though (per the structural point above) no
-such quantitative match is actually required to reconcile the two
-results. The two sections are therefore complementary rather than in
-tension: Theorem~\ref{thm:barrier} and
-Proposition~\ref{prop:exact-endogeny} establish that the recursion
-\emph{cannot force} sibling decorrelation (the per-pair coarse
-structure survives at every depth, in every model that respects the
-true admissibility rule), while \S\ref{sec:calibration} establishes
-that the actual aggregate residual, on the orthogonal axis of subtree
-\emph{content}, is nonetheless empirically small.
+increases: consistent with the excess of \S\ref{sec:calibration}
+decaying monotonically to zero. The finite-level $L^2$ computation
+below (Empirical Result~\ref{thm:l2-finite}) tests an upper-bound
+route, not the fine covariance itself, which \S\ref{sec:calibration}
+measures directly and finds small. Weighting branch pairs by their
+natural second-moment mass $2^{-a_i}\cdot2^{-a_j}$, $\Delta=2k$ has
+probability $3\cdot4^{-k}$, so $\Pr[\Delta\equiv0\!\!\pmod6]=1/21$
+against $20/21$, giving mean coarse correlation
+$\mathbb{E}[\Corr]=\tfrac{1}{21}(+1)+\tfrac{20}{21}(-\tfrac12)=-\tfrac37$,
+the same sign as the residual excess of \S\ref{sec:calibration}.
+Theorem~\ref{thm:barrier} and Proposition~\ref{prop:exact-endogeny}
+establish that the recursion cannot force sibling decorrelation; the
+actual aggregate residual, on the orthogonal axis of subtree content,
+is nonetheless empirically small.
 \end{remark}
 
 \begin{empirical}[Finite-level growth of the $L^2$ statistic]
@@ -1575,8 +1562,7 @@ divergence for any $p$.
 \end{empirical}
 
 Both empirical results above, and the Monte Carlo validation of the
-recursion, are in \texttt{collatz-endogeny/\allowbreak
-sec10-l2-refutation-and-jensen}.
+recursion, are in the accompanying repository.
 
 \begin{remark}[Connection to a conjectural tail exponent]
 If the limiting Syracuse density exists and satisfies
@@ -1604,19 +1590,17 @@ exact negative result}
 The second candidate lemma formalizes ``failure of the Weak Covering
 Conjecture at scale $\ell$ with margin $c$ implies a Bohr-type
 concentration configuration'', via the Littlewood--Offord/Riesz-product
-technique of Tao's 2011 blog post \cite{Tao2011} (not a paper; we flag
-this bibliographic correction explicitly, since it is a recurring
-source of miscitation). That post proves conditional separation
+technique of Tao's 2011 blog post \cite{Tao2011}, a recurring source of
+miscitation as a paper. That post proves conditional separation
 results for $2^a-3^k$ via Halász's method \cite{Halasz1977} and inverse
 Littlewood--Offord theory \cite{TaoVu2009,NguyenVu2011}, but
 acknowledges that Baker's theorem already gives an unconditionally
 stronger separation, so treats its own propositions as methodological
 exercises. Mahler's classical ``Z-number'' problem \cite{Mahler1968}
-concerns $\xi(3/2)^n$, a different (though structurally
-adjacent) object from ours (which concerns $\times 2\bmod 3^s$ at
-finite depth, not $\times 3/2\bmod 1$ on an infinite orbit); the honest
-anchor for our object is the Erdős/Lagarias family, including the
-general fractional-parts framework of
+concerns $\xi(3/2)^n$, a structurally adjacent but different object
+from ours ($\times2\bmod3^s$ at finite depth, not $\times3/2\bmod1$ on
+an infinite orbit). Ours anchors instead in the Erdős/Lagarias family,
+including the general fractional-parts framework of
 Flatto--Lagarias--Pollington
 \cite{Erdos1979,Lagarias2009,FlattoLagariasPollington1995}.
 
@@ -1864,10 +1848,8 @@ exponential argument for $q\ge5$ does not apply.
 Proposition~\ref{prop:primitive-hole},
 Proposition~\ref{prop:primitive-fibre-energy},
 Theorem~\ref{thm:multiscale-parseval}, and
-Theorem~\ref{thm:logarithmic-collision} above are all verified in
-\texttt{collatz-endogeny/\allowbreak sec10-primitive-spectral-analysis},
-including the general-$q$ case for
-$q=7,11,13,17,19$.
+Theorem~\ref{thm:logarithmic-collision} above are all verified,
+including the general-$q$ case for $q=7,11,13,17,19$.
 
 Theorem~\ref{thm:logarithmic-collision} needs $q$ prime and the maximal
 lifting hypothesis $v_q(2^d-1)=1$. Conditioning on the first exponent
@@ -1927,8 +1909,7 @@ infimum of $T_\ell(u,v)$ over every affine state flattens near $0.191$.
 Two natural certificate constructions for a uniform lower bound on
 $T_\ell(4,1)$ (state-by-state induction; a finite-resolution
 subinvariant) both fail, for reasons recorded in the accompanying
-repository. This is verified in
-\texttt{collatz-endogeny/\allowbreak sec10-diagonal-shifted-collision}.
+repository.
 
 \begin{definition}[Primitive spectral concentration
 $SC_{\rm prim}(\varepsilon)$]
@@ -2041,8 +2022,7 @@ member of the wider $\ell^r$ family ($r\ge1$) closes the gap either:
 the closing criterion is the same $\|Z\|_r<1/3$ for every $r$, and
 $\|Z\|_r$ increases with $r$, so $r=1$ is already the best choice and
 $r\to0$ (the Jensen exponent above) is a strict lower bound for the
-whole family (verified in
-\texttt{collatz-endogeny/\allowbreak sec10-l2-refutation-and-jensen/}).
+whole family, verified in the accompanying repository.
 
 \begin{proposition}[Annealed budget for a diffuse hole]
 \label{thm:propC}
@@ -2060,15 +2040,13 @@ telescoping relation; all three branches enter the covariance sum
 $\Cov\propto\sum_\xi S_1(\xi)S_2(\xi)^\ast$ of \S\ref{sec:regimes}.
 \end{proposition}
 
-We emphasize the correct framing, consistent with the fragilities
-listed above: this is a reduction of the spectrally \emph{concentrated}
-branch to the Erdős--Lagarias--Furstenberg family, conditional on the
-open stability step, together with a calculation showing that one
-annealed $\ell^1$ budget does not exclude the diffuse branch. It is not
-a reduction of the Weak
-Covering Conjecture to the classical Z-number problem, which
-Theorem~\ref{thm:propC} and the discussion above show would be
-imprecise.
+Given the fragilities listed above, this is a reduction of the
+spectrally \emph{concentrated} branch to the Erdős--Lagarias--Furstenberg
+family, conditional on the open stability step, together with a
+calculation showing that one annealed $\ell^1$ budget does not exclude
+the diffuse branch. It falls short of a reduction of the Weak Covering
+Conjecture to the classical Z-number problem: Theorem~\ref{thm:propC}
+and the discussion above show that stronger claim would be imprecise.
 
 \section{Contextualizing the barrier in the wider literature}
 \label{sec:context}
@@ -2241,11 +2219,7 @@ other seven contain open mathematical statements.
   variation $1-3^{-s}$ and mutual information $s\log3$ for every fixed
   path pair. Averaging over the branching measure on the sibling gap
   does not repair this in either total variation or mutual information.
-  A separate, ongoing investigation into whether the specific Fourier
-  coefficient the second-moment route consumes cancels under a
-  different average (over the two path indices rather than over the
-  free arithmetic parameter of the coupling theorem) is not reported in
-  this paper; O1 remains open at the status established above.
+  O1 remains open at the status established above.
 \item \textbf{Wirsching's Weak Covering Conjecture} (Conjecture~\ref{conj:wcc}),
   and the stronger weighted covering estimate needed for Tao's
   $\beta=1$ (\S\ref{sec:triangulation}). Proposition~\ref{prop:beta-wcc}
@@ -2258,7 +2232,11 @@ other seven contain open mathematical statements.
   pairwise anti-concentration inequality would close the remaining gap
   to $\beta_{\mathrm{eff}}\to1$, though it is not shown to be the only
   route; the natural $3$-adic Weyl-sum approach to it fails for a
-  structural, unitarity reason.
+  structural, unitarity reason. Proposition~\ref{prop:pairwise-nonsingular}
+  shows this pairwise inequality, if true, would itself rule out a
+  Haar-singular limit at $q=3$, so it may demand more than the Weak
+  Covering Conjecture strictly needs; a finite check through $\ell=16$
+  gives no sign of the singular scenario.
 \item \textbf{Wirsching's Conjecture 2} (\S\ref{sec:triangulation}),
   above the numerically tested Conjecture~3. Conjecture~1 is proved in
   Theorem~\ref{thm:wirsching-conj1}. Theorem~\ref{thm:microcanonical}
@@ -2371,10 +2349,8 @@ other seven contain open mathematical statements.
   model itself.
 \end{enumerate}
 
-Any progress on any one of (O1)--(O8) would very likely transfer, given
-the structural identities established in this paper, to progress on
-several of the others simultaneously. We regard this convergence as
-the paper's central finding.
+Given the structural identities established here, progress on any one
+of (O1)--(O8) would likely transfer to several of the others at once.
 
 \section*{Data Availability Statement}
 
@@ -2388,14 +2364,15 @@ by section, at
 residual-coupling experiment of \S\ref{sec:calibration}, the Weak
 Covering Conjecture test of \S\ref{sec:wcc}, the $K_\ell$/Jensen
 computations, the Chang residue-balance test, and the checks for
-Theorem~\ref{thm:wcc-large-deviation},
+Lemma~\ref{lem:2adic}, Theorem~\ref{thm:wcc-large-deviation},
 Theorem~\ref{thm:fresh-digit-coupling},
 Propositions~\ref{prop:primitive-hole} and
 \ref{prop:primitive-fibre-energy},
 Theorems~\ref{thm:multiscale-parseval} and
 \ref{thm:logarithmic-collision}, and the finite-level certificates for
-Theorem~\ref{thm:cascade-factor} (\texttt{sec9-worst-cylinder-cascade})
-and Theorem~\ref{thm:diagonal-collision}
+Theorem~\ref{thm:cascade-factor} and
+Proposition~\ref{prop:pairwise-nonsingular}
+(\texttt{sec9-worst-cylinder-cascade}) and Theorem~\ref{thm:diagonal-collision}
 (\texttt{sec10-diagonal-shifted-collision}).
 
 The pressure-equation facts of \S\ref{sec:pressure} (including
@@ -2502,6 +2479,12 @@ recorded in the corresponding companion paper's appendix
   arithmetic through $\ell=10$, certifying
   $\beta_{\mathrm{eff}}\le1.882712$; the monotonicity of $\min_u
   R_\ell(u)$ itself is proved, not merely checked at these levels.
+\item \emph{Pair inequality forces non-collapse}
+  (Proposition~\ref{prop:pairwise-nonsingular}): the implication is
+  proved; $\mathbb{E}[-\log N_\ell(U)]$ and $\Pr(N_\ell(U)\le x)$ for
+  fixed $x$ were computed over every unit mod $3^\ell$ through
+  $\ell=16$, giving no sign of the singular scenario the proposition
+  excludes conditionally.
 \item \emph{Diagonal shifted collision}
   (Theorem~\ref{thm:diagonal-collision}): the diagonal-term identity
   and the bound $K_{q,\ell}\ge(q/3)^\ell$ were checked to
