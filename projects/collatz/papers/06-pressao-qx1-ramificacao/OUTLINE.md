@@ -67,6 +67,10 @@ para q=3), `conj:tail-index` (martingale Haar-q-ádica $W_q$),
 `conj:transition-fine`; formaliza H-129 — objeto distinto de
 `conj:tail-index`, mesmo expoente previsto pelo mesmo mecanismo de
 renovação implícita, sem prova de equivalência entre os dois).
+Resultado empírico: `emp:real-trees` (§7, enumeração exaustiva em
+raízes fixas nomeadas; suporta `conj:transition-arithmetic` em 5 de 6
+combinações raiz/q, com a raiz $9$ em $q=7$ registrada como exceção
+clara, não escondida — ver rodada de convergência 5 no `CRITIQUE.md`).
 
 ## Dependência de outros papers
 

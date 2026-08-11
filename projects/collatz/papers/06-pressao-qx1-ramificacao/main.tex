@@ -477,7 +477,7 @@ not by itself sample the generic (non-periodic) environment that the
 quenched statement is really about. This illustrates freezing at a
 special, easily-computed class of roots. \S\ref{sec:empirical}
 below carries the corresponding generic-environment evidence, a
-handful of roots at $q=5,7$ sampled well away from any known short
+handful of roots at $q=5,7$ chosen well away from any known short
 cycle.
 
 The pressure identity transfers to the counting exponent of the i.i.d.
@@ -699,13 +699,14 @@ satisfies
  N_u(x)=x^{\alpha_-(q)+o(1)}.
 \]
 Thus the exponent is $1$ for $q=3$ and is strictly below $1$ for every
-odd $q\ge5$. At $q=3$ this is the Growth Exponent Conjecture of
-Kontorovich--Lagarias \cite{KontorovichLagarias2010} and
-Applegate--Lagarias
-\cite{ApplegateLagarias1995I,ApplegateLagarias1995II} for the classical
-Collatz reverse tree, namely $\pi_a(x)=x^{1+o(1)}$ for their analogue
+odd $q\ge5$. At $q=3$ this is the Growth Exponent Conjecture, namely
+$\pi_a(x)=x^{1+o(1)}$ for the classical Collatz reverse tree's analogue
 of $N_u(x)$ above (the count, up to $x$, of odd integers reaching a
-fixed root $a$ under repeated reverse iteration), open
+fixed root $a$ under repeated reverse iteration)
+\cite[Conjecture~2.1]{KontorovichLagarias2010}, which restates in
+exponent form the strictly stronger linear-growth conjecture of
+Applegate--Lagarias, $\pi_a(x)\ge c_ax$ for a constant $c_a>0$
+\cite[Conjecture~A]{ApplegateLagarias1995I}, open
 since 1995, with the best unconditional partial result remaining the
 one-sided bound $\pi_a(x)\ge x^{0.84}$ of Krasikov--Lagarias
 \cite{KrasikovLagarias2003}. Our pressure identity reproduces the
@@ -843,7 +844,10 @@ $W_i\stackrel{d}{=}2^{-a_0(i)\theta}\cdot W^*$ for a common $W^*$,
 i.e.\ residue class only rescales the candidate limit, it does not
 change its shape.
 Verified on $5000$ sampled roots across four headroom levels, with
-quantile ratios matching this prediction to within $2$--$9\%$; exact
+quantile ratios matching this prediction to within $1$--$19\%$ across
+the $36$ type-pair/quantile/headroom comparisons (most under $10\%$;
+the loosest is the top-$20\%$ quantile for the type with smallest
+predicted scale); exact
 only in the idealized i.i.d.\ model, as in Remark~\ref{rem:transfer-basis}.
 The same relation survives unchanged when $2$ is not a primitive root
 mod $q$ (the extra sterile classes of \S\ref{sec:setup}): restricted
@@ -860,7 +864,7 @@ $d$-independent cancellation ($a_0$ a bijection
 $\langle2\rangle\to\{1,\ldots,d\}$), to exactly $q^{\alpha-1}/(2^\alpha-1)$, the
 same pressure equation~\eqref{eq:pressure-closed-form}, so both the exponent and the
 scale-family direction survive intact; verified for $q=7,15$ to
-$1$--$4\%$. (Whether $2$ is a primitive root mod $q$ is, for prime
+$0.2$--$4.2\%$. (Whether $2$ is a primitive root mod $q$ is, for prime
 $q$, governed by Artin's primitive root conjecture, open in general
 but proved conditionally on GRH by \cite{Hooley1967}.)}
 exactly as it
@@ -994,8 +998,8 @@ is frozen.
 At $q=3$, the second root $\alpha^\ast=2$ is numerically the boundary
 value that the classical multivariate smoothing-transform theory
 \cite{KoleskoMentemeier2015} would classify as the \emph{critical
-case}, characterized by $m'(\alpha)=0$ at a root of $m(\alpha)=1$ (a
-boundary/degenerate case in the sense of Biggins--Kyprianou). Writing
+case}, characterized by $m'(\alpha)=0$ at a root of $m(\alpha)=1$, the
+theory's boundary or degenerate case \cite{KoleskoMentemeier2015}. Writing
 $m(\alpha):=q^{\alpha-1}/(2^\alpha-1)$ (the pressure function of
 \S\ref{sec:pressure} at $q=3$), we compute
 \[
@@ -1009,7 +1013,7 @@ minimum, so \emph{neither} can be a critical (double) root;
 criticality would require the two roots to merge, which does not
 happen at $q=3$. The correct classification
 of $\alpha^\ast=2$ is therefore as the \emph{second root with
-$m'>0$}: a Goldie/Guivarc'h-type regularly-varying tail regime
+$m'>0$}: a Goldie-type regularly-varying tail regime
 \cite{Goldie1991,BuraczewskiDamekMikosch2016}, not the critical case.
 This distinction matters operationally: the critical-case uniqueness
 theorem of \cite{KoleskoMentemeier2015} \emph{presupposes} exactly the
@@ -1019,24 +1023,35 @@ paper identifies as the arithmetic gap obstructing a full proof
 it could not have supplied a new tool for closing that gap. Tying this
 to \S\ref{sec:freezing}: ``second root with $m'>0$'' is exactly the
 freezing condition of Proposition~\ref{prop:always-frozen}: the
-Goldie/Guivarc'h regime name correctly classifies the algebraic root
+Goldie-type regime name correctly classifies the algebraic root
 $\alpha^\ast=2$ of $m(\alpha)=1$, but by itself says nothing about
 whether this root governs the \emph{quenched} tail of our specific
 arithmetic recursion. That is exactly the question
 Proposition~\ref{prop:always-frozen}, Conjecture~\ref{conj:tail-index},
 and Conjecture~\ref{conj:real-tree-tail} address directly.
 
-\section{Empirical confirmation on real reverse trees}
+\section{Empirical measurements on real reverse trees}
 \label{sec:empirical}
 
 \begin{empirical}[Direct enumeration on real reverse trees]\label{emp:real-trees}
-Independent depth-first enumeration of the reverse
-trees for $q=5$ and $q=7$, following the exact admissibility rule of
-\S\ref{sec:setup}, provides direct empirical support for
-Conjecture~\ref{conj:transition-arithmetic}:
-counting slopes per decade of $3$ independently sampled roots gave
-$\approx 0.62$--$0.66$ for $q=5$ (predicted $0.650919$) and
-$\approx 0.36$--$0.39$ for $q=7$ (predicted $0.373501$).
+Exhaustive depth-first enumeration of the reverse tree, following the
+exact admissibility rule of \S\ref{sec:setup}, up to $10^{10}$ from
+roots $7,11,19$ at $q=5$ and up to $10^{12}$ from roots $9,11,15$ at
+$q=7$, bears on Conjecture~\ref{conj:transition-arithmetic}. Excluding
+the first and last logarithmic decade at each root (small-count noise
+at the smallest checkpoints; systematic undercount at the largest, since
+the traversal prunes an entire branch once some ancestor along it
+exceeds the cutoff, even when a later descendant would fall back below
+it through a sub-unit branch displacement, so nodes near the cutoff are
+undercounted more than nodes well below it), the per-decade growth
+slopes at $q=5$ span $0.56$--$0.70$ (predicted $\alpha_-(5)=0.650919$)
+at all three roots. At $q=7$ (predicted $\alpha_-(7)=0.373501$), roots
+$11$ and $15$ span $0.36$--$0.40$, consistent with the prediction, but
+root $9$ stays at $0.29$--$0.34$ throughout every decade, including the
+excluded ones, a clear miss; its tree is also some $40$ times smaller
+at the cutoff ($2105$ nodes against $83466$ and $91878$ for roots $11$
+and $15$), consistent with a root whose finite-depth behavior has not
+yet entered the asymptotic regime the conjecture describes.
 \end{empirical}
 
 A more careful,

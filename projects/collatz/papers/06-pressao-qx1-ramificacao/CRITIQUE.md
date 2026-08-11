@@ -1089,3 +1089,94 @@ Contagem de rodadas limpas consecutivas: 0/3.**
 `pdflatex`), zero erro/referência indefinida; `\cite`/`\bibitem` e
 `\ref`/`\eqref`/`\label` conferidos por script, sem órfãos em nenhuma
 direção.
+
+### 2026-08-11 — rodada de convergência 5 (crítico, contexto fresco)
+
+Escopo: `main.tex` inteiro, com instrução explícita de distribuir
+esforço pelas citações da bibliografia ainda não conferidas em detalhe
+(11 das 18 entradas) e pela Regra 12 (rodar de fato os scripts do
+repositório `collatz-qx1-pressure` contra os números citados no §5/§7).
+
+**Resultado: 0 crítico, 2 maior, 1 moderado, 1 menor. Não limpa.
+Contagem de rodadas limpas consecutivas: 0/3.**
+
+| ID | Nível | Resumo | Status |
+|----|--------|--------|--------|
+| D-20 | maior | `emp:real-trees`: números alegados (0,62-0,66 em $q=5$; 0,36-0,39 em $q=7$) não batem com o que `empirical_qx1_tree.py` de fato produz; raiz $9$ em $q=7$ fica inteira abaixo de $0{,}34$, e "3 raízes independentemente amostradas" descreve raízes fixas literais no código, não uma amostra | fixed |
+| D-21 | maior | Atribuição da Growth Exponent Conjecture: "namely $\pi_a(x)=x^{1+o(1)}$" citada diretamente a Applegate-Lagarias 1995 I/II, mas a fonte primária (KL2010) chama a Conjectura A de AL de "the **stronger** conjecture"; AL1995I não contém a forma de expoente, só a forma linear mais forte. Verificação da rodada de convergência 2 ("é exatamente a mesma afirmação") estava incompleta | fixed |
+| D-22 | moderado | "Guivarc'h" e "Kyprianou" citados nominalmente (regime/terminologia) sem `\bibitem` correspondente na bibliografia de 18 itens | fixed |
+| D-23 | menor | `OUTLINE.md`: tabela de rótulos (Regra 10b) não listava `emp:real-trees`, o único ambiente `empirical` do documento | fixed |
+
+**Correções aplicadas (Regra 8c: cada achado verificado antes do conserto; consultei o advisor para a forma exata dos dois consertos maiores, por serem julgamento sobre como recaracterizar dados empíricos reais e uma atribuição a autor vivo nomeado):**
+
+- **D-20.** Rodei `empirical_qx1_tree.py` eu mesmo e reproduzi
+  exatamente os números que o crítico reportou. `emp:real-trees`
+  reescrito: raízes nomeadas explicitamente ($7,11,19$ em $q=5$;
+  $9,11,15$ em $q=7$, todas constantes fixas no script, não uma
+  amostra aleatória), a primeira e a última década excluídas com o
+  mecanismo explicado (a poda da DFS no corte $n_{\max}$ descarta um
+  ramo inteiro assim que um ancestral excede o corte, mesmo quando um
+  descendente mais fundo voltaria a ficar abaixo dele via um
+  deslocamento de ramo sub-unitário, subcontando desproporcionalmente
+  perto do corte), e o resultado real reportado sem esconder a raiz
+  $9$ de $q=7$ (fica em $0{,}29$-$0{,}34$ em toda década, um erro
+  claro, com a árvore $\sim40\times$ menor que as outras duas no
+  mesmo corte). Título da §7 trocado de "confirmation" para
+  "measurements". Também troquei "sampled" por "chosen" em outro
+  trecho do mesmo §5 que descreve o mesmo conjunto de raízes fixas,
+  pela mesma razão.
+- **D-21.** Fui à fonte primária de KL2010 (linha 845 do PDF
+  extraído): "Applegate and Lagarias [2, Conjecture A] made the
+  **stronger** conjecture that... $\pi_a(x) > c_ax$". Conferido também
+  contra o PDF de AL1995I: só contém a Conjectura A (forma linear) e a
+  Conjectura B (quantidade diferente, indexada por profundidade); a
+  forma de expoente $\pi_a(x)=x^{1+o(1)}$ não está literalmente em
+  nenhuma das duas, é a **Conjectura 2.1** do próprio KL2010 (que KL
+  atribui a Applegate-Lagarias, mas como reformulação mais fraca da
+  Conjectura A). Reescrito: a forma de expoente agora cita
+  `[Conjecture 2.1]{KontorovichLagarias2010}` diretamente, e é descrita
+  como reformulação em forma de expoente da conjectura linear mais
+  forte de Applegate-Lagarias, citada como `[Conjecture A]{ApplegateLagarias1995I}`.
+  `ApplegateLagarias1995II` removido desta frase (nunca foi aberto em
+  nenhuma rodada para esta alegação específica; continua citado, sem
+  órfão, em `rem:transfer-basis`). Registro por Regra 8c: a rodada de
+  convergência 2 (`CRITIQUE.md`, verificação de C-21/C-22 antiga)
+  registrou "é exatamente $\pi_a(x)\ge c_ax$, a mesma afirmação" sem
+  notar que essa é uma afirmação **mais forte**, não a mesma, que a
+  citada no `main.tex`; a verificação anterior não estava errada sobre
+  o conteúdo da Conjectura A em si, só incompleta sobre a relação entre
+  ela e o que o `main.tex` afirmava citar.
+- **D-22.** "Biggins--Kyprianou" (l.999) reescrito para apontar só para
+  `\cite{KoleskoMentemeier2015}`, já citado na mesma frase para o
+  mesmo "caso crítico". "Goldie/Guivarc'h" (l.1013, 1023) reescrito
+  para "Goldie-type", mantendo as citações já presentes
+  (`Goldie1991`, `BuraczewskiDamekMikosch2016`).
+- **D-23.** Linha adicionada ao `OUTLINE.md` para `emp:real-trees`.
+
+**Verificação proativa adicional (não veio do crítico desta rodada; o
+advisor apontou como risco real de reabrir a contagem na rodada 6 se
+não verificado agora).** A nota de rodapé de `conj:real-tree-tail`
+alega "quantile ratios matching this prediction to within $2$-$9\%$"
+para a bateria de 5000 raízes de `stage4_type_constants_check.py`, e
+"$1$-$4\%$" para `experiment_type_rescaling_sterility.py` ($q=7,15$).
+Nenhuma rodada anterior tinha reproduzido `stage4` até o fim (roda
+~13 min, acima do limite de 10 min por chamada); o crítico desta rodada
+deixou rodando em segundo plano sem concluir. Reproduzi as $5000$
+raízes eu mesmo, em 4 blocos sequenciais (bloqueantes, sem
+segundo-plano), salvando progresso incrementalmente entre chamadas com
+a mesma semente/parâmetros do script original, e agreguei exatamente
+como o script faz. Resultado real: desvio de $1{,}40\%$ a $18{,}52\%$
+nas 36 comparações tipo/quantil/headroom, não $2$-$9\%$. Rodei também
+`experiment_type_rescaling_sterility.py` ($q=7,15$) do zero: desvio de
+$0{,}17\%$ a $4{,}24\%$, não $1$-$4\%$ (o valor antigo já tinha sido
+visto pelo crítico desta rodada, que o chamou de consistente sem notar
+que contradizia a faixa impressa nas duas pontas). Corrigidas as duas
+faixas no `main.tex` ($1$-$19\%$ e $0{,}2$-$4{,}2\%$, arredondadas) e
+sincronizadas no `collatz-qx1-pressure/sec3-pressure-and-transition/README.md`
+(Regra 12; não toquei no `README-PT-BR.md` por instrução explícita do
+pesquisador desta sessão).
+
+**Verificação técnica pós-correção:** recompilado (2 passadas
+`pdflatex`), zero erro/referência indefinida; `\cite`/`\bibitem` e
+`\ref`/`\eqref`/`\label` conferidos por script, sem órfãos em nenhuma
+direção.
