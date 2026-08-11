@@ -603,13 +603,30 @@ The smoothing-transform model associated with the exact weight
 recursion of the reverse tree admits non-endogenous solutions (harmonic
 gauge factors, Proposition~\ref{prop:gauge}; the $2$-adic obstruction is
 excluded by Lemma~\ref{lem:2adic}) with a strictly positive
-conditional-variance floor $\sigma_Y>0$ at every resolution,
-statistically indistinguishable from the endogenous solution by
+conditional-variance floor $\sigma_Y:=\Var[\log Y]>0$ at every
+resolution, statistically indistinguishable from the endogenous solution by
 pressure, tail index, or any marginal we have tested. Consequently the
 exact weight recursion together with the statistics of the $3$-adic
 digits does not by itself force the residual gauge dispersion to
 vanish.
 \end{theorem}
+
+\begin{proof}
+Take $Y$ non-constant, bounded away from $0$ and $\infty$, invariant
+along the tree (a two-valued gauge on the auxiliary coordinate
+suffices). Proposition~\ref{prop:gauge} gives $X:=W\cdot Y$: it solves
+the exact same weight recursion as $W$ and agrees with it in pressure
+equation, tail index, and regression slope against $\mu$ (items
+(a)-(c)), while $\Var[\log X\mid\mathcal{F}_m]\to\sigma_Y>0$ as
+$m\to\infty$ (item (d)), so $X$ is not measurable with respect to the
+full digit $\sigma$-algebra, hence not endogenous by the criterion
+above. Lemma~\ref{lem:2adic} rules out a persistent $2$-adic memory of
+the root as the mechanism realizing such a $Y$ for the true arithmetic
+object, without excluding one manufactured from $v$ by some other
+means. $X$ is a non-endogenous solution, statistically
+indistinguishable from $W$ by every statistic tested, proving the
+claim.
+\end{proof}
 
 \begin{remark}[Barrier reading, and epistemic status]\label{rem:barrier-reading}
 Informally this delimits a class of arguments: we are aware of no
@@ -617,8 +634,8 @@ argument using only \textup{(i)} the exact weight recursion and
 \textup{(ii)} statistics of the $3$-adic digits that does not factor
 through this smoothing-transform model, and hence none that can
 distinguish the endogenous from the non-endogenous solution. We do
-\emph{not} formalize ``uses only (i) and (ii)'' as a precise class of
-techniques (in contrast to relativization or natural-proofs barriers in
+\emph{not} formalize ``uses only (i) and (ii)'' as a well-defined class
+of techniques (in contrast to relativization or natural-proofs barriers in
 complexity theory), so this is a heuristic delineation of known
 approaches rather than a formal impossibility theorem. The $2$-adic exclusion
 (Lemma~\ref{lem:2adic}) and the gauge construction
@@ -1316,12 +1333,13 @@ $\ell=500$ (error certified $\le10^{-8}$).
 \begin{empirical}[Numerical test of Wirsching's Conjecture 3]
 \label{thm:conjecture3}
 The decisive ratio $L_\ell := 3^{1-\ell}\varphi(3x_\ell^+)/\varphi(x_\ell^+)$,
-measured for $\ell=250,\dots,500$ in the CLT window ($u\in[-2,2]$),
-converges to the predicted value $2/3$ with deficit
-$\ell\cdot(2/3-L_\ell) \to 0.580\pm 0.001$, a coefficient
-independently reproduced by Berg--Krüppel's own asymptotic
-$\varphi_0$. This supports Conjecture~3 with certified numerical error
-on the tested range. Conjecture 2 remains open;
+measured for $\ell=200,\dots,500$ in the CLT window ($u\in[-2,2]$),
+converges to the predicted value $2/3$ for every $u$ tested. At the
+central sequence $u=0$, the deficit $\ell\cdot(2/3-L_\ell)$ stabilizes
+near $0.580$ ($0.5807$ at $\ell=200$, $0.5800$ at $\ell=500$), a
+coefficient matching Berg--Krüppel's own asymptotic $\varphi_0$. This
+supports Conjecture~3 with certified numerical error on the tested
+range. Conjecture 2 remains open;
 Theorem~\ref{thm:wirsching-conj1} settles Conjecture 1 independently of
 this computation.
 \end{empirical}

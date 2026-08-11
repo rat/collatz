@@ -59,6 +59,11 @@ retroativa.
 | C-033 | loop R3 | `thm:conjecture3` (teste numérico da Conjectura 3 de Wirsching) era apresentado no abstract/§1.2 como computação própria deste paper ("we test the third"), mas a Data Availability já o classificava como material restatado do companion 05, que tem a derivação idêntica com mais detalhe; mesmo padrão de C-026, não pego para a Conjectura 3 | maior | prévio | fixed |
 | C-034 | loop R3 | A subseção "Certified numerical test of Wirsching's Conjecture 3" continha, sem nova quebra de subseção, material sem relação com o título (decomposição microcanônica, ponte de limite local, tetracotomia de equivalência de ensembles) | moderado | prévio | fixed |
 | C-035 | loop R3 | "precise/precisely" usado 3 vezes fora de sentido técnico (Regra 4b §1) | menor | prévio | fixed |
+| C-036 | loop R4 | `thm:conjecture3` (linha 1319) restata "$\ell=250,\dots,500$" e "$0.580\pm0.001$"; o companion 05 (fonte primária) mede $\ell=200,\dots,500$ e reporta dois valores pontuais (0,5807 em ℓ=200; 0,5800 em ℓ=500), não uma barra de erro formal. Mesmo padrão de C-024/C-033, reintroduzido pela própria correção da Rodada 3 | maior | prévio | fixed |
+| C-037 | loop R4 | `\sigma_Y` (linhas 606, 632, `thm:barrier`/`rem:barrier-reading`) usado duas vezes sem nunca ser definido | moderado | prévio | fixed |
+| C-038 | loop R4 | `thm:barrier` (o único Teorema não-migrado que dá nome ao título do paper) não tinha `\begin{proof}`; a montagem a partir de `prop:gauge`(a)-(d) e da definição de endogenia nunca era escrita como passo de prova, embora matematicamente correta | moderado | prévio | fixed |
+| C-039 | loop R4 | "as a precise class of techniques" (linha 637), residual isolado de "precise" fora de sentido técnico que C-035 não pegou | menor | prévio | fixed |
+| C-040 | loop R4 | Construção "X rather than Y" (25+ ocorrências): o crítico levantou a hipótese de que "less about P than about Q" da Regra 4b cobriria também "rather than", mas marcou explicitamente como ponto de julgamento, não erro | menor | prévio | rejected: ver justificativa na Rodada 4 abaixo |
 
 Checagens mecânicas que passaram, registradas para não serem refeitas:
 34 chaves `\cite` contra 34 `\bibitem`, sem órfãos nem pendentes nas
@@ -1087,3 +1092,67 @@ soma-se à variância residual própria de $W$; só no limite sobra
 exclusivamente $\Var[\log Y]$. `main.tex` recompilado limpo depois
 desta segunda passada de correção; bibliografia e orçamento de
 antítese reconfirmados (nenhuma mudança nesses números).
+
+### Rodada 4 (subagente `general-purpose`, síncrono, contexto fresco): NÃO limpa
+
+Leu `main.tex` completo (2730 linhas) e `CRITIQUE.md` completo
+(incluindo as três rodadas anteriores). Reconferiu a prova de
+`prop:gauge` inteira, do zero, item por item, incluindo as três
+correções que a segunda opinião do Codex tinha motivado na Rodada 3; não
+achou nenhuma das três lacunas ainda presente (confirmadas incorporadas)
+nem nenhuma nova. 0 achados críticos.
+
+Achados: 0 crítico, 1 maior (C-036), 2 moderados (C-037, C-038), 2
+menores (C-039, C-040, sendo C-040 um ponto de julgamento explícito).
+
+**C-036 (maior).** A própria correção da Rodada 3 para `thm:conjecture3`
+(atribuir o teste ao companion) reintroduziu um defeito de Regra 11:
+restatou "$\ell=250,\dots,500$" e "$0.580\pm0.001$", mas o companion 05
+(fonte citada, `\cite{WirschingCompanion}`) mede $\ell=200,\dots,500$ e
+não reporta uma barra de erro formal, só dois valores pontuais (0,5807
+em $\ell=200$, 0,5800 em $\ell=500$). Verifiquei diretamente contra
+`papers/05-wirsching-2003-conjecturas/main.tex`, linhas 814-823: confere
+exatamente com o que o crítico descreveu.
+
+**C-037 (moderado).** `\sigma_Y` usado em `thm:barrier` (linha 606) e
+`rem:barrier-reading` (linha 632) sem definição em lugar nenhum do
+documento.
+
+**C-038 (moderado).** `thm:barrier`, o único Teorema não-migrado que dá
+nome ao título do paper, não tinha `\begin{proof}`. O crítico reconstruiu
+a derivação a partir de `prop:gauge`(a)-(d) e da definição de endogenia
+e não achou erro matemático, só a ausência do passo de prova escrito.
+
+**C-039 (menor).** "as a precise class of techniques" (linha 637),
+ocorrência isolada de "precise" fora de sentido técnico que a limpeza de
+C-035 (Rodada 3) não pegou.
+
+**C-040 (menor, rejeitado).** O crítico levantou que "X rather than Y"
+(25+ ocorrências) poderia contar contra o mesmo orçamento de antítese da
+Regra 4b via a cláusula "less about P than about Q", mas classificou
+isso explicitamente como "ponto de julgamento... registro para o
+produtor decidir, sem inflar a severidade", não como erro. Decisão do
+produtor: rejeitado. A Regra 4b enumera as formas contadas
+explicitamente ("not P: it is Q", "not merely P but Q", "P, not Q",
+"less about P than about Q") e "rather than" não é nenhuma delas; é uma
+construção comparativa comum na prosa acadêmica normal, sem a assinatura
+de "hedge-then-affirm" que motiva o banimento das formas com "not". Além
+disso, boa parte das ocorrências foi introduzida pelas próprias Rodadas
+1-2 deste loop exatamente como a reescrita recomendada para tirar "not X,
+Y" do orçamento; tratar "rather than" como uma nova violação do mesmo
+orçamento tornaria essa reescrita autodestrutiva. Se uma rodada futura
+reabrir isso com evidência nova (não apenas a mesma leitura possível da
+regra), será reconsiderado.
+
+**Correções aplicadas (produtor, antes da Rodada 5).** C-036: os dois
+números corrigidos para bater exatamente com o companion 05 ($\ell=200$,
+os dois valores pontuais em vez da barra de erro inventada). C-037:
+`\sigma_Y:=\Var[\log Y]` definido explicitamente no primeiro uso, em
+`thm:barrier`. C-038: `\begin{proof}` adicionado a `thm:barrier`,
+derivando o enunciado a partir de `prop:gauge`(a)-(d) (com $Y$
+tomado bounded away from $0$ e $\infty$, não-constante) mais
+`lem:2adic` para a exclusão do mecanismo específico. C-039: "precise"
+trocado por "well-defined". `main.tex` recompilado limpo (3 passadas
+`pdflatex`); `\cite`/`\bibitem` reconferidos (35/35, sem órfãos);
+"genuine/genuinely", em dash, e orçamento de antítese "not X, Y"
+reconfirmados sem mudança.
