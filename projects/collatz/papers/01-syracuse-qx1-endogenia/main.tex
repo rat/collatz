@@ -91,8 +91,9 @@ base-$3$ Fabius function, treats the second with a corrected reading
 of its actual target, and tests the third to certified numerical
 error \cite{WirschingCompanion}. Two candidate lemmas from Tao's bivariate
 Fourier-decay technique each fail to close the gap, for reasons we make
-exact. One yields a closed-form structure theorem, tested against
-sustained finite-level growth through level $17$. The other, an exact
+exact. One yields a closed-form structure theorem on sibling-aggregate
+correlation; a further condition that would close the remaining gap
+shows sustained growth through level $17$ instead of saturating. The other, an exact
 Jensen identity, quantifies a slack factor of $1.88$ in one annealed
 Fourier budget, a slack we show persists across the entire wider family
 of annealed $\ell^r$ budgets. A diagonalization in discrete-logarithm
@@ -344,7 +345,8 @@ exponent.
 \begin{theorem}[Structural transition: exponent, i.i.d.\ model]\label{thm:transition-model}
 Let $N(x)$ be the population counting function of the i.i.d.\
 branching-random-walk model whose annealed pressure is exactly
-$\rho_{\mathrm{ann}}(\alpha)=q^{\alpha-1}/(2^\alpha-1)$. Since
+$\rho_{\mathrm{ann}}(\alpha)=q^{\alpha-1}/(2^\alpha-1)$
+(\eqref{eq:pressure-closed-form}). Since
 $\alpha_-(q)$ is always unfrozen, $\log N(x)/\log x\to\alpha_-(q)$
 almost surely, for every odd $q\ge3$.
 \end{theorem}
@@ -1587,9 +1589,11 @@ which vanishes by orthogonality of characters unless
 $\xi_1\equiv-2^\Delta\xi_2\pmod{3^m}$, in which case it equals $1$.
 Substituting $\xi_1=-2^\Delta\xi_2=:-2^\Delta\xi$ collapses the double
 sum to the single sum over $\xi\bmod3^m$; the $\xi=0$ term is
-$S_1(0)S_2(0)=\mathbb E[Z_1]\mathbb E[Z_2]$, which cancels against the
-mean product subtracted in $\Cov$, leaving exactly the sum over
-$\xi\ne0$ stated.
+$3^{-2m}S_1(0)S_2(0)=3^{-2m}\bigl(3^m\mathbb E[Z_1]\bigr)\bigl(3^m
+\mathbb E[Z_2]\bigr)=\mathbb E[Z_1]\mathbb E[Z_2]$ (using
+$S_i(0)=\sum_rZ_i(r)=3^m\mathbb E[Z_i]$ for $w_i$ uniform on
+$\mathbb Z/3^m$), which cancels against the mean product subtracted in
+$\Cov$, leaving exactly the sum over $\xi\ne0$ stated.
 \end{proof}
 
 \begin{proposition}[Exact coarse endogeny]\label{prop:exact-endogeny}
@@ -2190,8 +2194,10 @@ $|z|<1/|c|\ni$ the unit circle (as $|c|\le1$), so by the mean-value
 property (Jensen's formula with no zeros enclosed) its average over
 $z=e(U_1)$, $U_1$ uniform, equals its value at $z=0$, namely $0$.
 Hence $\mathbb{E}_{U_1}\log|p\,e(U_1)+(1-p)Z'| = \log p$ for every
-realization of $Z'$, and averaging over $Z'$ gives
-$\mathbb{E}[\log|Z|]=\log p$, i.e.\ \eqref{eq:jensen}.
+realization of $Z'$ with $|c|<1$; the boundary case $|c|=1$, hence
+$p=1/2$ with $|Z'|=1$, requires every $U_g$ to coincide exactly, a
+probability-zero event, so it does not affect the average over $Z'$.
+Averaging gives $\mathbb{E}[\log|Z|]=\log p$, i.e.\ \eqref{eq:jensen}.
 \end{proof}
 
 Applying Theorem~\ref{thm:jensen} with $p=p_c=1/\gamma_c\approx0.558$
@@ -2458,7 +2464,8 @@ other seven contain open mathematical statements.
   per first-step class, O4's pointwise target would imply, via the
   same Parseval identity underlying Theorem~\ref{thm:multiscale-parseval},
   the $L^2$ finiteness condition of O7, a bridge in the opposite
-  direction from the one used elsewhere in this paper. A separate
+  direction from the one used elsewhere in this paper; this direction
+  is not derived here. A separate
   finite-level measurement of the primitive spectrum, and of how much
   mass the sublinear-conductor separation this regime's own argument
   requires actually removes, is not reported in this paper. O4 does not
@@ -2581,7 +2588,9 @@ Proposition~\ref{prop:pairwise-nonsingular}
 
 The pressure-equation facts of \S\ref{sec:pressure} (including
 Theorem~\ref{thm:pressure}, Proposition~\ref{prop:always-frozen}, and
-Theorem~\ref{thm:iid-tail}) are proved and verified in full in a
+Theorem~\ref{thm:iid-tail}, but excluding
+Conjecture~\ref{prop:transition-fine}, open in the companion paper
+too) are proved and verified in full in a
 companion paper and repository \cite{PressureCompanion}. The
 Kontorovich--Lagarias vs.\ Volkov results of \S\ref{sec:kl}
 (Empirical Results~\ref{thm:kl} and~\ref{thm:kl-calibrated}) are in a

@@ -95,6 +95,12 @@ retroativa.
 | C-069 | loop R13 | `prop:transition-fine` era `\begin{proposition}`, mas o mesmo enunciado é `\begin{conjecture}` no companion 06 (`conj:transition-fine`), explicitamente não provado lá; agravado pela frase de abertura de §sec:pressure ("results a companion paper establishes in full"), falsa especificamente para este item | maior | prévio | fixed |
 | C-070 | loop R13 | O cálculo de $\gamma\approx3,31$ (inversão abaixo de $p=1/2$) e a verificação de monotonicidade da família $\ell^r$ eram ditos "verified in the accompanying repository" no corpo, mas a entrada do Apêndice para `thm:jensen` só cobria o caso $p_c\approx0,558$ | moderado | prévio | fixed |
 | C-071 | loop R13 | `\eta` como "exception rate" em "Diagonal configuration"/"Chained configuration" era um terceiro sentido não desambiguado da mesma letra, além do escalar de $(\star3)$ e do peso $\eta_i$ de `lem:cov-spectral` | menor | prévio | fixed |
+| C-072 | loop R14 | Prova de `lem:cov-spectral`: "the $\xi=0$ term is $S_1(0)S_2(0)=\mathbb E[Z_1]\mathbb E[Z_2]$" omitia o fator $3^{-2m}$ que a soma já carrega; como escrito, a igualdade é falsa por um fator $3^{2m}$ | maior | prévio | fixed |
+| C-073 | loop R14 | Item O4 da Conclusão afirmava uma implicação matemática (O4→O7 via a identidade de Parseval) sem prova nem esboço, no mesmo padrão já flagueado por C-004 (2026-08-10); a correção de C-004 só tinha removido a narração de processo vizinha ("not previously recorded"), deixando a alegação em si intacta | maior | prévio | fixed |
+| C-074 | loop R14 | Abstract: "One yields a closed-form structure theorem, tested against sustained finite-level growth through level 17" lia como se `prop:exact-endogeny` (exata, provada) fosse testada empiricamente por `thm:l2-finite`, quando são duas entregas logicamente separadas da mesma subseção (uma prova exata; um teste independente de uma condição adicional necessária) | moderado | prévio | fixed |
+| C-075 | loop R14 | Prova de `thm:jensen` não cobria explicitamente o caso-limite $p=1/2$ ($|c|=1$), onde o argumento de Jensen precisa de justificativa extra (evento de probabilidade zero) | moderado | prévio | fixed |
+| C-076 | loop R14 | Data Availability Statement: "The pressure-equation facts of §sec:pressure (...) are proved and verified in full" não excluía explicitamente `Conjecture~\ref{prop:transition-fine}` (em aberto também no companion), mesma ambiguidade que C-069 já tinha corrigido em outro ponto do documento | moderado | prévio | fixed |
+| C-077 | loop R14 | C-017 (2026-08-10) estava marcado "fixed" na tabela mas a resolução registrada era só parcial (3 de 7 labels deliberadamente deixados sem referência, por Rule 8d); `eq:pressure-closed-form` era um deles e tinha um ponto natural de uso não aproveitado | menor | prévio | fixed (parcial: `eq:pressure-closed-form` referenciado; `rem:novelty-109` e `prop:halasz-deficit` permanecem standalone, sem necessidade real de `\ref` externo) |
 
 Checagens mecânicas que passaram, registradas para não serem refeitas:
 34 chaves `\cite` contra 34 `\bibitem`, sem órfãos nem pendentes nas
@@ -1709,3 +1715,80 @@ configuration". `main.tex` recompilado limpo (3 passadas `pdflatex`);
 `\cite`/`\bibitem` reconferidos (37/37, sem órfãos); orçamento de
 antítese reconfirmado em exatamente 2 (a reescrita evitou introduzir
 uma terceira ocorrência).
+
+### Rodada 14 (subagente `general-purpose`, síncrono, contexto fresco): NÃO limpa
+
+Leu `main.tex` completo (2907 linhas) e `CRITIQUE.md` completo
+(incluindo as treze rodadas anteriores). Pedido explícito de
+investigação: existe algum outro resultado restatado de companion cuja
+categoria real (Theorem/Proposition/Lemma vs. Conjecture/Empirical)
+diverge da categoria usada aqui? Verificou um a um; nenhuma divergência
+nova encontrada além da já corrigida (`prop:transition-fine`, Rodada
+13). Achou 2 erros reais em provas (nenhum crítico, mas ambos maiores)
+e 4 problemas de redação/estrutura.
+
+Achados: 0 crítico, 2 maiores (C-072, C-073), 3 moderados (C-074 a
+C-076), 1 menor (C-077).
+
+**C-072 (maior).** Verifiquei: a soma completa é
+$3^{-2m}\sum_{\xi_1,\xi_2}S_1(\xi_1)S_2(\xi_2)[\ldots]$; o termo
+$\xi=0$ dessa soma é $3^{-2m}S_1(0)S_2(0)$, não $S_1(0)S_2(0)$ puro.
+Com $S_i(0)=\sum_rZ_i(r)=3^m\mathbb E[Z_i]$ (para $w_i$ uniforme em
+$\mathbb Z/3^m$), $3^{-2m}S_1(0)S_2(0)=\mathbb E[Z_1]\mathbb E[Z_2]$
+está correto; mas a frase "the $\xi=0$ term is
+$S_1(0)S_2(0)=\mathbb E[Z_1]\mathbb E[Z_2]$" (sem o fator $3^{-2m}$
+explícito) afirma uma igualdade falsa por um fator $3^{2m}$ tomada ao
+pé da letra. O enunciado final do Lema não muda; é um passo
+intermediário da prova que estava escrito de forma dimensionalmente
+incorreta.
+
+**C-073 (maior).** Reabertura legítima de C-004 (2026-08-10), Regra
+8c: a alegação "O4's pointwise target would imply... the $L^2$
+finiteness condition of O7" nunca teve prova nem esboço; a correção
+histórica de C-004 só removeu a frase de narração de processo vizinha
+("not previously recorded"), deixando a alegação matemática em si
+intacta como afirmação categórica sem derivação.
+
+**C-074 (moderado).** O abstract descrevia `prop:exact-endogeny` e
+`thm:l2-finite` como se um "testasse" o outro; são duas entregas
+lógicamente separadas da mesma subseção do corpo ("The regime-2 lemma:
+structure theorem and a finite test of its natural sufficient
+condition"): uma é exata e provada, a outra é um teste empírico
+independente de uma condição adicional (`K_\infty<\infty`) que
+fecharia o resto da lacuna.
+
+**C-075 (moderado).** A prova de `thm:jensen` (hipótese $p\ge1/2$, com
+igualdade permitida) não tratava explicitamente o caso-limite
+$|c|=1$, onde a singularidade do integrando cai exatamente na
+fronteira do disco de Jensen.
+
+**C-076 (moderado).** A DAS dizia que "os fatos da equação de pressão
+de §sec:pressure ... são provados e verificados por completo",
+listando exemplos com "including" mas sem excluir explicitamente
+`Conjecture~\ref{prop:transition-fine}` (a mesma conjectura que C-069
+já tinha corrigido em outro ponto do documento).
+
+**C-077 (menor).** C-017 (sessão de 2026-08-10, antes deste loop)
+estava marcado "fixed" na tabela, mas sua resolução registrada dizia
+explicitamente que 3 dos 7 labels ficariam sem `\ref` por decisão
+deliberada (Rule 8d). Mismatch de bookkeeping entre status e resolução
+real.
+
+**Correções aplicadas (produtor, antes da Rodada 15).** C-072: passo
+reescrito com o fator $3^{-2m}$ explícito e a relação
+$S_i(0)=3^m\mathbb E[Z_i]$ mostrada. C-073: alegação de O4 marcada
+explicitamente "this direction is not derived here", removendo a
+afirmação categórica sem enfraquecer o conteúdo (continua descrevendo
+a direção de implicação como possibilidade a explorar, não como fato
+estabelecido). C-074: sentença do abstract reescrita separando os dois
+resultados. C-075: caso-limite $|c|=1$ tratado explicitamente na prova
+(evento de probabilidade zero, não afeta a esperança). C-076: exclusão
+explícita de `Conjecture~\ref{prop:transition-fine}` adicionada à
+mesma frase da DAS. C-077: `eq:pressure-closed-form` ganhou um
+`\eqref` natural em `thm:transition-model`, que já restata a mesma
+identidade; `rem:novelty-109` e `prop:halasz-deficit` mantidos sem
+`\ref` externo (avaliação própria: são remarks/proposições
+autocontidas, sem consumidor a jusante natural, prática comum e não
+defeituosa em papers de matemática). `main.tex` recompilado limpo (3
+passadas `pdflatex`); `\cite`/`\bibitem` reconferidos (37/37, sem
+órfãos); orçamento de antítese reconfirmado em 2.
