@@ -596,9 +596,11 @@ The classical growth theorem for a finite-variance supercritical
 Galton--Watson process gives, on its (positive-probability) survival
 event, $\frac1j\log Z_j^{(K)}\to\log r_L^{(K)}$ almost surely, where
 $Z_j^{(K)}$ is the population after $j$ such blocks. Since the root has
-infinitely many independent admissible children almost surely (the
-events $2^au\equiv1\!\!\pmod q$, $a\ge1$, are i.i.d.\ with probability
-$1/q$ each), and each spawns an independent copy of the whole
+infinitely many children almost surely in the i.i.d.\ model (each
+candidate exponent $a\ge1$ is, by construction, independently fertile
+with probability $1/q$, so infinitely many independent Bernoulli$(1/q)$
+trials give infinitely many successes almost surely, by the second
+Borel--Cantelli lemma), and each spawns an independent copy of the whole
 construction, at least one copy survives almost surely, rooted at an
 almost surely finite generation and displacement
 $\Delta<\infty$. Every one of the $Z_j^{(K)}$ retained individuals then
@@ -934,16 +936,17 @@ behavior for $p\ge1.7$, which would place $\iota$ higher than the
 predicted $1.536$ if taken at face value; the ratio of
 successive increments has not yet stabilized for $p\le1.6$ at $k=11$
 (unlike $p\ge1.7$, where it has), the classic signature of a system
-still relaxing toward its asymptotic exponent. Given the observed slow
-convergence rate for $q=5$ ($k^{-0.222}$ decay in the moment test, not
-an effect of the linear transfer operator's spectrum, which we
-verified to be exactly $\{\Lambda,0\}$ at every truncation level, i.e.\
-a perfect
-spectral gap with no isolated subdominant eigenvalue; the transient's
-origin lies in a separate, nonlinear critical layer and remains open),
-the transient decays by only about $7\%$ between
-$k=8$ and $k=11$; halving it would require $k\approx250$, far beyond
-what exhaustive enumeration over $5^k$ residues can reach. We therefore
+still relaxing toward its asymptotic exponent. This is not an effect of
+the linear transfer operator's spectrum, which we verified to be
+exactly $\{\Lambda,0\}$ at every truncation level, a perfect spectral
+gap with no isolated subdominant eigenvalue; the transient lives in a
+separate, nonlinear critical layer and remains open. A power-law fit
+to the increment-ratio decay across $k=5,\ldots,11$ did not converge to
+a stable exponent (the fitted rate varied by a factor of several across
+nearby values of $p$, the signature of an underpowered fit at five
+correlated points), so we do not have a reliable measurement of how
+quickly the transient decays, and cannot say how much larger $k$ would
+need to be to resolve it. We therefore
 cannot distinguish, from this data, between $\theta=1.536$ lying just
 below a nearby true index and lying further below one. The test is
 inconclusive, not disconfirming, and enumeration alone will not resolve

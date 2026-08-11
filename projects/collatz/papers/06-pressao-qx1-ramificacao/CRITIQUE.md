@@ -1321,3 +1321,52 @@ zero ocorrência remanescente em qualquer lugar do documento.
 `pdflatex`), zero erro/referência indefinida; `\cite`/`\bibitem` e
 `\ref`/`\eqref`/`\label` conferidos por script, sem órfãos em nenhuma
 direção.
+
+### 2026-08-11 — rodada de convergência 10 (crítico, contexto fresco)
+
+Escopo: `main.tex` inteiro, sétima reconferência independente das
+provas centrais, verificação cruzada com as notas de hipótese do
+projeto (`hypotheses/H-129-*.md`) para uma alegação numérica específica.
+
+**Resultado: 0 crítico, 1 maior, 2 moderado, 0 menor. Não limpa.
+Contagem de rodadas limpas consecutivas volta a 0/3** (a rodada 9
+tinha alcançado 1/3).
+
+| ID | Nível | Resumo | Status |
+|----|-------|--------|--------|
+| D-31 | maior | §5, teste exato de momento: o texto apresentava "$k^{-0{,}222}$ decay" e os números derivados dele (7% de decaimento entre k=8 e k=11; k≈250 para reduzir à metade) como fato medido, mas `hypotheses/H-129-q-adic-pole-analog-seymour.md` registra que a origem de "0,222" nunca foi localizada e que uma tentativa de ajustá-lo aos dados reais (χ em \|razão-1\|~k^-χ) foi feita e descartada (χ variou de 0,98 a 3,60 entre valores próximos de p, "sinal de sub-poder, não medida real", revisão do advisor citada na própria nota) | fixed |
+| D-32 | moderado | Prova de `thm:transition-model` (limite inferior), l.599-601: justificava "infinitos filhos quase certamente" citando a condição `2^au≡1 mod q` da árvore aritmética real (determinística, não i.i.d.), dentro da prova sobre o modelo i.i.d. idealizado (que não tem nó "u" nenhum) | fixed |
+| D-33 | moderado | `collatz-qx1-pressure/sec3-pressure-and-transition/README.md`, não em `main.tex`: duas referências a "paper §10", ao label `thm:lp-spectrum` e à pasta `sec10-l2-refutation-and-jensen/`, nenhum dos quais existe neste paper ou neste repositório (resíduo do split do paper 01) | fixed |
+
+**Correções aplicadas (Regra 8c: verifiquei D-31 contra a nota de
+hipótese antes de agir, exatamente o tipo de achado que pede
+verificação independente por ser uma alegação concreta sobre algo
+faltando/errado):**
+
+- **D-31.** Reescrito para não afirmar o expoente $0{,}222$ nem os dois
+  números derivados dele. O texto agora diz o que é de fato sustentado
+  pelos dados (a razão de incrementos sucessivos não estabilizou para
+  $p\le1{,}6$ em $k=11$) e relata honestamente que uma tentativa de
+  ajuste de lei de potência à razão de incrementos não convergiu para
+  um expoente estável (variação de fator de vários entre valores
+  próximos de $p$, sinal de ajuste sub-potente com 5 pontos
+  correlacionados), então o teste não permite quantificar quanto $k$
+  adicional seria necessário. A conclusão do parágrafo (teste
+  inconclusivo, não desconfirmador) não muda; só a alegação de precisão
+  quantitativa não sustentada foi removida.
+- **D-32.** Reescrito para justificar os infinitos filhos quase certos
+  diretamente pela construção do modelo i.i.d. (Bernoulli$(1/q)$
+  independente para cada $a\ge1$, segunda lei de Borel-Cantelli), sem
+  invocar a condição aritmética real `2^au≡1 mod q`.
+- **D-33.** Duas passagens do README corrigidas para descrever só o que
+  `lp_collision_spectrum.py` de fato sustenta neste paper
+  (`thm:lp-collision`, §3), sem a referência cruzada a `§10`/
+  `thm:lp-spectrum`/`sec10-l2-refutation-and-jensen/`. Corrigido só no
+  `README.md` em inglês; `README-PT-BR.md` tem os mesmos resíduos mas
+  não foi tocado, por instrução explícita do pesquisador desta sessão
+  de não editar arquivos PT-BR sem pedido.
+
+**Verificação técnica pós-correção:** recompilado (2 passadas
+`pdflatex`), zero erro/referência indefinida; `\cite`/`\bibitem` e
+`\ref`/`\eqref`/`\label` conferidos por script, sem órfãos em nenhuma
+direção.
