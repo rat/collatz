@@ -258,6 +258,18 @@ Recompilado limpo (3 passadas `pdflatex`), bibliografia e
 `\ref`/`\label` conferidos por script, sem órfãos em nenhuma direção.
 H-129 atualizada com a decisão de atribuição.
 
+**Propagado ao paper 01 (fora do escopo original, mas necessário)**: o
+agente do paper 01, em paralelo, já tinha atribuído `conj:tail-index`
+ao companion paper 06 e restatado a mesma evidência (§3 e O7 na
+Conclusão) antes desta correção existir, então ficou com o mesmo erro
+de atribuição. Corrigido nos dois lugares (§3 linhas 417-427, O7 na
+Conclusão), mesma mudança mínima: a evidência de raízes reais amostradas
+aponta para a conjectura companheira do paper 06, não mais para
+`conj:tail-index` diretamente; o enunciado da conjectura em si não
+mudou. Registrado como C-025 em `01-syracuse-qx1-endogenia/CRITIQUE.md`,
+cruzando com C-31 do paper 06. `main.tex` de 01 recompilado limpo,
+referências conferidas.
+
 ## Backlog do paper 05 (Wirsching 2003) esgotado
 
 H-168 era o único item aberto no escopo do paper 05 (H-125, H-133,

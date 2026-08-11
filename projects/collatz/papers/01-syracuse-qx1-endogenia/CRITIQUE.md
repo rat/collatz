@@ -38,6 +38,7 @@ rodada, mas registrar é).
 | C-022 | 2026-08-10 | §6 e §2 mantêm frases de posicionamento ("we highlight it early", "stands entirely on its own", "whose implementation") que a divisão tornou falsas | baixa | hoje | fixed |
 | C-023 | 2026-08-10 | Abstract não reflete H-166/H-169: ignora os dois teoremas novos e ainda anuncia como melhor resultado de colisão o enunciado que `thm:diagonal-collision` superou | média | hoje | fixed |
 | C-024 | 2026-08-10 | `thm:kl-calibrated` (linhas 726, 2367) diz "ten interval-widths"; o número certificado no companion paper 04 (`thm:kl-calibrated`, linhas 247-248, banda medida em três construções independentes = 0,0037, não a tolerância a priori 0,003) é "seven band-widths". C-002 desta mesma rodada corrigiu a contradição abstract/corpo sobre este resultado sem checar o número em si contra o paper 04, blindando o valor errado ao deixá-lo consistente internamente | média | hoje | fixed |
+| C-025 | 2026-08-10 | §3 (evidência de `conj:tail-index`) e O7 na Conclusão atribuíam as baterias de raízes reais amostradas (Hill/EVT em q=3, bateria de 100.000 raízes em q=5) diretamente a `conj:tail-index` (a martingale $W_q$); na verdade medem o fator de escala de crescimento da árvore real, uma conjectura formalmente separada (`conj:real-tree-tail`) no companion paper 06. Achado feito e corrigido pela sessão de redação final do paper 06 (ver C-31 em `../06-pressao-qx1-ramificacao/CRITIQUE.md`), propagado aqui para manter os dois papers consistentes | alta | prévio | fixed |
 
 Checagens mecânicas que passaram, registradas para não serem refeitas:
 34 chaves `\cite` contra 34 `\bibitem`, sem órfãos nem pendentes nas
@@ -759,3 +760,30 @@ Corrigido nas duas ocorrências (726, 2367): "ten interval-widths" →
 `a586159` até uma rodada estável, ver `OUTLINE.md`), então não há
 segunda língua a sincronizar aqui. `main.tex` recompilado limpo depois
 da correção.
+
+---
+
+## 2026-08-10 — C-025, propagado da sessão de redação final do paper 06
+
+Achado feito por outro agente (worktree isolado, dono do paper 06)
+durante a formalização de H-129 lá: as baterias de raízes reais
+amostradas citadas em §3 e em O7 (Hill/EVT em $q=3$; GPD/Hill/Vuong em
+100.000 raízes de $q=5$) eram descritas como evidência de
+`conj:tail-index` (a martingale Haar-q-ádica $W_q$), mas na verdade
+amostram raízes inteiras reais e medem $N_v(vH)/H^{\alpha_-(q)}$, o
+fator de escala de crescimento da árvore real, que o paper 06 formaliza
+como conjectura própria (`conj:real-tree-tail`, distinta de
+`conj:tail-index`; ver C-31 em
+`../06-pressao-qx1-ramificacao/CRITIQUE.md` para o achado completo e a
+verificação, incluindo consulta ao Codex antes de editar).
+
+Propagado para cá para manter os dois papers consistentes, já que 01
+restata a mesma evidência em §3 (linhas 417-427 antes da correção) e no
+item O7 da Conclusão. Corrigido em ambos os lugares: o enunciado da
+conjectura (`\begin{conjecture}...\label{conj:tail-index}`) não mudou,
+só a atribuição de qual evidência a apoia; uma frase nova em cada local
+aponta para a conjectura companheira do paper 06 e nota que o teste
+exato e direto de $W_q$ (soma sobre toda a população de resíduos, não
+amostra) continua inconclusivo. `main.tex` recompilado limpo (3
+passadas `pdflatex`); `\cite`/`\bibitem` e `\ref`/`\label` conferidos
+por script, sem órfãos em nenhuma direção.
