@@ -1603,3 +1603,56 @@ substitui uma varredura mecânica explícita arquivo por arquivo.
 
 **Verificação técnica:** `main.tex` inalterado nesta rodada; estado já
 confirmado limpo na verificação da rodada 16.
+
+### 2026-08-11 — rodada de convergência 18 (crítico, contexto fresco)
+
+Escopo: `main.tex` inteiro (décima quinta reconferência independente
+das provas centrais, com verificação simbólica sympy/mpmath de toda
+identidade algébrica fechada do paper, sem erro novo), mais arquivos
+de suporte, com varredura mecânica de travessão/vocabulário banido em
+cada um via script Python.
+
+**Resultado: 0 crítico, 1 maior, 1 moderado, 1 menor. Não limpa.
+Contagem de rodadas limpas consecutivas: 0/3.**
+
+| ID | Nível | Resumo | Status |
+|----|-------|--------|--------|
+| D-50 | maior | Regra 12: a evidência de Hill/EVT em $q=3$ (citada no resumo e em §5, "the predicted index $\alpha^\ast=2$ matches independent empirical measurements") não tem nenhum script correspondente em `collatz-qx1-pressure`, apesar da Data Availability Statement do `main.tex` e do README raiz do repositório afirmarem que "every claim"/"every numerical claim" é reproduzível ali; os scripts reais (H-104/H-108, `experiment_hill_tail_index.py`/`experiment_evt_frechet.py`) ficaram presos no repositório de pesquisa geral | fixed |
+| D-51 | moderado | Resumo, l.51-52: "The pressure identity alone does not establish the tail index of the density martingale there" — o resultado que resolve essa frase (`thm:frozen-singular`) prova degenerescência (limite zero), não um índice de cauda; "tail index" promete um expoente onde o que falta é saber se o objeto degenera | fixed |
+| D-52 | menor | `collatz-qx1-pressure/sec3-pressure-and-transition/README.md`, seção "Note on the paper's prose (history)": narração de processo ("An external review pointed out that an earlier version... This has already been corrected"), Regra 4b §3, nunca varrida nesta seção específica em 17 rodadas porque os scans mecânicos anteriores buscavam só travessão/vocabulário literal, não o padrão de narração | fixed |
+
+**Correções aplicadas:**
+
+- **D-50.** Investigação (Regra 8c) confirmou o achado: os scripts
+  originais dependem de uma cadeia de quatro pastas
+  (`E-090`→`E-076`/`E-018`) usando a construção de árvore reversa
+  CLÁSSICA (não acelerada, via duplicação + $(v-1)/3$), diferente da
+  construção acelerada que `count_tree` implementa. Verifiquei
+  algebricamente que, apesar da diferença de construção, a quantidade
+  medida ($G(v):=D(v)\cdot v$ com $D=$ densidade de nós ímpares até o
+  corte) é exatamente $N_v(vH)/H$, que em $q=3$ coincide com
+  $W_v(H)=N_v(vH)/H^{\alpha_-(3)}$ do `main.tex` porque
+  $\alpha_-(3)=1$ exatamente. Em vez de espelhar a cadeia de quatro
+  pastas (ou tentar reproduzir os parâmetros exatos do experimento
+  antigo, que usa corte $v\cdot H$ até $\sim\!2\times10^{11}$,
+  inviável para a árvore acelerada em tempo razoável dada a densidade
+  linear de $q=3$), escrevi `real_tree_tail_q3.py`, autocontido,
+  reusando `count_tree` já verificado, com parâmetros tratáveis
+  ($600$ raízes, $H=10^5$, $v\in[1001,50001]$, $\sim1$ minuto de
+  execução). Rodei do início ao fim: Hill em $2\%/5\%/10\%$ dá
+  $2{,}59/2{,}24/1{,}81$, todos dentro de um erro-padrão do previsto
+  $2{,}0$. Documentado no README (seção de arquivos e seção de
+  resultado), commitado e pushado no repositório `collatz-qx1-pressure`.
+- **D-51.** "does not establish the tail index of the density
+  martingale there" reescrito para "does not determine whether the
+  density martingale degenerates there", batendo com o que
+  `thm:frozen-singular` de fato prova (limite zero, degenerescência).
+- **D-52.** Seção reescrita sem a narrativa de correção: mantém o
+  conteúdo útil (o mecanismo correto, contrastado com o autômato
+  ingênuo que não funciona), sob o título "Mechanism note", sem
+  mencionar "revisão externa" ou "versão anterior corrigida".
+
+**Verificação técnica pós-correção:** `main.tex` recompilado (2
+passadas `pdflatex`), zero erro/referência indefinida;
+`\cite`/`\bibitem` e `\ref`/`\eqref`/`\label` conferidos por script,
+sem órfãos em nenhuma direção.
