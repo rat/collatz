@@ -2,6 +2,57 @@
 
 Última atualização: 2026-08-10
 
+## Redação final do paper 04 (dono do paper, worktree isolado)
+
+Pedido do diretor científico, depois de confirmado o backlog esgotado
+nos 4 papers: avançar para a passagem de redação final (Regra 5),
+Regra 4b (Protocolo de Escrita Acadêmica) aplicada no `main.tex`
+inteiro, não só nas partes tocadas por crítica anterior.
+
+Estado de entrada conferido primeiro: `main.tex` já dizia "seven
+band-widths" nos dois lugares (achado C-04 de uma crítica anterior);
+nenhum "ten"/"dez" restava em lugar nenhum do arquivo. H-170 (pista de
+Regra 8e sobre a leitura profunda da árvore aritmética) já estava
+fechada como inconclusiva antes desta passagem.
+
+Abstract reescrito por completo: as duas frases-monstro originais
+(uma encadeando três fatos com "; e", outra com ~85 palavras e um
+"que" duplo) viraram quatro parágrafos curtos de frases declarativas,
+mantendo os cinco números centrais (0,650919; 0,678; 0,639; viés
+0,038>Δ=0,027; banda de 0,0037; separação de sete larguras de banda)
+e a rotulagem de categoria (Regra 10b: "measurement...not a proof").
+Introdução cortou a definição elementar do mapa de Collatz
+($n\mapsto n/2$, $n\mapsto3n+1$) — marcador citado explicitamente na
+própria Regra 4b §5 ("Defining the Collatz conjecture for number
+theorists is a marker") e nunca usada no corpo, que só trabalha com o
+mapa acelerado definido em §2. Duas outras frases-monstro quebradas
+(uma em §6, uma no Empirical Result `thm:kl-calibrated`, ambas com
+vírgula+parêntese+dois-pontos na mesma frase). Parágrafo final da
+Discussão reescrito: cortada a sentença auto-referencial de abertura
+("This is a measurement...") e a promessa de "future work" (banida
+pela Regra 4b §4), com sujeito concreto dado à frase seguinte.
+
+Verificação técnica: recompilado limpo (`pdflatex` 2 passadas, zero
+`undefined reference`); script Python conferiu `\cite`↔`\bibitem` e
+`\ref`/`\label`/`\eqref` sem órfãos em nenhuma direção (3 labels sem
+`\ref` de volta, `sec:discussion`/`sec:intro`/`eq:kl-result`, não é
+erro, só ausência de cross-reference). Regra 8b: abstract/introdução/
+conclusão relidos contra o corpo final, os cinco números batem.
+Regra 12: `DATA_REPO.md` e o Data Availability do `main.tex` batem
+(`collatz-kl-volkov`); nenhum número factual mudou nesta passagem, só
+prosa, então não havia nada para sincronizar no repositório
+companheiro. `OUTLINE.md` atualizado (pendência do abstract-rascunho
+removida, substituída por um resumo desta passagem).
+
+**Pendência real para uma leitura humana antes de submissão**: o
+abstract reescrito nesta passagem não passou por uma nova rodada de
+crítica (Regra 8) — é a seção de maior risco do documento (Regra 4b
+§7) e foi revisada só pela mesma sessão que a escreveu. As duas
+pendências já conhecidas do paper 04 continuam de pé, sem relação com
+esta passagem: `main-pt-br.tex` não criado (decisão deliberada) e o
+drift de README-PT-BR de E-097/E-139 (números corrigidos só em
+inglês).
+
 ## Verificação independente e adversarial pós-varredura dos 4 papers (crítico, worktree isolado)
 
 Pedido do diretor científico: uma checagem adversarial de tudo o que as
