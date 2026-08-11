@@ -29,8 +29,6 @@ A Proof, a Microcanonical Decomposition, and a Certified Numerical Test}
 \maketitle
 
 \begin{abstract}
-% DRAFT -- rewrite by hand before submission (Rule 4b: abstracts carry
-% the highest marker density of any section in the paper).
 Wirsching (2003) reduces uniform positive predecessor density for the
 $3n+1$ map to a chain of five conditions, organized into three
 conjectures. Conjecture 1 concerns Wirsching's path-counting
@@ -38,19 +36,26 @@ generators. Conjecture 2 concerns a one-dimensional averaging operator
 $W_3$, whose unique $L^1$ fixed point $\varphi$ is a base-$3$ analogue
 of the Fabius function. Conjecture 3 concerns the asymptotics of
 $\varphi$ itself. We prove Conjecture 1 by a generating-function
-cancellation. Reading the primary source directly, we find that
-Conjecture 2's hypothesis carries no information about the residue
-coordinate the rest of the chain needs: the only bridge the source
-supplies is a strong-convergence theorem, uniform on bounded families
-but not in growing resolution. We give a microcanonical decomposition
-of the Syracuse law in terms of Wirsching's generators, prove an exact
-equivalence-of-ensembles theorem at fixed and sublinear precision, and
-prove that the same decomposition's latent cost vectors fail to
-converge at linear precision, a narrower fact than nonequivalence
-after projection, which remains open. A certified evaluation of
-$\varphi$ to error $10^{-8}$ through depth $\ell=500$ supports
-Conjecture 3, subject to a wider $\pm0.015$ extrapolation uncertainty
-outside that certificate.
+cancellation. Conjecture 2's hypothesis carries no information about
+the residue coordinate the rest of the chain needs: the primary source
+supplies only a strong-convergence theorem, uniform on bounded
+families but not in growing resolution. We give a microcanonical
+decomposition of the Syracuse law in terms of Wirsching's generators,
+prove an exact equivalence-of-ensembles theorem at fixed and sublinear
+precision, and prove that the same decomposition's latent cost vectors
+fail to converge at linear precision, a narrower fact than
+nonequivalence after projection, which remains open. The
+decomposition's own open hypothesis, a uniform lower bound on the
+generators relative to their mean, remains open too. At the support
+boundary, an exhaustive fixed-integer test shows no deterioration
+through $\ell=17$, while the population's low quantiles decay at every
+interior offset tested, a decay not confined to extreme-value
+statistics of the growing index set. A monotonicity certificate
+available for a related count in a companion paper does not transfer
+here. None of this closes Conjecture 2. A certified evaluation of
+$\varphi$ to error $10^{-8}$
+through depth $\ell=500$ supports Conjecture 3, subject to a wider
+$\pm0.015$ extrapolation uncertainty outside that certificate.
 \end{abstract}
 
 \section{Introduction}
@@ -63,17 +68,19 @@ Fabius function, arising as the limiting density of a normalized path
 count in the Collatz reverse tree. The paper reduces the target
 density statement to a chain of implications through three
 increasingly concrete conjectures, of which only the first has since
-been settled; the third has numerical support in this line of work,
-and the second, on which the whole chain pivots, has remained open.
+been settled; the third has numerical support below, and the second,
+on which the whole chain pivots, has remained open.
 
 \S\ref{sec:chain} fixes Wirsching's objects and states the chain.
 \S\ref{sec:conj1} proves the first conjecture.
 \S\ref{sec:microcanonical} develops the microcanonical decomposition of
 the Syracuse law that connects Wirsching's path counts to the weighted
-covering formulation of the endogeny-barrier literature this line of
-work also produces \cite{BarrierCompanion}, together with the
-equivalence- and nonequivalence-of-ensembles theorems that bound how
-much of the second conjecture's target local-limit methods reach.
+covering formulation of a companion paper on the endogeny barrier
+\cite{BarrierCompanion}, together with the equivalence- and
+nonequivalence-of-ensembles theorems that bound how much of the second
+conjecture's target local-limit methods reach and an empirical
+separation of the two confounds behind the decomposition's own open
+uniform lower bound.
 \S\ref{sec:conj3} reports the certified numerical test of the third
 conjecture.
 
@@ -158,7 +165,7 @@ facts about this chain matter for what follows.
 First, $(\star4)$ is a statement purely about the one-dimensional operator
 $W_3$: it never mentions Wirsching's generators, and carries no
 information about the residue coordinate that $(\star3)$ needs. The
-source offers two bridges between the two, not one: the averaged-generator
+source offers two bridges: the averaged-generator
 identity $\lim_\ell\int_{\mathbb Z_3^\times}\widetilde g_\ell(x,a)\,da=
 \varphi(x)$ for fixed $x\in\mathbb I_3$ \cite[\S6]{Wirsching2003}, and
 Wirsching's Theorem~3, strong convergence $S_\ell\to S_\infty$ on
@@ -260,12 +267,11 @@ $|k-\ell|\le\delta\sqrt\ell$,
 Then $\mu_\ell(a)\ge C_{\delta,\eta}3^{-\ell}$ uniformly in $a$ and
 $\ell$. In particular, condition $(\star3)$ implies a uniform lower bound
 on every cylinder of the Syracuse law, the estimate the weighted
-covering formulation of the endogeny-barrier literature needs
-\cite{BarrierCompanion}. The hypothesis $g_\ell(k,a)\ge\eta\bar
+covering formulation of the companion paper on the endogeny barrier
+needs \cite{BarrierCompanion}. The hypothesis $g_\ell(k,a)\ge\eta\bar
 g_\ell(k)$ is open: Empirical Result~\ref{thm:microcanonical-finite}
 below finds the minimum multiplicity is zero at $k=\ell$ at every
-level computed, so no $\eta>0$ works there yet; the theorem is
-conditional on closing that gap, not a report that it is closed.
+level computed, so no $\eta>0$ works there yet.
 \end{theorem}
 
 \begin{proof}
@@ -635,6 +641,90 @@ $10\le\ell\le16$. These values neither prove nor refute the uniform
 asymptotic lower bound.
 \end{empirical}
 
+\begin{empirical}[Separating extreme-value statistics from tail decay]
+\label{thm:quantile-diagnosis}
+The minimum in Theorem~\ref{thm:microcanonical}'s hypothesis and in
+Empirical Result~\ref{thm:microcanonical-finite} ranges over
+$2\cdot3^{\ell-1}$ units, a set that grows with $\ell$. Its decay could
+be extreme-value statistics of that growth, or real deterioration at
+some fixed integer $a$. Two measurements bear on the question.
+
+Over the $1458$ units below $3^7$, an exhaustive, non-growing set of
+integers, $\min_ag_\ell(\ell+5,a)/\overline g_\ell(\ell+5)$ reads
+$0.1019$, $0.0736$, $0.1073$, $0.0787$, $0.1161$, $0.1075$, $0.0958$,
+$0.0892$ for $\ell=10,\ldots,17$, the exact-count recursion of
+Empirical Result~\ref{thm:microcanonical-finite} run one level past its
+reported support calculation. Eight levels, consistent with no trend;
+the ordinary least-squares slope is an order of magnitude below the
+series' own spread. The minimum over all units at the same offset
+reads $0.0509$, $0.0368$, $0.0536$, $0.0197$, $0.0435$, $0.0215$,
+$0.0240$, $0.0297$; its index set grows by a factor $3$ at every
+level. This comparison is confined to $d=+5$: the same exhaustive test
+at the interior offsets below, where the population as a whole does
+decay, has not been run.
+
+A fixed low quantile of the population is immune to the set-size
+confound by construction: the value below which a fixed fraction of
+the population falls does not shrink just because the population
+grows. At $k=\ell+5$ the $q=10^{-3}$ quantile of
+$g_\ell(k,a)/\overline g_\ell(k)$ over units $a$ stays in
+$[0.10,0.12]$ for $\ell=10,\ldots,16$. At every other offset tested in
+Wirsching's window, $d=6,\ldots,12$, the same quantile decays at a
+rate of $0.93$--$0.96$ per level. At $d=+12$, for instance, it falls
+from $0.4326$ to $0.2877$ over the same range ($0.93$ per level),
+while the median falls from $1.0108$ to $0.9528$, so bulk drift
+accounts for only part of that fall. The offset $d=+5$ is the first
+with complete support at every level (Empirical
+Result~\ref{thm:microcanonical-finite}); its low quantile is dominated
+by residues whose count has only just left zero, a regime distinct
+from $d\ge6$, where support has been complete for several levels
+already.
+
+Outside the support boundary, the population's low quantiles decay at
+close to the minimum's own rate, well above the extreme order
+statistic too. Whether it reflects some fixed integer's
+ratio worsening, as against newly entering residues of large
+representative pulling the population down, is not settled by this
+measurement. The exhaustive fixed-set test above answers that question
+only at $d=+5$, where no deterioration occurs.
+\end{empirical}
+
+\begin{remark}[No monotonicity certificate for the minimum]
+\label{rem:no-monotone-certificate}
+The companion paper's worst-cylinder cascade-factor theorem certifies a
+different minimum ratio, for a different integer-covering count, by
+writing it as a convex combination of the previous level's ratios; this
+gives monotonicity, and promotes one finite computation to a bound at
+every higher level \cite{BarrierCompanion}. Dividing
+Theorem~\ref{thm:microcanonical}'s recursion by $\overline g_\ell(k)$
+gives the analogous expansion
+\[
+ \frac{g_\ell(k,a)}{\overline g_\ell(k)}=
+ \sum_{j\text{ admissible for }a}
+ \frac{\overline g_{\ell-1}(k-j)}{\overline g_\ell(k)}\cdot
+ \frac{g_{\ell-1}(k-j,a_{\rm old}(j,a))}{\overline g_{\ell-1}(k-j)},
+\]
+where $a_{\rm old}(j,a)$ is the level-$(\ell-1)$ source residue that
+recursion~\eqref{eq:microcanonical}'s construction assigns to $(j,a)$,
+and $j$ admissible for $a$ means $2^{j+1}a\equiv1\pmod3$, a condition
+on $a\bmod3$ alone that selects one parity class of $j$ out of the
+$2\cdot3^{\ell-1}$ available. The expansion is a genuine convex
+combination, certifying monotonicity the same way, exactly when its
+coefficient sum
+$S_\ell(k,a):=\sum_{j\text{ admissible for }a}\overline
+g_{\ell-1}(k-j)/\overline g_\ell(k)$ equals $1$ for every $a$. It does
+not: at $\ell=3$, $k=3$, exact evaluation gives $S_3(3,a)=9/7$ for
+$a\equiv1\pmod3$ and $12/7$ for $a\equiv2\pmod3$, and the same
+two-values-per-level pattern holds at $\ell=4$, $k=4,5$. The Haar
+average of $S_\ell(k,\cdot)$ over $a$ still equals $1$, which is why
+the certificate survives for probability vectors summed across
+residues, and fails for a single coordinate's minimum. The minimum
+itself confirms the failure directly: at $k=\ell+12$,
+$\min_ag_\ell(k,a)/\overline g_\ell(k)$ equals $9/28$, $648/1459$,
+$2430/5057$, $13851/30695$ for $\ell=4,5,6,7$ ($0.3214$, $0.4441$,
+$0.4805$, $0.4512$), rising and then falling.
+\end{remark}
+
 \begin{empirical}[Fourier budget for fixed-cost multiplicities]
 \label{thm:microcanonical-fourier}
 For $p_{\ell,k}(a)=g_\ell(k,a)/\sum_b g_\ell(k,b)$, additive Fourier
@@ -728,6 +818,21 @@ controls (\S\ref{sec:chain}); closing the gap needs an argument on
 $W_3$ itself, or a bridge between $(\star4)$ and $(\star3)$ uniform in
 growing resolution, which neither of the two the source supplies
 (\S\ref{sec:chain}) reaches.
+
+The open hypothesis in Theorem~\ref{thm:microcanonical} differs from
+the equivalence-of-ensembles results above: it is a uniform lower
+bound on the generators themselves. Empirical
+Result~\ref{thm:quantile-diagnosis} bears on it two ways. At the
+support boundary $d=+5$, an exhaustive test over a fixed, non-growing
+set of integers shows no deterioration through $\ell=17$. In the
+interior of the window, $d\ge6$, the population's low quantiles decay
+at close to the minimum's own rate, well above the extreme order
+statistic too, and whether that decay reflects some fixed integer's
+ratio worsening is untested at those offsets. Remark~\ref{rem:no-monotone-certificate}
+closes off the one available shortcut regardless: the level-to-level
+monotonicity certificate that works for a different integer-covering
+count in the companion paper does not transfer, with an explicit
+non-monotone counterexample.
 
 \section*{Data Availability Statement}
 

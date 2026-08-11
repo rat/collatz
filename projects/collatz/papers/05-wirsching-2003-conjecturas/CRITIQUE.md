@@ -38,6 +38,15 @@ Nenhum achado foi consertado nesta rodada (o crítico não conserta).
 | C-021 | 2026-08-10 | "imprecisely characterized in the literature that cites it" sem nenhuma citação; Lagarias, Dragičević et al. e Hafouta afirmados sem registro de leitura no projeto | média | fixed |
 | C-029 | 2026-08-10 | A equação (5) é atribuída a `thm:ensemble-divergence` ("the theorem gives"); ela decorre de `thm:sublinear-precision-ensemble`, não de uma cota de entropia | média | fixed |
 | C-030 | 2026-08-10 | Os dois passos estruturais que carregam §4 inteira (dobra dos expoentes pela ordem aplicável; bloco terminal determina o resíduo módulo `3^r`) são afirmados em uma frase cada, sem prova | média | fixed |
+| C-031 | 2026-08-10 | `thm:quantile-diagnosis` reporta dados até ℓ=17 sem dizer que `thm:microcanonical-finite` só cobre suporte até ℓ=16 | alta | fixed |
+| C-032 | 2026-08-10 | Parágrafo de composição do bucket inferior não normaliza pela taxa-base de inteiros pequenos; a razão observada/esperada é >1, oposto ao que o texto concluía | alta | fixed |
+| C-033 | 2026-08-10 | Mecanismo do Remark ("bijeção sobre resíduo inteiro") não fecha o argumento; `a_old(j,a)` nunca definido | alta | fixed |
+| C-034 | 2026-08-10 | Evidência de conjunto fixo só existe em `d=+5`; abstract generaliza para "through the levels tested" sem essa ressalva | alta | fixed |
+| C-035 | 2026-08-10 | Ilustração do decaimento em `d=+12` usa quantil `q=1e-4`, que o próprio H-168 registra como contaminado por estatística de extremos em `ℓ` baixo, dentro de um parágrafo que alega imunidade a esse viés | média | fixed |
+| C-036 | 2026-08-10 | Abstract/Discussão davam a entender que a leitura de "estatística de extremos" tinha sido descartada; o corpo é mais cauteloso | média | fixed |
+| C-037 | 2026-08-10 | Citação específica ao teorema do companion paper (`in preparation`) sem hedge sobre verificabilidade externa | baixa | rejected (prática padrão citar um companion desta mesma linha; status "in preparation" já revelado na bibliografia; ver rodada abaixo) |
+| C-038 | 2026-08-10 | "Eight levels, no trend" e depois "no deterioration at all" sobrestimam uma série cujos últimos quatro pontos caem a taxa comparável à decadência real alhures | baixa | fixed |
+| C-039 | 2026-08-10 | Regra 12: os dois novos scripts que sustentam o Remark (fração exata de `m_ell`, assimetria de peso `S_ell`) ainda não estavam no repositório companheiro no momento da crítica | baixa | fixed |
 | C-022 | 2026-08-10 | (?4) chamada de "target" da Conjectura 2 no abstract e na Discussão; na fonte é a hipótese, e (?3) é a conclusão | baixa | fixed |
 | C-023 | 2026-08-10 | §3 descreve a janela da Conjectura 3 como `A_δ` inteira; (⋆5) é sobre `Ã_{δ_5}` e a fonte exige `δ_5 > δ` na implicação | baixa | fixed |
 | C-024 | 2026-08-10 | Prefixo `thm:` nos quatro ambientes `empirical`; `\choose` de plain TeX em §3 contra `\binom` em §5 (aviso do amsmath) | baixa | fixed |
@@ -674,3 +683,98 @@ nenhuma); levar a tensão de volta ao pesquisador em vez de resolvê-la
 sozinho.
 
 Paper recompilado limpo (10 páginas, sem refs/citações órfãs).
+
+## Rodada 2026-08-10 (redação final): material novo de H-168/H-171
+
+Pedido do diretor científico: avançar para redação final (Regra 5) nos
+4 papers. Nesta linha, o pedido incluiu conferir se o material fechado
+nesta mesma sessão sob H-168 (`closed-inconclusive`) e H-171
+(`closed-confirmed`) já aparecia no corpo do paper (não aparecia) e, se
+pertinente, incorporá-lo. É pertinente: a pergunta de H-168 é
+exatamente a hipótese em aberto de `thm:microcanonical`
+(`g_ℓ(k,a) ≥ η ḡ_ℓ(k)`). Produzi um novo Empirical Result
+(`thm:quantile-diagnosis`) e um novo Remark
+(`rem:no-monotone-certificate`) em §4, mais ajustes correspondentes no
+abstract, introdução e Discussão. Antes de qualquer commit, rodei uma
+crítica adversarial de contexto fresco (subagente Opus, esforço
+máximo, Regra 8/15) só sobre esse material novo mais o abstract, que
+achou quatro problemas de severidade alta (C-031 a C-034) e cinco de
+severidade média/baixa (C-035 a C-039).
+
+**C-033, o achado mais sério**: a explicação original do Remark
+("bijeção sobre o resíduo inteiro em `ℓ-1`, incluindo múltiplos de
+3") não fechava o argumento e nunca definia `a_old(j,a)`. Verificação
+independente mostrou que essa explicação estava errada: `g_ℓ(k,b) = 0`
+para todo `b` múltiplo de 3 (decorre diretamente da recursão, o alvo
+nunca é congruente a 0 mod 3), então a soma sobre resíduos inteiros
+coincide exatamente com a soma sobre unidades, sem discrepância
+nenhuma ali. O mecanismo certo (rederivado do zero, verificado por
+script novo, `exact_weight_asymmetry.py` em
+`collatz-wirsching-2003/sec4-.../`) é outro: a admissibilidade de `j`
+para um `a` fixo depende só de `a mod 3` (a condição
+`2^(j+1)a ≡ 1 mod 3` fixa a paridade de `j`), então o peso
+`S_ell(k,a) := Σ_j ḡ_{ell-1}(k-j)/ḡ_ell(k)` sobre os `j` admissíveis só
+pode assumir dois valores por nível (um por classe de `a mod 3`), e
+nenhum dos dois vale 1 nos casos testados (`S_3(3,·) = 9/7, 12/7`;
+`S_4(4,·) = 6/5, 9/5`; `S_4(5,·) = 5/4, 7/4`). Isso também corrigiu,
+de passagem, uma lista de seis valores que o escalonamento original a
+Codex (documentado em H-168) tinha citado para `S_3(3,a)`: só os dois
+primeiros (`9/7`, `12/7`) sobrevivem à rederivação; os quatro
+restantes exigiam quatro valores distintos dentro de só duas classes
+de `a mod 3`, o que a fórmula não permite. Documentado como correção
+em `hypotheses/H-168-...md` (Regra 8c) e no README do experimento.
+
+**C-032, a composição do bucket inferior removida**: o parágrafo
+original (herdado quase literalmente da nota de H-168) dizia que o
+bucket inferior populacional era "quase inteiramente" resíduos novos,
+não `a` fixo piorando, usando a fração bruta de resíduos pequenos no
+bucket. O crítico apontou que essa fração não estava normalizada pela
+taxa-base de inteiros pequenos na população total, que também cai (e
+mais rápido). Recalculei a taxa-base à mão: cai de `1/3` (ℓ=9) para
+`~1{,}5×10^{-4}` (ℓ=16), contra uma fração observada no bucket de
+`0{,}5` a `0{,}0002`-`0{,}0008`, uma razão observada/esperada de
+`1{,}3×` a `5{,}2×`, ou seja sobre-representação, não neutralidade.
+Os números absolutos envolvidos são pequenos o bastante (contagens de
+2 a 7 resíduos pequenos por bucket) que essa razão é compatível com
+ruído de Poisson em torno de uma média esperada de ~4, não uma
+correção limpa em nenhuma direção; a leitura honesta é "inconclusivo
+com esse teste", não "confirma resíduos novos". Cortei o parágrafo
+inteiro em vez de reescrevê-lo fraco, e reescopei a conclusão do
+Empirical Result e do abstract para não generalizar além do que o
+teste exaustivo de conjunto fixo (que só cobre `d=+5`) realmente
+sustenta (C-034).
+
+**C-031, C-035, C-036, C-038**: correções mecânicas, mais estreitas.
+Uma frase nova explicita que a série de conjunto fixo em `ℓ=17` é uma
+extensão de um nível além do que `thm:microcanonical-finite` relata
+para o cálculo de suporte. A ilustração do decaimento em `d=+12`
+trocou de `q=10^{-4}` (que H-168 já registrava como contaminado por
+estatística de extremos em `ℓ` baixo) para `q=10^{-3}` (mesmo quantil
+usado no resto do parágrafo, sem essa contaminação), com os números
+recomputados diretamente do log primário. Abstract e Discussão
+reescritos para não sugerir que a hipótese de "estatística de
+extremos" foi descartada de forma limpa; ela sobrevive parcialmente
+(no limite de suporte `d=+5`) e falha no interior da janela, sem que
+isso resolva se a causa é algum `a` fixo piorando. "Eight levels, no
+trend" ganhou justificativa (inclinação por mínimos quadrados uma
+ordem de grandeza abaixo da dispersão da própria série) e a frase
+categórica "no deterioration at all" foi cortada.
+
+**C-037, rejected**: citar o teorema específico do companion paper
+(`\cite{BarrierCompanion}`), já listado como "in preparation" na
+bibliografia, é prática padrão para um companion desta mesma linha de
+pesquisa; o status de verificabilidade já está exposto ao leitor pela
+entrada da bibliografia, e não pareceu justificar um hedge adicional
+no corpo do texto.
+
+**C-039**: os dois scripts novos (`exact_min_ratio.py`,
+`exact_weight_asymmetry.py`) e seus logs foram commitados e
+empurrados em `collatz-wirsching-2003` antes deste commit no paper,
+com o README do experimento atualizado para apontar para eles e para
+registrar a correção de C-033.
+
+Depois das correções: reconferi abstract, introdução e Discussão
+contra o corpo final (Regra 8b), recompilei (`pdflatex` ×2, limpo, sem
+`undefined reference`) e reconferi `\cite`/`\bibitem`/`\ref`/`\label`
+(script Python, sem órfãos em nenhuma direção). Todas as entradas
+C-031 a C-039 fecham nesta mesma rodada; nenhuma ficou `open`.

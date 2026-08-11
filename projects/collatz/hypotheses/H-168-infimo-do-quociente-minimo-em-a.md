@@ -240,3 +240,29 @@ computação exaustiva onde era viável, escalonamento a um segundo modelo
 tentado e documentado, sem prova em nenhuma direção. Nada aqui muda a
 cadeia de Wirsching (ver H-134, seção de 2026-08-09): o alvo real que
 falta é um argumento sobre `W_3` em si, não sobre os geradores.
+
+## 2026-08-10: correção nos seis valores de `S_3(3,a)` (Regra 8c)
+
+Ao incorporar este material no paper 05, uma rodada de crítica
+independente (subagente Opus, contexto fresco) questionou se a
+explicação mecanicista da assimetria `S_ell(k,a)` de fato sustentava a
+conclusão, já que `a_old(j,a)` nunca era definido e a justificativa
+dada ("bijeção sobre o conjunto de resíduos inteiro") não fechava o
+argumento. Rederivei `S_ell(k,a)` do zero, junto com um script novo
+(`exact_weight_asymmetry.py`, `collatz-wirsching-2003/sec4-.../`), e o
+resultado corrige o texto acima: a admissibilidade de `j` para um `a`
+fixo depende só de `a mod 3` (a condição `2^(j+1)*a ≡ 1 mod 3` fixa a
+paridade de `j`, nada além disso), logo `S_ell(k,a)` só pode assumir
+**dois** valores por nível, um por classe de `a mod 3`, nunca quatro
+dentro da mesma classe. Os dois primeiros números que o Codex citou
+batem exatamente (`S_3(3, a≡1 mod 3) = 9/7`, `S_3(3, a≡2 mod 3) =
+12/7`, confirmado por computação exata independente); os quatro
+restantes da lista original (`6/7, 6/7, 3/7, 6/7`, atribuídos a
+`a=4,5,7,8`) estão errados, porque implicariam quatro valores
+distintos de `S_3(3,\cdot)` dentro de só duas classes de resíduo, o
+que a fórmula não permite. A verificação anterior ("sem discrepância")
+tinha conferido que a soma não é identicamente 1, não os seis números
+individuais. A conclusão de fechamento (H-166 não transfere, motivo
+estrutural) continua de pé, com uma explicação mais limpa e totalmente
+verificada; só os números ilustrativos mudaram. `main.tex` do paper 05
+cita agora só os dois valores confirmados.
