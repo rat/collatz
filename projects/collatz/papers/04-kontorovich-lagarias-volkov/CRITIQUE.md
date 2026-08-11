@@ -121,6 +121,33 @@ menor 9** (total 25 achados). NÃO limpa. Todos corrigidos nesta mesma
 passada (nenhum rejeitado). Contagem de rodadas limpas consecutivas
 após R2: **0**.
 
+| R3-M1 | 2026-08-11 (loop R3) | Remark do Setup descreve o Theorem 8.10 como contando inteiros; na verdade é sobre a progênie $I^*(x;\omega)$ do passeio ramificado $B[5^0]$, e a ponte para $\pi_{u,5}(x)$ é heurística ("proxy"), não parte do teorema | maior | fixed |
+| R3-M2 | 2026-08-11 (loop R3) | "factor bounded uniformly in x" ao colapsar a cadeia de duplicações é falso sem pressupor o próprio crescimento polinomial; o limitante correto é $1+\log_2x=x^{o(1)}$ | maior | fixed |
+| R3-M3 | 2026-08-11 (loop R3) | Discussão reintroduziu "the same exponent by the companion paper's argument" — overclaim que a R2-M2 já tinha removido; só a cota superior transfere | maior | fixed |
+| R3-M4 | 2026-08-11 (loop R3) | Resumo ainda dizia "controls of known exponent" (não convertido para "built to" na rodada 2) | maior | fixed |
+| R3-M5 | 2026-08-11 (loop R3) | Discussão atribuía a KL "their own accelerated branching model"; KL não formulam modelo de ramificação acelerado, e a frase contradizia o Remark do Setup (que acabou de dizer que KL trabalham no mapa não-acelerado); a ponte de colapso das duplicações (achado R1-15) tinha sumido do texto na rodada 2 | maior | fixed |
+| R3-M6 | 2026-08-11 (loop R3) | Contradição direta: §5 diz que a comparação calibrada usa "a different statistic" (não o estimador de janela); a Discussão dizia que os dois vieses (0,038 e ~0,0034) são "the same estimator at different depths" | maior | fixed |
+| R3-D1 | 2026-08-11 (loop R3) | "congruence-matched constructions" ora conta duas (o par a 0,650919), ora duas outras (uma a 0,650919, uma a 0,678); há na verdade três no total | moderado | fixed |
+| R3-D2 | 2026-08-11 (loop R3) | Resumo enumera três controles na 3ª frase sem reconectar com o processo já introduzido na 2ª, e introduz um quarto ("control built to exponent 0,678") sem dizer a que família pertence | moderado | fixed |
+| R3-D3/D6 | 2026-08-11 (loop R3) | "with a drawn residue at each node" descrevia a construção casada por congruência, mas é a descrição literal da construção irrestrita (`iid`); a casada sorteia um resíduo por pai, não por nó | moderado | fixed |
+| R3-D4 | 2026-08-11 (loop R3) | "is a systematic addressed next" no §5 não tinha retomada correspondente na Discussão | moderado | fixed |
+| R3-D5 | 2026-08-11 (loop R3) | "0,019 against 0,011" (viés dos controles a 0,678/0,650919) é da grade/estimador de janela, não da profundidade de calibração citada no Empirical Result; na profundidade de calibração a ordem se inverte (0,678: 0,00052; 0,650919: 0,00111) | moderado | fixed |
+| R3-D7 | 2026-08-11 (loop R3) | Data Availability diz "organized by section"; após a fusão da antiga §3 na introdução (rodada 2), a numeração mudou e o README do repositório ainda rotulava as pastas como §5/§6 | moderado | fixed |
+| R3-D8 | 2026-08-11 (loop R3) | Introdução, após a fusão da antiga §3, não dizia mais o que o paper mede nem o que encontra | moderado | fixed |
+| R3-n1 | 2026-08-11 (loop R3) | "within $0.0037$ of each other" é falso por uma unidade na última casa (valor real 0,0037077) | menor | fixed |
+| R3-n2 | 2026-08-11 (loop R3) | Orçamento de antíteses excedido (3 contra 2) após as correções da própria rodada 3 introduzirem novas | menor | fixed |
+| R3-n3 | 2026-08-11 (loop R3) | Empirical Result 1 fala em "windows" plural onde o objeto correto é "decades" (a janela é singular, fixa) | menor | fixed |
+| R3-n4/n5 | 2026-08-11 (loop R3) | "the congruence-matched constructions develop a heavy tail" restringe demais (o README fala das construções estocásticas em geral); "keeps closing" não é literal (o último passo se afasta) | menor | fixed |
+| R3-n6 | 2026-08-11 (loop R3) | "sampled uniformly below $10^4$" omite o limite inferior 101 da regra de amostragem real | menor | fixed |
+| R3-n7 | 2026-08-11 (loop R3) | "agree to 0,0035 over six seeds on the window estimator" descreve errado a estatística de `cyc_vs_cycq.py` (slope bruto no buffer mais fundo, sem o passo de Aitken) | menor | fixed |
+| R3-n8 | 2026-08-11 (loop R3) | $\pi_5(x)$ usado na introdução sem nunca ser definido | menor | fixed |
+| R3-n9 | 2026-08-11 (loop R3) | `OUTLINE.md` desatualizado outra vez (reincidência de R1-31): dizia "Rodada 1", listava a antiga estrutura de 7 seções, "só 2 entradas" de bibliografia | menor | fixed |
+
+Rodada 3 do loop de convergência: **crítico 0, maior 6, moderado 8,
+menor 9** (total 23 achados). NÃO limpa. Todos corrigidos nesta mesma
+passada (nenhum rejeitado). Contagem de rodadas limpas consecutivas
+após R3: **0**.
+
 Todos os 23 achados foram lidos de volta nesta mesma rodada (2026-08-10) e corrigidos no main.tex, exceto C-23, marcado `rejected` com razao registrada (decisao de ordem de submissao ja tomada no OUTLINE.md de 01: paper 06 primeiro; nao e bug de texto). C-13: o orcamento estrito da Regra 4b e de duas construcoes antiteticas no documento inteiro; apos a reescrita ficaram tres, todas com funcao desambiguadora real (residuo sorteado vs. verdadeiro; vies vs. ruido de amostra; largura de banda vs. separacao), nao floreio retorico -- marcado `fixed` com essa ressalva em vez de forcar uma reescrita que perderia precisao.
 
 ---
@@ -726,3 +753,93 @@ conferidos sem órfãos em nenhuma direção (três chaves agora:
 `KontorovichLagarias2009`, `PressureCompanion`, `Volkov2006`).
 
 **Contagem de rodadas limpas consecutivas após R2: 0.**
+
+---
+
+## 2026-08-11, rodada R3 (loop de convergência, crítico independente)
+
+Contexto fresco (novo subagente; uma tentativa anterior de rodada 3
+foi interrompida por um erro de infraestrutura de billing antes de
+terminar, sem produzir achados, e foi tratada como se não tivesse
+acontecido). Reexecutou `experiment_gate_richardson.py` (300 raízes),
+`summary.py` (b13/b15, décadas 8 e 10), `analyze.py`,
+`buffer_squeeze.py`, `cyc_vs_cycq.py` recompilando o C, e
+`validate_richardson_vs_production.py`. Leu o PDF primário de KL nas
+seções 7.2, 7.7/7.8, 8.7, 8.8 e 8.10, incluindo o enunciado literal do
+Theorem 8.10. Leu `papers/06-pressao-qx1-ramificacao/main.tex` e
+`BACKLOG.md` item 10.
+
+**Resultado: crítico 0, maior 6, moderado 8, menor 9** (23 achados,
+tabela acima, IDs R3-M1 a R3-n9). O achado mais sério (R3-M1) mostrou
+que o próprio Remark adicionado no Setup pela rodada anterior, para
+consertar um problema de Regra 11, introduziu um problema de Regra 11
+diferente: descrever o Theorem 8.10 como um teorema sobre inteiros,
+quando é um teorema sobre a progênie do passeio ramificado, com a
+ponte para a contagem de inteiros marcada pelos próprios KL como
+"proxy" heurístico, não provada. R3-M3 e R3-M5 mostraram que o processo
+de corrigir a Rodada 2 (achado R2-M2, trocar "provably" por "built to")
+não tinha sido aplicado de forma completa: a mesma alegação de
+identidade de expoente entre a construção irrestrita e o modelo de KL
+reapareceu parafraseada em dois lugares diferentes da Discussão
+("the same exponent by the companion paper's argument",
+"Kontorovich and Lagarias's own accelerated branching model"), e a
+segunda dessas frases nem sequer é atribuível a KL (eles não formulam
+modelo de ramificação acelerado nenhum) — uma regressão real do achado
+R1-15, que tinha adicionado a ponte de colapso corretamente e que a
+reescrita da rodada 2 perdeu.
+
+### Verificação (Regra 8c)
+
+Verifiquei o enunciado literal do Theorem 8.10 no PDF antes de aceitar
+R3-M1: confirmado, o teorema é sobre $I^*(x;\omega)$, "the number of
+progeny located at positions $Z(\omega_{k,j})\le x$", e o texto que
+segue diz explicitamente "The model statistic $I^*(x;\omega)$ functions
+as a **proxy** for the $5x+1$ count function $\pi_a^*(x)$" — achado
+confirmado como está. Também verifiquei R3-D5 rodando `summary.py b15
+10` e conferindo os desvios de cada controle em relação ao próprio
+alvo na década de calibração: `cycq 5.05398` desvia $0{,}00052$,
+`cycq 5.00000` desvia $0{,}00111$ — a ordem realmente inverte em
+relação ao par 0,019/0,011 da grade de janela, que é real mas vem de
+uma estatística e profundidade diferentes.
+
+### Resolução
+
+Todos os 23 achados corrigidos nesta passada, nenhum rejeitado.
+Mudanças de substância: reescrita do Remark do Setup para separar
+corretamente o Theorem 8.10 (afirmação sobre $I^*(x;\omega)$) da ponte
+heurística para $\pi_{u,5}(x)$, e correção do limitante do fator de
+colapso de $2$-ádico de "bounded uniformly" para "$1+\log_2x=x^{o(1)}$";
+varredura completa (não só busca textual por "provably") de toda
+alegação de identidade de expoente entre a construção irrestrita e o
+modelo de KL, no resumo e na Discussão, substituída por linguagem que
+só afirma a cota superior (via o argumento de primeiro momento do paper
+06) e deixa explícito que a extensão à cota inferior é o lead do
+`BACKLOG.md` item 10; reconciliação da contradição entre §5 e Discussão
+sobre se os dois vieses (0,038 e ~0,0034) vêm do "mesmo estimador";
+correção dos números do sistemático de flutuação para a profundidade de
+calibração real, em vez da profundidade de janela; correção da
+contagem de construções casadas por congruência (três, não duas) e da
+descrição de onde o resíduo é sorteado; realinhamento da tabela de
+seções do README do repositório de reprodutibilidade com a numeração
+atual do paper; duas frases novas ao final da introdução dizendo o que
+o paper mede e encontra; e `OUTLINE.md` atualizado por inteiro.
+
+Recompilado limpo (pdflatex 2x, 5 páginas); `\cite`/`\bibitem`
+conferidos sem órfãos em nenhuma direção (três chaves).
+
+### Nota de Regra 8e (lead da rodada R3)
+
+O achado R3-D5 é evidência nova para o mesmo lead já registrado
+(inversão do viés residual em função da flutuação, na profundidade de
+calibração): o controle mais flutuante (`cycq 5.05398`, o de maior
+variância) tem viés residual **menor** que o menos flutuante
+(`cycq 5.00000`) na década 1e9→1e10, o oposto do que a heurística
+"mais flutuação, mais viés" prevê nessa profundidade especificamente
+(a heurística vale na profundidade de janela, mais rasa). Isso não abre
+hipótese nova; é mais um dado a favor de dar ao item 2 já registrado
+("a leitura profunda fica sistematicamente abaixo de 0,650919") uma
+passada dedicada, e um sinal de que a relação flutuação-viés pode não
+ser monótona na profundidade, o que merece verificação antes de se
+apoiar nela de novo em qualquer argumento futuro.
+
+**Contagem de rodadas limpas consecutivas após R3: 0.**
