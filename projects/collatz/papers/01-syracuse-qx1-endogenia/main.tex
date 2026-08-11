@@ -476,44 +476,56 @@ carried unchanged from parent to child), then $X := W\cdot Y$ solves
 Let $\mathbb{Z}_3^\ast\times\mathcal{Y}$ be the product space on which
 the $3$-adic digit dynamics acts on the first factor exactly as on the
 reverse tree, while passing an auxiliary coordinate $y\in\mathcal{Y}$,
-independent of the digit dynamics, unchanged to every child. For
-non-constant $Y:\mathcal{Y}\to[c,C]$ with fixed constants
+independent of the digit dynamics, unchanged to every child. $W>0$ is
+the recursion's arithmetic solution (nonnegative by
+\eqref{eq:G-recursion}'s nonnegative weights), $\mathcal{F}_m$ the
+$\sigma$-algebra of the first $m$ digits, and $Z$ any
+$\mathcal{F}_\infty$-measurable statistic with $\log W$, $Z$
+square-integrable and $0<\Var(Z)<\infty$ (in particular $Z=-\log\mu$).
+For non-constant $Y:\mathcal{Y}\to[c,C]$ with fixed constants
 $0<c\le C<\infty$, the function $X(r,y):=W(r)\cdot Y(y)$ satisfies:
 \begin{enumerate}[label=(\alph*)]
 \item the same pressure equation~\eqref{eq:pressure-eq} (identical
   weights, identical roots $\alpha=1,\alpha^\ast$);
-\item the same tail index as $W$;
-\item the same linear regression slope $b$ of $\log X$ against any
-  digit-measurable statistic $Z$ (in particular, against $-\log\mu$),
-  up to a fixed additional dispersion;
-\item but $\Var[\log X \mid \text{first } m \text{ digits}] \to
-  \Var[\log Y] > 0$ for \emph{every} $m$, including $m=\infty$: the
-  conditional variance never collapses.
+\item the same tail index as $W$, whenever $\Pr(W>x)$ is regularly
+  varying;
+\item the same linear regression slope $b:=\Cov(\log X,Z)/\Var(Z)$;
+\item but $\Var[\log X\mid\mathcal{F}_m]=\Var[\log W\mid\mathcal{F}_m]
+  +\Var[\log Y]$ for every $m$, so
+  $\Var[\log X\mid\mathcal{F}_m]\to\Var[\log Y]>0$ as $m\to\infty$,
+  even though $\Var[\log W\mid\mathcal{F}_m]\to0$ ($W$ is
+  $\mathcal{F}_\infty$-measurable): the conditional variance floor
+  never collapses.
 \end{enumerate}
 \end{proposition}
 
 \begin{proof}
 (a) The pressure equation~\eqref{eq:pressure-eq} identifies $\alpha$
-from the branch weights of the recursion alone; $Y$ is carried
-unchanged from parent to child and never enters a weight, so
-multiplying any solution by $Y$ leaves the weight structure, and hence
-the roots $\alpha=1,\alpha^\ast$, untouched. (b) Since $0<c\le Y\le C$
-pointwise, $cW\le X\le CW$, so $\Pr(W>x/c)\le\Pr(X>x)\le\Pr(W>x/C)$ for
-every $x$: whatever regularly-varying tail index $W$ has, $X$ has the
-same index, with no independence hypothesis needed for this alone.
-Since $Y$ is in fact independent of $W$ by construction and bounded,
-hence $\mathbb{E}[Y^\alpha]<\infty$, Breiman's lemma
-\cite{Breiman1965} sharpens this to the exact asymptotic
-$\Pr(X>x)\sim\mathbb{E}[Y^\alpha]\Pr(W>x)$: the tail \emph{index} is
-preserved exactly, the tail \emph{constant} generally is not. (c) For
-any $Z$ measurable with respect to the digit $\sigma$-algebra,
-$\log X=\log W+\log Y$ with $Y$ independent of that $\sigma$-algebra
-gives $\Cov(\log X,Z)=\Cov(\log W,Z)+\Cov(\log Y,Z)=\Cov(\log W,Z)$, so
-the slope $b=\Cov(\log X,Z)/\Var(Z)$ is unchanged; $\Var(\log
-X)=\Var(\log W)+\Var(\log Y)$ adds pure noise around the same line.
-(d) The digit dynamics never touches the second factor, so
-conditioning on any finite or infinite number of digits leaves $Y$,
-and hence $\Var[\log Y]$, untouched.
+from the branch weights of the recursion alone, which is homogeneous
+linear; $Y$ is carried unchanged from parent to child and never enters
+a weight, so $X_v=\sum_i(\text{weight}_i)X_{vi}$ holds whenever
+$W_v=\sum_i(\text{weight}_i)W_{vi}$ does, leaving the weight structure,
+and hence the roots $\alpha=1,\alpha^\ast$, untouched. (b) Since
+$0<c\le Y\le C$ pointwise and $W\ge0$, $cW\le X\le CW$, so
+$\Pr(W>x/c)\le\Pr(X>x)\le\Pr(W>x/C)$ for every $x$: whenever $W$'s tail
+is regularly varying with index $-\alpha$, this sandwich alone forces
+the same index on $X$, with no independence hypothesis needed. Since
+$Y$ is in fact independent of $W$ by construction and bounded, hence
+$\mathbb{E}[Y^{\alpha+\varepsilon}]<\infty$ for every $\varepsilon>0$,
+Breiman's lemma \cite{Breiman1965} sharpens this to the exact
+asymptotic $\Pr(X>x)\sim\mathbb{E}[Y^\alpha]\Pr(W>x)$: the tail
+\emph{index} is preserved exactly, the tail \emph{constant} generally
+is not. (c) $\log X=\log W+\log Y$ with $Y$ independent of
+$\mathcal{F}_\infty\supseteq\sigma(Z)$ gives
+$\Cov(\log X,Z)=\Cov(\log W,Z)+\Cov(\log Y,Z)=\Cov(\log W,Z)$, so $b$
+is the same for $X$ and $W$; $\Var(\log X)=\Var(\log W)+\Var(\log Y)$
+adds pure noise around the same regression line. (d) $Y$ is
+independent of $\mathcal{F}_m$ for every $m$ (it never passes through
+the digit dynamics), so $\Var[\log X\mid\mathcal{F}_m]=\Var[\log
+W\mid\mathcal{F}_m]+\Var[\log Y]$ by independence of the two terms;
+$W$'s own conditional variance vanishes in the limit since $W$ is
+$\mathcal{F}_\infty$-measurable by definition, leaving exactly
+$\Var[\log Y]>0$.
 \end{proof}
 
 No statistic computed from pressure, tail index, or regression slope

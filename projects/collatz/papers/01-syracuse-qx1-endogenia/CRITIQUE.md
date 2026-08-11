@@ -1062,3 +1062,28 @@ trocadas por "exact"). `main.tex` recompilado limpo (3 passadas
 incluído, sem órfãos reais); "genuine/genuinely" e em dash
 reconfirmados em zero; orçamento de antítese "X, not Y" reconfirmado
 em exatamente 2 ocorrências.
+
+**Segunda opinião (Codex, `codex exec -s read-only`, modelo
+independente) sobre a prova de `prop:gauge`, antes do commit desta
+rodada.** Confirmou os quatro itens em substância, com três ressalvas
+reais incorporadas à versão final: (a) precisa da recursão ser
+homogênea (linear sem termo aditivo), o que já é o caso de
+\eqref{eq:G-recursion}, tornado explícito na prova; (b) precisa que a
+cauda relevante de $W$ seja de fato regularmente variante (hipótese
+condicional já implícita, agora declarada) e que $W\ge0$ (verdadeiro
+por \eqref{eq:G-recursion} ter pesos não-negativos, agora citado); (c)
+faltavam condições padrão de regularidade ($W>0$, integrabilidade
+quadrática de $\log W$ e $Z$, $0<\Var(Z)<\infty$), adicionadas ao
+preâmbulo da proposição; (d) a redação antiga, "$\to\Var[\log Y]$ for
+every $m$", era logicamente incoerente (convergência não se aplica
+"para todo $m$"; Codex marcou este item como incorreto como escrito).
+Reescrito com a decomposição correta,
+$\Var[\log X\mid\mathcal F_m]=\Var[\log W\mid\mathcal F_m]+\Var[\log
+Y]$ para todo $m$ finito, convergindo a $\Var[\log Y]$ quando
+$m\to\infty$ porque $W$ é $\mathcal F_\infty$-mensurável por
+definição (é a solução "aritmética"), o que também torna mais preciso
+por que a barreira existe: para $m$ finito a dispersão extra de $Y$
+soma-se à variância residual própria de $W$; só no limite sobra
+exclusivamente $\Var[\log Y]$. `main.tex` recompilado limpo depois
+desta segunda passada de correção; bibliografia e orçamento de
+antítese reconfirmados (nenhuma mudança nesses números).
