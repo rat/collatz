@@ -69,9 +69,10 @@ Collatz reverse tree.
 We prove that the tree's fixed-point recursion admits an \emph{endogeny
 barrier}, in the sense of Aldous--Bandyopadhyay
 \cite{AldousBandyopadhyay2005}: solutions of the form $G=W\cdot Y$, for
-$Y$ any bounded factor invariant along the tree, solve the same
-recursion as the canonical solution $W$ and match it in pressure, tail
-index, and regression slope against the limiting measure. The
+$Y$ any invariant factor along the tree bounded away from zero and
+infinity, solve the same recursion as the canonical solution $W$ and
+match it in pressure, tail index, and regression slope against the
+limiting measure. The
 recursion together with the statistics of the $3$-adic digits cannot by
 itself force this gap to vanish. A three-arm control experiment bounds
 the residual empirical coupling between sibling subtrees at
@@ -86,9 +87,9 @@ worst-cylinder mass, improving the previous bound of $2.306270$. A
 large-deviation argument shows that even ideal multiplicity inside the
 conjecture's own cost window falls short of what $\beta=1$ needs. A
 companion paper proves Wirsching's first 2003 conjecture on the
-base-$3$ Fabius function and treats the second, with a corrected
-reading of its actual target \cite{WirschingCompanion}; we test the
-third to certified numerical error. Two candidate lemmas from Tao's bivariate
+base-$3$ Fabius function, treats the second with a corrected reading
+of its actual target, and tests the third to certified numerical
+error \cite{WirschingCompanion}. Two candidate lemmas from Tao's bivariate
 Fourier-decay technique each fail to close the gap, for reasons we make
 exact. One yields a closed-form structure theorem, tested against
 sustained finite-level growth through level $17$. The other, an exact
@@ -138,8 +139,8 @@ $k\ge 1$, and define
 \end{equation}
 where $2^{-1}$ denotes the multiplicative inverse of $2$ modulo $3^n$.
 The random variable $\mathrm{Syrac}(\mathbb{Z}/3^n\mathbb{Z}) :=
-F_n(a_1,\dots,a_n)$ models, in a precise sense, the residue of an
-accelerated Collatz orbit modulo $3^n$ after $n$ odd steps, and Tao's
+F_n(a_1,\dots,a_n)$ models the residue of an accelerated Collatz orbit
+modulo $3^n$ after $n$ odd steps, and Tao's
 proof reduces the conjecture's target statement to controlling the
 distribution of this random variable, in particular via a Fourier
 decay estimate:
@@ -196,9 +197,9 @@ Sections~\ref{sec:wcc} and \ref{sec:triangulation} test Wirsching's
 Weak Covering Conjecture by direct computation through level $20$ and
 prove the unconditional bound $\beta_{\mathrm{eff}}\le1.882712$ on the
 related cost in Tao's $\beta=1$ conjecture. A companion paper proves
-Wirsching's first 2003 conjecture and treats the second, both
-restated without proof in \S\ref{sec:triangulation}, which also tests
-the third numerically \cite{WirschingCompanion}. Section~\ref{sec:kl} restates a companion
+Wirsching's first 2003 conjecture, treats the second, and tests the
+third numerically, all restated without proof in
+\S\ref{sec:triangulation} \cite{WirschingCompanion}. Section~\ref{sec:kl} restates a companion
 paper's calibrated separation of the Kontorovich--Lagarias and Volkov
 counting-exponent predictions for $5x+1$ \cite{KLVolkovCompanion}.
 Section~\ref{sec:lemmas} executes two candidate routes to Regime~3 of
@@ -350,7 +351,7 @@ almost surely, for every odd $q\ge3$.
 Conditional on a renewal-type refinement (spine decomposition and
 exponential tilting for the two-sided random walk underlying the
 model, not yet carried out in this exact form; see the companion paper
-for the precise gap in the literature), the counting function has the
+for the gap in the literature), the counting function has the
 sharper asymptotic $N(x)\sim W\cdot x^{\alpha_-(q)}$ almost surely and
 uniformly, including at $q=3$, for an almost surely positive,
 non-degenerate random scale factor $W$.
@@ -474,24 +475,52 @@ carried unchanged from parent to child), then $X := W\cdot Y$ solves
 \begin{proposition}[Gauge freedom]\label{prop:gauge}
 Let $\mathbb{Z}_3^\ast\times\mathcal{Y}$ be the product space on which
 the $3$-adic digit dynamics acts on the first factor exactly as on the
-reverse tree, while passing an auxiliary coordinate $y\in\mathcal{Y}$
-unchanged to every child. For bounded, non-constant $Y:\mathcal{Y}\to
-(0,\infty)$, the function $X(r,y):=W(r)\cdot Y(y)$ satisfies:
+reverse tree, while passing an auxiliary coordinate $y\in\mathcal{Y}$,
+independent of the digit dynamics, unchanged to every child. For
+non-constant $Y:\mathcal{Y}\to[c,C]$ with fixed constants
+$0<c\le C<\infty$, the function $X(r,y):=W(r)\cdot Y(y)$ satisfies:
 \begin{enumerate}[label=(\alph*)]
 \item the same pressure equation~\eqref{eq:pressure-eq} (identical
-  weights, identical operator $M_q(\alpha)$, identical roots
-  $\alpha=1,\alpha^\ast$);
+  weights, identical roots $\alpha=1,\alpha^\ast$);
 \item the same tail index as $W$;
-\item the same linear regression slope $b\approx 1$ against the
-  limiting measure $\mu$, up to a fixed additional dispersion;
+\item the same linear regression slope $b$ of $\log X$ against any
+  digit-measurable statistic $Z$ (in particular, against $-\log\mu$),
+  up to a fixed additional dispersion;
 \item but $\Var[\log X \mid \text{first } m \text{ digits}] \to
   \Var[\log Y] > 0$ for \emph{every} $m$, including $m=\infty$: the
   conditional variance never collapses.
 \end{enumerate}
 \end{proposition}
 
+\begin{proof}
+(a) The pressure equation~\eqref{eq:pressure-eq} identifies $\alpha$
+from the branch weights of the recursion alone; $Y$ is carried
+unchanged from parent to child and never enters a weight, so
+multiplying any solution by $Y$ leaves the weight structure, and hence
+the roots $\alpha=1,\alpha^\ast$, untouched. (b) Since $0<c\le Y\le C$
+pointwise, $cW\le X\le CW$, so $\Pr(W>x/c)\le\Pr(X>x)\le\Pr(W>x/C)$ for
+every $x$: whatever regularly-varying tail index $W$ has, $X$ has the
+same index, with no independence hypothesis needed for this alone.
+Since $Y$ is in fact independent of $W$ by construction and bounded,
+hence $\mathbb{E}[Y^\alpha]<\infty$, Breiman's lemma
+\cite{Breiman1965} sharpens this to the exact asymptotic
+$\Pr(X>x)\sim\mathbb{E}[Y^\alpha]\Pr(W>x)$: the tail \emph{index} is
+preserved exactly, the tail \emph{constant} generally is not. (c) For
+any $Z$ measurable with respect to the digit $\sigma$-algebra,
+$\log X=\log W+\log Y$ with $Y$ independent of that $\sigma$-algebra
+gives $\Cov(\log X,Z)=\Cov(\log W,Z)+\Cov(\log Y,Z)=\Cov(\log W,Z)$, so
+the slope $b=\Cov(\log X,Z)/\Var(Z)$ is unchanged; $\Var(\log
+X)=\Var(\log W)+\Var(\log Y)$ adds pure noise around the same line.
+(d) The digit dynamics never touches the second factor, so
+conditioning on any finite or infinite number of digits leaves $Y$,
+and hence $\Var[\log Y]$, untouched.
+\end{proof}
+
 No statistic computed from pressure, tail index, or regression slope
-against $\mu$ distinguishes $W$ from $W\cdot Y$: this is item (d) above.
+against $\mu$ distinguishes $W$ from $W\cdot Y$: this is items
+(a)-(c) above. Item (d) is the point of the construction: despite
+that, the conditional variance floor $\Var[\log Y]>0$ persists at
+every resolution, so $X$ is not endogenous.
 The technical name for this phenomenon is \emph{endogeny}
 \cite{AldousBandyopadhyay2005}: collapse of the conditional variance is
 equivalent to $X$ being measurable with respect to the $\sigma$-algebra
@@ -582,7 +611,8 @@ complexity theory), so this is a heuristic delineation of known
 approaches rather than a formal impossibility theorem. The $2$-adic exclusion
 (Lemma~\ref{lem:2adic}) and the gauge construction
 (Proposition~\ref{prop:gauge}) that Theorem~\ref{thm:barrier} rests on
-are fully rigorous and independently verified; the classification claim
+are both fully proved; Lemma~\ref{lem:2adic} is additionally checked
+numerically against direct computation, as recorded above. The classification claim
 above (that any such argument factors through the smoothing-transform
 model) can be stated unconditionally as ``standard machinery under
 [hypotheses], detailed verification pending'' rather than as
@@ -1263,7 +1293,10 @@ $\varphi(z_\ell)/\varphi_0(z_\ell)$ tested numerically below.
 
 \subsection{Certified numerical test of Wirsching's Conjecture 3}
 
-Using the exact self-similarity $X\overset{d}{=}(2U+X)/3$, the moments
+This subsection restates, without independent verification of its
+own, a companion paper's certified numerical test
+\cite{WirschingCompanion}. Using the exact self-similarity
+$X\overset{d}{=}(2U+X)/3$, the moments
 $M_i=\mathbb{E}[X^i]$ satisfy an exact rational recursion, giving a
 zero-truncation-error evaluation of $\varphi$ at depth $\ell$ up to
 $\ell=500$ (error certified $\le10^{-8}$).
@@ -1280,6 +1313,8 @@ on the tested range. Conjecture 2 remains open;
 Theorem~\ref{thm:wirsching-conj1} settles Conjecture 1 independently of
 this computation.
 \end{empirical}
+
+\subsection{Microcanonical decomposition and equivalence of ensembles}
 
 A microcanonical decomposition connects Wirsching's generators
 $g_\ell(k,a)$ to the Syracuse law $\mu_\ell$ directly.
@@ -1765,7 +1800,7 @@ expectations and have bounded $L^2$ norms. Equation
 \eqref{eq:multiscale-parseval} completes the equivalence.
 \end{proof}
 
-Theorem~\ref{thm:multiscale-parseval} identifies the precise overlap
+Theorem~\ref{thm:multiscale-parseval} identifies the exact overlap
 between O5 and the $L^2$ branch of O7. Proposition
 \ref{prop:primitive-fibre-energy} describes the increment created by
 the newest digit, while $K_\ell$ is the accumulated energy through
@@ -2377,8 +2412,8 @@ This paper's own claims (\S\ref{sec:endogeny} onward, excluding the
 pressure-equation facts restated without proof from
 \S\ref{sec:pressure} and the results restated from \S\ref{sec:kl} and
 \S\ref{sec:triangulation}'s Wirsching subsections, each attributed to
-its companion paper below) are verified in public scripts, organized
-by section, at
+its companion paper below) are proved in the text. The following are
+additionally verified in public scripts, organized by section, at
 \url{https://github.com/faculdade/collatz-endogeny}: the
 residual-coupling experiment of \S\ref{sec:calibration}, the Weak
 Covering Conjecture test of \S\ref{sec:wcc}, the $K_\ell$/Jensen
@@ -2601,6 +2636,10 @@ recorded in the corresponding companion paper's appendix
 \bibitem{Biggins1992} J.\ D.\ Biggins, \emph{Uniform convergence of
   martingales in the branching random walk}, Annals of Probability
   \textbf{20}(1) (1992), 137--151.
+
+\bibitem{Breiman1965} L.\ Breiman, \emph{On some limit theorems similar
+  to the arc-sin law}, Theory of Probability \& Its Applications
+  \textbf{10}(2) (1965), 323--331.
 
 \bibitem{ApplegateLagarias1995I} D.\ Applegate and J.\ C.\ Lagarias,
   \emph{Density bounds for the $3x+1$ problem I: tree-search method},

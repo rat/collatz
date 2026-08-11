@@ -55,6 +55,10 @@ retroativa.
 | C-029 | loop R2 | Abstract e §3 atribuíam a Growth Exponent Conjecture (Kontorovich-Lagarias/Applegate-Lagarias, expoente $1$) à raiz não-trivial $\alpha_+=2$ em $q=3$, e diziam "The root is always unfrozen" para essa mesma raiz; `conj:transition-arithmetic` e `prop:always-frozen` já deixavam claro no próprio corpo que é $\alpha_-=1$ que reproduz a GEC e é sempre descongelada, e que $\alpha_+$ é sempre congelada | maior | prévio | fixed |
 | C-030 | loop R2 | Construção de antítese "X, not Y" (forma simples, sem "merely") ocorria em pelo menos 26 lugares adicionais além das 2 já sancionadas no orçamento da Regra 4b | menor | prévio | fixed |
 | C-031 | loop R2 | Três resíduos de narração de processo (Regra 4b §3): "the entropy implication previously asserted here is invalid" (linha ~971, termo nunca definido em outro lugar); "a reading that corrects how this project's own earlier attempt on Conjecture 2 had been framed" (§9.2); "not the one originally supposed" (O3 da Conclusão) | menor | prévio | fixed |
+| C-032 | loop R3 | `prop:gauge` (a construção de gauge freedom que sustenta `thm:barrier`, o único Teorema não-migrado da "endogeny barrier") tinha 2 de suas 4 alegações, (b) mesmo índice de cauda e (c) mesmo coeficiente de regressão, sem prova, sem citação e sem verificação computacional, apesar de `rem:barrier-reading` declará-la "fully rigorous and independently verified"; notação `M_q(\alpha)` usada uma única vez, nunca definida; "regression slope $b$" nunca definido em nenhuma das 4 ocorrências | crítico | prévio | fixed |
+| C-033 | loop R3 | `thm:conjecture3` (teste numérico da Conjectura 3 de Wirsching) era apresentado no abstract/§1.2 como computação própria deste paper ("we test the third"), mas a Data Availability já o classificava como material restatado do companion 05, que tem a derivação idêntica com mais detalhe; mesmo padrão de C-026, não pego para a Conjectura 3 | maior | prévio | fixed |
+| C-034 | loop R3 | A subseção "Certified numerical test of Wirsching's Conjecture 3" continha, sem nova quebra de subseção, material sem relação com o título (decomposição microcanônica, ponte de limite local, tetracotomia de equivalência de ensembles) | moderado | prévio | fixed |
+| C-035 | loop R3 | "precise/precisely" usado 3 vezes fora de sentido técnico (Regra 4b §1) | menor | prévio | fixed |
 
 Checagens mecânicas que passaram, registradas para não serem refeitas:
 34 chaves `\cite` contra 34 `\bibitem`, sem órfãos nem pendentes nas
@@ -951,3 +955,110 @@ completo sem elas). `main.tex` recompilado limpo (3 passadas
 conferidos por script (34/34, sem órfãos reais; um falso positivo do
 script de verificação por um `\cite{Foo, Bar}` com espaço após a
 vírgula, não um erro no documento).
+
+### Rodada 3 (subagente `general-purpose`, síncrono, contexto fresco): NÃO limpa
+
+Leu `main.tex` completo (2679 linhas) e `CRITIQUE.md` completo
+(incluindo Rodadas 1 e 2). Confirmou independentemente que C-029
+(α₋/α₊) e C-028/C-030 (orçamento de antítese) se sustentam: revisou as
+27 ocorrências de "rather than" uma a uma e não achou nenhuma inversão
+de sentido matemático. Achou 4 problemas novos, incluindo o primeiro
+achado crítico do loop de convergência.
+
+Achados: 1 crítico (C-032), 1 maior (C-033), 1 moderado (C-034), 1
+menor (C-035).
+
+**C-032 (crítico).** `prop:gauge` ("Gauge freedom", linha ~474)
+enuncia quatro itens (a)-(d) sobre $X:=W\cdot Y$. O bloco vai direto
+de `\end{enumerate}` para `\end{proposition}`: não há
+`\begin{proof}`. Os itens (b) ("the same tail index as $W$") e (c)
+("the same linear regression slope $b\approx1$... up to a fixed
+additional dispersion") são fatos probabilísticos não-triviais sem
+prova, sem citação de suporte, e usando notação nunca definida em
+lugar nenhum do documento (`M_q(\alpha)` ocorre uma única vez, dentro
+do próprio enunciado; "regression slope $b$" nunca é definido em
+nenhuma das 4 ocorrências no arquivo inteiro). `rem:barrier-reading`
+declara a proposição "fully rigorous and independently verified", e a
+pasta do repositório correspondente
+(`collatz-endogeny/sec4-endogeny-barrier/`) só verifica
+`lem:2adic`, não `prop:gauge`. `thm:barrier`, o único Teorema
+não-migrado que é a peça central do título do paper (a "endogeny
+barrier"), cita `prop:gauge` como um dos dois ingredientes "fully
+rigorous" de que depende.
+
+Consultei o `advisor()` antes de agir (Regra 11b: julgamento
+matemático real, "provar ou enfraquecer"). Resposta: provar, não
+enfraquecer, porque as provas de (b) e (c) são curtas e o material já
+existe no histórico do projeto. Verifiquei essa afirmação
+independentemente (Regra 8c) lendo
+`hypotheses/H-111-fifth-round-external-ai-Rhin-Tao-Breiman-control-experiment.md`
+diretamente: confirma exatamente o esqueleto de prova sugerido
+(sanduíche $c\cdot W\le WY\le C\cdot W$ para $0<c\le Y\le C$, que
+herda o índice de cauda sem hipótese de independência; o Lema de
+Breiman para o assintótico exato quando $Y\perp W$; e o caveat de que
+só o **expoente** fica blindado, a **constante** de cauda não). Também
+confirmei via `ls` no repositório que `sec4-endogeny-barrier/` de fato
+só tem `lemma_no_2adic_memory.py`.
+
+Verifiquei a referência bibliográfica de Breiman (Regra 11, via
+`WebSearch`) antes de citar: L. Breiman, "On some limit theorems
+similar to the arc-sin law", Theory of Probability \& Its Applications
+\textbf{10}(2) (1965), 323-331, confirmado contra o índice do
+periódico (mathnet.ru) e o abstract SIAM/epubs.
+
+**C-033 (maior).** Abstract ("we test the third to certified numerical
+error") e §1.2 atribuíam `thm:conjecture3` a este paper, mas a Data
+Availability já classificava esse mesmo rótulo como "restated" do
+companion 05, que tem a mesma fórmula e o mesmo número
+($0.580\pm0.001$) com mais detalhe técnico (conferido diretamente
+contra `papers/05-wirsching-2003-conjecturas/main.tex`, linhas
+766-784). Mesmo padrão de C-026 (Conjectura 1), que a correção daquele
+achado não tinha capturado para a Conjectura 3.
+
+**C-034 (moderado).** A subseção "Certified numerical test of
+Wirsching's Conjecture 3" (linha ~1294) continha, sem nova quebra de
+subseção, ~110 linhas de material sem relação com o título: a
+decomposição microcanônica (`thm:microcanonical`), a ponte de limite
+local condicional (`prop:complex-deconditioning`), e a tetracotomia de
+equivalência de ensembles (quatro teoremas mais três Resultados
+Empíricos). Resíduo estrutural provável do processo de condensação da
+divisão em quatro papers.
+
+**C-035 (menor).** "precise/precisely" usado fora de sentido técnico
+em 3 lugares (linhas ~142, ~354, ~1803 antes da correção), banido pela
+Regra 4b §1.
+
+**Correções aplicadas (produtor, antes da Rodada 4).** C-032:
+`prop:gauge` reforçada com a hipótese $Y:\mathcal{Y}\to[c,C]$,
+$0<c\le C<\infty$ (em vez de "bounded, non-constant... $\to(0,\infty)$",
+que não garantia limitação inferior, ingrediente do sanduíche);
+adicionado `\begin{proof}` provando os quatro itens (a via a equação
+de pressão ser propriedade dos pesos da recursão, não da solução
+particular; b via sanduíche + Lema de Breiman \cite{Breiman1965},
+citação nova verificada e adicionada à bibliografia; c via
+decomposição de covariância, definindo "regression slope" como
+coeficiente de regressão populacional $b=\Cov(\log X,Z)/\Var(Z)$
+contra qualquer estatística $Z$ mensurável em relação aos dígitos; d
+como já estava, tornado explícito); item (a) perdeu a menção a
+"identical operator $M_q(\alpha)$" (notação órfã, nunca definida).
+`rem:barrier-reading` reescrita para não afirmar "independently
+verified" para `prop:gauge` (só `lem:2adic` tem checagem numérica
+contra o repositório); a Data Availability Statement reescrita para
+não implicar que `prop:gauge` está verificada em script (agora diz
+"proved in the text", com a lista específica de itens
+script-verificados mantida como estava, sem `prop:gauge` nela, o que
+já era o caso). Abstract, §1.2, e o item O1 da Conclusão conferidos
+contra a nova hipótese e redação (Regra 8b): consistentes. C-033:
+abstract e §1.2 reescritos para atribuir "tests the third" ao
+companion, no mesmo padrão de "proves... treats... and tests" já
+usado para as Conjecturas 1 e 2; a abertura da subseção 9.3 ganhou uma
+frase equivalente à de 9.2 ("restates, without independent
+verification of its own, a companion paper's certified numerical
+test"). C-034: nova `\subsection{Microcanonical decomposition and
+equivalence of ensembles}` inserida antes do bloco que não pertencia
+ao título antigo. C-035: as 3 ocorrências reescritas (cortadas ou
+trocadas por "exact"). `main.tex` recompilado limpo (3 passadas
+`pdflatex`); `\cite`/`\bibitem` reconferidos (35/35, `Breiman1965`
+incluído, sem órfãos reais); "genuine/genuinely" e em dash
+reconfirmados em zero; orçamento de antítese "X, not Y" reconfirmado
+em exatamente 2 ocorrências.
