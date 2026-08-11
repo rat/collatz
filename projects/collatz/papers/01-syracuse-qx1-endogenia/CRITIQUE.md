@@ -75,6 +75,12 @@ retroativa.
 | C-049 | loop R8 | `lem:cov-spectral` e `prop:exact-endogeny` sem `\begin{proof}`; a Discussão chamava `prop:exact-endogeny` de "proved" e ela afirma valores numéricos não-triviais (Corr=+1/-1/2) sem nenhuma derivação; notação `N_{\eta_i}^{(m)}` usada 2 vezes, nunca definida | crítico | prévio | fixed |
 | C-050 | loop R8 | `prop:beta-wcc` (§7, bijeção não-trivial entre custo geométrico e conjunto de cobertura de Wirsching) sem `\begin{proof}`; checagem "against brute force" mencionada no corpo mas ausente do Apêndice/DAS | moderado | prévio | fixed |
 | C-051 | loop R8 | `$\widetilde A_\delta$`, `$\varphi_0$` e a relação entre `$x_\ell$`/`$z_\ell$`/`$x_\ell^+$` usadas sem definição em §triangulation, recuperáveis só lendo o companion 05 | moderado | prévio | fixed |
+| C-052 | loop R9 | Prova de `lem:cov-spectral` (adicionada na Rodada 8) usava sinal `+` na inversão de Fourier onde o correto é `-`, dado `S_i(\xi):=\sum_r Z_i(r)e(\xi r/3^m)`; o passo intermediário não estabelecia a conclusão que a própria prova (e o Lema) enunciava | maior | prévio | fixed |
+| C-053 | loop R9 | Prova de `prop:exact-endogeny` (Rodada 8) usava "$w_1$ uniform on $\mathbb Z/3$" sem derivação nem citação | moderado | prévio | fixed |
+| C-054 | loop R9 | Apêndice de validação numérica omitia entradas para o experimento de calibração residual de três braços (§sec:calibration, $\rho_{\mathrm{eff}}\lesssim0.06$) e para `verify_orthogonality.py`, ambos listados explicitamente na Data Availability Statement | moderado | prévio | fixed |
+| C-055 | loop R9 | Entrada do Apêndice para `thm:cascade-factor` cobria só o cálculo racional exato até $\ell=10$; omitia a medição em ponto flutuante até $\ell=16$ que sustenta a alegação de saturação no corpo | moderado | prévio | fixed |
+| C-056 | loop R9 | `\eta_i` em `lem:cov-spectral` nunca definido como objeto geral (só o caso particular $\eta_i\equiv1$ aparecia, numa proposição diferente) | moderado | prévio | fixed |
+| C-057 | loop R9 | Colisão de símbolo `\eta` (constante escalar em $(\star3)$) com `\eta_i` (peso de caminho em `lem:cov-spectral`), sem desambiguação | menor | prévio | fixed |
 
 Checagens mecânicas que passaram, registradas para não serem refeitas:
 34 chaves `\cite` contra 34 `\bibitem`, sem órfãos nem pendentes nas
@@ -1422,3 +1428,78 @@ against X" no corpo conferida contra a DAS/Apêndice (nenhuma lacuna
 nova encontrada além das já corrigidas nesta rodada). `main.tex`
 recompilado limpo (3 passadas `pdflatex`); `\cite`/`\bibitem`
 reconferidos (37/37, `BergKruppel1998` incluído, sem órfãos).
+
+### Rodada 9 (subagente `general-purpose`, síncrono, contexto fresco): NÃO limpa
+
+Leu `main.tex` completo (2855 linhas) e `CRITIQUE.md` completo
+(incluindo as oito rodadas anteriores). Refez a prova de
+`lem:cov-spectral` e `prop:exact-endogeny` do zero, ignorando a
+verificação da Rodada 8, e refez as duas varreduras mecânicas daquela
+rodada de forma independente. Achou um erro real introduzido pela
+própria Rodada 8 (a primeira vez neste loop que uma correção anterior
+introduziu um bug matemático, não apenas uma lacuna de completude), e
+quatro lacunas estruturais que a segunda varredura mecânica da Rodada
+8 não pegou.
+
+Achados: 0 crítico, 1 maior (C-052), 4 moderados (C-053 a C-056), 1
+menor (C-057).
+
+**C-052 (maior).** A prova de `lem:cov-spectral` (Rodada 8) escrevia
+$\mathbb E[e((\xi_1w_1+\xi_2w_2)/3^m)]$ (sinal `+`) ao expandir via
+inversão de Fourier, mas com $S_i(\xi):=\sum_rZ_i(r)e(\xi r/3^m)$
+(sinal `+`, definido no próprio enunciado do Lema), a inversão correta
+usa sinal `-`: $Z_i(r)=3^{-m}\sum_\xi S_i(\xi)e(-\xi r/3^m)$. Usar `+`
+reconstrói $Z_i(-r)$, não $Z_i(r)$. Segui a álgebra como escrita e
+confirmei: com o sinal errado, o passo seguinte da prova produzia
+$e(+\xi c_\Delta/3^m)$, contradizendo tanto a frase seguinte da mesma
+prova quanto o enunciado do Lema, que tem $e(-\xi c_\Delta/3^m)$.
+
+**C-053 (moderado).** A prova de `prop:exact-endogeny` (Rodada 8) usava
+"with $w_1$ uniform on $\mathbb Z/3$" no caso $\delta\not\equiv0\pmod3$
+sem nenhuma derivação a partir da hipótese "$v$ uniform on admissible
+classes" do Lema, nem citação ao script computacional (que já era
+citado para a simetria $g(1)=g(2)$, na frase logo acima, mas não para
+esta premissa separada).
+
+**C-054 (moderado).** A Data Availability Statement (atualizada na
+Rodada 8) lista "the residual-coupling experiment of §calibration" e
+"the type-structure check underlying Proposition~\ref{prop:exact-endogeny}"
+como verificados em script, mas o Apêndice não tinha entrada para
+nenhum dos dois, ao contrário de todos os outros itens da mesma frase
+da DAS. Mesma classe de defeito já corrigida três vezes (C-012, C-044,
+C-048), que a segunda varredura mecânica da própria Rodada 8 deveria
+ter pego e não pegou (a varredura checou frases "checked against X" no
+corpo, mas não cruzou a DAS contra o Apêndice diretamente).
+
+**C-055 (moderado).** A entrada do Apêndice para `thm:cascade-factor`
+cobria só o cálculo racional exato até $\ell=10$ (a cota
+$\beta_{\mathrm{eff}}\le1.882712$); a alegação de saturação no corpo
+("the rate saturates... measured in floating point through $\ell=16$")
+não tinha entrada própria.
+
+**C-056 (moderado).** `\eta_i` em `lem:cov-spectral` (definido na
+Rodada 8) nunca era definido como objeto geral, só o caso particular
+$\eta_i\equiv1$ aparecia, 35 linhas depois, num ambiente diferente
+(`prop:exact-endogeny`).
+
+**C-057 (menor).** `\eta` (constante escalar em $(\star3)$, §9.2) e
+`\eta_i` (peso de caminho em `lem:cov-spectral`, §10, adicionado na
+Rodada 8) sem desambiguação, mesma classe já corrigida uma vez para
+`K(\ell)`/`K_\ell` (C-027).
+
+**Correções aplicadas (produtor, antes da Rodada 10).** C-052: prova
+de `lem:cov-spectral` reescrita com o sinal `-` em todos os passos
+intermediários, agora consistente com o próprio enunciado do Lema.
+Rodei a versão corrigida pelo Codex (prompt curto, bloqueante) antes
+de commitar: confirmou o sinal e a expansão algébrica corretos. C-053:
+frase reescrita citando a mesma estrutura cíclica verificada no
+repositório tanto para $g(1)=g(2)$ quanto para a uniformidade de
+$w_1$, já que as duas seguem do mesmo fato estrutural (a fase inicial
+$v$-dependente é equidistribuída quando $v$ percorre seu domínio
+admissível uniforme). C-054: duas entradas novas adicionadas ao
+Apêndice, no mesmo estilo das demais. C-055: entrada de
+`thm:cascade-factor` expandida com a medição em ponto flutuante até
+$\ell=16$. C-056: $\eta_i:(\mathbb N_+)^D\to[0,1]$ definido
+explicitamente no enunciado do Lema. C-057: frase de desambiguação
+inserida no mesmo ponto. `main.tex` recompilado limpo (3 passadas
+`pdflatex`); `\cite`/`\bibitem` reconferidos (37/37, sem órfãos).
