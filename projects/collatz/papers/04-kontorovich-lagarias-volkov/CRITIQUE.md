@@ -843,3 +843,84 @@ ser monótona na profundidade, o que merece verificação antes de se
 apoiar nela de novo em qualquer argumento futuro.
 
 **Contagem de rodadas limpas consecutivas após R3: 0.**
+
+---
+
+## 2026-08-11, rodada R4 (loop de convergência, crítico independente)
+
+| R4-M1 | 2026-08-11 (loop R4) | §5 afirmava que a relaxação real-valorada tem, ela mesma, expoente igual à raiz de pressão anelada ($\alpha_-$), quando isso só é a raiz de projeto/anelada; a identidade anelado↔quenched para a construção casada por congruência não está estabelecida em lugar nenhum | maior | fixed |
+| R4-M2 | 2026-08-11 (loop R4) | Introdução atribuía a KL a contagem $N_u(x)$ sob o mapa acelerado; o Remark do Setup (corrigido na R3) diz que o objeto de KL é $\pi_{u,5}$ sob o mapa não-acelerado | maior | fixed |
+| R4-D1 | 2026-08-11 (loop R4) | Resumo diz "below the two congruence-matched constructions" sem o qualificador "built to 0,650919"; há três construções casadas por congruência no total (reincidência de R3-D1) | moderado | fixed |
+| R4-D2 | 2026-08-11 (loop R4) | Discussão atribui o desvio 0,00111 a "the one built to $0.650919$" quando há três construções a esse alvo; só a relaxação real-valorada desvia isso (a recursão inteira sobre-lê) | moderado | fixed |
+| R4-D3 | 2026-08-11 (loop R4) | "$0.013$" de viés da árvore aritmética na Discussão sem o número casado (0,63824) que o produz | moderado | fixed |
+| R4-D4 | 2026-08-11 (loop R4) | "develop a heavy tail that stalls their own extrapolation" descreve errado o mecanismo (é a viabilidade computacional do lote, não a extrapolação, que trava; a cauda pesada é constante, não "se desenvolve") | moderado | fixed |
+| R4-D5 | 2026-08-11 (loop R4) | Introdução usa $\pi_5(x)$ sem definição própria, remetendo ao Remark que define $\pi_{u,5}$, símbolo diferente | moderado | fixed |
+| R4-D6 | 2026-08-11 (loop R4) | Argumento de flutuação da Discussão não imprime nenhum dos números de dispersão em que se apoia | moderado | fixed |
+| R4-D7 | 2026-08-11 (loop R4) | Todo conteúdo sobre Volkov vinha só de paráfrase de KL; o artigo de Volkov nunca tinha sido lido nem arquivado no corpus do projeto | moderado | fixed |
+| R4-n1 | 2026-08-11 (loop R4) | Orçamento de antíteses excedido (3 contra 2) | menor | fixed |
+| R4-n2 | 2026-08-11 (loop R4) | Ressalva de escopo sobre o modelo de Volkov repetida três vezes (resumo, ER2, Discussão) | menor | fixed |
+| R4-n3 | 2026-08-11 (loop R4) | Dois "$0.0035$" diferentes (desvio máximo ao alvo vs. sistemático de implementação) arredondando para o mesmo número | menor | fixed |
+| R4-n4 | 2026-08-11 (loop R4) | Nomenclatura inconsistente no resumo ("controls"/"branching law" vs. "constructions"/"offspring law" no corpo) | menor | fixed |
+| R4-n5 | 2026-08-11 (loop R4) | §3: "so" ligando a exclusão de ciclos à janela ficar acima das raízes não é a relação causal real | menor | fixed |
+| R4-n6 | 2026-08-11 (loop R4) | §3: justificativa genérica do IC de buffer único sem número nem verificabilidade (resíduo de narrativa de método) | menor | fixed |
+
+Rodada 4 do loop de convergência: **crítico 0, maior 2, moderado 7,
+menor 6** (total 15 achados). NÃO limpa. Todos corrigidos nesta mesma
+passada (nenhum rejeitado). Contagem de rodadas limpas consecutivas
+após R4: **0**.
+
+Contexto fresco (novo subagente). Reproduziu todos os números do §4/§5
+e do §5-comparação-calibrada, incluindo os cinco valores de dispersão
+(sd de $\log_{10}N(10^8)$) que a Discussão passou a citar. Leu o
+enunciado literal do Theorem 8.10 e a Definição 7.7 de KL no PDF
+primário, e leu o próprio artigo de Volkov pela primeira vez nesta
+linha de pesquisa (baixado da página do autor,
+maths.lth.se/matstat/staff/s.volkov/PAPERS/5k+1.pdf), confirmando que
+toda alegação de conteúdo do paper 04 sobre Volkov (contagem de $Q(x)$,
+árvore binária completa, codificação incomum) já estava correta, ainda
+que só verificada por paráfrase de KL até esta rodada.
+
+**Resultado: crítico 0, maior 2, moderado 7, menor 6** (15 achados,
+tabela acima, IDs R4-M1/M2, R4-D1 a D7, R4-n1 a n6). Os dois achados
+maiores são recaídas na mesma família de overclaiming de expoente que
+as rodadas 2 e 3 já tinham corrigido em outros lugares do texto: R4-M1
+afirmava a identidade anelado↔quenched para a construção casada por
+congruência (não estabelecida em lugar nenhum, nem para a construção
+mais simples, a irrestrita, que a própria Discussão já trata como só
+tendo cota superior estabelecida); R4-M2 reintroduziu, na introdução, a
+atribuição a KL do objeto do mapa acelerado que o Remark do Setup
+(corrigido na R3) já tinha corrigido no próprio Setup, sem que a
+correção se propagasse para trás, até a introdução.
+
+### Verificação (Regra 8c)
+
+Rodei `summary.py b13 8` e confirmei `arith`=0,63824 (o número que
+faltava para fundamentar o "0,013" da Discussão). Conferi o mecanismo
+da cauda pesada em `run_deep.sh` (comentário do próprio script:
+"a single unlucky realization out of 300 dominates the wall time and
+the batch never ends", não uma falha de extrapolação). Baixei o PDF de
+Volkov diretamente da página do autor e confirmei visualmente (o texto
+extraído por `pdftotext` sai corrompido por um problema de codificação
+de fonte do PDF, gerado com Ghostscript 6.52; renderizei a página 1
+como imagem e li: "A probabilistic model for the 5x+1 problem and
+related maps", Stanislav Volkov, 30 September 2005) que é de fato o
+artigo citado, e arquivei-o no corpus (`literature/papers/149_...pdf`,
+entrada nova no `INDEX.md`).
+
+### Resolução
+
+Todos os 15 achados corrigidos nesta passada, nenhum rejeitado.
+Mudanças de substância: "moves the relaxation's exponent" virou "moves
+the relaxation's annealed pressure root... it is built to", desfazendo
+a identidade anelado↔quenched não estabelecida; a introdução passou a
+atribuir corretamente a KL a contagem $\pi_{u,5}$ sob o mapa
+não-acelerado, com $N_u(x)$ (mapa acelerado) explicitamente marcado
+como compartilhando o expoente por argumento deste paper, não como
+objeto de KL; adição dos cinco desvios-padrão de flutuação e do número
+casado 0,63824 à Discussão; correção do mecanismo da cauda pesada;
+arquivamento do artigo de Volkov no corpus de literatura do projeto.
+
+Recompilado limpo (pdflatex 2x, 5 páginas); `\cite`/`\bibitem`
+conferidos sem órfãos em nenhuma direção (três chaves).
+
+**Contagem de rodadas limpas consecutivas após R4: 0.**

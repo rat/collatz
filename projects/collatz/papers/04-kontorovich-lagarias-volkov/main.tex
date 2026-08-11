@@ -44,19 +44,20 @@ known pressure-equation root, the same estimator under-reads by
 $0.038$, more than the gap $\Delta=0.027$ between the two disputed
 values, so a raw reading settles nothing.
 
-Two more constructions share the arithmetic tree's branching law and,
+Two more constructions share the arithmetic tree's offspring law and,
 via an exact sibling congruence, its sibling spacing, drawing the
 branch residue instead of the true one: an integer recursion and its
 real-valued relaxation, both built to exponent $0.650919$. Together
 with the branching process above, three constructions built to
-$0.650919$ read within $0.0035$ of that value, a band $0.0037$ wide. The arithmetic tree reads $0.64926$, below the two
-congruence-matched constructions and inside the wider band set by the
-third. A fourth construction, the same real-valued relaxation built to
-exponent $0.678$, reads $0.0282$ away, more than seven widths of that
-band outside it.
+$0.650919$ read within $0.0034$ of that value, a band $0.0037$ wide.
+The arithmetic tree reads $0.64926$, below the two constructions built
+to $0.650919$ that share the sibling congruence, and inside the wider
+band set by the third. A fourth construction, the same real-valued
+relaxation built to exponent $0.678$, reads $0.0282$ away, more than
+seven widths of that band outside it.
 
 The comparison is a measurement, not a proof, calibrated against
-controls built to a known pressure-equation root. It targets the
+constructions built to a known pressure-equation root. It targets the
 disputed exponent value; whether it bears on Volkov's branching model
 itself is a separate question.
 \end{abstract}
@@ -66,20 +67,21 @@ itself is a separate question.
 
 Kontorovich and Lagarias \cite{KontorovichLagarias2009} study the
 $3x+1$ and $5x+1$ Collatz-type problems through the counting statistics
-of the associated reverse tree: for a fixed root $u$, the number
-$N_u(x)$ of integers up to $x$ that eventually map to $u$ under the
-accelerated map satisfies $N_u(x)=x^{\eta+o(1)}$ for a conjectural
-exponent $\eta$. Their stochastic model predicts $\eta_{5,BP}\approx
-0.650919$ for $q=5$ (their Theorem~8.10, subscript $BP$ for branching
-process, in their own notation). A competing branching model due to
+of the reverse tree: for a fixed root $u$, their integer count
+$\pi_{u,5}(x)$, under their un-accelerated map (\S\ref{sec:setup}'s
+Remark), conjecturally satisfies $\pi_{u,5}(x)=x^{\eta+o(1)}$ for an
+exponent $\eta$ independent of $u$, their Conjecture~7.2; the
+accelerated count $N_u(x)$ used here shares that exponent. Their
+stochastic model predicts $\eta_{5,BP}\approx0.650919$ for $q=5$ (their
+Theorem~8.10, subscript $BP$ for branching process, in their own
+notation). A competing branching model due to
 Volkov \cite{Volkov2006}, discussed in the same reference, grows a
 complete binary tree under a different encoding of the iterates and
 predicts $\eta^\ast_{5,BP}\approx0.678$, a gap of $\Delta=0.027$.
 Volkov's model counts a related but different quantity, $Q(x)$:
 non-divergent trajectories entering some cycle. Kontorovich and Lagarias
-note $\pi_5(x)\le Q(x)$, where $\pi_5$ is their own un-accelerated
-counting function of \S\ref{sec:setup}'s Remark, with the two orders of
-growth only conjectured to agree. Kontorovich and Lagarias write that ``the empirical data Volkov
+note that their own integer count is bounded by $Q(x)$, with the two
+orders of growth only conjectured to agree. Kontorovich and Lagarias write that ``the empirical data Volkov
 presents seems insufficient to discriminate between these two predicted
 exponents,'' and separately note ``some controversy concerning the
 conjectured value of the constant.''
@@ -172,18 +174,17 @@ with the arithmetic tree's sibling spacing but a tunable exponent.
 \label{sec:method}
 
 We enumerate the exact reverse tree of $T_5$ from $300$ roots: odd
-integers coprime to $5$, sampled uniformly from $[101,10^4)$ and outside
-every cycle of $T_5$, so the fixed measurement window, $10^5$ through
-$10^8$, lies entirely beyond them. A single depth-first pass tracks the
-running path-maximum at every node, giving simultaneous counts at
-truncation buffers $10^9$ through $10^{13}$; this agrees, count for
-count, with an independent buffer-by-buffer implementation on five of
-the $300$ roots. A confidence interval built from a single fixed buffer
-excludes every candidate exponent once the sampling standard error
-falls below the residual truncation bias; the path-maximum construction
-extrapolates the buffer dependence directly, without re-running the
-enumeration once per buffer. The pooled mean slope across the $300$
-roots rises with truncation, its increments shrinking geometrically:
+integers coprime to $5$ and outside every cycle of $T_5$ (a cycle
+member is reachable only from inside its own cycle, so excluding them
+needs no visited set), sampled uniformly from $[101,10^4)$, well below
+the fixed measurement window, $10^5$ through $10^8$. A single
+depth-first pass tracks the running path-maximum at every node, giving
+simultaneous counts at truncation buffers $10^9$ through $10^{13}$
+directly, without re-running the enumeration once per buffer; this
+agrees, count for count, with an independent buffer-by-buffer
+implementation on five of the $300$ roots. The pooled mean slope across
+the $300$ roots rises with truncation, its increments shrinking
+geometrically:
 \[
   0.60049\ (10^9) \to 0.62387\ (10^{10}) \to 0.63261\ (10^{11}) \to
   0.63650\ (10^{12}) \to 0.63801\ (10^{13}),
@@ -236,9 +237,10 @@ the two disputed values.
 
 The bias falls with depth, and depends on how much a process
 fluctuates, so it can be calibrated out by comparing readings at a
-common depth, on a different statistic: not the window-based estimator
-above, but the single-decade slope $\log_{10}(N(10^{k+1})/N(10^k))$,
-Aitken-extrapolated over the truncation buffers above $10^{k+1}$, read
+common depth, on the single-decade slope
+$\log_{10}(N(10^{k+1})/N(10^k))$, a statistic distinct from the
+window-based estimator above, Aitken-extrapolated over the truncation
+buffers above $10^{k+1}$, read
 at a checkpoint decade $10^k\!\to\!10^{k+1}$ deep enough for the bias to
 have mostly decayed. \emph{Congruence-matched constructions} share the
 arithmetic tree's offspring law and, via
@@ -248,10 +250,10 @@ $0.650919$ only, since it keeps $q$ integer; and its
 \emph{real-valued relaxation}, built to either target. Replacing the
 integer denominator $q$ in the parent-to-child step $w_a\approx2^av/q$
 by a tunable real value $q_{\mathrm{val}}$ moves the relaxation's
-exponent $\alpha$ (the smaller root, $\alpha_-$) to any target solving
-$q_{\mathrm{val}}^{\alpha}=q(2^{\alpha}-1)$, with $q$ itself held fixed
-at the arithmetic tree's own admissibility rule and sterility
-probability. Three congruence-matched constructions result: the integer
+annealed pressure root, the smaller root $\alpha_-$ it is built to, to
+any value solving $q_{\mathrm{val}}^{\alpha}=q(2^{\alpha}-1)$, with $q$
+itself held fixed at the arithmetic tree's own admissibility rule and
+sterility probability. Three congruence-matched constructions result: the integer
 recursion and its relaxation, both built to $0.650919$, and the
 relaxation alone, built to $0.678$. The unconstrained construction of
 the paragraph above, sharing only the offspring law and drawing an
@@ -283,9 +285,10 @@ iterates and is not implemented here.
 \end{empirical}
 
 Pushed further on the arithmetic tree alone, to checkpoints $10^{12}$
-and buffers $10^{17}$, past the point where the stochastic constructions
-develop a heavy tail that stalls their own extrapolation, the slope
-approaches $0.650919$: $0.6465$ at $10^7\!\to\!10^8$,
+and buffers $10^{17}$, past the depth where the stochastic constructions'
+heavy-tailed total progeny (tail index $1/0.650919=1.5363$) makes a
+matched batch of $300$ roots infeasible to run, the slope approaches
+$0.650919$: $0.6465$ at $10^7\!\to\!10^8$,
 $0.6487$ at $10^8\!\to\!10^9$, $0.6490$ at $10^9\!\to\!10^{10}$, then
 $0.6506$ and $0.6505$ at $10^{10}\!\to\!10^{11}$ and
 $10^{11}\!\to\!10^{12}$, the last two within $0.0005$ of the
@@ -309,8 +312,8 @@ the wider band width itself. Separately, the truncation extrapolation of
 most $0.0004$ from $10^8\!\to\!10^9$ onward. Both bounds are comparable
 to, or well below, the $0.0037$ wider band width used to read the
 comparison, and well below the $0.0282$ separation itself. At the
-calibration depth itself, the construction built to exponent $0.678$
-under-reads its own target by $0.00052$ and the one built to
+calibration depth itself, the relaxation built to exponent $0.678$
+under-reads its own target by $0.00052$ and the relaxation built to
 $0.650919$ by $0.00111$, smaller still.
 
 The $0.038$ bias of the opening measurement in \S\ref{sec:calibrated}
@@ -321,9 +324,7 @@ decade at much greater depth. Both the added depth and the narrower
 window contribute to the drop.
 
 The comparison settles the narrower question of whether the arithmetic
-tree's counting exponent is closer to $0.650919$ or to $0.678$. It does
-not implement or test Volkov's branching model directly, which encodes
-the iterates differently from the matched constructions built here.
+tree's counting exponent is closer to $0.650919$ or to $0.678$.
 Collapsing the chain of doublings in Kontorovich and Lagarias's
 $B[5^0]$ gives each exponent $a\ge1$ an independent chance $1/5$ of a
 branch at $2^av/5$: this accelerated form of their model shares the
@@ -334,15 +335,18 @@ The two constructions differ in their joint structure: the
 unconstrained construction draws one residue class per node, where the
 collapsed $B[5^0]$ assigns each exponent independently. On the same
 $300$ roots and grid, the gap between the unconstrained construction's
-bias ($0.038$) and the arithmetic tree's ($0.013$, presuming the
-disputed exponent is $0.650919$) measures how much less the arithmetic
-tree fluctuates than a process sharing $B[5^0]$'s accelerated
-intensity, consistent with the arithmetic tree fluctuating less than
-every construction in \S\ref{sec:calibrated} and reading below both
+bias ($0.038$) and the arithmetic tree's ($0.63824$ on the same grid, a
+bias of $0.013$ presuming the disputed exponent is $0.650919$)
+measures how much less the arithmetic tree fluctuates than a process
+sharing $B[5^0]$'s accelerated intensity. The standard deviation of
+$\log_{10}N(10^8)$ across roots is $0.594$ for the arithmetic tree
+against $0.629$ to $0.801$ for the four constructions, the least
+fluctuating being the closest to the arithmetic tree's own spread;
+this is consistent with the arithmetic tree reading below both
 constructions built to $0.650919$ at the calibration depth. The deep
 arithmetic-only run sits systematically at or just below $0.650919$, a
-pattern the data here cannot yet distinguish from a
-slowly converging extrapolation.
+pattern the data here cannot yet distinguish from a slowly converging
+extrapolation.
 
 \section*{Data Availability Statement}
 
