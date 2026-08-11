@@ -4,7 +4,7 @@ Status: `main.tex` é um rascunho completo (16 páginas, compila limpo).
 Split de `01-syracuse-qx1-endogenia/main.tex` §3 (mais §4.2, "Precise
 regime of the tail exponent", que encaixa melhor aqui do que em 01), em
 2026-08-10, a pedido do diretor científico. Em loop de convergência de
-crítica desde então (Regra 8/15): 20 rodadas rodadas até agora, ver
+crítica desde então (Regra 8/15): 22 rodadas rodadas até agora, ver
 `CRITIQUE.md` para o histórico completo; ainda não atingiu o critério
 de parada (3 rodadas consecutivas limpas).
 

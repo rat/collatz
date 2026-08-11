@@ -1941,3 +1941,38 @@ $k=1$ contra o intervalo citado no README (D-85).
 passadas `pdflatex`), zero erro/referência indefinida (16 páginas).
 `increment_ratio_powerlaw_fit_attempt.py` rerodado do início ao fim
 após a correção, saída consistente com o texto revisado.
+
+### 2026-08-11 — rodada de convergência 22 (crítico, contexto fresco)
+
+Escopo: `main.tex` inteiro, `CRITIQUE.md` inteiro (21 rodadas
+anteriores lidas antes de criticar), `OUTLINE.md`, `DATA_REPO.md`, a
+entrada do paper 06 em `papers/README.md`, README raiz e da subpasta
+de `collatz-qx1-pressure`. Recalculou independentemente em mpmath a 50
+dígitos as raízes da equação de pressão, a tabela de $\alpha_c(q)$, e
+$m'(1)$/$m'(2)$ em $q=3$ (todos bateram); verificou contra fonte
+primária, independentemente da rodada 21, as referências
+Lagarias-Weiss 1992, Nerman 1981, Goldie 1991, e reconferiu
+Kontorovich-Lagarias 2010 (título/paginação) e a passagem de
+Gonçalves-Greenfeld-Madrid 2022 sobre a Conjecture 1.5.
+
+**Resultado: 0 crítico, 0 maiores, 0 moderados, 2 menores. Limpa.
+Contagem de rodadas limpas consecutivas: 1/3.**
+
+| ID | Nível | Resumo | Status |
+|----|-------|--------|--------|
+| D-86 | menor | `collatz-qx1-pressure/sec3-pressure-and-transition/README.md`, l.236: "across $k=5,\ldots,11$" para o ajuste de lei de potência deveria ser "$k=6,\ldots,11$" (mesmo tipo de erro que D-84 já corrigiu no `main.tex`, sobrevivendo nesta linha específica do README; as outras duas ocorrências de "$k=5,\ldots,11$" no mesmo arquivo, l.56 e l.139, estão corretas, descrevem o intervalo de dados de `exact_moment_test.py`, uma alegação diferente) | fixed |
+| D-87 | menor | `OUTLINE.md`, l.7 e l.110: "20 rodadas rodadas até agora", desatualizado (já são 21 rodadas completas); mesmo tipo de achado que D-72 (rodada 20) já corrigiu uma vez para essa seção, ficando obsoleto de novo uma rodada depois | fixed |
+
+**Correções aplicadas:**
+
+- **D-86.** README da subpasta: "$k=5,\ldots,11$" → "$k=6,\ldots,11$"
+  na frase sobre o ajuste de lei de potência.
+- **D-87.** `OUTLINE.md`: "20 rodadas" → "22 rodadas" nas duas
+  ocorrências (contando esta própria rodada 22, já que a correção
+  acontece na mesma passagem que a registra).
+
+**Verificação técnica:** `main.tex` inalterado nesta rodada; estado já
+confirmado limpo na verificação da rodada 21. Primeira rodada limpa da
+contagem de convergência (1/3); precisa de mais duas rodadas
+consecutivas nas mesmas condições (0 crítico/maior/moderado, menos de
+3 menores) para fechar o loop.
