@@ -36,12 +36,14 @@ $qx+1$ Branching Process}
 We study the reverse tree of the accelerated $qx+1$ map for odd
 $q\ge3$ through a linear population functional. We prove an exact
 identity, $\rho_{\mathrm{ann}}(\alpha)=q^{\alpha-1}/(2^\alpha-1)$, for
-its annealed pressure, via an exact fibre-counting bijection. The
-nontrivial root of $\rho_{\mathrm{ann}}(\alpha)=1$ undergoes a
-structural transition at $q=5$: it equals exactly $\alpha^\ast=2$ at
-$q=3$ and falls strictly below $1$ for every $q\ge5$. For $q=3$ this
-is the classical Growth Exponent Conjecture of Kontorovich--Lagarias
-and Applegate--Lagarias. We show that the two roots of this equation
+its annealed pressure, via an exact fibre-counting bijection. Besides the trivial root $\alpha=1$, the pressure equation has one
+further positive root $\alpha^\ast(q)$: exactly $2$ at $q=3$, and
+strictly below $1$ for every $q\ge5$. Since $\alpha^\ast(3)=2$ exceeds
+$1$, the growth exponent, the smaller of the two roots, equals $1$ at
+$q=3$ and equals $\alpha^\ast(q)$ for every $q\ge5$: a structural
+transition at $q=5$. The $q=3$ case, exponent $1$, is the classical
+Growth Exponent Conjecture of Kontorovich--Lagarias and
+Applegate--Lagarias. We show that the two roots of this equation
 always sit on opposite sides of a quenched/annealed freezing
 transition, in the sense of directed polymers in a random environment:
 the smaller root is always unfrozen, so the annealed identity
@@ -60,8 +62,10 @@ the arithmetic reverse tree itself. At $q=3$ the predicted index
 $\alpha^\ast=2$ matches independent empirical measurements of that
 scale factor. At $q=5$, the largest of three statistical tests on the
 scale factor, run at increasing sample size, gives evidence consistent
-with the conjectured index; an exact test of the martingale's own tail
-remains inconclusive, and neither claim is proved for any $q\ge5$.
+with the conjectured index, though the scale factor's own median has
+not stabilized at the headroom reached; an exact test of the
+martingale's own tail remains inconclusive, and neither claim is
+proved for any $q\ge5$.
 \end{abstract}
 
 \section{Introduction}
@@ -242,10 +246,10 @@ $\alpha\in\{0.26,0.5,1,1.37,2\}$, matching to the truncation error of
 the (rapidly convergent) tail of the sum over $a$.
 
 \begin{remark}[Mass conservation as a corollary]
-The right-hand side of \eqref{eq:annealed-identity} evaluates to
-exactly $1^k=1$ at $\alpha=1$ for every $q$ (mass conservation of the
-branching process). Thus $\alpha=1$ is always a root of
-\eqref{eq:pressure-eq}.
+At $\alpha=1$, the annealed pressure \eqref{eq:pressure-closed-form}
+evaluates directly to $\rho_{\mathrm{ann}}(1)=q^0/(2^1-1)=1$ for every
+$q$ (mass conservation of the branching process). Thus $\alpha=1$ is
+always a root of \eqref{eq:pressure-eq}.
 \end{remark}
 
 \begin{lemma}[Log-convexity of the pressure function]\label{lem:log-convex}
@@ -509,10 +513,10 @@ $9$ & $0.258108$ &
 \end{center}
 
 At $q=3$ the second root is exactly $\alpha^\ast=2$, matching the
-universal tail exponent for the classical Collatz reverse tree
-established by independent methods (Hill estimator on real-tree
-samples, and extreme value theory on block maxima) in earlier stages
-of this line of work. For $q\ge 5$, however, the second root falls
+universal tail exponent for the classical Collatz reverse tree,
+established directly on real reverse-tree samples by independent
+methods (a Hill estimator and extreme value theory on block maxima).
+For $q\ge 5$, however, the second root falls
 strictly \emph{below} $1$, a qualitative structural transition. Writing
 $\alpha_-<\alpha_+$ for
 the two roots, we have $\{\alpha_-,\alpha_+\}=\{1,2\}$ at $q=3$ but
@@ -558,25 +562,78 @@ monotonicity of $N$ give $\limsup_x\log N(x)/\log x\le\theta+\varepsilon$
 almost surely. Letting $\theta\downarrow\alpha_-(q)$ and
 $\varepsilon\downarrow0$ gives $\limsup\le\alpha_-(q)$.
 
-\emph{Lower bound.} This direction, matching the upper bound exponent
-almost surely on the survival event, is the content of
-Kontorovich--Lagarias's Theorem~8.10 \cite{KontorovichLagarias2010},
-proved there for the single-type $5x+1$ branching random walk by a
-large-deviations argument adapted from Lagarias--Weiss (the same
-Chernoff computation as above, run in reverse to locate the generation
-$k$ at which the bulk of the count accumulates, together with a
-second-moment estimate showing this generation's contribution is not a
-rare event). Their argument uses only the branching structure's pressure
-function, the independence of fertility across nodes, and survival on
-the large-deviation event with positive probability, the last of which
-is exactly what unfreezing at $\alpha_-(q)$
-(Proposition~\ref{prop:always-frozen}) supplies; with that in hand the
-argument transfers without change, and we do not repeat the
-second-moment computation here.
+\emph{Lower bound.} Write $\alpha:=\alpha_-(q)$ and
+$\mu:=-\rho_{\mathrm{ann}}'(\alpha)>0$ (unfrozen,
+Proposition~\ref{prop:always-frozen}). The numbers
+$p_\alpha(a):=q^{\alpha-1}2^{-\alpha a}$ of \S\ref{sec:pressure} form a
+probability law of mean $\mu$; let $\xi_1,\xi_2,\ldots$ be i.i.d.\ draws
+from it. Fix $0<\varepsilon<\mu$ and $L\ge1$, and let $Y_L$ be the
+number of generation-$L$ descendants of a node whose cumulative
+displacement lies in $[L(\mu-\varepsilon),L(\mu+\varepsilon)]$. The
+many-to-one identity at $\theta=\alpha$ (where $\rho_{\mathrm{ann}}(\alpha)=1$)
+gives
+\[
+ r_L:=\mathbb E[Y_L]
+ =\mathbb E_\alpha\Bigl[e^{\alpha(\xi_1+\cdots+\xi_L)}
+   \mathbf 1_{\{\xi_1+\cdots+\xi_L\in[L(\mu-\varepsilon),L(\mu+\varepsilon)]\}}\Bigr]
+ \ge e^{\alpha L(\mu-\varepsilon)}
+   \Pr_\alpha\Bigl(\tfrac1L\textstyle\sum_i\xi_i\in[\mu-\varepsilon,\mu+\varepsilon]\Bigr),
+\]
+and the law of large numbers sends the probability factor to $1$ as
+$L\to\infty$, so $r_L\to\infty$; fix $L$ with $r_L>1$. For any $K$,
+keep only the first $K$ such descendants at every node (in some fixed
+measurable order): this defines a genuine sub-population, resampled
+every $L$ generations, that is an ordinary Galton--Watson process with
+bounded offspring $Y_L^{(K)}:=\min(Y_L,K)\in\{0,\ldots,K\}$, hence of
+finite variance, and mean $r_L^{(K)}:=\mathbb E[Y_L^{(K)}]\uparrow r_L$
+as $K\to\infty$ by monotone convergence; fix $K$ with $r_L^{(K)}>1$.
+The classical growth theorem for a finite-variance supercritical
+Galton--Watson process gives, on its (positive-probability) survival
+event, $\frac1j\log Z_j^{(K)}\to\log r_L^{(K)}$ almost surely, where
+$Z_j^{(K)}$ is the population after $j$ such blocks. Since the root has
+infinitely many independent admissible children almost surely (the
+events $2^au\equiv1\!\!\pmod q$, $a\ge1$, are i.i.d.\ with probability
+$1/q$ each), and each spawns an independent copy of the whole
+construction, at least one copy survives almost surely; the almost
+surely finite depth and displacement at which that copy is rooted only
+shifts what follows by a bounded amount, negligible in the limits
+below. Every one of the $Z_j^{(K)}$ retained individuals lies at
+generation $jL$ with displacement at most $jL(\mu+\varepsilon)$, so
+$N\bigl(e^{jL(\mu+\varepsilon)}\bigr)\ge Z_j^{(K)}$, and monotonicity
+of $N$ (the exponentially spaced points $jL(\mu+\varepsilon)$ have
+consecutive ratio $\to1$) gives
+\[
+ \liminf_{x\to\infty}\frac{\log N(x)}{\log x}
+ \ge\frac{\log r_L^{(K)}}{L(\mu+\varepsilon)}\qquad\text{almost surely.}
+\]
+This holds simultaneously for every $K$ (a countable intersection of
+almost-sure events), so the right side may be replaced by its supremum
+over $K$, namely $\log r_L/(L(\mu+\varepsilon))$. Letting
+$L\to\infty$ and then $\varepsilon\downarrow0$, using
+$\log r_L\ge\alpha L(\mu-\varepsilon)+\log\Pr_\alpha(\cdots)\to\alpha
+L(\mu-\varepsilon)(1+o(1))$, gives
+$\liminf_x\log N(x)/\log x\ge\alpha$ almost surely. With the upper
+bound, $\log N(x)/\log x\to\alpha_-(q)$ almost surely.
 \end{proof}
 
-\begin{proposition}[Finer asymptotic, conditional]\label{prop:transition-fine}
-The counting function conjecturally satisfies the sharper asymptotic
+\begin{remark}[Relation to Kontorovich--Lagarias's Theorem~8.10]
+Kontorovich--Lagarias \cite[Theorem~8.10]{KontorovichLagarias2010}
+prove an analogous exact limit, for $q=5$, for a different
+branching-random-walk representation $B[5^0]$ of the $5x+1$ reverse
+tree, one with at most two offspring per node rather than the present
+model's almost-surely infinite offspring; a direct computation shows
+its log-Laplace transform is $m_{\mathrm{KL}}(\theta)=
+2^{-\theta}(1+5^{\theta-1})$, not $\rho_{\mathrm{ann}}(\theta)$, so the
+two models are not the same stochastic process. They do share every
+root: $m_{\mathrm{KL}}(\theta)-1=\bigl((2^\theta-1)/2^\theta\bigr)
+\bigl(\rho_{\mathrm{ann}}(\theta)-1\bigr)$, which is why
+$\eta_{5,BP}=\alpha_-(5)$ in Remark~\ref{rem:novelty-109} despite the
+two derivations having nothing else in common; their proof does not
+transfer to the present model, and is not used above.
+\end{remark}
+
+\begin{conjecture}[Finer asymptotic for the counting function]\label{conj:transition-fine}
+The counting function satisfies the sharper asymptotic
 $N(x)\sim W\cdot x^{\alpha_-(q)}$, not merely
 Theorem~\ref{thm:transition-model}'s exponent statement, holding almost
 surely and uniformly, \emph{including} at $q=3$, for an almost surely
@@ -623,7 +680,7 @@ $1$ only at the origin, so the renewal/CMJ asymptotic carries no
 log-periodic (period $\log2$) modulation. Were $\log q/\log2$ rational
 the branch positions would collapse onto a lattice and a
 periodic correction would appear.
-\end{proposition}
+\end{conjecture}
 
 \begin{conjecture}[Structural transition: exponent, arithmetic tree]\label{conj:transition-arithmetic}
 For every admissible root $u$, the actual reverse tree of $T_q$
@@ -650,10 +707,12 @@ companion paper \cite{KLVolkovCompanion}.
 \end{conjecture}
 
 We state Theorem~\ref{thm:transition-model},
-Proposition~\ref{prop:transition-fine}, and
+Conjecture~\ref{conj:transition-fine}, and
 Conjecture~\ref{conj:transition-arithmetic} as three separate claims,
-not one theorem about the arithmetic tree, because the step
-from one to the other is exactly the kind of transfer that
+not one theorem about the arithmetic tree, because each step up in
+strength, from the proved exponent to the conjectural finer asymptotic
+to the conjectural transfer to the arithmetic tree itself, is exactly
+the kind of transfer that
 Example~\ref{ex:naive-fails} shows can fail;
 Remark~\ref{rem:transfer-basis} below specifies what does and does
 not rest on proof. Direct empirical support for
@@ -748,16 +807,16 @@ Every numerical test below samples actual integer roots of the
 arithmetic tree, not points of the Haar-uniform $q$-adic population
 $U$ that Conjecture~\ref{conj:tail-index} is stated over. What these
 tests bear on directly is a different, equally open claim: the tail of
-the scale factor already introduced, conjecturally, in
-Proposition~\ref{prop:transition-fine}.
+the scale factor already introduced in
+Conjecture~\ref{conj:transition-fine}.
 
 \begin{conjecture}[Tail of the real-tree growth scale factor]\label{conj:real-tree-tail}
-Fix odd $q\ge3$. Let $v$ range uniformly over the admissible roots in
-an interval growing to infinity, and set
-$W_v(H):=N_v(vH)/H^{\alpha_-(q)}$ for headroom $H\ge1$ ($N_v$ as in
-\S\ref{sec:setup}). As $H\to\infty$ and then the interval grows,
-$W_v(H)$ converges in law to the scale factor $W$ of
-Proposition~\ref{prop:transition-fine}, with upper tail
+Fix odd $q\ge3$ and headroom $H\ge1$. Let $v$ range uniformly over the
+admissible roots in an interval growing to infinity, and set
+$W_v(H):=N_v(vH)/H^{\alpha_-(q)}$ ($N_v$ as in \S\ref{sec:setup}); as
+the interval grows, $W_v(H)$ converges in law to a limit $W(H)$. As
+$H\to\infty$, $W(H)$ converges in law to the scale factor $W$ of
+Conjecture~\ref{conj:transition-fine}, with upper tail
 \[
  \Pr(W>x) = x^{-\alpha_+(q)/\alpha_-(q)+o(1)}.
 \]
@@ -768,7 +827,8 @@ for the i.i.d.\ model predicts this exponent for $W$,\footnote{A related
 structural prediction of the multitype model,
 confirmed empirically for $q=5$: conditioning on the root's residue
 class $i=u_0\bmod q$ (with $a_0(i)$ the smallest admissible branch
-exponent for class $i$), $W$ decomposes by class as
+exponent for class $i$), $W$ decomposes by class, at the tail exponent
+$\theta:=\alpha_-(q)$ of Conjecture~\ref{conj:real-tree-tail}, as
 $W_i\stackrel{d}{=}2^{-a_0(i)\theta}\cdot W^*$ for a common $W^*$,
 i.e.\ residue class only rescales the candidate limit, it does not
 change its shape.
@@ -801,9 +861,9 @@ $W_q$ by a Haar-random $q$-adic point, and no coupling between the two
 populations has been established.
 
 At $q=3$ the evidence for Conjecture~\ref{conj:real-tree-tail} is real
-and threefold: the Hill estimator on real-tree samples and
-extreme-value theory on block maxima (both from earlier stages of this
-line of work) give $\alpha\approx2$ independently of the pressure
+and threefold: the Hill estimator and extreme-value theory on block
+maxima, applied to real reverse-tree samples for the classical $q=3$
+Collatz map, give $\alpha\approx2$ independently of the pressure
 argument, and the direct enumeration of \S\ref{sec:empirical}
 (Empirical Result~\ref{emp:real-trees}) adds a third, related line of
 support (that enumeration targets
@@ -814,10 +874,10 @@ Conjecture~\ref{conj:real-tree-tail} is markedly weaker: an early
 Hill-estimator measurement of finite-depth root scale factors for
 $q=5$ (600
 roots, agreement to two decimal places with the predicted
-$1.536\ldots$) was later shown, over the course of this line of work,
-to be statistically non-confirmatory at that sample size (the
-estimator's true standard error is $\approx0.45$, an order of magnitude
-larger than the agreement being claimed). Two further tests bear on
+$1.536\ldots$) is not statistically confirmatory at that sample size:
+the estimator's true standard error is $\approx0.45$, an order of
+magnitude larger than the agreement being claimed. Two further tests
+bear on
 Conjecture~\ref{conj:real-tree-tail} and Conjecture~\ref{conj:tail-index},
 one on each.
 
@@ -834,8 +894,11 @@ levels and lands close to the predicted $1.536$, but the
 threshold-stability scan shows no clean plateau near the predicted
 shape parameter, and the Vuong test favors the log-normal alternative
 over the power law, at conventional significance, in three of the four
-headroom levels tested. Reading the four estimators together by the
-depth of tail they each summarize shows the apparent local tail index
+headroom levels tested. That stability is along one axis only, a
+single estimator held fixed while headroom varies; reading the four
+different estimators together by the depth of tail they each
+summarize, a second and different axis, shows the apparent local tail
+index
 rising smoothly with depth (from $\approx1.3$ at the widest window to
 $\approx2.2$ at the narrowest) without settling near any single
 value: consistent with a slowly-converging pre-asymptotic regime in

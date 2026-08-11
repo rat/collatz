@@ -820,3 +820,100 @@ presentes.
 **Não fica pendente para o paper 01**: o agente responsável pelo paper
 01, em paralelo, ajusta o lado dele para apenas citar o tratamento
 deste paper, sem duplicar o enunciado de `conj:tail-index`.
+
+---
+
+## Loop de convergência (critério do pesquisador, 4 níveis: crítico/maior/moderado/menor)
+
+A partir daqui, cada rodada é uma crítica adversarial completa e
+independente do `main.tex` atual (contexto fresco, sem reaproveitar o
+julgamento da rodada anterior). Critério de parada: 3 rodadas
+CONSECUTIVAS limpas (crítico=0, maior=0, moderado=0, menor<3), sem
+crédito parcial — qualquer rodada abaixo do padrão zera a contagem.
+
+### 2026-08-10 — rodada de convergência 1 (crítico, contexto fresco)
+
+Escopo: `main.tex` inteiro, revisão adversarial independente, incluindo
+verificação numérica própria (mpmath, 30 dígitos), checagem de
+`\cite`/`\bibitem`/`\ref`/`\eqref` por script, e consulta a fontes
+primárias locais (Kontorovich-Lagarias 2010, Applegate-Lagarias I/II,
+Gonçalves-Greenfeld-Madrid 2022, Liu 2000, Villemonais-Zalduendo 2025)
+para todas as citações de maior risco, incluindo uma nunca antes
+checada em nenhuma rodada anterior (GGM2022).
+
+**Resultado: 2 crítico, 2 maior, 4 moderado, 1 menor (agrupado, 3
+ocorrências). Não limpa. Contagem de rodadas limpas consecutivas: 0/3.**
+
+| ID | Nível | Resumo | Status |
+|----|-------|--------|--------|
+| D-01 | crítico | `thm:transition-model`, prova do limite inferior: alegava que o Teorema 8.10 de Kontorovich-Lagarias 2010 "transfere sem mudança" para q geral; falso (modelo B[5^0] de KL tem função de pressão diferente da deste paper, mesma raiz por identidade algébrica distinta) | fixed |
+| D-02 | crítico | `prop:transition-fine` rotulado Proposition com conteúdo explicitamente não provado (abre com "conjecturally"); `conj:real-tree-tail` já dependia dele | fixed |
+| D-03 | maior | Resumo: "For q=3 this is the classical Growth Exponent Conjecture" tem como único antecedente gramatical $\alpha^\ast=2$ (raiz não trivial), mas a GEC é sobre a raiz trivial ($\alpha_-=1$), como o corpo (`conj:transition-arithmetic`) já atribui corretamente | fixed |
+| D-04 | maior | Remark "Mass conservation as a corollary": o lado direito de \eqref{eq:annealed-identity} em $\alpha=1$ vale $q^k$, não $1$; o objeto que vale $1$ é a média \eqref{eq:pressure-closed-form} | fixed |
+| D-05 | moderado | Nota de rodapé de `conj:real-tree-tail`: $\theta$ usado sem redefinição próxima (definido só dentro da prova de `thm:iid-tail`, várias dezenas de linhas antes) | fixed |
+| D-06 | moderado | `conj:real-tree-tail`: ordem do limite duplo mal especificada ("as $H\to\infty$ and then the interval grows" não corresponde ao protocolo empírico real, onde $H$ é finito e a amostra de raízes cresce) | fixed |
+| D-07 | moderado | Resumo vs. §5: a ressalva de não convergência da mediana de $W_v(H)$ no teste de $10^5$ raízes não chegava ao resumo | fixed |
+| D-08 | moderado | §5: tensão aparente entre "the bias-corrected Hill estimator is stable... lands close to the predicted 1.536" e "without settling near any single value" (dois eixos de comparação distintos, não explicados) | fixed |
+| D-09 | menor | Narração de processo (Regra 4b §3), 3 ocorrências: "in earlier stages of this line of work" (×2) e "was later shown, over the course of this line of work" | fixed |
+
+**Verificado e correto nesta rodada, sem achado (registro para não ser re-checado à toa nas próximas rodadas):** compilação limpa; `\cite`/`\bibitem` e `\ref`/`\eqref`/`\label` fechados nas duas direções; tabelas de $\alpha^\ast(q)$/$\alpha_c(q)$; $m'(1)$/$m'(2)$ em §6; citação Kontorovich-Lagarias 2010 Teorema 8.10 e $\eta_{5,BP}$; Applegate-Lagarias "Conjecture A"; cota de Krasikov-Lagarias; localizador de Wirsching 1998; Villemonais-Zalduendo 2025 (não contém maquinaria de renovação/CMJ); Gonçalves-Greenfeld-Madrid 2022 (primeira vez checada, correta); Liu 2000 (hipóteses do Teorema 2.2 usadas corretamente em `thm:iid-tail`); zero travessão; zero vocabulário da lista literal da Regra 4b §1.
+
+**Correções aplicadas (produtor, Regra 8c: cada achado verificado antes do conserto):**
+
+- **D-01.** Fui à fonte primária (PDF local de Kontorovich-Lagarias
+  2010) e confirmei: o modelo B[5^0], para o qual o Teorema 8.10 é
+  provado, tem no máximo 2 filhos por nó, função de pressão
+  $m_{KL}(\theta)=2^{-\theta}(1+5^{\theta-1})$; o modelo i.i.d. deste
+  paper tem quase certamente infinitos filhos por nó, função de
+  pressão $\rho_{\mathrm{ann}}(\theta)=5^{\theta-1}/(2^\theta-1)$.
+  Processos genuinamente diferentes, que só coincidem nas raízes de
+  suas equações de pressão (identidade algébrica verificada:
+  $m_{KL}(\theta)-1=\frac{2^\theta-1}{2^\theta}(\rho_{\mathrm{ann}}(\theta)-1)$).
+  Consultei o advisor e depois o Codex (leitura read-only,
+  `codex exec`) antes de escrever qualquer prova nova, exatamente para
+  não repetir o erro documentado na rodada 2 anterior (segundo momento
+  nunca escrito "sob pressão de tempo"). O Codex propôs um argumento de
+  Galton-Watson em blocos (tilt exponencial na raiz $\alpha_-(q)$,
+  truncamento em janela de deslocamento, redução a um processo
+  supercrítico); verifiquei cada passo eu mesmo linha a linha e
+  encontrei um erro na primeira versão do Codex (a alegação de que o
+  número de sequências de expoentes candidatas por bloco seria
+  limitado é falsa: cresce exponencialmente em $L$; a correção correta
+  é truncar em $K$ filhos por bloco, com $K\to\infty$ depois de
+  $L\to\infty$, o que evita qualquer hipótese de momento tipo
+  Kesten-Stigum/Seneta-Heyde, já que a versão truncada tem variância
+  finita trivialmente). A prova final no `main.tex` usa só fatos
+  clássicos elementares (identidade de muitos-para-um, já usada
+  corretamente em outros pontos do mesmo paper; lei dos grandes
+  números; teorema de crescimento para processos de Galton-Watson
+  supercríticos de variância finita). Um novo Remark registra a
+  identidade algébrica das raízes e deixa claro que a prova de KL não
+  transfere.
+- **D-02.** Relabel `prop:transition-fine` → `conj:transition-fine`
+  (ambiente `conjecture`, não mais `proposition`); todas as 4
+  ocorrências de `\ref`/`\label` atualizadas; a frase "three separate
+  claims" ajustada para descrever a hierarquia real (um Teorema provado
+  e duas Conjecturas).
+- **D-03.** Resumo reescrito: a raiz não trivial $\alpha^\ast(q)$ e o
+  expoente de crescimento $\alpha_-(q)$ agora aparecem como objetos
+  claramente distintos, com a GEC ligada explicitamente ao caso
+  $q=3$/expoente $1$.
+- **D-04.** Remark corrigido para usar diretamente
+  $\rho_{\mathrm{ann}}(1)=q^0/(2^1-1)=1$ (conta trivial e certamente
+  correta), em vez de uma leitura errada de \eqref{eq:annealed-identity}.
+- **D-05 a D-08.** Correções mecânicas: $\theta:=\alpha_-(q)$ redefinido
+  na própria nota de rodapé; `conj:real-tree-tail` reescrita com $H$
+  fixo e a amostra de raízes crescendo primeiro, depois $H\to\infty$;
+  cláusula sobre a deriva da mediana incorporada ao resumo; frase
+  adicionada em §5 nomeando os dois eixos de comparação (estabilidade
+  de um estimador através de níveis de headroom vs. variação entre
+  quatro estimadores diferentes).
+- **D-09.** As três ocorrências de narração de processo removidas e
+  reancoradas com o conteúdo factual que carregavam (metodologia e
+  objeto medido, amostras reais da árvore vs. modelo idealizado), sem
+  narrar quando ou em que estágio a medição foi feita.
+
+**Verificação técnica pós-correção:** recompilado (3 passadas
+`pdflatex`), zero erro/referência indefinida; `\cite`/`\bibitem` e
+`\ref`/`\eqref`/`\label` conferidos por script, sem órfãos em nenhuma
+direção. `OUTLINE.md` atualizado (tabela de rótulos Regra 10b).
