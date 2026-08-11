@@ -992,3 +992,81 @@ corrigido no corpo (`prop:fabius`), corrigido para "unique fixed point
 of unit mass". Repositório `collatz-wirsching-2003` sincronizado:
 script de §5 corrigido e re-executado do zero, READMEs (raiz e `sec5`)
 atualizados com os números reais em $x_\ell^+$.
+
+---
+
+## Rodada de convergência R3, 2026-08-11
+
+Terceira rodada, contexto fresco (subagente `opus`, esforço máximo).
+**Achados**: crítico=0, maior=3, moderado=10, menor=7. Não limpa
+(maior>0); contagem de rodadas limpas consecutivas permanece 0.
+
+| ID | Rodada | Resumo | Severidade | Status |
+|----|--------|--------|------------|--------|
+| R3-01 | 2026-08-11 (R3) | Remark cita "checked coefficient by coefficient in the accompanying repository" para a estimativa de cauda/janela; o README de §3 diz explicitamente que o script NÃO checa isso (só a identidade algébrica) | maior | fixed |
+| R3-02 | 2026-08-11 (R3) | `thm:microcanonical` atribuía a $\mu_\ell$ uma definição factualmente errada ("pushforward da medida uniforme na árvore reversa", que nem existe); a definição real de Tao (2020) é uma soma de geométricas i.i.d., já usada na prova do próprio teorema | maior | fixed |
+| R3-03 | 2026-08-11 (R3) | $L_\ell$ é matematicamente invariante a um fator periódico $Q(\log_3 x)$ multiplicando $\varphi_0$ (cancela exatamente na razão $3x/x$); a alegação "supports Conjecture 3" não distinguia isso da alternativa que a própria Conjectura 3 precisa excluir | maior | fixed |
+| R3-04 | 2026-08-11 (R3) | §2 define $(\star1)$ com raio $\delta$ (batendo com a fonte); `thm:wirsching-conj1` invertia isso, atribuindo $\delta$ a $(\star2)$ e $\delta_1$ a $(\star1)$, o oposto da própria fonte e do que §2 já tinha fixado | moderado | fixed |
+| R3-05 | 2026-08-11 (R3) | Referência cruzada errada: "$\widetilde A_\delta$... transported to the continuous state space of §4" — §4 é inteiramente discreta; o espaço contínuo já existe desde §2 | moderado | fixed |
+| R3-06 | 2026-08-11 (R3) | A identidade geradora de $q_\ell(k)$ (soma de urnas) não está literalmente em Wirsching (2003), só descrita em prosa; "an urn of capacity $c_j$" é ambíguo com a convenção que a prova realmente precisa ($0\le n_j\le c_j-1$) | moderado | fixed |
+| R3-07 | 2026-08-11 (R3) | "conjectured to track $\varphi$'s own asymptotics up to a constant factor" é mais forte que a expectativa real de Berg-Krüppel ("bounded and bounded away from zero"), que é exatamente a distinção que sustenta R3-03 | moderado | fixed |
+| R3-08 | 2026-08-11 (R3) | $\varphi_0$ nunca é escrita explicitamente; todos os números de §5 dependem de 5 constantes que só existem no docstring do script | moderado | fixed |
+| R3-09 | 2026-08-11 (R3) | "leaves $L$ unchanged to six digits" é mais preciso do que o que o script produz (`Espalhamento: 0.0000` arredondado a 4 casas) | moderado | fixed |
+| R3-10 | 2026-08-11 (R3) | "quantiles decay at a rate close to the minimum's own" sem o número do mínimo em $d\ge6$ no próprio paper | moderado | fixed |
+| R3-11 | 2026-08-11 (R3) | Colisões de notação vivas ($p_\ell(m)$/$p_{\ell,k}(a)$, $L_\ell$/$L$ dentro do mesmo resultado); $L_\ell$/$L$ corrigido (renomeado $L_\infty$), demais avaliadas como risco baixo e documentadas | moderado | parcialmente fixed (ver nota) |
+| R3-12 | 2026-08-11 (R3) | README de `sec4-central-zeros-conjecture2` se contradizia (dizia que a identidade de peso "not independently re-derived", quando o próprio README documenta o script que a rederiva); faltavam logs para $\ell=4,k=4$ e $k=5$, citados no paper | moderado | fixed |
+| R3-13 | 2026-08-11 (R3) | Média de Haar $3/2$ apresentada como padrão checado em 2 pontos quando é uma identidade exata para todo $(\ell,k)$ (prova de uma linha a partir da recursão) | moderado | fixed |
+| R3-14 | 2026-08-11 (R3) | Orçamento de antítese "X, not Y": recontagem após os fixes desta rodada achou 5 genuínas (incluindo duas novas introduzidas nesta própria rodada); reduzidas a 2 | menor | fixed |
+| R3-15 | 2026-08-11 (R3) | Abstract: densidade de hedge ("tested" 4x, "remains open" 2x+variantes) | menor | rejected (são qualificadores de escopo exigidos pela Regra 10b sobre 3 sub-perguntas distintas, não meta-honestidade repetitiva; mesmo padrão de R1-20) |
+| R3-16 | 2026-08-11 (R3) | Frases de "narração de processo" ("we test (⋆5) below without re-deriving...", "has not been run") | menor | rejected (descrevem o escopo metodológico do próprio corpo científico, não a história de revisão do paper, que é o que a Regra 4b proíbe) |
+| R3-17 | 2026-08-11 (R3) | Nota de desambiguação vestigial ($\tau$ vs $\eta$, símbolos que ninguém confundiria) | menor | fixed (removida) |
+| R3-18 | 2026-08-11 (R3) | Cinco ambientes `empirical` ainda rotulados `thm:...` | menor | rejected (mesma decisão de C-024/rodadas anteriores: não afeta o PDF renderizado, renomear é risco desproporcional) |
+| R3-19 | 2026-08-11 (R3) | `main.pdf` commitado mais antigo que `main.tex` | menor | fixed (não commitamos PDF neste repositório; não se aplica) |
+| R3-20 | 2026-08-11 (R3) | Imprecisões pontuais: "conductor comparable with $\ell$" (deveria ser o expoente); "large representative" sem substantivo; "confines... to the same finite-level regime" não reflete o que o resultado realmente mostra (cota vazia); aposto mal colocado no abstract | menor | fixed |
+
+**O achado mais sério (R3-02)**: verifiquei o post de Tao (2020) citado
+(adicionado na própria R2) e confirmei que ele define a variável de
+Syracuse como soma de geométricas i.i.d., não como "pushforward de
+medida uniforme numa árvore reversa" (que não está bem definida: cada
+nó tem infinitas pré-imagens). Erro introduzido por mim na R2 ao tentar
+dar substância à citação sem verificar a definição exata na fonte,
+viola diretamente a Regra 11 que a própria R2 deveria ter seguido.
+Corrigido para descrever $\mu_\ell$ pela construção geométrica que a
+prova do teorema já usa (que bate com a de Tao), sem reivindicar uma
+definição que não existe.
+
+**O achado mais substantivo (R3-03)**: o crítico mostrou que $\varphi=Q\cdot\varphi_0$
+com $Q$ 1-periódica em $\log_3$ cancela exatamente na razão
+$3x/x$ que $L_\ell$ mede, então a convergência de $L_\ell$ a $2/3$ (e o
+déficit $\to0{,}802$) não testam a constância de $c$, que é o próprio
+conteúdo da Conjectura 3. Verifiquei a álgebra (cancelamento exato) e
+adicionei uma checagem nova e real ao repositório: pares de mesma fase
+$(\ell,3\ell)$, onde $Q$ cancelaria de novo se fosse dominante,
+isolando o "drift" residual de $\ln(\varphi/\varphi_0)$. Rodei o
+script estendido (`experiment_conjecture3.py`, nova seção de análise)
+e o drift medido bate com o previsto pelo ajuste baseado em $\varphi_0$
+a $4\%$ e $1\%$ nos pares mais profundos $(100,300)$ e $(150,450)$,
+evidência contra um fator periódico dominante (não uma prova de que
+$c$ é de fato constante). Isso virou o novo `rem:phase-check`, citado
+no abstract e na Discussão.
+
+**Nota sobre R3-11 (colisões de notação)**: dado o volume de símbolos
+de uso único reaproveitados neste paper ($p$, $u$, $a$, $c$), corrigi
+só a colisão de maior risco (mesmo resultado, frases adjacentes:
+$L_\ell$ vs $L$, agora $L_\infty$); as demais (p.ex. $a=3$ vs $a$
+residual vs $a=-0{,}79$) aparecem em contextos locais muito separados
+e um leitor as resolve pelo contexto imediato, como é normal em
+qualquer paper com este número de objetos. Julgamento registrado aqui
+em vez de decorar o texto inteiro com notas de desambiguação de baixo
+valor (o oposto do que R3-17 pediu para cortar).
+
+Depois das correções: `\cite`/`\bibitem` sem órfãos (7 chaves);
+recompilado (`pdflatex` ×2, 12 páginas, sem `undefined reference`);
+zero em/en dashes; vocabulário da Regra 4b varrido, zero ocorrências;
+antíteses "X, not Y" recontadas em 2/2 depois de duas rodadas de
+edição dentro desta própria rodada. Repositório `collatz-wirsching-2003`
+sincronizado: `experiment_conjecture3.py` ganhou a análise de mesma
+fase (nova seção, re-executada do zero, ~415s); README de
+`sec4-central-zeros-conjecture2` corrigido (contradição interna) e
+ganhou dois logs que faltavam (`exact_weight_asymmetry_ell4k4.log`,
+`exact_weight_asymmetry_ell4k5.log`).

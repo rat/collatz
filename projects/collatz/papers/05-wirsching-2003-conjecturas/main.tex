@@ -54,10 +54,14 @@ extreme-value statistics of the growing index set. A monotonicity
 certificate
 available for a related count in a companion paper does not transfer
 here. None of this closes Conjecture 2. An exact evaluation of
-$\varphi$, zero truncation error at every point tested,
-through depth $\ell=500$ supports Conjecture 3 at every offset tested,
+$\varphi$ through depth $\ell=500$, zero truncation error at every
+point tested, supports Conjecture 3 at every offset tested,
 with a central-sequence extrapolation coefficient stable to within
-$4\times10^{-4}$ under the sub-range and model checks tested.
+$4\times10^{-4}$ under the sub-range and model checks tested. This
+measurement cannot by itself distinguish a genuine constant from a
+periodic factor multiplying the predicted asymptotic; a same-phase
+drift check disfavors a dominant periodic factor without ruling one
+out.
 \end{abstract}
 
 \section{Introduction}
@@ -114,15 +118,24 @@ $c_j=2\cdot3^{j-1}$ ($j\ge1$) \cite[\S2]{Wirsching2003}. The class
 $A_\delta$ consists of the integer sequences $(k_\ell)$ with
 $|\ell-k_\ell|\le\delta\sqrt\ell$ for every $\ell$
 \cite[eq.~(1.5)]{Wirsching2003}; $\widetilde A_\delta$ is the
-analogous class of sequences $(x_\ell)\in\mathbb I_3^{\mathbb N}$ used
-once the objects are transported to the continuous state space of
-\S\ref{sec:microcanonical} below. $\varphi$ itself satisfies the
+analogous class of sequences $(x_\ell)\in\mathbb I_3^{\mathbb N}$ on
+the continuous state space $\mathbb X$ above, used in condition
+$(\star4)$ below and in the numerical test of \S\ref{sec:conj3}.
+$\varphi$ itself satisfies the
 untruncated equation $\lambda\varphi'(t)=a(\varphi(at)-\varphi(at-a+1))$
 for $a=3$, $\lambda=2/3$ \cite[eq.~(7.9)]{Wirsching2003}. $\varphi_0$
 is Berg and Kr\"uppel's explicit asymptotic
-\cite[Proposition~9.1]{BergKruppel1998} for a particular solution
-of the truncated equation $\lambda g'(t)=ag(at)$, conjectured to track
-$\varphi$'s own asymptotics up to a constant factor
+\cite[Proposition~9.1, eq.~(9.6)]{BergKruppel1998} for a particular
+solution of the truncated equation $\lambda g'(t)=ag(at)$, a
+five-constant closed form of the shape
+$t^{(\cdot)}(-\ln t)^{(\cdot)}\exp(-(\cdot)\ln^2(t/(-\ln t)))$
+whose constants, evaluated at $a=3$, $\lambda=2/3$ (their own
+notation, not reused here to avoid clashing with $\delta$ elsewhere in
+this paper), are reproduced verbatim in the accompanying repository
+(\S\ref{sec:conj3} below);
+Berg and Kr\"uppel
+expect $\varphi/\varphi_0$ to stay bounded and bounded away from zero,
+not necessarily to converge
 \cite[eq.~(7.10)--(7.11)]{Wirsching2003}, used in Conjecture~3 below in
 place of $\varphi$ itself, which has no known closed form.
 
@@ -203,8 +216,9 @@ chain from Theorem~1 alone requires.
 
 \begin{theorem}[Wirsching's Conjecture 1]\label{thm:wirsching-conj1}
 In the notation of \S\ref{sec:chain}, condition $(\star2)$, with window
-radius $\delta$, implies condition $(\star1)$ with some possibly
-smaller window radius $\delta_1\le\delta$.
+radius $\delta_1$ (Wirsching's own naming, \cite[\S2]{Wirsching2003}),
+implies condition $(\star1)$ with some possibly
+smaller window radius $\delta\le\delta_1$.
 \end{theorem}
 
 \begin{proof}
@@ -212,8 +226,8 @@ Write $\bar g_\ell(k):=\frac{1}{2\cdot3^{\ell-1}}\sum_bg_\ell(k,b)$ and
 $\bar e_\ell(k):=\frac{1}{2\cdot3^{\ell-1}}\sum_be_\ell(k,b)$ for the
 residue-averages of the generators and the Elka functions. Put
 $c_0=1$ and $c_j=2\cdot3^{j-1}$ for $j\ge1$. If $q_\ell(k)$ counts
-the bounded urn distributions defining $\bar g_\ell(k)$ (an urn of
-capacity $c_j$ at stage $j$, coefficient sum $k$), then
+the bounded urn distributions defining $\bar g_\ell(k)$ (urn $j$ holds
+between $0$ and $c_j-1$ balls, coefficient sum $k$), then
 \[
  \sum_{k\ge0}q_\ell(k)z^k
  =\prod_{j=0}^\ell\frac{1-z^{c_j}}{1-z},\qquad
@@ -235,27 +249,32 @@ at most $\exp(C\log^2(m+2))$. Also
 Since $p_\ell(0)=1$, $\bar g_\ell(j)\le\bar e_\ell(j)$ for every $j$, so,
 relative to $\bar e_\ell(k)$, the part of the convolution
 $\bar e_\ell(k)=\sum_mp_\ell(m)\bar g_\ell(k-m)$ with $m\ge\tau\sqrt\ell$
-is, uniformly for $|k-\ell|\le\delta_1\sqrt\ell$, at most
-$\exp(-c\sqrt\ell+O(\log^2\ell))$, for a tail-window radius $\tau>0$
-unrelated to the lower-bound constant $\eta$ of
-\S\ref{sec:microcanonical} below. For $k$ in that window and
-$m<\tau\sqrt\ell$, $|k-m-\ell|\le(\delta_1+\tau)\sqrt\ell$; choosing
-$\delta_1+\tau<\delta$ puts $j=k-m$ inside the window of $(\star2)$,
+is, uniformly for $|k-\ell|\le\delta\sqrt\ell$, at most
+$\exp(-c\sqrt\ell+O(\log^2\ell))$, for a tail-window radius $\tau>0$.
+For $k$ in that window and
+$m<\tau\sqrt\ell$, $|k-m-\ell|\le(\delta+\tau)\sqrt\ell$; choosing
+$\delta+\tau<\delta_1$ puts $j=k-m$ inside the window of $(\star2)$,
 and positivity transfers its lower bound from
 $g_\ell/\bar g_\ell$ to $e_\ell/\bar e_\ell$.
 \end{proof}
 
 \begin{remark}[Relation to the source]\label{rem:wirsching-conj1-source}
-Wirsching records the two generating-function identities and the
-closed form for $\bar e_\ell(k)$ used above \cite[\S\S1--2,
-eq.~(1.4)]{Wirsching2003}, and the urn interpretation of
-$q_\ell(k)=2\cdot3^{\ell-1}\bar g_\ell(k)$, credited there to
-\cite{Wirsching1998Urns} \cite[\S2]{Wirsching2003}, and states the
-implication itself as
-Conjecture~1 \cite[\S\S1--2]{Wirsching2003}. What the proof above adds
-is the convolution-tail estimate and the window choice
-$\delta_1+\tau<\delta$ that closes the implication, checked
-coefficient by coefficient in the accompanying repository.
+Wirsching records the partition-counting identity
+$\prod_{j=0}^\ell(1-z^{c_j})^{-1}=\sum_mp_\ell(m)z^m$
+\cite[\S2, eq.~(2.2)]{Wirsching2003} and the closed
+form for $\bar e_\ell(k)$ used above \cite[\S1, eq.~(1.4)]{Wirsching2003},
+and describes, without a generating function, the urn count
+$q_\ell(k)=2\cdot3^{\ell-1}\bar g_\ell(k)$, crediting the combinatorial
+identification to \cite{Wirsching1998Urns} \cite[\S2]{Wirsching2003};
+turning that description into the generating function
+$\sum_kq_\ell(k)z^k=\prod_{j=0}^\ell(1-z^{c_j})/(1-z)$ used above is
+this proof's own step. Wirsching states the implication itself as
+Conjecture~1 \cite[\S\S1--2]{Wirsching2003}. The cancellation
+$P_\ell(z)Q_\ell(z)=(1-z)^{-\ell-1}$ behind $\bar e_\ell(k)$ is
+checked coefficient by coefficient in the accompanying repository;
+the convolution-tail estimate and the window choice
+$\delta+\tau<\delta_1$ that close the implication are analytic and
+checked by hand against the primary source.
 \end{remark}
 
 The second conjecture remains open. The most concrete sufficient
@@ -272,8 +291,9 @@ Let $g_\ell(k,a)$ be Wirsching's generator, let
 $c_i=2\cdot3^i$ for $i\ge0$ (the coin $c_j$ of \S\ref{sec:conj1}
 reindexed by $i=j-1$, dropping the extra coin $c_0=1$ that appears
 there only), and let $\mu_\ell$ be the Syracuse law modulo
-$3^\ell$, the pushforward of the uniform measure on the reverse
-Collatz tree at depth $\ell$ onto residues \cite{Tao2020}
+$3^\ell$: the law of the residue built by the same i.i.d.\ geometric
+branching used in the proof below, matching Tao's Syracuse random
+variable \cite{Tao2020}
 (unrelated to the constant $\mu$ of $(\star1)$, $(\star3)$,
 $(\star4)$ in \S\ref{sec:chain}). For every unit residue $a$,
 \begin{equation}\label{eq:microcanonical}
@@ -653,7 +673,7 @@ masses $1/3$ and $2/3$ to the same two units, has
 $\widehat\mu_1(1)=-\tfrac12-\tfrac{i}{2\sqrt3}$, modulus $1/\sqrt3\ne1/2$.
 Any Fourier estimate for condition
 $(\star3)$ must separate these exact coarse modes and control frequencies
-whose conductor is comparable with $\ell$.
+whose conductor exponent is comparable with $\ell$.
 
 \begin{empirical}[Fixed-precision projection test]
 \label{thm:fixed-precision-finite}
@@ -732,11 +752,14 @@ from $d\ge6$, where support has been complete for several levels
 already.
 
 Outside the support boundary, the population's low quantiles decay at
-a rate close to the minimum's own, even though the quantile itself sits
+a rate close to the minimum's own (at $d=+12$, the minimum over all
+units falls from $0.3840$ at $\ell=10$ to $0.2378$ at $\ell=17$, a
+rate of $0.93$ per level, matching the quantile's own $0.93$ above),
+even though the quantile itself sits
 well above the extreme order statistic, the single minimum. Whether it
 reflects some fixed integer's
-ratio worsening, as against newly entering residues of large
-representative pulling the population down, is not settled by this
+ratio worsening, as against newly entering residues with a large
+integer representative pulling the population down, is not settled by this
 measurement. The exhaustive fixed-set test above answers that question
 only at $d=+5$, where no deterioration occurs.
 \end{empirical}
@@ -766,12 +789,17 @@ coefficient sum (written $\mathcal S_\ell$, distinct from Wirsching's
 transition operators $S_\ell$ of \S\ref{sec:chain})
 $\mathcal S_\ell(k,a):=\sum_{j\text{ admissible for }a}\overline
 g_{\ell-1}(k-j)/\overline g_\ell(k)$ equals $1$ for every $a$. It does
-not, and not even on Haar average: at $\ell=3$, $k=3$, exact evaluation
-gives $\mathcal S_3(3,a)=9/7$ for
-$a\equiv1\pmod3$ and $12/7$ for $a\equiv2\pmod3$, summing to $3$, not
-$2$, so the Haar average of $\mathcal S_\ell(k,\cdot)$ over $a$ is
-$3/2$; the
-same two-values-per-level pattern and the same average hold at
+not, and not even on Haar average: since every $j$ is admissible for
+exactly one residue class of $a$ mod $3$, summing the recursion over
+both classes gives $\sum_{j<c_{\ell-1}}\overline
+g_{\ell-1}(k-j)=3\overline g_\ell(k)$ for every $(\ell,k)$, so
+$\mathcal S_\ell(k,a\equiv1)+\mathcal S_\ell(k,a\equiv2)=3$ identically.
+A convex combination averaging to $1$ would need that sum to be $2$;
+the Haar average of $\mathcal S_\ell(k,\cdot)$ over $a$
+is $3/2$ at every level. At $\ell=3$, $k=3$,
+exact evaluation gives $\mathcal S_3(3,a)=9/7$ for
+$a\equiv1\pmod3$ and $12/7$ for $a\equiv2\pmod3$; the same
+two-values-per-level pattern holds at
 $\ell=4$, $k=4,5$. The identity's own left side still averages to $1$
 over $a$, by the definition of $\overline g_\ell$ as that average; the
 convex-combination mechanism that certifies the companion paper's
@@ -801,9 +829,8 @@ $0.339$ at central cost and $0.280$ in the upper window, while the
 largest primitive discrepancies are $0.0246$ and $0.00682$. Thus the
 largest coefficients retain a coarse component even as each primitive
 coefficient becomes smaller. The resulting lower bounds are negative
-throughout. This does not disprove uniform positivity; it shows that
-termwise absolute summation of the finite Fourier series does not
-establish it on this range.
+throughout, so termwise absolute summation of the finite Fourier
+series fails to establish uniform positivity on this range.
 \end{empirical}
 
 \section{Certified numerical test of Wirsching's Conjecture 3}
@@ -856,16 +883,40 @@ $u\in[-2,2]$ at fixed $\ell$: at $\ell=500$ its spread over the seven
 tested values of $u$ is $6\times10^{-5}$. Along $u=0$,
 $\ln(\varphi/\varphi_0)$ is increasing and concave in $\ell$,
 consistent with a finite limit; a least-squares fit to
-$L+a/\sqrt\ell$ over $\ell=200,\ldots,500$ gives $L=-0.619$,
-$a=-0.79$, hence $c=e^L\approx0.539$. Fitting only the upper half of
-the range ($\ell\ge350$) leaves $L$ unchanged to six digits; adding a
-further $1/\ell$ term moves it by $4\times10^{-4}$. The
+$L_\infty+a/\sqrt\ell$ (distinct from $L_\ell$ above) over
+$\ell=200,\ldots,500$ gives $L_\infty=-0.619$,
+$a=-0.79$, hence $c=e^{L_\infty}\approx0.539$. Fitting only the upper
+half of
+the range ($\ell\ge350$) moves $L_\infty$ by under $10^{-4}$; adding a
+further $1/\ell$ term moves it by $4\times10^{-4}$, the wider of the
+two checks. The
 zero-truncation-error certificate above bounds the
 evaluation of $\varphi$ itself, not this extrapolation.
 Conjecture~2 remains open;
 Theorem~\ref{thm:wirsching-conj1} settles Conjecture~1 independently
 of this computation.
 \end{empirical}
+
+\begin{remark}[A same-phase check against a periodic factor]
+\label{rem:phase-check}
+Conjecture 3 asks for a genuine constant $c$; Berg and Kr\"uppel's own
+expectation is weaker, a ratio $\varphi/\varphi_0$ bounded and bounded
+away from zero \cite[\S9]{BergKruppel1998}, which a nonconstant
+$\varphi=Q\cdot\varphi_0$ with $Q(\log_3x)$ $1$-periodic would also
+satisfy. $L_\ell$ cannot distinguish the two: at $u=0$,
+$\log_3x_{3\ell}^+-\log_3x_\ell^+$ is the integer $1-2\ell$, so
+$Q(x_{3\ell}^+)=Q(x_\ell^+)$ exactly, and the deficit above tests the
+$\varphi_0$-only ratio regardless of $Q$. A periodic $Q$ would instead
+pin $\ln(\varphi/\varphi_0)$ to the same value at every such
+same-phase pair $(\ell,3\ell)$, with zero drift. The measured drift is
+nonzero and tracks the $\varphi_0$-based fit: $+0.0320$ observed at
+$(100,300)$ against $+0.0335$ predicted, and $+0.0271$ at $(150,450)$
+against $+0.0273$
+predicted, agreement to $4\%$ and $1\%$; the shallow pair $(10,30)$
+disagrees badly, consistent with the fit not yet applying there. This
+disfavors a dominant periodic factor. It does not rule out a small
+one, nor prove $c$ constant.
+\end{remark}
 
 \section{Discussion}
 \label{sec:discussion}
@@ -876,9 +927,10 @@ local-limit methods reach toward Conjecture 2, not the conjecture
 itself. Theorem~\ref{thm:fixed-precision-ensemble} and
 Theorem~\ref{thm:sublinear-precision-ensemble} give convergence at
 fixed and sublinear precision, checked at finite level by Empirical
-Result~\ref{thm:fixed-precision-finite}; the negative Fourier-based
-lower bound of Empirical Result~\ref{thm:microcanonical-fourier}
-confines termwise absolute summation to the same finite-level regime.
+Result~\ref{thm:fixed-precision-finite}; Empirical
+Result~\ref{thm:microcanonical-fourier} finds that termwise absolute
+summation of the finite Fourier series gives only a negative, vacuous
+lower bound at every level tested.
 Theorem~\ref{thm:linear-block-nonequivalence}
 shows the latent cost vectors provably fail to converge at linear
 precision. Theorem~\ref{thm:ensemble-divergence} is a separate,
@@ -908,6 +960,11 @@ closes off the one available shortcut regardless: the level-to-level
 monotonicity certificate that works for a different integer-covering
 count in the companion paper does not transfer, with an explicit
 non-monotone counterexample.
+
+The numerical test of Conjecture 3 (\S\ref{sec:conj3}) is exact where
+it applies, but $L_\ell$ alone cannot separate a genuine limit constant
+from a periodic factor; Remark~\ref{rem:phase-check} adds the
+same-phase check that does, and disfavors the periodic alternative.
 
 \section*{Data Availability Statement}
 
