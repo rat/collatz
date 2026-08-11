@@ -451,15 +451,25 @@ transition at $q\ge5$ is new, and a later result rigorously excludes
 $q\ge5$ in the forward direction for the analogous $p=2$ generalization
 \cite{GoncalvesGreenfeldMadrid2022}. Wirsching \cite[Ch.~III, \S5,
 following Theorem~5.2]{Wirsching1998} anticipated the same qualitative
-transition heuristically in 1998, in his own terms (a sign flip in the
-index of the maximal term $f_p(n)$), and Kontorovich--Lagarias had
-already computed the same quantity (their $\eta_{5,BP}$, Theorem 8.10)
-via large-deviations methods for a branching random walk, a route
-different from, but numerically identical to, the pressure-equation
-derivation \cite{KontorovichLagarias2009}. What is new here is the
-closed-form equation \eqref{eq:pressure-eq} itself, unifying the family
-for arbitrary $q$ in a single algebraic identity, with its annealed
-derivation and independent numerical confirmation.
+transition at $p>4$ heuristically in 1998, in his own terms (a sign
+flip in the index of the maximal term $f_p(n)$, leading him to expect
+vanishing asymptotic density for the weak components of the Collatz
+graph of $T_p$), and Kontorovich--Lagarias had already computed the
+same quantity (their $\eta_{5,BP}$, Theorem 8.10) via large-deviations
+methods for a branching random walk, a route different from, but
+numerically identical to, the pressure-equation derivation
+\cite{KontorovichLagarias2009}. This difference in route matters
+beyond giving an alternative derivation: a large-deviations argument
+for a branching random walk is, in the appropriate sense, a quenched
+statement, whereas the pressure identity (Theorem~\ref{thm:pressure})
+is annealed. That the two agree numerically at $\alpha_-(5)$ is
+consistent with $\alpha_-(5)$ being unfrozen
+(Proposition~\ref{prop:always-frozen}), where quenched and annealed
+are expected to coincide; it does not by itself certify agreement at a
+frozen root. What is new here is the closed-form equation
+\eqref{eq:pressure-eq} itself, unifying the family for arbitrary $q$
+in a single algebraic identity, with its annealed derivation and
+independent numerical confirmation.
 \end{remark}
 
 \section{The endogeny barrier}
@@ -2510,6 +2520,12 @@ recorded in the corresponding companion paper's appendix
 \cite{PressureCompanion,KLVolkovCompanion,WirschingCompanion}.
 
 \begin{itemize}
+\item \emph{No $2$-adic memory} (Lemma~\ref{lem:2adic}): the predicted
+  universal constant $w\equiv-3^{-1}\pmod{2^a}$ was checked against
+  more than $500$ values of $v$ per exponent, for $a=1,\dots,10$,
+  matching exactly in every case (e.g.\ $a=5\Rightarrow w\equiv21\
+  (\mathrm{mod}\ 32)$; $a=10\Rightarrow w\equiv341\ (\mathrm{mod}\
+  1024)$).
 \item \emph{Weak Covering Conjecture DP} (\S\ref{sec:wcc}): validated
   against an independently computed reference table for
   $\ell=1,\dots,7$ and a hand-checked point ($\ell=2,j=2$).

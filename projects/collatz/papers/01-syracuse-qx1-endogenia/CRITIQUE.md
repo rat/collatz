@@ -70,6 +70,8 @@ retroativa.
 | C-044 | loop R6 | Data Availability Statement omitia `prop:fabius` e `prop:complex-deconditioning` da lista de resultados de Wirsching 2003 restatados sem prova, e a lista não tinha o qualificador "including" que a entrada irmã sobre a equação de pressão usa, lendo-se como exaustiva quando não era | moderado | prévio | fixed |
 | C-045 | loop R6 | `rem:novelty-109` (calibração bibliográfica de §3) desatualizado em relação ao estado atual do companion 06 (mesmo label, texto compartilhado): faltava o resultado de exclusão rigorosa para $q\ge5$ na direção direta (Gonçalves-Greenfeld-Madrid 2022) e a localização mais precisa da citação de Wirsching 1998 | moderado | prévio | fixed |
 | C-046 | loop R6 | "that stronger claim would be imprecise" (linha 2131), residual de "imprecise" fora de sentido técnico que C-035/C-039 não pegaram | menor | prévio | fixed |
+| C-047 | loop R7 | `rem:novelty-109` desatualizado de novo em relação ao companion 06 (sexta reincidência sobre este mesmo remark: faltavam "at $p>4$", a frase sobre densidade dos componentes fracos, e o parágrafo inteiro relacionando quenched/annealed a `prop:always-frozen`) | moderado | prévio | fixed |
+| C-048 | loop R7 | Apêndice de validação numérica não tinha entrada para `lem:2adic`, apesar de a Data Availability Statement listar essa checagem explicitamente e o corpo descrevê-la em prosa | moderado | prévio | fixed |
 
 Checagens mecânicas que passaram, registradas para não serem refeitas:
 34 chaves `\cite` contra 34 `\bibitem`, sem órfãos nem pendentes nas
@@ -1278,3 +1280,48 @@ título conferem) antes de adicionar `\bibitem{GoncalvesGreenfeldMadrid2022}`
 correct" (nega o fato, não apela ao vocabulário banido). `main.tex`
 recompilado limpo (3 passadas `pdflatex`); `\cite`/`\bibitem`
 reconferidos (36/36, a nova entrada incluída, sem órfãos).
+
+### Rodada 7 (subagente `general-purpose`, síncrono, contexto fresco): NÃO limpa
+
+Leu `main.tex` completo (2758 linhas) e `CRITIQUE.md` completo
+(incluindo as seis rodadas anteriores). Reconferiu contra o estado
+ATUAL dos três companions: "seven band-widths" (04), `thm:conjecture3`
+(05), `thm:wirsching-conj1`, cadeia $(\star1)$-$(\star5)$ e domínios, os
+seis resultados de "Microcanonical decomposition and equivalence of
+ensembles" (05), e os números da equação de pressão (06) — todos batem,
+nenhuma reincidência nesses pontos. Vocabulário banido (lista completa
+da Regra 4b §1), em dash, e orçamento de antítese: todos limpos,
+confirmados de novo. Achou 2 moderados, ambos em pontos que as seis
+rodadas anteriores não tinham coberto (ou, no caso de C-047, que o
+companion mudou de novo depois da última sincronização).
+
+Achados: 0 crítico, 0 maior, 2 moderados (C-047, C-048), 0 menores.
+
+**C-047 (moderado).** `rem:novelty-109` (mesmo `\label` do companion
+06) ficou desatualizado de novo: entre a correção C-045 (Rodada 6) e
+esta rodada, o companion 06 acrescentou "at $p>4$", a frase sobre
+densidade assintótica dos componentes fracos do grafo de Collatz de
+$T_p$, e um parágrafo inteiro relacionando a distinção quenched/annealed
+a `prop:always-frozen`. Sexta reincidência catalogada sobre o mesmo
+padrão estrutural (C-024, C-036, C-041, C-042, C-045, agora C-047),
+mostrando que sincronizar um remark compartilhado contra um companion
+sob edição concorrente pode precisar de mais de uma rodada até os dois
+loops convergirem juntos.
+
+**C-048 (moderado).** O Apêndice de validação numérica (`app:validation`)
+declara cobrir "each computational result reported above" excluindo
+explicitamente só o material restatado de companions (pressão, KL-Volkov,
+Wirsching), mas não tinha entrada para `Lemma~\ref{lem:2adic}`, que é
+material próprio deste paper (não migrado), tem checagem numérica descrita
+em prosa no corpo (linhas 584-589), e é citado explicitamente na Data
+Availability Statement ("the checks for Lemma~\ref{lem:2adic}").
+
+**Correções aplicadas (produtor, antes da Rodada 8).** C-047:
+`rem:novelty-109` reescrito de novo, desta vez replicando o texto do
+companion quase integralmente (incluindo o parágrafo quenched/annealed
+com referência a `prop:always-frozen` e `thm:pressure`, ambos já
+presentes em 01 sob os mesmos rótulos), para reduzir o risco de uma
+sétima reincidência parcial. C-048: entrada nova adicionada ao Apêndice
+para `lem:2adic`, no mesmo estilo das demais entradas (valor previsto,
+faixa testada, resultado). `main.tex` recompilado limpo (3 passadas
+`pdflatex`); `\cite`/`\bibitem` reconferidos (36/36, sem órfãos).
