@@ -1283,3 +1283,41 @@ correção gramatical.
 `pdflatex`), zero erro/referência indefinida; `\cite`/`\bibitem` e
 `\ref`/`\eqref`/`\label` conferidos por script, sem órfãos em nenhuma
 direção.
+
+### 2026-08-11 — rodada de convergência 9 (crítico, contexto fresco)
+
+Escopo: `main.tex` inteiro, sexta reconferência independente das provas
+centrais sem erro novo, consulta ao advisor para fechar a lista final.
+
+**Resultado: 0 crítico, 0 maior, 0 moderado, 2 menor. RODADA LIMPA.
+Contagem de rodadas limpas consecutivas: 1/3** (a rodada 8 não tinha
+ficado limpa).
+
+| ID | Nível | Resumo | Status |
+|----|-------|--------|--------|
+| D-29 | menor | `conj:transition-fine`, l.652: "it **pins down** the constant" — "pin down" é vocabulário banido pela Regra 4b §1 (forma flexionada, escapou de varreduras anteriores que buscavam só o infinitivo) | fixed |
+| D-30 | menor | `conj:transition-fine`, l.654-655: "A directed literature search found the neighboring machinery but not this exact statement ready-made" — narração de processo (Regra 4b §3); é a frase exata que C-01/C-18 (rodada 1) apontaram dentro do então `prop:transition-fine`, marcada `fixed` na rodada 2, mas nunca de fato removida: sobreviveu ao relabeling Proposition→Conjecture (D-02) e a sete rodadas de convergência subsequentes | fixed |
+
+**Verificação antes de corrigir (Regra 8c).** Minha primeira checagem
+de D-30 usou `grep -n "directed literature search"` numa única linha e
+não achou nada, porque a frase quebra entre as linhas 654 e 655 no
+código-fonte ("A directed literature" termina a linha, "search
+found..." começa a próxima) — um grep de linha única não pega isso.
+Reli o trecho inteiro com o Read tool antes de concluir que o crítico
+estava errado, e a frase estava lá. Registro isso porque quase levou a
+rejeitar um achado real por uma checagem de verificação malfeita, não
+porque o achado em si estivesse errado.
+
+**Correções aplicadas.** "pins down" → "fixes" (mesma ideia, sem o
+verbo banido). A frase de narração de processo reescrita para afirmar
+o fato direto: "The neighboring machinery does not supply this exact
+statement ready-made" (sem "a directed literature search found").
+Depois de corrigir, rodei uma varredura própria com normalização de
+espaço em branco (para não repetir o erro de grep de linha única) para
+toda a lista de vocabulário banido e frases de narração de processo:
+zero ocorrência remanescente em qualquer lugar do documento.
+
+**Verificação técnica pós-correção:** recompilado (2 passadas
+`pdflatex`), zero erro/referência indefinida; `\cite`/`\bibitem` e
+`\ref`/`\eqref`/`\label` conferidos por script, sem órfãos em nenhuma
+direção.
