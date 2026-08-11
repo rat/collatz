@@ -2,6 +2,51 @@
 
 Última atualização: 2026-08-10
 
+## Redação final do paper 05 (dono do paper, worktree isolado)
+
+Pedido do diretor científico: avançar para redação final (Regra 5) nos
+4 papers. Neste, o `OUTLINE.md` já sinalizava a pendência: H-167/H-168
+(zeros de custo central, ínfimo do quociente mínimo de Wirsching) e
+H-171 (sensibilidade ao deslocamento, subproduto), fechadas nesta
+mesma sessão, nunca tinham entrado no `main.tex`. Incorporadas em §4
+como um novo Empirical Result (separa estatística de extremos de
+deterioração real via conjunto fixo exaustivo em `d=+5`, extensão a
+`ell=17`, e diagnóstico de quantis em `d=6..12`) e um Remark (por que
+o certificado de monotonicidade de um resultado do paper 01 não se
+transfere para este quociente, contraexemplo exato de
+não-monotonicidade). Abstract, introdução e Discussão ajustados para
+refletir o achado sem overclaim.
+
+Passagem completa pela Regra 4b no documento inteiro (não só o
+material novo): abstract perdeu o marcador de rascunho e foi reescrito
+em frases curtas, vocabulário banido zerado, travessões zero,
+antíteses "X, not Y" reduzidas a duas (dentro do orçamento).
+
+Crítica adversarial de contexto fresco (subagente Opus, esforço
+máximo, Regra 8/15) sobre o material novo achou nove problemas, quatro
+de severidade alta (`CRITIQUE.md`, C-031 a C-039). O mais sério: a
+explicação mecanicista original do Remark não fechava o argumento;
+rederivando do zero (e verificando com um script novo,
+`exact_weight_asymmetry.py`, commitado em `collatz-wirsching-2003`),
+achei que a explicação certa é outra, e que ela também corrige quatro
+dos seis valores de `S_3(3,a)` que um escalonamento anterior a Codex
+(dentro do próprio H-168) tinha citado errado, embora a conclusão de
+fechamento (o mecanismo não transfere) continue de pé. Segundo achado
+sério: o parágrafo sobre composição do bucket inferior, herdado quase
+literalmente da nota de H-168, não normalizava pela taxa-base de
+inteiros pequenos na população; refeita a conta, a leitura honesta é
+"inconclusivo com esse teste", não a confirmação que o texto tirava.
+Cortei o parágrafo e reescopei a conclusão para o que o teste exaustivo
+de fato sustenta (só em `d=+5`). Correção registrada tanto em
+`CRITIQUE.md` quanto no próprio `hypotheses/H-168-...md` (Regra 8c).
+
+Recompilado limpo (11 páginas), `\cite`/`\bibitem`/`\ref`/`\label`
+sem órfãos (script Python), abstract/introdução/Discussão reconferidos
+contra o corpo final depois de todas as edições (Regra 8b). Único
+item pendente, já sinalizado antes e não resolvido nesta rodada por
+decisão explícita: `main-pt-br.tex` não existe, decisão do pesquisador
+de tratar isso à parte.
+
 ## Redação final do paper 04 (dono do paper, worktree isolado)
 
 Pedido do diretor científico, depois de confirmado o backlog esgotado
