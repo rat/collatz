@@ -1465,3 +1465,40 @@ PT-BR sem pedido.
 
 **Verificação técnica:** `main.tex` inalterado nesta rodada; estado já
 confirmado limpo na verificação da rodada 12.
+
+### 2026-08-11 — rodada de convergência 14 (crítico, contexto fresco)
+
+Escopo: `main.tex` inteiro (décima primeira reconferência independente
+das provas centrais sem erro novo), mais `OUTLINE.md`, `DATA_REPO.md`,
+`papers/README.md`, e o repositório `collatz-qx1-pressure` (README.md
+em inglês).
+
+**Resultado: 0 crítico, 1 maior, 1 moderado, 1 menor. Não limpa.
+Contagem de rodadas limpas consecutivas: 0/3.**
+
+| ID | Nível | Resumo | Status |
+|----|-------|--------|--------|
+| D-40 | moderado | `main.tex`, prova de `thm:frozen-singular` (§3): $s(\alpha)$ introduzido na l.388 sem nunca ter sido definido (só ganha definição formal em §4) | fixed |
+| D-41 | maior | `collatz-qx1-pressure/sec3-pressure-and-transition/README.md`: continuava afirmando o transiente $k^{-0{,}222}$ como "known" e derivando $k\approx250$ dele, exatamente a alegação que a rodada de convergência 10 (D-31) removeu do `main.tex` por violar a Regra 11; o README se contradizia internamente com sua própria seção de "terminology correction" mais abaixo, que já dizia "remains unlocated" | fixed |
+| D-42 | menor | Mesmo README: 40 travessões e um separador de três hífens, nunca limpos apesar de 13 rodadas de crítica no `main.tex` do mesmo paper (Regra 3, proibição incondicional em todo o projeto) | fixed |
+
+**Correções aplicadas:**
+
+- **D-40.** $s(\alpha)$ removido da equação em `thm:frozen-singular`;
+  a identidade fica só em termos de $\mathrm{Ent}(p_\alpha)$ e
+  $P'(\alpha)$, com uma nota de que essa quantidade ganha o nome
+  $s(\alpha)$ só depois, quando §4 a define.
+- **D-41.** Parágrafo do README reescrito para bater exatamente com a
+  redação já corrigida do `main.tex` na rodada 10: relata que um ajuste
+  de lei de potência à razão de incrementos não convergiu para um
+  expoente estável, sem afirmar "$0{,}222$" nem "$k\approx250$" como
+  fato.
+- **D-42.** Todas as 40 ocorrências de travessão e o separador de três
+  hífens substituídos por vírgula, ponto e vírgula, dois-pontos ou
+  ponto final, conforme o contexto gramatical de cada uma; conferido
+  por grep que zero sobrou.
+
+**Verificação técnica pós-correção:** `main.tex` recompilado (2
+passadas `pdflatex`), zero erro/referência indefinida;
+`\cite`/`\bibitem` e `\ref`/`\eqref`/`\label` conferidos por script,
+sem órfãos em nenhuma direção.
