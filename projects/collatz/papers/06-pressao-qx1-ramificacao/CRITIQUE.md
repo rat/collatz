@@ -1896,3 +1896,48 @@ sem órfãos em nenhuma direção (o único label não referenciado,
 um `\label` sem `\ref` correspondente, deixado como está). Os quatro
 scripts novos e as edições de README foram rodados do início ao fim
 antes de commitar, no repositório `collatz-qx1-pressure`.
+
+### 2026-08-11 — rodada de convergência 21 (crítico, contexto fresco)
+
+Escopo: `main.tex` inteiro, `CRITIQUE.md` inteiro (20 rodadas
+anteriores lidas antes de criticar), README raiz e da subpasta de
+`collatz-qx1-pressure`. Rodou pessoalmente 8 scripts do início ao fim
+(incluindo a bateria completa `empirical_qx1_tree.py` em $q=5,7$) e
+verificou 10 das 18 entradas bibliográficas contra Crossref/Project
+Euclid/arXiv diretamente.
+
+**Resultado: 0 crítico, 0 maiores, 3 moderados, 0 menores. Não limpa.
+Contagem de rodadas limpas consecutivas: 0/3.**
+
+| ID | Nível | Resumo | Status |
+|----|-------|--------|--------|
+| D-83 | moderado | `\bibitem{LagariasWeiss1992}` (acrescentado na rodada 20): "Annals of Applied Probability \textbf{2}(2)" — o fascículo certo é (1), não (2) (confirmado via Project Euclid, DOI `10.1214/aoap/1177005779`, URL contém "volume-2/issue-1"); o número de fascículo foi acrescentado na rodada 20 sem checagem contra fonte primária, só copiado da entrada de Kontorovich-Lagarias 2010 que nem tinha fascículo — violação da Regra 11 | fixed |
+| D-84 | moderado | §4, l.980-981 (na numeração da rodada 20): "an underpowered fit at five correlated points" — o ajuste usa 6 pontos ($k=6,\ldots,11$), não 5; o próprio `increment_ratio_powerlaw_fit_attempt.py` (docstring e README da subpasta) já dizia "seis" corretamente, só o `main.tex` e a mensagem impressa do script tinham "cinco"/"five" | fixed |
+| D-85 | moderado | `collatz-qx1-pressure/sec3-pressure-and-transition/README.md`: "$Z_k(2;1)^{1/k}$ oscillates in $[0.619,0.650]$ for $k=1,\ldots,12$" — em $k=1$ o valor é $0.600000$ exatamente, fora do intervalo citado; o script imprime "faixa observada: [0.6000, 0.6496]" para $k=1,\ldots,12$ | fixed |
+
+**Verificação independente antes de corrigir (Regra 8c):** busquei a
+página do artigo no Project Euclid via WebSearch e confirmei a URL
+"volume-2/issue-1/..." para o DOI citado (D-83). Reli `main.tex`
+l.980-981 e o docstring/README (D-84): o próprio repositório já
+continha a contagem certa em dois lugares, só o `main.tex` e uma
+`print()` do script tinham o número errado. Rodei
+`quenched_fixed_root_oscillation.py` do início ao fim e conferi
+$k=1$ contra o intervalo citado no README (D-85).
+
+**Correções aplicadas:**
+
+- **D-83.** `\bibitem{LagariasWeiss1992}`: "\textbf{2}(2)" →
+  "\textbf{2}(1)".
+- **D-84.** `main.tex`: "across $k=5,\ldots,11$" → "across
+  $k=6,\ldots,11$"; "at five correlated points" → "at six correlated
+  points". `increment_ratio_powerlaw_fit_attempt.py` linha 70:
+  "cinco pontos" → "seis pontos" (a mensagem impressa agora bate com
+  o próprio docstring do script, que já dizia "seis").
+- **D-85.** README da subpasta: "$[0.619,0.650]$ for $k=1,\ldots,12$"
+  → "$[0.600,0.650]$ for $k=1,\ldots,12$ (the $[0.619,0.650]$
+  sub-range holds from $k=2$ on)".
+
+**Verificação técnica pós-correção:** `main.tex` recompilado (2
+passadas `pdflatex`), zero erro/referência indefinida (16 páginas).
+`increment_ratio_powerlaw_fit_attempt.py` rerodado do início ao fim
+após a correção, saída consistente com o texto revisado.
