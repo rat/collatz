@@ -72,6 +72,9 @@ retroativa.
 | C-046 | loop R6 | "that stronger claim would be imprecise" (linha 2131), residual de "imprecise" fora de sentido técnico que C-035/C-039 não pegaram | menor | prévio | fixed |
 | C-047 | loop R7 | `rem:novelty-109` desatualizado de novo em relação ao companion 06 (sexta reincidência sobre este mesmo remark: faltavam "at $p>4$", a frase sobre densidade dos componentes fracos, e o parágrafo inteiro relacionando quenched/annealed a `prop:always-frozen`) | moderado | prévio | fixed |
 | C-048 | loop R7 | Apêndice de validação numérica não tinha entrada para `lem:2adic`, apesar de a Data Availability Statement listar essa checagem explicitamente e o corpo descrevê-la em prosa | moderado | prévio | fixed |
+| C-049 | loop R8 | `lem:cov-spectral` e `prop:exact-endogeny` sem `\begin{proof}`; a Discussão chamava `prop:exact-endogeny` de "proved" e ela afirma valores numéricos não-triviais (Corr=+1/-1/2) sem nenhuma derivação; notação `N_{\eta_i}^{(m)}` usada 2 vezes, nunca definida | crítico | prévio | fixed |
+| C-050 | loop R8 | `prop:beta-wcc` (§7, bijeção não-trivial entre custo geométrico e conjunto de cobertura de Wirsching) sem `\begin{proof}`; checagem "against brute force" mencionada no corpo mas ausente do Apêndice/DAS | moderado | prévio | fixed |
+| C-051 | loop R8 | `$\widetilde A_\delta$`, `$\varphi_0$` e a relação entre `$x_\ell$`/`$z_\ell$`/`$x_\ell^+$` usadas sem definição em §triangulation, recuperáveis só lendo o companion 05 | moderado | prévio | fixed |
 
 Checagens mecânicas que passaram, registradas para não serem refeitas:
 34 chaves `\cite` contra 34 `\bibitem`, sem órfãos nem pendentes nas
@@ -1325,3 +1328,97 @@ sétima reincidência parcial. C-048: entrada nova adicionada ao Apêndice
 para `lem:2adic`, no mesmo estilo das demais entradas (valor previsto,
 faixa testada, resultado). `main.tex` recompilado limpo (3 passadas
 `pdflatex`); `\cite`/`\bibitem` reconferidos (36/36, sem órfãos).
+
+### Rodada 8 (subagente `general-purpose`, síncrono, contexto fresco): NÃO limpa
+
+Leu `main.tex` completo (2770 linhas) e `CRITIQUE.md` completo
+(incluindo as sete rodadas anteriores). Reconferiu contra o estado
+ATUAL dos três companions (todos os pontos que rodadas anteriores já
+tinham checado seguem batendo; `rem:novelty-109` confirmado
+sincronizado com o companion 06 depois de C-047). Achou o primeiro
+achado crítico desde a Rodada 3: `lem:cov-spectral` e
+`prop:exact-endogeny` sem prova, apesar de a Discussão chamar o
+segundo de "proved".
+
+Achados: 1 crítico (C-049), 2 moderados (C-050, C-051), 0 menores.
+
+**C-049 (crítico).** Nenhum dos dois ambientes tinha
+`\begin{proof}`. `lem:cov-spectral` justificava sua identidade de
+covariância só com "by character orthogonality and the affine sibling
+relation", sem derivação. `prop:exact-endogeny` afirmava
+$\Corr(Z_1,Z_2)=+1$ se $\Delta\equiv0\pmod6$, $=-1/2$ caso contrário,
+sem nenhum esboço. `N_{\eta_i}^{(m)}` ocorria duas vezes, nunca
+definida. A Discussão (linha ~2312, "The first and third are proved")
+já contava `prop:exact-endogeny` como provada antes de ela ter prova.
+
+Verifiquei matematicamente antes de agir (Regra 8c): reconstruí a
+alegação do zero (Cov=$-c^2/9$, Var=$2c^2/9$, Corr=$-1/2$ para o
+observável de tipo $g(0)=0$, $g(1)=g(2)=c$ com deslocamento
+$w_2=w_1+\delta\pmod3$), e ela bate exatamente. Consultei o
+`advisor()` (Regra 11b) sobre a estratégia; recomendou provar, não
+enfraquecer, e apontou dois recursos do próprio projeto que eu não
+tinha achado no meu primeiro grep (busquei em inglês): a hipótese
+`H-126-regime2-decorrelacao-agregados-irmaos-estrutura-exata.md` (a
+derivação original) e o experimento `E-110` com o script
+`sec5-rho-eff-control-experiment/verify_orthogonality.py`, que
+reproduz $+1/-1/2$ contra a estrutura cíclica real (validada por
+`assert_cyclic_structure` contra inteiros verdadeiros). Segui a
+recomendação: provei a identidade $w_2\equiv w_1+\delta\pmod3$ direto
+da relação afim já estabelecida no próprio Lema (indução em $c_\Delta
+\bmod3$, sem depender do script), e usei a estrutura de tipo
+($g(0)=0$ estéril, $g(1)=g(2)$ pela simetria dos dois resíduos
+admissíveis, citando a verificação computacional para essa última
+peça em vez de re-derivá-la do zero, seguindo a opção mais segura que
+o advisor sugeriu). Rodei a álgebra pelo Codex (`codex exec -s
+read-only`, prompt curto) antes de commitar: confirmou os passos 2
+(indução de $c_\Delta\bmod3$) e 4 (covariância/correlação) sem erro.
+
+**C-050 (moderado).** `prop:beta-wcc` (bijeção não-trivial entre custo
+geométrico de representação de Syracuse e o conjunto de cobertura
+$R_{\ell-1,j}$ de Wirsching) sem prova; a checagem "against brute
+force" mencionada no corpo não aparecia no Apêndice nem na DAS.
+Verifiquei contra `collatz-endogeny/sec9-wcc-beta-bridge/weighted_bridge.py`
+e seu README: o script deriva e valida (brute force, $\ell\le4$) a
+mesma identidade via uma bijeção de deslocamento de índice.
+
+**C-051 (moderado).** `$\widetilde A_\delta$` (linha ~1324) e
+`$\varphi_0$` (linha ~1352) usadas uma única vez cada, nunca
+definidas; `$z_\ell$` (na mesma frase de `$\varphi_0$`) nunca
+relacionado a `$x_\ell^+$` (usado no enunciado de `thm:conjecture3`
+duas linhas depois).
+
+**Correções aplicadas (produtor, antes da Rodada 9).** C-049:
+`\begin{proof}` adicionado a `lem:cov-spectral` (inversão de Fourier +
+relação afim + ortogonalidade de caracteres, a mesma técnica já
+gesticulada no texto) e a `prop:exact-endogeny` (a prova acima,
+citando a verificação computacional só para a simetria $g(1)=g(2)$,
+não para a álgebra de covariância, que é auto-contida); `N_\eta^{(m)}`
+e `S_i(\xi)` definidos no próprio enunciado do Lema. Varredura Regra
+8b: a frase da Discussão já ficou verdadeira automaticamente com a
+prova adicionada, sem precisar de edição; nenhum outro lugar citando
+`prop:exact-endogeny` precisou de ajuste. `verify_orthogonality.py`
+adicionado à DAS. C-050: `\begin{proof}[Proof sketch]` adicionado a
+`prop:beta-wcc` (mecanismo da bijeção via a recursão $W_m=2^{a_m}
+W_{m-1}+3^{m-1}$, sem comprometer-se com a aritmética exata de índices
+que eu não tinha 100% de certeza sob pressão de tempo); entrada
+adicionada à DAS. C-051: `$\widetilde A_\delta$` definida inline
+(análogo contínuo da janela de limite central); `$\varphi_0$` definida
+com citação nova e verificada a Berg-Krüppel 1998 (`WebSearch`, Regra
+11); `$z_\ell$` substituído por `$x_\ell^+$` (evitando introduzir mais
+um símbolo não usado em nenhum outro lugar) e `$x_\ell$`/`$x_\ell^+$`
+definidos explicitamente com a fórmula do companion 05.
+
+Depois de aplicar as três correções, fiz uma varredura mecânica dupla
+sugerida pelo `advisor()` para tentar fechar a classe inteira de uma
+vez, em vez de esperar a próxima rodada achar a próxima instância
+(essa classe já tinha rendido C-038 na Rodada 4 e C-032 na Rodada 3):
+(i) todo ambiente `theorem`/`proposition`/`lemma` do documento checado
+individualmente quanto a ter prova, ponteiro de companion, ou
+justificativa inline suficiente (`prop:fixed-pair`, a lemma "Pre-wrap
+triviality", `prop:halasz-deficit`, `thm:propC`, `prop:rigidity`,
+`thm:no-transfer` revisados um a um; todos adequados, um `\cite`
+reforçado em `prop:halasz-deficit`); (ii) toda frase "checked/verified
+against X" no corpo conferida contra a DAS/Apêndice (nenhuma lacuna
+nova encontrada além das já corrigidas nesta rodada). `main.tex`
+recompilado limpo (3 passadas `pdflatex`); `\cite`/`\bibitem`
+reconferidos (37/37, `BergKruppel1998` incluído, sem órfãos).

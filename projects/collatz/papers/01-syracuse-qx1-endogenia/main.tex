@@ -1033,6 +1033,22 @@ after multiplication by $2^{\ell+j}$, with $R_{\ell-1,j}$ modulo
 $3^\ell$.
 \end{proposition}
 
+\begin{proof}[Proof sketch]
+Writing $z\equiv\sum_{m=1}^\ell3^{m-1}2^{-A_m}\pmod{3^\ell}$ (the
+Syracuse representation \eqref{eq:syracuse-def}, $A_m:=a_1+\cdots+a_m$)
+and multiplying by $2^{A_\ell}$ turns the sum into
+$\sum_{m=1}^\ell3^{m-1}2^{A_\ell-A_m}$, whose exponents $A_\ell-A_m$
+strictly decrease from the total cost $A_\ell$ down to $0$ as $m$ runs
+from $1$ to $\ell$: exactly the strictly-decreasing-exponent sum
+defining $R_{j,k}$. Padding the shift to any fixed budget $\ell+j\ge
+A_\ell$ instead of the tuple's own cost $A_\ell$ turns this
+correspondence into the stated bijection with $R_{\ell-1,j}$; taking
+$j$ minimal over admissible residues gives
+$\max_zB_\ell(z)=\ell+j^\ast(\ell)$. Checked against brute force for
+$\ell\le4$ in the accompanying repository
+(\texttt{sec9-wcc-beta-bridge/weighted\_bridge.py}).
+\end{proof}
+
 Ordinary covering controls the cheapest representation of each residue,
 whereas $c_\ell$ sums the geometric weights of all its representations.
 At the WCC threshold $j^\ast(\ell)=\log_4(3)\ell+o(\ell)$, the cheapest
@@ -1305,8 +1321,10 @@ central-limit window).
 (\star3) & g_\ell(k_\ell,a)\ge\eta\,\overline g_\ell(k_\ell)\text{ for
   every }\ell\ge\ell_0\text{ and every unit }a\in\mathbb Z_3^\times;\\
 (\star4) & \liminf_\ell(W_3^\ell\chi_1)(x_\ell)/(W_3^\ell\chi_0)(x_\ell)
-  \ge\mu\text{, uniformly for }(x_\ell)\in\widetilde A_\delta,\\
- & \text{with }\chi_0=\mathbf1_{[0,2/3]},\ \chi_1=\mathbf1_{[1/3,1]};\\
+  \ge\mu\text{, uniformly for }(x_\ell)\in\widetilde A_\delta\text{ (the
+  continuous-state analogue of the central-limit window above, on}\\
+ & \mathbb I_3\cong\{0,1,2\}^{\mathbb N}\text{), with
+  }\chi_0=\mathbf1_{[0,2/3]},\ \chi_1=\mathbf1_{[1/3,1]};\\
 (\star5) & \text{an explicit asymptotic for }\varphi\text{ tested in
   Empirical Result~\ref{thm:conjecture3} below.}
 \end{array}
@@ -1332,7 +1350,12 @@ smaller central-limit window (a smaller $\delta$).
 
 Conjecture 2 remains open; $(\star3)$ is the most concrete sufficient
 condition above Conjecture 3, an asymptotic assertion on
-$\varphi(z_\ell)/\varphi_0(z_\ell)$ tested numerically below.
+$\varphi(x_\ell^+)/\varphi_0(x_\ell^+)$ ($\varphi_0$ Berg--Kr\"uppel's
+explicit asymptotic \cite{BergKruppel1998} for the truncated equation,
+conjectured to track $\varphi$'s own asymptotics up to a constant
+factor, used in place of $\varphi$ itself, which has no known closed
+form; $x_\ell^+$ the depth-$\ell$ test points defined below) tested
+numerically below.
 
 \subsection{Certified numerical test of Wirsching's Conjecture 3}
 
@@ -1342,7 +1365,11 @@ own, a companion paper's certified numerical test
 $X\overset{d}{=}(2U+X)/3$, the moments
 $M_i=\mathbb{E}[X^i]$ satisfy an exact rational recursion, giving a
 zero-truncation-error evaluation of $\varphi$ at depth $\ell$ up to
-$\ell=500$ (error certified $\le10^{-8}$).
+$\ell=500$ (error certified $\le10^{-8}$). Test points are
+$x_\ell:=k_\ell/3^\ell$ with $k_\ell=\ell+\lfloor u\sqrt\ell\rceil$ for
+$u\in\{-2,-1,-0.5,0,0.5,1,2\}$ (the class $\delta\approx2$ window
+written ``$u\in[-2,2]$'' below), and $x_\ell^+:=x_\ell+3^{-\ell-1}$
+\cite[\S7]{Wirsching2003}.
 
 \begin{empirical}[Numerical test of Wirsching's Conjecture 3]
 \label{thm:conjecture3}
@@ -1511,8 +1538,11 @@ $\Delta$:
 
 \begin{lemma}[Covariance spectral identity]\label{lem:cov-spectral}
 For subtree-aggregate observables $Z_i:=N_{\eta_i}^{(m)}(w_i(v))$
-(weighted populations truncated to precision $m$), with $v$ uniform on
-admissible classes mod $3^{m+1}$,
+(weighted populations of $w_i$'s subtree, truncated to depend on
+$w_i(v)$ only through its residue mod $3^m$, precision $m$), with $v$
+uniform on admissible classes mod $3^{m+1}$, and $S_i(\xi):=\sum_{r
+\bmod 3^m}Z_i(r)\,e(\xi r/3^m)$ the character sum of $Z_i$'s residue
+distribution,
 \[
   \Cov(Z_1,Z_2) = 3^{-2m}\sum_{\xi\ne 0 \bmod 3^m}
   e(-\xi c_\Delta/3^m)\, S_1(-2^\Delta\xi)\, S_2(\xi),
@@ -1524,11 +1554,52 @@ common $v$ is not thereby cancelled: it survives entirely as the
 diagonal frequency pairing $\xi_1=-2^\Delta\xi_2$.
 \end{lemma}
 
+\begin{proof}
+Fourier inversion on $\mathbb Z/3^m\mathbb Z$ writes
+$\mathbb E[Z_1Z_2]=3^{-2m}\sum_{\xi_1,\xi_2\bmod3^m}S_1(\xi_1)S_2(\xi_2)\,
+\mathbb E\bigl[e((\xi_1w_1+\xi_2w_2)/3^m)\bigr]$, expanding each $Z_i$
+in its own character sum and averaging the product of exponentials
+over the uniform admissible class of $v$. Substituting the affine
+relation $w_2=2^\Delta w_1+c_\Delta$ turns the inner average into
+$e(\xi_2c_\Delta/3^m)\,\mathbb E[e((\xi_1+2^\Delta\xi_2)w_1/3^m)]$,
+which vanishes by orthogonality of characters unless
+$\xi_1\equiv-2^\Delta\xi_2\pmod{3^m}$, in which case it equals $1$.
+Substituting $\xi_1=-2^\Delta\xi_2=:-2^\Delta\xi$ collapses the double
+sum to the single sum over $\xi\bmod3^m$; the $\xi=0$ term is
+$S_1(0)S_2(0)=\mathbb E[Z_1]\mathbb E[Z_2]$, which cancels against the
+mean product subtracted in $\Cov$, leaving exactly the sum over
+$\xi\ne0$ stated.
+\end{proof}
+
 \begin{proposition}[Exact coarse endogeny]\label{prop:exact-endogeny}
 For complete populations ($\eta_i\equiv 1$) and precision $\ell=1$:
 $\Corr(Z_1,Z_2)=+1$ if $\Delta\equiv 0\pmod 6$, and $=-1/2$ otherwise,
 independent of depth $D$ and of any truncation.
 \end{proposition}
+
+\begin{proof}
+At precision $\ell=1$, $Z_i$ is by construction a function
+$g(w_i\bmod3)$ alone. Residue $0$ is sterile (\S\ref{sec:setup}), so
+$g(0)=0$; for a complete, unweighted population the coarsest
+resolution carries no information beyond admissibility, so $g$ takes
+the same value $c>0$ at both admissible residues, $g(1)=g(2)=c$ (the
+two residues play interchangeable roles in the branching rule and are
+exchanged by the cyclic type structure verified against real integers
+in the accompanying repository, \texttt{sec5-rho-eff-control-experiment}).
+Writing $\Delta=2\delta$ ($\Delta$ is always even at $q=3$) in the
+affine relation of Lemma~\ref{lem:cov-spectral} gives
+$w_2\equiv2^\Delta w_1+c_\Delta\equiv w_1+c_\Delta\pmod3$, since
+$2^\Delta=4^\delta\equiv1\pmod3$; induction on $\delta$ using
+$c_{2(\delta+1)}-c_{2\delta}=4^\delta\equiv1\pmod3$ and $c_0=0$ gives
+$c_\Delta\equiv\delta\pmod3$, so $w_2\equiv w_1+\delta\pmod3$
+deterministically. If $\delta\equiv0\pmod3$ then $w_2=w_1$ and
+$\Corr=1$ trivially. Otherwise, with $w_1$ uniform on $\mathbb Z/3$,
+the pair $(g(w_1),g(w_2))$ takes the values $(0,c),(c,c),(c,0)$ each
+with probability $1/3$, giving $\Cov=c^2/3-(2c/3)^2=-c^2/9$ and
+$\Var[g(w_i)]=2c^2/3-(2c/3)^2=2c^2/9$, so
+$\Corr=(-c^2/9)/(2c^2/9)=-1/2$. Since $\delta\equiv0\pmod3$ iff
+$\Delta\equiv0\pmod6$, this is the claim.
+\end{proof}
 
 Proposition~\ref{prop:exact-endogeny} converts the endogeny barrier of
 Theorem~\ref{thm:barrier} from a qualitative argument into a closed
@@ -2059,8 +2130,8 @@ of scale at least $3^{-\ell}$ at some nonzero frequency, but that
 frequency may be coarse and cannot be used in the diagonal
 configuration. No primitive lower bound follows from a hole, by
 Proposition~\ref{prop:primitive-hole}. Even if a primitive coefficient
-of size $3^{-\ell}$ is added as a hypothesis, Halász's theorem yields
-the budget $\sum\|\cdot\|^2\le 0.549\ell$
+of size $3^{-\ell}$ is added as a hypothesis, Halász's theorem
+\cite{Halasz1977} yields the budget $\sum\|\cdot\|^2\le 0.549\ell$
 against a required ceiling of $0.25\ell$ ($\delta=1/2$, $d=\ell$
 generators): a deficit of a factor $\ge 2.2$, rising to $\approx 7$ at
 a realistic generator density $\rho\approx 0.3$. In Tao's original 2011
@@ -2460,10 +2531,15 @@ pressure-equation facts restated without proof from
 its companion paper below) are proved in the text. The following are
 additionally verified in public scripts, organized by section, at
 \url{https://github.com/faculdade/collatz-endogeny}: the
-residual-coupling experiment of \S\ref{sec:calibration}, the Weak
-Covering Conjecture test of \S\ref{sec:wcc}, the $K_\ell$/Jensen
-computations, the Chang residue-balance test, and the checks for
-Lemma~\ref{lem:2adic}, Theorem~\ref{thm:wcc-large-deviation},
+residual-coupling experiment of \S\ref{sec:calibration}, the
+type-structure check underlying Proposition~\ref{prop:exact-endogeny}
+and Remark~\ref{rem:calibration-consistency}
+(\texttt{sec5-rho-eff-control-experiment/verify\_orthogonality.py}),
+the Weak Covering Conjecture test of \S\ref{sec:wcc}, the exact cost
+identity of Proposition~\ref{prop:beta-wcc}
+(\texttt{sec9-wcc-beta-bridge/weighted\_bridge.py}), the
+$K_\ell$/Jensen computations, the Chang residue-balance test, and the
+checks for Lemma~\ref{lem:2adic}, Theorem~\ref{thm:wcc-large-deviation},
 Theorem~\ref{thm:fresh-digit-coupling},
 Propositions~\ref{prop:primitive-hole} and
 \ref{prop:primitive-fibre-energy},
@@ -2636,6 +2712,11 @@ recorded in the corresponding companion paper's appendix
   positive predecessor density in $3n+1$ dynamics}, Discrete and
   Continuous Dynamical Systems \textbf{9}(3) (2003), 771--787.
   DOI: 10.3934/dcds.2003.9.771.
+
+\bibitem{BergKruppel1998} L.\ Berg and M.\ Kr\"uppel, \emph{On the
+  solution of an integral-functional equation with a parameter},
+  Zeitschrift f\"ur Analysis und ihre Anwendungen \textbf{17} (1998),
+  159--181.
 
 \bibitem{DragicevicEtAl2018} D.\ Dragi\v{c}evi\'c, G.\ Froyland,
   C.\ Gonz\'alez-Tokman, and S.\ Vaienti, \emph{A spectral approach
