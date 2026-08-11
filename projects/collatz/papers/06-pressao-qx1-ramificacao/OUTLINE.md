@@ -1,4 +1,4 @@
-# Outline — paper 06 (equação de pressão qx+1)
+# Outline: paper 06 (equação de pressão qx+1)
 
 Status: `main.tex` é um rascunho completo (13 páginas, compila limpo).
 Split de `01-syracuse-qx1-endogenia/main.tex` §3 (mais §4.2, "Precise
@@ -19,20 +19,20 @@ distinto de `conj:tail-index`).
 ## Estrutura
 
 1. Introdução.
-2. Setup (§2) — mapa qx+1 acelerado, árvore reversa, o funcional G.
-3. O operador de pressão (§3) — exemplo do autômato mod-q ingênuo (não
+2. Setup (§2): mapa qx+1 acelerado, árvore reversa, o funcional G.
+3. O operador de pressão (§3): exemplo do autômato mod-q ingênuo (não
    bem definido, correção de um argumento anterior), lema da bijeção
    de fibra, teorema da identidade de pressão anelada exata, martingale
    de densidade q-ádica, critério de colisão L^p, singularidade na raiz
    congelada.
-4. Congelado vs. descongelado (§4) — transição de congelamento, tabela
+4. Congelado vs. descongelado (§4): transição de congelamento, tabela
    de limiares `alpha_c(q)`.
-5. Transição estrutural em q=5 (§5) — teorema no modelo iid, proposição
+5. Transição estrutural em q=5 (§5): teorema no modelo iid, proposição
    condicional mais fina, conjectura na árvore aritmética (= Growth
    Exponent Conjecture de Kontorovich-Lagarias/Applegate-Lagarias para
    q=3), conjectura do índice de cauda, teorema do índice de cauda no
    modelo iid (prova via Liu 2000).
-6. Regime preciso do expoente de cauda em q=3 (§6) — classificação
+6. Regime preciso do expoente de cauda em q=3 (§6): classificação
    contra a teoria crítica de smoothing transform multivariado
    (Kolesko-Mentemeier), não é o caso crítico.
 7. Confirmação empírica em árvores reversas reais (§7).
@@ -64,13 +64,13 @@ provado violava a Regra 10b; é estritamente mais forte que
 Conjectura: `conj:transition-arithmetic` (= problema aberto desde 1995
 para q=3), `conj:tail-index` (martingale Haar-q-ádica $W_q$),
 `conj:real-tree-tail` (fator de escala de crescimento na árvore real,
-`conj:transition-fine`; formaliza H-129 — objeto distinto de
+`conj:transition-fine`; formaliza H-129, objeto distinto de
 `conj:tail-index`, mesmo expoente previsto pelo mesmo mecanismo de
 renovação implícita, sem prova de equivalência entre os dois).
 Resultado empírico: `emp:real-trees` (§7, enumeração exaustiva em
 raízes fixas nomeadas; suporta `conj:transition-arithmetic` em 5 de 6
 combinações raiz/q, com a raiz $9$ em $q=7$ registrada como exceção
-clara, não escondida — ver rodada de convergência 5 no `CRITIQUE.md`).
+clara, não escondida; ver rodada de convergência 5 no `CRITIQUE.md`).
 
 ## Dependência de outros papers
 
@@ -79,7 +79,7 @@ transição congelado/descongelado, e o índice de cauda; 04 (KL vs
 Volkov) cita o valor `α_-(5)=0,650919` daqui; 05 (Wirsching) é
 independente. Citações `\cite{BarrierCompanion}` e
 `\cite{KLVolkovCompanion}` neste `main.tex` apontam para os outros dois
-como "companion paper, in preparation" — atualizar para o arXiv ID real
+como "companion paper, in preparation"; atualizar para o arXiv ID real
 assim que cada um for submetido.
 
 ## Pendências

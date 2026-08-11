@@ -1568,3 +1568,38 @@ rodando `empirical_qx1_tree.py` do zero, antes de corrigir):**
 `pdflatex`), zero erro/referência indefinida; `\cite`/`\bibitem` e
 `\ref`/`\eqref`/`\label` conferidos por script, sem órfãos em nenhuma
 direção.
+
+### 2026-08-11 — rodada de convergência 17 (crítico, contexto fresco)
+
+Escopo: `main.tex` inteiro (décima quarta reconferência independente
+das provas centrais sem erro novo, reprodução direta de múltiplos
+scripts), mais `OUTLINE.md`, `DATA_REPO.md`, `papers/README.md`, e o
+repositório `collatz-qx1-pressure` (README raiz e o de
+`sec3-pressure-and-transition/`).
+
+**Resultado: 0 crítico, 0 maior, 0 moderado, 3 menor. Não limpa (limite
+exige menor < 3, exatamente no limiar). Contagem de rodadas limpas
+consecutivas volta a 0/3.**
+
+| ID | Nível | Resumo | Status |
+|----|-------|--------|--------|
+| D-47 | menor | `collatz-qx1-pressure/README.md` (raiz do repositório, não a subpasta já limpa na rodada 14): 2 travessões, nunca varridos apesar de estar no escopo declarado de toda rodada desta série | fixed |
+| D-48 | menor | `.../06-pressao-qx1-ramificacao/OUTLINE.md`: 9 travessões, nunca limpos em 16 rodadas anteriores apesar de estar no escopo de leitura de cada rodada | fixed |
+| D-49 | menor | `.../projects/collatz/papers/README.md`: 7 travessões, incluindo na própria entrada do paper 06; mesmo arquivo já editado na rodada 13 (D-39) sem que os travessões fossem notados | fixed |
+
+**Correções aplicadas.** Todas as 18 ocorrências (2+9+7) substituídas
+por dois-pontos, ponto e vírgula ou vírgula conforme o contexto
+gramatical de cada uma, seguindo o mesmo padrão já usado nas correções
+de travessão anteriores desta série (D-42, rodada 14). Conferido por
+grep que zero sobrou em cada um dos três arquivos.
+
+**Nota de processo.** Estes três arquivos estavam formalmente no
+escopo declarado de toda rodada desde o início da série de
+convergência (main.tex + arquivos de suporte), mas nenhuma das 16
+rodadas anteriores tinha de fato varrido especificamente por
+travessão fora do `main.tex` e da subpasta `sec3-pressure-and-transition/`
+já limpa. Registrado para reforçar que "estar no escopo declarado" não
+substitui uma varredura mecânica explícita arquivo por arquivo.
+
+**Verificação técnica:** `main.tex` inalterado nesta rodada; estado já
+confirmado limpo na verificação da rodada 16.
