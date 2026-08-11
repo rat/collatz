@@ -2013,3 +2013,59 @@ Contagem de rodadas limpas consecutivas: 2/3.**
 `pdflatex`), zero erro/referência indefinida (16 páginas). Segunda
 rodada limpa consecutiva (2/3); mais uma rodada nas mesmas condições
 fecha o loop de convergência.
+
+### 2026-08-11 — rodada de convergência 24 (crítico, contexto fresco)
+
+Escopo: `main.tex` inteiro, `CRITIQUE.md` inteiro (23 rodadas
+anteriores), com atenção dedicada a conferir, para cada correção
+registrada como `fixed` nas rodadas 20-23, se ela foi de fato aplicada
+em TODOS os lugares que a entrada do `CRITIQUE.md` afirma ter
+corrigido, não só em um (padrão de falha que as rodadas 22 e 23 já
+tinham encontrado duas vezes seguidas). Também `OUTLINE.md`,
+`DATA_REPO.md`, a entrada do paper 06 em `papers/README.md`, e os dois
+READMEs em inglês do repositório companion. Rodou
+`increment_ratio_powerlaw_fit_attempt.py` do início ao fim.
+
+**Resultado: 0 crítico, 0 maiores, 0 moderados, 1 menor. Limpa.
+Contagem de rodadas limpas consecutivas: 3/3. Critério de parada
+atingido.**
+
+| ID | Nível | Resumo | Status |
+|----|-------|--------|--------|
+| D-90 | menor | `OUTLINE.md`, l.120 (seção "Passagem de redação final"): usava o rótulo antigo `` `prop:transition-fine` `` (renomeado para `conj:transition-fine` na rodada 1, achado D-02); a seção "Rótulo dos resultados" do mesmo arquivo já documentava o rename corretamente, só esta ocorrência mais antiga tinha ficado para trás | fixed |
+
+**Correções aplicadas:**
+
+- **D-90.** `OUTLINE.md`, l.120: `` `prop:transition-fine` `` →
+  `` `conj:transition-fine` ``. Confirmado por busca em todo o
+  repositório principal e no companion que essa era a única ocorrência
+  remanescente do rótulo antigo.
+- Atualizado também, na mesma passada: a contagem de rodadas em
+  `OUTLINE.md` (23→24) e a seção "Loop de convergência de crítica",
+  agora marcada como fechada, com a nota de que o fechamento do loop
+  não substitui a revisão humana do diretor científico antes de
+  qualquer submissão.
+
+**Verificação técnica:** `main.tex` recompilado (2 passadas
+`pdflatex`), zero erro/referência indefinida (16 páginas);
+`\cite`/`\bibitem` e `\ref`/`\eqref`/`\label` conferidos por script,
+sem órfãos em nenhuma direção.
+
+---
+
+## Loop de convergência de crítica: FECHADO em 2026-08-11
+
+24 rodadas de crítica com contexto fresco, rodadas 1 a 19 fechando a
+crítica inicial de divisão do paper 01 e corrigindo achados de prova,
+citação e prosa; rodadas 20 a 24 formando a sequência final de
+convergência (Regra 8/15's critério de parada: 3 rodadas consecutivas
+sem achado crítico/maior/moderado e com menos de 3 achados menores,
+zerando a contagem em qualquer rodada abaixo desse padrão). Rodadas
+22, 23 e 24 saíram limpas nesse sentido, nessa ordem, sem interrupção,
+fechando o loop.
+
+Isto não substitui a revisão humana. O paper está pronto para o
+diretor científico revisar e decidir sobre submissão; nenhuma edição
+adicional deve acontecer nesta linha sem um pedido explícito novo ou
+uma evidência concreta e nova que reabra algum achado já fechado
+(Regra 8d).

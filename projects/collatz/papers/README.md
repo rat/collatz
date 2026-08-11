@@ -42,8 +42,9 @@ and, as writing progresses, the draft files themselves.
   2026-08-10; formalized as `conj:real-tree-tail`, distinct from
   `conj:tail-index`).
   Repo: `collatz-qx1-pressure`. Split off 01
-  on 2026-08-10. Draft complete, undergoing a critique-convergence
-  loop against `CRITIQUE.md` (Rule 8/15); not yet reviewed by the
+  on 2026-08-10. Draft complete; the critique-convergence loop against
+  `CRITIQUE.md` (Rule 8/15) closed 2026-08-11 after 24 rounds (the
+  last three consecutive rounds clean). Not yet reviewed by the
   scientific director.
 
 ## Paused papers

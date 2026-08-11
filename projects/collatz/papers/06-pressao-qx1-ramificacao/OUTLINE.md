@@ -3,10 +3,11 @@
 Status: `main.tex` é um rascunho completo (16 páginas, compila limpo).
 Split de `01-syracuse-qx1-endogenia/main.tex` §3 (mais §4.2, "Precise
 regime of the tail exponent", que encaixa melhor aqui do que em 01), em
-2026-08-10, a pedido do diretor científico. Em loop de convergência de
-crítica desde então (Regra 8/15): 23 rodadas rodadas até agora, ver
-`CRITIQUE.md` para o histórico completo; ainda não atingiu o critério
-de parada (3 rodadas consecutivas limpas).
+2026-08-10, a pedido do diretor científico. Passou por um loop de
+convergência de crítica (Regra 8/15) de 24 rodadas com contexto fresco
+a cada uma, ver `CRITIQUE.md` para o histórico completo; fechado em
+2026-08-11 ao atingir o critério de parada (3 rodadas consecutivas
+limpas: rodadas 22, 23 e 24).
 
 Repositório de reprodutibilidade: `github.com/faculdade/collatz-qx1-pressure`.
 
@@ -103,13 +104,16 @@ movido para o §3, todas as citações do item C-21 foram verificadas
 contra fonte primária (uma delas, PDF de Villemonais-Zalduendo 2025,
 baixado e lido para resolver C-22).
 
-## Loop de convergência de crítica (em andamento)
+## Loop de convergência de crítica (fechado)
 
-Desde a rodada 1, o paper segue num loop de crítica com contexto fresco
-a cada rodada (Regra 8/15), parando só em 3 rodadas consecutivas sem
-achado crítico/maior/moderado e menos de 3 menores. 23 rodadas rodadas
-até agora (2026-08-10 a 2026-08-11); histórico completo, achado por
-achado, em `CRITIQUE.md`. Ainda não atingiu o critério de parada.
+Desde a rodada 1, o paper passou por um loop de crítica com contexto
+fresco a cada rodada (Regra 8/15), parando em 3 rodadas consecutivas
+sem achado crítico/maior/moderado e menos de 3 menores. 24 rodadas ao
+todo (2026-08-10 a 2026-08-11); histórico completo, achado por achado,
+em `CRITIQUE.md`. Critério de parada atingido na rodada 24 (rodadas
+22, 23 e 24 todas limpas). O paper não sai automaticamente do estado
+"em revisão" por isso: falta a revisão humana do diretor científico
+antes de qualquer submissão.
 
 ## Passagem de redação final (2026-08-10, mesma sessão)
 
@@ -117,7 +121,7 @@ H-129 atribuída aqui (decisão do diretor científico) e formalizada
 como `conj:real-tree-tail`. Ao formalizar, a evidência empírica de q=3
 e as três baterias de raízes de q=5, antes atribuídas a
 `conj:tail-index`, foram reatribuídas: medem o fator de escala da
-árvore real (`prop:transition-fine`), não a martingale Haar-q-ádica.
+árvore real (`conj:transition-fine`), não a martingale Haar-q-ádica.
 Verificado com Codex antes de editar. Abstract reescrito de novo
 (Regra 8b) para refletir os dois objetos separadamente. Checklist da
 Regra 4b/seção 10 aplicado ao `main.tex` inteiro. Recompila limpo,
