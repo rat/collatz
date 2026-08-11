@@ -1048,15 +1048,14 @@ Writing $z\equiv\sum_{m=1}^\ell3^{m-1}2^{-A_m}\pmod{3^\ell}$ (the
 Syracuse representation \eqref{eq:syracuse-def}, $A_m:=a_1+\cdots+a_m$)
 and multiplying by $2^{A_\ell}$ turns the sum into
 $\sum_{m=1}^\ell3^{m-1}2^{A_\ell-A_m}$, whose exponents $A_\ell-A_m$
-strictly decrease from the total cost $A_\ell$ down to $0$ as $m$ runs
-from $1$ to $\ell$: exactly the strictly-decreasing-exponent sum
-defining $R_{j,k}$. Padding the shift to any fixed budget $\ell+j\ge
-A_\ell$ instead of the tuple's own cost $A_\ell$ turns this
-correspondence into the stated bijection with $R_{\ell-1,j}$; taking
+strictly decrease as $m$ runs from $1$ to $\ell$, ending at $0$:
+exactly the strictly-decreasing-exponent sum defining $R_{j,k}$.
+Padding the shift to any fixed budget $\ell+j\ge A_\ell$ instead of
+the tuple's own cost $A_\ell$ turns this correspondence into the
+stated bijection with $R_{\ell-1,j}$; taking
 $j$ minimal over admissible residues gives
 $\max_zB_\ell(z)=\ell+j^\ast(\ell)$. Checked against brute force for
-$\ell\le4$ in the accompanying repository
-(\texttt{sec9-wcc-beta-bridge/weighted\_bridge.py}).
+$\ell\le4$ in the accompanying repository.
 \end{proof}
 
 Ordinary covering controls the cheapest representation of each residue,
@@ -1604,8 +1603,7 @@ the same value $c>0$ at both admissible residues, $g(1)=g(2)=c$. This,
 and $w_1$ itself being uniform on $\mathbb Z/3$ given $v$ uniform on
 its admissible domain (Lemma~\ref{lem:cov-spectral}'s hypothesis), both
 follow from the cyclic type structure verified against real integers in
-the accompanying repository, \texttt{sec5-rho-eff-control-experiment}:
-consecutive children's residues cycle deterministically through all
+the accompanying repository: consecutive children's residues cycle deterministically through all
 three classes of $\mathbb Z/3$ as the branch index advances, with the
 starting phase determined by $v$ and equidistributed as $v$ ranges
 uniformly over its domain.
@@ -2547,11 +2545,10 @@ of (O1)--(O8) would likely transfer to several of the others at once.
 
 \section*{Data Availability Statement}
 
-This paper's own claims (\S\ref{sec:endogeny} onward, excluding the
-pressure-equation facts restated without proof from
-\S\ref{sec:pressure} and the results restated from \S\ref{sec:kl} and
+This paper's own claims, everything except the material restated
+without proof from \S\ref{sec:pressure}, \S\ref{sec:kl}, and
 \S\ref{sec:triangulation}'s Wirsching subsections, each attributed to
-its companion paper below) are proved in the text. The following are
+its companion paper below, are proved in the text. The following are
 additionally verified in public scripts, organized by section, at
 \url{https://github.com/faculdade/collatz-endogeny}: the
 residual-coupling experiment of \S\ref{sec:calibration}, the

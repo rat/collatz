@@ -89,6 +89,9 @@ retroativa.
 | C-063 | loop R10 | `N_\eta^{(m)}` em `lem:cov-spectral` nunca tinha fórmula somatória escrita, só descrição em prosa | moderado | prévio | fixed |
 | C-064 | loop R10 | `eq:microcanonical` restatava a soma sem limites ($\sum_k$), enquanto o companion 05 (fonte da prova) tem limites explícitos ($\sum_{k=0}^{3^\ell-\ell-1}$) | moderado | prévio | fixed |
 | C-065 | loop R11 | Data Availability Statement citava "$K_\ell$/Jensen computations" sem `\ref` explícito para `thm:l2-finite`/`thm:jensen`, ao contrário de todo o resto da mesma frase | moderado | prévio | fixed |
+| C-066 | loop R12 | Abertura da Data Availability Statement escopava "this paper's own claims" como "§sec:endogeny onward" e ao mesmo tempo "excluindo" material de §sec:pressure, que já vem *antes* de §sec:endogeny e nunca esteve no intervalo declarado; frase confusa, ambiguidade só resolvida em outro ponto do mesmo parágrafo | moderado | prévio | fixed |
+| C-067 | loop R12 | Prova de `prop:beta-wcc`: afirmava que os expoentes decrescem "from the total cost $A_\ell$", mas em $m=1$ o expoente é $A_\ell-a_1<A_\ell$ (já que $a_1\ge1$), então $A_\ell$ nunca é de fato atingido pela soma | moderado | prévio | fixed |
+| C-068 | loop R12 | Caminhos de pasta/arquivo do repositório (`sec9-wcc-beta-bridge/weighted_bridge.py`, `sec5-rho-eff-control-experiment`) apareciam no corpo do texto (dentro de duas provas), violando a Regra 4b §3 ("repository folder paths in body text... go in Data Availability, once"); ambos já reapareciam na DAS e no Apêndice | menor | prévio | fixed |
 
 Checagens mecânicas que passaram, registradas para não serem refeitas:
 34 chaves `\cite` contra 34 `\bibitem`, sem órfãos nem pendentes nas
@@ -1603,3 +1606,48 @@ Result~\ref{thm:l2-finite} and the Jensen identity of
 Theorem~\ref{thm:jensen}", no mesmo padrão do resto da lista.
 `main.tex` recompilado limpo (3 passadas `pdflatex`);
 `\cite`/`\bibitem` reconferidos (37/37, sem órfãos).
+
+### Rodada 12 (subagente `general-purpose`, síncrono, contexto fresco): NÃO limpa
+
+Leu `main.tex` completo (2898 linhas) e `CRITIQUE.md` completo
+(incluindo as onze rodadas anteriores). Refez do zero, algebricamente,
+as provas de `prop:gauge`, `thm:barrier`, `lem:cov-spectral`,
+`prop:exact-endogeny`, `prop:beta-wcc`, `thm:jensen` e
+`thm:wcc-large-deviation` (pedido explícito, dado o histórico de dois
+achados críticos e um maior nessa classe); nenhum erro matemático novo
+encontrado, todas as constantes recomputadas batem exatamente.
+Reconferiu todos os números restatados de companions contra o estado
+atual deles e seus `CRITIQUE.md`; nenhuma divergência nova. Achou 3
+problemas de redação/estrutura, nenhum deles afetando corretude.
+
+Achados: 0 crítico, 0 maior, 2 moderados (C-066, C-067), 1 menor
+(C-068).
+
+**C-066 (moderado).** A abertura da Data Availability Statement dizia
+"this paper's own claims (§sec:endogeny onward, excluding the
+pressure-equation facts restated without proof from §sec:pressure...)",
+mas §sec:pressure (§3) vem antes de §sec:endogeny (§4), logo nunca
+esteve dentro do intervalo "onward" para começar; a frase de exclusão
+era logicamente redundante e confusa.
+
+**C-067 (moderado).** A prova de `prop:beta-wcc` dizia que os
+expoentes $A_\ell-A_m$ decrescem "from the total cost $A_\ell$", mas
+em $m=1$ o expoente já é $A_\ell-a_1<A_\ell$ (pois $a_1\ge1$
+sempre); $A_\ell$ nunca é de fato atingido pela soma exibida.
+
+**C-068 (menor).** Caminhos de pasta/arquivo do repositório
+apareciam no corpo do texto, dentro de duas provas
+(`prop:beta-wcc`, `prop:exact-endogeny`), violando a Regra 4b §3
+("repository folder paths in body text... go in Data Availability,
+once"); ambos os caminhos já reapareciam na DAS e no Apêndice.
+
+**Correções aplicadas (produtor, antes da Rodada 13).** C-066: frase
+de abertura da DAS reescrita sem a referência a "§sec:endogeny
+onward", listando diretamente o que é restatado (sem prova, de
+companions) versus o resto (provado no texto). C-067: "decrease from
+the total cost $A_\ell$" reescrito para "decrease... ending at $0$",
+sem afirmar que $A_\ell$ é atingido. C-068: os dois caminhos removidos
+do corpo, mantendo só "the accompanying repository" como referência
+genérica (o caminho exato já está na DAS/Apêndice). `main.tex`
+recompilado limpo (3 passadas `pdflatex`); `\cite`/`\bibitem`
+reconferidos (37/37, sem órfãos).
