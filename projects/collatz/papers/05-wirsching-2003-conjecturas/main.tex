@@ -16,7 +16,7 @@
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 
-\title{Wirsching's 2003 Conjectures on the Base-$3$ Fabius Function:\\
+\title{Wirsching's 2003 Conjectures on Positive Predecessor Density:\\
 A Proof, a Microcanonical Decomposition, and a Certified Numerical Test}
 
 \author{Renato Augusto Tavares~{\small\href{mailto:dr.renatotavares@gmail.com}{\textcolor{black}{\faEnvelope}}}~\orcidlink{0009-0002-0196-3311}\\
@@ -38,10 +38,10 @@ of the Fabius function. Conjecture 3 concerns the asymptotics of
 $\varphi$ itself. We prove Conjecture 1 by a generating-function
 cancellation. Conjecture 2's hypothesis carries no information about
 the residue coordinate the rest of the chain needs: the primary source
-supplies only a strong-convergence theorem, uniform on bounded
-families but not in growing resolution. We give a microcanonical
+supplies two bridges toward it, neither uniform in growing resolution.
+We give a microcanonical
 decomposition of the Syracuse law in terms of Wirsching's generators,
-prove an exact equivalence-of-ensembles theorem at fixed and sublinear
+prove exact equivalence-of-ensembles theorems at fixed and sublinear
 precision, and prove that the same decomposition's latent cost vectors
 fail to converge at linear precision, a narrower fact than
 nonequivalence after projection, which remains open. The
@@ -54,8 +54,9 @@ statistics of the growing index set. A monotonicity certificate
 available for a related count in a companion paper does not transfer
 here. None of this closes Conjecture 2. A certified evaluation of
 $\varphi$ to error $10^{-8}$
-through depth $\ell=500$ supports Conjecture 3, subject to a wider
-$\pm0.015$ extrapolation uncertainty outside that certificate.
+through depth $\ell=500$ supports Conjecture 3 at every offset tested,
+with a central-sequence extrapolation coefficient stable to within
+$2\times10^{-4}$ across fit sub-ranges and tail models.
 \end{abstract}
 
 \section{Introduction}
@@ -67,18 +68,18 @@ specific probability density $\varphi$, a base-$3$ analogue of the
 Fabius function, arising as the limiting density of a normalized path
 count in the Collatz reverse tree. The paper reduces the target
 density statement to a chain of implications through three
-increasingly concrete conjectures, of which only the first has since
-been settled; the third has numerical support below, and the second,
-on which the whole chain pivots, has remained open.
+increasingly concrete conjectures, of which only the first is settled,
+by \S\ref{sec:conj1} below; the third has numerical support below, and
+the second, on which the whole chain pivots, has remained open.
 
 \S\ref{sec:chain} fixes Wirsching's objects and states the chain.
 \S\ref{sec:conj1} proves the first conjecture.
 \S\ref{sec:microcanonical} develops the microcanonical decomposition of
 the Syracuse law that connects Wirsching's path counts to the weighted
 covering formulation of a companion paper on the endogeny barrier
-\cite{BarrierCompanion}, together with the equivalence- and
-nonequivalence-of-ensembles theorems that bound how much of the second
-conjecture's target local-limit methods reach and an empirical
+\cite{BarrierCompanion}. It adds the equivalence- and
+nonequivalence-of-ensembles theorems, which bound how far local-limit
+methods reach toward the second conjecture, and an empirical
 separation of the two confounds behind the decomposition's own open
 uniform lower bound.
 \S\ref{sec:conj3} reports the certified numerical test of the third
@@ -101,11 +102,11 @@ a density $\varphi$.
 
 The compactly supported \emph{generators} $g_\ell(k,a)$ are defined by
 the recursion \cite[\S2, eq.~(2.1)]{Wirsching2003}
-\[
+\begin{equation}\label{eq:g-recursion}
  g_{\ell+1}(k,a)=\sum_{0\le j<2\cdot3^\ell}
  g_\ell\bigl(k-j,\tfrac{2^{j+1}a-1}{3}\bigr),
  \qquad g_0(k,a)=\mathbf 1[k=0]\,\mathbf1[a\in\mathbb Z_3],
-\]
+\end{equation}
 linked to the Elka functions by $e_\ell=p_\ell*g_\ell$, where
 $p_\ell(m)$ counts the ways to pay $m$ with coins $c_0=1$,
 $c_j=2\cdot3^{j-1}$ ($j\ge1$) \cite[\S2]{Wirsching2003}. The class
@@ -114,21 +115,26 @@ $|\ell-k_\ell|\le\delta\sqrt\ell$ for every $\ell$
 \cite[eq.~(1.5)]{Wirsching2003}; $\widetilde A_\delta$ is the
 analogous class of sequences $(x_\ell)\in\mathbb I_3^{\mathbb N}$ used
 once the objects are transported to the continuous state space of
-\S\ref{sec:microcanonical} below. $\varphi_0$ is the explicit
-asymptotic of Berg and Krüppel for the solution of a truncated
-functional equation satisfied by $\varphi$
-\cite[eq.~(7.11)]{Wirsching2003}, used in Conjecture~3 below in place
-of $\varphi$ itself, which has no known closed form.
+\S\ref{sec:microcanonical} below. $\varphi$ itself satisfies the
+untruncated equation $\lambda\varphi'(t)=a(\varphi(at)-\varphi(at-a+1))$
+for $a=3$, $\lambda=2/3$ \cite[eq.~(7.9)]{Wirsching2003}. $\varphi_0$
+is Berg and Kr\"uppel's explicit asymptotic for a particular solution
+of the truncated equation $\lambda g'(t)=ag(at)$, conjectured to track
+$\varphi$'s own asymptotics up to a constant factor
+\cite[eq.~(7.10)--(7.11)]{Wirsching2003}, used in Conjecture~3 below in
+place of $\varphi$ itself, which has no known closed form.
 
 \begin{proposition}[Base-$3$ Fabius function; Wirsching 2003, Corollaries 7 and 8]\label{prop:fabius}
 $\varphi$ is the density of $X=\sum_{j\ge1}2U_j\cdot3^{-j}$, $U_j$
 i.i.d.\ uniform on $[0,1]$, the base-$3$ analogue of the Fabius
 function (which satisfies $f'(x)=2f(2x)$; here $\varphi'(x)=
 \tfrac92\varphi(3x)$ on $[0,2/3]$ by \cite[eq.~(7.7)]{Wirsching2003}).
-It is the unique $L^1([0,1])$ fixed point of
-the averaging operator $W_3f(x):=\tfrac32\int_{3x-2}^{3x}f(t)\,dt$,
-$C^\infty$, piecewise polynomial away from the standard Cantor set
-\cite[Corollary~7]{Wirsching2003}, with certified geometric convergence
+Among functions with $\operatorname{supp}\varphi\subset[0,1]$ and
+$\int_0^1\varphi=1$, it is the unique fixed point of the averaging
+operator $W_3f(x):=\tfrac32\int_{3x-2}^{3x}f(t)\,dt$, $C^\infty$,
+piecewise polynomial away from the standard Cantor set
+\cite[Corollary~7]{Wirsching2003}. For $f_0$ with $\int_0^1f_0=1$, the
+iterates $f_{n+1}:=W_3f_n$ converge geometrically,
 $\|f_n-\varphi\|_1\le2^{-n+1}\|f_1-f_0\|_1$
 \cite[Corollary~8]{Wirsching2003}.
 \end{proposition}
@@ -160,7 +166,7 @@ and $(\star4)$ is
 \]
 with $\chi_0=\mathbf 1_{[0,2/3]}$, $\chi_1=\mathbf1_{[1/3,1]}$, and
 $W_3$ the averaging operator of Proposition~\ref{prop:fabius}. Three
-facts about this chain matter for what follows.
+facts about this chain are worth isolating.
 
 First, $(\star4)$ is a statement purely about the one-dimensional operator
 $W_3$: it never mentions Wirsching's generators, and carries no
@@ -168,7 +174,10 @@ information about the residue coordinate that $(\star3)$ needs. The
 source offers two bridges: the averaged-generator
 identity $\lim_\ell\int_{\mathbb Z_3^\times}\widetilde g_\ell(x,a)\,da=
 \varphi(x)$ for fixed $x\in\mathbb I_3$ \cite[\S6]{Wirsching2003}, and
-Wirsching's Theorem~3, strong convergence $S_\ell\to S_\infty$ on
+Wirsching's Theorem~3, strong convergence $S_\ell\to S_\infty$ of the
+transition operators $S_\ell:C(\mathbb X)\to C(\mathbb X)$ defined by
+$\widetilde g_\ell=S_\ell(\widetilde g_{\ell-1})$
+\cite[\S4]{Wirsching2003}, on
 equicontinuous bounded families, uniform in that family but not in
 growing resolution. Neither is uniform in growing resolution, so
 neither closes the gap between $(\star4)$ and $(\star3)$.
@@ -190,13 +199,18 @@ chain from Theorem~1 alone requires.
 \label{sec:conj1}
 
 \begin{theorem}[Wirsching's Conjecture 1]\label{thm:wirsching-conj1}
-In the notation of \S\ref{sec:chain}, condition $(\star2)$ implies
-condition $(\star1)$, with a possibly smaller central-limit window.
+In the notation of \S\ref{sec:chain}, condition $(\star2)$, with window
+radius $\delta$, implies condition $(\star1)$ with some possibly
+smaller window radius $\delta_1\le\delta$.
 \end{theorem}
 
 \begin{proof}
-Put $c_0=1$ and $c_j=2\cdot3^{j-1}$ for $j\ge1$. If $q_\ell(k)$ counts
-the bounded urn distributions defining $\bar g_\ell(k)$, then
+Write $\bar g_\ell(k):=\frac{1}{2\cdot3^{\ell-1}}\sum_bg_\ell(k,b)$ and
+$\bar e_\ell(k):=\frac{1}{2\cdot3^{\ell-1}}\sum_be_\ell(k,b)$ for the
+residue-averages of the generators and the Elka functions. Put
+$c_0=1$ and $c_j=2\cdot3^{j-1}$ for $j\ge1$. If $q_\ell(k)$ counts
+the bounded urn distributions defining $\bar g_\ell(k)$ (an urn of
+capacity $c_j$ at stage $j$, coefficient sum $k$), then
 \[
  \sum_{k\ge0}q_\ell(k)z^k
  =\prod_{j=0}^\ell\frac{1-z^{c_j}}{1-z},\qquad
@@ -215,10 +229,14 @@ at most $\exp(C\log^2(m+2))$. Also
  \frac{\binom{k-m+\ell}{\ell}}{\binom{k+\ell}{\ell}}
  \le \left(\frac{k}{k+\ell}\right)^m.
 \]
-Uniformly for $|k-\ell|\le\delta\sqrt\ell$, the part of the convolution
-with $m\ge\eta\sqrt\ell$ is
-$\exp(-c\sqrt\ell+O(\log^2\ell))$. Choose
-$\delta+\eta<\delta_1$. On the remaining terms $j=k-m$ lies in the
+Since $p_\ell(0)=1$, $\bar g_\ell(j)\le\bar e_\ell(j)$ for every $j$, so,
+relative to $\bar e_\ell(k)$, the part of the convolution
+$\bar e_\ell(k)=\sum_mp_\ell(m)\bar g_\ell(k-m)$ with $m\ge\tau\sqrt\ell$
+is, uniformly for $|k-\ell|\le\delta\sqrt\ell$, at most
+$\exp(-c\sqrt\ell+O(\log^2\ell))$, for a tail-window radius $\tau>0$
+unrelated to the lower-bound constant $\eta$ of
+\S\ref{sec:microcanonical} below. Choose
+$\delta+\tau<\delta_1$. On the remaining terms $j=k-m$ lies in the
 window of $(\star2)$, and positivity transfers its lower bound from
 $g_\ell/\bar g_\ell$ to $e_\ell/\bar e_\ell$.
 \end{proof}
@@ -227,8 +245,9 @@ $g_\ell/\bar g_\ell$ to $e_\ell/\bar e_\ell$.
 Wirsching records the two generating-function identities and the
 closed form for $\bar e_\ell(k)$ used above \cite[\S\S1--2,
 eq.~(1.4)]{Wirsching2003}, and the urn interpretation of
-$q_\ell(k)=2\cdot3^{\ell-1}\bar g_\ell(k)$
-\cite{Wirsching1998Urns}, and states the implication itself as
+$q_\ell(k)=2\cdot3^{\ell-1}\bar g_\ell(k)$, credited there to
+\cite{Wirsching1998Urns} \cite[\S2]{Wirsching2003}, and states the
+implication itself as
 Conjecture~1 \cite[\S\S1--2]{Wirsching2003}. What the proof above adds
 is the convolution-tail estimate and the window choice
 $\delta+\eta<\delta_1$ that closes the implication, checked
@@ -249,7 +268,8 @@ Let $g_\ell(k,a)$ be Wirsching's generator, let
 $c_i=2\cdot3^i$ for $i\ge0$ (the coin $c_j$ of \S\ref{sec:conj1}
 reindexed by $i=j-1$, dropping the extra coin $c_0=1$ that appears
 there only), and let $\mu_\ell$ be the Syracuse law modulo
-$3^\ell$. For every unit residue $a$,
+$3^\ell$ (unrelated to the constant $\mu$ of $(\star1)$, $(\star3)$,
+$(\star4)$ in \S\ref{sec:chain}). For every unit residue $a$,
 \begin{equation}\label{eq:microcanonical}
  \mu_\ell(a)=
  \left(\prod_{i=0}^{\ell-1}\frac{1}{2(1-2^{-c_i})}\right)
@@ -339,9 +359,14 @@ $|k-\ell|\le\delta\sqrt\ell$,
  \qquad
  Q_{\ell,a}(k)\ge c_\delta\ell^{-1/2},
 \]
-then condition $(\star3)$ holds. Both hypotheses are open at $k=\ell$
-for the same reason as in Theorem~\ref{thm:microcanonical}: the
-minimum computed multiplicity is zero at every level tested.
+then condition $(\star3)$ holds. The second hypothesis is open at
+$k=\ell$ for the same reason as in Theorem~\ref{thm:microcanonical}:
+the minimum computed multiplicity is zero at every level tested. The
+first hypothesis does not depend on $k$; it is open because the only
+available lower bound on the canonical mass ratio
+$G_{\ell,a}(1/2)/\overline G_\ell(1/2)$, the conjectural
+weighted-covering estimate discussed below, is subexponential rather
+than constant.
 \end{proposition}
 
 \begin{proof}
@@ -467,8 +492,8 @@ On the complementary event, removing the block changes the centered
 local-CLT coordinate by $o(1)$ and changes the variance by a relative
 $o(1)$. The uniform lattice local central limit theorem for the folded
 geometric triangular array therefore gives
-$D_{\ell,r}(B_{\ell,r})=1+o(1)$ uniformly there. Since
-$\Pr(K_\ell=k)\gg_\delta\ell^{-1/2}$ in the central window, while the
+$D_{\ell,r}(B_{\ell,r})=1+o(1)$ uniformly there. In the central window,
+$\Pr(K_\ell=k)\gg_\delta\ell^{-1/2}$, while the
 standard concentration bound for lattice sums with uniformly bounded
 exponential moments gives
 $\sup_m\Pr(R_{\ell,r}=m)\ll(\ell-r)^{-1/2}$. Hence
@@ -530,12 +555,14 @@ means and variances differ from $1$ and $2$, respectively, by summable
 errors. The lattice local central limit theorem, applied separately to
 $S_{\ell,r}$ and $R_{\ell,r}$, gives the unconditioned limit
 $\mathcal N(0,2\rho)$ for
-$(S_{\ell,r}-r)/\sqrt\ell$. After conditioning, its limiting density is
+$(S_{\ell,r}-r)/\sqrt\ell$. Write $\psi_{m,\sigma^2}$ for the
+$\mathcal N(m,\sigma^2)$ density, distinct from $\varphi$ and
+$\varphi_0$ above. After conditioning, its limiting density is
 \[
  x\longmapsto
- \frac{\phi_{0,2\rho}(x)\phi_{0,2(1-\rho)}(u-x)}
-      {\phi_{0,2}(u)}
- =\phi_{\rho u,2\rho(1-\rho)}(x).
+ \frac{\psi_{0,2\rho}(x)\psi_{0,2(1-\rho)}(u-x)}
+      {\psi_{0,2}(u)}
+ =\psi_{\rho u,2\rho(1-\rho)}(x).
 \]
 Uniform exponential tails promote the local convergence to convergence
 in total variation. The two limiting variances are different, so the
@@ -561,7 +588,9 @@ $E\subseteq\mathbb Z/3^r\mathbb Z$,
  p_{\ell,k}^{(r)}(E)
  \le \Pr(K_\ell=k)^{-1}\mu_r(E).
 \end{equation}
-Consequently
+Consequently, writing
+$D_\infty(P\Vert Q):=\log\sup_x P(x)/Q(x)$ for the R\'enyi
+$\infty$-divergence,
 \[
  D_{\rm KL}(p_{\ell,k}^{(r)}\Vert\mu_r)
  \le D_\infty(p_{\ell,k}^{(r)}\Vert\mu_r)
@@ -660,8 +689,8 @@ series' own spread. The minimum over all units at the same offset
 reads $0.0509$, $0.0368$, $0.0536$, $0.0197$, $0.0435$, $0.0215$,
 $0.0240$, $0.0297$; its index set grows by a factor $3$ at every
 level. This comparison is confined to $d=+5$: the same exhaustive test
-at the interior offsets below, where the population as a whole does
-decay, has not been run.
+at the offsets $d=6,\ldots,12$ below, where the population as a whole
+does decay, has not been run.
 
 A fixed low quantile of the population is immune to the set-size
 confound by construction: the value below which a fixed fraction of
@@ -695,8 +724,8 @@ The companion paper's worst-cylinder cascade-factor theorem certifies a
 different minimum ratio, for a different integer-covering count, by
 writing it as a convex combination of the previous level's ratios; this
 gives monotonicity, and promotes one finite computation to a bound at
-every higher level \cite{BarrierCompanion}. Dividing
-Theorem~\ref{thm:microcanonical}'s recursion by $\overline g_\ell(k)$
+every higher level \cite{BarrierCompanion}. Dividing the $g_\ell$
+recursion~\eqref{eq:g-recursion} by $\overline g_\ell(k)$
 gives the analogous expansion
 \[
  \frac{g_\ell(k,a)}{\overline g_\ell(k)}=
@@ -705,20 +734,23 @@ gives the analogous expansion
  \frac{g_{\ell-1}(k-j,a_{\rm old}(j,a))}{\overline g_{\ell-1}(k-j)},
 \]
 where $a_{\rm old}(j,a)$ is the level-$(\ell-1)$ source residue that
-recursion~\eqref{eq:microcanonical}'s construction assigns to $(j,a)$,
+recursion~\eqref{eq:g-recursion} assigns to $(j,a)$,
 and $j$ admissible for $a$ means $2^{j+1}a\equiv1\pmod3$, a condition
 on $a\bmod3$ alone that selects one parity class of $j$ out of the
-$2\cdot3^{\ell-1}$ available. The expansion is a genuine convex
+$2\cdot3^{\ell-1}$ available. The expansion would be a convex
 combination, certifying monotonicity the same way, exactly when its
 coefficient sum
 $S_\ell(k,a):=\sum_{j\text{ admissible for }a}\overline
 g_{\ell-1}(k-j)/\overline g_\ell(k)$ equals $1$ for every $a$. It does
-not: at $\ell=3$, $k=3$, exact evaluation gives $S_3(3,a)=9/7$ for
-$a\equiv1\pmod3$ and $12/7$ for $a\equiv2\pmod3$, and the same
-two-values-per-level pattern holds at $\ell=4$, $k=4,5$. The Haar
-average of $S_\ell(k,\cdot)$ over $a$ still equals $1$, which is why
-the certificate survives for probability vectors summed across
-residues, and fails for a single coordinate's minimum. The minimum
+not, and not even on Haar average: at $\ell=3$, $k=3$, exact evaluation
+gives $S_3(3,a)=9/7$ for
+$a\equiv1\pmod3$ and $12/7$ for $a\equiv2\pmod3$, summing to $3$, not
+$2$, so the Haar average of $S_\ell(k,\cdot)$ over $a$ is $3/2$; the
+same two-values-per-level pattern and the same average hold at
+$\ell=4$, $k=4,5$. The identity's own left side still averages to $1$
+over $a$, by the definition of $\overline g_\ell$ as that average; the
+convex-combination mechanism that certifies the companion paper's
+minimum has no analogue here, not even in the mean. The minimum
 itself confirms the failure directly: at $k=\ell+12$,
 $\min_ag_\ell(k,a)/\overline g_\ell(k)$ equals $9/28$, $648/1459$,
 $2430/5057$, $13851/30695$ for $\ell=4,5,6,7$ ($0.3214$, $0.4441$,
@@ -727,13 +759,15 @@ $0.4805$, $0.4512$), rising and then falling.
 
 \begin{empirical}[Fourier budget for fixed-cost multiplicities]
 \label{thm:microcanonical-fourier}
-For $p_{\ell,k}(a)=g_\ell(k,a)/\sum_b g_\ell(k,b)$, additive Fourier
+For $p_{\ell,k}(a)=g_\ell(k,a)/\sum_b g_\ell(k,b)$, with $u_\ell$ the
+uniform law on unit residues mod $3^\ell$, additive Fourier
 inversion gives
-\[
+\begin{multline*}
  \min_a\frac{p_{\ell,k}(a)}{1/(2\cdot3^{\ell-1})}
- \ge 1-\frac23\sum_\xi
- |\widehat p_{\ell,k}(\xi)-\widehat u_\ell(\xi)|.
-\]
+ \ge{} \\
+ 1-\frac23\sum_\xi
+ \bigl|\widehat p_{\ell,k}(\xi)-\widehat u_\ell(\xi)\bigr|.
+\end{multline*}
 At the central cost $k=\ell$, the spectral sum grows from $12.11$ at
 $\ell=4$ to $293.29$ at $\ell=12$ and is dominated by primitive
 frequencies. At $k=\ell+\lfloor\sqrt\ell\rfloor$, it grows from $7.61$
@@ -757,7 +791,7 @@ sequences $(z_\ell)\in\widetilde A_{\delta_5}$
 (\star4)$ only for $\delta_5>\delta$, strictly larger than the class
 tested by $(\star4)$ itself; we test $(\star5)$ below without
 re-deriving that implication. For $(x_\ell)\in\widetilde A_\delta$,
-write $x_\ell^+:=x_\ell+3^{-\ell-1}$ \cite[p.16]{Wirsching2003}. The
+write $x_\ell^+:=x_\ell+3^{-\ell-1}$ \cite[\S7]{Wirsching2003}. The
 test below uses $x_\ell=k_\ell/3^\ell$ with $k_\ell=\ell+\lfloor
 u\sqrt\ell\rceil$ for $u\in\{-2,-1,-0.5,0,0.5,1,2\}$, the class
 $\delta\approx2$ window announced as ``$u\in[-2,2]$'' in
@@ -773,26 +807,37 @@ extreme-tail arguments in terms of exact binomial moment sums (rather
 than iterating $W_3$, whose $L^1$ error certificate is too weak to
 control pointwise values at the relevant scale), we obtain a
 zero-truncation-error evaluation of $\varphi$ at depth $\ell$ up to
-$\ell=500$ (working throughout in log-space with $60$-digit precision;
-error certified $\le 10^{-8}$).
+$\ell=500$ (working throughout in log-space with $100$-digit
+precision; the truncation-error certificate is exactly zero on the
+tested range, comfortably inside the claimed $10^{-8}$ bound).
 
 \begin{empirical}[Numerical test of Wirsching's Conjecture 3]
 \label{thm:conjecture3}
 The ratio $L_\ell := 3^{1-\ell}\varphi(3x_\ell^+)/\varphi(x_\ell^+)$,
-measured for $\ell=250,\dots,500$ in the CLT window ($u\in[-2,2]$),
-converges to the predicted value $2/3$ with deficit
-$\ell\cdot(2/3-L_\ell) \to 0.580\pm 0.001$, a coefficient matching
-the asymptotic $\varphi_0$ of Wirsching's equation (7.11)
-\cite[eq.~(7.11)]{Wirsching2003}, itself credited there to Berg and
-Krüppel \cite{BergKruppel1998}. The quantity $\ln(\varphi/\varphi_0)$
-is increasing, concave, and uniform across $u\in[-2,2]$ (dispersion
-$<10^{-4}$), consistent with a finite limit $L=-0.619\pm0.001$ from
-the fit alone, dominated by a tail-shape systematic uncertainty of
-$\pm 0.015$, giving $c=e^L\approx 0.538$ (range $0.53$--$0.55$), best
-fit by a tail term $0.79/\sqrt\ell$; no log-periodic modulation is
-detected. The $10^{-8}$ error bound above certifies the evaluation of
-$\varphi$ itself, not this extrapolation, whose actual uncertainty is
-the $\pm0.015$ figure. Conjecture~2 remains open;
+measured for $\ell=200,\ldots,500$ in the CLT window ($u\in[-2,2]$),
+converges to the predicted value $2/3$ for every $u$ tested. At the
+central sequence $u=0$, the deficit $\ell\cdot(2/3-L_\ell)$ stabilizes
+near $0.580$ ($0.5807$ at $\ell=200$, $0.5800$ at $\ell=500$), a
+coefficient matching the asymptotic $\varphi_0$ of Wirsching's
+equation (7.11) \cite[eq.~(7.11)]{Wirsching2003}, itself credited
+there to Berg and Kr\"uppel \cite{BergKruppel1998}. This convergence
+of the deficit is not uniform in $u$: at $\ell=500$ it ranges from
+$-32.4$ at $u=-2$ to $28.1$ at $u=2$, since
+$\ell\cdot(2/3-L_\ell)$ isolates a $u$-dependent correction of order
+$\sqrt\ell$ away from the central sequence. The quantity
+$\ln(\varphi/\varphi_0)$ itself, by contrast, is uniform across
+$u\in[-2,2]$ at fixed $\ell$: at $\ell=500$ its spread over the seven
+tested values of $u$ is $6\times10^{-5}$. Along $u=0$,
+$\ln(\varphi/\varphi_0)$ is increasing and concave in $\ell$,
+consistent with a finite limit; a least-squares fit to
+$L+a/\sqrt\ell$ over $\ell=200,\ldots,500$ gives $L=-0.619$,
+$a=-0.79$, hence $c=e^L\approx0.539$. Fitting only the upper half of
+the range ($\ell\ge350$), or adding a further $1/\ell$ term, moves
+$L$ by at most $2\times10^{-4}$, a narrow probe of the fit's
+sensitivity to sub-range and to one extra term. The
+zero-truncation-error certificate above bounds the
+evaluation of $\varphi$ itself, not this extrapolation.
+Conjecture~2 remains open;
 Theorem~\ref{thm:wirsching-conj1} settles Conjecture~1 independently
 of this computation.
 \end{empirical}
@@ -808,24 +853,24 @@ Theorem~\ref{thm:sublinear-precision-ensemble} give convergence at
 fixed and sublinear precision; Theorem~\ref{thm:linear-block-nonequivalence}
 shows the latent cost vectors provably fail to converge at linear
 precision. Theorem~\ref{thm:ensemble-divergence} is a separate,
-one-sided bound at full precision, $D_\infty\le\frac12\log\ell+O(1)$:
-it does not explain the linear-precision failure, since it only
+one-sided bound at full precision, $D_\infty\le\frac12\log\ell+O(1)$;
+it does not explain the linear-precision failure. It only
 upper-bounds the likelihood-ratio gap, in the direction opposite to
 the lower bound condition $(\star3)$ actually needs. Condition
 $(\star4)$, the hypothesis Conjecture~2 poses toward $(\star3)$,
 carries no information about the coordinate this machinery
-controls (\S\ref{sec:chain}); closing the gap needs an argument on
+controls (\S\ref{sec:chain}). Closing the gap needs an argument on
 $W_3$ itself, or a bridge between $(\star4)$ and $(\star3)$ uniform in
-growing resolution, which neither of the two the source supplies
-(\S\ref{sec:chain}) reaches.
+growing resolution. Neither bridge the source supplies reaches that
+far.
 
 The open hypothesis in Theorem~\ref{thm:microcanonical} differs from
 the equivalence-of-ensembles results above: it is a uniform lower
 bound on the generators themselves. Empirical
 Result~\ref{thm:quantile-diagnosis} bears on it two ways. At the
 support boundary $d=+5$, an exhaustive test over a fixed, non-growing
-set of integers shows no deterioration through $\ell=17$. In the
-interior of the window, $d\ge6$, the population's low quantiles decay
+set of integers shows no deterioration through $\ell=17$. Past that
+boundary, at $d\ge6$, the population's low quantiles decay
 at close to the minimum's own rate, well above the extreme order
 statistic too, and whether that decay reflects some fixed integer's
 ratio worsening is untested at those offsets. Remark~\ref{rem:no-monotone-certificate}

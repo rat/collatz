@@ -55,6 +55,40 @@ Nenhum achado foi consertado nesta rodada (o crítico não conserta).
 | C-027 | 2026-08-10 | `main-pt-br.tex` não existe (Regra 5) | baixa | rejected (mesma tensão de política dos papers 01/04/06, deixado para o pesquisador decidir; ver rodada abaixo) |
 | C-028 | 2026-08-10 | `BarrierCompanion`, "in preparation" e sem URL, sustenta duas afirmações de conteúdo | baixa | fixed |
 
+Rodadas abaixo (R1 em diante) usam o critério de convergência explícito do
+pesquisador: 4 níveis (crítico/maior/moderado/menor, definições no prompt
+da tarefa), parada em 3 rodadas consecutivas 100% limpas (crítico=0,
+maior=0, moderado=0, menor<3), sem crédito parcial.
+
+| ID | Rodada | Resumo | Severidade | Status |
+|----|--------|--------|------------|--------|
+| R1-01 | 2026-08-10 (R1) | `rem:no-monotone-certificate`: "Haar average of $S_\ell$ equals 1" é falso (9/7+12/7=3, não 2; média é 3/2) | crítico | fixed |
+| R1-02 | 2026-08-10 (R1) | §5 não reproduzível: script parava em $\ell=300$ não 500, "60-digit" vs `mp.dps=100` real, nenhum código commitado calculava $L$/incerteza sistemática/dispersão | maior | fixed |
+| R1-03 | 2026-08-10 (R1) | Déficit $\ell(2/3-L_\ell)\to0.580$ só vale em $u=0$; diverge como $\sqrt\ell$ fora do centro, mas o texto atribuía à janela inteira | maior | fixed |
+| R1-04 | 2026-08-10 (R1) | `prop:complex-deconditioning`: "both hypotheses open at $k=\ell$ pela mesma razão" é falso para a 1ª hipótese (não depende de $k$, não é violada por multiplicidade zero) | maior | fixed |
+| R1-05 | 2026-08-10 (R1) | Resumo diz "only a strong-convergence theorem"; corpo e Discussão dizem "two bridges" | maior | fixed |
+| R1-06 | 2026-08-10 (R1) | `prop:fabius`: unicidade do ponto fixo requer $\int\varphi=1$, omitido | moderado | fixed |
+| R1-07 | 2026-08-10 (R1) | `prop:fabius`: $f_n,f_1,f_0$ nunca definidos; cota deveria ser $f_\infty=\lambda\varphi$, não $\varphi$ | moderado | fixed |
+| R1-08 | 2026-08-10 (R1) | $\varphi_0$ descrito como assintótica de solução da equação truncada satisfeita por $\varphi$; $\varphi$ satisfaz a equação não-truncada (7.9), não a truncada (7.10) | moderado | fixed |
+| R1-09 | 2026-08-10 (R1) | `\cite[p.16]{Wirsching2003}` usa paginação da versão preliminar (18pp, PDF local), não da versão publicada DCDS | moderado | fixed |
+| R1-10 | 2026-08-10 (R1) | Lacunas de autossuficiência: $\eta$ colide entre prova de `thm:wirsching-conj1` e §4; $\mu$ (constante de Wirsching) colide com $\mu_\ell$ (lei de Syracuse); $\delta_1$, $\bar g_\ell$/$\bar e_\ell$/$q_\ell$ usados em §3 antes de definidos; $S_\ell,S_\infty,\widehat u_\ell,D_\infty$ nunca definidos; $\phi_{m,\sigma^2}$ visualmente colide com $\varphi_0$ | moderado | fixed |
+| R1-11 | 2026-08-10 (R1) | `rem:no-monotone-certificate` chama \eqref{eq:microcanonical} (identidade de massa) de "recursion"; a recursão real é a de §2, sem label | moderado | fixed |
+| R1-12 | 2026-08-10 (R1) | "Interior of the window" (Discussão e `thm:quantile-diagnosis`) ambíguo com o interior literal de $|k-\ell|\le\delta\sqrt\ell$, que inclui $d=0$ | moderado | fixed |
+| R1-13 | 2026-08-10 (R1) | Prova de `thm:wirsching-conj1`: estimativa de cauda enunciada em termos absolutos, deveria ser relativa a $\bar e_\ell(k)$; passo $\bar g_\ell\le\bar e_\ell$ omitido | moderado | fixed |
+| R1-14 | 2026-08-10 (R1) | "of which only the first has since been settled" sugere resolução externa; a Conjectura 1 é resolvida por este próprio paper | moderado | fixed |
+| R1-15 | 2026-08-10 (R1) | Título "Conjectures on the Base-3 Fabius Function" implica que as 3 conjecturas são sobre $\varphi$; só a 2 e a 3 são | moderado | fixed |
+| R1-16 | 2026-08-10 (R1) | `\cite{Wirsching1998Urns}` citado diretamente para um conteúdo que só foi verificado via Wirsching (2003) §2, que credita [5] | moderado | fixed |
+| R1-17 | 2026-08-10 (R1) | "Three facts... matter for what follows": o terceiro fato nunca é reusado no resto do paper | moderado | fixed |
+| R1-18 | 2026-08-10 (R1) | Vocabulário banido residual: "a genuine convex combination" | menor | fixed |
+| R1-19 | 2026-08-10 (R1) | Tricolons: lista de hipóteses de Dragičević/Hafouta; "increasing, concave, and uniform" | menor | fixed (a 2ª caiu como subproduto do fix de R1-03; a 1ª avaliada como conteúdo técnico genuíno, não decoração retórica, e mantida) |
+| R1-20 | 2026-08-10 (R1) | Suposta família de auto-auditoria epistêmica banida em 5 frases de resultados empíricos | menor | rejected (nenhuma das frases usa as expressões literais da lista da Regra 4b; são frases de escopo exigidas pela Regra 10b, não meta-honestidade sobre o processo) |
+| R1-21 | 2026-08-10 (R1) | Variância de comprimento de frase insuficiente na Discussão (só 1 frase <10 palavras em 9) | menor | fixed |
+| R1-22 | 2026-08-10 (R1) | Fragmentos gramaticais: prova de `thm:sublinear-precision-ensemble` ("Since... while... ." sem oração principal); frase da Introdução difícil de pontuar | menor | fixed |
+| R1-23 | 2026-08-10 (R1) | Repositório companheiro: título desatualizado no README raiz, README de sec5 chama Resultado Empírico de "the Theorem", travessões residuais em 4 READMEs, `(?3)` remanescente de extração de PDF | menor | fixed |
+| R1-24 | 2026-08-10 (R1) | Resumo: "an exact equivalence-of-ensembles theorem" no singular para dois teoremas distintos | menor | fixed |
+
+**Contagem da Rodada 1**: crítico=1, maior=4, moderado=12, menor=7. Não limpa. Contagem de rodadas limpas consecutivas: 0.
+
 ## Checagens que passaram, registradas para não serem refeitas
 
 Contra a fonte primária (`literature/papers/132_Wirsching-2003-Positive-Predecessor-Density.pdf`,
@@ -778,3 +812,90 @@ contra o corpo final (Regra 8b), recompilei (`pdflatex` ×2, limpo, sem
 `undefined reference`) e reconferi `\cite`/`\bibitem`/`\ref`/`\label`
 (script Python, sem órfãos em nenhuma direção). Todas as entradas
 C-031 a C-039 fecham nesta mesma rodada; nenhuma ficou `open`.
+
+---
+
+## Rodada de convergência R1, 2026-08-10
+
+Pedido do pesquisador: loop de crítica adversarial até 3 rodadas
+consecutivas limpas por um critério de 4 níveis (crítico/maior/
+moderado/menor), sem crédito parcial, contexto fresco a cada rodada.
+Subagente crítico: `Agent` síncrono, modelo `opus`, esforço máximo,
+sem acesso ao histórico deste arquivo além do que foi colado no
+prompt (achados anteriores C-001 a C-039, todos fechados).
+
+**Achados**: crítico=1, maior=4, moderado=12, menor=7 (tabela acima,
+R1-01 a R1-24). Não limpa; contagem de rodadas limpas consecutivas
+volta a 0.
+
+**O achado mais sério (R1-01)**: a explicação do
+`rem:no-monotone-certificate` afirmava que a média de Haar de
+$S_\ell(k,\cdot)$ era 1; os próprios números impressos duas linhas
+acima ($9/7$ e $12/7$) somam 3, não 2, logo a média é $3/2$. Verificado
+à mão e rodando `exact_weight_asymmetry.py` do repositório. A
+conclusão do remark (o contraexemplo de não monotonicidade) permanece
+correta; só a frase de explicação estava errada. Reescrita para não
+alegar que o mecanismo de combinação convexa "sobrevive para vetores
+de probabilidade somados", já que nem isso é verdade.
+
+**O achado mais trabalhoso (R1-02/R1-03)**: nada no repositório
+`collatz-wirsching-2003` reproduzia a alegação central da §5
+(profundidade $\ell=500$, coeficiente $L=-0.619\pm0.001$, incerteza
+sistemática $\pm0.015$, dispersão em $u$, ausência de modulação
+log-periódica): o script commitado parava em $\ell=300$ e não continha
+nenhum código de ajuste. Em vez de reduzir a alegação do paper para o
+que já existia, estendi `experiment_conjecture3.py` de verdade
+(`ELL_LIST` até $\ell=500$, `N_MAX=510`) e rodei a computação completa
+(momentos exatos até grau 510: ~332s; sweep completo: ~405s). Os
+números resultantes confirmam parte do que já estava escrito
+($L\approx-0.619$, $c\approx0.539$) mas refutam duas alegações
+específicas: (1) o déficit $\ell(2/3-L_\ell)\to0.580$ só converge em
+$u=0$; nos outros seis valores de $u$ testados ele diverge como
+$\sqrt\ell$ (de $-32.4$ a $+28.1$ em $\ell=500$), então "measured...
+in the CLT window ($u\in[-2,2]$)" atribuía à janela inteira algo que só
+vale no centro. (2) A incerteza sistemática de $\pm0.015$ nunca esteve
+em nenhum script commitado; o bracket que de fato calculei (ajuste só
+com $\ell\ge350$, e um modelo alternativo com termo extra $1/\ell$)
+dá uma sensibilidade real de $2\times10^{-4}$, quase duas ordens de
+grandeza menor. Troquei o $\pm0.015$ não verificável pelo número que
+realmente meço, e cortei a alegação "no log-periodic modulation is
+detected" (nunca testada com rigor, só 7 pontos, insuficiente para
+qualquer teste de periodicidade). A dispersão de $\ln(\varphi/\varphi_0)$
+em $u$ ($<10^{-4}$), por outro lado, se confirmou genuína
+($6\times10^{-5}$ em $\ell=500$) e ficou mantida. Script, README (raiz
+e `sec5-conjecture3-numerical/`) e `main.tex` foram todos sincronizados
+com os números reais.
+
+**Achados moderados/menores**: lacunas de autossuficiência ($\eta$
+colidindo entre duas seções, $\mu$ colidindo com $\mu_\ell$, `S_\ell`,
+`D_\infty`, `\hat u_\ell` nunca definidos), uma citação de página que
+apontava para a paginação da versão preliminar do PDF em vez da versão
+publicada (trocada por referência de seção), atribuição de conteúdo a
+`Wirsching1998Urns` via paráfrase de segunda mão (corrigida para citar
+via Wirsching 2003 §2, que foi lido diretamente), e uma leitura
+incorreta da equação truncada de Berg-Krüppel (§7 da fonte, conferida
+diretamente no PDF): $\varphi$ satisfaz a equação não truncada (7.9),
+não a truncada (7.10) que $\varphi_0$ resolve. Todos verificados contra
+a fonte primária ou o repositório antes de corrigir (Regra 8c).
+
+**Um achado rejeitado (R1-20)**: o crítico classificou 5 frases de
+resultados empíricos ("this finite test checks the implementation and
+is not used in the proof", etc.) como pertencentes à família banida de
+meta-honestidade da Regra 4b. Verificação: nenhuma das frases usa
+qualquer expressão da lista literal da regra ("honestly", "we are
+careful to", etc.); são frases de escopo em terceira pessoa sobre o
+que um resultado empírico mostra ou não mostra, exigidas pela Regra
+10b e pela própria Regra 4b ("Concentrate the uncertainty... rather
+than a qualifier in every paragraph"). Mantidas como estão.
+
+Depois das correções: recompilado (`pdflatex` ×2, 12 páginas, sem
+`undefined reference`, dois avisos cosméticos de `Overfull \hbox` nos
+títulos em negrito de dois ambientes, sem overflow visível checado
+página por página em render de 100dpi); `\cite`/`\bibitem` sem
+órfãos; zero em/en dashes; vocabulário banido da Regra 4b varrido
+mecanicamente, zero ocorrências fora de uso técnico; antíteses "X, not
+Y" em 2/2. Repositório `collatz-wirsching-2003` sincronizado: script
+de §5 estendido e re-executado do zero, READMEs de `sec3`, `sec4`
+(microcanonical) e `sec5` corrigidos (travessões, título desatualizado,
+"the Theorem" para "Empirical Result", numeração `§9.2` obsoleta).
+PT-BR não tocado (instrução da tarefa).
