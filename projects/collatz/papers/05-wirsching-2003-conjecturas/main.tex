@@ -55,7 +55,7 @@ certificate
 available for a related count in a companion paper does not transfer
 here. None of this closes Conjecture 2. An exact evaluation of
 $\varphi$ through depth $\ell=500$, zero truncation error at every
-point tested, supports Conjecture 3 at every offset tested,
+point tested, supports Conjecture 3 for every $u$ tested,
 with a central-sequence extrapolation coefficient stable to within
 $4\times10^{-4}$ under the sub-range and model checks tested. This
 measurement cannot by itself distinguish a constant from a
@@ -94,11 +94,14 @@ conjecture.
 \label{sec:chain}
 
 Wirsching's central combinatorial objects are the ``Elka'' functions
-$e_\ell(k,a):=|E_{\ell,k}(a)|$, where $E_{\ell,k}(a)$ is the set of
+$e_\ell(k,a):=|E_{\ell,k}(a)|$, on domain
+$\mathbb N_0\times\mathbb Z_3^\times$ \cite[\S1--2]{Wirsching2003},
+where $E_{\ell,k}(a)$ is the set of
 paths $b\xrightarrow{T}\cdots\xrightarrow{T}a$ in the Collatz graph
 with $T=T_0$ exactly $k$ times and $T=T_1$ exactly $\ell$ times
-\cite[\S1]{Wirsching2003} ($T_0,T_1$ the two branches of the
-accelerated $3n+1$ map), viewed on the state space
+($T_0,T_1$ the two branches of the
+accelerated $3n+1$ map). Their normalized generators $\widetilde
+g_\ell$ (defined below) live on the continuous state space
 $\mathbb X=\mathbb I_3\times\mathbb Z_3^\times$: the
 $\mathbb Z_3^\times$ factor carries the $3$-adic variable habitat of
 the Syracuse measure, while the $\mathbb I_3\cong\{0,1,2\}^{\mathbb
@@ -130,16 +133,17 @@ solution of the truncated equation $\lambda g'(t)=ag(at)$, a
 four-constant closed form of the shape
 $t^{(\cdot)}(-\ln t)^{(\cdot)}\exp(-(\cdot)\ln^2(t/(-\ln t)))$
 whose constants $\beta,\gamma,\delta,\varepsilon$, evaluated at
-$a=3$, $\lambda=2/3$ (their own notation, not reused here to avoid
+$a=3$, $\lambda=2/3$ (their own notation, kept separate here to avoid
 clashing with $\delta$ elsewhere in this paper, and depending on one
 auxiliary constant not itself appearing in the closed form), are
 reproduced verbatim in the accompanying repository
 (\S\ref{sec:conj3} below);
 Berg and Kr\"uppel
-expect $\varphi/\varphi_0$ to stay bounded and bounded away from zero,
-not necessarily to converge
-\cite[eq.~(7.10)--(7.11)]{Wirsching2003}, used in Conjecture~3 below in
-place of $\varphi$ itself, which has no known closed form.
+expect only that $\varphi/\varphi_0$ stays bounded and bounded away
+from zero, weaker than convergence
+\cite[eq.~(7.10)--(7.11)]{Wirsching2003}; $\varphi_0$ is used in
+Conjecture~3 below in place of $\varphi$ itself, which has no known
+closed form.
 
 \begin{proposition}[Base-$3$ Fabius function]\label{prop:fabius}
 $\varphi$ is the density of $X=\sum_{j\ge1}2U_j\cdot3^{-j}$, $U_j$
@@ -196,11 +200,11 @@ source offers two bridges: the averaged-generator
 identity $\lim_\ell\int_{\mathbb Z_3^\times}\widetilde g_\ell(x,a)\,da=
 \varphi(x)$ for fixed $x\in\mathbb I_3$ \cite[\S6]{Wirsching2003}, and
 Wirsching's Theorem~3 \cite[\S5]{Wirsching2003}, strong convergence
-$S_\ell\to S_\infty$ of the
+$S_\ell\to S_\infty$ for every $f\in C(\mathbb X)$, of the
 transition operators $S_\ell:C(\mathbb X)\to C(\mathbb X)$ defined by
 $\widetilde g_\ell=S_\ell(\widetilde g_{\ell-1})$
-\cite[\S4]{Wirsching2003}, on
-equicontinuous bounded families. Neither bridge is uniform in growing
+\cite[\S4]{Wirsching2003}, uniform on
+bounded equicontinuous families. Neither bridge is uniform in growing
 resolution, so neither closes the gap between $(\star4)$ and $(\star3)$.
 
 Second, $(\star3)$ and $(\star2)$ are the same inequality. Writing
@@ -208,12 +212,12 @@ $\widetilde g_\ell(x,a)=\gamma_\ell\,g_\ell(\lfloor3^\ell
 x\rfloor,a)$ for a constant $\gamma_\ell$ not depending on $a$, the
 constant cancels from both sides of the ratio each condition bounds;
 what Wirsching's Theorem~2 adds is a change of quantifier, from a
-$\liminf$ in $\ell$ at each $a$ to a bound holding at every
-$\ell\ge\ell_0$ and every unit simultaneously.
+$\liminf$ in $\ell$ to a bound holding at every $\ell\ge\ell_0$.
 
-Third, Theorem~1's own hypothesis and conclusion are about $a\in\mathbb
-N$, non-cyclic, $a\not\equiv0\pmod3$, while conditions $(\star2)$ and
-$(\star3)$ are stated over $\mathbb Z_3^\times$.
+Third, Theorem~1's conclusion, uniform positive predecessor density, is
+about $a\in\mathbb N$, non-cyclic, $a\not\equiv0\pmod3$; its hypothesis
+$(\star1)$, like $(\star2)$ and $(\star3)$, is stated over
+$\mathbb Z_3^\times$.
 
 \section{Wirsching's Conjecture 1}
 \label{sec:conj1}
@@ -324,9 +328,10 @@ uniformly over residues \cite{BarrierCompanion}. The hypothesis $g_\ell(k,a)\ge\
 g_\ell(k)$ is open: Empirical Result~\ref{thm:microcanonical-finite}
 below finds the minimum multiplicity is zero at $k=\ell$ at every
 level computed, so no $\eta>0$ works there yet. Since $k_\ell=\ell$ lies
-in the window for every $\delta>0$, a zero at $k=\ell$ recurring at
-arbitrarily large $\ell$ would falsify this hypothesis and both
-$(\star2)$ and $(\star3)$ for every $\mu_1,\eta>0$: a $\liminf$-type
+in Wirsching's own window too, a zero at $k=\ell$ recurring at
+arbitrarily large $\ell$ would falsify this hypothesis for every
+$\eta>0$, and falsify both $(\star2)$ and $(\star3)$ for every choice
+of Wirsching's own constants there: a $\liminf$-type
 hypothesis tolerates only finitely many exceptions, so persistence
 through every level computed so far does not by itself decide the
 question. Whether the zero set at $k=\ell$ is eventually empty or
@@ -448,10 +453,10 @@ Ruelle--Perron--Frobenius gap near zero, and an aperiodicity estimate
 away from zero. These hypotheses would give the phase control in
 Proposition~\ref{prop:complex-deconditioning}. They have not been
 verified for Wirsching's $S_\ell$. Theorem~3 of
-\cite{Wirsching2003} gives strong convergence on fixed
-equicontinuous families, while the densities used here acquire
-resolution $3^{-\ell}$. The available local limit theorems do not
-remove that growing-resolution obstruction.
+\cite{Wirsching2003} gives strong convergence for every $f$, uniform
+only on fixed equicontinuous families, while the densities used here
+acquire resolution $3^{-\ell}$. The available local limit theorems do
+not remove that growing-resolution obstruction.
 \end{remark}
 
 \begin{theorem}[Equivalence of ensembles at fixed precision]
@@ -535,8 +540,9 @@ $h_\ell\sqrt{r/\ell}\to0$. Uniform exponential moments give
 On the complementary event, removing the block changes the centered
 local-CLT coordinate by $o(1)$ and changes the variance by a relative
 $o(1)$. The uniform lattice local central limit theorem for the folded
-geometric triangular array therefore gives
-$D_{\ell,r}(B_{\ell,r})=1+o(1)$ uniformly there. In the central window,
+geometric triangular array therefore gives, in
+\eqref{eq:block-radon}, $D_{\ell,r}(B_{\ell,r})=1+o(1)$ uniformly
+there. In the central window,
 $\Pr(K_\ell=k)\gg_\delta\ell^{-1/2}$, while the
 standard concentration bound for lattice sums with uniformly bounded
 exponential moments gives
@@ -677,7 +683,8 @@ Theorem~\ref{thm:sublinear-precision-ensemble} gives
  =\widehat\mu_r(\xi_0)+o(1),
 \end{equation}
 uniformly in $\xi_0$ and in the central cost window.
-Thus the fixed-cost law does not approach the uniform law on units at
+By \eqref{eq:fixed-conductor-fourier}, the fixed-cost law does not
+approach the uniform law on units at
 fixed precision. Fixed-conductor modes may persist and differ from
 those of the uniform law itself: $u_1$, uniform on the two units
 modulo $3$, has $\widehat u_1(1)=-1/2$, while $\mu_1$, which assigns
@@ -805,10 +812,16 @@ coefficient sum (written $\mathcal S_\ell$, distinct from Wirsching's
 transition operators $S_\ell$ of \S\ref{sec:chain})
 $\mathcal S_\ell(k,a):=\sum_{j\text{ admissible for }a}\overline
 g_{\ell-1}(k-j)/\overline g_\ell(k)$ equals $1$ for every $a$. It does
-not, and not even on Haar average: since every $j$ is admissible for
-exactly one residue class of $a$ mod $3$, summing the recursion over
-both classes gives $\sum_{j<c_{\ell-1}}\overline
-g_{\ell-1}(k-j)=3\overline g_\ell(k)$ for every $(\ell,k)$, so
+not, and not even on Haar average. Wirsching's bounded-urn count
+$q_\ell(k)=2\cdot3^{\ell-1}\overline g_\ell(k)$ of \S\ref{sec:conj1}
+satisfies its own recursion on the last urn's occupancy,
+$q_\ell(k)=\sum_{n<c_{\ell-1}}q_{\ell-1}(k-n)$; dividing by
+$2\cdot3^{\ell-1}$ gives $\sum_{j<c_{\ell-1}}\overline
+g_{\ell-1}(k-j)=3\overline g_\ell(k)$ for every $(\ell,k)$, the factor
+of $3$ coming from the ratio $2\cdot3^{\ell-1}/(2\cdot3^{\ell-2})$
+between the unit counts normalizing $\overline g_\ell$ and $\overline
+g_{\ell-1}$. Since every $j$ is admissible for exactly one residue
+class of $a$ mod $3$, this splits the sum as
 $\mathcal S_\ell(k,a\equiv1)+\mathcal S_\ell(k,a\equiv2)=3$ identically.
 A convex combination averaging to $1$ would need that sum to be $2$;
 the Haar average of $\mathcal S_\ell(k,\cdot)$ over $a$
@@ -895,9 +908,9 @@ ranges from
 $-32.1$ at $u=-2$ to $28.3$ at $u=2$, since
 $\ell\cdot(2/3-L_\ell)$ isolates a $u$-dependent correction of order
 $\sqrt\ell$ away from the central sequence. The quantity
-$\ln(\varphi/\varphi_0)$ itself, by contrast, is uniform across
-$u\in[-2,2]$ at fixed $\ell$: at $\ell=500$ its spread over the seven
-tested values of $u$ is $6\times10^{-5}$. Along $u=0$,
+$\ln(\varphi/\varphi_0)$ itself, by contrast, is close to uniform
+across the seven values of $u\in[-2,2]$ tested at fixed $\ell$: at
+$\ell=500$ the spread is $6\times10^{-5}$. Along $u=0$,
 $\ln(\varphi/\varphi_0)$ is increasing and concave in $\ell$,
 consistent with a finite limit; a least-squares fit to
 $L_\infty+a/\sqrt\ell$ (distinct from $L_\ell$ above) over
@@ -936,15 +949,15 @@ an exact rational identity (verified for every tested pair with no
 rounding), so $Q(x_{3\ell})=Q(x_\ell)$ for a $1$-periodic $Q$, and if
 $\varphi_0$ were exact to all orders, the drift
 $\ln(\varphi/\varphi_0)(x_{3\ell})-\ln(\varphi/\varphi_0)(x_\ell)$
-would vanish identically at every such pair. It does not, but it moves
-toward the value the smooth fit itself predicts as $\ell$ grows, not
-toward zero: observed drift $-0.013$, $+0.039$, $+0.032$, $+0.027$
+would vanish identically at every such pair. It does not, but the
+drift moves toward the value the smooth fit itself predicts as
+$\ell$ grows: observed drift $-0.013$, $+0.039$, $+0.032$, $+0.027$
 against fit-predicted $+0.106$, $+0.047$, $+0.034$, $+0.027$ at
 $(\ell,3\ell)=(10,30),(50,150),(100,300),(150,450)$, a relative
-mismatch of $112\%$, $18\%$, $4\%$, and $1\%$. That is the signature of
-a shrinking finite-size correction to $\varphi_0$, not of an
-uncontrolled periodic contamination, which would leave a mismatch of
-fixed size at every depth. This disfavors a dominant periodic factor
+mismatch of $112\%$, $18\%$, $4\%$, and $1\%$. A fixed periodic
+contamination would leave a mismatch of fixed size at every depth;
+here the mismatch shrinks with $\ell$, matching a finite-size
+correction to $\varphi_0$. This disfavors a dominant periodic factor
 without ruling out a small one, nor proving $c$ constant.
 \end{remark}
 

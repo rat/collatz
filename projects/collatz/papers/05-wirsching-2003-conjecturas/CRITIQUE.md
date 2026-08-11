@@ -1197,3 +1197,117 @@ zero, README de `sec5-conjecture3-numerical` atualizado com a
 explicação e os números corretos do teste de fase. `README-PT-BR.md`
 do repositório companheiro **não** foi tocado (fora do escopo desta
 tarefa, que restringe edições a arquivos em inglês).
+
+---
+
+## Rodada de convergência R5, 2026-08-11
+
+Quinta rodada, contexto fresco (subagente `opus`, esforço máximo, sem
+acesso a este arquivo além do resumo colado no prompt: as decisões
+"rejected" de R1-R4 e o critério de severidade). R1-R4 não ficaram
+limpas, contagem de rodadas limpas consecutivas em 0.
+
+**Achados**: crítico=0, maior=1, moderado=6, menor=8. Não limpa
+(maior>0 e menor≥3); contagem de rodadas limpas consecutivas
+permanece 0.
+
+| ID | Rodada | Resumo | Severidade | Status |
+|----|--------|--------|------------|--------|
+| R5-01 | 2026-08-11 (R5) | Os 4 `README-PT-BR.md` do repositório companheiro estão desatualizados desde 2026-08-10 (numeração `(?N)`, valor errado `0,580` em vez de `0,802`, "erro certificado ≤1e-8", "60 dígitos", seções inteiras faltando em `sec4`) | maior | rejected (fora do escopo desta tarefa, que restringe edições a arquivos em inglês; repassado ao pesquisador) |
+| R5-02 | 2026-08-11 (R5) | `thm:microcanonical`: `μ_1` usado para a constante de Wirsching da Conjectura 1 (nunca definida no paper) colide com `μ_1`, a lei de Syracuse mod 3, usada em §4; a frase também citava `μ_1` para a constante de `(⋆3)`, que na fonte é `μ`, não `μ_1` | moderado | fixed |
+| R5-03 | 2026-08-11 (R5) | §2: funções Elka descritas como vivendo no espaço contínuo `X=I_3×Z_3^×`; a fonte (p.7) usa esse espaço só para os geradores normalizados `g̃_ℓ` (§3 da fonte), não para `e_ℓ`, cujo domínio é `N_0×Z_3^×` | moderado | fixed |
+| R5-04 | 2026-08-11 (R5) | §2: "o que o Teorema 2 de Wirsching acrescenta é... uma cota valendo em todo `ℓ≥ℓ_0` **e toda unidade simultaneamente**"; a fonte não sustenta essa segunda parte, `(⋆2)` e `(⋆3)` têm a mesma linguagem de uniformidade em `a` | moderado | fixed |
+| R5-05 | 2026-08-11 (R5) | `rem:no-monotone-certificate`: a derivação do fator `3` na identidade `Σḡ_{ℓ-1}(k-j)=3ḡ_ℓ(k)` não é sustentada pelo argumento dado ("cada `j` admissível para uma classe de `a` mod 3"); o fator vem da razão de normalização `2·3^{ℓ-1}/(2·3^{ℓ-2})=3` entre `ḡ_ℓ` e `ḡ_{ℓ-1}` | moderado | fixed |
+| R5-06 | 2026-08-11 (R5) | §2, terceiro ponto: só a *conclusão* do Teorema 1 (densidade positiva) é sobre `a∈N` não cíclico; a *hipótese* `(⋆1)` está sobre `Z_3^×`, igual a `(⋆2)`/`(⋆3)` | moderado | fixed |
+| R5-07 | 2026-08-11 (R5) | `sec4-central-zeros-conjecture2/README.md` (inglês): 8 ocorrências de `(?2)`/`(?3)`/`(?4)`, artefato de extração de PDF já corrigido no `main.tex` (C-003) mas não neste README | moderado | fixed |
+| R5-08 | 2026-08-11 (R5) | Orçamento de antítese "X, not Y" estourado: 3 no texto, mais uma pré-existente que escapou de contagens anteriores por quebra de linha do LaTeX (grep por linha não capturava o padrão quando "not" caía no fim de uma linha física) | menor | fixed |
+| R5-09 | 2026-08-11 (R5) | "offset" no abstract usado para `u` (§5); o corpo só chama de "offset" a variável `d` de §4, nunca `u` | menor | fixed |
+| R5-10 | 2026-08-11 (R5) | `sec3-conjecture1/README.md`: "tail fraction... down to 0.22 (ℓ=12)"; saída real do script é `0.23321251` em `ℓ=12` (`0.22` ocorre em `ℓ=9`) | menor | fixed |
+| R5-11 | 2026-08-11 (R5) | §2 e `rem:local-limit` fundem as duas partes do Teorema 3 de Wirsching (convergência forte para todo `f`, mais uniformidade em famílias equicontínuas limitadas) como se a convergência em si fosse restrita a essas famílias | menor | fixed |
+| R5-12 | 2026-08-11 (R5) | Título é tricolon: "A Proof, a Microcanonical Decomposition, and a Certified Numerical Test" | menor | rejected (os três itens mapeiam 1:1 com as três conjecturas de Wirsching que estruturam o paper; não é decoração retórica, é a estrutura real, mesmo julgamento de R1-19 para tríades de conteúdo genuíno) |
+| R5-13 | 2026-08-11 (R5) | Dois `\label` (`eq:block-radon`, `eq:fixed-conductor-fourier`) nunca referenciados via `\eqref`, embora as quantidades que definem sejam reusadas em prosa | menor | fixed |
+| R5-14 | 2026-08-11 (R5) | Duas `Overfull \hbox` cosméticas (multline de `thm:microcanonical-fourier`; URL do Tao na bibliografia) | menor | checked, cosmetic (ver nota abaixo) |
+| R5-15 | 2026-08-11 (R5) | "$\ln(\varphi/\varphi_0)$... is uniform across $u\in[-2,2]$" generaliza de 7 pontos testados para o intervalo contínuo; a frase seguinte só corrige pela metade | menor | fixed |
+
+**O achado mais trabalhoso (R5-05)**: a explicação original ("cada `j`
+admissível para exatamente uma classe de `a` mod 3, somando a
+recursão sobre as duas classes dá `Σḡ_{ℓ-1}(k-j)=3ḡ_ℓ(k)`") não
+deriva o fator `3` do que afirma; a partição por admissibilidade dá
+duas somas que juntas cobrem TODO `j`, não um fator 3 extra. Rederivei
+usando a própria identidade de §3 do paper (já verificada em rodadas
+anteriores): `q_ℓ(k)=2·3^{ℓ-1}ḡ_ℓ(k)` (contagem de urnas limitadas de
+Wirsching) satisfaz `q_ℓ(k)=Σ_{n<c_{ℓ-1}}q_{ℓ-1}(k-n)` (condicionando
+na ocupação da última urna, confirmado pela função geradora
+`Σq_ℓ(k)z^k=∏_{j=0}^ℓ(1-z^{c_j})/(1-z)` já usada na prova de
+`thm:wirsching-conj1`); dividindo por `2·3^{ℓ-1}` dá exatamente
+`Σ_{j<c_{ℓ-1}}ḡ_{ℓ-1}(k-j)=3ḡ_ℓ(k)`, o fator 3 vindo da razão
+`2·3^{ℓ-1}/(2·3^{ℓ-2})` entre as normalizações de `ḡ_ℓ` e `ḡ_{ℓ-1}`.
+A divisão em duas classes de `a` mod 3 (usada para obter
+`S_ℓ(k,a≡1)+S_ℓ(k,a≡2)=3`) continua correta, só reescrita como um
+passo separado. Verificado que a identidade em si já batia
+numericamente em rodadas anteriores (9/7+12/7=3, 6/5+9/5=3,
+5/4+7/4=3).
+
+**R5-02, R5-03, R5-04, R5-06**: verificados diretamente contra a
+fonte primária antes de corrigir (Regra 8c). p.7 da fonte confirma
+literalmente "Elka functions `e_ℓ: N_0 × Z_3^× → N_0`" e que o espaço
+contínuo `X` só aparece depois, para os geradores normalizados. p.5
+(Teorema 1) e p.8 (Conjectura 1) confirmam que `(⋆1)` e `(⋆2)` têm a
+mesma estrutura de quantificador em `a`; só a conclusão do Teorema 1
+(não a hipótese `(⋆1)`) menciona `a∈N` não cíclico. p.9 (Teorema 2)
+confirma que `(⋆3)` usa a mesma linguagem "uniformly for sequences...
+and `ℓ≥ℓ_0`" sem uma segunda cláusula de uniformidade em `a`.
+
+**R5-07, R5-10 (repositório companheiro, arquivos em inglês)**: os
+oito `(?N)` do README de `sec4-central-zeros-conjecture2` trocados por
+`(⋆N)` (caractere Unicode, já que é markdown, não LaTeX). Aproveitei a
+mesma edição para corrigir a alegação de que "um único zero em
+`ℓ≥ℓ_0` falsifica `(⋆3)`" (imprecisa pelo mesmo motivo do achado
+R4-07: `(⋆3)` tem `∃ℓ_0` existencial, um zero isolado não impede
+escolher `ℓ_0` maior; o que falsifica é persistência em `ℓ`
+arbitrariamente grande), alinhando com o texto que `thm:microcanonical`
+já tem desde a Rodada 4. `sec3-conjecture1/README.md` corrigido
+rodando `check_generating_identity.py` de novo: `0.23321251` em
+`ℓ=12`, não `0.22`.
+
+**R5-01, rejected**: os quatro READMEs PT-BR do repositório
+`collatz-wirsching-2003` (`sec3`, `sec4`, `sec5`, e o README raiz)
+estão desatualizados desde 2026-08-10 e citam números já corrigidos em
+rodadas anteriores (`0,580` em vez de `0,802` no teste de §5, entre
+outros). A tarefa que comanda este loop de convergência instrui
+explicitamente para não tocar em arquivos PT-BR, política que se
+aplica também ao repositório companheiro (mesma convenção do projeto:
+README em inglês e gêmeo PT-BR, ambos os repositórios). Isso é uma
+lacuna real de Regra 12 (a Data Availability Statement do paper não
+distingue idioma do README), mas fica fora do escopo desta tarefa;
+repassado ao pesquisador.
+
+**R5-12, rejected**: mesmo padrão de julgamento de R1-19. Os três
+itens do título ("A Proof, a Microcanonical Decomposition, and a
+Certified Numerical Test") não são substantivos abstratos
+coordenados por cadência; são as três contribuições distintas e
+reais do paper, cada uma amarrada a uma das três conjecturas de
+Wirsching que estruturam o documento inteiro. Forçar dois ou quatro
+itens misrepresentaria a estrutura real do paper.
+
+**R5-14, checked**: renderizei as páginas 10 e 13 em 150dpi
+(`pdftoppm`) e inspecionei visualmente. A `multline` de
+`thm:microcanonical-fourier` (página 10) e a entrada bibliográfica do
+Tao (página 13, URL quebrada em 4 linhas por `\url{}`) não têm
+overflow visível além da margem em nenhuma das duas; os avisos do
+LaTeX são conservadores demais para matemática em `multline`/URLs
+longas. Mesmo padrão de rodadas anteriores (R1, R3).
+
+Depois das correções: recompilado (`pdflatex` ×2, 13 páginas, sem
+`undefined reference`, as mesmas duas `Overfull \hbox` cosméticas de
+sempre); `\cite`/`\bibitem` sem órfãos (7 chaves); zero em/en dashes;
+vocabulário da Regra 4b varrido, zero ocorrências fora de uso
+técnico; antíteses "X, not Y" recontadas com um método robusto a
+quebra de linha (junta linhas físicas antes de aplicar o regex, para
+não repetir o erro que deixou uma antítese escapar de rodadas
+anteriores): 2/2. Regra 8b: abstract e Discussão relidos contra o
+corpo depois de todas as correções, nenhuma divergência encontrada.
+Repositório `collatz-wirsching-2003` sincronizado antes do commit
+deste paper (`sec3`, `sec4` READMEs em inglês); `README-PT-BR.md` (4
+arquivos) e `main-pt-br.tex` **não** tocados (fora do escopo desta
+tarefa).
