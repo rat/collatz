@@ -924,3 +924,58 @@ Recompilado limpo (pdflatex 2x, 5 páginas); `\cite`/`\bibitem`
 conferidos sem órfãos em nenhuma direção (três chaves).
 
 **Contagem de rodadas limpas consecutivas após R4: 0.**
+
+---
+
+## 2026-08-11, rodada R5 (loop de convergência, crítico independente)
+
+| R5-M1 | 2026-08-11 (loop R5) | Discussão concluía "consistent with the arithmetic tree reading below both constructions built to 0,650919" a partir dos desvios-padrão; a inferência está invertida (a árvore aritmética tem a MENOR dispersão das cinco, logo deveria ter o MENOR viés, não o maior; a leitura abaixo dos dois controles casados contraria, não confirma, a heurística flutuação→viés do próprio paper) | maior | fixed |
+| R5-M2 | 2026-08-11 (loop R5) | Resumo voltava a atribuir a KL a contagem $N_u(x)$ sob o mapa acelerado; recaída do achado R4-M2, que só tinha sido corrigido na introdução, não no resumo | maior | fixed |
+| R5-D1 | 2026-08-11 (loop R5) | Os cinco desvios-padrão citados na Discussão eram da grade b13; a conclusão que a frase tira é sobre a profundidade de calibração (grade b15), onde árvore aritmética e o controle mais próximo têm dispersão quase idêntica (0,594 vs. 0,598, não 0,594 vs. 0,629 a 0,801) | moderado | fixed |
+| R5-D2 | 2026-08-11 (loop R5) | "under-read"/"bias" em toda a comparação calibrada pressupõe identidade entre o expoente realizado e a raiz de pressão anelada, nunca dita explicitamente nem fundamentada (cota superior é o que está provado; a identidade é hipótese de projeto) | moderado | fixed |
+| R5-D3 | 2026-08-11 (loop R5) | Construções nunca dizem que o resíduo da própria raiz é sorteado fértil (sensibilidade documentada de 0,484 vs. 0,612 se não for) | moderado | fixed |
+| R5-n1 | 2026-08-11 (loop R5) | "by a factor of 0,37 to 0,45" — o extremo correto é 0,44 (0,445 de C-15 vinha de dividir slopes já arredondados) | menor | fixed |
+| R5-n2 | 2026-08-11 (loop R5) | Resumo "within $0.0034$" é falso por uma casa (desvio real 0,0034064) | menor | fixed |
+| R5-n3 | 2026-08-11 (loop R5) | "a branching process" no resumo e no Setup designa dois objetos diferentes ao longo do documento, nenhum deles com o nome que o corpo usa ("unconstrained construction") | menor | fixed |
+| R5-n4 | 2026-08-11 (loop R5) | Frase de 61 palavras com cinco subordinadas/apositivas empilhadas ao definir o segundo estimador (§5) | menor | fixed |
+| R5-n5 | 2026-08-11 (loop R5) | `OUTLINE.md` desatualizado outra vez (dizia "rodadas 1-3"; quarta reincidência do mesmo problema) | menor | fixed |
+| R5-n6 | 2026-08-11 (loop R5) | Índice de cauda $1/0,650919=1,5363$ citado sem fonte | menor | fixed |
+| R5-n7 | 2026-08-11 (loop R5) | `literature/papers/INDEX.md` item 149 dizia que a bibliografia de KL "erra o número do fascículo"; na verdade eles só o omitem, não erram | menor | fixed |
+
+Rodada 5 do loop de convergência: **crítico 0, maior 2, moderado 3,
+menor 7** (total 12 achados). NÃO limpa, mas a contagem por rodada vem
+caindo (31 → 25 → 23 → 15 → 12). Todos corrigidos nesta mesma passada
+(nenhum rejeitado). Contagem de rodadas limpas consecutivas após R5:
+**0**.
+
+Contexto fresco (novo subagente). Reproduziu todos os números do
+§3/§4/§5, incluindo um recálculo independente dos cinco desvios-padrão
+de flutuação nas duas grades (b13 e b15) a partir de `data/`, que
+confirmou o erro de grade do achado R5-D1. Releu o Theorem 8.10 e a
+Definição 7.7 de KL, e leu o artigo de Volkov diretamente (páginas 1-7
+e 18-19, renderizadas como imagem por causa do problema de codificação
+de fonte do PDF), confirmando o valor 0,678 e a contagem de
+trajetórias não-divergentes no próprio texto de Volkov, não só via
+paráfrase de KL. Conferiu a entrada 149 do `INDEX.md` contra o
+Crossref (DOI 10.1016/j.spa.2005.11.007).
+
+### Resolução
+
+Todos os 12 achados corrigidos nesta passada, nenhum rejeitado.
+Mudança de substância mais importante: cortada a inferência invertida
+sobre flutuação/viés na Discussão, substituída por uma leitura correta
+dos desvios-padrão na grade certa (árvore aritmética e o controle mais
+próximo flutuam quase igual, então flutuação sozinha não explica a
+leitura abaixo dos dois controles casados); adicionada uma frase
+distinguindo o que está provado (cota superior, via primeiro momento)
+do que é hipótese de projeto (identidade expoente-raiz de pressão para
+as construções casadas por congruência) em todo lugar onde a
+linguagem de "viés"/"under-read" é usada; documentada a sensibilidade
+do resíduo da raiz (0,484 vs. 0,612); resumo realinhado com a
+introdução na atribuição a KL.
+
+Recompilado limpo (pdflatex 2x, agora 6 páginas, `OUTLINE.md`
+atualizado); `\cite`/`\bibitem` conferidos sem órfãos em nenhuma
+direção (três chaves).
+
+**Contagem de rodadas limpas consecutivas após R5: 0.**
