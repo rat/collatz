@@ -78,10 +78,10 @@ exact bijective counting argument, a closed-form equation for the annealed growt
 associated partition function. The equation's roots organize the rest
 of the analysis: they govern a quenched/annealed freezing transition
 familiar from directed polymers in a random environment, and their
-relative position undergoes a structural change at $q=5$ that
-reproduces, as a special case, a $30$-year-old open conjecture of
-Kontorovich--Lagarias and Applegate--Lagarias for the classical Collatz
-map.
+relative position undergoes a structural change at $q=5$. The $q=3$
+case reproduces, as a special instance, a $31$-year-old open conjecture
+of Kontorovich--Lagarias and Applegate--Lagarias for the classical
+Collatz map.
 
 \S\ref{sec:setup} fixes the reverse-tree construction.
 \S\ref{sec:pressure} proves the pressure identity and its consequences
@@ -274,9 +274,11 @@ exponents. For independent digits $a_1,a_2,\ldots$ drawn from
 $p_\alpha$, the partial sums
 $F_k:=\sum_{i=1}^k q^{i-1}2^{-S_i}\pmod{q^k}$, $S_i:=a_1+\cdots+a_i$,
 form a projectively consistent family (Lemma~\ref{lem:fibre-bijection}
-gives $F_{k+1}\equiv F_k\pmod{q^k}$), hence converge to a
-$\mathbb{Z}_q$-valued limit; write $\mu_\alpha$ for its law, the
-\emph{tilted Syracuse measure} at $\alpha$.
+gives $F_{k+1}\equiv F_k\pmod{q^k}$), hence converge to a limit in
+$\mathbb{Z}_q:=\varprojlim_k\mathbb{Z}/q^k\mathbb{Z}$, the $q$-adic
+integers (the same projective-limit construction as for prime $p$,
+applied here for composite $q$ too); write $\mu_\alpha$ for the limit's
+law, the \emph{tilted Syracuse measure} at $\alpha$.
 
 \begin{theorem}[$q$-adic density martingale]\label{thm:qadic-martingale}
 Let $\alpha$ be either positive root of \eqref{eq:pressure-eq}, and let

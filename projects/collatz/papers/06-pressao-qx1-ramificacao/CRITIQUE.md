@@ -1370,3 +1370,37 @@ faltando/errado):**
 `pdflatex`), zero erro/referência indefinida; `\cite`/`\bibitem` e
 `\ref`/`\eqref`/`\label` conferidos por script, sem órfãos em nenhuma
 direção.
+
+### 2026-08-11 — rodada de convergência 11 (crítico, contexto fresco)
+
+Escopo: `main.tex` inteiro, oitava reconferência independente das
+provas centrais sem erro novo, verificação cruzada da alegação
+numérica do teste exato de momento (D-31) contra os dados reais
+(confirmada correta após a correção da rodada 10), e primeira
+verificação de `Hooley1967` contra fonte primária.
+
+**Resultado: 0 crítico, 0 maior, 1 moderado, 2 menor. Não limpa.
+Contagem de rodadas limpas consecutivas volta a 0/3** (a rodada 9
+tinha alcançado 1/3, quebrada pela rodada 10).
+
+| ID | Nível | Resumo | Status |
+|----|-------|--------|--------|
+| D-34 | moderado | $\mathbb{Z}_q$ usado em enunciados formais (`thm:qadic-martingale`, `conj:tail-index`) desde a l.278 sem nunca ser definido explicitamente; importa mais aqui porque $q=9$ (composto) é usado numericamente no paper, então o leitor precisa inferir sem ajuda que a mesma construção de limite projetivo vale para $q$ composto | fixed |
+| D-35 | menor | Introdução, l.81-84: "a structural change at $q=5$ that reproduces... a 30-year-old open conjecture" — antecedente gramatical solto (quem reproduz a conjectura clássica é o caso $q=3$, não "a mudança estrutural em $q=5$" em si) | fixed |
+| D-36 | menor | Mesma frase: "30-year-old" (conjectura de 1995, texto de 2026) deveria ser "31-year-old" | fixed |
+
+**Correções aplicadas:**
+
+- **D-34.** Definição explícita adicionada no primeiro uso:
+  $\mathbb{Z}_q:=\varprojlim_k\mathbb{Z}/q^k\mathbb{Z}$, com uma nota de
+  que é a mesma construção de limite projetivo usual para $p$ primo,
+  aplicada aqui também a $q$ composto.
+- **D-35/D-36.** Frase da Introdução reescrita em duas orações: a
+  transição estrutural em $q=5$ fica separada do caso $q=3$
+  especificamente reproduzindo a conjectura clássica, e "30-year-old"
+  corrigido para "31-year-old" (1995 a 2026).
+
+**Verificação técnica pós-correção:** recompilado (2 passadas
+`pdflatex`), zero erro/referência indefinida; `\cite`/`\bibitem` e
+`\ref`/`\eqref`/`\label` conferidos por script, sem órfãos em nenhuma
+direção.
