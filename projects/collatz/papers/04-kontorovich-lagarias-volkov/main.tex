@@ -31,40 +31,41 @@ and Volkov Exponent Predictions for the $5x+1$ Reverse Tree}
 \maketitle
 
 \begin{abstract}
-% DRAFT -- rewrite by hand before submission (Rule 4b: abstracts carry
-% the highest marker density of any section in the paper).
 Kontorovich and Lagarias predict a counting exponent $\eta\approx
-0.650919$ for the reverse tree of the accelerated $5x+1$ map, governing
-$N_u(x)=x^{\eta+o(1)}$; a competing model due to Volkov predicts
-$\eta^\ast\approx0.678$, and the two authors write that Volkov's own
-data cannot discriminate between the values. We report an exact
-enumeration with Aitken-extrapolated truncation correction that reaches
-$0.639$, a fixed-window reading that excludes neither value on its own.
-Applied to a branching process of known exponent, the same estimator
-under-reads by $0.038$, more than the gap between the two predictions,
-so this raw reading was never evidence for either side. Building
-synthetic controls that share the arithmetic tree's branching and
-sibling-spacing law but draw the branch residue rather than using the
-true one, via an exact sibling congruence, gives three independent
-processes of exponent $0.650919$ that read within $0.004$ of each other
-at a depth where the bias has fallen below $0.003$; the arithmetic tree
-reads inside that band, and a control of exponent $0.678$ reads more
-than seven band-widths away. The result is a measurement with
-calibrated controls, not a proof, and it targets the disputed exponent
-value; whether it bears on Volkov's branching model itself is a
-separate question.
+0.650919$ for the reverse tree of the accelerated $5x+1$ map, where
+$N_u(x)=x^{\eta+o(1)}$. A competing model due to Volkov predicts
+$\eta^\ast\approx0.678$. The two authors write that Volkov's own data
+cannot discriminate between the values.
+
+We enumerate the reverse tree exactly and extrapolate the truncation
+bias with Aitken's $\Delta^2$. The fixed-window reading is $0.639$; it
+excludes neither prediction. Applied to a branching process of known
+exponent, the same estimator under-reads by $0.038$, more than the gap
+$\Delta=0.027$ between the two disputed values, so a raw reading
+settles nothing.
+
+We build synthetic controls that share the arithmetic tree's branching
+law and, via an exact sibling congruence, its sibling spacing, but draw
+the branch residue instead of the true one. Three such controls of
+exponent $0.650919$ read within $0.004$ of each other at a depth where
+the bias has fallen below $0.003$, and the arithmetic tree reads inside
+that band. A control of exponent $0.678$ reads $0.0282$ away, more than
+seven band-widths outside it.
+
+The comparison is a measurement, not a proof, calibrated against
+controls of known exponent. It targets the disputed exponent value;
+whether it bears on Volkov's branching model itself is a separate
+question.
 \end{abstract}
 
 \section{Introduction}
 \label{sec:intro}
 
-The Collatz, or $3x+1$, conjecture asks whether every positive integer
-eventually reaches $1$ under the map $n\mapsto n/2$ ($n$ even),
-$n\mapsto3n+1$ ($n$ odd). Kontorovich and Lagarias
-\cite{KontorovichLagarias2009} study the $3x+1$ and $5x+1$ problems
-through the counting statistics of the associated reverse tree: for a
-fixed root $u$, the number $N_u(x)$ of integers up to $x$ that
-eventually map to $u$ satisfies $N_u(x)=x^{\eta+o(1)}$ for a conjectural
+Kontorovich and Lagarias \cite{KontorovichLagarias2009} study the
+$3x+1$ and $5x+1$ Collatz-type problems through the counting statistics
+of the associated reverse tree: for a fixed root $u$, the number
+$N_u(x)$ of integers up to $x$ that eventually map to $u$ under the
+accelerated map satisfies $N_u(x)=x^{\eta+o(1)}$ for a conjectural
 exponent $\eta$. Their stochastic model predicts $\eta_{5,BP}\approx
 0.650919$ for $q=5$ (their Theorem~8.10); a competing branching model
 due to Volkov, discussed in the same reference, predicts a different
@@ -211,15 +212,15 @@ asymptotic exponent and does not exclude the Volkov prediction.
 \label{sec:calibrated}
 
 The estimator behind Empirical Result~\ref{thm:kl} had never been run
-on a process with a known exponent. It is biased: on a branching random
+on a process with a known exponent. It is biased. On a branching random
 walk with the arithmetic tree's own offspring law but an independently
-drawn branch residue at every node (exponent provably $0.650919$, the
-Kontorovich--Lagarias prediction itself, realized as a pressure-equation
-root in a companion paper on the $qx+1$ branching structure
-\cite{PressureCompanion}), the same window, truncation, and
-extrapolation reads $0.6131$, an under-read of $0.038$, larger than the
-gap $\Delta=0.027$ separating the two disputed values. A raw reading of
-this estimator therefore settles nothing on its own.
+drawn branch residue at every node, exponent provably the
+Kontorovich--Lagarias value $0.650919$ itself, realized as a
+pressure-equation root in a companion paper on the $qx+1$ branching
+structure \cite{PressureCompanion}, the same window, truncation, and
+extrapolation read $0.6131$. That is an under-read of $0.038$, larger
+than the gap $\Delta=0.027$ separating the two disputed values. A raw
+reading of this estimator settles nothing on its own.
 
 The bias falls with depth, and depends on how much a process
 fluctuates, so it can be calibrated out by comparing readings at a
@@ -236,14 +237,14 @@ leaving the branching law and sibling spacing unchanged.
 
 \begin{empirical}[Calibrated separation from the Volkov exponent]
 \label{thm:kl-calibrated}
-At the checkpoint decade $10^9\!\to\!10^{10}$, where every control
-reads its own target exponent to within $0.003$: three independent
-constructions of exponent $0.650919$ (the arithmetic tree's offspring
-law with drawn residues, its real-valued relaxation, and an
-unconstrained i.i.d.\ branching walk) read $0.64751$, $0.64981$, and
-$0.65122$, a band $0.0037$ wide reflecting how much residual bias still
-depends on each process's own fluctuation. The arithmetic tree reads
-$0.64926$, inside that band. A construction of exponent $0.678$ reads
+At the checkpoint decade $10^9\!\to\!10^{10}$, every control reads its
+own target exponent to within $0.003$. Three independent constructions
+of exponent $0.650919$, the arithmetic tree's offspring law with drawn
+residues, its real-valued relaxation, and an unconstrained i.i.d.\
+branching walk, read $0.64751$, $0.64981$, and $0.65122$. That is a
+band $0.0037$ wide, reflecting how much residual bias still depends on
+each process's own fluctuation. The arithmetic tree reads $0.64926$,
+inside that band. A construction of exponent $0.678$ reads
 $0.67748$, $0.0282$ away from the arithmetic reading, more than seven
 band-widths and well outside the arithmetic tree's own $95\%$ interval
 $[0.64818,0.65027]$. The separation grows as bias
@@ -280,22 +281,20 @@ The $0.038$ bias of \S\ref{sec:calibrated} and the $0.003$ residual
 here are the same estimator at different depths. The bias shrinks by
 roughly an order of magnitude between the window used for the first
 measurement and the deeper checkpoint decade used for the second, and
-that shrinkage is what turns an uninformative raw reading into a
-comparison precise enough to separate the two disputed values.
+that shrinkage turns an uninformative raw reading into a comparison
+that separates the two disputed values.
 
-This is a measurement with calibrated controls. It settles the
-narrower question of whether the arithmetic tree's counting exponent is
-closer to $0.650919$ or to $0.678$; it does not implement or test
-Volkov's branching model directly, which encodes the iterates
-differently from the matched controls built here. Two observations
-outside this paper's scope are worth recording for future work: the
-i.i.d.\ control above is Kontorovich and Lagarias's own stochastic
-model, so the gap between its bias ($0.038$) and the arithmetic tree's
-($0.013$ at the same depth) is a direct measurement of how much less
-the arithmetic tree fluctuates than the model built to describe it; and
-the deep arithmetic-only run above sits systematically at or just below
-$0.650919$, a pattern the data here cannot yet distinguish from a
-slowly converging extrapolation.
+The comparison settles the narrower question of whether the arithmetic
+tree's counting exponent is closer to $0.650919$ or to $0.678$. It does
+not implement or test Volkov's branching model directly, which encodes
+the iterates differently from the matched controls built here. The
+i.i.d.\ control is Kontorovich and Lagarias's own stochastic model, so
+the gap between its bias ($0.038$) and the arithmetic tree's ($0.013$
+at the same depth) measures how much less the arithmetic tree
+fluctuates than the model built to describe it. The deep arithmetic-only
+run sits systematically at or just below $0.650919$, a pattern the
+data here cannot yet distinguish from a slowly converging
+extrapolation.
 
 \section*{Data Availability Statement}
 

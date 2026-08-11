@@ -1,6 +1,7 @@
 # Outline — paper 04 (Kontorovich-Lagarias vs. Volkov)
 
-Status: `main.tex` é um rascunho completo (4 páginas, compila limpo).
+Status: `main.tex` completo, com passagem de redação final aplicada
+(4 páginas, compila limpo).
 Split de `01-syracuse-qx1-endogenia/main.tex` §6, em 2026-08-10, a
 pedido do diretor científico ("divida o paper de forma que todos
 tenham sua importância e possam receber citações").
@@ -45,8 +46,19 @@ exponent value.
 
 ## Pendências
 
-- Abstract marcado no `main.tex` como rascunho, precisa de reescrita à
-  mão pelo pesquisador (Regra 4b, divisão de trabalho).
+- Passagem de redação final (2026-08-10): `main.tex` inteiro revisado
+  contra o checklist da Regra 4b §10 (vocabulário banido, antítese "X,
+  not Y", travessões, listas de três, variância de frase, auto-
+  referência, promessa de "future work"). Abstract reescrito por
+  completo (não fica mais marcado como rascunho); introdução cortou a
+  definição elementar do mapa Collatz (marcador citado explicitamente
+  na própria Regra 4b §5); duas frases-monstro quebradas (§6 e o
+  Empirical Result `thm:kl-calibrated`); parágrafo final da Discussão
+  reescrito sem auto-referência e sem promessa de trabalho futuro.
+  Recompilado limpo (pdflatex 2x); `\cite`/`\bibitem` e
+  `\ref`/`\label`/`\eqref` conferidos sem órfãos em nenhuma direção.
+  Não passou por uma nova rodada de crítica (Regra 8) desde a
+  reescrita; ver nota abaixo.
 - `main-pt-br.tex`: não criado ainda, só sob pedido explícito (Regra 5,
   mesma política do paper 01).
 - `CRITIQUE.md`: existe e está fechado (2026-08-10, 23 achados, todos
