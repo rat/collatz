@@ -90,6 +90,37 @@ moderado=0, menor<3). Todos corrigidos nesta mesma passada, exceto
 R1-24 e R1-30, rejeitados com razão registrada na seção datada abaixo.
 Contagem de rodadas limpas consecutivas após R1: **0**.
 
+| R2-M1 | 2026-08-10 (loop R2) | Passo multiplicativo do lema descrito errado ($w_{(j+1)}\approx2^dw_{(j)}/q$ carrega um $/q$ que não existe); a substituição real de $q\to q_{\mathrm{val}}$ é no passo pai-filho, não no passo entre irmãos | maior | fixed |
+| R2-M2 | 2026-08-10 (loop R2) | Construção "unconstrained" (`iid`) identificada como sendo literalmente o modelo B[5⁰] de KL / o modelo i.i.d. do paper 06; na verdade só compartilha a intensidade média (mesma pressão, mesmo expoente), estrutura conjunta é diferente | maior | fixed |
+| R2-M3 | 2026-08-10 (loop R2) | KL contam sob o mapa não-acelerado $T_5$ (Theorem 8.10 é para $B[5^0]$, também não-acelerado); o resumo atribuía a KL uma previsão "for the reverse tree of the accelerated map" | maior | fixed |
+| R2-M4 | 2026-08-10 (loop R2) | "the same 300 roots as §method" é falso: §4/5 usam Python (Mersenne Twister), §6 usa C (splitmix64); só 31 de 300 raízes coincidem | maior | fixed |
+| R2-M5 | 2026-08-10 (loop R2) | Volkov nomeado no título e no resumo sem nenhum `\bibitem`; nenhuma rodada anterior verificou a fonte primária de Volkov | maior | fixed |
+| R2-D1 | 2026-08-10 (loop R2) | Nenhum dos dois estimadores (janela fixa do §5; slope de década do §6) é definido; são estatísticas diferentes tratadas como a mesma | moderado | fixed |
+| R2-D2 | 2026-08-10 (loop R2) | "§6 extrapolates the same estimator" tem referente ambíguo/falso (§6 usa estatística de década, não a de janela) | moderado | fixed |
+| R2-D3 | 2026-08-10 (loop R2) | "0,019 against 0,011": o 0,011 é do controle `cycq5.0`, não da árvore aritmética, atribuído errado na frase | moderado | fixed |
+| R2-D4 | 2026-08-10 (loop R2) | "Both systematics smaller than or comparable to 0,0037" falso para o segundo sistemático (0,019 é ~5x a banda) | moderado | fixed |
+| R2-D5 | 2026-08-10 (loop R2) | "0,012" do viés da árvore aritmética mistura a corrida Python do §5 (0,639) com a corrida C do §6 (0,6131 do `iid`); par casado correto é 0,038/0,013 (grade b13) | moderado | fixed |
+| R2-D6 | 2026-08-10 (loop R2) | "drawn residue"/"drawn-residue walk"/"drawn-label walk" nomeiam dois objetos diferentes (`cyc` e `iid`) em parágrafos adjacentes | moderado | fixed |
+| R2-D7 | 2026-08-10 (loop R2) | $N_u(x)=x^{\eta+o(1)}$ sem marcador conjectural; independência de $\eta$ em relação a $u$ nunca mencionada (é a Conjectura 7.2 de KL) | moderado | fixed |
+| R2-D8 | 2026-08-10 (loop R2) | "five held-out roots": são as cinco primeiras raízes de produção, não uma amostra separada | moderado | fixed |
+| R2-D9 | 2026-08-10 (loop R2) | Volkov conta uma função diferente ($Q(x)$, trajetórias não-divergentes), e a igualdade de ordem de crescimento com $\pi_5(x)$ é ela mesma conjectural em KL; ressalva ausente | moderado | fixed |
+| R2-D10 | 2026-08-10 (loop R2) | Argumento de flutuação (árvore aritmética flutua menos que todo controle) não conectado explicitamente à leitura abaixo dos dois controles casados na Discussão | moderado | fixed |
+| R2-D11 | 2026-08-10 (loop R2) | "cannot discriminate" endurece o hedge original de KL ("seems insufficient to discriminate") no resumo e no §3 | moderado | fixed |
+| R2-m1 | 2026-08-10 (loop R2) | "decays geometrically with truncation" descreve a slope, que sobe; quem decai são os incrementos | menor | fixed |
+| R2-m2 | 2026-08-10 (loop R2) | "0,0035 below target" para o `iid`: valor real é 0,0034 | menor | fixed |
+| R2-m3 | 2026-08-10 (loop R2) | Limite do termo de truncamento "0,0003 a 0,0004" impreciso; correto é "no máximo 0,0004" | menor | fixed |
+| R2-m4 | 2026-08-10 (loop R2) | Orçamento de antíteses excedido (3 contra 2) | menor | fixed |
+| R2-m5 | 2026-08-10 (loop R2) | "substantially deeper": "substantial" é vocabulário banido pela Regra 4b §1 | menor | fixed |
+| R2-m6 | 2026-08-10 (loop R2) | §3 "The dispute" ainda quase inteiramente redundante com a introdução (C-21/R1 não resolveram) | menor | fixed |
+| R2-m7 | 2026-08-10 (loop R2) | Equação $q_{\mathrm{val}}^\alpha=q(2^\alpha-1)$ tem duas raízes; qual delas é o expoente da construção não era dito | menor | fixed |
+| R2-m8 | 2026-08-10 (loop R2) | "including the correct one" no §4: pressupõe o que está em disputa, defesa antecipada desnecessária | menor | fixed |
+| R2-m9 | 2026-08-10 (loop R2) | "more than seven widths" marginal sob os números arredondados do próprio resumo (0,004) | menor | fixed |
+
+Rodada 2 do loop de convergência: **crítico 0, maior 5, moderado 11,
+menor 9** (total 25 achados). NÃO limpa. Todos corrigidos nesta mesma
+passada (nenhum rejeitado). Contagem de rodadas limpas consecutivas
+após R2: **0**.
+
 Todos os 23 achados foram lidos de volta nesta mesma rodada (2026-08-10) e corrigidos no main.tex, exceto C-23, marcado `rejected` com razao registrada (decisao de ordem de submissao ja tomada no OUTLINE.md de 01: paper 06 primeiro; nao e bug de texto). C-13: o orcamento estrito da Regra 4b e de duas construcoes antiteticas no documento inteiro; apos a reescrita ficaram tres, todas com funcao desambiguadora real (residuo sorteado vs. verdadeiro; vies vs. ruido de amostra; largura de banda vs. separacao), nao floreio retorico -- marcado `fixed` com essa ressalva em vez de forcar uma reescrita que perderia precisao.
 
 ---
@@ -451,7 +482,38 @@ que, por Regra 8e, não devem morrer aqui dentro. Registrar em
    real e não ruído de extrapolação, é um desvio mensurável entre a
    árvore aritmética e o modelo de ramificação, exatamente o tipo de
    coisa que esta linha de pesquisa procura, e merece uma passada
-   dedicada em vez de uma nota de rodapé.
+   dedicada em vez de uma nota de rodapé. (A rodada R2 do loop de
+   convergência, abaixo, reencontrou o mesmo padrão a partir do
+   argumento de flutuação do próprio paper 04 aplicado aos controles
+   casados na década de calibração; não é um lead novo, é evidência
+   adicional para este mesmo item.)
+
+### Nota de Regra 8e — lead da rodada R2 (2026-08-10)
+
+3. **Estender o Teorema (transição estrutural, modelo i.i.d.) do
+   paper 06 à lei de prole por classe de resíduo.** O teorema do 06 é
+   provado para "cada expoente $a\ge1$ independentemente fértil com
+   probabilidade $1/q$" (cada aresta candidata é um Bernoulli
+   independente). A construção "unconstrained" simulada em
+   `tree_counts.c` (`MODE_IID`) é diferente: sorteia UMA classe de
+   resíduo por nó e, se não-estéril, torna férteis TODOS os expoentes
+   dessa classe de uma vez. As duas leis têm a mesma intensidade média
+   por expoente ($1/q$), logo a mesma função de pressão anelada e a
+   mesma cota superior (que só depende do primeiro momento, via
+   many-to-one, e por isso vale para qualquer lei com essa intensidade,
+   independente de correlação). A cota inferior do 06, porém, é
+   emprestada do argumento de grandes desvios/segundo momento do
+   Theorem 8.10 de KL, que usa "independência de fertilidade entre
+   nós" — presente na construção `iid` também, mas com uma lei de
+   reprodução por nó diferente da do modelo i.i.d. por-aresta que o 06
+   realmente prova. Se o argumento de KL generaliza (plausível: usa
+   only a estrutura de ramificação e sobrevivência no evento de grande
+   desvio, não a forma exata da lei por nó), o "provably" que o paper
+   04 precisou suavizar para "built to" nesta rodada volta a valer
+   literalmente, e o paper 06 ganha uma generalização real. Registrar
+   como `backlog` em `HYPOTHESES.md`/`hypotheses/`, origem "CRITIQUE
+   paper 04, rodada R2"; verificado via `advisor()` nesta mesma rodada,
+   que confirmou o diagnóstico (ver seção datada da rodada R2 abaixo).
 
 ---
 
@@ -568,3 +630,99 @@ Recompilado limpo (pdflatex 2x, 5 páginas); `\cite`/`\bibitem`
 conferidos sem órfãos em nenhuma direção.
 
 **Contagem de rodadas limpas consecutivas após R1: 0.**
+
+---
+
+## 2026-08-10, rodada R2 (loop de convergência, crítico independente)
+
+Contexto fresco (novo subagente), instruído a não confiar na R1.
+Reexecutou tudo do zero: `experiment_gate_richardson.py` completo (300
+raízes), `summary.py` nas grades b13/b15, `buffer_squeeze.py`,
+`cyc_vs_cycq.py` recompilando o C, e o script de validação novo da R1
+(`validate_richardson_vs_production.py`). Leu o PDF primário de KL
+diretamente (arXiv:0910.1944v1). Comparou os conjuntos de raízes
+Python vs. C raiz a raiz.
+
+**Resultado: crítico 0, maior 5, moderado 11, menor 9** (25 achados,
+tabela acima, IDs R2-M1 a R2-m9). Nenhum Empirical Result estava
+matematicamente errado (todos os números impressos reproduziram), mas
+a prova textual que liga o Lema 1 à construção dos controles estava
+errada (R2-M1), a identificação entre o controle `iid` e o modelo
+estocástico de Kontorovich-Lagarias era mais forte do que o que está
+provado (R2-M2), o resumo atribuía a KL uma previsão para o mapa
+acelerado quando o Theorem 8.10 deles é para o mapa não-acelerado
+(R2-M3), a frase "the same 300 roots as §method" era factualmente falsa
+(R2-M4), e Volkov era nomeado no título e no resumo sem nenhuma
+citação bibliográfica (R2-M5).
+
+### Consulta ao advisor (R2-M2, ponto de julgamento matemático genuíno)
+
+R2-M2 levantava uma questão real de prova: o teorema do paper 06 prova
+a cota superior (via primeiro momento/many-to-one, que não depende de
+independência) para qualquer processo com a mesma intensidade média,
+mas a cota inferior (emprestada do Theorem 8.10 de KL) exige
+"independência de fertilidade entre nós", que a construção `iid`
+simulada no código satisfaz de um jeito, mas com uma lei de reprodução
+por nó diferente da do modelo i.i.d. por-aresta que o paper 06
+realmente define e prova. Ou seja: o "provably 0.650919" do §6 era
+uma alegação mais forte do que o que está de fato provado no corpus
+disponível. Consultei o `advisor()` antes de decidir a correção; a
+resposta confirmou o diagnóstico (cota superior transfere por
+linearidade do primeiro momento, cota inferior não, a extensão é um
+lead em aberto) e deu a direção da correção: trocar "provably" por
+linguagem de "construído para" (target language), mover o peso
+probatório para a leitura empírica dos controles (que já fazem o
+trabalho, lendo dentro de 0,0035 do alvo), e fazer a varredura de Regra
+8b completa em todo lugar que a alegação de identidade de expoente
+aparecia (resumo, abertura do §6, Empirical Result 2, Discussão) em vez
+de corrigir só o primeiro lugar encontrado. Seguido à risca.
+
+### Verificação adicional (Regra 8c/11): citação de Volkov (R2-M5)
+
+O PDF de KL cita Volkov como "[40] S. Volkov, A probabilistic model for
+the 5k + 1 problem and related problems, Stochastic Processes and
+Applications 116 (2006), 662–674" (extração de texto do PDF, possíveis
+erros de OCR: "5k" e "Applications" sem "their"). Antes de imprimir,
+verifiquei contra uma fonte mais confiável: a página de publicações do
+próprio Volkov
+(`https://www.maths.lth.se/matstat/staff/s.volkov/papers.htm`, via
+`WebFetch`) dá o título correto "A probabilistic model for the 5x+1
+problem and related maps", periódico "Stochastic Processes and their
+Applications", volume 116, número 4 (2006), páginas 662–674, o que uma
+`WebSearch` independente confirmou. Usei esta versão (fonte mais
+primária que a paráfrase de KL) no `\bibitem{Volkov2006}` novo.
+
+### Resolução
+
+Todos os 25 achados corrigidos nesta passada, nenhum rejeitado.
+Mudanças de substância: correção matemática do parágrafo que liga o
+Lema 1 à construção de controles (passo entre irmãos $\approx2^dw_j$,
+sem $q$; passo pai-filho $\approx2^av/q$, com $q$, e é esse que vira
+$q_{\mathrm{val}}$); remoção do "provably" e da identificação literal
+`iid`=modelo de KL, substituídos por "built to exponent" e por uma
+declaração precisa de que os dois processos só compartilham a
+intensidade média (mesma função de pressão), com uma nota de Regra 8e
+registrando a extensão da cota inferior do paper 06 como lead em
+aberto; adição de um `\begin{remark}` no Setup explicando que KL contam
+sob o mapa não-acelerado e que a independência de $\eta$ em relação à
+raiz é a Conjectura 7.2 deles, não um teorema; correção de "same 300
+roots" para "sampled by the same rule"; `\bibitem{Volkov2006}`
+adicionado e verificado contra a página de publicações do autor;
+fusão do §3 "The dispute" (quase inteiramente redundante) na
+introdução; harmonização de nomenclatura dos três controles em todo o
+documento ("congruence-matched construction", "its real-valued
+relaxation", "unconstrained construction", usados de forma consistente
+onde antes havia cinco nomes parcialmente sobrepostos); correção de
+"0,012" para "0,013" com o par casado correto (mesma grade b13, mesma
+amostra); definição explícita da janela de medição ($10^5$–$10^8$) e
+da estatística de década do §6 como algo distinto da estatística de
+janela do §5; e redução do orçamento de antíteses "X, not Y"/"instead
+of"/"in place of" de volta a duas no documento inteiro (o processo de
+corrigir R2-M1..M5 introduziu três novas sem querer, cortadas na mesma
+passada).
+
+Recompilado limpo (pdflatex 2x, 5 páginas); `\cite`/`\bibitem`
+conferidos sem órfãos em nenhuma direção (três chaves agora:
+`KontorovichLagarias2009`, `PressureCompanion`, `Volkov2006`).
+
+**Contagem de rodadas limpas consecutivas após R2: 0.**

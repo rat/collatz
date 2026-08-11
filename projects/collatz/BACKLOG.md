@@ -615,3 +615,27 @@ um catálogo fechável: 12 casos já revisados a fundo hoje, todos com erro
 real localizado, nenhum válido. Absorve o item 5 (Santos 2018). Ver
 `papers/03-alegacoes-de-prova-refutadas/OUTLINE.md` para a estrutura
 completa e a lista dos 12 casos com taxonomia dos padrões de erro.
+
+## 10. Estender o Teorema (transição estrutural, modelo i.i.d.) do paper 06 à lei de prole por classe de resíduo — BACKLOG, origem: CRITIQUE paper 04, rodada R2 (2026-08-10)
+
+O paper 06 (`papers/06-pressao-qx1-ramificacao/`) prova a cota superior
+e a cota inferior do expoente $\alpha_-(q)$ para um modelo i.i.d. onde
+cada expoente candidato $a\ge1$ é independentemente fértil com
+probabilidade $1/q$ (uma aresta por vez). A construção "unconstrained"
+usada no paper 04 (`collatz-kl-volkov/sec6-calibrated-comparison/tree_counts.c`,
+`MODE_IID`) é diferente: sorteia uma única classe de resíduo por nó e,
+se não-estéril, torna férteis todos os expoentes dessa classe de uma
+vez. As duas leis têm a mesma intensidade média por expoente, logo a
+mesma função de pressão anelada, e a cota superior transfere de graça
+(argumento de primeiro momento/many-to-one, independente de
+correlação). A cota inferior do 06 empresta o argumento de grandes
+desvios do Theorem 8.10 de Kontorovich-Lagarias, que usa apenas
+"independência de fertilidade entre nós" (presente também na
+construção do paper 04) — plausível que generalize, não verificado.
+Se generalizar, o paper 06 ganha uma classe mais ampla de modelos
+cobertos pelo mesmo teorema, e o "provably" que o paper 04 precisou
+suavizar para "construído para" nesta rodada de crítica volta a valer
+literalmente. Consultado `advisor()` na rodada R2 do loop de
+convergência do paper 04, que confirmou o diagnóstico sem resolver a
+extensão. Investigação real ainda não feita — só a lacuna está
+mapeada.
