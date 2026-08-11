@@ -53,14 +53,18 @@ unconditional partial result toward the Collatz conjecture.
 A companion paper proves a closed-form annealed pressure equation,
 $q^{\alpha-1}=2^\alpha-1$, for the reverse tree of the accelerated
 $qx+1$ map, via an exact fibre-counting bijection
-\cite{PressureCompanion}. Its nontrivial root equals $2$ at $q=3$,
-reproducing the Growth Exponent Conjecture of Kontorovich--Lagarias and
-Applegate--Lagarias, and falls below $1$ for every $q\ge5$: a
-structural transition, not a small perturbation. The root is always
-unfrozen, in the sense of directed polymers in a random environment, so
-the identity transfers rigorously to the matching i.i.d.\
-branching-random-walk model, and, as empirical evidence rather than
-proof, to the arithmetic tree itself.
+\cite{PressureCompanion}. Its two roots $\alpha_-(q)<\alpha_+(q)$
+satisfy $\alpha_-(q)=1$ at $q=3$, reproducing the Growth Exponent
+Conjecture of Kontorovich--Lagarias and Applegate--Lagarias as this
+case of a single closed-form equation, and $\alpha_-(q)$ falls below
+$1$ for every $q\ge5$: a structural transition, sharp rather than
+gradual. $\alpha_-(q)$ is always unfrozen, in the sense of
+directed polymers in a random environment, so the identity transfers
+rigorously to the matching i.i.d.\ branching-random-walk model, and,
+as empirical evidence rather than proof, to the arithmetic tree
+itself. The other root, always frozen, equals $2$ at $q=3$ and
+separately matches earlier tail-exponent measurements on the classical
+Collatz reverse tree.
 
 We prove that the tree's fixed-point recursion admits an \emph{endogeny
 barrier}, in the sense of Aldous--Bandyopadhyay
@@ -165,12 +169,13 @@ as an identity in law. Equivalently, writing $F_n(a) =
 2^{-a_1}\bigl(1+3\,F_{n-1}(a_2,\dots,a_n)\bigr) \bmod 3^n$, the
 coarsest $k$ coordinates of $\mathrm{Syrac}(\mathbb{Z}/3^n\mathbb{Z})$
 depend only on $(a_1,\dots,a_k)$, the digits \emph{adjacent to the
-root} in the indexing of \eqref{eq:syracuse-def}, not on the deepest
-ones.
+root} in the indexing of \eqref{eq:syracuse-def}, rather than on the
+deepest ones.
 \end{proposition}
 
 The orientation convention embedded in Proposition~\ref{prop:tao123}
-(that $a_1$, not $a_n$, is the coordinate adjacent to the root) is a
+(that the coordinate adjacent to the root is $a_1$ rather than $a_n$)
+is a
 recurring source of error when translating Tao's construction into
 reverse-tree language.
 
@@ -304,18 +309,18 @@ for the two roots when both exist. At $q=3$, $\{\alpha_-,\alpha_+\}=
 \{1,2\}$; for every odd $q\ge5$ the second root falls strictly below
 $1$, so $\{\alpha_-,\alpha_+\}=\{\alpha^\ast(q),1\}$ with
 $\alpha^\ast(5)=0.650919$, $\alpha^\ast(7)=0.373501$,
-$\alpha^\ast(9)=0.258108$: a structural transition at $q=5$,
-not a small perturbation. At $q=3$ the second root
-$\alpha^\ast=2$ matches the universal tail exponent for the classical
-Collatz reverse tree, established in earlier, classical-map-only work
-of this project by a Hill estimator and, independently, by
-extreme-value theory (not detailed in this paper), and reproduces the
-Growth Exponent Conjecture of
+$\alpha^\ast(9)=0.258108$: a sharp structural transition at $q=5$.
+At $q=3$, $\alpha_-(q)=1$, and the pressure
+equation reproduces the Growth Exponent Conjecture of
 Kontorovich--Lagarias \cite{KontorovichLagarias2009} and
 Applegate--Lagarias
 \cite{ApplegateLagarias1995I,ApplegateLagarias1995II}, open since
-1995, as the $\alpha_-=1$ case of a single closed-form equation across
-every odd $q$.
+1995, as this case of a single closed-form equation across every odd
+$q$ (Conjecture~\ref{conj:transition-arithmetic} below). The other
+root, $\alpha_+=2$ at $q=3$, separately matches the tail exponent
+measured on the classical Collatz reverse tree in earlier,
+classical-map-only work of this project, by a Hill estimator and,
+independently, by extreme-value theory (not detailed in this paper).
 
 The two roots sit on opposite sides of a quenched/annealed freezing
 transition, in the sense of directed polymers in a random environment:
@@ -425,7 +430,8 @@ arithmetic tree itself, a companion conjecture in
 Conjecture~\ref{conj:tail-index}'s exponent by the same implicit-renewal
 mechanism, without a proven equivalence between the two objects. A
 direct, exact test of $W_q$'s own tail there (summing over the entire
-population of $q$-adic residues, not a sample) remains inconclusive.
+population of $q$-adic residues, no sampling involved) remains
+inconclusive.
 The companion paper gives the full battery of estimators, both routes,
 and the reasons neither is yet decisive for $q\ge5$
 \cite{PressureCompanion}.
@@ -573,7 +579,7 @@ distinguish the endogenous from the non-endogenous solution. We do
 \emph{not} formalize ``uses only (i) and (ii)'' as a precise class of
 techniques (in contrast to relativization or natural-proofs barriers in
 complexity theory), so this is a heuristic delineation of known
-approaches, not a formal impossibility theorem. The $2$-adic exclusion
+approaches rather than a formal impossibility theorem. The $2$-adic exclusion
 (Lemma~\ref{lem:2adic}) and the gauge construction
 (Proposition~\ref{prop:gauge}) that Theorem~\ref{thm:barrier} rests on
 are fully rigorous and independently verified; the classification claim
@@ -648,7 +654,7 @@ $\rho_{\mathrm{eff}}\lesssim0.06$ of that family's maximum intensity.
 This is not, by itself, a bound on every conceivable form of coupling;
 in particular it does not bound the exact, coarse, $\Delta$-dependent
 pair correlation of Proposition~\ref{prop:exact-endogeny} below, which
-lives on a disjoint axis (root residue, not subtree content) already
+lives on a disjoint axis (root residue rather than subtree content) already
 present identically, by construction, in Arm~1 itself; it is not
 a form of coupling this calibration could have detected or missed. See
 Remark~\ref{rem:calibration-consistency} for the verified structural
@@ -697,10 +703,10 @@ At the truncation depth where calibrated controls read their own
 target exponent to within $0.003$, the arithmetic tree reads $0.64926$
 ($95\%$ interval $[0.64818,0.65027]$), separated from a control built
 to exponent $0.678$ by seven band-widths, and matching controls built
-to exponent $0.650919$. The separation widens, not narrows, as bias is
-calibrated away with depth. This measurement compares against the
-exponent value $0.678$, not against Volkov's branching model itself,
-which is not implemented.
+to exponent $0.650919$. The separation widens as bias is calibrated
+away with depth; it never narrows. This measurement compares against
+the exponent value $0.678$ alone, since Volkov's branching model
+itself is not implemented.
 \end{empirical}
 
 \section{Direct computational test of the Weak Covering Conjecture}
@@ -886,9 +892,9 @@ expanding into a sum over \emph{pairs of paths}:
 \]
 which by Fourier inversion gives $\Cov \propto \sum_{\xi\ne 0}
 S_1(\xi)S_2(\xi)^\ast$, with $S_i$ character sums conditioned on the
-first step. Here there is no circularity: the two path indices are
-independent by the tautology of expanding a square, not by an
-arithmetic hypothesis.
+first step. Here there is no circularity: the two path indices owe
+their independence to the tautology of expanding a square alone, no
+arithmetic hypothesis involved.
 
 \subsection{The three regimes}
 
@@ -963,8 +969,7 @@ representation alone gives
  =3^{-(1/2+\log_3 2)\ell+o(\ell)}.
 \]
 This yields only $\beta\le 1/2+\log_3 2=1.1309\ldots$, rather than
-$\beta=1$ (identity and bound checked against brute force). The
-entropy implication previously asserted here is invalid.
+$\beta=1$ (identity and bound checked against brute force).
 The missing statement is a weighted covering estimate reaching the
 typical cost window: the total geometric multiplicity must be within a
 subexponential factor of its mean uniformly over residues. Our
@@ -1029,8 +1034,8 @@ reach costs $B_\ell=2\ell-o(\ell)$, where the cost law has
 subexponential mass. This is the central microcanonical regime of
 Theorem~\ref{thm:microcanonical}.
 
-Tao's $2020$ approach also shows that the endogeny/decorrelation route
-of \S\ref{sec:endogeny} is not the only path: it replaces
+Tao's $2020$ approach also shows a second path exists alongside the
+endogeny/decorrelation route of \S\ref{sec:endogeny}: it replaces
 ``near-independence between subtrees'' with ``deterministic separation
 of preimages (easy) plus $L^\infty$ marginal control ($\beta=1$, where
 all the difficulty lives)''. This confirms that a route avoiding
@@ -1176,7 +1181,7 @@ $\Pr(N_\ell(U)\le0.1)$ and of the increments of
 $\mathbb{E}[-\log N_\ell(U)]$ sits on the summable side of the exponent
 that would separate the two scenarios; thirteen levels do not separate a
 summable exponent from one merely close to the boundary, so this is
-corroborating evidence, not a decisive test.
+corroborating evidence rather than a decisive test.
 
 Theorem~\ref{thm:cascade-factor}, the certified bound, the saturation
 measurement, the Weyl-sum obstruction, and
@@ -1245,9 +1250,7 @@ $(\star2)$ are in fact the same inequality, differing only in
 quantifier ($\ell\ge\ell_0$ versus $\liminf_\ell$), and that
 $(\star4)$, Conjecture 2's actual target, is a statement purely about
 the one-dimensional operator $W_3$ carrying no information about the
-residue coordinate $a\in\mathbb Z_3^\times$ that $(\star3)$ needs, a
-reading that corrects how this project's own earlier attempt on
-Conjecture 2 had been framed.
+residue coordinate $a\in\mathbb Z_3^\times$ that $(\star3)$ needs.
 
 \begin{theorem}[Wirsching's Conjecture 1]\label{thm:wirsching-conj1}
 Condition $(\star2)$ implies condition $(\star1)$, with a possibly
@@ -1346,8 +1349,8 @@ law satisfies $p_{\ell,k}^{(r)}(E)\le\Pr(K_\ell=k)^{-1}\mu_r(E)$, giving
 $D_{\rm KL}(p_{\ell,k}^{(r)}\Vert\mu_r)\le\tfrac12\log\ell+O_\delta(1)$
 uniformly on the central-limit window: the relative entropy per digit
 vanishes, ruling out an exponential likelihood separation, but in the
-direction opposite to what $(\star3)$ needs (a lower, not upper, bound on
-every residue).
+direction opposite to what $(\star3)$ needs (a lower bound on every
+residue, rather than an upper one).
 \end{theorem}
 
 \begin{empirical}[Fixed-precision projection test]
@@ -1374,8 +1377,9 @@ Additive Fourier inversion bounds $\min_a p_{\ell,k}(a)$ below by
 $1$ minus a spectral sum that grows from $12.1$ ($\ell=4$) to $293.3$
 ($\ell=12$) at central cost, dominated by primitive frequencies; the
 resulting lower bounds are negative throughout. This shows termwise
-absolute summation of the finite Fourier series does not establish
-uniform positivity on this range, not that it fails.
+absolute summation of the finite Fourier series fails to establish
+uniform positivity on this range; whether positivity itself fails
+remains open.
 \end{empirical}
 
 Together, Empirical Results~\ref{thm:wcc} and~\ref{thm:conjecture3} and
@@ -1402,7 +1406,7 @@ its natural sufficient condition}
 
 The originally sketched budget, $|\rho(\xi)|\le C_A D^{-A}$
 \emph{uniformly in $\xi$}, contradicts Proposition~\ref{prop:tao123}
-(an exact identity, not a lossy estimate): for any frequency $\xi$ of
+(an exact identity rather than a lossy estimate): for any frequency $\xi$ of
 primitive level $\ell'$ (i.e.\ $\xi=3^{\ell-\ell'}\xi_0$, $3\nmid\xi_0$)
 and any depth $D\ge\ell'$, $\mathbb{E}[e(\xi F_D/3^\ell)] =
 \varphi_{\ell'}(\xi_0)$ is \emph{independent of $D$}: depth beyond
@@ -1413,7 +1417,7 @@ $\mathrm{Syrac}_1 = 2^{-a}\bmod 3 \in\{1,2\}$ with probabilities
 $1/3,2/3$; $|\varphi(1)|=1/\sqrt3\approx 0.577$ for \emph{every} $D$,
 with no decay whatsoever. The correct per-frequency budget is
 $C_A\ell'^{-A}$ (Proposition~\ref{prop:tao117}, which requires
-$3\nmid\xi$), not $C_AD^{-A}$; even with this correction, the total
+$3\nmid\xi$), in place of $C_AD^{-A}$; even with this correction, the total
 $\ell^\infty$ budget summed over frequencies, $\sum_{\ell'\le \ell}
 3^{\ell'}(C_A\ell'^{-A})^2 \asymp 3^\ell \ell^{-2A}$, never tends to
 $0$: closing by frequency counting would require square-root
@@ -1453,8 +1457,8 @@ projects onto the coarse $\sigma$-algebra generated by $w_i\bmod
 3^\ell$, where the affine sibling relation of the fixed-pair regime
 (\S\ref{sec:regimes}, Regime~1) reappears intact rather than vanishing.
 This is a positive result with the opposite sign from what was hoped
-for: what is provable is the persistence of coarse correlation, not its
-disappearance.
+for: what is provable is the persistence of coarse correlation;
+disappearance remains unproved.
 
 Decomposing the sum of Lemma~\ref{lem:cov-spectral} by primitive level
 and applying Cauchy--Schwarz plus Parseval gives $\Cov =
@@ -1491,8 +1495,8 @@ structure reproduces Proposition~\ref{prop:exact-endogeny}'s exact
 correlation ($+1$ for $\Delta\equiv0\pmod6$, $-1/2$ otherwise) to four
 decimal places. The coarse correlation is already present in Arm~1
 ($\rho=0$) exactly as in the real tree; $\rho$ governs a disjoint axis,
-whether sibling subtrees' \emph{content} is shared, not whether their
-root residues correlate. The bound $\rho_{\mathrm{eff}}\lesssim0.06$
+whether sibling subtrees' \emph{content} is shared, distinct from
+whether their root residues correlate. The bound $\rho_{\mathrm{eff}}\lesssim0.06$
 could not have detected Proposition~\ref{prop:exact-endogeny}'s
 correlation in the first place.
 
@@ -1505,8 +1509,8 @@ $C_{\mathrm{exact}}/(\mathbb{E}[Z_1]\mathbb{E}[Z_2])\to0$ as depth
 increases: consistent with the excess of \S\ref{sec:calibration}
 decaying monotonically to zero. The finite-level $L^2$ computation
 below (Empirical Result~\ref{thm:l2-finite}) tests an upper-bound
-route, not the fine covariance itself, which \S\ref{sec:calibration}
-measures directly and finds small. Weighting branch pairs by their
+route; \S\ref{sec:calibration} measures the fine covariance itself
+directly and finds it small. Weighting branch pairs by their
 natural second-moment mass $2^{-a_i}\cdot2^{-a_j}$, $\Delta=2k$ has
 probability $3\cdot4^{-k}$, so $\Pr[\Delta\equiv0\!\!\pmod6]=1/21$
 against $20/21$, giving mean coarse correlation
@@ -1606,8 +1610,8 @@ acknowledges that Baker's theorem already gives an unconditionally
 stronger separation, so treats its own propositions as methodological
 exercises. Mahler's classical ``Z-number'' problem \cite{Mahler1968}
 concerns $\xi(3/2)^n$, a structurally adjacent but different object
-from ours ($\times2\bmod3^s$ at finite depth, not $\times3/2\bmod1$ on
-an infinite orbit). Ours anchors instead in the Erdős/Lagarias family,
+from ours ($\times2\bmod3^s$ at finite depth, versus $\times3/2\bmod1$
+on an infinite orbit). Ours anchors instead in the Erdős/Lagarias family,
 including the general fractional-parts framework of
 Flatto--Lagarias--Pollington
 \cite{Erdos1979,Lagarias2009,FlattoLagariasPollington1995}.
@@ -2023,8 +2027,8 @@ $\approx 1.88$. The naive threshold for inversion, $p=1/3$, sits below
 $\tfrac12$, where Theorem~\ref{thm:jensen}'s identity no longer holds:
 the same stationary-phase argument gives $\Lambda(p)<\log(1/p)$ strictly
 for $p<\tfrac12$, so the actual inversion point is $\gamma\approx3.31$
-($\Lambda\approx1.032$ at $p=1/3$, against $\log3\approx1.0986$), not
-$\gamma=3$, still far above the regime of the conjecture
+($\Lambda\approx1.032$ at $p=1/3$, against $\log3\approx1.0986$) rather
+than the naive $\gamma=3$, still far above the regime of the conjecture
 ($j^\ast(\ell)/\ell\approx1.2$, Empirical Result~\ref{thm:wcc}). No
 member of the wider $\ell^r$ family ($r\ge1$) closes the gap either:
 the closing criterion is the same $\|Z\|_r<1/3$ for every $r$, and
@@ -2041,8 +2045,8 @@ a failure. This branch is the one identified alongside $\beta=1$
 (\S\ref{sec:triangulation}) and the finite-level $L^2$ growth
 (Empirical Result~\ref{thm:l2-finite}) as a further articulation,
 within the same second-moment Fourier vocabulary as the $L^2$
-condition, of the same missing ingredient, not a methodologically
-independent fourth or fifth route in its own right.
+condition, of the same missing ingredient, rather than a
+methodologically independent fourth or fifth route in its own right.
 Theorem~\ref{thm:multiscale-parseval} identifies their exact
 telescoping relation; all three branches enter the covariance sum
 $\Cov\propto\sum_\xi S_1(\xi)S_2(\xi)^\ast$ of \S\ref{sec:regimes}.
@@ -2114,19 +2118,19 @@ that drives non-uniform Fourier decay on the real line.
   degenerates: every branch of \eqref{eq:X-selfsimilar} has the
   \emph{same} $3$-adic contraction ratio $1/3$, so the relevant
   ``scale walk'' is deterministic ($S_n = n\log 3$, a pure lattice
-  walk with no overshoot fluctuation), not the non-lattice random walk
-  the technique is built to exploit.
+  walk with no overshoot fluctuation), in place of the non-lattice
+  random walk the technique is built to exploit.
 \end{enumerate}
 \end{theorem}
 
 Baker--Banaji's general phenomenon (Rajchman measures with no uniform
-decay rate are generic, not pathological, in the class of
+decay rate are generic rather than pathological, in the class of
 self-similar/self-conformal measures) is a fair piece of context: it
 shows that the kind of failure exhibited by Theorem~\ref{thm:propC}
 has real structural precedent in the reference literature, and
 supports the framing that a proof of $\beta=1$, or the Weak Covering
-Conjecture, needs the specific arithmetic input of this problem, not
-generic smoothness. It should not be over-interpreted as evidence
+Conjecture, needs the specific arithmetic input of this problem,
+rather than generic smoothness. It should not be over-interpreted as evidence
 \emph{for} the diffuse scenario itself. Baker--Banaji's construction
 requires fine-tuning of a continuous parameter (a Liouville-type
 construction, dense in the family but exceptional in measure; typical
@@ -2154,14 +2158,15 @@ companion work. The current version of that companion work
 equidistribution at growing moduli, together with uniform control of
 unbounded gap tails. Fixed-modulus balance does not supply those stated
 hypotheses. We therefore use the modulo-$32$ statement only as a related
-empirical diagnostic, not as a reduction or as an open problem of this
-paper.
+empirical diagnostic, distinct from a reduction or an open problem of
+this paper.
 
 We tested this condition directly on real orbits. An ensemble of many
 moderate orbits ($2$--$5\times10^4$ roots, $20$--$50$ bits) shows the
 aggregate deviation plateauing at $1.2$--$1.9\%$, which is on its own
-consistent with the conjecture (only boundedness is claimed, not
-convergence to zero); a more faithful test, a single very long
+consistent with the conjecture (only boundedness is claimed here,
+convergence to zero is a separate, stronger question); a more faithful
+test, a single very long
 orbit (a random $16000$-bit start, $38395$ compressed steps, $4761$
 relevant burst-endings), shows the deviation tracking the
 $1/\sqrt{i}$ statistical-noise curve closely, with no systematic trend,
@@ -2181,8 +2186,8 @@ finite-level test of a specific sufficient condition, and
 Theorem~\ref{thm:jensen}'s exact identity quantifying, to a constant
 factor ($\approx1.88$), why a whole family of Fourier-analytic
 techniques cannot close the gap. The first and third are proved. The
-second is evidence through level $17$ against a bounded second moment,
-not a proof that it diverges.
+second is evidence through level $17$ against a bounded second moment;
+divergence itself remains unproved.
 
 A related arithmetic statement, some form of equidistribution or
 near-independence of $3$-adic digits along the true, deterministic
@@ -2259,8 +2264,7 @@ other seven contain open mathematical statements.
   Conjecture~2's actual target, condition $(\star4)$, is a statement purely
   about the one-dimensional averaging operator $W_3$ carrying no
   information about the residue coordinate the rest of the chain needs;
-  a previously proposed sufficient condition for it failed for exactly
-  this reason, not the one originally supposed
+  a sufficient condition targeting it fails for exactly this reason
   \cite{WirschingCompanion}.
 \item \textbf{Exponential control of the fine-frequency tail at depth
   $\ell\asymp D$} (\S\ref{sec:regimes}, Regime~3), after separating
@@ -2330,7 +2334,7 @@ other seven contain open mathematical statements.
   The companion paper's real-tree root batteries bear on a
   formally separate companion conjecture there, for the growth scale
   factor of the arithmetic tree itself, expected to share the same
-  exponent, not on Conjecture~\ref{conj:tail-index} directly.
+  exponent, rather than directly on Conjecture~\ref{conj:tail-index}.
   A sample of $10^5$ roots gives a clean GPD threshold-stability
   plateau at the predicted value across every threshold level tested,
   a tightly concentrated bias-corrected Hill estimate consistent with
@@ -2359,9 +2363,9 @@ other seven contain open mathematical statements.
   from a competing prediction (Volkov's, discussed in
   \cite{KontorovichLagarias2009}) by seven band-widths once the
   estimator's own bias is calibrated out with matched synthetic
-  controls \cite{KLVolkovCompanion}; this is evidence, not a proof, and
-  it targets the disputed exponent value rather than Volkov's branching
-  model itself.
+  controls \cite{KLVolkovCompanion}; this is evidence rather than
+  proof, and it targets the disputed exponent value rather than
+  Volkov's branching model itself.
 \end{enumerate}
 
 Given the structural identities established here, progress on any one

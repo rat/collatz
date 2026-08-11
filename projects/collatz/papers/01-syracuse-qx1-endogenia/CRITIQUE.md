@@ -52,6 +52,9 @@ retroativa.
 | C-026 | loop R1 | Abstract, §1.2 e O3 dizem "we prove"/"Conjecture 1 is proved in Theorem X" para `thm:wirsching-conj1`, mas a prova está só no companion paper 05 (`WirschingCompanion`); o teorema em 01 é um `\begin{theorem}...\end{theorem}` sem `\begin{proof}`, recorrência exata do padrão já corrigido em C-001 | maior | prévio | fixed |
 | C-027 | loop R1 | Colisão de notação: `K(\ell)` (função de cobertura sub-exponencial de Wirsching, `conj:wcc`) e `K_\ell`/`K_{q,\ell}` (collision mass da medida de Syracuse, definida linha ~1466) usam a mesma letra sem nenhuma frase de desambiguação nas seções que tratam da mesma família de conjecturas | moderado | prévio | fixed |
 | C-028 | loop R1 | Construção "not merely P but Q"/"P, not Q" da família de antítese (Regra 4b) ocorria pelo menos 7 vezes (linhas 240, 875, 1085, 1437, 1551, 1985, 2496), acima do orçamento de duas por documento | menor | prévio | fixed |
+| C-029 | loop R2 | Abstract e §3 atribuíam a Growth Exponent Conjecture (Kontorovich-Lagarias/Applegate-Lagarias, expoente $1$) à raiz não-trivial $\alpha_+=2$ em $q=3$, e diziam "The root is always unfrozen" para essa mesma raiz; `conj:transition-arithmetic` e `prop:always-frozen` já deixavam claro no próprio corpo que é $\alpha_-=1$ que reproduz a GEC e é sempre descongelada, e que $\alpha_+$ é sempre congelada | maior | prévio | fixed |
+| C-030 | loop R2 | Construção de antítese "X, not Y" (forma simples, sem "merely") ocorria em pelo menos 26 lugares adicionais além das 2 já sancionadas no orçamento da Regra 4b | menor | prévio | fixed |
+| C-031 | loop R2 | Três resíduos de narração de processo (Regra 4b §3): "the entropy implication previously asserted here is invalid" (linha ~971, termo nunca definido em outro lugar); "a reading that corrects how this project's own earlier attempt on Conjecture 2 had been framed" (§9.2); "not the one originally supposed" (O3 da Conclusão) | menor | prévio | fixed |
 
 Checagens mecânicas que passaram, registradas para não serem refeitas:
 34 chaves `\cite` contra 34 `\bibitem`, sem órfãos nem pendentes nas
@@ -879,3 +882,72 @@ linha 1439, "is not thereby cancelled: it survives", central ao
 argumento de `lem:cov-spectral`), foram mantidas dentro do orçamento de
 duas. `main.tex` recompilado limpo (3 passadas `pdflatex`), sem
 referência nem citação indefinida.
+
+### Rodada 2 (subagente `general-purpose`, síncrono, contexto fresco): NÃO limpa
+
+Leu `main.tex` completo (2675 linhas), `CRITIQUE.md` completo (incluindo
+a seção da Rodada 1), e cruzou números/enunciados contra os companions
+04, 05, 06. Recalculou numericamente (Python) as constantes de
+`thm:wcc-large-deviation`, os três valores $\alpha^\ast(5,7,9)$ e os
+dois bounds $\beta_{\mathrm{eff}}$: todos batem. Confirmou
+independentemente que C-026 e C-027 (Rodada 1) se sustentam sem quebrar
+nada ao redor. Investigou por conta própria, como pedido
+explicitamente no prompt, a extensão do achado C-028 além do que a
+Rodada 1 tinha escopado.
+
+Achados: 0 crítico, 1 maior (C-029), 0 moderado, 2 menor (C-030, C-031).
+
+**C-029 (maior).** O abstract (linhas 55-63) e §3 (linhas 300-318)
+diziam "Its nontrivial root equals $2$ at $q=3$, reproducing the
+Growth Exponent Conjecture ... The root is always unfrozen". Mas
+`conj:transition-arithmetic` (linha 354-365) já afirma, no próprio
+corpo, que a GEC é o caso "exponent $1$ for $q=3$", isto é, o caso
+$\alpha_-=1$, não $\alpha_+=2$; e `prop:always-frozen` (linha 326-329)
+prova que $\alpha_+$ é **sempre congelada**, exatamente o oposto de
+"always unfrozen". A raiz que reproduz a GEC e é sempre descongelada é
+$\alpha_-(q)$ (que vale $1$ em $q=3$), não a raiz não-trivial que vale
+$2$ ali. Verifiquei a matemática eu mesmo (Regra 8c) antes de aceitar:
+reconferi as definições de $\alpha_-<\alpha_+$ (linha 302), a tabela de
+valores $\{\alpha_-,\alpha_+\}=\{1,2\}$ em $q=3$ e $\{\alpha^\ast(q),1\}$
+em $q\ge5$ (linhas 303-306), e o enunciado de `thm:transition-model`
+("Since $\alpha_-(q)$ is always unfrozen, $\log N(x)/\log x\to\alpha_-(q)$"),
+que fecha o caso: é $\alpha_-$, não $\alpha_+$, que transfere ao
+modelo i.i.d. O item O8 da Conclusão (linhas 2353-2368) já tinha a
+atribuição correta ("for $q=3$ this is the Growth Exponent Conjecture
+[...]", referenciando `conj:transition-arithmetic`); só o abstract e a
+prosa de abertura de §3 tinham o erro, uma inconsistência real de
+Regra 8b numa afirmação substantiva (qual raiz corresponde a uma
+conjectura histórica citável de 1995), na seção de maior densidade de
+leitura do paper.
+
+**C-030 (menor).** Grep amplo por "X, not Y" (sem "merely", sem
+dois-pontos) confirmou o que a Rodada 1 já tinha antecipado: pelo
+menos 26 ocorrências adicionais no documento inteiro, muitas
+genuinamente antitéticas no sentido da Regra 4b, excedendo em muito o
+orçamento de duas por documento.
+
+**C-031 (menor).** Três resíduos de narração de processo (Regra 4b
+§3): "the entropy implication previously asserted here is invalid"
+(§ WCC, o termo "entropy implication" nunca é definido em nenhum outro
+ponto do documento, então além de narrar o processo de edição, a frase
+é ininterpretável); "a reading that corrects how this project's own
+earlier attempt on Conjecture 2 had been framed" (§9.2); "not the one
+originally supposed" em O3 da Conclusão.
+
+**Correções aplicadas (produtor, antes da Rodada 3).** C-029: abstract
+reescrito para distinguir explicitamente as duas raízes
+($\alpha_-(q)=1$ em $q=3$ reproduz a GEC e é sempre descongelada;
+$\alpha_+$, sempre congelada, vale $2$ em $q=3$ e bate separadamente
+com medições de índice de cauda anteriores); §3 reescrito na mesma
+direção, com ponteiro explícito para `conj:transition-arithmetic`.
+C-030: todas as ~26 ocorrências adicionais reescritas (a maioria via
+"rather than"/"in place of"/restruturação em duas orações), deixando
+só as mesmas 2 ocorrências já sancionadas na Rodada 1 (linhas 1090 e
+1443 após a renumeração desta rodada) dentro do orçamento. C-031: as
+três frases removidas ou reescritas sem narrar o processo de edição,
+preservando o conteúdo matemático de cada passagem (que já estava
+completo sem elas). `main.tex` recompilado limpo (3 passadas
+`pdflatex`), sem referência nem citação indefinida; `\cite`/`\bibitem`
+conferidos por script (34/34, sem órfãos reais; um falso positivo do
+script de verificação por um `\cite{Foo, Bar}` com espaço após a
+vírgula, não um erro no documento).
