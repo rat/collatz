@@ -1180,3 +1180,40 @@ pesquisador desta sessão).
 `pdflatex`), zero erro/referência indefinida; `\cite`/`\bibitem` e
 `\ref`/`\eqref`/`\label` conferidos por script, sem órfãos em nenhuma
 direção.
+
+### 2026-08-11 — rodada de convergência 6 (crítico, contexto fresco)
+
+Escopo: `main.tex` inteiro, com instrução explícita de identificar e
+rodar de fato (síncrono, sem segundo plano) qualquer alegação
+numérica/empírica ainda não reproduzida por nenhuma rodada anterior.
+
+**Resultado: 0 crítico, 0 maior, 0 moderado, 1 menor. PRIMEIRA RODADA
+LIMPA da série. Contagem de rodadas limpas consecutivas: 1/3.**
+
+O crítico rodou, do início ao fim, de forma síncrona: o teste de Hill
+de 600 raízes (`empirical_qx1_tree.py`); a bateria de 4 estimadores de
+5000 raízes/4 headrooms (`full_battery.py`, paralelizado por ele em 16
+processos, reusando o código de análise original sem alteração); uma
+reimplementação independente (não copiada do repositório) do teste
+exato de momento populacional até $k=11$; e a bateria de $10^5$ raízes
+do "Estágio 6" (via inspeção do JSON já gerado mais reanálise completa
+do zero). Todos os números batem com o que o `main.tex` afirma, número
+por número. Também leu, pela primeira vez em qualquer rodada, a fonte
+primária de Kolesko-Mentemeier 2015 para a alegação específica sobre a
+hipótese de independência do teorema de unicidade do caso crítico
+(confirmada). Zero achado crítico, maior ou moderado.
+
+| ID | Nível | Resumo | Status |
+|----|-------|--------|--------|
+| D-24 | menor | `collatz-qx1-pressure/sec3-pressure-and-transition/README.md`: `empirical_qx1_tree.py` também roda o teste de Hill de 600 raízes citado no `main.tex` (§5), mas o README não credita esse arquivo como a fonte dessa alegação específica | fixed |
+
+**Correção aplicada.** Linha adicionada à descrição de
+`empirical_qx1_tree.py` no README do repositório
+`collatz-qx1-pressure`, creditando o teste de Hill de 600 raízes
+($H=10^6$, erro-padrão real $\approx0{,}45$) que esse mesmo arquivo já
+executa corretamente. `main.tex` não precisou de nenhuma edição nesta
+rodada (achado é só sobre o mapeamento do repositório, Regra 12).
+
+**Verificação técnica.** `main.tex` inalterado nesta rodada; estado já
+confirmado limpo na verificação da rodada 5 (recompila sem erro,
+`\cite`/`\bibitem` e `\ref`/`\eqref`/`\label` sem órfãos).
