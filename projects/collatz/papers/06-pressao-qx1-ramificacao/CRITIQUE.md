@@ -1502,3 +1502,36 @@ Contagem de rodadas limpas consecutivas: 0/3.**
 passadas `pdflatex`), zero erro/referência indefinida;
 `\cite`/`\bibitem` e `\ref`/`\eqref`/`\label` conferidos por script,
 sem órfãos em nenhuma direção.
+
+### 2026-08-11 — rodada de convergência 15 (crítico, contexto fresco)
+
+Escopo: `main.tex` inteiro (décima segunda reconferência independente
+das provas centrais sem erro novo), mais `OUTLINE.md`, `DATA_REPO.md`,
+`papers/README.md`, e o repositório `collatz-qx1-pressure`.
+
+**Resultado: 0 crítico, 0 maior, 1 moderado, 1 menor. Não limpa.
+Contagem de rodadas limpas consecutivas: 0/3.**
+
+| ID | Nível | Resumo | Status |
+|----|-------|--------|--------|
+| D-43 | menor | `main.tex`, §4, l.440-442: "is not a numerical coincidence" (Regra 4b §1, "paragraph-closing kicker" banido) — a mesma frase exata que C-16 (rodada 1) já tinha apontado; a rodada 2 marcou `fixed`, mas só removeu a segunda ocorrência (a de l.779 na numeração antiga), deixando esta primeira intacta por 14 rodadas | fixed |
+| D-44 | moderado | `collatz-qx1-pressure/sec3-pressure-and-transition/README.md`, l.234: equação de pressão multitype escrita como $q^{s-1}/(2^s-1)$, notação obsoleta; o `main.tex` renomeou essa variável de $\sigma$ para $\alpha$ na rodada de convergência 2 (D-12) para evitar colisão, e $s$ já tem significado próprio no paper (a entropia $s(\alpha)$) | fixed |
+
+**Correções aplicadas:**
+
+- **D-43.** Frase reescrita para afirmar o fato diretamente: "shares
+  its sign condition with the mean-drift remark below", sem o padrão
+  "is not a ... coincidence". Registro por Regra 8c: como D-30 (rodada
+  9), este é outro caso de uma correção marcada `fixed` numa rodada
+  anterior que só tinha sido aplicada parcialmente (uma das duas
+  instâncias apontadas por C-16), sobrevivendo porque nenhuma rodada
+  desde então tinha voltado a escanear especificamente esse trecho
+  contra a redação original do achado.
+- **D-44.** $q^{s-1}/(2^s-1)$ corrigido para
+  $q^{\alpha-1}/(2^\alpha-1)$, batendo com a notação atual do `main.tex`
+  na passagem correspondente (nota de rodapé de `conj:real-tree-tail`).
+
+**Verificação técnica pós-correção:** `main.tex` recompilado (2
+passadas `pdflatex`), zero erro/referência indefinida;
+`\cite`/`\bibitem` e `\ref`/`\eqref`/`\label` conferidos por script,
+sem órfãos em nenhuma direção.
