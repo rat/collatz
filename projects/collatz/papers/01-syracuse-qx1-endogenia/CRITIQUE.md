@@ -88,6 +88,7 @@ retroativa.
 | C-062 | loop R10 | Apêndice tem entrada para `thm:lp-spectrum`, mas a DAS nunca nomeia esse rótulo | moderado | prévio | fixed |
 | C-063 | loop R10 | `N_\eta^{(m)}` em `lem:cov-spectral` nunca tinha fórmula somatória escrita, só descrição em prosa | moderado | prévio | fixed |
 | C-064 | loop R10 | `eq:microcanonical` restatava a soma sem limites ($\sum_k$), enquanto o companion 05 (fonte da prova) tem limites explícitos ($\sum_{k=0}^{3^\ell-\ell-1}$) | moderado | prévio | fixed |
+| C-065 | loop R11 | Data Availability Statement citava "$K_\ell$/Jensen computations" sem `\ref` explícito para `thm:l2-finite`/`thm:jensen`, ao contrário de todo o resto da mesma frase | moderado | prévio | fixed |
 
 Checagens mecânicas que passaram, registradas para não serem refeitas:
 34 chaves `\cite` contra 34 `\bibitem`, sem órfãos nem pendentes nas
@@ -1574,3 +1575,31 @@ $\eta$-ponderada dado a classe de resíduo) escrita explicitamente.
 C-064: limites de soma $\sum_{k=0}^{3^\ell-\ell-1}$ adicionados a
 `eq:microcanonical`. `main.tex` recompilado limpo (3 passadas
 `pdflatex`); `\cite`/`\bibitem` reconferidos (37/37, sem órfãos).
+
+### Rodada 11 (subagente `general-purpose`, síncrono, contexto fresco): NÃO limpa
+
+Leu `main.tex` completo (2899 linhas) e `CRITIQUE.md` completo
+(incluindo as dez rodadas anteriores). Reconferiu contra o estado
+ATUAL dos três companions, incluindo os `CRITIQUE.md` deles (não só os
+`main.tex`), procurando achados lá que também afetassem 01: nenhuma
+divergência numérica nova, todos os números já corrigidos nas rodadas
+anteriores se sustentam. Único achado: menor lacuna de referência
+cruzada, a menor contagem de achados de qualquer rodada até agora.
+
+Achados: 0 crítico, 0 maior, 1 moderado (C-065), 0 menores.
+
+**C-065 (moderado).** A Data Availability Statement citava "the
+$K_\ell$/Jensen computations" sem `\ref` explícito para
+`Empirical Result~\ref{thm:l2-finite}` e `Theorem~\ref{thm:jensen}`,
+enquanto toda outra menção multi-resultado na mesma frase usa `\ref`
+explícito (inclusive o item vizinho, `thm:lp-spectrum`, corrigido no
+mesmo sentido por C-062 na rodada anterior). Ambos os resultados já
+estavam cobertos no Apêndice; a lacuna era só de referência cruzada,
+não de conteúdo.
+
+**Correção aplicada (produtor, antes da Rodada 12).** Frase reescrita
+como "the $K_\ell$ computations of Empirical
+Result~\ref{thm:l2-finite} and the Jensen identity of
+Theorem~\ref{thm:jensen}", no mesmo padrão do resto da lista.
+`main.tex` recompilado limpo (3 passadas `pdflatex`);
+`\cite`/`\bibitem` reconferidos (37/37, sem órfãos).
