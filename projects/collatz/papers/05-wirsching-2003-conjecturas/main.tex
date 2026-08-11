@@ -58,7 +58,7 @@ $\varphi$ through depth $\ell=500$, zero truncation error at every
 point tested, supports Conjecture 3 at every offset tested,
 with a central-sequence extrapolation coefficient stable to within
 $4\times10^{-4}$ under the sub-range and model checks tested. This
-measurement cannot by itself distinguish a genuine constant from a
+measurement cannot by itself distinguish a constant from a
 periodic factor multiplying the predicted asymptotic; a same-phase
 drift check disfavors a dominant periodic factor without ruling one
 out.
@@ -118,8 +118,8 @@ $c_j=2\cdot3^{j-1}$ ($j\ge1$) \cite[\S2]{Wirsching2003}. The class
 $A_\delta$ consists of the integer sequences $(k_\ell)$ with
 $|\ell-k_\ell|\le\delta\sqrt\ell$ for every $\ell$
 \cite[eq.~(1.5)]{Wirsching2003}; $\widetilde A_\delta$ is the
-analogous class of sequences $(x_\ell)\in\mathbb I_3^{\mathbb N}$ on
-the continuous state space $\mathbb X$ above, used in condition
+analogous class of sequences $(x_\ell)\in\mathbb I_3^{\mathbb N}$
+\cite[eq.~(3.2)]{Wirsching2003}, used in condition
 $(\star4)$ below and in the numerical test of \S\ref{sec:conj3}.
 $\varphi$ itself satisfies the
 untruncated equation $\lambda\varphi'(t)=a(\varphi(at)-\varphi(at-a+1))$
@@ -127,11 +127,13 @@ for $a=3$, $\lambda=2/3$ \cite[eq.~(7.9)]{Wirsching2003}. $\varphi_0$
 is Berg and Kr\"uppel's explicit asymptotic
 \cite[Proposition~9.1, eq.~(9.6)]{BergKruppel1998} for a particular
 solution of the truncated equation $\lambda g'(t)=ag(at)$, a
-five-constant closed form of the shape
+four-constant closed form of the shape
 $t^{(\cdot)}(-\ln t)^{(\cdot)}\exp(-(\cdot)\ln^2(t/(-\ln t)))$
-whose constants, evaluated at $a=3$, $\lambda=2/3$ (their own
-notation, not reused here to avoid clashing with $\delta$ elsewhere in
-this paper), are reproduced verbatim in the accompanying repository
+whose constants $\beta,\gamma,\delta,\varepsilon$, evaluated at
+$a=3$, $\lambda=2/3$ (their own notation, not reused here to avoid
+clashing with $\delta$ elsewhere in this paper, and depending on one
+auxiliary constant not itself appearing in the closed form), are
+reproduced verbatim in the accompanying repository
 (\S\ref{sec:conj3} below);
 Berg and Kr\"uppel
 expect $\varphi/\varphi_0$ to stay bounded and bounded away from zero,
@@ -142,9 +144,12 @@ place of $\varphi$ itself, which has no known closed form.
 \begin{proposition}[Base-$3$ Fabius function]\label{prop:fabius}
 $\varphi$ is the density of $X=\sum_{j\ge1}2U_j\cdot3^{-j}$, $U_j$
 i.i.d.\ uniform on $[0,1]$ (an identification not in the source), the
-base-$3$ analogue of the Fabius
-function (which satisfies $f'(x)=2f(2x)$; here $\varphi'(x)=
-\tfrac92\varphi(3x)$ on $[0,2/3]$ by \cite[eq.~(7.7)]{Wirsching2003}).
+base-$3$ analogue of the Fabius density (the base-$2$ case satisfies
+$f'(x)=4f(2x)$ on $[0,1/2]$; here $\varphi'(x)=
+\tfrac92\varphi(3x)$ on $[0,2/3]$ by \cite[eq.~(7.7)]{Wirsching2003},
+the same shape with base $3$ in place of base $2$: coefficient
+$4=2^2/(2-1)$ becomes $9/2=3^2/(3-1)$, support cutoff
+$1/2=(2-1)/2$ becomes $2/3=(3-1)/3$).
 Among functions with $\operatorname{supp}\varphi\subset[0,1]$ and
 $\int_0^1\varphi=1$, it is the unique fixed point of the averaging
 operator $W_3f(x):=\tfrac32\int_{3x-2}^{3x}f(t)\,dt$, $C^\infty$,
@@ -156,8 +161,9 @@ $\|f_n-\varphi\|_1\le2^{-n+1}\|f_1-f_0\|_1$
 \end{proposition}
 
 Wirsching's paper reduces uniform positive predecessor density (that
-the sets of predecessors of $T$ have density bounded below uniformly
-over admissible targets) to a chain of five conditions
+the sets of predecessors of $a$ have lower asymptotic density bounded
+below by $c/a$, for a single constant $c>0$ uniform over admissible
+targets $a$) to a chain of five conditions
 \cite[Definition~1, \S\S1--7]{Wirsching2003}:
 \[
 \begin{array}{ll}
@@ -194,9 +200,8 @@ $S_\ell\to S_\infty$ of the
 transition operators $S_\ell:C(\mathbb X)\to C(\mathbb X)$ defined by
 $\widetilde g_\ell=S_\ell(\widetilde g_{\ell-1})$
 \cite[\S4]{Wirsching2003}, on
-equicontinuous bounded families, uniform in that family but not in
-growing resolution. Neither is uniform in growing resolution, so
-neither closes the gap between $(\star4)$ and $(\star3)$.
+equicontinuous bounded families. Neither bridge is uniform in growing
+resolution, so neither closes the gap between $(\star4)$ and $(\star3)$.
 
 Second, $(\star3)$ and $(\star2)$ are the same inequality. Writing
 $\widetilde g_\ell(x,a)=\gamma_\ell\,g_\ell(\lfloor3^\ell
@@ -207,9 +212,8 @@ $\liminf$ in $\ell$ at each $a$ to a bound holding at every
 $\ell\ge\ell_0$ and every unit simultaneously.
 
 Third, Theorem~1's own hypothesis and conclusion are about $a\in\mathbb
-N$, non-cyclic, $a\not\equiv0\pmod3$: conditions $(\star2)$ and $(\star3)$,
-stated over $\mathbb Z_3^\times$, are strictly stronger than what the
-chain from Theorem~1 alone requires.
+N$, non-cyclic, $a\not\equiv0\pmod3$, while conditions $(\star2)$ and
+$(\star3)$ are stated over $\mathbb Z_3^\times$.
 
 \section{Wirsching's Conjecture 1}
 \label{sec:conj1}
@@ -319,7 +323,15 @@ representations stays within a subexponential factor of its mean,
 uniformly over residues \cite{BarrierCompanion}. The hypothesis $g_\ell(k,a)\ge\eta\bar
 g_\ell(k)$ is open: Empirical Result~\ref{thm:microcanonical-finite}
 below finds the minimum multiplicity is zero at $k=\ell$ at every
-level computed, so no $\eta>0$ works there yet.
+level computed, so no $\eta>0$ works there yet. Since $k_\ell=\ell$ lies
+in the window for every $\delta>0$, a zero at $k=\ell$ recurring at
+arbitrarily large $\ell$ would falsify this hypothesis and both
+$(\star2)$ and $(\star3)$ for every $\mu_1,\eta>0$: a $\liminf$-type
+hypothesis tolerates only finitely many exceptions, so persistence
+through every level computed so far does not by itself decide the
+question. Whether the zero set at $k=\ell$ is eventually empty or
+persists indefinitely is exactly what a finite computation cannot
+settle.
 \end{theorem}
 
 \begin{proof}
@@ -751,12 +763,16 @@ by residues whose count has only just left zero, a regime distinct
 from $d\ge6$, where support has been complete for several levels
 already.
 
-Outside the support boundary, the population's low quantiles decay at
-a rate close to the minimum's own (at $d=+12$, the minimum over all
-units falls from $0.3840$ at $\ell=10$ to $0.2378$ at $\ell=17$, a
-rate of $0.93$ per level, matching the quantile's own $0.93$ above),
-even though the quantile itself sits
-well above the extreme order statistic, the single minimum. Whether it
+From $d=+7$ on, the population's low quantiles decay at
+a rate close to the minimum's own ($0.93$--$0.94$ per level for both,
+$\ell=10,\ldots,16$; at $d=+12$, for instance, the minimum falls from
+$0.3840$ at $\ell=10$ to $0.2378$ at $\ell=17$, a rate of $0.93$ per
+level, matching the quantile's own $0.93$ above), even though the
+quantile itself sits well above the extreme order statistic, the
+single minimum. At $d=+6$, the offset immediately past the support
+boundary, the two diverge: the minimum does not decay at all over
+$\ell=10,\ldots,16$, rising slightly from $0.068$ to $0.073$, while
+the quantile still falls. Whether the decay seen from $d=+7$ on
 reflects some fixed integer's
 ratio worsening, as against newly entering residues with a large
 integer representative pulling the population down, is not settled by this
@@ -799,8 +815,9 @@ the Haar average of $\mathcal S_\ell(k,\cdot)$ over $a$
 is $3/2$ at every level. At $\ell=3$, $k=3$,
 exact evaluation gives $\mathcal S_3(3,a)=9/7$ for
 $a\equiv1\pmod3$ and $12/7$ for $a\equiv2\pmod3$; the same
-two-values-per-level pattern holds at
-$\ell=4$, $k=4,5$. The identity's own left side still averages to $1$
+two-values-per-level pattern, forced by the argument above, holds at
+$\ell=4$: $\mathcal S_4(4,a)=6/5,9/5$ and $\mathcal S_4(5,a)=5/4,7/4$
+for $a\equiv1,2\pmod3$ respectively. The identity's own left side still averages to $1$
 over $a$, by the definition of $\overline g_\ell$ as that average; the
 convex-combination mechanism that certifies the companion paper's
 minimum has no analogue here, not even in the mean. The minimum
@@ -899,23 +916,36 @@ of this computation.
 
 \begin{remark}[A same-phase check against a periodic factor]
 \label{rem:phase-check}
-Conjecture 3 asks for a genuine constant $c$; Berg and Kr\"uppel's own
+Conjecture 3 asks for a constant $c$; Berg and Kr\"uppel's own
 expectation is weaker, a ratio $\varphi/\varphi_0$ bounded and bounded
 away from zero \cite[\S9]{BergKruppel1998}, which a nonconstant
 $\varphi=Q\cdot\varphi_0$ with $Q(\log_3x)$ $1$-periodic would also
-satisfy. $L_\ell$ cannot distinguish the two: at $u=0$,
-$\log_3x_{3\ell}^+-\log_3x_\ell^+$ is the integer $1-2\ell$, so
-$Q(x_{3\ell}^+)=Q(x_\ell^+)$ exactly, and the deficit above tests the
-$\varphi_0$-only ratio regardless of $Q$. A periodic $Q$ would instead
-pin $\ln(\varphi/\varphi_0)$ to the same value at every such
-same-phase pair $(\ell,3\ell)$, with zero drift. The measured drift is
-nonzero and tracks the $\varphi_0$-based fit: $+0.0320$ observed at
-$(100,300)$ against $+0.0335$ predicted, and $+0.0271$ at $(150,450)$
-against $+0.0273$
-predicted, agreement to $4\%$ and $1\%$; the shallow pair $(10,30)$
-disagrees badly, consistent with the fit not yet applying there. This
-disfavors a dominant periodic factor. It does not rule out a small
-one, nor prove $c$ constant.
+satisfy. $L_\ell$ cannot distinguish the two, for a reason needing no
+special construction: $\log_3(3x)-\log_3(x)=1$ exactly for every
+$x>0$, so $Q(3x)=Q(x)$ identically, and $L_\ell$, a ratio of $\varphi$
+at $3x_\ell^+$ and at $x_\ell^+$, is blind to any such $Q$ everywhere
+it is evaluated.
+
+A different, sharper test asks whether $\ln(\varphi/\varphi_0)$ is a
+smooth function of $\ell$, as the deficit's own $1/\sqrt\ell$ fit
+supposes, or carries extra structure tied to the phase of $x$ in
+$\log_3$, as a nonconstant periodic $Q$ would require. At the
+bare points $x_\ell=\ell/3^\ell$, not $x_\ell^+$, the pair
+$(\ell,3\ell)$ shares phase exactly: $x_{3\ell}/x_\ell=3^{1-2\ell}$ is
+an exact rational identity (verified for every tested pair with no
+rounding), so $Q(x_{3\ell})=Q(x_\ell)$ for a $1$-periodic $Q$, and if
+$\varphi_0$ were exact to all orders, the drift
+$\ln(\varphi/\varphi_0)(x_{3\ell})-\ln(\varphi/\varphi_0)(x_\ell)$
+would vanish identically at every such pair. It does not, but it moves
+toward the value the smooth fit itself predicts as $\ell$ grows, not
+toward zero: observed drift $-0.013$, $+0.039$, $+0.032$, $+0.027$
+against fit-predicted $+0.106$, $+0.047$, $+0.034$, $+0.027$ at
+$(\ell,3\ell)=(10,30),(50,150),(100,300),(150,450)$, a relative
+mismatch of $112\%$, $18\%$, $4\%$, and $1\%$. That is the signature of
+a shrinking finite-size correction to $\varphi_0$, not of an
+uncontrolled periodic contamination, which would leave a mismatch of
+fixed size at every depth. This disfavors a dominant periodic factor
+without ruling out a small one, nor proving $c$ constant.
 \end{remark}
 
 \section{Discussion}
@@ -923,8 +953,8 @@ one, nor prove $c$ constant.
 
 The mass decomposition \eqref{eq:microcanonical} and the equivalence
 and nonequivalence theorems above are exact; they bound how far
-local-limit methods reach toward Conjecture 2, not the conjecture
-itself. Theorem~\ref{thm:fixed-precision-ensemble} and
+local-limit methods reach toward Conjecture 2.
+Theorem~\ref{thm:fixed-precision-ensemble} and
 Theorem~\ref{thm:sublinear-precision-ensemble} give convergence at
 fixed and sublinear precision, checked at finite level by Empirical
 Result~\ref{thm:fixed-precision-finite}; Empirical
@@ -950,8 +980,10 @@ the equivalence-of-ensembles results above: it is a uniform lower
 bound on the generators themselves. Empirical
 Result~\ref{thm:quantile-diagnosis} bears on it two ways. At the
 support boundary $d=+5$, an exhaustive test over a fixed, non-growing
-set of integers shows no deterioration through $\ell=17$. Past that
-boundary, at $d\ge6$, the population's low quantiles decay
+set of integers shows no deterioration through $\ell=17$. At $d=+6$
+the population minimum, over the full growing set of units, does not
+decay either; the quantile already does. From
+$d=+7$ on, the population's low quantiles decay
 at a rate close to the minimum's own, even though the quantile itself
 sits well above the extreme order statistic, and whether that decay
 reflects some fixed integer's
@@ -962,9 +994,10 @@ count in the companion paper does not transfer, with an explicit
 non-monotone counterexample.
 
 The numerical test of Conjecture 3 (\S\ref{sec:conj3}) is exact where
-it applies, but $L_\ell$ alone cannot separate a genuine limit constant
-from a periodic factor; Remark~\ref{rem:phase-check} adds the
-same-phase check that does, and disfavors the periodic alternative.
+it applies, but $L_\ell$ alone cannot separate a limit constant
+from a periodic factor; Remark~\ref{rem:phase-check} adds a same-phase
+drift check that disfavors a dominant periodic factor, without
+separating the two fully.
 
 \section*{Data Availability Statement}
 

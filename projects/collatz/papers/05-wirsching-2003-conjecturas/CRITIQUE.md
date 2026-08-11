@@ -1070,3 +1070,130 @@ fase (nova seção, re-executada do zero, ~415s); README de
 `sec4-central-zeros-conjecture2` corrigido (contradição interna) e
 ganhou dois logs que faltavam (`exact_weight_asymmetry_ell4k4.log`,
 `exact_weight_asymmetry_ell4k5.log`).
+
+---
+
+## Rodada de convergência R4, 2026-08-11
+
+Quarta rodada, contexto fresco (subagente `opus`, esforço máximo, sem
+acesso a este arquivo além do resumo colado no prompt: as decisões
+"rejected" de R1-R3 e o critério de severidade). R1-R3 não ficaram
+limpas, contagem de rodadas limpas consecutivas em 0.
+
+**Achados**: crítico=0, maior=3, moderado=4, menor=5. Não limpa
+(maior>0 e menor≥3); contagem de rodadas limpas consecutivas
+permanece 0.
+
+| ID | Rodada | Resumo | Severidade | Status |
+|----|--------|--------|------------|--------|
+| R4-01 | 2026-08-11 (R4) | `rem:phase-check`: a alegação de que a diferença de fase `log_3(x_3ell)-log_3(x_ell)` é o inteiro `1-2ell` exatamente só vale em `x_ell` puro; em `x_ell^+` (usado no resto de §5) carrega um resíduo `O(1/ell)` que nunca some | maior | fixed |
+| R4-02 | 2026-08-11 (R4) | Remark reportava só 2 dos 4 pares `(ell,3*ell)` testados pelo script, descartando o par `(50,150)` que discorda em 18% sem explicação | maior | fixed |
+| R4-03 | 2026-08-11 (R4) | "a rate close to the minimum's own" para `d≥6`: falso em `d=+6` (mínimo sobe 1,01/nível, quantil cai 0,96/nível); verdadeiro só de `d≥7` | maior | fixed |
+| R4-04 | 2026-08-11 (R4) | §2: "(⋆2)/(⋆3) são estritamente mais fortes" que a hipótese do Teorema 1 não está estabelecido (por periodicidade mod `3^ell` e densidade de `N` em `Z_3^×`, é discutível que sejam equivalentes) | moderado | fixed |
+| R4-05 | 2026-08-11 (R4) | `prop:fabius`: analogia com a função de Fabius comparava a relação de derivada de `φ` (densidade) com `F'=2F(2x)` (a FDA, não a densidade); relação certa ao nível de densidade é `f'=4f(2x)` em `[0,1/2]` | moderado | fixed |
+| R4-06 | 2026-08-11 (R4) | §2: glosa da densidade positiva de predecessores omitia o fator `1/a` da Definição 1 da fonte (`c/a`, não `c` uniforme) | moderado | fixed |
+| R4-07 | 2026-08-11 (R4) | `thm:microcanonical`: zero de multiplicidade central em todo nível computado nunca ligado à consequência que falsificaria `(⋆2)`/`(⋆3)` caso persista em `ell` arbitrariamente grande | moderado | fixed |
+| R4-08 | 2026-08-11 (R4) | Vocabulário banido residual: "genuine"/"genuinely" 3x (abstract, `rem:phase-check`, Discussão) | menor | fixed |
+| R4-09 | 2026-08-11 (R4) | `Ã_δ` descrita como vivendo "no espaço de estados contínuo X"; pela (3.2) da fonte é uma classe de sequências em `I_3^N`, sem o fator `Z_3^×` | menor | fixed |
+| R4-10 | 2026-08-11 (R4) | "five-constant closed form" de Berg-Krüppel; a própria fonte (Wirsching 2003, antes de (7.11)) diz "constants β,γ,δ,ε", quatro, não cinco | menor | fixed |
+| R4-11 | 2026-08-11 (R4) | §2: frase repetia literalmente sua própria cláusula final ("uniform in that family but not in growing resolution. Neither is uniform in growing resolution...") | menor | fixed |
+| R4-12 | 2026-08-11 (R4) | `rem:no-monotone-certificate`: "o mesmo padrão vale em `ell=4`" apresentado como observação empírica quando é consequência forçada do argumento três linhas acima, sem os valores | menor | fixed |
+
+**O par de achados mais trabalhoso (R4-01/R4-02)**: verifiquei a álgebra
+à mão e via `mpmath`/`Fraction`: em `x_ell=ell/3^ell` (sem o "+"), a
+identidade `x_3ell/x_ell = 3^(1-2ell)` é exata e racional (prova de uma
+linha: `x_3ell = 3ell/3^(3ell) = ell/3^(3ell-1)`); em
+`x_ell^+ = x_ell + 3^-(ell+1)`, usado por todo o resto de §5, a mesma
+diferença carrega um resíduo que vai a zero como `O(1/ell)` mas nunca é
+exatamente inteira (confirmado por computação em 50 dígitos:
+`-0,0040` em `ell=50`, `-0,0020` em `ell=100`, `-0,0013` em `ell=150`).
+Consultei o `advisor()` antes de escrever a correção (Regra 11b, ponto
+de julgamento matemático real): a orientação foi (1) a "cegueira" de
+`L_ell` a um fator `Q` periódico é trivial e não precisa de nenhuma
+construção de mesma fase, já que `log_3(3x)-log_3(x)=1` exatamente para
+todo `x>0`; (2) o teste de deriva de mesma fase deve ser refeito nos
+pontos `x_ell` puros, onde a identidade de fase é exata, sem tocar nos
+números de §5 que usam `x_ell^+`; (3) reportar os quatro pares, não
+dois. Estendi `experiment_conjecture3.py` (nova seção separada,
+avaliando `ln(φ/φ_0)` nos pontos bare sem reaproveitar o ajuste em
+`x_ell^+`), rodei do zero (~416s) e recomputei o Remark inteiro: o
+descasamento entre a deriva observada e a prevista pelo ajuste suave
+cai de 112% em `(10,30)` para 18%, 4%, 1% em `(50,150)`, `(100,300)`,
+`(150,450)`, a assinatura de uma correção de tamanho finito de `φ_0`
+encolhendo, e não de uma contaminação periódica de tamanho fixo. Bug
+próprio pego em revisão: a primeira tentativa de rodar o script novo
+falhou (`NameError`, esqueci de passar `M` para `analyze()`) e a
+segunda tentativa, já corrigida, ainda estourava `IndexError` porque o
+laço original tentava avaliar `x_bare` em `3*500=1500`, além do grau
+máximo dos momentos exatos (`N_MAX=510`); corrigido restringindo aos
+alvos realmente usados pelos pares e pelo ajuste (`ell≤500`).
+
+**R4-07**: também escalonado ao `advisor()` junto com R4-01 (mesma
+consulta). Verifiquei a estrutura de quantificadores de `(⋆2)` e
+`(⋆3)` contra a fonte diretamente (Conjectura 1, p.8: `liminf` com
+`δ1,μ1`; Teorema 2, p.9: `δ,μ` e um índice `ℓ0` explícito) antes de
+escrever a frase de consequência, para não repetir o erro do README do
+repositório companheiro, que diz "a single zero... falsifies (⋆3)"
+(impreciso: um `liminf` tolera exceções finitas; o que falsifica é
+persistência em `ell` arbitrariamente grande). Decidi não estender a
+alegação de suporte a `ell=18` mencionada nesse mesmo README: não há
+log commitado para esse nível (só `ell=16`/`17`), e rodar `ell=18` sob
+a Regra 9b exigiria memória além do disponível (62 GiB totais, o nível
+anterior `ell=17` já usou ~39 GiB, `ell=18` exigiria ~3× mais); a
+correção ficou restrita aos dados já verificados e commitados.
+
+**R4-03**: confirmado por computação direta de
+`quantiles_grid_ell16.log` (coluna `min`, offsets `d=6..11`, `ell=10..16`):
+taxa de decaimento do mínimo por nível é `1,012` (`d=6`, sobe),
+`0,936`, `0,932`, `0,936`, `0,937`, `0,931` (`d=7` a `11`). A frase
+"outside the support boundary... a rate close to the minimum's own"
+foi restrita a `d≥7`, com uma frase nova descrevendo a divergência em
+`d=+6` (mínimo não decai, quantil decai), tanto no Resultado Empírico
+quanto na Discussão.
+
+**R4-04, R4-05, R4-06, R4-09, R4-10**: verificados diretamente contra
+o PDF da fonte primária antes de corrigir (Regra 8c): p.2 (Definição
+1, fator `c/a`), p.5 (Teorema 1, hipótese sobre `a∈N`), p.9 (Corolário
+7/8, operador `W_3`), p.14 (fórmula do gerador médio, `(⋆4)`), p.16-17
+(`(7.7)`, `(7.9)`-`(7.11)`, `(⋆5)`), e a própria frase da fonte "with
+some constants β,γ,δ,ε" antes de (7.11) (quatro constantes, não
+cinco, sem precisar nem abrir o PDF de Berg-Krüppel). Derivei
+independentemente a relação de densidade correta para a função de
+Fabius base-2 (`X=(U+X')/2` ⟹ `f'=4f(2x)` em `[0,1/2]`, o mesmo padrão
+`base²/(base-1)` que `φ'=(9/2)φ(3x)` em `[0,2/3]` já exibia para
+base 3) em vez de citar de memória.
+
+**Achado próprio pego em revisão, fora da lista de R4**: a primeira
+versão da correção de R4-05 introduziu uma colisão de notação nova
+(`$q$` para a base, colidindo com `$q_\ell(k)$`, a contagem de urnas
+de §3); trocada por uma formulação totalmente numérica, sem símbolo
+novo, antes do commit.
+
+**Orçamento de antítese "X, not Y" (Regra 4b)**: as reescritas desta
+rodada introduziram 3 antíteses novas (`rem:phase-check` ×2,
+`thm:microcanonical` ×1) além das 2 já orçadas de rodadas anteriores
+("não esta extrapolação", "não a conjectura em si"), um total de 5.
+Mantidas as duas de maior risco de confusão real para o leitor: "os
+pontos bare `x_ell`, não `x_ell^+`" (nova, resolve exatamente a
+confusão que causou R4-01) e "avaliação de `φ` em si, não esta
+extrapolação" (antiga, resolve a confusão que causou C-016/R2-04);
+as outras três (incluindo "não a conjectura em si", que fazia parte
+do orçamento anterior) foram reescritas sem a antítese. Recontado:
+2/2.
+
+Depois das correções: recompilado (`pdflatex` ×2, 13 páginas, sem
+`undefined reference`, 4 avisos cosméticos de overfull/underfull
+idênticos aos de rodadas anteriores); `\cite`/`\bibitem` sem órfãos (7
+chaves, checado mecanicamente); zero em/en dashes (as ocorrências de
+`--` são todas ranges de página/seção, convenção padrão do LaTeX, não
+pontuação); vocabulário da Regra 4b varrido, zero ocorrências fora de
+uso técnico; Regra 8b: abstract e Discussão relidos contra o corpo
+depois de cada correção, incluindo um ajuste de redação na Discussão
+(linha sobre `d=+6`, para não implicar que o mínimo populacional e o
+teste de conjunto fixo exaustivo de `d=+5` são a mesma medição).
+Repositório `collatz-wirsching-2003` sincronizado antes do commit
+deste paper: `experiment_conjecture3.py` corrigido e re-executado do
+zero, README de `sec5-conjecture3-numerical` atualizado com a
+explicação e os números corretos do teste de fase. `README-PT-BR.md`
+do repositório companheiro **não** foi tocado (fora do escopo desta
+tarefa, que restringe edições a arquivos em inglês).
