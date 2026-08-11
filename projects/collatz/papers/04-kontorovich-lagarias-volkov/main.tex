@@ -129,7 +129,9 @@ $I^\ast(x;\omega)$ satisfies $I^\ast(x;\omega)=x^{\eta_{5,BP}+o(1)}$.
 They use $I^\ast$ as a proxy for the integer count $\pi_{u,5}(x)$
 (their Definition~7.7), counting every integer reaching $u$ under the
 un-accelerated map
-$n\mapsto(qn+1)/2$ for $n$ odd, $n/2$ for $n$ even. That $\pi_{u,5}$
+$n\mapsto(qn+1)/2$ for $n$ odd, $n/2$ for $n$ even, which they call
+$T_5$; they reserve $U_5$ for the accelerated map this paper calls
+$T_q$. That $\pi_{u,5}$
 shares $B[5^0]$'s exponent is their unproven heuristic.
 Separately, collapsing the $2$-adic halving chain between consecutive
 odd values under $\pi_{u,5}$ changes its count by a factor at most
@@ -178,8 +180,9 @@ arithmetic tree's sibling spacing but a tunable exponent.
 We enumerate $T_5$'s exact reverse tree from $300$ roots. They are odd
 integers coprime to $5$ and outside every cycle of $T_5$ (a cycle
 member is reachable only from inside its own cycle, so excluding them
-needs no visited set), sampled uniformly from $[101,10^4)$, well below
-the fixed measurement window, $10^5$ through $10^8$. A single
+needs no visited set), sampled uniformly below $10^4$ and no smaller
+than $101$, well below the fixed measurement window, $10^5$ through
+$10^8$. A single
 depth-first pass tracks the running path-maximum at every node, giving
 simultaneous counts at truncation buffers $10^9$ through $10^{13}$
 directly, without re-running the enumeration once per buffer; this
@@ -259,8 +262,8 @@ annealed pressure root to any value $\alpha_-$ (the smaller root)
 solving $q_{\mathrm{val}}^{\alpha}=q(2^{\alpha}-1)$. The integer $q$
 itself stays fixed at the arithmetic tree's own admissibility rule and
 sterility probability. Three congruence-matched constructions result: the integer
-recursion and its relaxation, both built to $0.650919$, and the
-relaxation alone, built to $0.678$. The unconstrained construction of
+recursion and its relaxation, both built to $0.650919$, and that same
+relaxation retuned to $0.678$. The unconstrained construction of
 the paragraph above, sharing only the offspring law and drawing an
 independent residue at every node, bounds how much of the calibration
 depends on the sibling congruence. Every
@@ -269,8 +272,8 @@ the same rule as \S\ref{sec:method}, at checkpoints $10^4$ through
 $10^{10}$ and truncation buffers $10^9$ through $10^{15}$, and the
 arithmetic tree's reading is checked against them. Each root's own
 drawn residue is constrained fertile, matching the arithmetic tree's
-roots (sampled coprime to $q$), so no construction's tree is dead by
-construction.
+roots (sampled coprime to $q$), so no construction starts from a
+sterile root.
 
 \begin{empirical}[Calibrated separation from the Volkov exponent]
 \label{thm:kl-calibrated}
@@ -280,8 +283,8 @@ $0.65122$ (integer recursion) and $0.64981$ (its real-valued
 relaxation), a band $0.00141$ wide. The unconstrained construction built
 to the same exponent reads $0.64751$, $0.0034$ below target; including
 it widens the band to $0.0037$. The arithmetic tree reads $0.64926$,
-below both constructions built to $0.650919$ and inside the wider band
-set by the unconstrained one. A construction built to exponent $0.678$
+below both constructions built to $0.650919$ that share the sibling
+congruence, and inside the wider band set by the unconstrained one. A construction built to exponent $0.678$
 reads $0.67748$, $0.0282$ away from the arithmetic reading, more than
 seven widths of that wider band. The same comparison at the shallower
 decade $10^7\!\to\!10^8$, on the same checkpoint grid, gives an
@@ -301,8 +304,10 @@ $0.6487$ at $10^8\!\to\!10^9$, $0.6490$ at $10^9\!\to\!10^{10}$, then
 $0.6506$ and $0.6505$ at $10^{10}\!\to\!10^{11}$ and
 $10^{11}\!\to\!10^{12}$, the last two within $0.0005$ of the
 prediction. This deeper grid's $0.6490$ at $10^9\!\to\!10^{10}$ is
-close to, but computed on different checkpoint and buffer values than,
-the $0.64926$ of Empirical Result~\ref{thm:kl-calibrated}. The
+close to, but not identical to, the $0.64926$ of Empirical
+Result~\ref{thm:kl-calibrated}, computed on the same roots and
+checkpoints with truncation buffers extended to $10^{17}$.
+The
 bootstrap bands on these five readings cover root resampling only; a
 separate truncation term is at most $0.002$, falling to at most
 $0.0004$ from $10^8\!\to\!10^9$ onward.
@@ -313,23 +318,26 @@ $0.0004$ from $10^8\!\to\!10^9$ onward.
 Two systematics touch Empirical Result~\ref{thm:kl-calibrated}. On the
 window used for the opening measurement above, the congruence-matched
 integer recursion and its real-valued relaxation, both built to
-exponent $0.650919$, differ by $0.0035\pm0.0023$ (one standard error)
-over six seeds: indistinguishable from zero, and comparable in size to
-the $0.0037$ wider band width itself if it is not; whether that
-systematic transfers unchanged to the single-decade slope of the
-calibration comparison is not tested here. Separately, the same
-buffer-headroom test used on the deep run above, applied to the b15
-grid, has no slack left at the calibration decade itself, where it
-returns $0.0000$ identically for every construction, uninformative
-about truncation error there. At the two shallower decades the test
-does cover, it moves each reading by at most $0.0017$ at
-$10^7\!\to\!10^8$ and by at most
-$0.0009$ at $10^8\!\to\!10^9$. That is a decreasing trend, consistent
-with the deep run's own fall to at most $0.0004$ by $10^8\!\to\!10^9$
-and below that at greater depth, and well below the $0.0282$
-separation. At the calibration depth itself, the relaxation built to
-exponent $0.678$ under-reads its own target by $0.00052$ and the
-relaxation built to $0.650919$ by $0.00111$, smaller still.
+exponent $0.650919$, differ by $0.0035\pm0.0023$ over six seeds (one
+standard error). That is indistinguishable from zero, and comparable
+in size to the $0.0037$ wider band width itself if it is not. Whether
+it transfers unchanged to the single-decade slope of the calibration
+comparison is not tested here.
+
+Separately, the same buffer-headroom test used on the deep run above,
+applied to the b15 grid, has no slack left at the calibration decade
+itself. It returns $0.0000$ identically for every construction there,
+uninformative about truncation error. The test has slack at four
+shallower decades; only $10^7\!\to\!10^8$, the shallow decade Empirical
+Result~\ref{thm:kl-calibrated} reads, is used elsewhere in this
+comparison, and there it moves each reading by at most $0.0017$. The
+three decades below that move by more, up to $0.0189$, but none of
+their readings appear in this comparison. The trend at
+$10^7\!\to\!10^8$ is consistent with the deep run's own fall to at
+most $0.0004$ by $10^8\!\to\!10^9$ and below that at greater depth,
+well below the $0.0282$ separation. At the calibration depth itself,
+the relaxation built to exponent $0.678$ under-reads its own target by
+$0.00052$ and the relaxation built to $0.650919$ by $0.00111$.
 
 The $0.038$ bias of the opening measurement in \S\ref{sec:calibrated}
 and the residual bias at the calibration depth, under $0.004$ for every
@@ -348,17 +356,17 @@ Equality with that pressure root, which the bias language above
 presumes, is standard for the unconstrained construction, whose
 reproduction is i.i.d.\ across nodes; for the congruence-matched
 constructions, whose reproduction is correlated by the sibling
-recursion, it is this paper's working hypothesis. The two differ in
-their joint structure: the unconstrained construction draws one
-residue class per node, where the collapsed $B[5^0]$ assigns each
-exponent independently.
+recursion, it is this paper's working hypothesis. The unconstrained
+construction and the collapsed $B[5^0]$ differ in their joint
+structure: the former draws one residue class per node, while the
+latter assigns each exponent independently.
 
 On the b13 grid of \S\ref{sec:calibrated}'s opening measurement,
 buffers $10^9$ through $10^{13}$, the unconstrained construction's bias
 is $0.038$ and the arithmetic tree's window reading is $0.63824$,
-computed on the C enumerator's own root sample and close to, but
-distinct from, \S\ref{sec:result}'s Python-sampled $0.639$: a bias of
-$0.013$ presuming the disputed exponent is $0.650919$.
+computed on an independently drawn sample of $300$ roots, by the same
+rule as \S\ref{sec:result}'s $0.639$, close but not identical to it: a
+bias of $0.013$ presuming the disputed exponent is $0.650919$.
 The deep
 arithmetic-only run sits systematically at or just below $0.650919$, a
 pattern the data here cannot yet distinguish from a slowly converging

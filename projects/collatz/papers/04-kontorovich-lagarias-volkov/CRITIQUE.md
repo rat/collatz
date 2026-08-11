@@ -1169,3 +1169,56 @@ Recompilado limpo (pdflatex 2x, 6 páginas); `\cite`/`\bibitem`
 conferidos sem órfãos em nenhuma direção (três chaves).
 
 **Contagem de rodadas limpas consecutivas após R8: 0.**
+
+---
+
+## 2026-08-11, rodada R9 (loop de convergência, crítico independente)
+
+| R9-M1 | 2026-08-11 (loop R9) | "At the two shallower decades the test does cover" era falso: o teste de folga de buffer cobre QUATRO décadas rasas na grade b15, não duas, e as duas silenciosamente omitidas (1e5→1e6, 1e6→1e7) têm o pior erro do teste inteiro (até 0,0189, dez vezes o número citado) | maior | fixed |
+| R9-D1 | 2026-08-11 (loop R9) | Empirical Result 5.1 dizia "below both constructions built to 0,650919" sem o qualificador "that share the sibling congruence"; há três construções a esse alvo, e a leitura de 0,64926 fica ACIMA da terceira (irrestrita, 0,64751) | moderado | fixed |
+| R9-D2 | 2026-08-11 (loop R9) | Colisão de notação com a fonte primária: o paper usa $T_5$ para o mapa acelerado; KL usam $T_5$ para o não-acelerado e $U_5$ para o acelerado, sentidos trocados, nunca sinalizado | moderado | fixed |
+| R9-D3 | 2026-08-11 (loop R9) | "The two differ in their joint structure" tinha referente errado (apontava para o par irrestrita/casadas, quando a frase seguinte explica o par irrestrita/B[5⁰] colapsado) | moderado | fixed |
+| R9-D4 | 2026-08-11 (loop R9) | "different checkpoint and buffer values" atribuía a diferença 0,6490 vs. 0,64926 a checkpoints diferentes; os checkpoints e as 300 raízes são idênticos, só os buffers de truncamento mudam (1e15 vs. 1e17) | moderado | fixed |
+| R9-D5 | 2026-08-11 (loop R9) | "the C enumerator's own root sample" e "Python-sampled" usavam jargão de implementação nunca definido em lugar nenhum do documento, aparecendo uma única vez | moderado | fixed |
+| R9-D6 | 2026-08-11 (loop R9) | "smaller still" comparava 0,00052/0,00111 (viés residual contra o alvo) a 0,0009/0,0004 (erro de extrapolação do teste de folga), duas categorias diferentes, e o comparativo era falso contra os dois números mais próximos no texto | moderado | fixed |
+| R9-n1 | 2026-08-11 (loop R9) | Frase de abertura do parágrafo de sistemáticos com 66 palavras, vírgula + parênteses + dois-pontos + ponto-e-vírgula na mesma sentença | menor | fixed |
+| R9-n2 | 2026-08-11 (loop R9) | "the relaxation alone, built to 0,678" lia como um quarto objeto; "no construction's tree is dead by construction" repetia "construction" com sentidos diferentes | menor | fixed |
+| R9-n3 | 2026-08-11 (loop R9) | "$[101,10^4)$" descreve certo a amostragem do §5 (C) mas não a do §3-§4 (Python, que nunca gera 9999) | menor | fixed |
+
+Rodada 9 do loop de convergência: **crítico 0, maior 1, moderado 6,
+menor 3** (total 10 achados). NÃO limpa. Todos corrigidos nesta mesma
+passada (nenhum rejeitado). Contagem de rodadas limpas consecutivas
+após R9: **0**.
+
+Contexto fresco (novo subagente). Rodou `buffer_squeeze.py` nos cinco
+arquivos b15 novamente, desta vez capturando as cinco décadas inteiras
+(não só as duas que a Discussão citava), o que revelou R9-M1.
+
+### Verificação (Regra 8c)
+
+Confirmei R9-M1 rodando `buffer_squeeze.py data/q5_cycq500_b15.txt`:
+cinco décadas impressas, 1e5→1e6 dá +0,0189, exatamente o número que o
+crítico citou. Confirmei R9-D2 lendo a equação (1.5)-(1.6) do PDF de
+KL: $T_5(n)=(5n+1)/2$ (não acelerado) e $U_5$ (acelerado), sentidos
+opostos aos deste paper. Nenhuma rodada anterior tinha pego essa
+colisão de notação com a fonte primária (busquei "T_5" e "U_5" na
+tabela inteira do `CRITIQUE.md`, sem ocorrência).
+
+### Resolução
+
+Todos os 10 achados corrigidos, nenhum rejeitado. Mudança de
+substância mais importante: reescrita do parágrafo de sistemáticos da
+Discussão para descrever corretamente que o teste de folga de buffer
+cobre quatro décadas rasas na grade b15, das quais só a década
+$10^7\to10^8$ (a que o Empirical Result 5.1 de fato lê) entra na
+comparação, com as outras três explicitamente descartadas em vez de
+silenciosamente omitidas. Adicionada uma cláusula ao Remark do Setup
+distinguindo a convenção deste paper ($T_q$ para o mapa acelerado) da
+convenção de KL ($T_5$ não-acelerado, $U_5$ acelerado). Corrigidos
+dois referentes pronominais errados e uma atribuição de causa errada
+(checkpoints, não buffers, para a diferença 0,6490/0,64926).
+
+Recompilado limpo (pdflatex 2x, 6 páginas); `\cite`/`\bibitem`
+conferidos sem órfãos em nenhuma direção (três chaves).
+
+**Contagem de rodadas limpas consecutivas após R9: 0.**
