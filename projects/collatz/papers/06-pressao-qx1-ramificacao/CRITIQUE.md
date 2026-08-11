@@ -1699,3 +1699,200 @@ como achados reais, e voltei a rodar depois de cada correção):**
 
 **Verificação técnica:** `main.tex` inalterado nesta rodada; estado já
 confirmado limpo na verificação da rodada 18.
+
+### 2026-08-11 — rodada de convergência 20 (crítico, contexto fresco)
+
+Escopo: `main.tex` inteiro, mais todo o repositório `collatz-qx1-pressure`
+(README raiz, README da subpasta, README-PT-BR, todos os scripts),
+comparação linha a linha do resumo contra o corpo, e verificação da
+fonte primária Kontorovich-Lagarias 2010 (PDF completo, extraído com
+`pdftotext -layout`) para as duas alegações de precedência bibliográfica.
+
+**Resultado: 0 crítico, 5 maiores, 9 moderados, 14 menores. Não limpa.
+Contagem de rodadas limpas consecutivas: 0/3.**
+
+Antes de aplicar qualquer correção, verifiquei independentemente
+(Regra 8c) os achados numéricos e bibliográficos mais concretos: reimplementei
+do zero a recursão $Z_k(\alpha;u_0)$ (não copiei do relatório da
+crítica) e confirmei os quatro conjuntos de números citados; abri o
+PDF do Kontorovich-Lagarias 2010 e confirmei o Teorema 6.5 (não é o
+Teorema 8.10) e a atribuição a Lagarias-Weiss `[23, Teorema 4.2]`;
+rodei `experiment_gap_check.py` e `stage6_calibration_checks.py`
+existentes para confirmar os resíduos espectrais e a assimetria
+Gabaix-Ibragimov; e busquei o abstract do artigo original de
+Kolesko-Mentemeier 2015 para confirmar a restrição de domínio
+$\alpha\in(0,1]$. Todos os achados verificados bateram com o relatório
+original; nenhum precisou ser marcado `rejected` por erro do crítico.
+
+| ID | Nível | Resumo | Status |
+|----|-------|--------|--------|
+| D-55 | maior | Regra 12: quatro alegações numéricas (enumeração direta l.242-245, tabela $\alpha_c(q)$ l.451-460, $Z_k(\alpha;u_0)$ em raiz fixa l.462-470, ajuste de lei de potência que não convergiu l.945-951) não tinham script correspondente em `collatz-qx1-pressure`, apesar do Data Availability Statement e do README raiz afirmarem cobertura total | fixed |
+| D-56 | maior | Resumo: identificação do caso $q=3$ com a Growth Exponent Conjecture não distinguia o modelo iid (provado) da árvore aritmética (`conj:transition-arithmetic`, não resolvida) | fixed |
+| D-57 | maior | Precedente bibliográfico ausente: Kontorovich-Lagarias, Teorema 6.5 (não 8.10), já prova o caso $q=3$ de `thm:transition-model` para o modelo de offspring limitado $B[3^0]$, atribuído por eles a Lagarias-Weiss `[23, Teorema 4.2]`; `rem:novelty-109` só discutia o precedente do caso $q=5$ | fixed |
+| D-58 | maior | §4 usa "linear transfer operator", "$\Lambda$" e "provably perfect spectral gap"/"exactly $\{\Lambda,0\}$" sem nunca definir esses termos no `main.tex` (só existiam no docstring de `experiment_gap_check.py`); §3 nega a existência de um operador de transferência bem definido em estado finito, criando uma contradição aparente; os resíduos não-dominantes medidos chegam a $2\times10^{-4}$, não são exatamente zero | fixed |
+| D-59 | maior | `collatz-qx1-pressure/sec3-pressure-and-transition/README-PT-BR.md`: dessincronizado do `main.tex` (ainda cita o transiente $k^{-0,222}$ como real; números antigos "2-9%"/"1-4%" em vez de "1-19%"/"0,2-4,2%"; aponta para pasta/rótulos inexistentes `sec10-l2-refutation-and-jensen`/`thm:lp-spectrum`/"§10"; faltam os scripts novos; narração de processo banida; 42 em dash + 5 en dash) | **open** (política explícita do pesquisador: não editar PT-BR sem pedido, ver C-30/D-... nos outros papers; não é decisão técnica) |
+| D-60 | moderado | §4, l.938-940: "unlike $p\ge1.7$, where it has [stabilized]" é otimista; a razão entre incrementos sucessivos ainda deriva em $p=1.7$ e $p=1.8$ também, em ordem de grandeza semelhante à de $p=1.6$ | fixed |
+| D-61 | moderado | Glosa de $\pi_a(x)$ (l.707-708): "count... of odd integers reaching a fixed root" restringe a inteiros ímpares; a Definição 2.10 de Kontorovich-Lagarias 2010 não tem essa restrição | fixed |
+| D-62 | moderado | §6, abertura: afirma que a teoria de Kolesko-Mentemeier "would classify" $\alpha^\ast=2$ como caso crítico, mas o próprio parágrafo, seis linhas depois, mostra $m'(2)\ne0$, refutando a premissa; a teoria também é restrita a $\alpha\in(0,1]$, fora do alcance de $\alpha^\ast=2$ | fixed |
+| D-63 | moderado | §7, l.1069-1073: "deduplicates visited nodes" não corresponde ao mecanismo real do código (`count_tree`): a correção vem de unicidade de pai na árvore reversa, não de um conjunto de nós visitados | fixed |
+| D-64 | moderado | §4, l.479-482: promete que §7 traz "the corresponding generic-environment evidence" para a divergência quenched/anelado na raiz CONGELADA, mas §7 mede o expoente de crescimento na raiz DESCONGELADA (`conj:transition-arithmetic`), objeto relacionado mas distinto | fixed |
+| D-65 | moderado | `sec3-pressure-and-transition/README.md`: duas referências de seção erradas ("paper §3" deveria ser "§5") para `thm:iid-tail` e para a nota de rodapé do índice de cauda | fixed |
+| D-66 | moderado | README raiz do companion: tabela dizia "confirmatory at $n=10^5$" quando `main.tex` e o README da subpasta dizem explicitamente que não é confirmação (não-rejeição de Vuong $\ne$ confirmação) | fixed |
+| D-67 | moderado | README raiz e da subpasta ainda atribuíam a evidência do Estágio 6 à "Tail-Index Conjecture" (`conj:tail-index`) em vez de à conjectura reatribuída na redação final (`conj:real-tree-tail`) | fixed |
+| D-68 | moderado | README da subpasta: descrição de `iid_tail_check_assumptions.py` alegava testar "finite moments in a compact neighborhood" e "irrationality of $\log q/\log 2$", mas o script testa as 4 hipóteses corretas do paper ($\rho(\alpha_-)=1$, $\rho(\alpha_+)=1$, $\psi'(1)<0$, $\kappa>1$); "irrationality_check" é só `gcd(q,2)==1`, suficiente matematicamente mas mal rotulado | fixed |
+| D-69 | menor | Travessões residuais (en dash/sinal de menos Unicode) em `collatz-qx1-pressure/README.md` e em `sec3-.../README.md` | fixed |
+| D-70 | menor | `sec3-.../README.md`, seção "Terminology correction": narração de processo banida ("A note from an earlier session attributed...") | fixed |
+| D-71 | menor | `sec3-.../README.md`, "Mechanism note": desatualizado, ainda descreve o índice de cauda como conjectura para todo $q$, mas `thm:iid-tail` agora prova o caso iid para todo $q$ | fixed |
+| D-72 | menor | `OUTLINE.md`: "13 páginas" desatualizado (atual: 16); seção de rodada de crítica não mencionava as rodadas de convergência 2-19 | fixed |
+| D-73 | menor | Resumo: a frase sobre "annealed identity transfers" quebrava o par lógico "smaller root unfrozen / larger root frozen" | fixed |
+| D-74 | menor | "lands close to the predicted 1.536" otimista; Huisman dá $1,606$-$1,614$ ($4$-$5\%$ acima), só o IC95% cobre o valor previsto | fixed |
+| D-75 | menor | "rising smoothly with depth" ignora um ponto que quebra a monotonicidade (GPD no quantil $0,990$ dá $\alpha=1,658$, abaixo dos quantis vizinhos) | fixed |
+| D-76 | menor | Evidência em $q=3$ (Hill e EVT) usa a mesma seed/amostra de raízes (`SEED=20260811`, mesmo intervalo); "twofold"/independência deveria esclarecer que é independência de método, não de amostra | fixed |
+| D-77 | menor | "passed to floating-point precision" impreciso: o desvio real ($\sim\!2\times10^{-11}$ em $k=11$) vem do truncamento $a\le60$, não de limite de ponto flutuante ($\sim\!10^{-16}$) | fixed |
+| D-78 | menor | `rem:novelty-109`: "i.e. that it fails for every $q\ge5$" tinha antecedente ambíguo (a condição vs. a propriedade de órbitas quase-limitadas) | fixed |
+| D-79 | menor | `papers/README.md`: falta linha em branco antes de "## Paused papers"; entrada do paper 06 sem indicação de status/andamento como as outras entradas | fixed |
+| D-80 | menor | `main.tex`: `\bibliographystyle{plain}` inerte (bibliografia é manual via `thebibliography`) | fixed |
+| D-81 | menor | `collatz-qx1-pressure` sem `.gitignore`; `__pycache__/` aparecia como não rastreado | fixed |
+| D-82 | menor | README (EN): "reproduces the same estimator-bias pattern" generoso; a curva Gabaix-Ibragimov do Pareto sintético sobe monotonicamente, a dos dados reais sobe e depois desce | fixed |
+
+**Verificação independente antes de corrigir (Regra 8c), resumida:**
+
+Reimplementei $Z_k(\alpha;u_0)$ do zero (recursão memoizada em
+$u\bmod q^{\text{profundidade}}$, não em $u$ literal, o que colapsa a
+árvore de ramificação exponencial num DAG tratável) e confirmei, sem
+usar nenhum número do relatório da crítica como ponto de partida: a
+soma sobre todas as raízes bate a forma fechada a $1,3\times10^{-12}$
+nos 60 casos citados (D-55, primeira alegação); a tabela de
+$\alpha_c(q)$ bate a 9 casas decimais (D-55, segunda); $Z_k(2;1)^{1/k}$
+em $q=3$ oscila em $[0,619;0,650]$ e $Z_k(1;u_0)^{1/k}$ em $q=5$,
+$k=16$ dá $0,8920/0,9315/0,9128/0,9728$ para $u_0=1,2,3,4$ (D-55,
+terceira, e base de `quenched_fixed_root_oscillation.py`). Abri
+`literature/papers/127_...Kontorovich-Lagarias.pdf` e confirmei
+textualmente o Teorema 6.5 (não 8.10), a atribuição a Lagarias-Weiss
+`[23, Teorema 4.2]`, e a referência bibliográfica completa (Annals of
+Applied Probability 2 (1992), 229-261) contra o próprio índice de
+referências do artigo (D-57). Rodei `experiment_gap_check.py`:
+resíduos não-dominantes de $2,3\times10^{-8}$ ($K=2$) a $2,0\times10^{-4}$
+($K=4$) para $q=5$, confirmando que "exactly $\{\Lambda,0\}$" e
+"provably perfect" não são literalmente exatos (D-58). Busquei o
+abstract de Kolesko-Mentemeier 2015 (arXiv:1409.7220) e confirmei a
+restrição $\alpha\in(0,1]$ no enunciado do resultado principal (D-62).
+Rodei `stage6_calibration_checks.py`: Gabaix-Ibragimov no Pareto
+sintético sobe $1,44\to1,49\to1,52\to1,53$ (monotônico) contra
+$1,48\to1,49\to1,46\to1,42$ nos dados reais (sobe e desce) (D-82).
+Conferi `real_tree_tail_q3.py`/`evt_frechet_q3.py`: ambos usam
+`SEED=20260811` e a mesma faixa de raízes, logo não são amostras
+independentes (D-76).
+
+**Correções aplicadas:**
+
+- **D-55.** Escrevi quatro scripts novos em `collatz-qx1-pressure/sec3-pressure-and-transition/`:
+  `annealed_identity_direct_enumeration.py` (enumeração direta nos
+  parâmetros exatos citados), `alpha_c_table.py` (tabela de
+  $\alpha_c(q)$), `quenched_fixed_root_oscillation.py` (oscilação em
+  raiz fixa nos dois casos citados), `increment_ratio_powerlaw_fit_attempt.py`
+  (reproduz a tentativa de ajuste que não convergiu, usando os dados
+  já salvos de `exact_moment_test.py`). Todos rodados do início ao fim
+  antes de commitar; README da subpasta atualizado (lista de arquivos,
+  "how to run", seção de resultado para cada um).
+- **D-56.** Resumo reescrito: "We prove this exponent statement for a
+  matching i.i.d. branching model; at $q=3$ it recovers a 1992 result
+  of Lagarias-Weiss. The same statement for the actual arithmetic
+  reverse tree is the classical Growth Exponent Conjecture..., which
+  we do not resolve."
+- **D-57.** Novo Remark logo após a prova de `thm:transition-model`
+  ("Relation to Kontorovich-Lagarias's Theorem 6.5, and to
+  Lagarias-Weiss"), citando `KontorovichLagarias2010` Teorema 6.5 e um
+  novo `\bibitem{LagariasWeiss1992}` (J. C. Lagarias and A. Weiss, *The
+  $3x+1$ problem: two stochastic models*, Annals of Applied
+  Probability 2(2) (1992), 229-261), verificado contra o índice de
+  referências do próprio PDF de Kontorovich-Lagarias.
+- **D-58.** Passagem de §4 reescrita: define explicitamente a
+  distinção entre o operador de Koopman $L_\alpha$ (que §3 já nega ser
+  bem definido em estado finito) e o operador dual $M_\alpha$ (o
+  objeto realmente medido), define $\Lambda:=q^\alpha/(2^\alpha-1)$ no
+  texto, e troca "exactly $\{\Lambda,0\}$"/"provably perfect" por
+  "numerically $\{\Lambda,0\}$... to within $2\times10^{-4}$ at every
+  truncation level $K\le4$ tested". Mesma correção replicada na
+  segunda ocorrência do termo mais adiante e no README da subpasta.
+- **D-59.** Registrado aqui como achado real e detalhado (acima); o
+  arquivo `README-PT-BR.md` não foi editado, por instrução explícita
+  preexistente do pesquisador sobre não tocar em arquivos PT-BR sem
+  pedido.
+- **D-60.** "unlike $p\ge1.7$, where it has [stabilized]" reescrito
+  para descrever a deriva medida (abaixo de $0,2\%$ por passo nos dois
+  lados), sem alegar que um lado convergiu e o outro não.
+- **D-61.** "odd integers" removido da glosa de $\pi_a(x)$.
+- **D-62.** Abertura de §6 reescrita: coloca a pergunta ("levanta a
+  questão de se cai sob o caso crítico"), responde com dois motivos
+  independentes (as duas raízes não podem coincidir por
+  log-convexidade estrita; $\alpha^\ast=2$ está fora do domínio
+  $\alpha\in(0,1]$ da própria teoria).
+- **D-63.** Reescrito para "since every node in the reverse tree has a
+  unique parent, no node outside a cycle is ever revisited... our
+  implementation instead excludes the cycle members themselves... from
+  the starting roots".
+- **D-64.** Frase de §4 reescrita para não prometer generic-environment
+  evidence na raiz congelada que §7 não entrega; aponta corretamente
+  que §7 testa o expoente de crescimento na raiz descongelada, questão
+  relacionada mas distinta.
+- **D-65, D-67.** Referências de seção corrigidas ("§3"→"§5" nos dois
+  casos); "Tail-Index Conjecture" trocado por "real-tree tail
+  conjecture (`conj:real-tree-tail`)" nas duas ocorrências do README
+  raiz e da subpasta.
+- **D-66.** Tabela do README raiz reescrita para não dizer
+  "confirmatory": "the strongest evidence gathered to date..., though
+  not confirmatory, at the $n=10^5$ follow-up".
+- **D-68.** Descrição reescrita com as 4 hipóteses reais e a
+  explicação de que `irrationality_check` é um teste de paridade,
+  suficiente para $q$ ímpar mas não uma checagem literal de
+  irracionalidade.
+- **D-69.** Todos os travessões residuais (en dash e sinal de menos
+  Unicode) substituídos por hífen normal via script, nos dois README
+  em inglês.
+- **D-70.** Seção reescrita sem "A note from an earlier session
+  attributed..."; o $k^{-0,222}$ agora é apresentado como valor
+  histórico superado, sem narrar a correção.
+- **D-71.** "Mechanism note" atualizada: distingue o resultado provado
+  (`thm:iid-tail`, todo $q$ ímpar no modelo iid) das duas conjecturas
+  ainda abertas (`conj:tail-index`, `conj:real-tree-tail`).
+- **D-72.** "13 páginas" → "16 páginas"; nova seção "Loop de
+  convergência de crítica" apontando para as 20 rodadas em
+  `CRITIQUE.md`.
+- **D-73.** Frase reordenada: "The smaller root is always unfrozen,
+  and the larger root is always frozen. At the unfrozen root... at the
+  frozen root...".
+- **D-74.** "lands close to the predicted 1.536" → valor Huisman real
+  ($1,606$-$1,614$) citado explicitamente, com a nota de que o IC95%
+  ainda cobre o valor previsto.
+- **D-75.** Frase reescrita para descrever o pico em quantis
+  intermediários seguido de queda no quantil mais profundo, em vez de
+  "rising smoothly".
+- **D-76.** Frase reescrita: "comes by two independent methods on the
+  same sample of roots... not an independent replication in sample,
+  only in method".
+- **D-77.** "passed to floating-point precision" → "holds to within
+  $2\times10^{-11}$ at $k=11$, the residual truncation error of the
+  finite cutoff $a\le60$..., not a floating-point limit".
+- **D-78.** "that this condition is also necessary, i.e. that it fails
+  for every $q\ge5$" → "that this condition is also necessary for
+  almost-bounded orbits, i.e. that almost-bounded orbits fail for
+  every $q\ge5$".
+- **D-79.** Linha em branco adicionada; entrada do paper 06 ganhou uma
+  frase de status ("Draft complete, undergoing a critique-convergence
+  loop...").
+- **D-80.** `\bibliographystyle{plain}` removido.
+- **D-81.** `.gitignore` criado em `collatz-qx1-pressure` com
+  `__pycache__/` e `*.pyc`.
+- **D-82.** Frase reescrita para não alegar que as duas curvas têm o
+  mesmo formato, só a mesma faixa baixa de valores; a diferença de
+  forma (monotônica vs. sobe-e-desce) agora é explícita.
+
+**Verificação técnica pós-correção:** `main.tex` recompilado (2
+passadas `pdflatex`), zero erro/referência indefinida (16 páginas);
+`\cite`/`\bibitem` e `\ref`/`\eqref`/`\label` conferidos por script,
+sem órfãos em nenhuma direção (o único label não referenciado,
+`sec:intro`, é inofensivo: não é uma referência cruzada quebrada, só
+um `\label` sem `\ref` correspondente, deixado como está). Os quatro
+scripts novos e as edições de README foram rodados do início ao fim
+antes de commitar, no repositório `collatz-qx1-pressure`.

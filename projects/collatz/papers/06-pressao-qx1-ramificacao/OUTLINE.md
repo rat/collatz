@@ -1,9 +1,12 @@
 # Outline: paper 06 (equação de pressão qx+1)
 
-Status: `main.tex` é um rascunho completo (13 páginas, compila limpo).
+Status: `main.tex` é um rascunho completo (16 páginas, compila limpo).
 Split de `01-syracuse-qx1-endogenia/main.tex` §3 (mais §4.2, "Precise
 regime of the tail exponent", que encaixa melhor aqui do que em 01), em
-2026-08-10, a pedido do diretor científico.
+2026-08-10, a pedido do diretor científico. Em loop de convergência de
+crítica desde então (Regra 8/15): 20 rodadas rodadas até agora, ver
+`CRITIQUE.md` para o histórico completo; ainda não atingiu o critério
+de parada (3 rodadas consecutivas limpas).
 
 Repositório de reprodutibilidade: `github.com/faculdade/collatz-qx1-pressure`.
 
@@ -90,15 +93,23 @@ assim que cada um for submetido.
   com a letra da Regra 5 (todo paper é bilíngue). Registrado como
   tensão a resolver com o pesquisador, não como pendência técnica.
 
-## Rodada de crítica (Regra 8/15) fechada
+## Rodada de crítica (Regra 8/15): primeira rodada fechada
 
-Rodada de 2026-08-10: 30 achados (`CRITIQUE.md`), 29 corrigidos, 1
-deixado `open` com motivo (C-30, acima). Abstract reescrito por
-completo (não é mais rascunho), `thm:transition-model` ganhou prova
-própria, o lema de log-convexidade foi generalizado e movido para o
-§3, todas as citações do item C-21 foram verificadas contra fonte
-primária (uma delas, PDF de Villemonais-Zalduendo 2025, baixado e lido
-para resolver C-22).
+Rodada de 2026-08-10 (rodada 1): 30 achados (`CRITIQUE.md`), 29
+corrigidos, 1 deixado `open` com motivo (C-30, acima). Abstract
+reescrito por completo (não é mais rascunho), `thm:transition-model`
+ganhou prova própria, o lema de log-convexidade foi generalizado e
+movido para o §3, todas as citações do item C-21 foram verificadas
+contra fonte primária (uma delas, PDF de Villemonais-Zalduendo 2025,
+baixado e lido para resolver C-22).
+
+## Loop de convergência de crítica (em andamento)
+
+Desde a rodada 1, o paper segue num loop de crítica com contexto fresco
+a cada rodada (Regra 8/15), parando só em 3 rodadas consecutivas sem
+achado crítico/maior/moderado e menos de 3 menores. 20 rodadas rodadas
+até agora (2026-08-10 a 2026-08-11); histórico completo, achado por
+achado, em `CRITIQUE.md`. Ainda não atingiu o critério de parada.
 
 ## Passagem de redação final (2026-08-10, mesma sessão)
 
