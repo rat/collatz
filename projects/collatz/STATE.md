@@ -222,6 +222,42 @@ são decisões explicitamente devolvidas ao diretor científico, não
 lacunas não percebidas. Pronto para redação final, sujeito a essas duas
 decisões.
 
+## Redação final do paper 06: H-129 formalizada, erro de atribuição de evidência corrigido
+
+Pedido do diretor científico: passagem de redação final (Regra 4b) no
+paper 06, com a decisão explícita de que H-129 fica só aqui (não mais
+duplicada com o paper 01). Ao formalizar H-129 como conjectura própria,
+apareceu um problema real, não só de estilo: o `main.tex` atribuía as
+baterias de raízes reais amostradas (600/5000/100.000 raízes, Estágios
+1/2/6 de E-103) como evidência de `conj:tail-index` (a martingale
+Haar-q-ádica $W_q$), mas essas baterias amostram raízes inteiras reais
+e medem $N_v(vH)/H^{\alpha_-(q)}$ — o fator de escala de
+`prop:transition-fine`, um objeto matemático diferente. Só o teste
+exato de momento populacional (soma sobre todos os resíduos mod $5^k$)
+testa `conj:tail-index` de fato. Reatribuição verificada com o Codex
+antes de editar (Regra 11b) e com o advisor antes de comprometer a
+interpretação.
+
+Corrigido: nova `\begin{conjecture}` própria (`conj:real-tree-tail`,
+rótulo "Tail of the real-tree growth scale factor") logo após
+`thm:iid-tail`; evidência de q=3 (Hill/EVT) e as três baterias de q=5
+reatribuídas para ela; `conj:tail-index` mantém só o teste de momento
+populacional (inconclusivo) como evidência direta; nota de rodapé da
+família de escala por tipo de resíduo (Estágio 4) realocada junto.
+Abstract reescrito para refletir os dois objetos separadamente (Regra
+8b, conferido depois de todas as edições). Aplicado o checklist da
+Regra 4b/seção 10 no `main.tex` inteiro: zero vocabulário banido, zero
+travessão, uma frase-clichê de fechamento de parágrafo cortada ("what
+survives... is"), quatro antíteses "X, not Y" redundantes cortadas
+(as restantes são desambiguação técnica necessária num texto denso,
+não retórica). Achado colateral pequeno, corrigido: README do E-103
+apontava para um espelho público em `collatz-endogeny` que não existe
+mais desde a divisão do paper 01 (migrado para `collatz-qx1-pressure`);
+corrigido só na versão em inglês (PT-BR fora de escopo hoje).
+Recompilado limpo (3 passadas `pdflatex`), bibliografia e
+`\ref`/`\label` conferidos por script, sem órfãos em nenhuma direção.
+H-129 atualizada com a decisão de atribuição.
+
 ## Backlog do paper 05 (Wirsching 2003) esgotado
 
 H-168 era o único item aberto no escopo do paper 05 (H-125, H-133,

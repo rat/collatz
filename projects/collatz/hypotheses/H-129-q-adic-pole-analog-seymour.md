@@ -535,3 +535,31 @@ convergência quenched-anelado, mas isso ainda não foi verificado).
   maior"). **H-129 permanece aberta** (o índice de cauda não está
   provado, só fortemente apoiado), mas o quadro mudou de forma real e
   mensurável nesta sessão.
+
+- **2026-08-10 — Atribuição resolvida: H-129 fica só no paper 06.**
+  Pendência sinalizada na varredura de backlog e na verificação
+  adversarial pós-varredura desta sessão ("a quem pertence"): decisão
+  do diretor científico foi atribuir H-129 integralmente ao paper 06
+  (`pressao-qx1-ramificacao`), tematicamente o dono natural
+  (`conj:tail-index`). Ao formalizar, um segundo problema apareceu: as
+  baterias de raízes reais amostradas (600/5000/100.000, citadas no
+  `main.tex` como evidência de `conj:tail-index`) na verdade medem um
+  objeto matemático diferente. `conj:tail-index` é sobre a martingale
+  Haar-q-ádica $W_q$ (população de resíduos mod $q^k$, amostrada
+  uniformemente); as baterias amostram raízes inteiras reais da árvore
+  aritmética e medem $N_v(vH)/H^{\alpha_-(q)}$, o fator de escala já
+  introduzido, conjecturalmente, em `prop:transition-fine`. Só o teste
+  exato de momento populacional (Rodada 3, soma sobre TODOS os resíduos
+  mod $5^k$) testa de fato `conj:tail-index`; as baterias de raízes
+  (Rodadas 1/2, Estágio 6) e a medição de Hill/EVT em $q=3$ testam o
+  outro objeto. Formalizado como conjectura própria
+  (`conj:real-tree-tail`, "Tail of the real-tree growth scale factor")
+  no `main.tex`, com a evidência empírica reatribuída de acordo (q=3
+  threefold e as três baterias de q=5 para `conj:real-tree-tail`; o
+  teste de momento populacional, inconclusivo, permanece a evidência
+  direta de `conj:tail-index`). A nota de rodapé sobre a família de
+  escala por tipo de resíduo (Estágio 4, mesma amostra de raízes reais)
+  foi realocada junto. Reatribuição verificada com uma segunda opinião
+  independente (Codex) antes de editar o paper. O paper 01 passa a
+  apenas citar o tratamento do paper 06, sem duplicar o enunciado da
+  conjectura.

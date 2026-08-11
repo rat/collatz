@@ -47,6 +47,7 @@ do conserto de C-06/C-09 (não era erro do `OUTLINE.md` sozinho).
 | C-28 | 2026-08-10 r1 | l.670: "solved exactly by $s=\alpha_+/\alpha_-$" ignora que $s=1$ também resolve | baixa | fixed |
 | C-29 | 2026-08-10 r1 | Sem seção de conclusão; `thm:frozen-singular` nunca referenciado | baixa | fixed |
 | C-30 | 2026-08-10 r1 | `main-pt-br.tex` inexistente (Regra 5); `OUTLINE.md` registra como pendência deliberada | baixa | rejected (ver rodada 2: mesma tensão de política dos papers 04/05, deixado para o pesquisador decidir) |
+| C-31 | 2026-08-10 r3 | As baterias de raízes reais amostradas (600/5000/100.000 raízes, §4) eram citadas como evidência de `conj:tail-index` (martingale Haar-q-ádica $W_q$), mas medem $N_v(vH)/H^{\alpha_-(q)}$, o fator de escala de `prop:transition-fine` — objeto diferente | alta | fixed |
 
 ---
 
@@ -741,3 +742,81 @@ pesquisador, não a esta rodada de crítica. Por instrução explícita do
 pesquisador nesta mesma sessão, nenhum arquivo PT-BR (incluindo dos
 repositórios companheiros) deve ser criado ou editado sem pedido
 explícito daqui em diante.
+
+---
+
+## 2026-08-10 — rodada 3 (produtor, redação final: H-129 formalizada)
+
+Escopo: formalizar H-129 como conjectura própria deste paper (decisão
+do diretor científico, atribuição resolvida) e reler `main.tex` inteiro
+contra o checklist da Regra 4b/seção 10.
+
+**C-31 (achado, não pedido originalmente).** Ao localizar onde H-129 se
+encaixava, ficou claro que as baterias de raízes reais amostradas
+(600 raízes, depois 5000, depois 100.000, todas em §4) vinham citadas
+como evidência de `conj:tail-index` (a martingale Haar-q-ádica $W_q$,
+população de resíduos mod $q^k$ amostrada uniformemente). Mas o que
+essas baterias de fato amostram são raízes inteiras reais $v$ da
+árvore aritmética, medindo $W_v(H):=N_v(vH)/H^{\alpha_-(q)}$ — o fator
+de escala já introduzido, conjecturalmente, em `prop:transition-fine`.
+Só o teste exato de momento populacional (soma sobre TODOS os resíduos
+mod $5^k$, não uma amostra) testa `conj:tail-index` de fato. As duas
+conjecturas preveem o mesmo expoente pelo mesmo mecanismo de renovação
+implícita, mas são objetos matemáticos formalmente distintos, sem
+prova de equivalência entre eles.
+
+Verificado antes de editar: consulta ao advisor (confirmou a leitura
+"são objetos diferentes", apontou a formalização correta) e ao Codex
+(revisão independente da reatribuição planejada, confirmou o
+diagnóstico, sugeriu a forma final do enunciado da nova conjectura e
+listou riscos de referee, incorporados). Conferido também contra o
+código-fonte dos experimentos (`E-103`, `rerun_save_raw.py`,
+`stage6_large_sample_generation.py`): `W = c / H**ALPHA1` com `c =
+count_tree(q, v, v*H, ...)` para raízes `v` sorteadas uniformemente de
+um intervalo de inteiros, confirmando que a amostragem é sobre raízes
+reais, não sobre resíduos.
+
+**Corrigido**: nova `\begin{conjecture}[Tail of the real-tree growth
+scale factor]\label{conj:real-tree-tail}`, logo após `thm:iid-tail`;
+evidência de $q=3$ (Hill/EVT) e as três baterias de $q=5$ (600/5000/
+100.000 raízes) reatribuídas para ela; `conj:tail-index` mantém só o
+teste de momento populacional (Rodada 3 de E-103, inconclusivo) como
+evidência direta; a nota de rodapé da família de escala por tipo de
+resíduo (Estágio 4 de E-103, mesma amostra de raízes reais) foi
+realocada da vizinhança de `conj:tail-index` para a de
+`conj:real-tree-tail`. Abstract reescrito (Regra 8b, conferido de novo
+depois de todas as edições desta rodada) para nomear os dois objetos
+separadamente em vez de uma "tail index" genérica.
+
+**Regra 4b/seção 10, aplicada ao documento inteiro**: zero vocabulário
+banido (checado por regex), zero travessão (o documento já não tinha
+nenhum), um clichê de fechamento de parágrafo cortado ("What survives
+as new here is" — item explicitamente banido pela Regra 4b §1, em
+`rem:novelty-109`), quatro antíteses "X, not Y" redundantes ou
+puramente retóricas cortadas (de 16 ocorrências para 12; as 12
+restantes desambiguam objetos matemáticos genuinamente confundíveis
+num texto denso — julgamento registrado aqui, não uma omissão: reduzir
+a duas exigiria sacrificar precisão técnica necessária, o que a própria
+Regra 4b não pede). Nenhuma seção nova por simetria; nenhuma frase cujo
+sujeito seja o próprio paper além da já existente e inofensiva "This
+paper studies..." na abertura.
+
+**Achado colateral pequeno, corrigido**: `experiments/E-103.../README.md`
+apontava um espelho público em `collatz-endogeny/sec3-pressure-equation/`
+que não existe mais desde a divisão do paper 01 em quatro (migrado para
+`collatz-qx1-pressure/sec3-pressure-and-transition/`); corrigido só na
+versão em inglês (PT-BR fora de escopo desta rodada, por instrução do
+pesquisador).
+
+**Verificação técnica final**: recompilado (3 passadas `pdflatex`),
+zero `undefined reference`/`citation`; `\cite`/`\bibitem` e
+`\ref`/`\eqref`/`\label` conferidos por script Python, sem órfãos em
+nenhuma direção; Data Availability (`collatz-qx1-pressure`) conferido
+contra os arquivos reais do repositório, todos os scripts citados
+(`full_battery.py`, `exact_moment_test.py`,
+`stage6_large_sample_battery.py`, `stage4_type_constants_check.py`)
+presentes.
+
+**Não fica pendente para o paper 01**: o agente responsável pelo paper
+01, em paralelo, ajusta o lado dele para apenas citar o tratamento
+deste paper, sem duplicar o enunciado de `conj:tail-index`.

@@ -54,12 +54,14 @@ fractional-moment estimate, and we prove the tail index for the i.i.d.\
 model by an implicit renewal theorem. For the coherent $q$-adic
 environment we prove martingale convergence and identify the limit
 with the density of the absolutely continuous component; absolute
-continuity and the tail index remain conjectural. At $q=3$ the
-predicted index $\alpha^\ast=2$ matches independent empirical
-measurements. At $q=5$, the largest of three statistical tests run at
-increasing sample size gives evidence consistent with the conjectured
-tail index, though smaller-sample tests were inconclusive and the
-claim remains unproved for every $q\ge5$.
+continuity and its tail index remain conjectural. A second, independent
+conjecture states the same tail index for the growth scale factor of
+the arithmetic reverse tree itself. At $q=3$ the predicted index
+$\alpha^\ast=2$ matches independent empirical measurements of that
+scale factor. At $q=5$, the largest of three statistical tests on the
+scale factor, run at increasing sample size, gives evidence consistent
+with the conjectured index; an exact test of the martingale's own tail
+remains inconclusive, and neither claim is proved for any $q\ge5$.
 \end{abstract}
 
 \section{Introduction}
@@ -122,8 +124,8 @@ so every unit residue is fertile and the sterile classes are exactly
 the non-units, i.e.\ the multiples of any prime factor of $q$: for
 prime $q$ (so $q=3,5$) this is only $u\equiv0$, recovering the
 familiar fact that multiples of $3$ have trivial reverse subtrees; for
-$q=9=3^2$ the sterile classes are $u\equiv0,3,6\pmod9$, not $u\equiv0$
-alone. In general $d=\ord_q(2)$ can also be a proper divisor of
+$q=9=3^2$ the sterile classes are $u\equiv0,3,6\pmod9$, already beyond
+the prime case. In general $d=\ord_q(2)$ can also be a proper divisor of
 $\varphi(q)$ even among units: at $q=7$, $d=3<\varphi(7)=6$ and
 $\langle2\rangle=\{1,2,4\}$, so $u\equiv 3,5,6\pmod7$ are sterile too,
 beyond the trivial $u\equiv 0$. This does not
@@ -533,8 +535,7 @@ the many-to-one formula gives, for $\theta>0$,
 =\rho_{\mathrm{ann}}(\theta)^n,
 \]
 so the model's per-generation growth rate is governed by exactly the
-same pressure function as Theorem~\ref{thm:pressure}, not by a separately
-chosen one.
+same pressure function as Theorem~\ref{thm:pressure}.
 
 \begin{theorem}[Structural transition: exponent, i.i.d.\ model]\label{thm:transition-model}
 For the i.i.d.\ model above, $\log N(x)/\log x\to\alpha_-(q)$ almost
@@ -583,7 +584,7 @@ positive, non-degenerate random scale factor $W$ (not a deterministic
 constant at any $q$, since the underlying reproduction law has nonzero
 variance). This is a strictly stronger claim than
 Theorem~\ref{thm:transition-model}: it pins down the constant in front
-of $x^{\alpha_-(q)}$, not merely the exponent, which needs machinery
+of $x^{\alpha_-(q)}$, which needs machinery
 beyond the large-deviations argument used above. A directed literature
 search found the neighboring machinery but not this exact statement
 ready-made: the classical Crump--Mode--Jagers renewal theorem
@@ -621,8 +622,7 @@ Equivalently, the characteristic function of the displacement equals
 $1$ only at the origin, so the renewal/CMJ asymptotic carries no
 log-periodic (period $\log2$) modulation. Were $\log q/\log2$ rational
 the branch positions would collapse onto a lattice and a
-periodic correction would appear; the irrationality is therefore the
-operative fact, not an irrelevant one.
+periodic correction would appear.
 \end{proposition}
 
 \begin{conjecture}[Structural transition: exponent, arithmetic tree]\label{conj:transition-arithmetic}
@@ -725,17 +725,54 @@ numerically for $q=3,5,7,9,15$ in the accompanying repository.
 This is the classical smoothing-transform result for the stochastic
 model. Its transfer to the coherent $q$-adic root environment is
 Conjecture~\ref{conj:tail-index}, since the arithmetic subtrees are not
-independent.\footnote{A related
+independent.
+The tail-index equation $\mathbb{E}[\sum_i A_i^\sigma]=1$ becomes,
+for our weights, $q^{\alpha_-\sigma-1}=2^{\alpha_- \sigma}-1$, solved by
+$\sigma=1$ trivially and, nontrivially, by
+$\sigma=\alpha_+/\alpha_-$. This is further reason to take the conjecture
+seriously as a prediction, even though, per
+Remark~\ref{rem:transfer-basis}, the theory rigorously covers only the
+stochastic model so far.
+
+We state this as a conjecture separate from both
+Theorem~\ref{thm:transition-model} and
+Conjecture~\ref{conj:transition-arithmetic} above, because
+Proposition~\ref{prop:always-frozen} shows $\alpha_+(q)$ is
+\emph{always} frozen, so the annealed pressure identity alone does not
+establish the tail. Theorem~\ref{thm:iid-tail} obtains it by implicit
+renewal at the unfrozen martingale normalization. Its arithmetic
+counterpart still requires evidence external to
+Theorem~\ref{thm:pressure}.
+
+Every numerical test below samples actual integer roots of the
+arithmetic tree, not points of the Haar-uniform $q$-adic population
+$U$ that Conjecture~\ref{conj:tail-index} is stated over. What these
+tests bear on directly is a different, equally open claim: the tail of
+the scale factor already introduced, conjecturally, in
+Proposition~\ref{prop:transition-fine}.
+
+\begin{conjecture}[Tail of the real-tree growth scale factor]\label{conj:real-tree-tail}
+Fix odd $q\ge3$. Let $v$ range uniformly over the admissible roots in
+an interval growing to infinity, and set
+$W_v(H):=N_v(vH)/H^{\alpha_-(q)}$ for headroom $H\ge1$ ($N_v$ as in
+\S\ref{sec:setup}). As $H\to\infty$ and then the interval grows,
+$W_v(H)$ converges in law to the scale factor $W$ of
+Proposition~\ref{prop:transition-fine}, with upper tail
+\[
+ \Pr(W>x) = x^{-\alpha_+(q)/\alpha_-(q)+o(1)}.
+\]
+\end{conjecture}
+
+The same implicit-renewal mechanism that proves Theorem~\ref{thm:iid-tail}
+for the i.i.d.\ model predicts this exponent for $W$,\footnote{A related
 structural prediction of the multitype model,
 confirmed empirically for $q=5$: conditioning on the root's residue
 class $i=u_0\bmod q$ (with $a_0(i)$ the smallest admissible branch
-exponent for class $i$), the scale factor satisfies
+exponent for class $i$), $W$ decomposes by class as
 $W_i\stackrel{d}{=}2^{-a_0(i)\theta}\cdot W^*$ for a common $W^*$,
 i.e.\ residue class only rescales the candidate limit, it does not
 change its shape.
-Verified on $5000$ sampled roots across four headroom levels (the
-truncation bound $n_{\max}=v\cdot H$ expressed as a multiple $H$ of
-each root $v$, rather than an absolute size), with
+Verified on $5000$ sampled roots across four headroom levels, with
 quantile ratios matching this prediction to within $2$--$9\%$; exact
 only in the idealized i.i.d.\ model, as in Remark~\ref{rem:transfer-basis}.
 The same relation survives unchanged when $2$ is not a primitive root
@@ -756,42 +793,36 @@ scale-family direction survive intact; verified for $q=7,15$ to
 $1$--$4\%$. (Whether $2$ is a primitive root mod $q$ is, for prime
 $q$, governed by Artin's primitive root conjecture, open in general
 but proved conditionally on GRH by \cite{Hooley1967}.)}
-The tail-index equation $\mathbb{E}[\sum_i A_i^\sigma]=1$ becomes,
-for our weights, $q^{\alpha_-\sigma-1}=2^{\alpha_- \sigma}-1$, solved by
-$\sigma=1$ trivially and, nontrivially, by
-$\sigma=\alpha_+/\alpha_-$. This is further reason to take the conjecture
-seriously as a prediction, even though, per
-Remark~\ref{rem:transfer-basis}, the theory rigorously covers only the
-stochastic model so far.
+exactly as it
+predicts it for $W_q$ in Conjecture~\ref{conj:tail-index}; the two
+conjectures are expected to agree numerically at every $q$, but neither
+is known to imply the other. $W$ is indexed by an actual integer root,
+$W_q$ by a Haar-random $q$-adic point, and no coupling between the two
+populations has been established.
 
-We state this as a conjecture separate from both
-Theorem~\ref{thm:transition-model} and
-Conjecture~\ref{conj:transition-arithmetic} above, because
-Proposition~\ref{prop:always-frozen} shows $\alpha_+(q)$ is
-\emph{always} frozen, so the annealed pressure identity alone does not
-establish the tail. Theorem~\ref{thm:iid-tail} obtains it by implicit
-renewal at the unfrozen martingale normalization. Its arithmetic
-counterpart still requires evidence external to
-Theorem~\ref{thm:pressure}. At $q=3$ that evidence is real and
-threefold: the Hill estimator on real-tree samples and extreme-value
-theory on block maxima (both from earlier stages of this line of work)
-give $\alpha\approx2$ independently of the pressure argument, and the
-direct enumeration of \S\ref{sec:empirical}
+At $q=3$ the evidence for Conjecture~\ref{conj:real-tree-tail} is real
+and threefold: the Hill estimator on real-tree samples and
+extreme-value theory on block maxima (both from earlier stages of this
+line of work) give $\alpha\approx2$ independently of the pressure
+argument, and the direct enumeration of \S\ref{sec:empirical}
 (Empirical Result~\ref{emp:real-trees}) adds a third, related line of
 support (that enumeration targets
 Conjecture~\ref{conj:transition-arithmetic}, the growth exponent, a
-distinct claim from the tail index tested below). For $q\ge5$ the
-tail-index evidence tested here is markedly weaker: an
-early Hill-estimator measurement of finite-depth root scale factors for
+distinct claim from Conjecture~\ref{conj:real-tree-tail}, tested
+further below). For $q\ge5$ the evidence for
+Conjecture~\ref{conj:real-tree-tail} is markedly weaker: an early
+Hill-estimator measurement of finite-depth root scale factors for
 $q=5$ (600
 roots, agreement to two decimal places with the predicted
 $1.536\ldots$) was later shown, over the course of this line of work,
 to be statistically non-confirmatory at that sample size (the
 estimator's true standard error is $\approx0.45$, an order of magnitude
 larger than the agreement being claimed). Two further tests bear on
-this question.
+Conjecture~\ref{conj:real-tree-tail} and Conjecture~\ref{conj:tail-index},
+one on each.
 
-First, a larger statistical test (5000 roots, four
+First, on Conjecture~\ref{conj:real-tree-tail}: a larger statistical
+test (5000 roots, four
 headroom levels up to $10^8$) applied a battery of four estimators (a
 rank-size regression with the Gabaix--Ibragimov finite-sample
 correction; a bias-corrected Hill estimator following Huisman et al.;
@@ -810,7 +841,8 @@ $\approx2.2$ at the narrowest) without settling near any single
 value: consistent with a slowly-converging pre-asymptotic regime in
 which no estimator at this sample size can be treated as decisive.
 
-Second, we tested the conjecture by an exact, non-statistical route:
+Second, on Conjecture~\ref{conj:tail-index} itself: we tested it by an
+exact, non-statistical route:
 the same depth-$k$ recursion $Z_k(\theta;u)$ used to verify the
 frozen-phase growth law above (with $\theta=\alpha_-(5)$) was evaluated
 over the \emph{entire} population of residues $u\bmod 5^k$ (not a
@@ -841,12 +873,16 @@ below a nearby true index and lying further below one. The test is
 inconclusive, not disconfirming, and enumeration alone will not resolve
 it.
 
-Neither route confirms Conjecture~\ref{conj:tail-index}
-for $q\ge5$, and neither refutes it; both are more informative than the
-original under-powered measurement, and both point to the same
-conclusion: this is a harder statistical question than the $q=3$ case,
-which has stronger finite-level support from the independent Hill/EVT
-measurements noted above. Two follow-ups address this. A log-periodic
+Neither route confirms its target for $q\ge5$
+(Conjecture~\ref{conj:real-tree-tail} for the first,
+Conjecture~\ref{conj:tail-index} for the second), and neither refutes
+it; both are more informative than the original under-powered
+measurement, and both point to the same conclusion: this is a harder
+statistical question than the $q=3$ case, which has stronger
+finite-level support from the independent Hill/EVT measurements noted
+above. Two follow-ups address the two open questions separately. The
+first targets the unresolved transient in the exact test of
+Conjecture~\ref{conj:tail-index}: a log-periodic
 fit (motivated by the branch weights being powers of $2$) was tested
 against a period derived analytically, not fitted: the relevant
 renewal-theoretic dichotomy is non-arithmetic (the shift $\log_2 5$ is
@@ -855,16 +891,19 @@ periodogram test found no power at the predicted frequencies. An
 analytic handle on the linear transfer operator's spectrum, once
 obtained, likewise turned out not to bear on this question, since the
 transient lives in a separate nonlinear layer (the operator has a
-provably perfect spectral gap). The second follow-up produced a real
-gain: a comparison on a $20\times$ larger sample ($10^5$ roots)
+provably perfect spectral gap). The second follow-up extends the root
+battery behind Conjecture~\ref{conj:real-tree-tail}: a comparison on a
+$20\times$ larger sample ($10^5$ roots)
 produced, for the first time, a clean GPD threshold-stability plateau
 at the predicted value, a tightly concentrated Hill estimate, and a
 Vuong test that no longer favors the lognormal alternative; both were
 checked against two synthetic calibration tests. This is now the
-strongest evidence to date in favor of Conjecture~\ref{conj:tail-index}
+strongest evidence to date in favor of
+Conjecture~\ref{conj:real-tree-tail}
 for $q=5$, though not a proof of it: Vuong non-rejection is not
-confirmation, and the martingale is provably still pre-asymptotic at
-the headroom reached.
+confirmation, and $W_v(H)$'s own median drifts from $2.04$ at
+$H=10^5$ to $0.94$ at $H=10^8$, direct evidence the scale factor has
+not converged at the headroom reached.
 
 The mean drift $\log q - 2\log 2$ changes sign exactly at the
 threshold $q=5$ separating the two cases of
@@ -911,8 +950,8 @@ Goldie/Guivarc'h regime name correctly classifies the algebraic root
 $\alpha^\ast=2$ of $m(\alpha)=1$, but by itself says nothing about
 whether this root governs the \emph{quenched} tail of our specific
 arithmetic recursion. That is exactly the question
-Proposition~\ref{prop:always-frozen} and Conjecture~\ref{conj:tail-index}
-address directly.
+Proposition~\ref{prop:always-frozen}, Conjecture~\ref{conj:tail-index},
+and Conjecture~\ref{conj:real-tree-tail} address directly.
 
 \section{Empirical confirmation on real reverse trees}
 \label{sec:empirical}
@@ -962,10 +1001,10 @@ is annealed. That the two agree numerically at $\alpha_-(5)$ is
 consistent with $\alpha_-(5)$ being unfrozen
 (Proposition~\ref{prop:always-frozen}), where quenched and annealed
 are expected to coincide; it does not by itself certify that our
-annealed route would agree with a quenched one at a frozen root. What
-survives as new here is the closed-form equation~\eqref{eq:pressure-eq}
-itself, unifying the family for arbitrary $q$ in a single algebraic
-identity, together with its rigorous annealed derivation and
+annealed route would agree with a quenched one at a frozen root. The
+closed-form equation~\eqref{eq:pressure-eq} is new: it unifies the
+family for arbitrary $q$ in a single algebraic
+identity, with a rigorous annealed derivation and
 independent numerical confirmation.
 \end{remark}
 

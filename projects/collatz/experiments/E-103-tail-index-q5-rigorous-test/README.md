@@ -319,8 +319,12 @@ much larger budget"). See H-129 for the full record.
   output preserved in the .txt).
 
 Public mirror (identical code, adapted to be self-contained):
-`collatz-endogeny/sec3-pressure-equation/` (`full_battery.py`,
-`exact_moment_test.py`).
+`collatz-qx1-pressure/sec3-pressure-and-transition/` (`full_battery.py`,
+`exact_moment_test.py`, `stage4_type_constants_check.py`,
+`stage6_large_sample_battery.py`). Migrated there when paper 01 was
+split into four papers (this line's material became paper 06); the
+old `collatz-endogeny/sec3-pressure-equation/` path no longer holds
+these scripts.
 
 ## Reproduce
 

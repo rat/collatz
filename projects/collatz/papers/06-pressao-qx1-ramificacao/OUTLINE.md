@@ -11,7 +11,10 @@ Repositório de reprodutibilidade: `github.com/faculdade/collatz-qx1-pressure`.
 
 Hipóteses-fonte: H-109 (identidade de pressão), H-138 (martingale
 q-ádico), H-139 (singularidade na raiz congelada), H-141 (critério de
-colisão L^p), H-132 (índice de cauda no modelo iid, via Liu 2000).
+colisão L^p), H-132 (índice de cauda no modelo iid, via Liu 2000),
+H-129 (atribuída aqui em 2026-08-10; formalizada como
+`conj:real-tree-tail`, o fator de escala de crescimento na árvore real,
+distinto de `conj:tail-index`).
 
 ## Estrutura
 
@@ -48,7 +51,12 @@ texto: `prop:transition-fine` (condicional a um refinamento tipo
 renovação, não provado; é estritamente mais forte que
 `thm:transition-model`, fixa a constante, não só o expoente).
 Conjectura: `conj:transition-arithmetic` (= problema aberto desde 1995
-para q=3), `conj:tail-index`.
+para q=3), `conj:tail-index` (martingale Haar-q-ádica $W_q$),
+`conj:real-tree-tail` (fator de escala de crescimento na árvore real,
+`prop:transition-fine`; nova em 2026-08-10, formaliza H-129 — objeto
+distinto de `conj:tail-index`, mesmo expoente previsto pelo mesmo
+mecanismo de renovação implícita, sem prova de equivalência entre os
+dois).
 
 ## Dependência de outros papers
 
@@ -77,3 +85,15 @@ própria, o lema de log-convexidade foi generalizado e movido para o
 §3, todas as citações do item C-21 foram verificadas contra fonte
 primária (uma delas, PDF de Villemonais-Zalduendo 2025, baixado e lido
 para resolver C-22).
+
+## Passagem de redação final (2026-08-10, mesma sessão)
+
+H-129 atribuída aqui (decisão do diretor científico) e formalizada
+como `conj:real-tree-tail`. Ao formalizar, a evidência empírica de q=3
+e as três baterias de raízes de q=5, antes atribuídas a
+`conj:tail-index`, foram reatribuídas: medem o fator de escala da
+árvore real (`prop:transition-fine`), não a martingale Haar-q-ádica.
+Verificado com Codex antes de editar. Abstract reescrito de novo
+(Regra 8b) para refletir os dois objetos separadamente. Checklist da
+Regra 4b/seção 10 aplicado ao `main.tex` inteiro. Recompila limpo,
+bibliografia e referências cruzadas conferidas por script, sem órfãos.
