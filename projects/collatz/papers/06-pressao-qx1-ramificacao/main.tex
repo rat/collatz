@@ -525,9 +525,9 @@ root becomes the \emph{larger} of the two.
 \paragraph{The i.i.d.\ model.} Idealize the reverse tree by declaring
 each candidate exponent $a\ge1$ independently fertile with probability
 $1/q$; a fertile $a$ produces a child at multiplicative displacement
-$2^a/q$ from its parent, matching the arithmetic tree's own transition
-rule (\S\ref{sec:setup}) one branch at a time rather than only in
-aggregate. Writing $S_v\in\mathbb{R}$ for the cumulative log-displacement
+$2^a/q$ from its parent, matching the arithmetic tree's own
+branch-by-branch transition rule (\S\ref{sec:setup}). Writing
+$S_v\in\mathbb{R}$ for the cumulative log-displacement
 of an individual $v$ from the root, and $N(x):=\#\{v:S_v\le\log x\}$ for
 the number of individuals of any generation reaching size at most $x$,
 the many-to-one formula gives, for $\theta>0$,
@@ -600,24 +600,29 @@ $Z_j^{(K)}$ is the population after $j$ such blocks. Since the root has
 infinitely many independent admissible children almost surely (the
 events $2^au\equiv1\!\!\pmod q$, $a\ge1$, are i.i.d.\ with probability
 $1/q$ each), and each spawns an independent copy of the whole
-construction, at least one copy survives almost surely; the almost
-surely finite depth and displacement at which that copy is rooted only
-shifts what follows by a bounded amount, negligible in the limits
-below. Every one of the $Z_j^{(K)}$ retained individuals lies at
-generation $jL$ with displacement at most $jL(\mu+\varepsilon)$, so
-$N\bigl(e^{jL(\mu+\varepsilon)}\bigr)\ge Z_j^{(K)}$, and monotonicity
-of $N$ (the exponentially spaced points $jL(\mu+\varepsilon)$ have
-consecutive ratio $\to1$) gives
+construction, at least one copy survives almost surely, rooted at an
+almost surely finite generation and displacement
+$\Delta<\infty$. Every one of the $Z_j^{(K)}$ retained individuals then
+lies at generation $jL+O(1)$ with displacement at most
+$jL(\mu+\varepsilon)+\Delta$, so
+$N\bigl(e^{jL(\mu+\varepsilon)+\Delta}\bigr)\ge Z_j^{(K)}$, and
+monotonicity of $N$ (the exponentially spaced points
+$jL(\mu+\varepsilon)+\Delta$ have consecutive ratio $\to1$, since
+$\Delta$ is fixed while $j\to\infty$) gives
 \[
  \liminf_{x\to\infty}\frac{\log N(x)}{\log x}
  \ge\frac{\log r_L^{(K)}}{L(\mu+\varepsilon)}\qquad\text{almost surely.}
 \]
 This holds simultaneously for every $K$ (a countable intersection of
-almost-sure events), so the right side may be replaced by its supremum
-over $K$, namely $\log r_L/(L(\mu+\varepsilon))$. Letting
-$L\to\infty$ and then $\varepsilon\downarrow0$, using
+almost-sure events, one per $K\in\mathbb N$), so the right side may be
+replaced by its supremum over $K$, namely $\log r_L/(L(\mu+\varepsilon))$;
+call this almost-sure event $\mathcal E_L$. Intersecting
+$\mathcal E_L$ over the countably many $L\in\mathbb N$ with $r_L>1$
+gives an almost-sure event on which the bound holds simultaneously for
+every such $L$, so $L\to\infty$ may be taken along this fixed sequence
+of events, followed by $\varepsilon\downarrow0$; using
 $\log r_L\ge\alpha L(\mu-\varepsilon)+\log\Pr_\alpha(\cdots)\to\alpha
-L(\mu-\varepsilon)(1+o(1))$, gives
+L(\mu-\varepsilon)(1+o(1))$, this gives
 $\liminf_x\log N(x)/\log x\ge\alpha$ almost surely. With the upper
 bound, $\log N(x)/\log x\to\alpha_-(q)$ almost surely.
 \end{proof}
@@ -629,9 +634,8 @@ branching-random-walk representation $B[5^0]$ of the $5x+1$ reverse
 tree, one with at most two offspring per node rather than the present
 model's almost-surely infinite offspring; a direct computation shows
 its log-Laplace transform is $m_{\mathrm{KL}}(\theta)=
-2^{-\theta}(1+5^{\theta-1})$, not $\rho_{\mathrm{ann}}(\theta)$, so the
-two models are not the same stochastic process. They do share every
-root: $m_{\mathrm{KL}}(\theta)-1=\bigl((2^\theta-1)/2^\theta\bigr)
+2^{-\theta}(1+5^{\theta-1})$, not $\rho_{\mathrm{ann}}(\theta)$. They
+share every root: $m_{\mathrm{KL}}(\theta)-1=\bigl((2^\theta-1)/2^\theta\bigr)
 \bigl(\rho_{\mathrm{ann}}(\theta)-1\bigr)$, which is why
 $\eta_{5,BP}=\alpha_-(5)$ in Remark~\ref{rem:novelty-109} despite the
 two derivations having nothing else in common; their proof does not

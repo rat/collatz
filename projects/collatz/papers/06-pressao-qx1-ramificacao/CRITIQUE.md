@@ -991,3 +991,54 @@ Contagem de rodadas limpas consecutivas: 0/3.**
 `pdflatex`), zero erro/referência indefinida; `\cite`/`\bibitem` e
 `\ref`/`\eqref`/`\label` conferidos por script, sem órfãos em nenhuma
 direção.
+
+### 2026-08-10 — rodada de convergência 3 (crítico, contexto fresco)
+
+Escopo: `main.tex` inteiro; terceira reconferência independente, do
+zero, da prova de `thm:transition-model` (limite inferior), incluindo
+o Remark novo sobre Kontorovich-Lagarias, com verificação direta contra
+a fonte primária local (não reaproveitada das rodadas anteriores).
+
+**Resultado: 0 crítico, 0 maior, 1 moderado, 1 menor. Não limpa.
+Contagem de rodadas limpas consecutivas: 0/3.**
+
+Nenhum erro matemático novo encontrado (a prova de
+`thm:transition-model` foi confirmada correta, do zero, pela terceira
+vez). O crítico registrou explicitamente: "Não encontrei erro
+matemático novo em nenhuma prova, identidade ou fórmula numérica."
+
+| ID | Nível | Resumo | Status |
+|----|-------|--------|--------|
+| D-16 | moderado | Orçamento "X, not Y"/"rather than" (Regra 4b §2): reavaliado de forma independente, 2 trechos concretos identificados como cortáveis sem perda técnica e não cortados nas rodadas anteriores apesar de examinados | fixed |
+| D-17 | menor | Prova de `thm:transition-model`: dois gaps de rigor rotineiros não escritos explicitamente (deslocamento finito $\Delta$ da cópia sobrevivente; interseção contável sobre $L\to\infty$, mesma técnica já usada para $K$) | fixed |
+
+**Correções aplicadas:**
+
+- **D-16.** Cortadas as duas ocorrências concretas que o crítico
+  apontou como redundantes: "one branch at a time rather than only in
+  aggregate" (§5, parágrafo do modelo i.i.d., reescrito como
+  "branch-by-branch transition rule", sem antítese) e "so the two
+  models are not the same stochastic process" no Remark de
+  Kontorovich-Lagarias (redundante com "not $\rho_{\mathrm{ann}}(\theta)$"
+  imediatamente anterior, que já estabelece a diferença). Contagem cai
+  de ~16 para ~14. A tensão remanescente entre a letra da Regra 4b §2
+  ("no máximo dois por documento") e o conteúdo tecnicamente necessário
+  do paper (distinguir repetidamente objetos matemáticos genuinamente
+  diferentes: dois modelos estocásticos, duas conjecturas, um teorema
+  de uma proposição condicional) fica registrada aqui como uma tensão
+  real e não resolvida por conta própria do produtor pela terceira vez
+  seguida — nomeada explicitamente para o pesquisador decidir, no
+  mesmo espírito de C-30 (Regra 5), em vez de o produtor continuar
+  arbitrando sozinho o mesmo ponto rodada após rodada.
+- **D-17.** A prova ganhou um deslocamento finito $\Delta$ nomeado
+  explicitamente (generation $jL+O(1)$, displacement at most
+  $jL(\mu+\varepsilon)+\Delta$) em vez de só "shifts what follows by a
+  bounded amount"; e a interseção contável sobre $K$ foi estendida,
+  pela mesma técnica, a uma interseção contável sobre a sequência de
+  $L$ usada no limite $L\to\infty$, deixando explícito que o evento
+  quase certo vale simultaneamente ao longo dessa sequência.
+
+**Verificação técnica pós-correção:** recompilado (2 passadas
+`pdflatex`), zero erro/referência indefinida; `\cite`/`\bibitem` e
+`\ref`/`\eqref`/`\label` conferidos por script, sem órfãos em nenhuma
+direção.
