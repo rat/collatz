@@ -1111,3 +1111,61 @@ Recompilado limpo (pdflatex 2x, 6 páginas); `\cite`/`\bibitem`
 conferidos sem órfãos em nenhuma direção (três chaves).
 
 **Contagem de rodadas limpas consecutivas após R7: 0.**
+
+---
+
+## 2026-08-11, rodada R8 (loop de convergência, crítico independente)
+
+| R8-M1 | 2026-08-11 (loop R8) | "moves it by 0,0000 at the calibration decade" é tautológico: `aitken()` usa só os três últimos pontos, e na década mais funda da grade b15 os conjuntos "all buffers" e "headroom 3-5" reduzem ao mesmo trio de buffers, dando diferença zero para qualquer dado, sem medir nada | maior | fixed |
+| R8-M2 | 2026-08-11 (loop R8) | "at most 0,0010 ... on every construction" excluía a leitura da árvore aritmética, cujo próprio squeeze na década rasa é 0,0017, 70% maior que o alegado, e é exatamente o número que sustenta o gap raso de 0,0258 do Empirical Result 5.1 | maior | fixed |
+| R8-D1 | 2026-08-11 (loop R8) | Sistemático de implementação (0,0035±0,0023) medido na janela rasa b13 de três décadas, nunca dito, e transportado sem qualificação para a comparação de uma única década na grade b15 | moderado | fixed |
+| R8-D2 | 2026-08-11 (loop R8) | 0,639 (§4, Python) e 0,63824 (Discussão, C) nunca reconciliados, ao contrário do par análogo 0,6490/0,64926 que o próprio texto já reconcilia explicitamente | moderado | fixed |
+| R8-D3 | 2026-08-11 (loop R8) | "a single unlucky realization of the unconstrained construction dominates the wall time" atribuía a um controle específico algo que a fonte primária (`run_deep.sh`) atribui genericamente a "the stochastic controls"; contagem de nós visitados por raiz mostra que a realização mais extrema é de `cyc`, não do controle irrestrito | moderado | fixed |
+| R8-n1 | 2026-08-11 (loop R8) | Bloco §3/§4 (três frases, 54/44/49 palavras) sem nenhuma frase abaixo de dez palavras | menor | fixed |
+| R8-n2 | 2026-08-11 (loop R8) | Ressalva de escopo sobre o modelo de Volkov reincidiu pela terceira vez (resumo, ER 5.1, parágrafo de uma linha na Discussão); R4-n2 já tinha cortado a instância da Discussão | menor | fixed |
+| R8-n3 | 2026-08-11 (loop R8) | Nota de versão do bibitem de KL lista "Definition 7.7" como citada, mas o corpo nunca aponta para ela por número | menor | fixed |
+| R8-n4 | 2026-08-11 (loop R8) | KL escrevem $\pi_a^\ast(x)$ (não definido no artigo deles) na frase do proxy; o paper 04 lê corretamente como $\pi_{a,5}$ da Definition 7.7, mas sem nota | menor | rejected (a leitura do paper já está correta; anotar a inconsistência de notação de KL é comentário sobre o artigo alheio, não uma correção deste paper) |
+
+Rodada 8 do loop de convergência: **crítico 0, maior 2, moderado 3,
+menor 4** (total 9 achados). NÃO limpa. Todos corrigidos nesta mesma
+passada, exceto R8-n4, rejeitado com razão registrada. Contagem de
+rodadas limpas consecutivas após R8: **0**.
+
+Contexto fresco (novo subagente). Reproduziu `buffer_squeeze.py` nos
+cinco arquivos de dados da grade b15 (não só na árvore aritmética b17,
+que rodadas anteriores já tinham verificado), o que revelou tanto a
+tautologia de R8-M1 quanto a omissão de R8-M2. Contou nós visitados por
+raiz nos cinco modos para checar R8-D3.
+
+### Verificação (Regra 8c)
+
+Confirmei R8-M1 lendo `analyze.aitken()`: usa `s[-3],s[-2],s[-1]`.
+Reconstruí os índices de buffer para a década mais funda da grade b15
+(topo=$10^{10}$, buffers 9-15): "all buffers" usa buf>10, isto é
+{11,12,13,14,15}; "squeeze" usa top+3..top+5, isto é {13,14,15}. Os
+últimos três elementos de {11,...,15} são {13,14,15}: idêntico ao
+conjunto squeeze. `aitken()` sobre os dois dá o mesmo número por
+construção matemática, não por medição. Confirmei R8-M2 rodando
+`buffer_squeeze.py data/q5_arith_b15.txt`: 0,0017 em $10^7\to10^8$.
+
+### Resolução
+
+Todos os achados corrigidos, exceto R8-n4 (rejeitado). Mudança de
+substância mais importante: reescrita do parágrafo de sistemáticos da
+Discussão para (a) declarar explicitamente que o resultado nulo na
+década de calibração é tautológico e não uma medição, (b) citar os
+números reais das duas décadas rasas onde o teste tem folga (0,0017 e
+0,0009, incluindo a árvore aritmética), conectando-os à tendência
+decrescente já estabelecida na corrida profunda, e (c) qualificar o
+sistemático de implementação com a grade/janela em que foi medido, sem
+transportá-lo sem aviso para a comparação de década única. Corrigida a
+atribuição do estouro de tempo de parede de volta à formulação genérica
+da fonte primária ("the stochastic constructions"), desfazendo uma
+especificação indevida introduzida na rodada 6. Adicionada reconciliação
+explícita entre 0,639 e 0,63824. `\bibitem` de KL ajustado (Definition
+7.7 agora referenciada por número no próprio Remark que a usa).
+
+Recompilado limpo (pdflatex 2x, 6 páginas); `\cite`/`\bibitem`
+conferidos sem órfãos em nenhuma direção (três chaves).
+
+**Contagem de rodadas limpas consecutivas após R8: 0.**

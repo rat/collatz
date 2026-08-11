@@ -126,8 +126,9 @@ reaches $u$, if at all, along a single path. We count them:
 Kontorovich and Lagarias's Theorem~8.10 is a statement about the
 branching random walk $B[5^0]$: almost surely, its progeny count
 $I^\ast(x;\omega)$ satisfies $I^\ast(x;\omega)=x^{\eta_{5,BP}+o(1)}$.
-They use $I^\ast$ as a proxy for the integer count $\pi_{u,5}(x)$,
-counting every integer reaching $u$ under the un-accelerated map
+They use $I^\ast$ as a proxy for the integer count $\pi_{u,5}(x)$
+(their Definition~7.7), counting every integer reaching $u$ under the
+un-accelerated map
 $n\mapsto(qn+1)/2$ for $n$ odd, $n/2$ for $n$ even. That $\pi_{u,5}$
 shares $B[5^0]$'s exponent is their unproven heuristic.
 Separately, collapsing the $2$-adic halving chain between consecutive
@@ -174,7 +175,7 @@ arithmetic tree's sibling spacing but a tunable exponent.
 \section{Method}
 \label{sec:method}
 
-We enumerate the exact reverse tree of $T_5$ from $300$ roots: odd
+We enumerate $T_5$'s exact reverse tree from $300$ roots. They are odd
 integers coprime to $5$ and outside every cycle of $T_5$ (a cycle
 member is reachable only from inside its own cycle, so excluding them
 needs no visited set), sampled uniformly from $[101,10^4)$, well below
@@ -292,8 +293,8 @@ iterates and is not implemented here.
 \end{empirical}
 
 Pushed on the same $300$ roots to checkpoints $10^{12}$ and buffers
-$10^{17}$, past the depth where a single unlucky realization of the
-unconstrained construction dominates the wall time of a matched batch,
+$10^{17}$, past the depth where a single unlucky realization among the
+stochastic constructions dominates the wall time of a matched batch,
 the arithmetic tree's slope alone approaches $0.650919$: $0.6465$ at
 $10^7\!\to\!10^8$,
 $0.6487$ at $10^8\!\to\!10^9$, $0.6490$ at $10^9\!\to\!10^{10}$, then
@@ -309,19 +310,26 @@ $0.0004$ from $10^8\!\to\!10^9$ onward.
 \section{Discussion}
 \label{sec:discussion}
 
-Two systematics touch Empirical Result~\ref{thm:kl-calibrated}. The
-congruence-matched integer recursion and its real-valued relaxation,
-both built to exponent $0.650919$, differ by $0.0035\pm0.0023$ (one
-standard error) over six seeds on the raw log-slope at the deepest
-buffer: indistinguishable from zero, and comparable in size to the
-$0.0037$ wider band width itself if it is not. Separately, redoing each
-reading's Aitken step with only the buffer headroom the deepest decade
-has moves it by $0.0000$ at the calibration decade and by at most
-$0.0010$ at the shallower decade $10^7\!\to\!10^8$, on every
-construction, well below the $0.0282$ separation. At the calibration
-depth itself, the relaxation built to exponent $0.678$ under-reads its
-own target by $0.00052$ and the relaxation built to $0.650919$ by
-$0.00111$, smaller still.
+Two systematics touch Empirical Result~\ref{thm:kl-calibrated}. On the
+window used for the opening measurement above, the congruence-matched
+integer recursion and its real-valued relaxation, both built to
+exponent $0.650919$, differ by $0.0035\pm0.0023$ (one standard error)
+over six seeds: indistinguishable from zero, and comparable in size to
+the $0.0037$ wider band width itself if it is not; whether that
+systematic transfers unchanged to the single-decade slope of the
+calibration comparison is not tested here. Separately, the same
+buffer-headroom test used on the deep run above, applied to the b15
+grid, has no slack left at the calibration decade itself, where it
+returns $0.0000$ identically for every construction, uninformative
+about truncation error there. At the two shallower decades the test
+does cover, it moves each reading by at most $0.0017$ at
+$10^7\!\to\!10^8$ and by at most
+$0.0009$ at $10^8\!\to\!10^9$. That is a decreasing trend, consistent
+with the deep run's own fall to at most $0.0004$ by $10^8\!\to\!10^9$
+and below that at greater depth, and well below the $0.0282$
+separation. At the calibration depth itself, the relaxation built to
+exponent $0.678$ under-reads its own target by $0.00052$ and the
+relaxation built to $0.650919$ by $0.00111$, smaller still.
 
 The $0.038$ bias of the opening measurement in \S\ref{sec:calibrated}
 and the residual bias at the calibration depth, under $0.004$ for every
@@ -329,9 +337,6 @@ construction there, come from related log-slope estimators of the same
 family: one over the wider window at shallow depth, one over a single
 decade at much greater depth. Both the added depth and the narrower
 window contribute to the drop.
-
-The comparison addresses only whether the arithmetic tree's counting
-exponent is closer to $0.650919$ or to $0.678$.
 
 Collapsing the chain of doublings in Kontorovich and Lagarias's
 $B[5^0]$ gives each exponent $a\ge1$ an independent chance $1/5$ of a
@@ -350,8 +355,11 @@ exponent independently.
 
 On the b13 grid of \S\ref{sec:calibrated}'s opening measurement,
 buffers $10^9$ through $10^{13}$, the unconstrained construction's bias
-is $0.038$ and the arithmetic tree's window reading is $0.63824$, a
-bias of $0.013$ presuming the disputed exponent is $0.650919$. The deep
+is $0.038$ and the arithmetic tree's window reading is $0.63824$,
+computed on the C enumerator's own root sample and close to, but
+distinct from, \S\ref{sec:result}'s Python-sampled $0.639$: a bias of
+$0.013$ presuming the disputed exponent is $0.650919$.
+The deep
 arithmetic-only run sits systematically at or just below $0.650919$, a
 pattern the data here cannot yet distinguish from a slowly converging
 sequence.
