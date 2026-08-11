@@ -1656,3 +1656,46 @@ Contagem de rodadas limpas consecutivas: 0/3.**
 passadas `pdflatex`), zero erro/referência indefinida;
 `\cite`/`\bibitem` e `\ref`/`\eqref`/`\label` conferidos por script,
 sem órfãos em nenhuma direção.
+
+### 2026-08-11 — rodada de convergência 19 (crítico, contexto fresco)
+
+Escopo: `main.tex` inteiro (décima sexta reconferência independente
+das provas centrais sem erro novo), mais arquivos de suporte, com
+verificação dedicada do script novo `real_tree_tail_q3.py` da rodada
+18 (rodado do início ao fim, número por número contra o README).
+
+**Resultado: 0 crítico, 1 maior, 1 moderado, 0 menor. Não limpa.
+Contagem de rodadas limpas consecutivas: 0/3.**
+
+| ID | Nível | Resumo | Status |
+|----|-------|--------|--------|
+| D-53 | maior | Regra 12: o conserto de D-50 (rodada 18) só cobriu a metade "Hill estimator" da alegação "the Hill estimator and extreme-value theory on block maxima" (resumo, §5); a metade EVT continuava sem script em `collatz-qx1-pressure`, o script real (`experiment_evt_frechet.py`, H-108) ainda só no repositório de pesquisa geral | fixed |
+| D-54 | moderado | `real_tree_tail_q3.py` e seu README se descrevem como "self-contained", mas importar `count_tree` de `empirical_qx1_tree.py` executava todo o código de demonstração daquele módulo (enumeração q=5/q=7, teste de Hill antigo) como efeito colateral, porque esse código vivia em nível de módulo, não dentro de `if __name__=="__main__"` | fixed |
+
+**Correções aplicadas (Regra 8c: rodei `real_tree_tail_q3.py` e
+verifiquei número por número contra o README antes de aceitar D-53/D-54
+como achados reais, e voltei a rodar depois de cada correção):**
+
+- **D-54.** Todo o código de demonstração de `empirical_qx1_tree.py`
+  movido para dentro de uma função `main()`, com a guarda
+  `if __name__=="__main__": main()`. Verificado que `python3
+  empirical_qx1_tree.py` direto produz exatamente a mesma saída de
+  antes, e que importar o módulo (como os outros dois scripts fazem)
+  não imprime mais nada fora do próprio script importador.
+- **D-53.** Escrito `evt_frechet_q3.py`, autocontido (mesmo padrão de
+  `real_tree_tail_q3.py`), implementando o método de
+  Fisher-Tippett-Gnedenko: regressão log-log da mediana de máximos de
+  blocos contra o tamanho do bloco (previsão $1/\alpha=0{,}5$ para
+  $\alpha=2$), mais um ajuste GEV secundário via scipy. Descobri, ao
+  tentar rodar com os parâmetros do experimento original ($N=6000$-$150000$),
+  que a cauda pesada de $W$ em $q=3$ torna alguns nós exploração muito
+  mais longa que a média (até $\sim\!0{,}9$s por raiz individual);
+  reduzi para $N=2500$ e tamanhos de bloco até $150$, mantendo o método
+  intacto, rodando dentro do limite de 10 minutos por chamada (levou
+  $5$min$50$s). Resultado: inclinação $0{,}513$, $\xi_{\mathrm{GEV}}=0{,}530$,
+  ambos consistentes com o previsto $0{,}5$. Documentado no README
+  (lista de arquivos, seção de resultado, "how to run"), commitado e
+  pushado.
+
+**Verificação técnica:** `main.tex` inalterado nesta rodada; estado já
+confirmado limpo na verificação da rodada 18.
