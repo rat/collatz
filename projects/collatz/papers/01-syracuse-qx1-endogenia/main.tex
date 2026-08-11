@@ -80,11 +80,11 @@ $\beta_{\mathrm{eff}}\le1.882712$ on the related cost in Tao's
 $\beta=1$ conjecture, from an inter-level cascade identity on the
 worst-cylinder mass, improving the previous bound of $2.306270$. A
 large-deviation argument shows that even ideal multiplicity inside the
-conjecture's own cost window falls short of what $\beta=1$ needs. We
-prove Wirsching's first 2003 conjecture on the base-$3$ Fabius
-function, and test the third to certified numerical error; a companion
-paper treats the second, with a corrected reading of its actual target
-\cite{WirschingCompanion}. Two candidate lemmas from Tao's bivariate
+conjecture's own cost window falls short of what $\beta=1$ needs. A
+companion paper proves Wirsching's first 2003 conjecture on the
+base-$3$ Fabius function and treats the second, with a corrected
+reading of its actual target \cite{WirschingCompanion}; we test the
+third to certified numerical error. Two candidate lemmas from Tao's bivariate
 Fourier-decay technique each fail to close the gap, for reasons we make
 exact. One yields a closed-form structure theorem, tested against
 sustained finite-level growth through level $17$. The other, an exact
@@ -190,10 +190,10 @@ coupling between sibling subtrees at $\rho_{\mathrm{eff}}\lesssim0.06$.
 Sections~\ref{sec:wcc} and \ref{sec:triangulation} test Wirsching's
 Weak Covering Conjecture by direct computation through level $20$ and
 prove the unconditional bound $\beta_{\mathrm{eff}}\le1.882712$ on the
-related cost in Tao's $\beta=1$ conjecture; \S\ref{sec:triangulation}
-also proves Wirsching's first 2003 conjecture, with the third tested
-numerically and the second treated in a companion paper
-\cite{WirschingCompanion}. Section~\ref{sec:kl} restates a companion
+related cost in Tao's $\beta=1$ conjecture. A companion paper proves
+Wirsching's first 2003 conjecture and treats the second, both
+restated without proof in \S\ref{sec:triangulation}, which also tests
+the third numerically \cite{WirschingCompanion}. Section~\ref{sec:kl} restates a companion
 paper's calibrated separation of the Kontorovich--Lagarias and Volkov
 counting-exponent predictions for $5x+1$ \cite{KLVolkovCompanion}.
 Section~\ref{sec:lemmas} executes two candidate routes to Regime~3 of
@@ -237,7 +237,7 @@ sterile class; for $q=3$ this recovers the familiar fact that
 multiples of $3$ have trivial reverse subtrees. In general, however,
 $d=\ord_q(2)$ can be a proper divisor of $\varphi(q)$: at $q=7$,
 $d=3<\varphi(7)=6$ and $\langle2\rangle=\{1,2,4\}$, so $u\equiv
-3,5,6\pmod7$ are sterile too, not merely $u\equiv 0$. This does not
+3,5,6\pmod7$ are sterile too, beyond $u\equiv 0$. This does not
 affect the pressure identity of Theorem~\ref{thm:pressure} below (whose
 proof, given in full in a companion paper \cite{PressureCompanion},
 works in the reverse direction, from an unconstrained exponent
@@ -872,8 +872,8 @@ variable, namely $s\log3$.
 Both identities were checked numerically.
 
 Consequently, ``apply Proposition~\ref{prop:tao117} twice, assuming
-conditional independence given the ancestor'' is not merely circular:
-it is false as stated, at any precision.
+conditional independence given the ancestor'' is circular. Worse, it
+is false as stated, at any precision.
 
 \subsection{The correct, non-circular reformulation}
 
@@ -1187,8 +1187,9 @@ accompanying repository.
 Fabius function}
 
 A different, more refined route toward the same goal is
-Wirsching~\cite{Wirsching2003}, developed in full in a companion paper
-\cite{WirschingCompanion}, whose central combinatorial object, the
+Wirsching~\cite{Wirsching2003}. This subsection restates, without
+proof, the results a companion paper \cite{WirschingCompanion}
+establishes in full. Its central combinatorial object, the
 ``Elka'' functions $e_\ell(k,a):=|E_{\ell,k}(a)|$, count paths of
 length $k+\ell$ in the Collatz graph ending at $a$, the same
 counting object underlying our entire $G(v)/\mathrm{Syrac}$ program,
@@ -1464,7 +1465,10 @@ $C_{\mathrm{exact}}$ exact, finite, and $D$-independent
   \frac{|\mathrm{Err}|}{\mathbb{E}[Z_1]\mathbb{E}[Z_2]} \;\le\;
   K_m - K_{\ell_0}, \qquad K_\ell := 3^\ell \sum_y \mu_\ell(y)^2,
 \]
-the normalized \emph{collision mass} of the Syracuse measure $\mu$. A
+the normalized \emph{collision mass} of the Syracuse measure $\mu$,
+unrelated to Wirsching's covering function $K(\ell)$ of
+Conjecture~\ref{conj:wcc}: the subscript notation $K_\ell$ is reserved
+for the collision mass throughout the rest of this paper. A
 conditional lemma would follow if $K_\infty := \lim_\ell K_\ell <
 \infty$ (equivalently, the density $f=d\mu/d(\text{Haar})$ lies in
 $L^2(\mathbb{Z}_3)$): the fine covariance, net of the exact coarse
@@ -1544,8 +1548,8 @@ self-referential fixed point $\mu_n(y) = \tfrac12\nu(2y) +
 \tfrac12\mu_n(2y)$, all arithmetic mod $3^n$.
 \end{proof}
 
-We validated the recursion, not merely its $\ell=1$ base case, which
-would not exercise the recursive machinery at all, against direct
+The $\ell=1$ base case alone would not exercise the recursive
+machinery, so we validated the recursion itself against direct
 Monte Carlo sampling of $\mathrm{Syrac}$ from its primary definition
 \eqref{eq:syracuse-def} at $\ell=3,4$ ($3\times10^6$ samples each),
 bin-by-bin: maximum discrepancy $0.000311$ ($\ell=3$) and $0.000213$
@@ -1978,7 +1982,7 @@ generators): a deficit of a factor $\ge 2.2$, rising to $\approx 7$ at
 a realistic generator density $\rho\approx 0.3$. In Tao's original 2011
 application this closes because $\log q\ll d$ (unbounded ratio); in
 the Weak Covering Conjecture regime, $\log_2 q/d\ge 1.6$, and the
-technique does not merely degrade: it inverts sign.
+technique does more than degrade: its sign inverts.
 \end{proposition}
 
 \begin{theorem}[Jensen identity and the exact Fourier-budget deficit]
@@ -2242,8 +2246,9 @@ other seven contain open mathematical statements.
   Covering Conjecture strictly needs; a finite check through $\ell=16$
   gives no sign of the singular scenario.
 \item \textbf{Wirsching's Conjecture 2} (\S\ref{sec:triangulation}),
-  above the numerically tested Conjecture~3. Conjecture~1 is proved in
-  Theorem~\ref{thm:wirsching-conj1}. Theorem~\ref{thm:microcanonical}
+  above the numerically tested Conjecture~3. A companion paper proves
+  Conjecture~1 (Theorem~\ref{thm:wirsching-conj1},
+  \cite{WirschingCompanion}). Theorem~\ref{thm:microcanonical}
   proves that its target condition $(\star3)$ implies the weighted
   cylinder estimate in O2. Proposition~\ref{prop:complex-deconditioning}
   identifies the conditional local limit theorem needed to pass from
@@ -2488,7 +2493,8 @@ recorded in the corresponding companion paper's appendix
   $R_\ell(u)$ and $\min_u R_\ell(u)$ were computed in exact rational
   arithmetic through $\ell=10$, certifying
   $\beta_{\mathrm{eff}}\le1.882712$; the monotonicity of $\min_u
-  R_\ell(u)$ itself is proved, not merely checked at these levels.
+  R_\ell(u)$ itself has a full proof, cross-checked numerically at
+  these levels.
 \item \emph{Pair inequality forces non-collapse}
   (Proposition~\ref{prop:pairwise-nonsingular}): the implication is
   proved; $\mathbb{E}[-\log N_\ell(U)]$ and $\Pr(N_\ell(U)\le x)$ for

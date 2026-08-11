@@ -10,6 +10,16 @@ em quatro papers); `prévio` = defeito anterior a essa sessão, que a
 checagem final apanhou (Regra 8d: consertar não é obrigação desta
 rodada, mas registrar é).
 
+**A partir de C-026 (2026-08-10, loop de convergência)**: as rodadas
+seguem um critério de parada explícito pedido pelo diretor científico:
+3 rodadas de crítica adversarial CONSECUTIVAS "limpas" (0 crítico, 0
+maior, 0 moderado, <3 menor), contexto fresco a cada rodada, sem
+crédito parcial. A coluna "Severidade" nessas rodadas usa a escala de 4
+níveis (crítico/maior/moderado/menor) definida para esse loop, em vez
+da escala alta/média/baixa usada nas rodadas anteriores; o histórico
+antigo (C-001 a C-025) permanece como está, sem reclassificação
+retroativa.
+
 ## Tabela de status
 
 | ID | Rodada | Resumo | Severidade | Origem | Status |
@@ -39,6 +49,9 @@ rodada, mas registrar é).
 | C-023 | 2026-08-10 | Abstract não reflete H-166/H-169: ignora os dois teoremas novos e ainda anuncia como melhor resultado de colisão o enunciado que `thm:diagonal-collision` superou | média | hoje | fixed |
 | C-024 | 2026-08-10 | `thm:kl-calibrated` (linhas 726, 2367) diz "ten interval-widths"; o número certificado no companion paper 04 (`thm:kl-calibrated`, linhas 247-248, banda medida em três construções independentes = 0,0037, não a tolerância a priori 0,003) é "seven band-widths". C-002 desta mesma rodada corrigiu a contradição abstract/corpo sobre este resultado sem checar o número em si contra o paper 04, blindando o valor errado ao deixá-lo consistente internamente | média | hoje | fixed |
 | C-025 | 2026-08-10 | §3 (evidência de `conj:tail-index`) e O7 na Conclusão atribuíam as baterias de raízes reais amostradas (Hill/EVT em q=3, bateria de 100.000 raízes em q=5) diretamente a `conj:tail-index` (a martingale $W_q$); na verdade medem o fator de escala de crescimento da árvore real, uma conjectura formalmente separada (`conj:real-tree-tail`) no companion paper 06. Achado feito e corrigido pela sessão de redação final do paper 06 (ver C-31 em `../06-pressao-qx1-ramificacao/CRITIQUE.md`), propagado aqui para manter os dois papers consistentes | alta | prévio | fixed |
+| C-026 | loop R1 | Abstract, §1.2 e O3 dizem "we prove"/"Conjecture 1 is proved in Theorem X" para `thm:wirsching-conj1`, mas a prova está só no companion paper 05 (`WirschingCompanion`); o teorema em 01 é um `\begin{theorem}...\end{theorem}` sem `\begin{proof}`, recorrência exata do padrão já corrigido em C-001 | maior | prévio | fixed |
+| C-027 | loop R1 | Colisão de notação: `K(\ell)` (função de cobertura sub-exponencial de Wirsching, `conj:wcc`) e `K_\ell`/`K_{q,\ell}` (collision mass da medida de Syracuse, definida linha ~1466) usam a mesma letra sem nenhuma frase de desambiguação nas seções que tratam da mesma família de conjecturas | moderado | prévio | fixed |
+| C-028 | loop R1 | Construção "not merely P but Q"/"P, not Q" da família de antítese (Regra 4b) ocorria pelo menos 7 vezes (linhas 240, 875, 1085, 1437, 1551, 1985, 2496), acima do orçamento de duas por documento | menor | prévio | fixed |
 
 Checagens mecânicas que passaram, registradas para não serem refeitas:
 34 chaves `\cite` contra 34 `\bibitem`, sem órfãos nem pendentes nas
@@ -787,3 +800,82 @@ exato e direto de $W_q$ (soma sobre toda a população de resíduos, não
 amostra) continua inconclusivo. `main.tex` recompilado limpo (3
 passadas `pdflatex`); `\cite`/`\bibitem` e `\ref`/`\label` conferidos
 por script, sem órfãos em nenhuma direção.
+
+---
+
+## Loop de convergência (2026-08-10): critério de parada explícito
+
+Pedido do diretor científico: rodadas de crítica adversarial repetidas,
+contexto fresco a cada rodada (subagente `Agent` síncrono, nunca
+`SendMessage`), até 3 rodadas CONSECUTIVAS limpas (0 crítico, 0 maior, 0
+moderado, <3 menor; sem crédito parcial, qualquer achado abaixo do
+padrão zera a contagem). Ponto de partida: as 25 entradas C-001 a C-025
+acima, todas já `fixed`; compilação limpa confirmada antes da primeira
+rodada (3 passadas `pdflatex`, sem "undefined reference" nem "undefined
+citation", 34 `\cite`/34 `\bibitem`).
+
+### Rodada 1 (subagente `general-purpose`, síncrono): NÃO limpa
+
+Leu `main.tex` completo (2669 linhas), `CRITIQUE.md` completo, e cruzou
+números/enunciados contra os companions 04, 05, 06 e o repositório
+`collatz-endogeny` local. Recalculou manualmente as constantes de
+`thm:wcc-large-deviation` (confirmadas) e verificou por amostragem que
+C-001 a C-025 se sustentam (sete "band-widths", $\beta_{\mathrm{eff}}$,
+"2.3e-13", cadeia $(\star1)$-$(\star5)$, valores de transição
+$\alpha^*$: todos batem contra os companions).
+
+Achados: 0 crítico, 1 maior (C-026), 1 moderado (C-027), 1 menor
+(C-028, agregando 7 ocorrências da mesma construção sintática). Ver a
+tabela de status para o resumo de cada um; detalhe:
+
+**C-026 (maior).** `thm:wirsching-conj1` (linha 1251, sem
+`\begin{proof}`) é atribuído ao próprio paper no abstract ("We prove
+Wirsching's first 2003 conjecture"), em §1.2 ("also proves Wirsching's
+first 2003 conjecture") e em O3 da Conclusão ("Conjecture~1 is proved
+in Theorem~\ref{thm:wirsching-conj1}"), mas a Data Availability
+(linhas ~2394-2404) já dizia corretamente que a prova está no
+companion. Verificado independentemente contra `papers/05-wirsching-2003-conjecturas/main.tex`
+(linhas 189-224): a prova completa está lá. É a mesma classe de defeito
+que C-001 já corrigiu para a equação de pressão, recorrendo aqui sem
+correção (o produtor da sessão de redação final tinha corrigido a
+equação de pressão mas não notou o mesmo padrão aplicado a
+`thm:wirsching-conj1`).
+
+**C-027 (moderado).** `K(\ell)` (Wirsching, cobertura sub-exponencial,
+`conj:wcc` linha ~727) e `K_\ell`/`K_{q,\ell}` (collision mass,
+definida linha ~1466 e usada dezenas de vezes depois) compartilham a
+letra sem nenhuma frase de desambiguação, nas duas seções que tratam a
+mesma família de conjecturas (WCC/$\beta$=1), onde a confusão é mais
+provável.
+
+**C-028 (menor).** A construção "not merely P but Q" / "P, not Q:
+it is R" da família de antítese que a Regra 4b orça em duas por
+documento inteiro ocorria pelo menos 7 vezes (linhas 240, 875, 1085,
+1437, 1551, 1985, 2496). Nota de escopo (Regra 8d): um grep mais amplo
+por "X, not Y" simples (sem "merely" nem dois-pontos) revela dezenas de
+ocorrências adicionais no documento que este achado específico não
+cobriu; não foram tocadas nesta rodada porque o crítico da Rodada 1 não
+as sinalizou, e a Regra 8d pede escopo restrito ao que foi de fato
+achado. Se uma rodada futura sinalizar isso como achado novo (evidência
+nova), será corrigido então.
+
+**Correções aplicadas (produtor, antes da Rodada 2).** C-026: abstract
+reescrito ("A companion paper proves Wirsching's first 2003 conjecture
+... we test the third"), §1.2 reescrito na mesma direção, O3 reescrito
+("A companion paper proves Conjecture~1 (Theorem~\ref{thm:wirsching-conj1},
+\cite{WirschingCompanion})"), e a frase de abertura da subseção 9.2
+fortalecida para "This subsection restates, without proof, the results
+a companion paper \cite{WirschingCompanion} establishes in full",
+espelhando o padrão já usado em §3 para a equação de pressão. C-027:
+frase de desambiguação inserida no primeiro uso de $K_\ell$ como
+collision mass, notando que é "unrelated to Wirsching's covering
+function $K(\ell)$" e fixando a convenção de subscrito para o resto do
+documento. C-028: 5 das 7 ocorrências reescritas sem a construção
+"not merely"/"not X: Y" (linhas 240, 875, 1551, 1985, 2496); as 2
+ocorrências mais informativas, onde a confusão do leitor é mais real
+dado o histórico do próprio projeto (linha 1085, "proved, not merely
+checked", ecoando diretamente o achado C-003 sobre a mesma passagem; e
+linha 1439, "is not thereby cancelled: it survives", central ao
+argumento de `lem:cov-spectral`), foram mantidas dentro do orçamento de
+duas. `main.tex` recompilado limpo (3 passadas `pdflatex`), sem
+referência nem citação indefinida.
