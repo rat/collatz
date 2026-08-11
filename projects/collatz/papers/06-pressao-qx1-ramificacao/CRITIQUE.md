@@ -1254,3 +1254,32 @@ tinha alcançado 1/3).
 `pdflatex`), zero erro/referência indefinida; `\cite`/`\bibitem` e
 `\ref`/`\eqref`/`\label` conferidos por script, sem órfãos em nenhuma
 direção.
+
+### 2026-08-11 — rodada de convergência 8 (crítico, contexto fresco)
+
+Escopo: `main.tex` inteiro, quinta reconferência independente das
+provas centrais sem erro novo, mais checagem de citações ainda não
+abertas (Krasikov-Lagarias 2003, Biggins 1992, Nerman 1981).
+
+**Resultado: 0 crítico, 0 maior, 1 moderado, 0 menor. Não limpa.
+Contagem de rodadas limpas consecutivas: 0/3.**
+
+| ID | Nível | Resumo | Status |
+|----|-------|--------|--------|
+| D-28 | moderado | §5 (bateria do Estágio 6, 10^5 raízes): "a clean GPD threshold-stability plateau..., a tightly concentrated Hill estimate, and a Vuong test..." (três itens) seguido de "**both** were checked against two synthetic calibration tests" — "both" sem antecedente correto para três itens | fixed |
+
+**Correção aplicada.** "both" trocado por "all three". Verificado antes
+de editar (Regra 8c): li `full_battery.py` no repositório
+`collatz-qx1-pressure` — `run_all()` computa os quatro estimadores
+(Gabaix-Ibragimov, Huisman/Hill, GPD com estabilidade de limiar,
+CSN+Vuong) como uma única bateria, e `stage6_calibration_checks.py`
+chama `run_all()` nas duas calibrações (Pareto sintético e
+reescalonamento por $\theta'$ errado). Os três itens citados na frase
+(platô GPD, estimativa de Hill, teste de Vuong) são de fato cobertos
+pelas duas calibrações; "all three" é factualmente correto, não só uma
+correção gramatical.
+
+**Verificação técnica pós-correção:** recompilado (2 passadas
+`pdflatex`), zero erro/referência indefinida; `\cite`/`\bibitem` e
+`\ref`/`\eqref`/`\label` conferidos por script, sem órfãos em nenhuma
+direção.
