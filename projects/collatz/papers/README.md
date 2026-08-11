@@ -38,8 +38,9 @@ and, as writing progresses, the draft files themselves.
   q-adic density martingale, and $L^p$ collision criterion for the
   accelerated $qx+1$ branching process; general branching-random-walk
   theory, reusable outside the endogeny-barrier narrative. Scope:
-  H-109, H-138, H-139, H-141, H-129 (attribution resolved 2026-08-10;
-  formalized as `conj:real-tree-tail`, distinct from `conj:tail-index`).
+  H-109, H-132, H-138, H-139, H-141, H-129 (attribution resolved
+  2026-08-10; formalized as `conj:real-tree-tail`, distinct from
+  `conj:tail-index`).
   Repo: `collatz-qx1-pressure`. Split off 01
   on 2026-08-10.
 ## Paused papers

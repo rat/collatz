@@ -1441,3 +1441,27 @@ interna, só confirma quando ela nasceu):**
 `pdflatex`), zero erro/referência indefinida; `\cite`/`\bibitem` e
 `\ref`/`\eqref`/`\label` conferidos por script, sem órfãos em nenhuma
 direção.
+
+### 2026-08-11 — rodada de convergência 13 (crítico, contexto fresco)
+
+Escopo: `main.tex` inteiro, décima reconferência independente das
+provas centrais sem erro novo, verificação de três citações nunca
+checadas contra fonte primária (Hooley 1967, Kolesko-Mentemeier 2015,
+Jelenković-Olvera-Cravioto 2012), todas corretas.
+
+**Resultado: 0 crítico, 0 maior, 1 moderado, 0 menor. Não limpa.
+Contagem de rodadas limpas consecutivas: 0/3.**
+
+| ID | Nível | Resumo | Status |
+|----|-------|--------|--------|
+| D-39 | moderado | `projects/collatz/papers/README.md` (papel de `papers/INDEX.md`, Regra 13): entrada do paper 06 lista H-109, H-138, H-139, H-141, H-129 como hipóteses-fonte, mas falta H-132 (índice de cauda no modelo iid via Liu 2000), que o `OUTLINE.md` do próprio paper 06 já lista corretamente | fixed |
+
+**Correção aplicada.** H-132 adicionada à lista de hipóteses-fonte do
+paper 06 em `papers/README.md`. Não é achado sobre `main.tex` (que não
+foi tocado nesta rodada); é sobre o índice de papers do projeto, Regra
+13. `papers/README-PT-BR.md` tem a mesma lacuna mas não foi tocado, por
+instrução explícita do pesquisador desta sessão de não editar arquivos
+PT-BR sem pedido.
+
+**Verificação técnica:** `main.tex` inalterado nesta rodada; estado já
+confirmado limpo na verificação da rodada 12.
