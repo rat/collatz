@@ -64,6 +64,9 @@ retroativa.
 | C-038 | loop R4 | `thm:barrier` (o único Teorema não-migrado que dá nome ao título do paper) não tinha `\begin{proof}`; a montagem a partir de `prop:gauge`(a)-(d) e da definição de endogenia nunca era escrita como passo de prova, embora matematicamente correta | moderado | prévio | fixed |
 | C-039 | loop R4 | "as a precise class of techniques" (linha 637), residual isolado de "precise" fora de sentido técnico que C-035 não pegou | menor | prévio | fixed |
 | C-040 | loop R4 | Construção "X rather than Y" (25+ ocorrências): o crítico levantou a hipótese de que "less about P than about Q" da Regra 4b cobriria também "rather than", mas marcou explicitamente como ponto de julgamento, não erro | menor | prévio | rejected: ver justificativa na Rodada 4 abaixo |
+| C-041 | loop R5 | `thm:conjecture3` (linha 1339) restatava "near $0.580$ ($0.5807$/$0.5800$)", correção da Rodada 4 contra o companion 05; mas o companion 05 corrigiu esse mesmo número na sua própria Rodada 2 (commit `b1d8d73`, concorrente, entre a checagem da Rodada 3 e agora) para "near $0.802$ ($0.8026$/$0.8021$)" — divergência de quase 40%, a mesma fonte que a Rodada 4 tinha acabado de conferir e bater | maior | prévio | fixed |
+| C-042 | loop R5 | Tabela $(\star1)$-$(\star5)$ (§9.2, linha 1290): $(\star2)$ restatada com domínio "uniformly over $a\in\mathbb N$", mas o companion 05 (`rem:wirsching-conj1-source`, parágrafo "Third") diz explicitamente que $(\star2)$ e $(\star3)$ são enunciadas sobre $\mathbb Z_3^\times$, não $\mathbb N$ (que vale só para $(\star1)$); a redação errada também contradizia internamente a prosa do próprio parágrafo seguinte em 01, que já dizia "$(\star3)$ and $(\star2)$ are... the same inequality" | maior | prévio | fixed |
+| C-043 | loop R5 | Subseção "Microcanonical decomposition and equivalence of ensembles" (linha 1346) não tinha frase de abertura sinalizando que os 6 resultados restatados vêm do companion, ao contrário das duas subseções irmãs; um leitor só descobre isso ~110 linhas depois, na Data Availability Statement | moderado | prévio | fixed |
 
 Checagens mecânicas que passaram, registradas para não serem refeitas:
 34 chaves `\cite` contra 34 `\bibitem`, sem órfãos nem pendentes nas
@@ -1156,3 +1159,70 @@ trocado por "well-defined". `main.tex` recompilado limpo (3 passadas
 `pdflatex`); `\cite`/`\bibitem` reconferidos (35/35, sem órfãos);
 "genuine/genuinely", em dash, e orçamento de antítese "not X, Y"
 reconfirmados sem mudança.
+
+### Rodada 5 (subagente `general-purpose`, síncrono, contexto fresco): NÃO limpa
+
+Leu `main.tex` completo (2748 linhas) e `CRITIQUE.md` completo
+(incluindo as quatro rodadas anteriores). Reconferiu `\cite`/`\bibitem`
+(35/35), `\ref`/`\label` (sem pendências), recalculou em Python as
+constantes de `thm:wcc-large-deviation`, refez a álgebra completa de
+`prop:gauge`/`thm:barrier` do zero, e concordou explicitamente com a
+rejeição de C-040 na Rodada 4 (não reabriu, achou a mesma leitura da
+Regra 4b válida). Achou 2 achados maiores e 1 moderado cruzando
+números contra os companions.
+
+Achados: 0 crítico, 2 maiores (C-041, C-042), 1 moderado (C-043), 0
+menores.
+
+**C-041 (maior).** Consequência direta de concorrência entre agentes:
+o companion paper 05 está sendo corrigido em paralelo, no mesmo loop de
+convergência, por outro agente em outro worktree. A Rodada 4 tinha
+conferido `thm:conjecture3` contra 05 e batido exatamente ($\ell=200$,
+"0,5807"/"0,5800"). Entre essa checagem e a Rodada 5, o agente do
+paper 05 corrigiu esse mesmo valor na própria Rodada 2 dele (commit
+`b1d8d73`, puxado para este worktree via `git pull --rebase` antes da
+Rodada 4 ser enviada) para "0,802" (0,8026/0,8021), quase 40% de
+diferença. Verifiquei diretamente contra
+`papers/05-wirsching-2003-conjecturas/main.tex`, linhas 839-848 (versão
+atual): confere exatamente com o que a Rodada 5 relatou. Também
+verifiquei que a fórmula de $L_\ell$ nos dois papers é algebricamente
+idêntica (usando a identidade $\varphi'(x)=\tfrac92\varphi(3x)$), então
+o erro nunca esteve na fórmula, só no número final restatado. A frase
+"a coefficient matching Berg--Krüppel's own asymptotic $\varphi_0$",
+que 01 tinha herdado da versão antiga de 05, não aparece mais na versão
+atual de 05 e foi removida daqui também, em vez de mantida sem fonte.
+
+**C-042 (maior).** $(\star2)$ estava restatada em 01 com domínio
+"uniformly over $a\in\mathbb N$"; o companion 05
+(`rem:wirsching-conj1-source`, parágrafo "Third", linhas 196-199 de
+`05/main.tex`) diz explicitamente que o domínio $\mathbb N$ vale só
+para $(\star1)$ (o alvo do Teorema 1 de Wirsching), e que $(\star2)$ e
+$(\star3)$ são ambas enunciadas sobre $\mathbb Z_3^\times$. A versão
+errada em 01 também contradizia a própria prosa do parágrafo logo
+abaixo da tabela, que já dizia "$(\star3)$ and $(\star2)$ are in fact
+the same inequality" (o que só faz sentido se os domínios batem).
+
+**C-043 (moderado).** A subseção "Microcanonical decomposition and
+equivalence of ensembles" (inserida pela correção de C-034 na Rodada
+3) não ganhou, junto com a quebra de subseção, a mesma frase de
+abertura que suas duas subseções irmãs têm, sinalizando que o conteúdo
+é restatado sem prova do companion.
+
+**Correções aplicadas (produtor, antes da Rodada 6).** C-041: número
+corrigido para "0,802" (0,8026/0,8021), igual à versão atual do
+companion 05; frase sobre Berg-Krüppel removida (companion não a faz
+mais). C-042: domínio de $(\star2)$ corrigido para "uniformly over
+every unit $a\in\mathbb Z_3^\times$", que também resolveu uma
+inconsistência interna preexistente entre a tabela e a prosa logo
+abaixo dela. C-043: frase de abertura ("This subsection restates,
+without proof, results a companion paper
+\cite{WirschingCompanion} establishes in full") adicionada, no mesmo
+padrão das subseções irmãs. `main.tex` recompilado limpo (3 passadas
+`pdflatex`); `\cite`/`\bibitem` reconferidos (35/35, sem órfãos).
+Nota operacional: como o companion 05 está sob edição concorrente pelo
+mesmo tipo de loop, qualquer número restatado dele neste paper pode
+ficar obsoleto entre rodadas; isso não é um erro de processo desta
+sessão, é a natureza de dois loops de convergência paralelos sobre
+papers que se citam, e a defesa é a mesma que já está em uso: cada
+rodada nova confere de novo contra o estado atual do companion, não
+confia no que uma rodada anterior já verificou.
