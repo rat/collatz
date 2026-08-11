@@ -81,6 +81,13 @@ retroativa.
 | C-055 | loop R9 | Entrada do Apêndice para `thm:cascade-factor` cobria só o cálculo racional exato até $\ell=10$; omitia a medição em ponto flutuante até $\ell=16$ que sustenta a alegação de saturação no corpo | moderado | prévio | fixed |
 | C-056 | loop R9 | `\eta_i` em `lem:cov-spectral` nunca definido como objeto geral (só o caso particular $\eta_i\equiv1$ aparecia, numa proposição diferente) | moderado | prévio | fixed |
 | C-057 | loop R9 | Colisão de símbolo `\eta` (constante escalar em $(\star3)$) com `\eta_i` (peso de caminho em `lem:cov-spectral`), sem desambiguação | menor | prévio | fixed |
+| C-058 | loop R10 | `rem:novelty-109` afirmava que Gonçalves-Greenfeld-Madrid 2022 "rigorously excludes $q\ge5$"; é a Conjecture 1.5 do próprio paper deles, suporte só numérico, não um teorema. Mesmo achado já verificado contra a fonte primária e corrigido no companion 06 (D-18), nunca propagado para 01 | maior | prévio | fixed |
+| C-059 | loop R10 | §3 restatava medições empíricas de árvores reversas reais ($\approx0.62$-$0.66$ para $q=5$; $\approx0.36$-$0.39$ para $q=7$) que não batem com o estado atual do companion 06 (0,56-0,70 para $q=5$; e um "clear miss" numa das três raízes em $q=7$, 0,29-0,34, omitido). Mesmo achado já corrigido no companion 06 (D-20), nunca propagado | maior | prévio | fixed |
+| C-060 | loop R10 | `thm:kl-calibrated` restatava um "$95\%$ interval $[0.64818,0.65027]$" que não existe em nenhum lugar da versão atual do companion 04; a versão atual não usa mais bootstrap CI para esse resultado, só leituras pontuais em checkpoints | maior | prévio | fixed |
+| C-061 | loop R10 | DAS lista a checagem de `prop:beta-wcc` em script, mas o Apêndice não tinha entrada correspondente (lacuna introduzida pela própria correção de C-050, que só tocou a DAS) | moderado | prévio | fixed |
+| C-062 | loop R10 | Apêndice tem entrada para `thm:lp-spectrum`, mas a DAS nunca nomeia esse rótulo | moderado | prévio | fixed |
+| C-063 | loop R10 | `N_\eta^{(m)}` em `lem:cov-spectral` nunca tinha fórmula somatória escrita, só descrição em prosa | moderado | prévio | fixed |
+| C-064 | loop R10 | `eq:microcanonical` restatava a soma sem limites ($\sum_k$), enquanto o companion 05 (fonte da prova) tem limites explícitos ($\sum_{k=0}^{3^\ell-\ell-1}$) | moderado | prévio | fixed |
 
 Checagens mecânicas que passaram, registradas para não serem refeitas:
 34 chaves `\cite` contra 34 `\bibitem`, sem órfãos nem pendentes nas
@@ -1502,4 +1509,68 @@ Apêndice, no mesmo estilo das demais. C-055: entrada de
 $\ell=16$. C-056: $\eta_i:(\mathbb N_+)^D\to[0,1]$ definido
 explicitamente no enunciado do Lema. C-057: frase de desambiguação
 inserida no mesmo ponto. `main.tex` recompilado limpo (3 passadas
+`pdflatex`); `\cite`/`\bibitem` reconferidos (37/37, sem órfãos).
+
+### Rodada 10 (subagente `general-purpose`, síncrono, contexto fresco): NÃO limpa
+
+Leu `main.tex` completo (2870 linhas) e `CRITIQUE.md` completo
+(incluindo as nove rodadas anteriores). Pedido explícito: reconferir
+`lem:cov-spectral` e `prop:exact-endogeny` do zero com cuidado extra
+(erro de sinal pego e corrigido na Rodada 9). Resultado: **nenhum erro
+novo** nas duas provas; a correção da Rodada 9 se sustenta. O esforço
+foi redirecionado para cruzar números restatados de companions contra
+o estado atual, o que rendeu três achados maiores, todos do mesmo
+padrão (número/citação desatualizado em relação ao companion) e dois
+deles já tinham sido encontrados e corrigidos independentemente pelos
+agentes dos companions 04/06, sem a correção nunca ter sido propagada
+para 01.
+
+Achados: 0 crítico, 3 maiores (C-058, C-059, C-060), 4 moderados
+(C-061 a C-064), 0 menores.
+
+**C-058 (maior).** `rem:novelty-109` dizia que Gonçalves-Greenfeld-Madrid
+2022 "rigorously excludes $q\ge5$", citando o paper deles. Verifiquei
+contra `06-pressao-qx1-ramificacao/CRITIQUE.md` (achado D-18, já
+resolvido lá com verificação direta do PDF primário arXiv:2111.06170v2):
+a exclusão de $q\ge5$ é a Conjecture 1.5 do próprio paper deles, com
+suporte só numérico ("it seems that condition (b) must be satisfied"),
+não um teorema. O Teorema 1.3 prova só a direção positiva sob $q<4$.
+
+**C-059 (maior).** §3 restatava "$\approx0.62$-$0.66$ para $q=5$" e
+"$\approx0.36$-$0.39$ para $q=7$" como suporte empírico direto para
+`conj:transition-arithmetic`, números que não batem com o estado atual
+do companion 06 (`emp:real-trees`): $0.56$-$0.70$ para $q=5$, e em
+$q=7$ uma das três raízes fica em $0.29$-$0.34$, um "clear miss" que
+01 omitia por completo. Mesmo achado já registrado e corrigido no
+companion 06 (D-20).
+
+**C-060 (maior).** `thm:kl-calibrated` restatava "$95\%$ interval
+$[0.64818,0.65027]$" que não existe em nenhum lugar da versão atual do
+companion 04: a versão atual não usa mais intervalo de bootstrap para
+esse resultado específico, só leituras pontuais em checkpoints de
+profundidade fixa (0,65122/0,64981/0,64751/0,64926/0,67748). O número
+"seven band-widths" em si permanece correto e não precisou de
+correção.
+
+**C-061 a C-064 (moderados).** Duas lacunas de cobertura bidirecional
+DAS↔Apêndice (`prop:beta-wcc` listado na DAS sem entrada no Apêndice,
+introduzido pela própria correção de C-050; `thm:lp-spectrum` no
+Apêndice sem menção na DAS), a fórmula somatória de `N_\eta^{(m)}`
+nunca escrita (só descrita em prosa), e `eq:microcanonical` restatada
+sem os limites de soma explícitos que o companion 05 tem.
+
+**Correções aplicadas (produtor, antes da Rodada 11).** C-058:
+`rem:novelty-109` reescrito com a atribuição correta (Teorema 1.3 prova
+a direção positiva sob $q<4$; Conjecture 1.5 conjectura a necessidade,
+sem prova), replicando o texto já corrigido no companion 06. C-059:
+passagem reescrita com os números atuais do companion 06, incluindo o
+"clear miss" que a versão antiga omitia. C-060: `thm:kl-calibrated`
+reescrito com as leituras pontuais por checkpoint que a versão atual do
+companion 04 de fato reporta, removendo o intervalo de confiança
+inexistente. C-061: entrada nova no Apêndice para `prop:beta-wcc`.
+C-062: `thm:lp-spectrum` nomeado explicitamente na DAS. C-063: fórmula
+somatória de $N_\eta^{(m)}$ (esperança condicional da população
+$\eta$-ponderada dado a classe de resíduo) escrita explicitamente.
+C-064: limites de soma $\sum_{k=0}^{3^\ell-\ell-1}$ adicionados a
+`eq:microcanonical`. `main.tex` recompilado limpo (3 passadas
 `pdflatex`); `\cite`/`\bibitem` reconferidos (37/37, sem órfãos).

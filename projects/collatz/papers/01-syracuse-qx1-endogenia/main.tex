@@ -438,18 +438,25 @@ and the reasons neither is yet decisive for $q\ge5$
 \cite{PressureCompanion}.
 
 Independent depth-first enumeration of the true reverse trees for
-$q=5$ and $q=7$ gives direct empirical support for
-Conjecture~\ref{conj:transition-arithmetic}: counting slopes per decade
-of $3$ sampled roots gave $\approx0.62$--$0.66$ for $q=5$ (predicted
-$0.650919$) and $\approx0.36$--$0.39$ for $q=7$ (predicted $0.373501$).
-A statistically calibrated measurement for $q=5$ is in
-\cite{KLVolkovCompanion}.
+$q=5$ and $q=7$ (up to $10^{10}$/$10^{12}$, three roots each) bears on
+Conjecture~\ref{conj:transition-arithmetic}: per-decade growth slopes
+at $q=5$ span $0.56$--$0.70$ (predicted $0.650919$) at all three
+roots; at $q=7$ (predicted $0.373501$), two roots span $0.36$--$0.40$,
+consistent with the prediction, but the third stays at $0.29$--$0.34$
+throughout, a clear miss consistent with that root's tree not yet
+entering the asymptotic regime at the tested depth. A statistically
+calibrated measurement for $q=5$ is in \cite{KLVolkovCompanion}.
 
 \begin{remark}[Bibliographic calibration]\label{rem:novelty-109}
 Neither the value $\alpha^\ast(5)=0.650919$ nor the qualitative
-transition at $q\ge5$ is new, and a later result rigorously excludes
-$q\ge5$ in the forward direction for the analogous $p=2$ generalization
-\cite{GoncalvesGreenfeldMadrid2022}. Wirsching \cite[Ch.~III, \S5,
+transition at $q\ge5$ is new. For the analogous $p=2$ generalization of
+Tao's theorem, a later result proves the positive direction,
+almost-bounded orbits, under a condition that reduces to $q<4$ at
+$p=2$, and conjectures, with numerical support and no known
+counterexample but no proof, that this condition is also necessary,
+i.e.\ that it fails for every $q\ge5$
+\cite[Theorem~1.3 and Conjecture~1.5]{GoncalvesGreenfeldMadrid2022}.
+Wirsching \cite[Ch.~III, \S5,
 following Theorem~5.2]{Wirsching1998} anticipated the same qualitative
 transition at $p>4$ heuristically in 1998, in his own terms (a sign
 flip in the index of the maximal term $f_p(n)$, leading him to expect
@@ -772,14 +779,17 @@ exponent gives a calibrated comparison instead.
 
 \begin{empirical}[Calibrated separation from the Volkov exponent]
 \label{thm:kl-calibrated}
-At the truncation depth where calibrated controls read their own
-target exponent to within $0.003$, the arithmetic tree reads $0.64926$
-($95\%$ interval $[0.64818,0.65027]$), separated from a control built
-to exponent $0.678$ by seven band-widths, and matching controls built
-to exponent $0.650919$. The separation widens as bias is calibrated
-away with depth; it never narrows. This measurement compares against
-the exponent value $0.678$ alone, since Volkov's branching model
-itself is not implemented.
+At the checkpoint decade $10^9\!\to\!10^{10}$, two constructions built
+to exponent $0.650919$ that share the sibling congruence read
+$0.65122$ and $0.64981$, a band $0.00141$ wide; an unconstrained
+construction to the same exponent reads $0.64751$, widening the band
+to $0.0037$. The arithmetic tree reads $0.64926$, inside this wider
+band. A control built to exponent $0.678$ reads $0.67748$, separated
+from the arithmetic reading by seven band-widths; the same comparison
+at the shallower decade $10^7\!\to\!10^8$ gives a gap of $0.0258$,
+growing with depth. This measurement compares against the exponent
+value $0.678$ alone, since Volkov's branching model itself is not
+implemented.
 \end{empirical}
 
 \section{Direct computational test of the Weak Covering Conjecture}
@@ -1396,7 +1406,7 @@ Let $g_\ell(k,a)$ be Wirsching's generator and $\mu_\ell$ the Syracuse
 law modulo $3^\ell$. There is an exact identity
 \begin{equation}\label{eq:microcanonical}
 \mu_\ell(a)=\Bigl(\prod_{i=0}^{\ell-1}\tfrac{1}{2(1-2^{-c_i})}\Bigr)
-\sum_{k}2^{-k}g_\ell(k,a), \qquad c_i=2\cdot3^i.
+\sum_{k=0}^{3^\ell-\ell-1}2^{-k}g_\ell(k,a), \qquad c_i=2\cdot3^i.
 \end{equation}
 If $(\star3)$ holds (a uniform
 lower bound $g_\ell(k,a)\ge\eta\,\overline g_\ell(k)$ on the
@@ -1537,12 +1547,17 @@ mod $3^\ell$) relating admissible sibling leaves at exponent gap
 $\Delta$:
 
 \begin{lemma}[Covariance spectral identity]\label{lem:cov-spectral}
-For subtree-aggregate observables $Z_i:=N_{\eta_i}^{(m)}(w_i(v))$
-(weighted populations of $w_i$'s subtree, $\eta_i:(\mathbb N_+)^D\to[0,1]$
-an arbitrary weight assigned to each descendant path, unrelated to the
-scalar constant $\eta$ of $(\star3)$ in \S\ref{sec:triangulation},
-truncated to depend on $w_i(v)$ only through its residue mod $3^m$,
-precision $m$), with $v$
+For subtree-aggregate observables $Z_i:=N_{\eta_i}^{(m)}(w_i(v))$,
+\[
+N_\eta^{(m)}(r):=\mathbb E\Bigl[\textstyle\sum_{u\text{ descendant of
+}w}\eta(u)\ \Big|\ w\equiv r\pmod{3^m}\Bigr],
+\]
+the expected $\eta$-weighted population of the subtree rooted at $w$
+conditioned on its residue class mod $3^m$ ($\eta_i:(\mathbb
+N_+)^D\to[0,1]$ an arbitrary weight assigned to each descendant path,
+unrelated to the scalar constant $\eta$ of $(\star3)$ in
+\S\ref{sec:triangulation}; the case actually used below is
+$\eta_i\equiv1$, complete unweighted populations), with $v$
 uniform on admissible classes mod $3^{m+1}$, and $S_i(\xi):=\sum_{r
 \bmod 3^m}Z_i(r)\,e(\xi r/3^m)$ the character sum of $Z_i$'s residue
 distribution,
@@ -2546,7 +2561,9 @@ and Remark~\ref{rem:calibration-consistency}
 the Weak Covering Conjecture test of \S\ref{sec:wcc}, the exact cost
 identity of Proposition~\ref{prop:beta-wcc}
 (\texttt{sec9-wcc-beta-bridge/weighted\_bridge.py}), the
-$K_\ell$/Jensen computations, the Chang residue-balance test, and the
+$K_\ell$/Jensen computations, the $L^p$ collision spectrum of
+Empirical Result~\ref{thm:lp-spectrum}, the Chang residue-balance
+test, and the
 checks for Lemma~\ref{lem:2adic}, Theorem~\ref{thm:wcc-large-deviation},
 Theorem~\ref{thm:fresh-digit-coupling},
 Propositions~\ref{prop:primitive-hole} and
@@ -2621,6 +2638,10 @@ recorded in the corresponding companion paper's appendix
   divergence from the real-integer structure), and the resulting type
   correlation reproduces $+1/-1/2$ to four decimal places
   (Remark~\ref{rem:calibration-consistency}).
+\item \emph{Exact cost identity} (Proposition~\ref{prop:beta-wcc}):
+  the identity $\max_zB_\ell(z)=\ell+j^\ast(\ell)$ and the underlying
+  bijection with $R_{\ell-1,j}$ were checked against brute force for
+  $\ell\le4$ (\texttt{sec9-wcc-beta-bridge/weighted\_bridge.py}).
 \item \emph{Weak Covering Conjecture DP} (\S\ref{sec:wcc}): validated
   against an independently computed reference table for
   $\ell=1,\dots,7$ and a hand-checked point ($\ell=2,j=2$).
