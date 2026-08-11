@@ -899,3 +899,96 @@ de §5 estendido e re-executado do zero, READMEs de `sec3`, `sec4`
 (microcanonical) e `sec5` corrigidos (travessões, título desatualizado,
 "the Theorem" para "Empirical Result", numeração `§9.2` obsoleta).
 PT-BR não tocado (instrução da tarefa).
+
+---
+
+## Rodada de convergência R2, 2026-08-11
+
+Segunda rodada do loop, contexto totalmente fresco (subagente `opus`,
+esforço máximo, sem acesso a este arquivo além do resumo colado no
+prompt). Regra: 3 rodadas consecutivas limpas (crítico=0, maior=0,
+moderado=0, menor<3), sem crédito parcial; R1 não foi limpa, então a
+contagem começou em 0.
+
+**Achados**: crítico=2, maior=3, moderado=11, menor=7. Não limpa;
+contagem de rodadas limpas consecutivas permanece 0.
+
+| ID | Rodada | Resumo | Severidade | Status |
+|----|--------|--------|------------|--------|
+| R2-01 | 2026-08-11 (R2) | Prova de `thm:wirsching-conj1`: a desigualdade da janela estava invertida ("$\delta+\tau<\delta_1$", implicando $\delta_1>\delta$, contra o próprio enunciado "$\delta_1\le\delta$"); correta é $\delta_1+\tau<\delta$ | crítico | fixed |
+| R2-02 | 2026-08-11 (R2) | Script de §5 calculava em $x_\ell$, não $x_\ell^+$ como o paper define $L_\ell$; o déficit real em $x_\ell^+$ é $\approx0.802$, não $0.580$ | crítico | fixed |
+| R2-03 | 2026-08-11 (R2) | Sensibilidade do ajuste de $L$ ao modelo alternativo é $4\times10^{-4}$ (script imprime "0.0004"), não $2\times10^{-4}$ como escrito | maior | fixed |
+| R2-04 | 2026-08-11 (R2) | "$10^{-8}$" no abstract e corpo não é produzido por nenhuma computação; é a tolerância do `assert` de validação de $\varphi(1/2)$, não das avaliações em $\ell=500$ | maior | fixed |
+| R2-05 | 2026-08-11 (R2) | "coefficient matching the asymptotic $\varphi_0$" não verificado; nenhum script calcula o lado $\varphi_0$ do déficit | maior | fixed |
+| R2-06 | 2026-08-11 (R2) | Ambiguidade sobre qual recursão cobre qual faixa de $\ell$ (multiplicidade exata até 12, suporte booleano até 16, uma terceira recursão restrita a conjunto fixo até 17, esta última descrita erradamente como "a mesma" da primeira) | moderado | fixed |
+| R2-07 | 2026-08-11 (R2) | "immune to the set-size confound by construction" superestimava o que o quantil fixo realmente garante (só imune à estatística de extremos, não à mudança de composição) | moderado | fixed |
+| R2-08 | 2026-08-11 (R2) | Colisões de notação: $S_\ell$ (operador de Wirsching) vs $S_{\ell,r}$ (soma de bloco, idêntica a $B_{\ell,r}$ já definida alhures) vs $S_\ell(k,a)$ (soma de coeficientes do Remark); $A_\delta$ (classe de sequências) vs $A_i$ (variável geométrica local) | moderado | fixed |
+| R2-09 | 2026-08-11 (R2) | "Syracuse law/measure" central a §4, usado 10+ vezes, nunca definido nem atribuído a Tao | moderado | fixed |
+| R2-10 | 2026-08-11 (R2) | Argumento de não aproximação a Haar exibia só o coeficiente de Fourier de $\mu_1$ (1/√3), sem o valor de comparação da lei uniforme sobre unidades (1/2) | moderado | fixed |
+| R2-11 | 2026-08-11 (R2) | `prop:complex-deconditioning`: a primeira hipótese é exatamente a conclusão do `thm:microcanonical` (via $G_{\ell,a}(1/2)/\bar G_\ell(1/2)=2\cdot3^{\ell-1}\mu_\ell(a)$), não um insumo independente; não sinalizado | moderado | fixed |
+| R2-12 | 2026-08-11 (R2) | Teorema 3 do Wirsching citado como §4 da fonte; está no §5 (§4 só define $S_\ell$) | moderado | fixed |
+| R2-13/14 | 2026-08-11 (R2) | "the conjectural weighted-covering estimate" e "predicted value 2/3" usados sem definição/derivação no ponto de uso | moderado | fixed |
+| R2-15 | 2026-08-11 (R2) | `thm:fixed-precision-finite` e `thm:microcanonical-fourier` nunca referenciados via `\ref` na prosa | moderado | fixed |
+| R2-16 | 2026-08-11 (R2) | `rem:wirsching-conj1-source` repetia a desigualdade invertida de R2-01 com o símbolo errado ($\eta$ em vez de $\tau$) | moderado | fixed (junto com R2-01) |
+| R2-17/18 | 2026-08-11 (R2) | Orçamento de antítese "X, not Y" e tricolons: recontagem usando só os padrões literais da Regra 4b (ver nota abaixo) | menor | fixed |
+| R2-19 | 2026-08-11 (R2) | Abstract: "across fit sub-ranges and tail models" descrevia mal o que foi testado; "interior offset" ambíguo (mesmo padrão de R1-12) | menor | fixed |
+| R2-20 | 2026-08-11 (R2) | `thm:linear-block-nonequivalence`: "holds without the $o(1)$" pouco claro sobre o que contrasta | menor | fixed |
+| R2-21 | 2026-08-11 (R2) | Suporte de $\Gamma_i$ (a variável geométrica local) não enunciado ($m\ge1$) | menor | fixed |
+| R2-22 | 2026-08-11 (R2) | Cabeçalho de `prop:fabius` atribuía a Wirsching (Corollaries 7-8) a identificação com a função de Fabius, que não está na fonte | menor | fixed |
+| R2-23 | 2026-08-11 (R2) | "well above the extreme order statistic too" ambíguo, repetido 2x | menor | fixed |
+
+**Os dois achados críticos**, ambos verificados de forma independente
+antes de corrigir (Regra 8c) e ambos confirmados corretos:
+
+**R2-01**: refiz a álgebra da prova de `thm:wirsching-conj1`. Para $k$
+na janela de $(\star1)$ (raio $\delta_1$) e $0\le m<\tau\sqrt\ell$,
+$|k-m-\ell|\le(\delta_1+\tau)\sqrt\ell$; para isso caber na janela de
+$(\star2)$ (raio $\delta$), precisa-se de $\delta_1+\tau<\delta$, não
+$\delta+\tau<\delta_1$ (que implicaria $\delta_1>\delta$, o oposto do
+que o próprio enunciado do teorema diz, "raio possivelmente menor").
+Erro de escrita puro (o teorema é verdadeiro, a prova só tinha a
+desigualdade de cabeça para baixo); corrigido em três lugares
+(enunciado do teorema, que agora nomeia $\delta_1$ explicitamente; a
+prova; o Remark que repetia a mesma desigualdade com o símbolo errado).
+
+**R2-02**: o script `experiment_conjecture3.py` calculava em
+$x_\ell=k_\ell/3^\ell$ desde a rodada R1, mas o `main.tex` sempre
+definiu $L_\ell$ em termos de $x_\ell^+:=x_\ell+3^{-\ell-1}$. Corrigido
+o script (`sample_points()` agora devolve $x_\ell^+$), re-executada a
+computação completa até $\ell=500$ (momentos exatos até grau 510,
+~415s), e todos os números de §5 recomputados do zero: o déficit
+$\ell(2/3-L_\ell)$ em $u=0$ vai de $0.5807\to0.5800$ (em $x_\ell$,
+errado) para $0.8026\to0.8021$ (em $x_\ell^+$, correto). Os números que
+não dependem sensivelmente da escolha $x_\ell$ vs $x_\ell^+$
+($\ln(\varphi/\varphi_0)$, o ajuste $L=-0.619$, $c=0.539$) mudaram
+apenas na sexta casa decimal, dentro do esperado (a correção
+$3^{-\ell-1}$ é exponencialmente pequena e $\ln$ é suave; $L_\ell$ em
+si é mais sensível por envolver uma razão entre pontos vizinhos). De
+passagem, adicionei a derivação de uma linha (via (7.7)) de por que o
+valor previsto é $2/3$ (R2-13/14), que não estava em lugar nenhum do
+texto antes.
+
+**R2-17/18, nota de contagem**: o crítico contou 7 antíteses "X, not
+Y" usando qualquer ocorrência de ", not"; usando só os padrões literais
+da Regra 4b ("not P: it is Q", "not merely P but Q", "P, not Q",
+antítese corretiva "rather than"), "not even in the mean" (uma
+intensificação, não uma correção) e "rather than every unit residue"
+(uma descrição, não uma correção comparativa) não contam. As 3 que
+contam foram reduzidas a 2 (orçamento da regra), cortando a antítese
+introduzida nesta própria rodada em `prop:complex-deconditioning` e
+mantendo as duas ligadas à Regra 10b ("not this extrapolation", "not
+the conjecture itself"). Julgamento registrado aqui para a próxima
+rodada não reabrir.
+
+Depois das correções: `\cite`/`\bibitem` reconferidos (`BergKruppel1998`
+ficou órfão ao cortar a frase antiga de §5; restaurado citando
+Proposition 9.1, pp.178-179 do PDF, verificado diretamente contra a
+fonte); recompilado (`pdflatex` ×2, 12 páginas, sem `undefined
+reference`); zero em/en dashes; abstract reconferido contra o corpo
+depois de todas as correções (Regra 8b), incluindo um problema que eu
+mesmo introduzi e peguei nesta checagem: "unique $L^1$ fixed point" no
+abstract não carregava a ressalva de normalização que R1-06 já tinha
+corrigido no corpo (`prop:fabius`), corrigido para "unique fixed point
+of unit mass". Repositório `collatz-wirsching-2003` sincronizado:
+script de §5 corrigido e re-executado do zero, READMEs (raiz e `sec5`)
+atualizados com os números reais em $x_\ell^+$.

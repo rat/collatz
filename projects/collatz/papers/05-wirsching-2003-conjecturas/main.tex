@@ -33,8 +33,8 @@ Wirsching (2003) reduces uniform positive predecessor density for the
 $3n+1$ map to a chain of five conditions, organized into three
 conjectures. Conjecture 1 concerns Wirsching's path-counting
 generators. Conjecture 2 concerns a one-dimensional averaging operator
-$W_3$, whose unique $L^1$ fixed point $\varphi$ is a base-$3$ analogue
-of the Fabius function. Conjecture 3 concerns the asymptotics of
+$W_3$, whose unique fixed point of unit mass $\varphi$ is a base-$3$
+analogue of the Fabius function. Conjecture 3 concerns the asymptotics of
 $\varphi$ itself. We prove Conjecture 1 by a generating-function
 cancellation. Conjecture 2's hypothesis carries no information about
 the residue coordinate the rest of the chain needs: the primary source
@@ -49,14 +49,15 @@ decomposition's own open hypothesis, a uniform lower bound on the
 generators relative to their mean, remains open too. At the support
 boundary, an exhaustive fixed-integer test shows no deterioration
 through $\ell=17$, while the population's low quantiles decay at every
-interior offset tested, a decay not confined to extreme-value
-statistics of the growing index set. A monotonicity certificate
+offset tested past that boundary, a decay not confined to
+extreme-value statistics of the growing index set. A monotonicity
+certificate
 available for a related count in a companion paper does not transfer
-here. None of this closes Conjecture 2. A certified evaluation of
-$\varphi$ to error $10^{-8}$
+here. None of this closes Conjecture 2. An exact evaluation of
+$\varphi$, zero truncation error at every point tested,
 through depth $\ell=500$ supports Conjecture 3 at every offset tested,
 with a central-sequence extrapolation coefficient stable to within
-$2\times10^{-4}$ across fit sub-ranges and tail models.
+$4\times10^{-4}$ under the sub-range and model checks tested.
 \end{abstract}
 
 \section{Introduction}
@@ -118,15 +119,17 @@ once the objects are transported to the continuous state space of
 \S\ref{sec:microcanonical} below. $\varphi$ itself satisfies the
 untruncated equation $\lambda\varphi'(t)=a(\varphi(at)-\varphi(at-a+1))$
 for $a=3$, $\lambda=2/3$ \cite[eq.~(7.9)]{Wirsching2003}. $\varphi_0$
-is Berg and Kr\"uppel's explicit asymptotic for a particular solution
+is Berg and Kr\"uppel's explicit asymptotic
+\cite[Proposition~9.1]{BergKruppel1998} for a particular solution
 of the truncated equation $\lambda g'(t)=ag(at)$, conjectured to track
 $\varphi$'s own asymptotics up to a constant factor
 \cite[eq.~(7.10)--(7.11)]{Wirsching2003}, used in Conjecture~3 below in
 place of $\varphi$ itself, which has no known closed form.
 
-\begin{proposition}[Base-$3$ Fabius function; Wirsching 2003, Corollaries 7 and 8]\label{prop:fabius}
+\begin{proposition}[Base-$3$ Fabius function]\label{prop:fabius}
 $\varphi$ is the density of $X=\sum_{j\ge1}2U_j\cdot3^{-j}$, $U_j$
-i.i.d.\ uniform on $[0,1]$, the base-$3$ analogue of the Fabius
+i.i.d.\ uniform on $[0,1]$ (an identification not in the source), the
+base-$3$ analogue of the Fabius
 function (which satisfies $f'(x)=2f(2x)$; here $\varphi'(x)=
 \tfrac92\varphi(3x)$ on $[0,2/3]$ by \cite[eq.~(7.7)]{Wirsching2003}).
 Among functions with $\operatorname{supp}\varphi\subset[0,1]$ and
@@ -165,8 +168,7 @@ and $(\star4)$ is
  \ge\mu,\qquad\text{uniformly for }(x_\ell)\in\widetilde A_\delta,
 \]
 with $\chi_0=\mathbf 1_{[0,2/3]}$, $\chi_1=\mathbf1_{[1/3,1]}$, and
-$W_3$ the averaging operator of Proposition~\ref{prop:fabius}. Three
-facts about this chain are worth isolating.
+$W_3$ the averaging operator of Proposition~\ref{prop:fabius}.
 
 First, $(\star4)$ is a statement purely about the one-dimensional operator
 $W_3$: it never mentions Wirsching's generators, and carries no
@@ -174,7 +176,8 @@ information about the residue coordinate that $(\star3)$ needs. The
 source offers two bridges: the averaged-generator
 identity $\lim_\ell\int_{\mathbb Z_3^\times}\widetilde g_\ell(x,a)\,da=
 \varphi(x)$ for fixed $x\in\mathbb I_3$ \cite[\S6]{Wirsching2003}, and
-Wirsching's Theorem~3, strong convergence $S_\ell\to S_\infty$ of the
+Wirsching's Theorem~3 \cite[\S5]{Wirsching2003}, strong convergence
+$S_\ell\to S_\infty$ of the
 transition operators $S_\ell:C(\mathbb X)\to C(\mathbb X)$ defined by
 $\widetilde g_\ell=S_\ell(\widetilde g_{\ell-1})$
 \cite[\S4]{Wirsching2003}, on
@@ -232,12 +235,13 @@ at most $\exp(C\log^2(m+2))$. Also
 Since $p_\ell(0)=1$, $\bar g_\ell(j)\le\bar e_\ell(j)$ for every $j$, so,
 relative to $\bar e_\ell(k)$, the part of the convolution
 $\bar e_\ell(k)=\sum_mp_\ell(m)\bar g_\ell(k-m)$ with $m\ge\tau\sqrt\ell$
-is, uniformly for $|k-\ell|\le\delta\sqrt\ell$, at most
+is, uniformly for $|k-\ell|\le\delta_1\sqrt\ell$, at most
 $\exp(-c\sqrt\ell+O(\log^2\ell))$, for a tail-window radius $\tau>0$
 unrelated to the lower-bound constant $\eta$ of
-\S\ref{sec:microcanonical} below. Choose
-$\delta+\tau<\delta_1$. On the remaining terms $j=k-m$ lies in the
-window of $(\star2)$, and positivity transfers its lower bound from
+\S\ref{sec:microcanonical} below. For $k$ in that window and
+$m<\tau\sqrt\ell$, $|k-m-\ell|\le(\delta_1+\tau)\sqrt\ell$; choosing
+$\delta_1+\tau<\delta$ puts $j=k-m$ inside the window of $(\star2)$,
+and positivity transfers its lower bound from
 $g_\ell/\bar g_\ell$ to $e_\ell/\bar e_\ell$.
 \end{proof}
 
@@ -250,7 +254,7 @@ $q_\ell(k)=2\cdot3^{\ell-1}\bar g_\ell(k)$, credited there to
 implication itself as
 Conjecture~1 \cite[\S\S1--2]{Wirsching2003}. What the proof above adds
 is the convolution-tail estimate and the window choice
-$\delta+\eta<\delta_1$ that closes the implication, checked
+$\delta_1+\tau<\delta$ that closes the implication, checked
 coefficient by coefficient in the accompanying repository.
 \end{remark}
 
@@ -268,7 +272,9 @@ Let $g_\ell(k,a)$ be Wirsching's generator, let
 $c_i=2\cdot3^i$ for $i\ge0$ (the coin $c_j$ of \S\ref{sec:conj1}
 reindexed by $i=j-1$, dropping the extra coin $c_0=1$ that appears
 there only), and let $\mu_\ell$ be the Syracuse law modulo
-$3^\ell$ (unrelated to the constant $\mu$ of $(\star1)$, $(\star3)$,
+$3^\ell$, the pushforward of the uniform measure on the reverse
+Collatz tree at depth $\ell$ onto residues \cite{Tao2020}
+(unrelated to the constant $\mu$ of $(\star1)$, $(\star3)$,
 $(\star4)$ in \S\ref{sec:chain}). For every unit residue $a$,
 \begin{equation}\label{eq:microcanonical}
  \mu_\ell(a)=
@@ -288,7 +294,9 @@ Then $\mu_\ell(a)\ge C_{\delta,\eta}3^{-\ell}$ uniformly in $a$ and
 $\ell$. In particular, condition $(\star3)$ implies a uniform lower bound
 on every cylinder of the Syracuse law, the estimate the weighted
 covering formulation of the companion paper on the endogeny barrier
-needs \cite{BarrierCompanion}. The hypothesis $g_\ell(k,a)\ge\eta\bar
+needs, that the total geometric multiplicity of a residue's
+representations stays within a subexponential factor of its mean,
+uniformly over residues \cite{BarrierCompanion}. The hypothesis $g_\ell(k,a)\ge\eta\bar
 g_\ell(k)$ is open: Empirical Result~\ref{thm:microcanonical-finite}
 below finds the minimum multiplicity is zero at $k=\ell$ at every
 level computed, so no $\eta>0$ works there yet.
@@ -296,8 +304,9 @@ level computed, so no $\eta>0$ works there yet.
 
 \begin{proof}
 At recursion level $i$, multiplication by $2$ has order
-$c_i=2\cdot3^i$ modulo $3^{i+1}$. If $A_i$ has the geometric law
-$\Pr(A_i=m)=2^{-m}$, then $J_i=A_i-1\bmod c_i$ satisfies
+$c_i=2\cdot3^i$ modulo $3^{i+1}$. If $\Gamma_i$ has the geometric law
+$\Pr(\Gamma_i=m)=2^{-m}$ for $m\ge1$, then $J_i=\Gamma_i-1\bmod c_i$
+satisfies
 \[
  \Pr(J_i=j)=\frac{2^{-(j+1)}}{1-2^{-c_i}},
  \qquad 0\le j<c_i.
@@ -359,14 +368,17 @@ $|k-\ell|\le\delta\sqrt\ell$,
  \qquad
  Q_{\ell,a}(k)\ge c_\delta\ell^{-1/2},
 \]
-then condition $(\star3)$ holds. The second hypothesis is open at
+then condition $(\star3)$ holds. Via \eqref{eq:microcanonical},
+$G_{\ell,a}(1/2)/\overline G_\ell(1/2)=2\cdot3^{\ell-1}\mu_\ell(a)$, so
+the first hypothesis is exactly Theorem~\ref{thm:microcanonical}'s
+conclusion $\mu_\ell(a)\ge C3^{-\ell}$. The proposition packages that
+conclusion with a second, local-limit hypothesis. The second
+hypothesis is open at
 $k=\ell$ for the same reason as in Theorem~\ref{thm:microcanonical}:
 the minimum computed multiplicity is zero at every level tested. The
-first hypothesis does not depend on $k$; it is open because the only
-available lower bound on the canonical mass ratio
-$G_{\ell,a}(1/2)/\overline G_\ell(1/2)$, the conjectural
-weighted-covering estimate discussed below, is subexponential rather
-than constant.
+first is open because the only
+available lower bound on the canonical mass ratio, the conjectural
+weighted-covering estimate discussed below, is only subexponential.
 \end{proposition}
 
 \begin{proof}
@@ -510,7 +522,9 @@ residue has law exactly $\mu_r$.
 \begin{theorem}[Linear-block nonequivalence]\label{thm:linear-block-nonequivalence}
 Let $\mathbf B_{\ell,r}=(J_{\ell-r},\ldots,J_{\ell-1})$ be the
 terminal block of folded costs and let
-$S_{\ell,r}=\sum_{i=\ell-r}^{\ell-1}J_i$. Suppose that
+$B_{\ell,r}=\sum_{i=\ell-r}^{\ell-1}J_i$ be its coordinate sum, the
+same block sum used in the proof of
+Theorem~\ref{thm:sublinear-precision-ensemble}. Suppose that
 \[
  \frac r\ell\longrightarrow\rho\in(0,1),\qquad
  \frac{k_\ell-\ell}{\sqrt\ell}\longrightarrow u.
@@ -521,15 +535,16 @@ Then
    \mathcal L(\mathbf B_{\ell,r}\mid K_\ell=k_\ell),
    \mathcal L(\mathbf B_{\ell,r})\bigr)\\
  &\quad=d_{\rm TV}\bigl(
-   \mathcal L(S_{\ell,r}\mid K_\ell=k_\ell),
-   \mathcal L(S_{\ell,r})\bigr)\\
+   \mathcal L(B_{\ell,r}\mid K_\ell=k_\ell),
+   \mathcal L(B_{\ell,r})\bigr)\\
  &\quad\longrightarrow
  d_{\rm TV}\bigl(
    \mathcal N(\rho u,2\rho(1-\rho)),
    \mathcal N(0,2\rho)\bigr)>0,
 \end{align*}
-where the second parameter of $\mathcal N$ is the variance. In fact,
-the first equality holds without the $o(1)$ at every finite level.
+where the second parameter of $\mathcal N$ is the variance. The
+equality above is exact at every finite level; only the convergence
+that follows it is asymptotic.
 For $u=0$, the limit equals
 \[
  2\left[
@@ -540,22 +555,22 @@ For $u=0$, the limit equals
 \end{theorem}
 
 \begin{proof}
-Write $R_{\ell,r}=K_\ell-S_{\ell,r}$. Relative to the
+Write $R_{\ell,r}=K_\ell-B_{\ell,r}$. Relative to the
 unconditioned block law, the conditioned law has density
 \[
- \frac{\Pr(R_{\ell,r}=k_\ell-S_{\ell,r})}
+ \frac{\Pr(R_{\ell,r}=k_\ell-B_{\ell,r})}
       {\Pr(K_\ell=k_\ell)}.
 \]
-This density is a function of $S_{\ell,r}$ alone. Taking its absolute
+This density is a function of $B_{\ell,r}$ alone. Taking its absolute
 deviation from one proves the finite-level equality of the two total
 variation distances.
 
 The folded costs have uniformly bounded exponential moments. Their
 means and variances differ from $1$ and $2$, respectively, by summable
 errors. The lattice local central limit theorem, applied separately to
-$S_{\ell,r}$ and $R_{\ell,r}$, gives the unconditioned limit
+$B_{\ell,r}$ and $R_{\ell,r}$, gives the unconditioned limit
 $\mathcal N(0,2\rho)$ for
-$(S_{\ell,r}-r)/\sqrt\ell$. Write $\psi_{m,\sigma^2}$ for the
+$(B_{\ell,r}-r)/\sqrt\ell$. Write $\psi_{m,\sigma^2}$ for the
 $\mathcal N(m,\sigma^2)$ density, distinct from $\varphi$ and
 $\varphi_0$ above. After conditioning, its limiting density is
 \[
@@ -630,10 +645,13 @@ Theorem~\ref{thm:sublinear-precision-ensemble} gives
  =\widehat\mu_r(\xi_0)+o(1),
 \end{equation}
 uniformly in $\xi_0$ and in the central cost window.
-Thus the fixed-cost law does not approach Haar at fixed precision.
-Fixed-conductor modes may persist. For example, $\mu_1$ assigns masses
-$1/3$ and $2/3$ to the two units modulo $3$, so its nontrivial Fourier
-coefficient has modulus $1/\sqrt3$. Any Fourier estimate for condition
+Thus the fixed-cost law does not approach the uniform law on units at
+fixed precision. Fixed-conductor modes may persist and differ from
+those of the uniform law itself: $u_1$, uniform on the two units
+modulo $3$, has $\widehat u_1(1)=-1/2$, while $\mu_1$, which assigns
+masses $1/3$ and $2/3$ to the same two units, has
+$\widehat\mu_1(1)=-\tfrac12-\tfrac{i}{2\sqrt3}$, modulus $1/\sqrt3\ne1/2$.
+Any Fourier estimate for condition
 $(\star3)$ must separate these exact coarse modes and control frequencies
 whose conductor is comparable with $\ell$.
 
@@ -681,9 +699,10 @@ some fixed integer $a$. Two measurements bear on the question.
 Over the $1458$ units below $3^7$, an exhaustive, non-growing set of
 integers, $\min_ag_\ell(\ell+5,a)/\overline g_\ell(\ell+5)$ reads
 $0.1019$, $0.0736$, $0.1073$, $0.0787$, $0.1161$, $0.1075$, $0.0958$,
-$0.0892$ for $\ell=10,\ldots,17$, the exact-count recursion of
-Empirical Result~\ref{thm:microcanonical-finite} run one level past its
-reported support calculation. Eight levels, consistent with no trend;
+$0.0892$ for $\ell=10,\ldots,17$, from a third recursion, restricted to
+this fixed set of integers rather than every unit residue, which
+reaches one level past the Boolean support recursion above. Eight
+levels, consistent with no trend;
 the ordinary least-squares slope is an order of magnitude below the
 series' own spread. The minimum over all units at the same offset
 reads $0.0509$, $0.0368$, $0.0536$, $0.0197$, $0.0435$, $0.0215$,
@@ -692,10 +711,13 @@ level. This comparison is confined to $d=+5$: the same exhaustive test
 at the offsets $d=6,\ldots,12$ below, where the population as a whole
 does decay, has not been run.
 
-A fixed low quantile of the population is immune to the set-size
-confound by construction: the value below which a fixed fraction of
-the population falls does not shrink just because the population
-grows. At $k=\ell+5$ the $q=10^{-3}$ quantile of
+A fixed low quantile of the population is immune to the extreme-order-
+statistic effect of a growing index set by construction: the value
+below which a fixed fraction of the population falls does not shrink
+just because the population grows. It is not immune to a change in the
+population's composition, which a growing index set can also produce
+and which this measurement does not separate out. At $k=\ell+5$ the
+$q=10^{-3}$ quantile of
 $g_\ell(k,a)/\overline g_\ell(k)$ over units $a$ stays in
 $[0.10,0.12]$ for $\ell=10,\ldots,16$. At every other offset tested in
 Wirsching's window, $d=6,\ldots,12$, the same quantile decays at a
@@ -710,8 +732,9 @@ from $d\ge6$, where support has been complete for several levels
 already.
 
 Outside the support boundary, the population's low quantiles decay at
-close to the minimum's own rate, well above the extreme order
-statistic too. Whether it reflects some fixed integer's
+a rate close to the minimum's own, even though the quantile itself sits
+well above the extreme order statistic, the single minimum. Whether it
+reflects some fixed integer's
 ratio worsening, as against newly entering residues of large
 representative pulling the population down, is not settled by this
 measurement. The exhaustive fixed-set test above answers that question
@@ -739,13 +762,15 @@ and $j$ admissible for $a$ means $2^{j+1}a\equiv1\pmod3$, a condition
 on $a\bmod3$ alone that selects one parity class of $j$ out of the
 $2\cdot3^{\ell-1}$ available. The expansion would be a convex
 combination, certifying monotonicity the same way, exactly when its
-coefficient sum
-$S_\ell(k,a):=\sum_{j\text{ admissible for }a}\overline
+coefficient sum (written $\mathcal S_\ell$, distinct from Wirsching's
+transition operators $S_\ell$ of \S\ref{sec:chain})
+$\mathcal S_\ell(k,a):=\sum_{j\text{ admissible for }a}\overline
 g_{\ell-1}(k-j)/\overline g_\ell(k)$ equals $1$ for every $a$. It does
 not, and not even on Haar average: at $\ell=3$, $k=3$, exact evaluation
-gives $S_3(3,a)=9/7$ for
+gives $\mathcal S_3(3,a)=9/7$ for
 $a\equiv1\pmod3$ and $12/7$ for $a\equiv2\pmod3$, summing to $3$, not
-$2$, so the Haar average of $S_\ell(k,\cdot)$ over $a$ is $3/2$; the
+$2$, so the Haar average of $\mathcal S_\ell(k,\cdot)$ over $a$ is
+$3/2$; the
 same two-values-per-level pattern and the same average hold at
 $\ell=4$, $k=4,5$. The identity's own left side still averages to $1$
 over $a$, by the definition of $\overline g_\ell$ as that average; the
@@ -803,26 +828,27 @@ $M_i=\mathbb{E}[X^i]$ satisfy the exact rational recursion
   M_i = \frac{1}{3^i-1}\sum_{k=1}^i \binom{i}{k}\frac{2^k}{k+1} M_{i-k},
 \]
 and, combined with an antiderivative reduction expressing $\varphi$ at
-extreme-tail arguments in terms of exact binomial moment sums (rather
-than iterating $W_3$, whose $L^1$ error certificate is too weak to
-control pointwise values at the relevant scale), we obtain a
-zero-truncation-error evaluation of $\varphi$ at depth $\ell$ up to
+extreme-tail arguments in terms of exact binomial moment sums, we
+avoid iterating $W_3$ itself, whose $L^1$ error certificate is too
+weak to control pointwise values at the relevant scale. This gives an
+evaluation of $\varphi$ at depth $\ell$ up to
 $\ell=500$ (working throughout in log-space with $100$-digit
-precision; the truncation-error certificate is exactly zero on the
-tested range, comfortably inside the claimed $10^{-8}$ bound).
+precision) whose truncation error is exactly zero at every point
+tested below.
 
 \begin{empirical}[Numerical test of Wirsching's Conjecture 3]
 \label{thm:conjecture3}
-The ratio $L_\ell := 3^{1-\ell}\varphi(3x_\ell^+)/\varphi(x_\ell^+)$,
-measured for $\ell=200,\ldots,500$ in the CLT window ($u\in[-2,2]$),
-converges to the predicted value $2/3$ for every $u$ tested. At the
+By $\varphi'(x)=\tfrac92\varphi(3x)$ on $[0,2/3]$
+\cite[eq.~(7.7)]{Wirsching2003}, $L_\ell=\tfrac{2}{3^{\ell+1}}\varphi'(x_\ell^+)/\varphi(x_\ell^+)$,
+the quantity (7.5) of \cite{Wirsching2003} needs; its predicted limit
+$2/3$ is (7.13) there. Measured
+for $\ell=200,\ldots,500$ in the CLT window ($u\in[-2,2]$), $L_\ell$
+converges to $2/3$ for every $u$ tested. At the
 central sequence $u=0$, the deficit $\ell\cdot(2/3-L_\ell)$ stabilizes
-near $0.580$ ($0.5807$ at $\ell=200$, $0.5800$ at $\ell=500$), a
-coefficient matching the asymptotic $\varphi_0$ of Wirsching's
-equation (7.11) \cite[eq.~(7.11)]{Wirsching2003}, itself credited
-there to Berg and Kr\"uppel \cite{BergKruppel1998}. This convergence
-of the deficit is not uniform in $u$: at $\ell=500$ it ranges from
-$-32.4$ at $u=-2$ to $28.1$ at $u=2$, since
+near $0.802$ ($0.8026$ at $\ell=200$, $0.8021$ at $\ell=500$). This
+convergence of the deficit is not uniform in $u$: at $\ell=500$ it
+ranges from
+$-32.1$ at $u=-2$ to $28.3$ at $u=2$, since
 $\ell\cdot(2/3-L_\ell)$ isolates a $u$-dependent correction of order
 $\sqrt\ell$ away from the central sequence. The quantity
 $\ln(\varphi/\varphi_0)$ itself, by contrast, is uniform across
@@ -832,9 +858,8 @@ $\ln(\varphi/\varphi_0)$ is increasing and concave in $\ell$,
 consistent with a finite limit; a least-squares fit to
 $L+a/\sqrt\ell$ over $\ell=200,\ldots,500$ gives $L=-0.619$,
 $a=-0.79$, hence $c=e^L\approx0.539$. Fitting only the upper half of
-the range ($\ell\ge350$), or adding a further $1/\ell$ term, moves
-$L$ by at most $2\times10^{-4}$, a narrow probe of the fit's
-sensitivity to sub-range and to one extra term. The
+the range ($\ell\ge350$) leaves $L$ unchanged to six digits; adding a
+further $1/\ell$ term moves it by $4\times10^{-4}$. The
 zero-truncation-error certificate above bounds the
 evaluation of $\varphi$ itself, not this extrapolation.
 Conjecture~2 remains open;
@@ -850,7 +875,11 @@ and nonequivalence theorems above are exact; they bound how far
 local-limit methods reach toward Conjecture 2, not the conjecture
 itself. Theorem~\ref{thm:fixed-precision-ensemble} and
 Theorem~\ref{thm:sublinear-precision-ensemble} give convergence at
-fixed and sublinear precision; Theorem~\ref{thm:linear-block-nonequivalence}
+fixed and sublinear precision, checked at finite level by Empirical
+Result~\ref{thm:fixed-precision-finite}; the negative Fourier-based
+lower bound of Empirical Result~\ref{thm:microcanonical-fourier}
+confines termwise absolute summation to the same finite-level regime.
+Theorem~\ref{thm:linear-block-nonequivalence}
 shows the latent cost vectors provably fail to converge at linear
 precision. Theorem~\ref{thm:ensemble-divergence} is a separate,
 one-sided bound at full precision, $D_\infty\le\frac12\log\ell+O(1)$;
@@ -871,8 +900,9 @@ Result~\ref{thm:quantile-diagnosis} bears on it two ways. At the
 support boundary $d=+5$, an exhaustive test over a fixed, non-growing
 set of integers shows no deterioration through $\ell=17$. Past that
 boundary, at $d\ge6$, the population's low quantiles decay
-at close to the minimum's own rate, well above the extreme order
-statistic too, and whether that decay reflects some fixed integer's
+at a rate close to the minimum's own, even though the quantile itself
+sits well above the extreme order statistic, and whether that decay
+reflects some fixed integer's
 ratio worsening is untested at those offsets. Remark~\ref{rem:no-monotone-certificate}
 closes off the one available shortcut regardless: the level-to-level
 monotonicity certificate that works for a different integer-covering
@@ -917,6 +947,11 @@ translation.
   time-dependent expanding dynamical systems}, Nonlinearity
   \textbf{33} (2020), 6421--6460.
   DOI: 10.1088/1361-6544/aba5e7.
+
+\bibitem{Tao2020} T.\ Tao, \emph{Equidistribution of Syracuse random
+  variables and density of Collatz preimages}, blog post,
+  \url{https://terrytao.wordpress.com/2020/01/25/equidistribution-of-syracuse-random-variables-and-density-of-collatz-preimages/},
+  2020.
 
 \bibitem{BarrierCompanion} R.\ A.\ Tavares, \emph{The $qx+1$
   generalization of Tao's Syracuse measure: an endogeny barrier},
