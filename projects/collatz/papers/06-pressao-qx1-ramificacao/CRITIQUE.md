@@ -1042,3 +1042,50 @@ matemático novo em nenhuma prova, identidade ou fórmula numérica."
 `pdflatex`), zero erro/referência indefinida; `\cite`/`\bibitem` e
 `\ref`/`\eqref`/`\label` conferidos por script, sem órfãos em nenhuma
 direção.
+
+### 2026-08-11 — rodada de convergência 4 (crítico, contexto fresco)
+
+Escopo: `main.tex` inteiro, com instrução explícita de concentrar
+esforço nas provas mais antigas do paper (nunca tocadas pelas três
+rodadas anteriores) e na bibliografia, já que a prova de
+`thm:transition-model` tinha acabado de ser confirmada correta, do
+zero, três vezes seguidas.
+
+**Resultado: 0 crítico, 1 maior, 1 moderado, 0 menor. Não limpa.
+Contagem de rodadas limpas consecutivas: 0/3.**
+
+| ID | Nível | Resumo | Status |
+|----|-------|--------|--------|
+| D-18 | maior | `rem:novelty-109`: "a later result rigorously excludes $q\ge5$" citando Gonçalves-Greenfeld-Madrid 2022 — falso; a exclusão de $q\ge5$ é a **Conjecture 1.5** do próprio paper deles, não um teorema, com suporte só numérico ("we were not able to find... it seems that condition (b) must be satisfied") | fixed |
+| D-19 | moderado | `\bibitem{KontorovichLagarias2010}` sem faixa de páginas (única entrada de capítulo/artigo do documento sem uma) | fixed |
+
+**Correções aplicadas (Regra 8c: cada achado verificado antes do conserto):**
+
+- **D-18.** Baixei o PDF primário (arXiv:2111.06170v2, a versão exata
+  citada) e li o Teorema 1.3, o Remark 1.4 e a Conjecture 1.5 na
+  íntegra. O Teorema 1.3 prova a direção positiva (órbitas quase
+  limitadas) sob três condições, incluindo $q<p^{p/(p-1)}$ (que em
+  $p=2$ dá $q<4$). A necessidade dessa condição, isto é, que ela falhe
+  para todo $q\ge5$, é exatamente a Conjecture 1.5, sustentada só por
+  não terem achado contraexemplo numérico ("it seems that condition
+  (b) must be satisfied whenever all orbits are bounded"). Reescrevi o
+  trecho para atribuir corretamente: Teorema 1.3 prova a direção
+  positiva sob a condição $q<4$; Conjecture 1.5 conjectura, com suporte
+  numérico e sem prova, que a condição também é necessária. A rodada de
+  convergência 1 tinha registrado essa citação como "primeira vez
+  checada, correta" sem checar o status teorema-vs-conjectura da
+  alegação específica sendo citada; registro aqui, por Regra 8c, que
+  essa verificação anterior estava incompleta, não errada no que de
+  fato conferiu (a existência do paper e o tema geral).
+- **D-19.** Baixei o PDF oficial de sumário do livro
+  (`ams.org/bookstore/pspdf/mbk-78-toc.pdf`, via `curl`) e confirmei: o
+  capítulo de Kontorovich-Lagarias começa na página 131 e o capítulo
+  seguinte (Oliveira e Silva) começa na 189, logo 131-188. Adicionado à
+  entrada bibliográfica; corrigido também o título, que no sumário
+  oficial é "... and related problems" (a entrada do `main.tex` estava
+  truncada, faltando esse sufixo).
+
+**Verificação técnica pós-correção:** recompilado (2 passadas
+`pdflatex`), zero erro/referência indefinida; `\cite`/`\bibitem` e
+`\ref`/`\eqref`/`\label` conferidos por script, sem órfãos em nenhuma
+direção.
