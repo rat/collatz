@@ -1222,3 +1222,57 @@ Recompilado limpo (pdflatex 2x, 6 páginas); `\cite`/`\bibitem`
 conferidos sem órfãos em nenhuma direção (três chaves).
 
 **Contagem de rodadas limpas consecutivas após R9: 0.**
+
+---
+
+## 2026-08-12, rodada R10 (loop de convergência, crítico independente)
+
+| R10-M1 | 2026-08-12 (loop R10) | "The three decades below that move by more" reintroduzia o erro de contagem que a própria R9 tinha acabado de corrigir: são só duas décadas abaixo de 1e7→1e8 (1e5→1e6 e 1e6→1e7); a terceira década testada (1e8→1e9) não fica "abaixo" e move MENOS (0,0009), não mais | maior | fixed |
+| R10-D1 | 2026-08-12 (loop R10) | "computed on the same roots and checkpoints with truncation buffers extended to $10^{17}$" tinha o particípio final anexado ao antecedente errado (0,64926, quando é 0,6490 que usa buffers até $10^{17}$) | moderado | fixed |
+| R10-n1 | 2026-08-12 (loop R10) | Remark do §2: mapa não-acelerado escrito em $q$ genérico ("$n\mapsto(qn+1)/2$") mas batizado "$T_5$", símbolo específico de KL para $q=5$ | menor | fixed |
+| R10-n2 | 2026-08-12 (loop R10) | Fórmula de hedge "close to, but not identical to" repetida quase literalmente em §5 e na Discussão | menor | fixed |
+| R10-n3 | 2026-08-12 (loop R10) | Doze frases consecutivas no §5 sem nenhuma abaixo de dez palavras | menor | fixed |
+| R10-n4 | 2026-08-12 (loop R10) | §3: vírgula + dois-pontos + dois-pontos na mesma sentença ao redor do display de incrementos | menor | fixed |
+| R10-n5 | 2026-08-12 (loop R10) | Discussão: frase de 60 palavras com vírgula, dois apostos e dois-pontos empilhados, mesmo defeito que R9-n1 corrigiu no parágrafo anterior | menor | fixed |
+| R10-n6 | 2026-08-12 (loop R10) | "The integer $q$ itself stays fixed at the arithmetic tree's own admissibility rule" agramatical ($q$ não "fica fixo em" uma regra) | menor | fixed |
+| R10-n7 | 2026-08-12 (loop R10) | "independent of $q$" para o espaçamento entre irmãos é literalmente falso ($d=\ord_q(2)$ depende de $q$); o que é verdade é que o passo não carrega um fator de $q$ | menor | fixed |
+
+Rodada 10 do loop de convergência: **crítico 0, maior 1, moderado 1,
+menor 7** (total 9 achados). NÃO limpa. Todos corrigidos nesta mesma
+passada (nenhum rejeitado). Contagem de rodadas limpas consecutivas
+após R10: **0**.
+
+Contexto fresco (novo subagente; uma tentativa anterior de rodada 10
+foi interrompida por um erro de infraestrutura de billing quase no
+início, sem produzir achados, tratada como se não tivesse acontecido).
+Rodou `buffer_squeeze.py` em todos os arquivos b15 e no b17,
+`cyc_vs_cycq.py`, `experiment_gate_richardson.py` completo e
+`validate_richardson_vs_production.py`. Confirmou que a série de
+quatro rodadas seguidas com achado maior na categoria "número não bate
+com o repositório" foi quebrada: nenhum número reproduzido nesta
+rodada divergiu do impresso, exceto a contagem de décadas do achado
+R10-M1 (que é uma alegação sobre estrutura do teste, não sobre um
+valor numérico em si).
+
+### Verificação (Regra 8c)
+
+Confirmei R10-M1 recontando os índices de buffer do teste de folga:
+décadas na grade b15 são 1e5→1e6, 1e6→1e7, 1e7→1e8, 1e8→1e9, 1e9→1e10
+(cinco no total, a última degenerada). Abaixo de 1e7→1e8 há exatamente
+duas (1e5→1e6, 1e6→1e7); 1e8→1e9 fica entre 1e7→1e8 e a década de
+calibração, não "abaixo" dela, e seu deslocamento máximo (0,0009) é de
+fato menor que o de 1e7→1e8 (0,0017).
+
+### Resolução
+
+Todos os 9 achados corrigidos, nenhum rejeitado. A correção do R10-M1
+segue exatamente a estrutura sugerida pelo crítico: nomeia as duas
+décadas rasas com folga maior (até 0,0189) separadamente da terceira
+década testada (1e8→1e9, no máximo 0,0009), sem reagrupá-las
+incorretamente. Demais mudanças são de precisão de redação (referente
+de particípio, notação $T_5$/$U_5$, variância de frase, gramática).
+
+Recompilado limpo (pdflatex 2x, 6 páginas); `\cite`/`\bibitem`
+conferidos sem órfãos em nenhuma direção (três chaves).
+
+**Contagem de rodadas limpas consecutivas após R10: 0.**
