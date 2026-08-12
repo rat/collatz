@@ -177,12 +177,12 @@ arithmetic tree's sibling spacing but a tunable exponent.
 \section{Method}
 \label{sec:method}
 
-We enumerate $T_5$'s exact reverse tree from $300$ roots. They are odd
-integers coprime to $5$ and outside every cycle of $T_5$ (a cycle
-member is reachable only from inside its own cycle, so excluding them
-needs no visited set), sampled uniformly below $10^4$ and no smaller
-than $101$, well below the fixed measurement window, $10^5$ through
-$10^8$. A single
+We enumerate $T_q$'s exact reverse tree at $q=5$ from $300$ roots. They
+are odd integers coprime to $5$ and outside every cycle of $T_q$ (a
+cycle member reaches only members of its own cycle, so
+excluding them needs no visited set), sampled uniformly below $10^4$
+and no smaller than $101$, well below the fixed measurement window,
+$10^5$ through $10^8$. A single
 depth-first pass tracks the running path-maximum at every node, giving
 simultaneous counts at truncation buffers $10^9$ through $10^{13}$
 directly, without re-running the enumeration once per buffer; this
@@ -295,22 +295,20 @@ Volkov's branching model itself uses a different encoding of the
 iterates and is not implemented here.
 \end{empirical}
 
-Pushed on the same $300$ roots to checkpoints $10^{12}$ and buffers
-$10^{17}$, past the depth where a single unlucky realization among the
-stochastic constructions dominates the wall time of a matched batch,
-the arithmetic tree's slope alone approaches $0.650919$: $0.6465$ at
-$10^7\!\to\!10^8$,
-$0.6487$ at $10^8\!\to\!10^9$, $0.6490$ at $10^9\!\to\!10^{10}$, then
-$0.6506$ and $0.6505$ at $10^{10}\!\to\!10^{11}$ and
-$10^{11}\!\to\!10^{12}$, the last two within $0.0005$ of the
-prediction. This deeper grid, with truncation buffers extended to
-$10^{17}$, reads $0.6490$ at $10^9\!\to\!10^{10}$ on the same roots
-and checkpoints as Empirical Result~\ref{thm:kl-calibrated}: close to,
-but not identical to, its $0.64926$.
-The
-bootstrap bands on these five readings cover root resampling only; a
-separate truncation term is at most $0.002$, falling to at most
-$0.0004$ from $10^8\!\to\!10^9$ onward.
+We push the arithmetic tree alone, on the same $300$ roots, to
+checkpoints $10^{12}$ and buffers $10^{17}$, past the depth where a
+single unlucky realization among the stochastic constructions
+dominates the wall time of a matched batch. Its slope approaches
+$0.650919$: $0.6465$ at $10^7\!\to\!10^8$, $0.6487$ at
+$10^8\!\to\!10^9$, $0.6490$ at $10^9\!\to\!10^{10}$, then $0.6506$ and
+$0.6505$ at $10^{10}\!\to\!10^{11}$ and $10^{11}\!\to\!10^{12}$, the
+last two within $0.0005$ of the prediction. This deeper grid, with
+truncation buffers extended to $10^{17}$, reads $0.6490$ at
+$10^9\!\to\!10^{10}$, the same roots and decade as Empirical
+Result~\ref{thm:kl-calibrated}: close to, but not identical to, its
+$0.64926$. The bootstrap bands on these five readings cover root
+resampling only; a separate truncation term is at most $0.002$,
+falling to at most $0.0004$ from $10^8\!\to\!10^9$ onward.
 
 \section{Discussion}
 \label{sec:discussion}
@@ -324,9 +322,13 @@ in size to the $0.0037$ wider band width itself if it is not. Whether
 it transfers unchanged to the single-decade slope of the calibration
 comparison is not tested here.
 
-Separately, the same buffer-headroom test used on the deep run above,
-applied to the b15 grid, has no slack left at the calibration decade
-itself. It returns $0.0000$ identically for every construction there,
+Separately, redoing a decade's Aitken step with only the three
+truncation buffers sitting three, four and five decades above its top,
+the headroom the deepest decades of the run above are limited to,
+tests how much slack the extrapolation itself carries. Applied to the
+checkpoint-$10^{10}$, buffer-$10^{15}$ grid used throughout this
+section, it has no slack left at the calibration decade itself. It
+returns $0.0000$ identically for every construction there,
 uninformative about truncation error. The test has slack at four
 shallower decades; only $10^7\!\to\!10^8$, the shallow decade Empirical
 Result~\ref{thm:kl-calibrated} reads, is used elsewhere in this
@@ -344,8 +346,7 @@ The $0.038$ bias of the opening measurement in \S\ref{sec:calibrated}
 and the residual bias at the calibration depth, under $0.004$ for every
 construction there, come from related log-slope estimators of the same
 family: one over the wider window at shallow depth, one over a single
-decade at much greater depth. Both the added depth and the narrower
-window contribute to the drop.
+decade at much greater depth. Depth helps. So does the narrower window.
 
 Collapsing the chain of doublings in Kontorovich and Lagarias's
 $B[5^0]$ gives each exponent $a\ge1$ an independent chance $1/5$ of a
@@ -362,17 +363,17 @@ construction and the collapsed $B[5^0]$ differ in their joint
 structure: the former draws one residue class per node, while the
 latter assigns each exponent independently.
 
-On the b13 grid of \S\ref{sec:calibrated}'s opening measurement,
-buffers $10^9$ through $10^{13}$, the unconstrained construction's bias
+On the grid of \S\ref{sec:calibrated}'s opening measurement, buffers
+$10^9$ through $10^{13}$, the unconstrained construction's bias
 is $0.038$. The arithmetic tree's window reading there is $0.63824$, a
 bias of $0.013$ presuming the disputed exponent is $0.650919$. This
 figure comes from an independently drawn sample of $300$ roots, by the
 same rule as \S\ref{sec:result}'s $0.639$; the two values are near but
 distinct.
 The deep
-arithmetic-only run sits systematically at or just below $0.650919$, a
-pattern the data here cannot yet distinguish from a slowly converging
-sequence.
+arithmetic-only run never reads above $0.650919$, closing to within
+$0.0005$ at the two deepest decades, a pattern the data here cannot
+yet distinguish from a slowly converging sequence.
 
 \section*{Data Availability Statement}
 

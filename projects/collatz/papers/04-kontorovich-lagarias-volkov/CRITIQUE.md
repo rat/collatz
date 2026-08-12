@@ -1276,3 +1276,50 @@ Recompilado limpo (pdflatex 2x, 6 páginas); `\cite`/`\bibitem`
 conferidos sem órfãos em nenhuma direção (três chaves).
 
 **Contagem de rodadas limpas consecutivas após R10: 0.**
+
+---
+
+## 2026-08-12, rodada R11 (loop de convergência, crítico independente)
+
+Primeira rodada do loop sem nenhum achado crítico ou maior.
+
+| R11-D1 | 2026-08-12 (loop R11) | "a cycle member is reachable only from inside its own cycle" tinha a direção invertida (é falsa como escrita: contraexemplo $T_5(51)=1$, e $51$ não está no ciclo); o fato correto é que um membro de ciclo alcança só membros do próprio ciclo | moderado | fixed |
+| R11-D2 | 2026-08-12 (loop R11) | O Remark do §2 avisa que KL usam $T_5$ para o mapa não-acelerado e $U_5$ para o acelerado; o §3 seguia usando "$T_5$" para o mapa acelerado deste paper, praticando a colisão logo depois de sinalizá-la | moderado | fixed |
+| R11-D3 | 2026-08-12 (loop R11) | O teste de folga de buffer nunca é descrito antes de a Discussão citar seus números; os rótulos "b13"/"b15" (nomes de arquivo do repositório) aparecem no texto sem definição | moderado | fixed |
+| R11-n1 | 2026-08-12 (loop R11) | "Pushed on the same 300 roots to checkpoints..., the arithmetic tree's slope alone approaches" tinha particípio solto (quem foi "pushed" é a corrida, não a slope) | menor | fixed |
+| R11-n2 | 2026-08-12 (loop R11) | "checkpoints $10^{12}$" (corrida profunda) contra "same ... checkpoints as Empirical Result 5.1" (grade até $10^{10}$) no mesmo parágrafo, contradição literal apesar de o conteúdo estar certo | menor | fixed |
+| R11-n3 | 2026-08-12 (loop R11) | "sits systematically at or just below 0,650919" impreciso: três das cinco leituras da corrida profunda ficam mais abaixo que "just below" sugere | menor | fixed |
+| R11-n4 | 2026-08-12 (loop R11) | Dez frases finais da Discussão sem nenhuma abaixo de dez palavras | menor | fixed |
+
+Rodada 11 do loop de convergência: **crítico 0, maior 0, moderado 3,
+menor 4** (total 7 achados). NÃO limpa (moderado precisa ser 0). Todos
+corrigidos nesta mesma passada (nenhum rejeitado). Contagem de rodadas
+limpas consecutivas após R11: **0**.
+
+Contexto fresco (novo subagente). Primeira rodada sem nenhum achado
+maior ou crítico, e segunda seguida em que nenhum valor numérico
+diverge do repositório (todos os 20+ números reproduzidos batem
+exatamente).
+
+### Verificação (Regra 8c)
+
+Confirmei R11-D1 com um contraexemplo direto: $T_5(51)=(5\cdot51+1)/
+2^{v_2(256)}=256/256=1$, e $51\notin\{1,3\}$ (o ciclo de $q=5$), logo um
+membro de ciclo (1) é alcançado a partir de fora do ciclo (51); a
+direção "reachable only from inside" como estava escrita é falsa.
+
+### Resolução
+
+Todos os 7 achados corrigidos, nenhum rejeitado. Mudança mais
+relevante: o §3 parou de usar "$T_5$" para o mapa acelerado deste
+paper (agora usa $T_q$ com $q=5$ explícito), eliminando de vez a
+colisão de notação com KL que a R9 tinha sinalizado mas não removido
+da prática; e o teste de folga de buffer citado na Discussão ganhou
+uma descrição própria na primeira menção, com os rótulos internos de
+arquivo do repositório ("b13"/"b15") substituídos por descrições
+explícitas de checkpoint/buffer.
+
+Recompilado limpo (pdflatex 2x, 6 páginas); `\cite`/`\bibitem`
+conferidos sem órfãos em nenhuma direção (três chaves).
+
+**Contagem de rodadas limpas consecutivas após R11: 0.**
