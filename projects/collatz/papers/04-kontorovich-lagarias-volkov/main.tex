@@ -50,7 +50,7 @@ via an exact sibling congruence, its sibling spacing, drawing the
 branch residue instead of the true one: an integer recursion and its
 real-valued relaxation, both built to exponent $0.650919$. Together
 with the unconstrained construction above, three constructions built to
-$0.650919$ read within $0.0035$ of that value, a band $0.0037$ wide.
+$0.650919$ read within $0.0034$ of that value, a band $0.0037$ wide.
 The arithmetic tree reads $0.64926$, below the two constructions built
 to $0.650919$ that share the sibling congruence, and inside the wider
 band set by the third. A fourth construction, the same real-valued
@@ -68,10 +68,10 @@ itself is a separate question.
 
 Kontorovich and Lagarias \cite{KontorovichLagarias2009} study the
 $3x+1$ and $5x+1$ Collatz-type problems through the counting statistics
-of the reverse tree: for a fixed root $u$, their integer count
+of the reverse tree. For a fixed root $u$, their integer count
 $\pi_{u,5}(x)$, under their un-accelerated map (\S\ref{sec:setup}'s
 Remark), conjecturally satisfies $\pi_{u,5}(x)=x^{\eta+o(1)}$ for an
-exponent $\eta$ independent of $u$, their Conjecture~7.2; the
+exponent $\eta$ independent of $u$: their Conjecture~7.2. The
 accelerated count $N_u(x)$ used here shares that exponent. Their
 stochastic model predicts $\eta_{5,BP}\approx0.650919$ for $q=5$ (their
 Theorem~8.10, subscript $BP$ for branching process, in their own
@@ -179,8 +179,8 @@ arithmetic tree's sibling spacing but a tunable exponent.
 
 We enumerate $T_q$'s exact reverse tree at $q=5$ from $300$ roots. They
 are odd integers coprime to $5$ and outside every cycle of $T_q$ (a
-cycle member reaches only members of its own cycle, so
-excluding them needs no visited set), sampled uniformly below $10^4$
+cycle member reaches only members of its own cycle, so the enumeration
+needs no visited set), sampled uniformly below $10^4$
 and no smaller than $101$, well below the fixed measurement window,
 $10^5$ through $10^8$. A single
 depth-first pass tracks the running path-maximum at every node, giving
@@ -289,8 +289,8 @@ reads $0.67748$, $0.0282$ away from the arithmetic reading, more than
 seven widths of that wider band. The same comparison at the shallower
 decade $10^7\!\to\!10^8$, on the same checkpoint grid, gives an
 arithmetic reading of $0.64622$ against $0.67200$ for the
-exponent-$0.678$ construction, a gap of $0.0258$: the separation grows
-with depth. This measurement targets the exponent value $0.678$;
+exponent-$0.678$ construction, a gap of $0.0258$: the separation does
+not shrink with depth. This measurement targets the exponent value $0.678$;
 Volkov's branching model itself uses a different encoding of the
 iterates and is not implemented here.
 \end{empirical}
@@ -324,11 +324,11 @@ comparison is not tested here.
 
 Separately, redoing a decade's Aitken step with only the three
 truncation buffers sitting three, four and five decades above its top,
-the headroom the deepest decades of the run above are limited to,
-tests how much slack the extrapolation itself carries. Applied to the
-checkpoint-$10^{10}$, buffer-$10^{15}$ grid used throughout this
-section, it has no slack left at the calibration decade itself. It
-returns $0.0000$ identically for every construction there,
+the headroom the deepest decade of the run above is limited to, tests
+how much slack the extrapolation itself carries. Applied to the
+checkpoint-$10^{10}$, buffer-$10^{15}$ grid used throughout
+\S\ref{sec:calibrated}, it has no slack left at the calibration decade
+itself. It returns $0.0000$ identically for every construction there,
 uninformative about truncation error. The test has slack at four
 shallower decades; only $10^7\!\to\!10^8$, the shallow decade Empirical
 Result~\ref{thm:kl-calibrated} reads, is used elsewhere in this
@@ -338,15 +338,16 @@ decade, $10^8\!\to\!10^9$, moves by at most $0.0009$. None of their
 readings appear in this comparison. The trend at
 $10^7\!\to\!10^8$ is consistent with the deep run's own fall to at
 most $0.0004$ by $10^8\!\to\!10^9$ and below that at greater depth,
-well below the $0.0282$ separation. At the calibration depth itself,
-the relaxation built to exponent $0.678$ under-reads its own target by
-$0.00052$ and the relaxation built to $0.650919$ by $0.00111$.
+well below the $0.0282$ separation.
 
 The $0.038$ bias of the opening measurement in \S\ref{sec:calibrated}
-and the residual bias at the calibration depth, under $0.004$ for every
-construction there, come from related log-slope estimators of the same
-family: one over the wider window at shallow depth, one over a single
-decade at much greater depth. Depth helps. So does the narrower window.
+and the residual bias at the calibration depth come from related
+log-slope estimators of the same family: one over the wider window at
+shallow depth, one over a single decade at much greater depth. At the
+calibration depth, the relaxation built to exponent $0.678$ under-reads
+its own target by $0.00052$ and the relaxation built to $0.650919$ by
+$0.00111$, both under $0.004$. Depth helps. So does the narrower
+window.
 
 Collapsing the chain of doublings in Kontorovich and Lagarias's
 $B[5^0]$ gives each exponent $a\ge1$ an independent chance $1/5$ of a

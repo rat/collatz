@@ -1323,3 +1323,52 @@ Recompilado limpo (pdflatex 2x, 6 páginas); `\cite`/`\bibitem`
 conferidos sem órfãos em nenhuma direção (três chaves).
 
 **Contagem de rodadas limpas consecutivas após R11: 0.**
+
+---
+
+## 2026-08-14, rodada R12 (loop de convergência, crítico independente)
+
+Segunda rodada seguida sem nenhum achado crítico ou maior.
+
+| R12-D1 | 2026-08-14 (loop R12) | Empirical Result 5.1: "the separation grows with depth" comparava só duas décadas; a década intermediária (1e8→1e9, separação 0,02865) excede a mais funda citada (0,02822), então a tendência monótona alegada não se sustenta nos próprios dados da grade | moderado | fixed |
+| R12-D2 | 2026-08-14 (loop R12) | "grid used throughout this section" na Discussão apontava para a própria Discussão, quando a grade citada é a usada ao longo do §5 (comparação calibrada) | moderado | fixed |
+| R12-n1 | 2026-08-14 (loop R12) | Resumo repetia "$0.0035$" para o desvio máximo ao alvo (real 0,00341, arredonda para 0,0034, como o corpo já usa) e para o sistemático de implementação (0,00347); reincidência de R4-n3 | menor | fixed |
+| R12-n2 | 2026-08-14 (loop R12) | Primeira frase da Introdução com 55 palavras, dois-pontos + parênteses + ponto-e-vírgula na mesma sentença | menor | fixed |
+| R12-n3 | 2026-08-14 (loop R12) | "excluding them needs no visited set" tinha o sujeito trocado (quem dispensa o conjunto de visitados é a enumeração, não o ato de excluir) | menor | fixed |
+| R12-n4 | 2026-08-14 (loop R12) | "the deepest decades of the run above are limited to" no plural, quando só uma década tem exatamente essa restrição de folga | menor | fixed |
+| R12-n5 | 2026-08-14 (loop R12) | Números de viés residual (0,00052/0,00111) impressos no parágrafo sobre folga de extrapolação, tema diferente do seu; o parágrafo seguinte alegava "under 0,004" sem imprimir os números | menor | fixed |
+| R12-n6 | 2026-08-14 (loop R12) | "read with the same window, truncation, and extrapolation" (três substantivos abstratos coordenados) — contestável, registrado sem correção: são três itens reais e exaustivos, sem quarto item nem terceiro inventado por cadência | menor | rejected (Regra 4b §2 permite quando os três são reais e não há um quarto; verificado que é o caso aqui) |
+
+Rodada 12 do loop de convergência: **crítico 0, maior 0, moderado 2,
+menor 6** (total 8 achados, um deles rejeitado). NÃO limpa (moderado
+precisa ser 0). Cinco achados corrigidos, um rejeitado com razão
+registrada. Contagem de rodadas limpas consecutivas após R12: **0**.
+
+Contexto fresco (novo subagente). Segunda rodada seguida sem nenhum
+achado maior ou crítico, e terceira seguida em que nenhum valor
+numérico impresso diverge do repositório (a exceção sendo a alegação
+de tendência do R12-D1, que é sobre o padrão entre três números, não
+sobre um valor individual).
+
+### Verificação (Regra 8c)
+
+Confirmei R12-D1 rodando `summary.py b15 9`: arith=0,64880,
+cycq505=0,67745, separação 0,02865, maior que a separação de 0,02822 em
+1e9→1e10. A tendência "grows with depth" comparando só as décadas rasa
+e de calibração ignorava essa década intermediária, onde de fato o pico
+ocorre.
+
+### Resolução
+
+Cinco achados corrigidos, um rejeitado. Mudança mais relevante:
+"the separation grows with depth" virou "the separation does not
+shrink with depth", que é a afirmação mais forte que os três números
+(0,0258/0,02865/0,0282) de fato sustentam. Os números de viés residual
+(0,00052/0,00111) foram realocados do parágrafo sobre folga de
+extrapolação para o parágrafo sobre viés, onde pertencem, substituindo
+a alegação "under 0,004" sem número por uma que os imprime.
+
+Recompilado limpo (pdflatex 2x, 6 páginas); `\cite`/`\bibitem`
+conferidos sem órfãos em nenhuma direção (três chaves).
+
+**Contagem de rodadas limpas consecutivas após R12: 0.**
