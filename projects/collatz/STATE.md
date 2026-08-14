@@ -1,6 +1,37 @@
 # Estado atual — Collatz
 
-Última atualização: 2026-08-10
+Última atualização: 2026-08-14
+
+## Loop de convergência de crítica do paper 04 — PAUSADO a pedido do diretor científico (worktree isolado)
+
+Rodou 13 rodadas de crítica adversarial (contexto fresco a cada uma,
+Regra 8/15) contra o critério de convergência do diretor científico: 3
+rodadas consecutivas limpas (crítico=0, maior=0, moderado=0, menor<3),
+sem crédito parcial. Contagem de achados por rodada: 31, 25, 23, 15,
+12, 14, 12, 9, 10, 9, 7, 8, 8 — tendência de queda real, e as últimas
+três rodadas (R11, R12, R13) foram as primeiras sem nenhum achado
+crítico ou maior, mas nenhuma bateu o critério completo (sempre sobrou
+pelo menos um moderado). Nenhuma rodada atingiu 3 seguidas limpas antes
+da pausa; contador de rodadas limpas consecutivas: **0**.
+
+O diretor científico pediu a pausa do loop durante a correção da
+rodada 13. A correção em andamento foi terminada e commitada antes de
+parar (três dos oito achados da R13 corrigidos; cinco ficam `open` no
+`CRITIQUE.md` do paper, junto com o histórico completo das 13 rodadas
+e a razão de cada achado `fixed`/`rejected`). Único achado sério nunca
+resolvido pelo próprio produtor, por estar fora do escopo de
+autocorreção: R7-M4, os READMEs PT-BR do repositório de
+reprodutibilidade (`collatz-kl-volkov`) contradizem o resultado central
+do paper (apresentam a leitura refutada "exclui Volkov com folga" como
+corrente), verificado como real e escalado ao diretor científico, não
+corrigido porque a política do projeto proíbe editar PT-BR sem pedido
+explícito.
+
+`main.tex` compila limpo (6 páginas, `\cite`/`\bibitem` sem órfãos) no
+estado em que o loop foi pausado. Para retomar: ler o `CRITIQUE.md` do
+paper 04 (tabela de status no topo, seção datada "rodada R13" no fim),
+resolver os itens ainda `open`, e continuar rodando rodadas novas de
+crítica até bater 3 seguidas limpas.
 
 ## Redação final do paper 05 (dono do paper, worktree isolado)
 

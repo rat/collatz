@@ -1,10 +1,14 @@
 # Outline — paper 04 (Kontorovich-Lagarias vs. Volkov)
 
-Status: `main.tex` completo, em loop de crítica de convergência
-(critério do pesquisador: 3 rodadas consecutivas limpas; rodadas 1-12
-aplicadas 2026-08-10/14, ver `CRITIQUE.md` para o histórico completo e
-a contagem de rodadas limpas consecutivas atual). 6 páginas, compila
-limpo. Split de `01-syracuse-qx1-endogenia/main.tex`
+Status: `main.tex` completo. Loop de crítica de convergência (critério
+do pesquisador: 3 rodadas consecutivas limpas) rodou 13 rodadas
+(2026-08-10/14), **pausado a pedido do diretor científico** durante a
+correção da rodada 13 (três de oito achados corrigidos, cinco ficam
+`open`). Nenhuma rodada atingiu o critério de limpeza completa;
+contador de rodadas limpas consecutivas no momento da pausa: 0. Ver
+`CRITIQUE.md` para o histórico completo, a tabela de status e os itens
+ainda abertos. 6 páginas, compila limpo. Split de
+`01-syracuse-qx1-endogenia/main.tex`
 §6, em 2026-08-10, a pedido do diretor científico ("divida o paper de
 forma que todos tenham sua importância e possam receber citações").
 

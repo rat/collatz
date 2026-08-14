@@ -1372,3 +1372,45 @@ Recompilado limpo (pdflatex 2x, 6 páginas); `\cite`/`\bibitem`
 conferidos sem órfãos em nenhuma direção (três chaves).
 
 **Contagem de rodadas limpas consecutivas após R12: 0.**
+
+---
+
+## 2026-08-14, rodada R13 (loop de convergência, crítico independente) — PARCIAL, loop pausado a pedido do pesquisador durante a correção
+
+Terceira rodada seguida sem nenhum achado crítico ou maior. Achados:
+crítico 0, maior 0, moderado 3, menor 5 (total 8). O pesquisador pediu
+a pausa do loop enquanto esta rodada estava sendo corrigida; três
+achados foram efetivamente corrigidos antes da pausa, cinco ficam
+registrados como `open` para quando o loop for retomado.
+
+| ID | Resumo em uma linha | Severidade | Status |
+|----|----------------------|------------|--------|
+| R13-D1 | "grid used throughout \S\ref{sec:calibrated}" contradizia outra frase do próprio documento sobre qual grade é usada em qual bloco do §5 | moderado | fixed |
+| R13-D2 | "both under $0.004$" sem referente em lugar nenhum do documento (número rastreado ao README do repo, já rejeitado como cota em R7-D3) | moderado | fixed |
+| R13-D3 | README em inglês de `sec6-calibrated-comparison` no repositório de reprodutibilidade ainda tem a justificativa de conjunto de visitados com a direção invertida (já corrigida no `main.tex` pela R11-D1) e a cota "0,004" já rejeitada (R7-D3) | moderado | **open** — não é PT-BR, corrigível, mas o loop foi pausado antes |
+| R13-n1 | Resumo: "within $0.0034$" é falso como cota (desvio real 0,00340642); regressão da correção R12-n1, que resolveu a colisão com o sistemático de implementação mas transformou uma cota verdadeira em falsa | menor | **open** |
+| R13-n2 | Variância de comprimento de frase: dois blocos de dez+ frases seguidas sem nenhuma abaixo de dez palavras (§2 final até Empirical Result 4.1; Empirical Result 5.1 até fim da corrida profunda) | menor | **open** |
+| R13-n3 | "The two decades below that move by more, up to $0.0189$" lido por leitura individual é falso (a maioria das leituras nessas décadas é menor que 0,0017); só o máximo por década é maior | menor | fixed |
+| R13-n4 | §5: "a separate truncation term is at most $0.002$" para as cinco décadas da corrida profunda citadas; o máximo real entre essas cinco é 0,0014, não 0,002 (0,002 vem de uma década fora do conjunto qualificado) | menor | **open** |
+| R13-n5 | "Depth helps. So does the narrower window." atribui causalidade separada a duas variáveis que mudam juntas na única comparação que o texto faz | menor | **open** — mantido como está; a alegação é defensável mas não comprovada no texto |
+
+Achados corrigidos nesta passada (R13-D1, R13-D2, R13-n3): recompilado
+limpo (pdflatex 2x, 6 páginas); `\cite`/`\bibitem` conferidos sem
+órfãos em nenhuma direção (três chaves); orçamento de antíteses
+conferido em 2/2 após as edições.
+
+**LOOP PAUSADO A PEDIDO DO PESQUISADOR em 2026-08-14, durante a
+correção da rodada R13.** Contagem de rodadas limpas consecutivas no
+momento da pausa: **0** (a própria R13, embora sem achados maiores ou
+críticos, teve achados moderados, então não conta como limpa mesmo com
+as correções parciais aplicadas). R11 e R12 também não foram limpas
+(moderados > 0 nas duas). Nenhuma rodada do loop atingiu o critério de
+limpeza completa até o momento da pausa.
+
+Itens abertos (R13-D3, R13-n1, R13-n2, R13-n4, R13-n5) ficam
+registrados para quando o loop for retomado; nenhum deles compromete a
+corretude central do paper (nenhum achado maior ou crítico em três
+rodadas seguidas), mas todos precisam de correção antes de qualquer
+rodada poder ser contada como limpa. Ver também R7-M4 (READMEs PT-BR),
+ainda escalado ao pesquisador e não corrigido, fora do escopo de
+autocorreção por instrução permanente do projeto.
